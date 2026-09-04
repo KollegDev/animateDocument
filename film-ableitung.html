@@ -35,17 +35,19 @@ body{margin:0; background:var(--bg); color:var(--ink);
    stehende Flaeche. Nichts wandert, es wird abgeloest. */
 /* Das Rad ist eine eigene, durchsichtige Flaeche ueber der Buehne. Nur sie bewegt sich.
    Die Seite selbst scrollt nie, auch nicht um einen Pixel. */
-html,body{height:100%; overflow:hidden;}
+html,body{height:100%; overflow:hidden; overscroll-behavior:none;}
 /* Der Name der Zeitleiste muss ueber das ganze Dokument sichtbar sein, nicht nur
    in der Verwandtschaft des Rades. */
 :root{timeline-scope:--rad;}
-.rad{position:fixed; inset:0; z-index:20; overflow-y:auto; overflow-x:hidden;
-  -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
+.rad{position:fixed; left:0; top:0; width:100%; height:100vh; height:100svh;
+  z-index:20; overflow-y:auto; overflow-x:hidden;
+  -webkit-overflow-scrolling:touch; overscroll-behavior:none;
   scroll-timeline-name:--rad; scroll-timeline-axis:block;
   scrollbar-width:none;}
 .rad::-webkit-scrollbar{width:0; height:0;}
 .rad .weg{height:var(--kurbel, 900vh);}
-.buehne{position:fixed; inset:0; z-index:5; overflow:hidden; pointer-events:none;
+.buehne{position:fixed; left:0; top:0; width:100%; height:100vh; height:100svh;
+  z-index:5; overflow:hidden; pointer-events:none;
   background:var(--bg);
   padding:calc(env(safe-area-inset-top) + 16px) 18px calc(env(safe-area-inset-bottom) + 16px);
   padding-top:calc(env(safe-area-inset-top) + 16px);}
@@ -70,18 +72,20 @@ html,body{height:100%; overflow:hidden;}
    nichts: ein Takt vor dem Bild nimmt das ganze Feld, einer danach steht darunter.
    Der Sprung dazwischen faellt genau in eine Kreuzblende. */
 .feld{position:relative; flex:1 1 auto; min-height:0;}
-.bild{position:absolute; left:0; right:0; top:0; height:44vh; height:44dvh;}
+.bild{position:absolute; left:0; right:0; top:0; height:44vh; height:44svh;}
 .bild .lage{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
   opacity:0; background:var(--bg);}
 .bild .lage svg{display:block; width:auto; max-width:100%; max-height:100%;}
+.szene .bild svg{max-height:42vh; max-height:42svh;}
 .szene.ohnebild .bild{display:none;}
 
 /* Alle Takte liegen uebereinander. Nur einer ist zu sehen. */
 .takt{position:absolute; inset:0; overflow:hidden; opacity:0; background:var(--bg);
   transform-origin:top center;
-  display:flex; flex-direction:column; justify-content:flex-start;}
-.takt.unterBild{top:calc(44dvh + 10px);}
-.takt.mittig{justify-content:center;}
+  display:flex; flex-direction:column; justify-content:center;}
+.takt.unterBild{top:calc(44vh + 10px); top:calc(44svh + 10px);}
+/* Ein Takt, der die Flaeche fuellt, beginnt oben; sonst steht sein Inhalt mittig. */
+.takt.voll{justify-content:flex-start;}
 
 /* ================= Der Satz auf der Buehne ================= */
 .el{margin:0 0 .7em; opacity:0;}
@@ -131,6 +135,9 @@ p.satz{font-size:1.04rem;}
 /* Was am Anfang der Kurbel steht, ist schon da und geht nur noch weg. */
 @keyframes blendeAb{ 0%{opacity:1; visibility:visible;} 94%{opacity:1; visibility:visible;}
                      100%{opacity:0; visibility:hidden;} }
+/* Was am Ende steht, kommt und bleibt. Sonst waere das letzte Bild schwarz. */
+@keyframes blendeAuf{ 0%{opacity:0; visibility:hidden;} 6%{opacity:1; visibility:visible;}
+                      100%{opacity:1; visibility:visible;} }
 @keyframes steigen{ from{opacity:0; transform:translate3d(0,14px,0);} to{opacity:1; transform:none;} }
 @keyframes setzen{ from{opacity:0; transform:translate3d(0,8px,0) scale(.97);} to{opacity:1; transform:none;} }
 @keyframes auftauchen{ from{opacity:0;} to{opacity:1;} }
@@ -153,6 +160,8 @@ p.satz{font-size:1.04rem;}
   .takt{animation-name:blende;}
   .bild .lage{animation-name:blende;}
   .szene.ab, .takt.ab, .bild .lage.ab{animation-name:blendeAb;}
+  .szene.auf, .takt.auf, .bild .lage.auf{animation-name:blendeAuf;}
+  .szene.ab.auf, .takt.ab.auf, .bild .lage.ab.auf{animation-name:none; opacity:1;}
   /* Die Titelszene steht sofort vollstaendig da, sonst waere das erste Bild leer. */
   .szene.titel .el{opacity:1; animation-name:none;}
   .frage{animation-name:steigen;}
@@ -212,7 +221,7 @@ html.zuFuss .bild svg path.kurve.an{stroke-dashoffset:0;}
 </head>
 <body>
 <script id="blattkino-daten" type="application/json">
-{"titel":"Was die Ableitung ist","quelle":"Differentialrechnung, Einstieg","boegen":[{"frage":"Wie steil ist eine Kurve an einer einzigen Stelle?","beats":[{"sub":"Eine Gerade hat ueberall dieselbe Steigung. An jeder Stelle dieselbe Zahl.","gewicht":1,"ops":[{"op":"clear"},{"op":"h","t":"Was die Ableitung ist"},{"op":"math","tex":"g(x)=1{,}5x"},{"op":"plot","id":"g","expr":"1.5*x","xmin":-1,"xmax":4,"ymin":-1,"ymax":7,"legend":"g(x)=1,5x"},{"op":"point","id":"g","x":1,"y":1.5,"label":"hier 1,5"},{"op":"point","id":"g","x":3,"y":4.5,"label":"und hier auch 1,5"}]},{"sub":"Bei einer Parabel stimmt das nicht mehr. Links liegt sie flach, rechts steigt sie steil.","gewicht":2,"ops":[{"op":"plot","id":"f","expr":"x^2","xmin":-1,"xmax":4,"ymin":-1,"ymax":10,"legend":"f(x)=x²"},{"op":"point","id":"f","x":0.5,"y":0.25,"label":"flach"},{"op":"point","id":"f","x":2.5,"y":6.25,"label":"steil"}]},{"sub":"Die Steigung ist also keine Zahl fuer die ganze Kurve, sondern eine Zahl fuer jede Stelle.","gewicht":3,"payoff":true,"fokus":true,"ops":[{"op":"merksatz","t":"Jede Stelle einer Kurve hat ihre eigene Steigung."}]}]},{"frage":"Steigung braucht zwei Punkte. Woher nimmt man den zweiten?","beats":[{"sub":"Zwischen zwei Punkten kann man die Steigung ausrechnen. Man legt eine Gerade hindurch.","gewicht":1,"ops":[{"op":"clear"},{"op":"h","t":"Der zweite Punkt"},{"op":"math","tex":"m=\\frac{f(x+h)-f(x)}{h}"}]},{"sub":"Jetzt schiebt man den zweiten Punkt an den ersten heran. Der Abstand h wird kleiner und kleiner.","gewicht":2,"ops":[{"op":"plot","id":"s","expr":"x^2","xmin":-0.5,"xmax":4,"ymin":-1,"ymax":10,"legend":"f(x)=x²"},{"op":"point","id":"s","x":1,"y":1,"label":"P(1|1)"},{"op":"bildfolge","id":"s","art":"sekante","x":1,"stufen":[2,1,0.5,0],"ziel":"Tangente"}]},{"sub":"Die Geraden kippen nicht wild herum. Sie laufen auf eine einzige Gerade zu.","gewicht":3,"payoff":true,"ops":[{"op":"merksatz","t":"Die Grenzlage der Geraden heisst Tangente. Ihre Steigung ist die Steigung an der Stelle."}]}]},{"frage":"Warum darf man h nicht einfach gleich null setzen?","beats":[{"sub":"Mit h gleich null steht unten eine Null. Durch null darf man nicht teilen.","gewicht":1,"ops":[{"op":"clear"},{"op":"h","t":"Erst rechnen, dann klein machen"},{"op":"math","tex":"m=\\frac{f(1+h)-f(1)}{h}"}]},{"sub":"Also formt man zuerst um. Oben steht ein Quadrat, das man ausmultipliziert.","gewicht":2,"ops":[{"op":"umformung","zeilen":[{"tex":"m=\\frac{(1+h)^{2}-1^{2}}{h}","warum":"f(x)=x² eingesetzt"},{"tex":"m=\\frac{1+2h+h^{2}-1}{h}","warum":"Klammer ausmultipliziert"},{"tex":"m=\\frac{2h+h^{2}}{h}","warum":"1 und minus 1 heben sich auf"},{"tex":"m=\\frac{2h}{h}+\\frac{h^{2}}{h}","warum":"Summe getrennt"},{"tex":"m=2+h","warum":"beide Brueche gekuerzt"}]}]},{"sub":"Jetzt steht kein h mehr unten. Erst jetzt darf h verschwinden.","gewicht":3,"payoff":true,"ops":[{"op":"math","tex":"m=2+0=2"},{"op":"note","t":"An der Stelle 1 hat f die Steigung 2."}]}]},{"frage":"Sieht man die Tangente auch, wenn man nah genug herangeht?","beats":[{"sub":"Wir fahren in den Punkt hinein. Die gestrichelte Gerade ist die Tangente.","gewicht":2,"ops":[{"op":"clear"},{"op":"h","t":"Nah genug betrachtet"},{"op":"zoomfolge","id":"z","expr":"x^2","x":1,"zoom":14,"xmin":-1,"xmax":4,"ymin":-1,"ymax":10,"label":"P(1|1)"}]},{"sub":"Dieselbe Fahrt bei einer Kurve, die sich staerker biegt.","gewicht":1,"ops":[{"op":"zoomfolge","id":"z2","expr":"x^3-3*x","x":0.5,"zoom":16,"xmin":-2.5,"xmax":2.5,"ymin":-4,"ymax":4,"label":"Q(0,5|-1,375)"}]},{"sub":"Aus der Naehe liegt die Kurve auf ihrer Tangente. Der Unterschied verschwindet.","gewicht":3,"payoff":true,"ops":[{"op":"merksatz","t":"Nah genug betrachtet ist jede Kurve ihre Tangente."}]}]},{"frage":"Was passiert, wenn man das an jeder Stelle macht?","beats":[{"sub":"Bei 1 kam 2 heraus. Dieselbe Rechnung bei anderen Stellen ergibt jedes Mal das Doppelte.","gewicht":1,"ops":[{"op":"clear"},{"op":"h","t":"Aus Steigungen wird eine Funktion"},{"op":"tabelle","art":"serie","kopf":["Stelle x","Steigung"],"zeilen":[["1","2 \\cdot 1 = 2"],["2","2 \\cdot 2 = 4"],["3","2 \\cdot 3 = 6"],["4","2 \\cdot 4 = 8"]]}]},{"sub":"Diese Zuordnung von Stelle zu Steigung ist selbst eine Funktion. Sie heisst Ableitung.","gewicht":2,"ops":[{"op":"math","tex":"f(x)=x^{2}"},{"op":"math","tex":"f'(x)=2x"}]},{"sub":"Oben steht die Kurve, darunter ihre Steigungen. Die senkrechten Striche treffen dieselbe Stelle.","gewicht":3,"payoff":true,"fokus":true,"ops":[{"op":"doppelgraph","id":"d","expr":"x^2","expr2":"2*x","xmin":-3,"xmax":3,"ymin":-1,"ymax":9,"ymin2":-6,"ymax2":6,"legend":"f(x)=x²","legend2":"f'(x)=2x"},{"op":"binden","x":1,"label":"f(1)=1","label2":"f'(1)=2"},{"op":"binden","x":2,"label":"f(2)=4","label2":"f'(2)=4"},{"op":"binden","x":-2,"label":"f(-2)=4","label2":"f'(-2)=-4"}]}]},{"frage":"Kann man am unteren Bild etwas ueber das obere ablesen?","beats":[{"sub":"Wo die untere Kurve unter der Achse liegt, faellt die obere. Wo sie darueber liegt, steigt die obere.","gewicht":2,"ops":[{"op":"clear"},{"op":"h","t":"Das untere Bild lesen"},{"op":"doppelgraph","id":"e","expr":"x^2","expr2":"2*x","xmin":-3,"xmax":3,"ymin":-1,"ymax":9,"ymin2":-6,"ymax2":6,"legend":"f(x)=x²","legend2":"f'(x)=2x"},{"op":"binden","x":-1.5,"label":"faellt","label2":"negativ"},{"op":"binden","x":1.5,"label":"steigt","label2":"positiv"}]},{"sub":"An der Nullstelle der unteren Kurve liegt der tiefste Punkt der oberen.","gewicht":3,"payoff":true,"ops":[{"op":"binden","x":0,"label":"tiefster Punkt","label2":"f'(0)=0"},{"op":"merksatz","t":"Wo die Ableitung null ist, hat die Kurve einen waagerechten Punkt."}]},{"sub":"Damit ist die Ableitung ein Werkzeug. Man rechnet unten und weiss etwas ueber oben.","gewicht":1,"ops":[{"op":"note","t":"Der tiefste Punkt liegt dort, wo die Ableitung durch null geht."}]}]},{"frage":"Findet man den waagerechten Punkt auch ohne Bild?","beats":[{"sub":"Man braucht nur die Ableitung und die Frage, wo sie null wird.","gewicht":2,"ops":[{"op":"clear"},{"op":"h","t":"Jetzt ihr"},{"op":"jetztihr","t":"Wo hat f(x)=x²-6x einen waagerechten Punkt?","loesungTex":"f'(x)=2x-6","loesungText":"2x-6=0 ergibt x=3"}]},{"sub":"Das Bild bestaetigt die Rechnung. Bei drei liegt der tiefste Punkt.","gewicht":3,"payoff":true,"ops":[{"op":"doppelgraph","id":"p","expr":"x^2-6*x","expr2":"2*x-6","xmin":-1,"xmax":7,"ymin":-10,"ymax":8,"ymin2":-8,"ymax2":8,"legend":"f(x)=x²-6x","legend2":"f'(x)=2x-6"},{"op":"binden","x":3,"label":"tiefster Punkt","label2":"f'(3)=0"}]}]}]}
+{"titel":"Was die Ableitung ist","quelle":"Differentialrechnung, Einstieg","boegen":[{"frage":"Wie steil ist eine Kurve an einer einzigen Stelle?","beats":[{"sub":"Eine Gerade hat ueberall dieselbe Steigung. An jeder Stelle dieselbe Zahl.","gewicht":1,"ops":[{"op":"clear"},{"op":"math","tex":"g(x)=1{,}5x"},{"op":"plot","id":"g","expr":"1.5*x","xmin":-1,"xmax":4,"ymin":-1,"ymax":7,"legend":"g(x)=1,5x"},{"op":"point","id":"g","x":1,"y":1.5,"label":"hier 1,5"},{"op":"point","id":"g","x":3,"y":4.5,"label":"und hier auch 1,5"}]},{"sub":"Bei einer Parabel stimmt das nicht mehr. Links liegt sie flach, rechts steigt sie steil.","gewicht":2,"ops":[{"op":"plot","id":"f","expr":"x^2","xmin":-1,"xmax":4,"ymin":-1,"ymax":10,"legend":"f(x)=x²"},{"op":"point","id":"f","x":0.5,"y":0.25,"label":"flach"},{"op":"point","id":"f","x":2.5,"y":6.25,"label":"steil"}]},{"sub":"Die Steigung ist also keine Zahl fuer die ganze Kurve, sondern eine Zahl fuer jede Stelle.","gewicht":3,"payoff":true,"fokus":true,"ops":[{"op":"merksatz","t":"Jede Stelle einer Kurve hat ihre eigene Steigung."}]}]},{"frage":"Steigung braucht zwei Punkte. Woher nimmt man den zweiten?","beats":[{"sub":"Zwischen zwei Punkten kann man die Steigung ausrechnen. Man legt eine Gerade hindurch.","gewicht":1,"ops":[{"op":"clear"},{"op":"h","t":"Der zweite Punkt"},{"op":"math","tex":"m=\\frac{f(x+h)-f(x)}{h}"}]},{"sub":"Jetzt schiebt man den zweiten Punkt an den ersten heran. Der Abstand h wird kleiner und kleiner.","gewicht":2,"ops":[{"op":"plot","id":"s","expr":"x^2","xmin":-0.5,"xmax":4,"ymin":-1,"ymax":10,"legend":"f(x)=x²"},{"op":"point","id":"s","x":1,"y":1,"label":"P(1|1)"},{"op":"bildfolge","id":"s","art":"sekante","x":1,"stufen":[2,1,0.5,0],"ziel":"Tangente"}]},{"sub":"Die Geraden kippen nicht wild herum. Sie laufen auf eine einzige Gerade zu.","gewicht":3,"payoff":true,"ops":[{"op":"merksatz","t":"Die Grenzlage der Geraden heisst Tangente. Ihre Steigung ist die Steigung an der Stelle."}]}]},{"frage":"Warum darf man h nicht einfach gleich null setzen?","beats":[{"sub":"Mit h gleich null steht unten eine Null. Durch null darf man nicht teilen.","gewicht":1,"ops":[{"op":"clear"},{"op":"h","t":"Erst rechnen, dann klein machen"},{"op":"math","tex":"m=\\frac{f(1+h)-f(1)}{h}"}]},{"sub":"Also formt man zuerst um. Oben steht ein Quadrat, das man ausmultipliziert.","gewicht":2,"ops":[{"op":"umformung","zeilen":[{"tex":"m=\\frac{(1+h)^{2}-1^{2}}{h}","warum":"f(x)=x² eingesetzt"},{"tex":"m=\\frac{1+2h+h^{2}-1}{h}","warum":"Klammer ausmultipliziert"},{"tex":"m=\\frac{2h+h^{2}}{h}","warum":"1 und minus 1 heben sich auf"},{"tex":"m=\\frac{2h}{h}+\\frac{h^{2}}{h}","warum":"Summe getrennt"},{"tex":"m=2+h","warum":"beide Brueche gekuerzt"}]}]},{"sub":"Jetzt steht kein h mehr unten. Erst jetzt darf h verschwinden.","gewicht":3,"payoff":true,"ops":[{"op":"math","tex":"m=2+0=2"},{"op":"note","t":"An der Stelle 1 hat f die Steigung 2."}]}]},{"frage":"Sieht man die Tangente auch, wenn man nah genug herangeht?","beats":[{"sub":"Wir fahren in den Punkt hinein. Die gestrichelte Gerade ist die Tangente.","gewicht":2,"ops":[{"op":"clear"},{"op":"h","t":"Nah genug betrachtet"},{"op":"zoomfolge","id":"z","expr":"x^2","x":1,"zoom":14,"xmin":-1,"xmax":4,"ymin":-1,"ymax":10,"label":"P(1|1)"}]},{"sub":"Dieselbe Fahrt bei einer Kurve, die sich staerker biegt.","gewicht":1,"ops":[{"op":"zoomfolge","id":"z2","expr":"x^3-3*x","x":0.5,"zoom":16,"xmin":-2.5,"xmax":2.5,"ymin":-4,"ymax":4,"label":"Q(0,5|-1,375)"}]},{"sub":"Aus der Naehe liegt die Kurve auf ihrer Tangente. Der Unterschied verschwindet.","gewicht":3,"payoff":true,"ops":[{"op":"merksatz","t":"Nah genug betrachtet ist jede Kurve ihre Tangente."}]}]},{"frage":"Was passiert, wenn man das an jeder Stelle macht?","beats":[{"sub":"Bei 1 kam 2 heraus. Dieselbe Rechnung bei anderen Stellen ergibt jedes Mal das Doppelte.","gewicht":1,"ops":[{"op":"clear"},{"op":"h","t":"Aus Steigungen wird eine Funktion"},{"op":"tabelle","art":"serie","kopf":["Stelle x","Steigung"],"zeilen":[["1","2 \\cdot 1 = 2"],["2","2 \\cdot 2 = 4"],["3","2 \\cdot 3 = 6"],["4","2 \\cdot 4 = 8"]]}]},{"sub":"Diese Zuordnung von Stelle zu Steigung ist selbst eine Funktion. Sie heisst Ableitung.","gewicht":2,"ops":[{"op":"math","tex":"f(x)=x^{2}"},{"op":"math","tex":"f'(x)=2x"}]},{"sub":"Oben steht die Kurve, darunter ihre Steigungen. Die senkrechten Striche treffen dieselbe Stelle.","gewicht":3,"payoff":true,"fokus":true,"ops":[{"op":"doppelgraph","id":"d","expr":"x^2","expr2":"2*x","xmin":-3,"xmax":3,"ymin":-1,"ymax":9,"ymin2":-6,"ymax2":6,"legend":"f(x)=x²","legend2":"f'(x)=2x"},{"op":"binden","x":1,"label":"f(1)=1","label2":"f'(1)=2"},{"op":"binden","x":2,"label":"f(2)=4","label2":"f'(2)=4"},{"op":"binden","x":-2,"label":"f(-2)=4","label2":"f'(-2)=-4"}]}]},{"frage":"Kann man am unteren Bild etwas ueber das obere ablesen?","beats":[{"sub":"Wo die untere Kurve unter der Achse liegt, faellt die obere. Wo sie darueber liegt, steigt die obere.","gewicht":2,"ops":[{"op":"clear"},{"op":"h","t":"Das untere Bild lesen"},{"op":"doppelgraph","id":"e","expr":"x^2","expr2":"2*x","xmin":-3,"xmax":3,"ymin":-1,"ymax":9,"ymin2":-6,"ymax2":6,"legend":"f(x)=x²","legend2":"f'(x)=2x"},{"op":"binden","x":-1.5,"label":"faellt","label2":"negativ"},{"op":"binden","x":1.5,"label":"steigt","label2":"positiv"}]},{"sub":"An der Nullstelle der unteren Kurve liegt der tiefste Punkt der oberen.","gewicht":3,"payoff":true,"ops":[{"op":"binden","x":0,"label":"tiefster Punkt","label2":"f'(0)=0"},{"op":"merksatz","t":"Wo die Ableitung null ist, hat die Kurve einen waagerechten Punkt."}]},{"sub":"Damit ist die Ableitung ein Werkzeug. Man rechnet unten und weiss etwas ueber oben.","gewicht":1,"ops":[{"op":"note","t":"Der tiefste Punkt liegt dort, wo die Ableitung durch null geht."}]}]},{"frage":"Findet man den waagerechten Punkt auch ohne Bild?","beats":[{"sub":"Man braucht nur die Ableitung und die Frage, wo sie null wird.","gewicht":2,"ops":[{"op":"clear"},{"op":"h","t":"Jetzt ihr"},{"op":"jetztihr","t":"Wo hat f(x)=x²-6x einen waagerechten Punkt?","loesungTex":"f'(x)=2x-6","loesungText":"2x-6=0 ergibt x=3"}]},{"sub":"Das Bild bestaetigt die Rechnung. Bei drei liegt der tiefste Punkt.","gewicht":3,"payoff":true,"ops":[{"op":"doppelgraph","id":"p","expr":"x^2-6*x","expr2":"2*x-6","xmin":-1,"xmax":7,"ymin":-10,"ymax":8,"ymin2":-8,"ymax2":8,"legend":"f(x)=x²-6x","legend2":"f'(x)=2x-6"},{"op":"binden","x":3,"label":"tiefster Punkt","label2":"f'(3)=0"}]}]}]}
 </script>
 
 <div class="fortschritt" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="fortschritt"><i id="fill"></i></div>
@@ -537,8 +546,7 @@ const OPS={
     setzen(lo,false,2.6);   // erst nach einer Strecke Nachdenkzeit
   },
   // Eine Frage stehen lassen, dann eine Strecke Stille, dann kommt die Antwort
-  frage(o){ const e=el('p','fragezeile'); e.textContent=String(o.t??''); setzen(e);
-    if(takt)takt.stille=true; },
+  frage(o){ const e=el('p','fragezeile'); e.textContent=String(o.t??''); setzen(e); },
   // Eine Umformung ist eine Bewegung: jede Zeile mit ihrem Grund, die vorige verblasst
   umformung(o){
     const zeilen=Array.isArray(o.zeilen)?o.zeilen:[];
@@ -574,7 +582,7 @@ const OPS={
     svg.setAttribute('viewBox','0 0 440 '+(2*H+LUFT));
     svg.setAttribute('width','440'); svg.style.maxWidth='100%';
     // Zwei Systeme sind hoch. Sie duerfen den Lesestreifen nicht auffressen.
-    svg.style.maxHeight='58vh'; svg.style.width='auto'; svg.style.display='block'; svg.style.margin='0 auto';
+    svg.style.width='auto'; svg.style.display='block'; svg.style.margin='0 auto';
     const oben=makePlot(c1,svg,0);
     const unten=makePlot(c2,svg,H+LUFT);
     bildAuf(svg);
@@ -744,13 +752,11 @@ function bauen(){
 // ================= Die Zeit =================
 // Jeder Takt bekommt eine Strecke am Rad. Daraus werden Prozentwerte auf der Kurbel.
 // Nichts davon laeuft waehrend des Scrollens: es wird einmal gerechnet und in CSS geschrieben.
-function taktDauer(t){
-  const n=t.stuecke.length;
-  const luft=t.stuecke.reduce((s,x)=>s+x.luft,0);
-  let d=0.46 + 0.22*t.gewicht + 0.15*n + 0.16*luft;
-  if(t.stille)d+=0.35;
-  return Math.max(0.75,Math.min(3.2,d));
-}
+// Jeder Takt bekommt dieselbe Strecke am Rad. Wer laenger braucht, haelt einfach an;
+// das ist Sache des Lesers und nicht des Films. Ungleiche Strecken machen die Geste
+// unberechenbar: man weiss dann nie, wie weit ein Wisch traegt.
+const TAKTSTRECKE = 1.0;
+function taktDauer(){ return TAKTSTRECKE; }
 function zeitVerteilen(){
   let U=0;
   for(const s of SZENEN){ s.von=U; for(const t of s.takte){ t.von=U; U+=taktDauer(t); t.bis=U; } s.bis=U; }
@@ -765,8 +771,8 @@ function zeitVerteilen(){
   const lage=(kn,von,bis)=>{
     const l=Math.max(0.02,(bis-von)*L);
     let a=von-l, b=bis+l;
-    if(a<=0){ a=0; kn.classList.add('ab'); }   // was ganz vorn steht, ist schon da
-    if(b>U)b=U;
+    if(a<=0){ a=0; kn.classList.add('ab'); }    // was ganz vorn steht, ist schon da
+    if(b>=U){ b=U; kn.classList.add('auf'); }   // was ganz hinten steht, bleibt stehen
     spanne(kn,a,b);
   };
 
@@ -783,10 +789,13 @@ function zeitVerteilen(){
     for(const t of s.takte){
       const d=t.bis-t.von;
       lage(t.kn, t.von, t.bis);
-      // Die Stuecke erscheinen in der ersten Haelfte, danach bleibt Zeit zum Lesen
+      // Jeder Takt kostet dieselbe Strecke. Das Gewicht bestimmt nicht mehr, wie weit
+      // man drehen muss, sondern wie schnell der Takt sich aufbaut: ein schwerer Beat
+      // baut ueber fast die ganze Strecke auf, ein leichter ist frueh fertig.
       const gew=t.stuecke.map(x=>1+x.luft);
       const summe=gew.reduce((a,b)=>a+b,0)||1;
-      const bau=d*0.62, ab=t.von+d*0.05;
+      const anteil = t.gewicht>=3?0.78 : (t.gewicht<=1?0.42:0.60);
+      const bau=d*anteil, ab=t.von+d*0.05;
       let lauf=0;
       t.stuecke.forEach((st,i)=>{
         const a=ab+bau*(lauf/summe);
@@ -810,18 +819,16 @@ function einpassen(){
   for(const s of SZENEN){
     for(const t of s.takte){
       const H=t.kn.clientHeight; if(!H)continue;
-      t.kn.classList.remove('mittig');
+      t.kn.classList.remove('voll');
+      t.kn.style.transform=''; t.kn.style.width='';
       const h=t.kn.scrollHeight;
       if(h>H+2){
-        // Zu voll: einmal verkleinern, damit nichts abgeschnitten wird
-        const f=Math.max(0.68,(H-2)/h);
+        // Zu voll: oben beginnen und einmal verkleinern, damit nichts abgeschnitten wird
+        t.kn.classList.add('voll');
+        const f=Math.max(0.68,(H-2)/t.kn.scrollHeight);
         t.kn.style.transform='scale('+f.toFixed(3)+')';
         t.kn.style.width=(100/f).toFixed(2)+'%';
         if(f<=0.7)zuVoll.push(t);
-      } else {
-        t.kn.style.transform=''; t.kn.style.width='';
-        // Wenig Inhalt steht mittig, sonst klebt er oben und darunter gaehnt Schwarz
-        if(h < H*0.62)t.kn.classList.add('mittig');
       }
     }
   }
