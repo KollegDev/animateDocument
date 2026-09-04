@@ -131,24 +131,37 @@ input[type=file]{display:none;}
   width:50px; height:50px; background:rgba(20,22,28,.5);}
 .bigplay.mini:hover{transform:scale(1.09); background:rgba(20,22,28,.72);}
 .bigplay.mini svg{width:18px; height:20px; margin-left:4px;}
-/* eine einzige Bedienzeile */
-.controls{display:flex; align-items:center; gap:8px; margin-top:8px; flex:none; min-height:40px;}
+/* eine Zeile: das Fragefeld ist darin das Breiteste, weil Fragen der Sinn ist */
+.controls{display:flex; align-items:center; gap:8px; margin-top:8px; flex:none; min-height:42px;}
 .controls[hidden]{display:none;}
-.controls .grp{display:flex; align-items:center; gap:6px; flex:1 1 0; min-width:0;}
-.controls .grp.right{justify-content:flex-end;}
-.controls button{padding:7px 12px; white-space:nowrap;}
-.controls .primary{min-width:210px; padding:9px 16px; font-size:1rem;}
-.counter{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8rem; color:var(--muted);
-  white-space:nowrap; font-variant-numeric:tabular-nums;}
-.askrow textarea{flex:1 1 auto; min-width:0; font:inherit; background:var(--stage); color:var(--ink);
-  border:1px solid var(--line); border-radius:6px; padding:9px 11px; resize:none; height:40px; line-height:1.3;}
-.askrow textarea:focus-visible{outline:2px solid var(--accent2); outline-offset:1px;}
-#askback{font-size:1.15rem; line-height:1; padding:8px 13px;}
-#micbtn{font-size:1.05rem; line-height:1; padding:8px 12px;}
+.controls button{padding:8px 12px; white-space:nowrap;}
+.controls .primary{min-width:132px; padding:9px 16px; font-size:1rem;}
+.controls.extras{margin-top:6px; min-height:0;}
+.fragefeld{position:relative; flex:1 1 auto; min-width:0;}
+.fragefeld textarea{width:100%; box-sizing:border-box; font:inherit; height:42px; line-height:1.35;
+  background:var(--stage); color:var(--ink); border:1px solid var(--line); border-radius:8px;
+  padding:10px 13px; resize:none; transition:border-color .18s var(--auf), box-shadow .18s var(--auf);}
+.fragefeld textarea::placeholder{color:var(--muted);}
+.fragefeld textarea:hover:not(:disabled){border-color:var(--accent);}
+.fragefeld textarea:focus-visible{outline:none; border-color:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent);}
+.fragefeld textarea:disabled{opacity:.55;}
+.wink{position:absolute; left:12px; bottom:calc(100% + 7px); z-index:8;
+  background:var(--accent); color:var(--stage); font-size:.78rem; font-weight:600;
+  padding:4px 11px; border-radius:20px; white-space:nowrap;}
+.wink[hidden]{display:none;}
+#askbtn:not(:disabled){background:var(--btn); color:var(--btnink); border-color:var(--btn); font-weight:600;}
+#mehrbtn{font-size:1.1rem; line-height:1; padding:8px 11px;}
+#micbtn{font-size:1.05rem; line-height:1; padding:9px 12px;}
 #micbtn[hidden]{display:none;}
 #micbtn.an{background:var(--pt); border-color:var(--pt); color:#fff; animation:pulsen 1.2s ease-in-out infinite;}
 @keyframes pulsen{0%,100%{box-shadow:0 0 0 0 rgba(211,63,46,.5);} 50%{box-shadow:0 0 0 7px rgba(211,63,46,0);}}
 @media (prefers-reduced-motion: reduce){ #micbtn.an{animation:none;} }
+.bar .marke{position:absolute; top:-3px; width:3px; height:15px; border-radius:2px;
+  background:var(--accent); transform:translateX(-1px);}
+.weiter{display:block; margin:20px 0 4px; padding:12px 22px; font:inherit; font-size:1rem; font-weight:600;
+  background:var(--btn); color:var(--btnink); border:1px solid var(--btn); border-radius:8px; cursor:pointer;}
+.weiter:hover{opacity:.88;}
 @media (max-width:680px){
   .controls .primary{min-width:0; flex:0 0 auto;}
   #newdoc, #voicesel{display:none;}
@@ -229,27 +242,25 @@ input[type=file]{display:none;}
     aria-valuemin="0" aria-valuenow="0" aria-valuetext="Anfang"><div class="fill" id="fill"></div></div>
 
   <div class="controls" id="controls">
-    <span class="grp">
-      <button id="newdoc" aria-label="Anderes Dokument laden">Anderes PDF</button>
-      <button id="ttsbtn" aria-label="Stimme an oder aus" aria-pressed="true">🔊</button>
-      <button id="slowbtn" aria-label="Langsamer sprechen">−</button>
-      <span class="counter" id="speedlbl">1,0×</span>
-      <button id="fastbtn" aria-label="Schneller sprechen">+</button>
-      <select id="voicesel" aria-label="Stimme wählen" hidden></select>
-    </span>
     <button class="primary" id="playbtn" disabled>▶ Start</button>
-    <span class="grp right">
-      <button id="askopen" disabled>Frage stellen</button>
-      <span class="counter" id="counter" aria-hidden="true">–</span>
-    </span>
+    <button id="micbtn" aria-label="Frage sprechen" aria-pressed="false" hidden>🎤</button>
+    <div class="fragefeld">
+      <span class="wink" id="wink" hidden>Hier fragen, wenn etwas unklar ist</span>
+      <textarea id="q" rows="1" aria-label="Eure Frage zum Film" spellcheck="false"
+        placeholder="Frage stellen …" disabled></textarea>
+    </div>
+    <button id="askbtn" disabled>Fragen</button>
+    <button id="mehrbtn" aria-label="Weitere Einstellungen" aria-expanded="false">⋯</button>
+    <span class="counter" id="counter" aria-hidden="true">–</span>
   </div>
 
-  <div class="controls askrow" id="ask" hidden>
-    <button id="askback" aria-label="Zurück zum Film">←</button>
-    <button id="micbtn" aria-label="Frage sprechen" aria-pressed="false" hidden>🎤</button>
-    <textarea id="q" rows="1" aria-label="Eure Frage zum Film" spellcheck="false"
-      placeholder="Moment, warum ist das so? Erklärt das genauer…"></textarea>
-    <button class="primary" id="askbtn">Fragen</button>
+  <div class="controls extras" id="extras" hidden>
+    <button id="newdoc" aria-label="Anderes Dokument laden">Anderes PDF</button>
+    <button id="ttsbtn" aria-label="Stimme an oder aus" aria-pressed="true">🔊</button>
+    <button id="slowbtn" aria-label="Langsamer sprechen">−</button>
+    <span class="counter" id="speedlbl">1,0×</span>
+    <button id="fastbtn" aria-label="Schneller sprechen">+</button>
+    <select id="voicesel" aria-label="Stimme wählen" hidden></select>
   </div>
 </div>
 
@@ -611,6 +622,8 @@ function neuesDokument(){
   beats=[]; idx=-1; maxIdx=-1; tCur=0; chatHistory=[]; plots={}; diag=[];
   roll.innerHTML=''; setRollShift(0,true);
   hideError(); hideLoading(); frageZu(); $('scrollhint').hidden=true;
+  marken=[]; $('q').value=''; $('q').disabled=true;
+  for(const e of [...roll.querySelectorAll('.weiter')])e.remove();
   $('docname').textContent=''; setStatus('');
   showSub('Legt ein PDF ab, dann entsteht ein neuer Film.');
   $('playbtn').disabled=true;
@@ -1051,18 +1064,20 @@ stagebox.addEventListener('wheel',e=>{
 // ================= Player =================
 function showSub(t,tag){ $('subtext').textContent=t; const st=$('subtag');
   if(tag){st.hidden=false;st.textContent=tag;}else st.hidden=true; }
-// Die Bedienzeile und die Fragezeile teilen sich denselben Platz
-function frageAuf(){
+// Das Fragefeld ist immer sichtbar. Hineingehen heisst anhalten.
+let winkGezeigt=false;
+function frageAuf(mitZeichen){
+  if(!beats.length||!$('dropzone').hidden)return;
   if(playing)pause(false);
-  $('controls').hidden=true; $('ask').hidden=false;
-  $('q').focus({preventScroll:true});
+  const q=$('q');
+  q.disabled=false;
+  if(mitZeichen)q.value+=mitZeichen;
+  q.focus({preventScroll:true});
+  if(!winkGezeigt){ winkGezeigt=true; $('wink').hidden=false;
+    setTimeout(()=>{ $('wink').hidden=true; },4200); }
   updateUI();
 }
-function frageZu(){
-  mikroAus();
-  $('ask').hidden=true; $('controls').hidden=false;
-  updateUI();
-}
+function frageZu(){ mikroAus(); $('q').blur(); updateUI(); }
 function stepDur(b){ return (Math.max(3000,b.sub.length*62)+(b.ops.some(o=>o.op==='plot'||o.op==='sweep')?1500:0))/speed; }
 function step(){
   if(idx>=beats.length-1){ if(compiling){timer=setTimeout(step,1200);return;} pause(true); return; }
@@ -1078,6 +1093,7 @@ function step(){
 }
 function play(){ if(playing||!beats.length)return;
   playing=true; frageZu(); $('modechip').hidden=true;
+  for(const e of [...roll.querySelectorAll('.weiter')])e.remove();
   $('playbtn').textContent='⏸ Anhalten (Frage stellen)'; $('scrollhint').hidden=false;
   // angerissenen Beat erst vollenden
   if(tCur>0&&tCur<maxIdx+1&&tCur%1!==0){ renderT(Math.ceil(tCur),false); }
@@ -1099,9 +1115,11 @@ function updateUI(){ $('counter').textContent=beats.length?((idx+1)+'/'+beats.le
     ? (idx<0?'Anfang':'Einstellung '+(idx+1)+' von '+beats.length) : 'kein Film geladen');
   stagebox.classList.toggle('laeuft', !!playing);
   const bereit=beats.length&&$('loading').hidden&&$('dropzone').hidden&&$('errbox').hidden;
-  $('askopen').disabled=!bereit;
+  $('q').disabled=!bereit;
+  $('askbtn').disabled=!bereit||!$('q').value.trim();
+  zeichneMarken();
   const bp=$('bigplay');
-  bp.hidden=!(bereit&&!playing&&$('ask').hidden);
+  bp.hidden=!(bereit&&!playing);
   // gross und mittig nur vor dem ersten Start, danach klein unten rechts
   bp.classList.toggle('mini', maxIdx>=0); }
 $('playbtn').onclick=()=>{ playing?pause(false):play(); };
@@ -1173,11 +1191,34 @@ document.addEventListener('keydown',e=>{
     case 'Home': e.preventDefault(); jumpTo(0); break;
     case 'End':  e.preventDefault(); jumpTo(beats.length-1); break;
     case 'f': case '?': e.preventDefault(); frageAuf(); break;
+    default:
+      // Wer einfach lostippt, stellt damit eine Frage
+      if(e.key.length===1&&/\S/.test(e.key)){ e.preventDefault(); frageAuf(e.key); }
   }
 });
-$('askopen').onclick=()=>frageAuf();
-$('askback').onclick=()=>frageZu();
+$('q').addEventListener('focus',()=>{ if(playing)pause(false); });
+$('q').addEventListener('input',()=>updateUI());
 $('q').addEventListener('keydown',e=>{ if(e.key==='Escape'){e.preventDefault();frageZu();} });
+$('mehrbtn').onclick=()=>{ const x=$('extras'); x.hidden=!x.hidden;
+  $('mehrbtn').setAttribute('aria-expanded',String(!x.hidden)); };
+// Marken zeigen, wo gefragt wurde
+let marken=[];
+function zeichneMarken(){
+  const bar=$('bar');
+  for(const m of [...bar.querySelectorAll('.marke')])m.remove();
+  if(!beats.length)return;
+  for(const m of marken){ const e=document.createElement('span'); e.className='marke';
+    e.style.left=(Math.max(0,Math.min(1,m/beats.length))*100)+'%'; bar.appendChild(e); }
+}
+// Ein Knopf am Ende der Antwort, genau dort, wo die Antwort aufhoert
+function weiterKnopf(){
+  for(const e of [...roll.querySelectorAll('.weiter')])e.remove();
+  const b=document.createElement('button'); b.className='weiter'; b.textContent='▶ Weiter im Film';
+  b.onclick=()=>{ b.remove(); play(); };
+  curBi=Math.max(0,idx); vertMode=true; add(b); vertMode=false;
+  b.style.opacity='1'; b.style.transform='none';
+  setRollShift(shiftFor(bottomOf(idx)),false);
+}
 $('bar').onclick=e=>{ if(!beats.length)return; const r=e.currentTarget.getBoundingClientRect();
   jumpTo(Math.round((e.clientX-r.left)/r.width*(beats.length-1))); };
 
@@ -1191,7 +1232,8 @@ function playInterlude(ibeats){
   let i=-1;
   const stepI=()=>{
     i++;
-    if(i>=ibeats.length){ showSub('Weitere Fragen? Oder „▶ Weiter" für den Film.','Vertiefung:'); return; }
+    if(i>=ibeats.length){ showSub('Weiter im Film, oder gleich die nächste Frage.','Vertiefung:');
+      weiterKnopf(); $('q').disabled=false; updateUI(); return; }
     curBi=Math.max(0,idx); curBo=0; vertMode=true; animOn=true;
     ibeats[i].ops.forEach(o=>{try{OPS[o.op](o);}catch(e){}});
     vertMode=false;
@@ -1210,6 +1252,7 @@ $('askbtn').onclick=async()=>{
   await sampleReady;
   if(!sampleNS){ showSub('Die Frage-Funktion braucht die veröffentlichte Seite auf claude.ai.'); return; }
   clearTimeout(timer);
+  marken.push(tCur); zeichneMarken();
   $('modechip').hidden=false; showSub('Die Antwort wird animiert…','Vertiefung:');
   const seen=beats.slice(0,Math.max(0,idx+1)).map(b=>b.sub).join(' ');
   chatHistory.push({role:'user',content:q});
