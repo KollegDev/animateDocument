@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17181c" media="(prefers-color-scheme: dark)">
 <title>Definitions- und Wertebereich</title>
 <style>
 :root{
@@ -5,15 +12,16 @@
   --line:#d8d4c9; --accent:#b8541f; --accent2:#2b5fd9; --curve:#2b5fd9; --pt:#d33f2e; --region:#2e8b57;
   --grid:#e6e2d8; --axis:#8a8d96; --hl:#fff3c4; --hlborder:#e0b400;
   --auf:cubic-bezier(.16,1,.3,1);
+  --deck:.13;   /* Deckkraft schraffierter Bereiche */
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#17181c; --panel:#22242a; --stage:#1b1d23; --ink:#e7e5de; --muted:#989ca6;
   --line:#33363e; --accent:#e0783f; --accent2:#7da2ff; --curve:#7da2ff; --pt:#ff7a66; --region:#5fc492;
-  --grid:#2b2f3a; --axis:#7a7e8a; --hl:#3a3418; --hlborder:#c9a900; } }
+  --grid:#2b2f3a; --axis:#7a7e8a; --hl:#3a3418; --hlborder:#c9a900; --deck:.085; } }
 :root[data-theme="dark"]{
   --bg:#17181c; --panel:#22242a; --stage:#1b1d23; --ink:#e7e5de; --muted:#989ca6;
   --line:#33363e; --accent:#e0783f; --accent2:#7da2ff; --curve:#7da2ff; --pt:#ff7a66; --region:#5fc492;
-  --grid:#2b2f3a; --axis:#7a7e8a; --hl:#3a3418; --hlborder:#c9a900; }
+  --grid:#2b2f3a; --axis:#7a7e8a; --hl:#3a3418; --hlborder:#c9a900; --deck:.085; }
 
 html{color-scheme:light dark; -webkit-text-size-adjust:100%;}
 *{-webkit-tap-highlight-color:transparent;}
@@ -51,9 +59,10 @@ hr.cut{border:none; border-top:1px solid var(--line); margin:11vh 0 7vh; width:3
 footer.ende{padding:18vh 0 12vh; color:var(--muted); font-size:.9rem; text-align:center;}
 
 /* Ein Graph haelt an, waehrend der Text an ihm vorbeizieht, und baut sich dabei auf. */
-.figur{position:relative; min-height:165vh; margin:5vh 0 9vh;}
-.figur .halt{position:sticky; top:calc(env(safe-area-inset-top) + 14px); z-index:2;
-  padding:8px 0 16px; background:linear-gradient(var(--bg) 78%, transparent);}
+.figur{position:relative; min-height:105vh; margin:5vh 0 9vh;}
+.figur .halt{position:sticky; top:0; z-index:3;
+  padding:calc(env(safe-area-inset-top) + 14px) 0 12px; background:var(--bg);
+  box-shadow:0 14px 18px -14px rgba(0,0,0,.45);}
 .figur .halt svg{display:block; width:100%; height:auto; max-width:460px; margin:0 auto;}
 .figurtext{padding-top:3vh;}
 @media (min-width:860px){
@@ -68,7 +77,8 @@ footer.ende{padding:18vh 0 12vh; color:var(--muted); font-size:.9rem; text-align
 @keyframes setzen{ from{opacity:0; transform:translate3d(0,10px,0) scale(.965);} to{opacity:1; transform:none;} }
 @keyframes zeichnen{ from{stroke-dashoffset:var(--laenge);} to{stroke-dashoffset:0;} }
 @keyframes landen{ 0%{opacity:0; transform:scale(.35);} 65%{opacity:1; transform:scale(1.14);} 100%{opacity:1; transform:scale(1);} }
-@keyframes fuellen{ from{opacity:0; transform:scaleY(.02);} to{opacity:1; transform:none;} }
+/* Die Flaeche endet auf ihrer Deckkraft, nicht auf voller Staerke, sonst erschlaegt sie den Graphen */
+@keyframes fuellen{ from{opacity:0; transform:scaleY(.02);} to{opacity:var(--deck,.13); transform:none;} }
 
 .el{opacity:0;}
 .figur svg .schritt{opacity:0;}
@@ -82,6 +92,7 @@ footer.ende{padding:18vh 0 12vh; color:var(--muted); font-size:.9rem; text-align
   .figur svg .schritt.punkt{animation-name:landen; animation-timing-function:cubic-bezier(.16,1,.3,1); animation-fill-mode:both;}
   .figur svg .schritt.flaeche{animation-name:fuellen; animation-timing-function:linear; animation-fill-mode:both;
     transform-origin:bottom;}
+  html.zuFuss .figur svg .schritt.flaeche.da{opacity:var(--deck,.13);}
   .figur svg .schritt.strich{animation-name:steigen; animation-timing-function:linear; animation-fill-mode:both;}
 }
 /* Rueckfall, wenn der Browser scrollgesteuerte Animationen nicht kann oder sie nicht greifen */
@@ -107,6 +118,8 @@ html.zuFuss .figur svg path.kurve.da{stroke-dashoffset:0;}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap">
 <script>window.MathJax={svg:{fontCache:'global'},startup:{typeset:false}};</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
 <script id="blattkino-daten" type="application/json">
 {"titel": "Definitions- und Wertebereich", "quelle": "Kurvendiskussion 1, Seiten 1 bis 4", "beats": [{"sub": "Die Kurvendiskussion untersucht eine Funktion Schritt für Schritt. Hier kommt die Übersicht über alle Themen.", "ops": [{"op": "clear"}, {"op": "h", "t": "Kurvendiskussion"}, {"op": "h", "t": "Übersicht"}, {"op": "text", "t": "Die Kurvendiskussion umfasst folgende Themen:"}]}, {"sub": "Der erste Block: wo die Funktion überhaupt lebt und wie sie aussieht.", "ops": [{"op": "item", "t": "Definitionsbereich und Wertebereich"}, {"op": "item", "t": "Graphische Darstellung / Skizze"}, {"op": "item", "t": "Symmetrieverhalten"}, {"op": "item", "t": "y-Achsenschnittpunkt und Nullstellen"}]}, {"sub": "Der zweite Block: was am Rand und an den Lücken passiert.", "ops": [{"op": "item", "t": "Grenzverhalten im Unendlichen"}, {"op": "item", "t": "Polstellen und Definitionslücken"}, {"op": "item", "t": "Asymptoten"}]}, {"sub": "Und der dritte Block: alles, wofür man die Ableitungen braucht.", "ops": [{"op": "item", "t": "Ableitungen"}, {"op": "item", "t": "Monotonieverhalten"}, {"op": "item", "t": "Extrempunkte (Hoch- und Tiefpunkte)"}, {"op": "item", "t": "Krümmungsverhalten"}, {"op": "item", "t": "Wendepunkte"}, {"op": "item", "t": "Sattelpunkte"}]}, {"sub": "Untersucht werden können ganz verschiedene Funktionstypen. Der erste ist die ganzrationale Funktion.", "ops": [{"op": "clear"}, {"op": "h", "t": "Diese Funktionstypen werden untersucht"}, {"op": "item", "t": "ganzrationale Funktionen"}, {"op": "math", "tex": "f(x)=x^{4}+3x^{3}+4x^{2}+6x+1"}]}, {"sub": "Bei den gebrochenrationalen Funktionen steht x auch im Nenner, bei den Exponentialfunktionen im Exponenten.", "ops": [{"op": "item", "t": "gebrochenrationale Funktionen"}, {"op": "math", "tex": "f(x)=\\frac{x}{x+1}"}, {"op": "item", "t": "Exponentialfunktionen"}, {"op": "math", "tex": "f(x)=e^{2x}"}]}, {"sub": "Bei den Wurzelfunktionen steht x unter der Wurzel, bei den Logarithmusfunktionen im Logarithmus.", "ops": [{"op": "item", "t": "Wurzelfunktionen"}, {"op": "math", "tex": "f(x)=\\sqrt{x+1}"}, {"op": "item", "t": "Logarithmusfunktionen"}, {"op": "math", "tex": "f(x)=log(x^{2}+1)"}]}, {"sub": "Diese Typen können auch zusammengesetzt sein. Hier stecken eine Exponentialfunktion und eine Klammer im Quadrat in einer Funktion.", "ops": [{"op": "text", "t": "zusammengesetzt, zum Beispiel:"}, {"op": "math", "tex": "f(x)=e^{2x}\\cdot (x+4)^{2}"}, {"op": "note", "t": "Bei fortgeschrittenen Aufgaben können die Funktionen ausserdem zu Funktionsscharen erweitert werden."}]}, {"sub": "Wir beginnen mit dem Definitionsbereich. Er sagt, welche x-Werte man einsetzen darf.", "ops": [{"op": "clear"}, {"op": "h", "t": "Definitionsbereich und Wertebereich"}, {"op": "text", "t": "Der Definitionsbereich schränkt ein, welche x-Werte in eine Funktion eingesetzt werden dürfen."}, {"op": "math", "tex": "f(x)=\\frac{1}{x-4}"}]}, {"sub": "Hier sind alle reellen Zahlen erlaubt, nur die Vier nicht.", "ops": [{"op": "math", "tex": "D_f: x\\in\\mathbb{R}\\mid x\\neq 4", "hl": true}]}, {"sub": "Warum nicht die Vier? Weil dann null im Nenner steht, und durch null teilen darf man nicht.", "ops": [{"op": "math", "tex": "f(4)=\\frac{1}{4-4}=\\frac{1}{0}"}, {"op": "note", "t": "und durch Null teilen darf man nicht."}]}, {"sub": "Genau drei Situationen schränken den Definitionsbereich ein.", "ops": [{"op": "h", "t": "Drei Situationen schränken ein"}, {"op": "item", "t": "(1) Brüche"}, {"op": "item", "t": "(2) Wurzeln"}, {"op": "item", "t": "(3) Logarithmus."}]}, {"sub": "Für jede gilt eine eigene Bedingung. Der Nenner darf nicht null sein, unter der Wurzel darf nichts Negatives stehen, und der Logarithmus braucht etwas Positives.", "ops": [{"op": "text", "t": "Dabei gelten folgende Bedingungen:"}, {"op": "math", "tex": "(1)\\;\\; \\frac{1}{a}\\;\\rightarrow\\; a\\neq 0"}, {"op": "math", "tex": "(2)\\;\\; \\sqrt{a}\\;\\rightarrow\\; a\\geqslant 0"}, {"op": "math", "tex": "(3)\\;\\; log(a)\\;\\rightarrow\\; a>0"}]}, {"sub": "Schauen wir uns die Brüche genauer an.", "ops": [{"op": "clear"}, {"op": "h", "t": "(1) Brüche"}, {"op": "text", "t": "In Brüchen darf der Nenner nicht Null sein."}, {"op": "math", "tex": "f(x)=\\frac{1}{a}\\;\\rightarrow\\; a\\neq 0", "hl": true}]}, {"sub": "Ein Beispiel: hier darf x nicht zwei sein, denn dann wäre der Nenner null.", "ops": [{"op": "math", "tex": "g(x)=\\frac{1}{x-2}"}, {"op": "math", "tex": "x-2\\neq 0\\;\\Longleftrightarrow\\; x\\neq 2"}, {"op": "math", "tex": "D_g: x\\in\\mathbb{R}\\mid x\\neq 2"}]}, {"sub": "Beim nächsten Beispiel gibt es gleich zwei verbotene Stellen.", "ops": [{"op": "math", "tex": "f(x)=\\frac{1}{x^{2}-4}\\;\\rightarrow\\; D_f: x\\in\\mathbb{R}\\mid x\\neq 2 \\wedge x\\neq -2"}, {"op": "note", "t": "∧ bedeutet \"und\", ∨ bedeutet \"oder\""}]}, {"sub": "Und drei weitere Beispiele, bei denen jeweils eine Stelle wegfällt.", "ops": [{"op": "math", "tex": "f(x)=\\frac{x}{x+6}\\;\\rightarrow\\; D_f: x\\in\\mathbb{R}\\mid x\\neq -6"}, {"op": "math", "tex": "f(x)=\\frac{8}{x}\\;\\rightarrow\\; D_f: x\\in\\mathbb{R}\\mid x\\neq 0"}, {"op": "math", "tex": "f(x)=\\frac{9}{x^{2}}\\;\\rightarrow\\; D_f: x\\in\\mathbb{R}\\mid x\\neq 0"}]}, {"sub": "Bei Wurzeln ist die Regel eine andere: unter der Wurzel darf nichts Negatives stehen.", "ops": [{"op": "clear"}, {"op": "h", "t": "(2) Wurzeln"}, {"op": "text", "t": "In Wurzeln darf der Radikand nicht negativ sein, er muss also grösser oder gleich Null sein."}, {"op": "math", "tex": "f(x)=\\sqrt{a}\\;\\rightarrow\\; a\\geqslant 0", "hl": true}]}, {"sub": "Ein Beispiel: x plus vier muss grösser oder gleich null sein, also ist x mindestens minus vier.", "ops": [{"op": "math", "tex": "g(x)=\\sqrt{x+4}\\;\\rightarrow\\; x+4\\geqslant 0\\;\\Longleftrightarrow\\; x\\geqslant -4"}, {"op": "math", "tex": "D_g: x\\in\\mathbb{R}\\mid x\\geqslant -4"}]}, {"sub": "Dasselbe Vorgehen bei den nächsten beiden.", "ops": [{"op": "math", "tex": "g(x)=\\sqrt{2x+4}\\;\\rightarrow\\; 2x+4\\geqslant 0\\;\\Longleftrightarrow\\; x\\geqslant -2"}, {"op": "math", "tex": "g(x)=\\sqrt[5]{x-1}\\;\\rightarrow\\; x-1\\geqslant 0\\;\\Longleftrightarrow\\; x\\geqslant 1"}]}, {"sub": "Auch bei der dritten Wurzel gilt dieselbe Bedingung.", "ops": [{"op": "math", "tex": "g(x)=\\sqrt[3]{x+4}\\;\\rightarrow\\; x+4\\geqslant 0\\;\\Longleftrightarrow\\; x\\geqslant -4"}]}, {"sub": "Und hier ist gar nichts verboten, denn ein Quadrat plus eins ist immer positiv.", "ops": [{"op": "math", "tex": "g(x)=\\sqrt{x^{2}+1}\\;\\rightarrow\\; x^{2}+1\\geqslant 0"}, {"op": "math", "tex": "D_g: x\\in\\mathbb{R}", "hl": true}, {"op": "note", "t": "gilt für jedes x, denn x² ist nie negativ"}]}, {"sub": "Beim Logarithmus ist die Regel noch etwas strenger.", "ops": [{"op": "clear"}, {"op": "h", "t": "(3) Logarithmus"}, {"op": "text", "t": "Im Logarithmus darf das Argument nur positiv sein, also grösser als Null."}, {"op": "math", "tex": "h(x)=log(a)\\;\\rightarrow\\; a>0", "hl": true}]}, {"sub": "Anders als bei der Wurzel ist die Null hier nicht erlaubt.", "ops": [{"op": "note", "t": "Anders als bei der Wurzel ist die Null hier nicht erlaubt, denn log(0) existiert nicht."}]}, {"sub": "Ein Beispiel, in zwei Umformungen gelöst.", "ops": [{"op": "math", "tex": "h(x)=log(3x+1)\\;\\rightarrow\\; 3x+1>0\\;\\Longleftrightarrow\\; 3x>-1\\;\\Longleftrightarrow\\; x>-\\frac{1}{3}"}, {"op": "math", "tex": "D_h: x\\in\\mathbb{R}\\mid x>-\\frac{1}{3}"}]}, {"sub": "Zwei weitere Beispiele mit dem natürlichen Logarithmus.", "ops": [{"op": "math", "tex": "h(x)=ln(x-5)\\;\\rightarrow\\; x-5>0\\;\\Longleftrightarrow\\; x>5"}, {"op": "math", "tex": "h(x)=ln(x)+2\\;\\rightarrow\\; x>0"}]}, {"sub": "Beim letzten Beispiel liegt der erlaubte Bereich zwischen minus zwei und zwei.", "ops": [{"op": "math", "tex": "h(x)=log(4-x^{2})\\;\\rightarrow\\; 4-x^{2}>0\\;\\Longleftrightarrow\\; x^{2}<4\\;\\Longleftrightarrow\\; -2<x<2"}, {"op": "math", "tex": "D_h: x\\in\\mathbb{R}\\mid -2<x<2"}, {"op": "note", "t": "ln ist der Logarithmus zur Basis e, für den Definitionsbereich gilt dieselbe Regel wie für log."}]}, {"sub": "Der Wertebereich geht in die andere Richtung: welche y-Werte kommen heraus?", "ops": [{"op": "clear"}, {"op": "h", "t": "Wertebereich"}, {"op": "text", "t": "Der Wertebereich zeigt, welche y-Werte aus der Funktion entstehen können."}, {"op": "math", "tex": "f(x)=x^{2}+4"}]}, {"sub": "So sieht der Graph aus, eine nach oben geöffnete Parabel.", "ops": [{"op": "plot", "id": "p1", "expr": "x^2+4", "xmin": -4, "xmax": 4, "ymin": 0, "ymax": 12, "legend": "f(x) = x² + 4"}]}, {"sub": "Ihr tiefster Punkt liegt bei T von null, vier.", "ops": [{"op": "point", "id": "p1", "x": 0, "y": 4, "label": "T(0|4)"}]}, {"sub": "Ab dieser Höhe liegt die ganze Kurve. Der grüne Bereich ist der Wertebereich.", "ops": [{"op": "region", "id": "p1", "y": 4, "dir": "above", "label": "Wertebereich: y ≥ 4"}]}, {"sub": "Wenn wir die Kurve entlanggehen, kommt der Punkt nie unter die Vier.", "ops": [{"op": "sweep", "id": "p1", "x0": -4, "x1": 0, "label": "P"}]}, {"sub": "Also ist y immer grösser oder gleich vier, nie kleiner.", "ops": [{"op": "math", "tex": "W_f: y\\in\\mathbb{R}\\mid y\\geqslant 4", "hl": true}, {"op": "note", "t": "y ist Teil der reellen Zahlen mit der Bedingung: y muss grösser oder gleich 4 sein."}]}, {"sub": "Ein Hinweis dazu: den Wertebereich sieht man meistens erst am Schluss.", "ops": [{"op": "note", "t": "Der Wertebereich ist schwer zu erkennen. Meistens kann man ihn erst am Ende der Aufgabe feststellen, nachdem man andere Analysen untersucht hat: Verhalten im Unendlichen, Extrempunkte, Nullstellen."}]}, {"sub": "Und hier beginnt das nächste Beispiel.", "ops": [{"op": "h", "t": "Beispiele"}, {"op": "math", "tex": "f(x)=x^{4}-2x^{2}"}]}]}
 </script>
@@ -190,13 +203,15 @@ function makePlot(cfg){
     g('path',{d:`M ${W-pad+10} ${sy(0)} l -7 -4 v 8 z`,fill:'var(--axis)'}); }
   if(cfg.xmin<=0&&cfg.xmax>=0){ g('line',{x1:sx(0),y1:H-pad,x2:sx(0),y2:pad-10,stroke:'var(--axis)','stroke-width':1.4});
     g('path',{d:`M ${sx(0)} ${pad-10} l -4 7 h 8 z`,fill:'var(--axis)'}); }
-  const lab=(x,y,t,anch,fill)=>{const e=g('text',{x,y,fill:fill||'var(--muted)','font-size':'11','text-anchor':anch||'middle','font-family':'Source Sans 3,sans-serif'});e.textContent=t;return e;};
+  const lab=(x,y,t,anch,fill)=>{const e=g('text',{x,y,fill:fill||'var(--muted)','font-size':'13','text-anchor':anch||'middle','font-family':'Source Sans 3,sans-serif'});e.textContent=t;return e;};
   const y0lab=(cfg.ymin<=0&&cfg.ymax>=0)?sy(0):H-pad;
   for(let x=Math.ceil(cfg.xmin);x<=cfg.xmax;x+=xstep){ if(x!==0) lab(sx(x),y0lab+15,String(x)); }
   const x0lab=(cfg.xmin<=0&&cfg.xmax>=0)?sx(0):pad;
   for(let y=Math.ceil(cfg.ymin);y<=cfg.ymax;y+=ystep){ if(y!==0) lab(x0lab-8,sy(y)+4,String(y),'end'); }
-  if(cfg.legend){const t=g('text',{x:W-pad,y:pad+2,fill:'var(--curve)','font-size':'12','text-anchor':'end','font-weight':'600','font-family':'Source Sans 3,sans-serif'});t.textContent=cfg.legend;}
+  if(cfg.legend){const t=g('text',{x:W-pad,y:pad+2,fill:'var(--curve)','font-size':'13.5','text-anchor':'end','font-weight':'600','font-family':'Source Sans 3,sans-serif'});t.textContent=cfg.legend;}
   const api={svg,cfg,curvePaths:[],
+    // Flaechen und Hilfslinien werden hinter die Kurve gelegt, sonst decken sie sie zu
+    hinten(k){ const erste=api.curvePaths[0]; if(erste&&erste.p&&erste.p.parentNode===svg)svg.insertBefore(k,erste.p); return k; },
     curve(fn,animate){
       let d='';const n=240;
       for(let i=0;i<=n;i++){const x=cfg.xmin+i*(cfg.xmax-cfg.xmin)/n;let y;try{y=fn(x);}catch(e){y=NaN;}
@@ -221,16 +236,16 @@ function makePlot(cfg){
       const t=label?lab(sx(x)+8,sy(y)-9,label,'start','var(--pt)'):null;
       return [c,t]; },
     hline(y,label){ if(y<cfg.ymin||y>cfg.ymax)return null;
-      const l=g('line',{x1:pad,y1:sy(y),x2:W-pad,y2:sy(y),stroke:'var(--axis)','stroke-width':1.2,'stroke-dasharray':'5 4'});
+      const l=api.hinten(g('line',{x1:pad,y1:sy(y),x2:W-pad,y2:sy(y),stroke:'var(--axis)','stroke-width':1.2,'stroke-dasharray':'5 4'}));
       const t=label?lab(pad+4,sy(y)-5,label,'start','var(--region)'):null;
       return [l,t]; },
     vline(x,label){ if(x<cfg.xmin||x>cfg.xmax)return null;
-      const l=g('line',{x1:sx(x),y1:pad,x2:sx(x),y2:H-pad,stroke:'var(--axis)','stroke-width':1.2,'stroke-dasharray':'5 4'});
+      const l=api.hinten(g('line',{x1:sx(x),y1:pad,x2:sx(x),y2:H-pad,stroke:'var(--axis)','stroke-width':1.2,'stroke-dasharray':'5 4'}));
       const t=label?lab(sx(x)+4,pad+12,label,'start','var(--region)'):null;
       return [l,t]; },
     region(y,dir,label){
       const top=dir==='above'?pad-6:sy(y), h=dir==='above'?Math.max(0,sy(y)-(pad-6)):Math.max(0,(H-pad)-sy(y));
-      const r=g('rect',{x:pad,y:top,width:W-2*pad,height:h,fill:'var(--region)',opacity:'0.12'});
+      const r=api.hinten(g('rect',{x:pad,y:top,width:W-2*pad,height:h,fill:'var(--region)',opacity:'0.10'}));
       return [r].concat(api.hline(y,label)||[]); },
     sweep(fn,x0,x1,label,animate){
       const cl=x=>Math.max(cfg.xmin,Math.min(cfg.xmax,x));
@@ -297,6 +312,8 @@ function figurZu(){
   });
   const kurve=figur?figur.querySelector('path.kurve'):null;
   if(kurve)kurve.style.animationRange='contain 2% contain 34%';
+  // Die Figur ist so hoch, wie sie Schritte hat, nicht laenger
+  if(figur)figur.style.setProperty('--schritte', String(Math.max(2,Math.min(8,n))));
   figur=null; schritte=[];
 }
 function schritt(knoten,art){
@@ -401,3 +418,5 @@ bauen();
 anzeigen();
 requestAnimationFrame(()=>requestAnimationFrame(pruefen));
 </script>
+</body>
+</html>
