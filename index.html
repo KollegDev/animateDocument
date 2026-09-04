@@ -1,0 +1,40 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blattkino</title>
+<style>
+:root{--bg:#f4f2ec;--panel:#ebe8df;--ink:#23262d;--muted:#6d7078;--line:#d8d4c9;--accent:#b8541f}
+@media(prefers-color-scheme:dark){:root{--bg:#17181c;--panel:#22242a;--ink:#e7e5de;--muted:#989ca6;--line:#33363e;--accent:#e0783f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Source Sans 3",system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:48px 20px 80px}
+h1{font-family:Spectral,Georgia,serif;font-size:2.1rem;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 36px;font-size:1.05rem}
+h2{font-family:Spectral,Georgia,serif;font-size:1.3rem;margin:38px 0 14px}
+a.film{display:block;border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:10px 0;
+text-decoration:none;color:inherit;background:var(--panel);transition:border-color .15s}
+a.film:hover{border-color:var(--accent)}
+a.film b{display:block;font-family:Spectral,Georgia,serif;font-size:1.12rem;margin-bottom:3px}
+a.film span{color:var(--muted);font-size:.92rem}
+.cta{display:inline-block;background:var(--ink);color:var(--bg);text-decoration:none;
+padding:11px 20px;border-radius:7px;font-weight:600;margin-top:8px}
+footer{color:var(--muted);font-size:.85rem;margin-top:52px;border-top:1px solid var(--line);padding-top:16px}
+</style></head><body><div class="wrap">
+<h1>Blattkino</h1>
+<p class="sub">Ein Arbeitsblatt wird zum Film. Formeln bauen sich auf, Graphen zeichnen sich,
+eine Stimme erklärt. Das Mausrad spult stufenlos, und beim Anhalten kann man nachfragen.</p>
+
+<h2>Filme</h2>
+<a class="film" href="https://claude.ai/code/artifact/28326863-884c-4743-8b37-c9c25c9fe60e">
+<b>Kurvendiskussion: Definitions- und Wertebereich</b>
+<span>35 Einstellungen · Brüche, Wurzeln, Logarithmus, Wertebereich am Graphen</span></a>
+<a class="film" href="https://claude.ai/code/artifact/5c3decd7-f748-4624-bc4a-1da09f09a2c5">
+<b>Kurvendiskussion: Wertebereich an Beispielen</b>
+<span>29 Einstellungen · drei Graphen mit Hoch- und Tiefpunkten</span></a>
+
+<h2>Eigenes Dokument</h2>
+<p>Ihr könnt aus jedem eigenen Blatt einen Film machen. Ihr braucht nur ein Sprachmodell,
+das PDFs lesen kann, auch ein kostenloses Konto genügt.</p>
+<a class="cta" href="selbstbau.html">Eigenen Film bauen</a>
+
+<footer>Studienkolleg.me</footer>
+</div></body></html>
