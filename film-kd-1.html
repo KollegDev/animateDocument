@@ -117,14 +117,36 @@ p.satz{font-size:1.04rem;}
 .loesung b{color:var(--ink); font-weight:600; margin-right:.4em;}
 .fragezeile{color:var(--accent); font-weight:600; font-size:1.06rem;}
 
-/* Titel- und Schlussszene */
-.szene.titel{justify-content:center;}
-.szene.titel h1{font-family:Spectral,Georgia,serif; font-weight:600; font-size:2.05rem;
+/* Das Tor: davor laeuft nichts. Erst der Knopf startet den Film, auf dem Handy im
+   Vollbild, damit die Wischgeste nicht dauernd die Adresszeile hervorholt. */
+.tor{position:fixed; left:0; top:0; width:100%; height:100vh; height:100svh; z-index:40;
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  gap:14px; background:var(--bg); color:var(--ink);
+  padding:calc(env(safe-area-inset-top) + 24px) 24px calc(env(safe-area-inset-bottom) + 24px);}
+.tor .innen{max-width:34rem; margin:0 auto; width:100%;}
+.tor h1{font-family:Spectral,Georgia,serif; font-weight:600; font-size:2.05rem;
   line-height:1.16; margin:0 0 10px; text-wrap:balance;}
-.szene.titel .quelle{margin:0 0 26px; color:var(--muted); font-size:.95rem;}
-.szene.titel .wisch{margin:0; color:var(--accent); font-size:.9rem; font-weight:600;}
-.szene.titel .wisch b{display:inline-block; animation:tippen 2.4s ease-in-out infinite;}
+.tor .quelle{margin:0 0 30px; color:var(--muted); font-size:.95rem;}
+.tor .start{font:600 1.06rem/1 "Source Sans 3",system-ui,sans-serif; color:var(--bg);
+  background:var(--ink); border:0; border-radius:11px; padding:17px 30px; cursor:pointer;
+  min-height:52px; -webkit-appearance:none;}
+.tor .start:hover{background:var(--accent);}
+.tor .start:focus-visible{outline:3px solid var(--accent); outline-offset:3px;}
+.tor .hinweis{margin:16px 0 0; color:var(--muted); font-size:.9rem;}
+.tor .hinweis b{display:inline-block; color:var(--accent); animation:tippen 2.4s ease-in-out infinite;}
 @keyframes tippen{0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);}}
+html.laeuft .tor{display:none;}
+
+/* Der Ausstieg. Nur sichtbar, solange das Vollbild laeuft. */
+.raus{position:fixed; z-index:41; right:calc(env(safe-area-inset-right) + 12px);
+  bottom:calc(env(safe-area-inset-bottom) + 12px);
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+  background:color-mix(in srgb, var(--bg) 82%, transparent); color:var(--muted);
+  font:400 19px/1 system-ui,sans-serif; cursor:pointer; display:none;
+  align-items:center; justify-content:center; -webkit-appearance:none;}
+html.laeuft .raus{display:flex;}
+.raus:focus-visible{outline:3px solid var(--accent); outline-offset:2px;}
+
 .szene.schluss{justify-content:center; text-align:center; color:var(--muted);}
 
 /* ================= Die Gesten ================= */
@@ -160,10 +182,11 @@ p.satz{font-size:1.04rem;}
   .takt{animation-name:blende;}
   .bild .lage{animation-name:blende;}
   .szene.ab, .takt.ab, .bild .lage.ab{animation-name:blendeAb;}
+  /* Was am allerersten Punkt der Kurbel steht, hat keine Strecke zum Erscheinen. */
+  .frage.sofort, .el.sofort, .schritt.sofort{opacity:1; animation-name:none;}
   .szene.auf, .takt.auf, .bild .lage.auf{animation-name:blendeAuf;}
   .szene.ab.auf, .takt.ab.auf, .bild .lage.ab.auf{animation-name:none; opacity:1;}
-  /* Die Titelszene steht sofort vollstaendig da, sonst waere das erste Bild leer. */
-  .szene.titel .el{opacity:1; animation-name:none;}
+
   .frage{animation-name:steigen;}
   .el{animation-name:steigen;}
   .mathline.el{animation-name:setzen;}
@@ -193,7 +216,7 @@ html.zuFuss .bild svg path.kurve.an{stroke-dashoffset:0;}
 /* Wer keine Bewegung will, bekommt ein gewoehnliches Dokument. */
 @media (prefers-reduced-motion: reduce){
   html,body{height:auto; overflow:visible;}
-  .rad{display:none;}
+  .rad, .tor, .raus{display:none !important;}
   .buehne{position:static; overflow:visible; pointer-events:auto; padding-bottom:12vh;}
   .szene{position:static; opacity:1 !important; inset:auto; transform:none; width:auto;
     margin:0 auto 9vh; max-width:34rem; border-bottom:1px solid var(--line); padding-bottom:6vh;}
@@ -227,6 +250,13 @@ html.zuFuss .bild svg path.kurve.an{stroke-dashoffset:0;}
 <div class="fortschritt" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="fortschritt"><i id="fill"></i></div>
 <div class="rad" id="rad" tabindex="0" aria-label="Fortschritt drehen"><div class="weg"></div></div>
 <main class="buehne" id="doc"></main>
+<div class="tor" id="tor"><div class="innen">
+  <h1 id="torTitel"></h1>
+  <p class="quelle" id="torQuelle"></p>
+  <button class="start" id="start" type="button">Starten</button>
+  <p class="hinweis" id="torHinweis">Wischen dreht den Film weiter <b>↓</b></p>
+</div></div>
+<button class="raus" id="raus" type="button" aria-label="Vollbild verlassen">✕</button>
 
 <script>
 'use strict';
@@ -698,15 +728,6 @@ function bauen(){
   document.documentElement.lang='de';
   document.title=String(DATEN.titel||'Blattkino');
 
-  // Titelszene
-  szeneAuf(null);
-  szene.kn.classList.add('titel');
-  taktAuf(2,false);
-  szene.kn.classList.add('ohnebild');
-  { const h1=el('h1'); h1.textContent=String(DATEN.titel||'Blattkino'); setzen(h1);
-    if(DATEN.quelle){ const q=el('p','quelle'); q.textContent=String(DATEN.quelle); setzen(q); }
-    const w=el('p','wisch'); w.innerHTML='Zum Weiterdrehen nach unten wischen <b>↓</b>'; setzen(w); }
-
   for(const bo of (DATEN.boegen||[])){
     const bs=(bo&&Array.isArray(bo.beats))?bo.beats:[];
     if(!bs.length)continue;
@@ -808,6 +829,10 @@ function zeitVerteilen(){
       if(t.zoomer)spanne(t.zoomer, t.von+d*0.12, s.bis);
     }
   }
+  // Was am allerersten Punkt steht, kann nicht erst erscheinen: es ist schon da.
+  for(const k of document.querySelectorAll('.frage[data-a], .el[data-a], .schritt[data-a]'))
+    if(+k.dataset.a<=0)k.classList.add('sofort');
+
   // Der Weg im Rad ist so lang wie die Summe der Takte, mindestens aber zwei Bildhoehen
   document.documentElement.style.setProperty('--kurbel', (Math.max(2,U)*100).toFixed(1)+'vh');
 }
@@ -876,12 +901,58 @@ function pruefen(){
   let kann=false;
   try{ kann=CSS.supports('animation-timeline','--rad')||CSS.supports('animation-timeline','scroll()'); }catch(e){}
   if(!kann){ zuFuss(); return; }
-  // Nicht die Titelszene pruefen: ihre Elemente stehen absichtlich ohne Animation da.
   const proben=[document.querySelector('.szene'), document.querySelector('.takt'),
-                document.querySelector('.szene:not(.titel) .el')].filter(Boolean);
+                document.querySelector('.el')].filter(Boolean);
   const laeuft=proben.length>0&&proben.every(x=>{ try{ return x.getAnimations&&x.getAnimations().length>0; }catch(e){ return false; } });
   if(!laeuft)zuFuss();
 }
+
+// ================= Das Tor =================
+// Vor dem Start laeuft nichts. Auf dem Handy kommt der Film ins Vollbild, weil die
+// Wischgeste sonst dauernd die Adresszeile des Browsers hervorholt und das Bild springt.
+const tor=$('tor'), knopf=$('start'), raus=$('raus');
+const klein = matchMedia('(pointer:coarse)').matches || innerWidth<860;
+function vollbildMoeglich(){
+  const e=document.documentElement;
+  return !!(e.requestFullscreen||e.webkitRequestFullscreen);
+}
+function imVollbild(){ return !!(document.fullscreenElement||document.webkitFullscreenElement); }
+function vollbildAn(){
+  const e=document.documentElement;
+  try{ const p=(e.requestFullscreen||e.webkitRequestFullscreen).call(e,{navigationUI:'hide'});
+       if(p&&p.catch)p.catch(()=>{}); }catch(err){}
+}
+function vollbildAus(){
+  try{ (document.exitFullscreen||document.webkitExitFullscreen).call(document); }catch(err){}
+}
+function starten(){
+  if(klein&&vollbildMoeglich()&&!imVollbild())vollbildAn();
+  document.documentElement.classList.add('laeuft');
+  // Die Buehne kennt ihre Masse erst, wenn sie sichtbar ist
+  requestAnimationFrame(()=>{ einpassen(); anzeigen(); if(rad)rad.focus({preventScroll:true}); });
+}
+function torZeigen(){
+  document.documentElement.classList.remove('laeuft');
+}
+if(tor){
+  $('torTitel').textContent=String(DATEN.titel||'Blattkino');
+  if(DATEN.quelle)$('torQuelle').textContent=String(DATEN.quelle);
+  else $('torQuelle').remove();
+  if(klein&&vollbildMoeglich())knopf.textContent='Im Vollbild starten';
+  knopf.addEventListener('click',starten);
+}
+if(raus)raus.addEventListener('click',()=>{ if(imVollbild())vollbildAus(); else torZeigen(); });
+function vollbildGewechselt(){
+  const an=imVollbild();
+  document.documentElement.classList.toggle('vollbild',an);
+  // Die Bildhoehe aendert sich beim Wechsel, also einmal neu einpassen
+  requestAnimationFrame(()=>{ einpassen(); anzeigen(); });
+  // Wer das Vollbild verlaesst, will heraus. Auf dem Handy zurueck zum Tor.
+  if(!an&&klein&&vollbildMoeglich())torZeigen();
+}
+addEventListener('fullscreenchange',vollbildGewechselt);
+addEventListener('webkitfullscreenchange',vollbildGewechselt);
+addEventListener('keydown',e=>{ if(e.key==='Escape'&&!imVollbild())torZeigen(); });
 
 bauen();
 anzeigen();
