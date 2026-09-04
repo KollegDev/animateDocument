@@ -84,7 +84,7 @@ footer.ende{padding:18vh 0 12vh; color:var(--muted); font-size:.9rem; text-align
 .figur svg .schritt{opacity:0;}
 @supports (animation-timeline: view()){
   .el{animation:steigen .01s linear both; animation-timeline:view();
-      animation-range:entry 16% cover 44%;}
+      animation-range:cover 4% cover 22%;}
   .mathline.el{animation-name:setzen;}
   .figur{view-timeline-name:--fig; view-timeline-axis:block;}
   .figur svg path.kurve{animation:zeichnen linear both; animation-timeline:--fig;}
@@ -288,8 +288,10 @@ const mathKnoten=[];
 function setzen(e,mitMath){
   e.classList.add('el');
   // Jedes Element bekommt sein eigenes Zeitfenster, damit ein Abschnitt aufbaut statt aufblitzt
-  const s=16+Math.min(ordnung,5)*7;
-  e.style.animationRange='entry '+s+'% cover '+(s+30)+'%';
+  // Gemessen an der echten Seite: 4/18/8 ergibt 1,9 gleichzeitige Elemente
+  // und einen Abschluss bei etwa 61 Prozent der Bildhoehe, also im Lesefeld.
+  const k=Math.min(ordnung,4), a=4+k*8;
+  e.style.animationRange='cover '+a+'% cover '+(a+18)+'%';
   ordnung++;
   ziel.appendChild(e);
   if(mitMath)mathKnoten.push(e);
@@ -304,14 +306,14 @@ function figurAuf(svg){
 function figurZu(){
   // Die Aufbauschritte werden ueber die Haltezeit der Grafik verteilt
   const n=schritte.length;
-  const start=n?38:0, ende=92;
+  const start=n?34:0, ende=96;
   schritte.forEach((gruppe,i)=>{
     const a=start+(ende-start)*(i/Math.max(1,n)), b=a+(ende-start)/Math.max(1,n)*0.9;
     for(const k of gruppe) if(k&&k.style)
       k.style.animationRange='contain '+a.toFixed(1)+'% contain '+b.toFixed(1)+'%';
   });
   const kurve=figur?figur.querySelector('path.kurve'):null;
-  if(kurve)kurve.style.animationRange='contain 2% contain 34%';
+  if(kurve)kurve.style.animationRange='contain 0% contain 30%';
   // Die Figur ist so hoch, wie sie Schritte hat, nicht laenger
   if(figur)figur.style.setProperty('--schritte', String(Math.max(2,Math.min(8,n))));
   figur=null; schritte=[];
