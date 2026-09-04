@@ -4,6 +4,8 @@
   --bg:#f4f2ec; --panel:#ebe8df; --stage:#fdfcf9; --ink:#23262d; --muted:#6d7078;
   --line:#d8d4c9; --accent:#b8541f; --accent2:#2b5fd9; --curve:#2b5fd9; --pt:#d33f2e; --region:#2e8b57;
   --btn:#23262d; --btnink:#f4f2ec; --grid:#e6e2d8; --axis:#8a8d96; --hl:#fff3c4; --hlborder:#e0b400;
+  --auf:cubic-bezier(.16,1,.3,1);
+  --hin:cubic-bezier(.65,0,.35,1);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -18,12 +20,15 @@
   --btn:#e7e5de; --btnink:#17181c; --grid:#2b2f3a; --axis:#7a7e8a; --hl:#3a3418; --hlborder:#c9a900;
 }
 html,body{height:100%;}
+html{color-scheme:light dark;}
+*{-webkit-tap-highlight-color:transparent;}
+button, .bar{touch-action:manipulation;}
 body{margin:0; background:var(--bg); color:var(--ink); font-family:"Source Sans 3",system-ui,sans-serif; font-size:16px; overflow:hidden;}
 .scrubbing .scrubbing .beat-el{transition:none !important; animation:none !important;}
 .scrubbing .beat-el svg path{transition:none !important;}
 .stage h2{font-family:Spectral,Georgia,serif; font-size:1.65rem; margin:.1em 0 .4em; text-wrap:balance;}
 .stage h3{font-family:Spectral,Georgia,serif; font-size:1.25rem; margin:.2em 0 .3em;}
-.beat-el{transition:opacity .5s ease, transform .5s ease;}
+.beat-el{transition:opacity .45s var(--auf), transform .45s var(--auf);}
 hr.cut{border:none; border-top:2px dashed var(--line); margin:30px 0 26px;}
 .item{display:flex; gap:10px; align-items:baseline; margin:7px 0;}
 .item .bullet{color:var(--accent2); font-weight:700;}
@@ -34,7 +39,10 @@ hr.cut{border:none; border-top:2px dashed var(--line); margin:30px 0 26px;}
 .txt{max-width:64ch; margin:8px 0; line-height:1.5;}
 .vert{border-left:3px solid var(--accent); padding-left:14px; margin-left:2px;}
 .vertlabel{color:var(--accent); font-weight:600; font-size:.85rem; margin:18px 0 6px;}
-@media (prefers-reduced-motion: reduce){ .roll{transition:none;} .beat-el{transition:none;} }
+@media (prefers-reduced-motion: reduce){
+  .roll{transition:none;}
+  .beat-el{transition:opacity .2s linear !important; transition-delay:0s !important;}
+}
 .plotwrap{display:flex; justify-content:center; margin:8px 0;}
 .dropzone{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; padding:20px; cursor:pointer; background:var(--stage); z-index:5;}
 .dropzone[hidden]{display:none;}
@@ -78,7 +86,7 @@ hr.cut{border:none; border-top:2px dashed var(--line); margin:30px 0 26px;}
 .bigplay{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:7;
   width:92px; height:92px; border-radius:50%; border:none; cursor:pointer;
   background:rgba(20,22,28,.62); display:flex; align-items:center; justify-content:center;
-  transition:transform .15s ease, background .15s ease;}
+  transition:transform .15s var(--auf), background .15s var(--auf);}
 .bigplay:hover{transform:translate(-50%,-50%) scale(1.07); background:rgba(20,22,28,.78);}
 .bigplay svg{margin-left:7px;}
 .bigplay[hidden]{display:none;}
@@ -92,6 +100,7 @@ button.primary{background:var(--btn); color:var(--btnink); border-color:var(--bt
 select{font:inherit; font-size:.83rem; max-width:150px; background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:7px 6px;}
 .bar{flex:none; width:100%; height:9px; margin-top:9px; background:var(--panel); border:1px solid var(--line); border-radius:5px; position:relative; cursor:pointer;}
 .bar:hover{border-color:var(--accent);}
+.bar:focus-visible{outline:2px solid var(--accent2); outline-offset:2px;}
 .bar .fill{position:absolute; inset:0 auto 0 0; width:0%; background:var(--accent); border-radius:5px;}
 .controls .spacer{flex:1;}
 input[type=file]{display:none;}
@@ -101,9 +110,10 @@ input[type=file]{display:none;}
   display:flex; flex-direction:column; gap:0; min-height:0;}
 .stagebox{position:relative; border:1px solid var(--line); border-radius:10px; background:var(--stage);
   overflow:hidden; flex:1 1 auto; min-height:120px;}
-.stage{position:absolute; inset:0; overflow:hidden; padding:0 30px;}
+.stage{position:absolute; inset:0; overflow:hidden; padding:0 30px; overscroll-behavior:contain;}
 .roll{position:relative; padding:22px 0 150px; transform:translateY(0);
-  transition:transform .8s cubic-bezier(.4,.1,.2,1); will-change:transform;}
+  transition:transform .7s var(--hin);}
+.scrubbing .roll, .laeuft .roll{will-change:transform;}
 /* Untertitel liegen im Bild, wie bei einem Film, und kosten keine eigene Zeile */
 .subs{position:absolute; left:0; right:0; bottom:0; padding:26px 30px 12px; z-index:4; pointer-events:none;
   background:linear-gradient(to top, var(--stage) 62%, rgba(0,0,0,0));}
@@ -128,10 +138,11 @@ input[type=file]{display:none;}
 .controls .grp.right{justify-content:flex-end;}
 .controls button{padding:7px 12px; white-space:nowrap;}
 .controls .primary{min-width:210px; padding:9px 16px; font-size:1rem;}
-.counter{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8rem; color:var(--muted); white-space:nowrap;}
+.counter{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.8rem; color:var(--muted);
+  white-space:nowrap; font-variant-numeric:tabular-nums;}
 .askrow textarea{flex:1 1 auto; min-width:0; font:inherit; background:var(--stage); color:var(--ink);
   border:1px solid var(--line); border-radius:6px; padding:9px 11px; resize:none; height:40px; line-height:1.3;}
-.askrow textarea:focus{outline:2px solid var(--accent2); outline-offset:1px;}
+.askrow textarea:focus-visible{outline:2px solid var(--accent2); outline-offset:1px;}
 #askback{font-size:1.15rem; line-height:1; padding:8px 13px;}
 #micbtn{font-size:1.05rem; line-height:1; padding:8px 12px;}
 #micbtn[hidden]{display:none;}
@@ -155,8 +166,8 @@ input[type=file]{display:none;}
     <span class="chip mode" id="modechip" hidden>Vertiefung</span>
     <span class="chip hint" id="scrollhint" hidden>Mausrad spult vor und zurück</span>
     <span class="chip status" id="status" hidden></span>
-    <div class="stage" id="stage" aria-live="polite"><div class="roll" id="roll"></div></div>
-    <div class="subs" id="subs"><p><span class="tag" id="subtag" hidden></span><span id="subtext">Drückt Start.</span></p></div>
+    <div class="stage" id="stage"><div class="roll" id="roll"></div></div>
+    <div class="subs" id="subs" aria-live="polite"><p><span class="tag" id="subtag" hidden></span><span id="subtext">Drückt Start.</span></p></div>
     <button class="bigplay" id="bigplay" hidden aria-label="Abspielen">
       <svg width="34" height="38" viewBox="0 0 34 38"><path d="M2 2 L32 19 L2 36 Z" fill="#f4f2ec"/></svg>
     </button>
@@ -172,7 +183,8 @@ input[type=file]{display:none;}
           <span>2 · in ChatGPT, Gemini oder Claude einfügen, Dokument dazu</span>
           <span>3 · Antwort hier einfügen:</span>
         </div>
-        <textarea id="einfuegen" placeholder="Hier die Antwort des Sprachmodells einfügen, das JSON."></textarea>
+        <textarea id="einfuegen" aria-label="Antwort des Sprachmodells" spellcheck="false"
+          placeholder="Hier die Antwort einfügen, sie beginnt mit einer geschweiften Klammer…"></textarea>
         <div class="schritte">
           <button class="primary" id="baubtn">Film bauen</button>
           <span class="melden" id="baumeldung"></span>
@@ -213,28 +225,30 @@ input[type=file]{display:none;}
     </div>
   </div>
 
-  <div class="bar" id="bar" title="Klicken springt an diese Stelle"><div class="fill" id="fill"></div></div>
+  <div class="bar" id="bar" role="slider" tabindex="0" aria-label="Fortschritt im Film"
+    aria-valuemin="0" aria-valuenow="0" aria-valuetext="Anfang"><div class="fill" id="fill"></div></div>
 
   <div class="controls" id="controls">
     <span class="grp">
-      <button id="newdoc" title="Anderes PDF laden">Anderes PDF</button>
-      <button id="ttsbtn" title="Stimme an oder aus">🔊</button>
-      <button id="slowbtn" title="Langsamer">−</button>
+      <button id="newdoc" aria-label="Anderes Dokument laden">Anderes PDF</button>
+      <button id="ttsbtn" aria-label="Stimme an oder aus" aria-pressed="true">🔊</button>
+      <button id="slowbtn" aria-label="Langsamer sprechen">−</button>
       <span class="counter" id="speedlbl">1,0×</span>
-      <button id="fastbtn" title="Schneller">+</button>
-      <select id="voicesel" title="Stimme wählen" hidden></select>
+      <button id="fastbtn" aria-label="Schneller sprechen">+</button>
+      <select id="voicesel" aria-label="Stimme wählen" hidden></select>
     </span>
     <button class="primary" id="playbtn" disabled>▶ Start</button>
     <span class="grp right">
       <button id="askopen" disabled>Frage stellen</button>
-      <span class="counter" id="counter">–</span>
+      <span class="counter" id="counter" aria-hidden="true">–</span>
     </span>
   </div>
 
   <div class="controls askrow" id="ask" hidden>
-    <button id="askback" title="Zurück zum Film" aria-label="Zurück">←</button>
-    <button id="micbtn" title="Frage sprechen" aria-label="Frage sprechen" hidden>🎤</button>
-    <textarea id="q" rows="1" placeholder="Moment, warum ist das so? Erklärt das genauer…"></textarea>
+    <button id="askback" aria-label="Zurück zum Film">←</button>
+    <button id="micbtn" aria-label="Frage sprechen" aria-pressed="false" hidden>🎤</button>
+    <textarea id="q" rows="1" aria-label="Eure Frage zum Film" spellcheck="false"
+      placeholder="Moment, warum ist das so? Erklärt das genauer…"></textarea>
     <button class="primary" id="askbtn">Fragen</button>
   </div>
 </div>
@@ -341,7 +355,7 @@ function makePlot(cfg){
       api.curvePaths.push({p,L});
       if(animate&&L&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
         p.style.strokeDasharray=L;p.style.strokeDashoffset=L;
-        p.style.transition='stroke-dashoffset 1.5s ease';
+        p.style.transition='stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)';
         requestAnimationFrame(()=>requestAnimationFrame(()=>{p.style.strokeDashoffset='0';}));
       }
     },
@@ -380,9 +394,12 @@ function makePlot(cfg){
 
 // ================= Szenen-Operationen auf der Rolle =================
 const stage=$('stage'), roll=$('roll'), stagebox=$('stagebox');
-let plots={}, animOn=true, curBi=0, vertMode=false;
+let plots={}, animOn=true, curBi=0, curBo=0, vertMode=false;
+const STAFFEL=0.07; // Sekunden zwischen zwei Elementen derselben Einstellung
 function add(e,typeset){
-  e.classList.add('beat-el'); e.dataset.bi=curBi;
+  e.classList.add('beat-el'); e.dataset.bi=curBi; e.dataset.bo=curBo;
+  e._verz=curBo*STAFFEL; e.style.transitionDelay=e._verz+'s';
+  curBo++;
   if(vertMode)e.classList.add('vert');
   roll.appendChild(e);
   if(typeset&&window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise([e]).catch(()=>{});
@@ -413,7 +430,8 @@ const OPS={
     const cfg={xmin:num(o.xmin,-5),xmax:num(o.xmax,5),ymin:num(o.ymin,-5),ymax:num(o.ymax,5),legend:o.legend?String(o.legend):''};
     if(cfg.xmax<=cfg.xmin)cfg.xmax=cfg.xmin+1; if(cfg.ymax<=cfg.ymin)cfg.ymax=cfg.ymin+1;
     const w=document.createElement('div');w.className='plotwrap';const p=makePlot(cfg);w.appendChild(p.svg);add(w);
-    w._plot=p; plots[o.id||'p']={api:p,fn}; p.curve(fn,animOn); },
+    w._plot=p; plots[o.id||'p']={api:p,fn}; p.curve(fn,animOn);
+    for(const c of p.curvePaths) c.p.style.transitionDelay=(w._verz||0)+'s'; },
   point(o){const p=plots[o.id||'p'];if(p&&isFinite(+o.x)&&isFinite(+o.y))p.api.point(+o.x,+o.y,o.label?String(o.label):'');},
   hline(o){const p=plots[o.id||'p'];if(p&&isFinite(+o.y))p.api.hline(+o.y,o.label?String(o.label):'');},
   vline(o){const p=plots[o.id||'p'];if(p&&isFinite(+o.x))p.api.vline(+o.x,o.label?String(o.label):'');},
@@ -586,8 +604,7 @@ function speak(text,onEnd){
 }
 
 // ================= PDF laden =================
-$('pickbtn').onclick=e=>{e.stopPropagation();$('fileinput').click();};
-$('dropzone').onclick=()=>$('fileinput').click();
+$('pickbtn').onclick=()=>$('fileinput').click();
 $('newdoc').onclick=()=>neuesDokument();
 function neuesDokument(){
   pause(false); stopSpeech(); clearTimeout(timer);
@@ -959,7 +976,7 @@ ${quelle}`;
 // ================= Virtuelle Timeline =================
 // Es gibt KEIN natives Scrollen. tCur in [0, maxIdx+1] ist die Position;
 // das Mausrad verschiebt tCur stufenlos, renderT() stellt jeden Zwischenzustand her.
-function materializeBeat(k){ curBi=k; vertMode=false; animOn=true;
+function materializeBeat(k){ curBi=k; curBo=0; vertMode=false; animOn=true;
   beats[k].ops.forEach(o=>{try{OPS[o.op](o);}catch(e){}});
   if(k>maxIdx)maxIdx=k; }
 function bottomOf(bi){ // unterste Kante aller Elemente bis Beat bi (roll-Koordinaten)
@@ -980,13 +997,20 @@ function renderT(t,instant){
   t=Math.max(0,Math.min(maxIdx+1,t)); tCur=t;
   const k=Math.min(maxIdx,Math.floor(t)), frac=t-Math.floor(t), partial=(t<=maxIdx)&&frac>0||t<maxIdx+1&&Math.floor(t)<=maxIdx;
   const cur=Math.floor(t); // Beat, der sich gerade aufbaut (bei t=maxIdx+1: keiner)
+  // wie viele Elemente die gerade aufbauende Einstellung hat, einmal je Bild
+  let nCur=0; for(const el of roll.children) if(+el.dataset.bi===cur)nCur++;
+  nCur=Math.max(1,nCur);
   for(const el of roll.children){
     const bi=+el.dataset.bi;
     if(bi<cur){ el.style.opacity='1'; el.style.transform='none'; setPaths(el,1); }
     else if(bi===cur&&cur<=maxIdx){ const f=(t>=maxIdx+1)?1:frac;
-      el.style.opacity=String(Math.min(1,f*1.6));
-      el.style.transform=`translateY(${(1-f)*10}px)`;
-      setPaths(el,f);
+      // eigenes Zeitfenster je Element, damit die Reihenfolge auch beim Spulen stimmt
+      const o=+el.dataset.bo||0, breite=0.6;
+      const start=(nCur>1)?(o*(1-breite)/(nCur-1)):0;
+      const fe=Math.max(0,Math.min(1,(f-start)/breite));
+      el.style.opacity=String(Math.min(1,fe*1.6));
+      el.style.transform=`translateY(${(1-fe)*10}px)`;
+      setPaths(el,fe);
     } else { el.style.opacity='0'; el.style.transform='translateY(10px)'; setPaths(el,0); }
   }
   const bPrev=cur>0?bottomOf(cur-1):0;
@@ -1049,7 +1073,7 @@ function step(){
   renderT(k+1,false);
   showSub(beats[k].sub);
   const b=beats[k];
-  const spoke=speak(b.sub,()=>{ if(playing)timer=setTimeout(step,650); });
+  const spoke=speak(b.sub,()=>{ if(playing)timer=setTimeout(step,900); });
   if(!spoke)timer=setTimeout(step,stepDur(b));
 }
 function play(){ if(playing||!beats.length)return;
@@ -1068,6 +1092,12 @@ function pause(ended){ playing=false; clearTimeout(timer); stopSpeech();
   updateUI(); }
 function updateUI(){ $('counter').textContent=beats.length?((idx+1)+'/'+beats.length+(compiling?'+':'')):'–';
   $('fill').style.width=beats.length?(Math.max(0,Math.min(1,tCur/beats.length))*100)+'%':'0%';
+  const bar=$('bar');
+  bar.setAttribute('aria-valuemax', String(Math.max(1,beats.length)));
+  bar.setAttribute('aria-valuenow', String(Math.max(0,idx+1)));
+  bar.setAttribute('aria-valuetext', beats.length
+    ? (idx<0?'Anfang':'Einstellung '+(idx+1)+' von '+beats.length) : 'kein Film geladen');
+  stagebox.classList.toggle('laeuft', !!playing);
   const bereit=beats.length&&$('loading').hidden&&$('dropzone').hidden&&$('errbox').hidden;
   $('askopen').disabled=!bereit;
   const bp=$('bigplay');
@@ -1079,7 +1109,8 @@ $('bigplay').onclick=()=>play();
 $('slowbtn').onclick=()=>setSpeed(speed-0.2);
 $('fastbtn').onclick=()=>setSpeed(speed+0.2);
 setSpeed(speed);
-$('ttsbtn').onclick=()=>{ ttsOn=!ttsOn; $('ttsbtn').textContent=ttsOn?'🔊':'🔇'; if(!ttsOn)stopSpeech(); };
+$('ttsbtn').onclick=()=>{ ttsOn=!ttsOn; const b=$('ttsbtn');
+  b.textContent=ttsOn?'🔊':'🔇'; b.setAttribute('aria-pressed',String(ttsOn)); if(!ttsOn)stopSpeech(); };
 $('voicesel').onchange=e=>{ const vs=voiceList(); ttsVoice=vs.find(v=>v.name===e.target.value)||ttsVoice;
   try{localStorage.setItem('bk_voice',e.target.value);}catch(err){}
   speak(docLang.startsWith('de')?'So klinge ich.':'This is my voice.'); };
@@ -1106,11 +1137,12 @@ function mikroAn(){
   try{
     const r=new SR();
     r.lang=docLang; r.interimResults=true; r.continuous=false; r.maxAlternatives=1;
-    r.onstart=()=>{ $('micbtn').classList.add('an'); setStatus('Ich höre zu…'); };
+    r.onstart=()=>{ $('micbtn').classList.add('an'); $('micbtn').setAttribute('aria-pressed','true');
+      setStatus('Ich höre zu…'); };
     r.onresult=e=>{ let t=''; for(let i=0;i<e.results.length;i++)t+=e.results[i][0].transcript;
       gehoert=t.trim(); $('q').value=gehoert; };
     r.onerror=e=>{ setStatus(micText((e&&e.error)||'Fehler')); };
-    r.onend=()=>{ hoeren=null; $('micbtn').classList.remove('an');
+    r.onend=()=>{ hoeren=null; $('micbtn').classList.remove('an'); $('micbtn').setAttribute('aria-pressed','false');
       if(gehoert){ setStatus(''); $('q').focus({preventScroll:true}); } };
     hoeren=r; r.start();
   }catch(e){ hoeren=null; $('micbtn').classList.remove('an');
@@ -1118,6 +1150,31 @@ function mikroAn(){
 }
 function mikroAus(){ if(hoeren){ try{ hoeren.stop(); }catch(e){} } }
 $('micbtn').onclick=()=>{ hoeren?mikroAus():mikroAn(); };
+function spule(d){
+  if(!beats.length)return;
+  if(playing)pause(false);
+  if(maxIdx<0)materializeBeat(0);
+  const ziel=tCur+d; growTo(ziel);
+  stagebox.classList.add('scrubbing');
+  renderT(ziel,true);
+  clearTimeout(scrubT); scrubT=setTimeout(()=>stagebox.classList.remove('scrubbing'),200);
+}
+// Alles, was das Mausrad kann, koennen auch die Tasten
+document.addEventListener('keydown',e=>{
+  const t=e.target, tippt=t&&(t.tagName==='TEXTAREA'||t.tagName==='INPUT'||t.tagName==='SELECT');
+  if(tippt||e.metaKey||e.ctrlKey||e.altKey)return;
+  if(!beats.length||!$('dropzone').hidden)return;
+  switch(e.key){
+    case ' ': case 'k': e.preventDefault(); playing?pause(false):play(); break;
+    case 'ArrowRight': e.preventDefault(); spule(e.shiftKey?1:0.34); break;
+    case 'ArrowLeft':  e.preventDefault(); spule(e.shiftKey?-1:-0.34); break;
+    case 'ArrowDown': case 'PageDown': e.preventDefault(); spule(1); break;
+    case 'ArrowUp':   case 'PageUp':   e.preventDefault(); spule(-1); break;
+    case 'Home': e.preventDefault(); jumpTo(0); break;
+    case 'End':  e.preventDefault(); jumpTo(beats.length-1); break;
+    case 'f': case '?': e.preventDefault(); frageAuf(); break;
+  }
+});
 $('askopen').onclick=()=>frageAuf();
 $('askback').onclick=()=>frageZu();
 $('q').addEventListener('keydown',e=>{ if(e.key==='Escape'){e.preventDefault();frageZu();} });
@@ -1127,7 +1184,7 @@ $('bar').onclick=e=>{ if(!beats.length)return; const r=e.currentTarget.getBoundi
 // ================= Vertiefung =================
 function playInterlude(ibeats){
   $('modechip').hidden=false;
-  curBi=Math.max(0,idx); vertMode=true;
+  curBi=Math.max(0,idx); curBo=0; vertMode=true;
   const label=document.createElement('div'); label.className='vertlabel'; label.textContent='Vertiefung';
   add(label); vertMode=false;
   label.style.opacity='1';
@@ -1135,7 +1192,7 @@ function playInterlude(ibeats){
   const stepI=()=>{
     i++;
     if(i>=ibeats.length){ showSub('Weitere Fragen? Oder „▶ Weiter" für den Film.','Vertiefung:'); return; }
-    curBi=Math.max(0,idx); vertMode=true; animOn=true;
+    curBi=Math.max(0,idx); curBo=0; vertMode=true; animOn=true;
     ibeats[i].ops.forEach(o=>{try{OPS[o.op](o);}catch(e){}});
     vertMode=false;
     // neue Vertiefungs-Elemente sofort sichtbar machen und nachfahren
@@ -1188,6 +1245,10 @@ $('q').addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){e.preven
 
 // ================= Start =================
 (function boot(){
+  document.documentElement.lang='de';
+  const tc=document.createElement('meta'); tc.name='theme-color';
+  tc.content=getComputedStyle(document.body).backgroundColor||'#f4f2ec';
+  document.head.appendChild(tc);
   // Der Knopf erscheint nur, wenn der Browser die Erkennung ueberhaupt anbietet
   $('micbtn').hidden=!SR;
   if(DATEN.titel){ document.title=String(DATEN.titel);
