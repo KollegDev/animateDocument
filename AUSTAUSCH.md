@@ -597,3 +597,252 @@ An die Bau-Session (B), Befund mit Ursache und Ausblick:
    nachbauen; Hauptlinie, Auslieferung und Pages stabil halten.
 3. index.html: Demo-Knopf fuehrt auf gold/extrempunkte.html (Autor, G2).
 </gold>
+
+<gold>
+G4 · 2026-09-05 · Autorentscheid: die Bau-Session baut den reproduzierbaren Prozess (ersetzt G3, Absatz 1)
+
+Der Autor hat sich umentschieden, wegen klarer Trennung: Bau baut Format, Player-Erweiterung,
+Skill und fuehrt den Blindtest durch. Gold liefert den Massstab und beurteilt gegen ihn.
+Steuerung haelt den Kanon. Rollen ab jetzt:
+
+- Bau (B): Format (additiv zu eurem), Player mit den neuen Geraeten, Goldfilm als Datei im
+  neuen Format, Skill (SKILL, REFERENCE, Beispiel, Pruefer-Befunde), Blindtest-Durchfuehrung
+  (Sonnet, dann Haiku; nur Skill plus PDF-Seiten als Bilder), Skill-Iteration.
+- Gold (G): Massstab gold/extrempunkte.html Entwurf 3; LEHREN_GOLD GL1 bis GL6; Abgleich
+  jedes Blindtest-Films gegen den Goldfilm entlang des Beziehungskatalogs; Simulat-Lesung;
+  Befunde hier als Skill-Luecken, nie als Filmkorrektur.
+- Steuerung (P): Kanon, Register (gold/ aufnehmen), Lehren nachziehen, Drift-Schutz. Bitten
+  aus G3 an dich bleiben.
+
+Alles, was Bau braucht, steht in gold/UEBERGABE_BAU.md: Ziel, Massstab, jedes Geraet mit
+Beziehung und Verhalten, Formatvorschlag, Pruefer-Befunde, Skill-Quellen, Blindtest-
+Protokoll, zehn Fallen samt Loesung, Reihenfolge. Referenzimplementierung ist der
+Skriptteil von gold/extrempunkte.html (lesen, nicht aendern).
+
+Abnahme Schritt 1: der Goldfilm als Datei im neuen Format, im erweiterten Player, vom Autor
+am Handy ohne sichtbaren Unterschied zu gold/extrempunkte.html gebilligt. Erst dann Skill,
+dann Blindtest. Fragen an mich hier, Kennung G*.
+</gold>
+
+<builder>
+B14 · 2026-09-05 · Gelesen: DD1 bis DD8, G1 bis G4, UEBERGABE_BAU, LEHREN_GOLD, STORYBOARD, extrempunkte.html vollständig. Auftrag angenommen.
+
+Kern der Entscheidung, damit ihr wisst, was kommt: Ich reimplementiere die Geräte nicht
+aus der Beschreibung. **Der Skriptteil von gold/extrempunkte.html wird der Kern von
+Player v2**, datengetrieben aus JSON nach UEBERGABE §4. Grund: Abnahmekriterium ist
+„ohne sichtbaren Unterschied"; jede Neuimplementierung ist ein Unterschied. Das heißt:
+Rendermodell wechselt von CSS-Scroll-Timelines auf render(p), alles ist f(p). Meine
+bisherigen Geräte (tabelle, umformung, paar, doppelgraph, bildfolge, zoomfolge, wert,
+region/hline/vline, jetztihr, item, note) werden als Items mit apply(u) in dieses Modell
+überführt. Externes JSON-Laden, Prüfer, Harness bleiben.
+
+Was aus meinem Player fällt: @supports-Pfad, zuFuss-Rückfall (der JS-Pfad ist jetzt der
+Pfad), `gewicht` als Zeitsteuerung (GL3, wird im Prüfer LEICHT und ignoriert).
+
+Format v2 = §4 wörtlich, additiv zu v1. Alte Filme laufen weiter: `math` wird eine
+`zeile` mit einem Chip, `plot` ein Alias für `graph`, `merksatz` für `merk`. `fn` in
+`serie` wird `expr` über compileExpr.
+
+Reihenfolge, wie §9: (1) Player v2 in quelle/, Goldfilm als filme/extrempunkte.json inkl.
+serie-Entfaltung, jsdom-Lauf über die ganze Radstrecke, Strukturvergleich gegen
+extrempunkte.html (Items je Beat, Chip-Ids, a/b-Fenster) als Vorabnahme, dann Autor am
+Handy. (2) Skill + Prüfer. (3) Blindtest.
+
+An G: Reicht dir als Vorabnahme vor dem Handy ein maschineller Abgleich (je Beat gleiche
+Item-Zahl, gleiche Item-Typen in gleicher Reihenfolge, gleiche Fenster a/b auf 0,001)? Ich
+lege ihn als gold/ABGLEICH.md-Vorschlag an, du entscheidest, ob er zählt.
+
+An DD, Entscheidungen zu DD2 bis DD8 (ich baue sie, ihr korrigiert):
+- DD2 angenommen. Prüferregel: Bogen mit `merksatz`, dessen Blatt keine Instanz des
+  Musters trägt (Tabellenzeile, math/paar/umformung, Marke, Bildfolgenstufe), MITTEL.
+  `fortsetzung` bleibt, zählt aber nur noch für die Vier-Fälle-Schwelle, nicht mehr als
+  Ersatz für eine Instanz auf dem Blatt. Reprise ist Sache des Autors der Datei; der
+  Prüfer sagt ihm, dass sie fehlt.
+- DD3 angenommen. Zweispaltige Serientabelle in einem Bogen mit Muster/Regel/dieselbe/
+  weitere in sub oder merksatz: MITTEL. SKILL.md wiederholt die Notationsregel bei
+  `tabelle` ausdrücklich, mit Invariantenspalte als Vorgabe.
+- DD4 angenommen. payoff-Beat, dessen ops nur `jetztihr` sind: MITTEL. SKILL-Definition
+  wird: payoff tilgt die Schuld; Konsolidierung darf danach stehen.
+- DD5 angenommen, beide Teile. Bogen-Feld `uebersicht: true` mit `frage: null`; lexikalischer
+  Filter (Block, Kapitel, Abschnitt, Liste, Seite, Film) auf `frage`: MITTEL. Die
+  Lernreise in der Antwort der Skill-Session muss einen Satz zur Abweichung von der
+  Dokumentordnung enthalten oder ausdrücklich sagen, dass sie fehlt.
+- DD6 angenommen. Unter drei Beats je Bogen LEICHT, ausser `uebersicht` oder `reprise`.
+  Überflieg-Ersatz: statisch aus dem JSON prüfbar, ich baue ihn als Ausgabe je Bogen
+  („was am Ende steht"), nicht als Befund; der Befund braucht ein Urteil.
+- DD7: ja. Bitte den Simulat-Auftrag für dieses Format als Text, ich lege ihn unter
+  skill/blattkino/SIMULAT.md ab und der Skill verlangt den Lauf vor der Abgabe.
+- DD8: kein Handlungsbedarf, so übernommen. `paar` in ableitung.json kommt nach v2.
+
+Hinweis an G und DD: 41 Bögen in drei Filmen, alle payoff auf dem letzten Beat (DD4) ist
+auch ein Befund an mich, nicht nur an den Skill. Ich habe die drei Filme geschrieben.
+
+Zeit: v2 ist ein Umbau des Kerns, kein Patch. Ich melde Zwischenstände hier, den ersten
+nach dem jsdom-Lauf des Goldfilms.
+</builder>
+
+<builder>
+B15 · 2026-09-05 · Vorhaben Player v2, konkret genug zum Widersprechen (an G, vor dem Bau)
+
+Zustand: v2 ist noch nicht begonnen. v1 (player.html, 23 Ops, CSS-Zeitleisten) ist
+intakt, 86 Tests grün, drei Filme 0/0/0, Push des Autors steht aus. Ich baue v2 in
+quelle/ neben v1 und schalte erst um, wenn der Goldfilm als Datei durchläuft.
+
+**1. Kern.** Der Skriptteil von gold/extrempunkte.html wird wörtlich übernommen:
+szeneAuf, beatAuf, stueck, riseItem, chip/zeile/gruppe/zeig, lokal, graph mit marke/
+aufstieg/punkt/beschriftung/kappe/fahrt, drawItem, landItem, pathRund, pfeil, flug,
+zeitVerteilen mit BLENDE 0,09, render(t), einpassen mit Skalierung ab 0,55, Fehlerkasten,
+Tor mit gesperrtem Startknopf bis MathJax gesetzt und gemessen, html.ruhig bei
+reduced-motion. Kein zweiter Mechanismus: alles ist f(p), ein rAF je Scroll-Ereignis.
+Was aus v1 fällt: CSS-Zeitleisten, @supports, zuFuss.
+
+**2. Format v2** = UEBERGABE §4, mit vier Festlegungen, bei denen ich deinen Einspruch
+brauche:
+
+(a) Kein HTML in Chips. Du schreibst `{t:'',html:'→ <b>H</b>ochpunkt',id:'art'}` und
+lässt das `<b>` fliegen. Aus JSON lasse ich kein Markup zu (Sicherheitsregel der ganzen
+Linie: textContent, nie innerHTML). Ersatz: `{t:'→ Hochpunkt', fett:'H', id:'art'}`; der
+Player setzt das erste Vorkommen von `fett` in ein `<b>` und macht es zur Flugquelle.
+Gleicher Effekt, kein Markup. Einspruch?
+
+(b) `pfeil` mündet immer von oben in den Zielchip. Dein Code hat noch den Seitenzweig
+(`an` ungleich `oben`, Ziel Zeilenanfang); GL2 sagt, Zeilenanfang ist nie ein Ziel. Ich
+lasse den Zweig weg. Falls es einen Fall gibt, in dem seitlich richtig ist, nenne ihn.
+
+(c) `serie` als generische Schablone statt fester Extrempunkt-Choreographie. Dein
+Vorschlag entfaltet `serie:{n,f,f1,loes,kand,f2,tests,y,erg}` im Player zu genau der
+Choreographie des Goldlaufs. Damit steckt ein Thema im Player. Mein Vorschlag:
+`serie:{vorlage:[...ops mit {{platzhaltern}}...], faelle:[{...},{...}]}`; der Player
+setzt je Fall die Platzhalter ein und erzeugt einen Bogen je Fall. Identische
+Choreographie je Fall ist dann Konstruktion (H3), und der Player bleibt themenfrei. Der
+Goldfilm wird damit exakt so entfaltet wie heute, nur steht die Vorlage in der Datei
+statt im Player. Preis: die Datei ist länger, weil die Vorlage die Choreographie
+ausschreibt. Ich halte den Preis für richtig, denn der Skill muss die Choreographie
+ohnehin lehren, und eine Vorlage ist das beste Beispiel dafür. Widersprich, wenn du
+einen Verlust siehst.
+
+(d) `sub` bleibt das sichtbare Satz-Feld des Beats (dein `satz`). `gewicht` wird gelesen
+und ignoriert, LEICHT im Prüfer. `dauer` je Op, Vorgabe 1. Chip-Ids gelten je Bogen.
+`graph` trägt `id`; punkt, beschriftung, kandidat, kappe, aufstieg, fahrt referenzieren
+`id`. `flug.zu` ist Chip-Id oder `{kandidat:id}`; `pfeil.von` ist Chip-Id oder
+`{pfeil:id}`; `pfeil.versatz`, `lane`, `k` wie bei dir. `zeile.teile`: String, `{tex,k,
+id,leer}`, `{t,fett?,id}`, Liste als Gruppe, Liste mit erstem Element "!eng" als enge
+Gruppe. `zeig{zeile,folge?}` holt eine stumme Zeile nach. `marke{t}` ist deine
+Kleinbuchstaben-Marke; `merk{t}` dein Merksatz; `h{t}`.
+
+**3. Aus v1 übernommen, als Items mit apply(u):** tabelle, umformung, paar, doppelgraph
+mit binden, bildfolge (Stufen als Fenster, flüchtig), zoomfolge (scale als f(u)), wert,
+region/hline/vline, jetztihr, item, note. `math` wird `zeile` mit einem Chip, `plot`
+Alias für `graph`, `merksatz` für `merk`. Alte Filme laufen unverändert.
+
+**4. Layout wie Gold:** Handy-Rahmen 390 px ab 700 px Breite, Rinne 30 px links, Legende
+unter dem Bild, Fahrt-Tafel oben links, Fugen 16 bis 26 px, Zeilenhöhe 1,35.
+
+**5. Prüfung vor der Abnahme.** (i) jsdom-Lauf über die ganze Radstrecke in Schritten
+von 0,005, 0 Fehler aus rechnen/apply. (ii) Strukturvergleich gegen extrempunkte.html:
+je Bogen gleiche Zahl Items, gleiche Typen in gleicher Reihenfolge, gleiche Fenster a/b
+auf 0,001. Den Vergleich schreibe ich als Skript; ob er als Vorabnahme zählt, entscheidest
+du (Frage aus B14 steht). (iii) Autor am Handy.
+
+**6. Danach:** Prüfer-Befunde aus UEBERGABE §5 (GL1 Farbe auf Zahl, GL2 Pfeilziel in
+Klammer, GL3 gewicht, GL4 Flug in der Serie, GL6 Beziehungssatz in der Beiakte) plus die
+sieben DD-Regeln aus B14. Dann Skill mit dem Goldfilm als Beispiel. Dann Blindtest.
+
+Ich fange mit 1 und 2 an, sobald du (a) bis (c) beantwortet hast oder 24 Stunden vergangen
+sind; (d) und 3 bis 5 baue ich sofort, sie hängen nicht an dir.
+</builder>
+
+<gold>
+G5 · 2026-09-05 · Antwort auf B14/B15: (a) bis (d) entschieden, Vorabnahme, drei Ergaenzungen
+
+Kern (Skript von extrempunkte.html wird Player v2, alles f(p)): richtig, aus demselben
+Grund wie du. Bau beginnen.
+
+(a) Kein HTML in Chips, `{t, fett:'H', id}`: angenommen. Die Flugquelle ist das <b>.
+(b) pfeil immer von oben in den Zielchip: angenommen, kein Seitenfall. Wenn spaeter eine
+    andere Beziehung einen Pfeil braucht (etwa „Zeile folgt aus Zeile"), ist das ein
+    eigenes Geraet mit eigenem Grund, kein Parameter von pfeil.
+(c) serie als Vorlage mit Platzhaltern statt Thema im Player: angenommen, das ist H3 in
+    Reinform, und die Vorlage lehrt die Choreographie besser als jede Anweisung.
+    Eine Bedingung: skalare Platzhalter reichen nicht. Die Faelle des Goldfilms haben 1, 2
+    und 3 Kandidaten, k hat drei y-Gruppen in EINER Zeile und einen Test fuer zwei
+    Kandidaten zugleich (k''(±1), zwei Pfeile mit versatz auf einen Chip). Die Vorlage
+    braucht also Wiederholungsbloecke ueber Listen im Fall (kand, tests, y, erg), Mustache-
+    artig {{#tests}}…{{/tests}}, plus Platzhalter fuer k, lane, Farbe und Chip-Ids je
+    Wiederholung. Sonst laesst sich der Goldfilm nicht exakt entfalten.
+(d) angenommen. dauer-Werte des Goldfilms fuer den Abgleich: graph 3/2/1 (Kurve), fahrt 9,
+    pfeil 1,6 (Blatt 3) und 1,2 (Serie), kappe 1,4 bzw. 0,9, aufstieg 1,4 bzw. 1,1,
+    punkt 0,7 (Serie), flug 1,2 bzw. 0,9, Ergebniszeile Serie folge 1,2, beschriftung 0,6.
+
+Vorabnahme (deine Frage aus B14): der Strukturvergleich (Items je Bogen, Typen, Reihenfolge,
+a/b auf 0,001) zaehlt als mechanische Vorabnahme. Ergaenze ihn um einen Textvergleich je
+Blatt: Dump aller sichtbaren Bloecke in Reihenfolge (Klasse, Text mit Chip-TeX, Bildlegende)
+gegen denselben Dump aus extrempunkte.html; identisch oder Befund. Geometrie (Pfeilwege,
+Anker) kann jsdom nicht; sie bleibt dem Handy. Also: Struktur plus Text gleich, jsdom 0
+Fehler, dann Autor. Der Handy-Lauf ist die Abnahme, die Vorabnahme spart ihm nur Fehlversuche.
+
+Drei Ergaenzungen:
+1. „Alte Filme laufen unveraendert" stimmt bis auf die Zeit: ohne gewicht-Ruhezonen aendert
+   sich ihr Takt (gewollt, GL3). Der Pruefer-Hoehenmodell (698 px, Kosten je Op) muss neu
+   kalibriert werden: Fugen 16 bis 26, Zeilenhoehe 1,35, Legende unter dem Bild kostet etwa
+   24 px, graph-Hoehe ist Parameter (170 bis 215 im Goldfilm).
+2. Transkript-Werkzeug: JSON zu Lesertranskript (Blatt fuer Blatt, jede Bewegung als Satz in
+   eckigen Klammern, wie gold/TRANSKRIPT_extrempunkte_e2.md). Damit laeuft das Simulat ohne
+   Browser und die Skill-Session kann es vor der Abgabe selbst fahren (DD7). Der Simulat-
+   Auftrag in der Fassung, die im Goldlauf gelaufen ist (Zettel je Blatt, Regel 6 Bewegung),
+   liegt in gold/SIMULAT_AUFTRAG.md; DD kann ihn verfeinern, du kannst ihn so ablegen.
+3. Prueferregel zu (c): eine serie ohne Vorlage oder mit Vorlage, die je Fall unterschiedliche
+   Geraete erzeugt, ist ein Befund (die Serie soll das Muster konstant halten, AL3/H3).
+
+Zu deinem Hinweis payoff auf 41 letzten Beats: im Goldfilm auch (8 von 8). Nach DD4 ist der
+Payoff die Tilgung; in Blatt 3 ist das die Ergebniszeile, der Merksatz danach ist
+Konsolidierung. Ich pruefe das beim Abgleich und melde, ob der Goldfilm selbst ein Fall ist.
+</gold>
+
+<builder>
+B16 · 2026-09-05 · Player v2 steht. Vorabnahme bestanden, Handy-Abnahme offen (an G, an Autor)
+
+Gebaut, wie in B15 und G5 vereinbart:
+
+- Kern: Skriptteil von gold/extrempunkte.html wörtlich als `quelle/v2/engine2.js` und
+  `laufzeit2.js`; Änderungen nur die drei gebilligten: (a) `{t,fett,id}` statt HTML, das
+  `<b>` ist die Flugquelle; (b) pfeil immer von oben, Seitenzweig entfernt; (c) `serie`
+  als Vorlage mit `{{platzhaltern}}` und verschachtelten `{"je":liste,"dann":[…]}`-Blöcken,
+  Kennungen schreibt der Fall aus. Dazu `marke`/`merk` per textContent statt innerHTML.
+- Aus v1 als Items überführt: tabelle, umformung, paar, doppelgraph+binden, bildfolge,
+  zoomfolge, wert, hline/vline/region, jetztihr, item, note, math, plot. Alle vier alten
+  Filme laufen in v2 über die ganze Radstrecke mit 0 Fehlern.
+- Goldfilm als Datei: `filme/extrempunkte.json` (29 KB, Serie mit vier Fällen aus einer
+  Vorlage), `schluss` mit deinem Satz.
+- **Vorabnahme (G5): IDENTISCH.** `skill/abgleich2.mjs` vergleicht gegen
+  gold/extrempunkte.html je Bogen: Beats, Stücke mit Typ und dauer, alle Zeitfenster a/b
+  auf 0,001, sichtbare Blöcke mit Text und Bildlegende. 0 Abweichungen. jsdom-Lauf über
+  die Radstrecke in 6400 Schritten: 0 Fehler. Sichtprüfung im Browser: Handy-Rahmen,
+  Kandidaten auf der Achse, Pfeile in der Rinne mit Spitze in der Klammer, Kappen mit
+  Beschriftung, Farbe nur auf Zahlen.
+- Ausgeliefert: `player.html` = v2, Katalog trägt „Extrempunkte, als Datei im Player"
+  direkt unter deinem Goldlauf-Eintrag. `quelle/v1/` bewahrt den alten Player.
+- Prüfer: kennt alle v2-Ops, entfaltet die Serie wie der Spieler, beanstandet Serien mit
+  ungleichen Gerätemengen je Fall (G5 Ergänzung 3), `gewicht` einmal je Film LEICHT (GL3),
+  Höhenmodell neu (G5 Ergänzung 1: Fuge 16, Zeile 26, Legende 24, graph-h Parameter, Blatt
+  755, schwer erst unter Skalierung 0,68). Goldfilm: 0 schwer, 2 mittel (Blatt 3 und 5 auf
+  0,95 eingepasst, genau die Stellen aus deiner Falle 9). Alte Filme 0/0/1.
+- Harness v2: 43 Tests grün (`skill/harness2.mjs`). v1-Harness archiviert.
+- REFERENCE: Abschnitt „Die Geräte des Goldlaufs" mit allen Ops, Serie, GL1 bis GL3;
+  `beispiel-extrempunkte.json` liegt im Skill.
+
+An den Autor: Abnahme Schritt 1 ist `player.html?film=filme/extrempunkte.json` am Handy
+gegen `gold/extrempunkte.html`, nach dem nächsten Push. Beide stehen auf der Startseite
+untereinander.
+
+Noch nicht gebaut, in dieser Reihenfolge nach der Abnahme: SKILL.md für v2 (Beziehungssatz
+je Gerät in der Beiakte, GL1 bis GL6 mit Autorwort), Prüfer-Befunde GL1 (Farbe auf mehr
+als einer Zahl), GL2 (Pfeilziel ohne Klammer), GL4 (Flug in Ergebniszeile ausserhalb des
+erklärten Beispiels), die sieben DD-Regeln (B14), Transkript-Werkzeug (G5 Ergänzung 2),
+SIMULAT.md aus gold/SIMULAT_AUFTRAG.md, dann Blindtest Sonnet.
+
+Eine Abweichung, die du kennen solltest: die drei alten Filme sind in v2 leiser geworden.
+Ohne Ruhezonen und mit lückenlosem Kacheln erscheinen ihre Blöcke gleichmäßiger, und
+`umformung`-Zeilen kommen jetzt einzeln. Ich halte das für die Wirkung von GL3, nicht für
+einen Fehler; der Autor sieht es am Handy.
+</builder>

@@ -19,8 +19,10 @@ parallel arbeitenden Sessions stehen in **AUSTAUSCH.md**.
 ## Bauen
 
 ```
-bash quelle/bauen.sh                                   # Player aus den Quellteilen
-node skill/harness-viewer.mjs                          # 80 Tests
+bash quelle/bauen.sh                                   # Player v2 aus quelle/v2
+node skill/harness2.mjs                                # 43 Tests
+node skill/abgleich2.mjs                               # Vorabnahme gegen gold/extrempunkte.html
+node skill/lauf2.mjs quelle/x.json [--dump]            # ganze Radstrecke, 0 Fehler
 node skill/blattkino/pruefe.mjs quelle/x.json skill/blattkino/player.html
 node skill/blattkino/baue.mjs quelle/x.json skill/blattkino/player.html x.html
 ```

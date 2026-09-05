@@ -243,6 +243,79 @@ Gib die Markierungen in der Reihenfolge, in der man sie verstehen soll: erst `pl
 dann `point`, dann `region`. Der Spieler verteilt sie über die Zeit, in der der Graph
 stehen bleibt. Die Kurve zeichnet sich zuerst.
 
+## Die Geräte des Goldlaufs (Player v2)
+
+Seit dem Goldlauf (gold/extrempunkte.html, Autor plus Gold-Session) kann der Player Zahlen
+fliegen lassen, Pfeile im Seitenrand führen und die Tangente mit dem Finger fahren. Jedes
+dieser Geräte zeigt eine benannte Beziehung (GL6); wer es einbaut, sagt in der Beiakte in
+einem Satz, welche. Referenz für das Verhalten ist gold/UEBERGABE_BAU.md §3.
+
+**Zeit (GL3):** jeder Beat kostet dieselbe Radstrecke. Seine Stücke kacheln sie lückenlos
+nach ihrem `dauer`-Anteil (Vorgabe 1); vor einem Blattwechsel bleibt die Blende frei.
+`gewicht` wird ignoriert. Es gibt keine Ruhezonen: wer verweilen will, hält die Hand still.
+
+### Zeilen aus Chips
+
+```json
+{"op":"zeile","id":"z1","teile":["3x^{2}-3=0","\\iff x^{2}=1",["\\iff x_1=",{"tex":"-1","k":0,"id":"x1"}]],
+ "folge":true,"hl":false,"stumm":false,"dauer":1}
+```
+
+`teile`: ein String ist ein TeX-Chip; `{tex,k,id,leer}` ein TeX-Chip mit Farbe `k` (0, 1, 2),
+Kennung `id` und `leer` (unsichtbar, bis ein Flug ihn füllt); `{t,fett,id}` ein Textchip,
+dessen erstes Vorkommen von `fett` fett gesetzt wird und die Flugquelle ist; eine Liste ist
+eine Gruppe, die nie umbricht; eine Liste mit erstem Element `"!eng"` eine enge Gruppe ohne
+Abstände, damit eine Formel in Chips zerlegt werden kann und nur die eingesetzte Zahl Farbe
+und Pfeilziel trägt: `["!eng",{"tex":"f''("},{"tex":"-1","k":0,"id":"e"},{"tex":")=-6"}]`.
+Führende Hochzahl als `{}^{3}`. `folge` lässt die Chips einzeln in Leserichtung erscheinen.
+`stumm` setzt die Zeile, ohne sie zu zeigen; `{"op":"zeig","zeile":"z1","folge":true}` holt
+sie nach, etwa nachdem ein Pfeil zu ihr gezeichnet ist. Chip-Kennungen gelten je Bogen.
+
+`satz {t}`, `marke {t}` (Kleinbuchstaben-Marke, TeX erlaubt), `merk {t}`, `h {t}`.
+
+### Bild
+
+```json
+{"op":"graph","id":"G","expr":"x^3-3*x","xmin":-2.4,"xmax":2.4,"ymin":-4,"ymax":4,
+ "legend":"f(x) = x³ − 3x","h":190,"dauer":2}
+```
+
+`h` ist die Bildhöhe in Pixeln (165 bis 215 im Goldlauf), die Legende steht unter dem
+Bild. Alles Weitere spricht das Bild über `id` an (fehlt sie, gilt das letzte Bild):
+
+| Op | Beziehung | Felder |
+|---|---|---|
+| `punkt` | Punkt landet | `x, y, k` |
+| `beschriftung` | Name am Punkt, oben bei Gipfel, unten bei Tal | `x, y, text, k, dauer` |
+| `kandidat` | eine Stelle auf der x-Achse; unsichtbar, bis ein `flug` sie erreicht | `id, x, k, text, sofort?` |
+| `flug` | eine Zahl wandert an ihren Ort | `von` Chip-Id, `zu` Chip-Id oder `{"kandidat":id}`, `k, dauer` |
+| `pfeil` | Herkunft und Einsetzen: aus der Quelle in die Rinne links, von oben in die Klammer | `id, von` Chip-Id oder `{"pfeil":id}` (Ast aus dem Stamm), `zu` Chip-Id, `lane, k, versatz?, dauer` |
+| `kappe` | Krümmung am Kandidaten, ∩ oder ∪ | `x, r, k, text?` |
+| `aufstieg` | die Stelle wird zur Höhe: gestrichelt hinauf zur Kurve und zur y-Achse | `x, y, k, text` |
+| `fahrt` | der Finger ist x: die Tangente fährt, m läuft mit, an Geister-Stellen bleibt m = 0 liegen | `x0, x1, geister:[x], k, dauer` |
+
+Der Pfeil endet **immer** von oben auf der eingesetzten Zahl (GL2). Farbe sitzt nur auf der
+Zahl, die wandert oder eingesetzt wird (GL1): eine Farbe je Kandidat, nie auf Zeilen.
+
+### Serie: eine Vorlage, viele Fälle
+
+```json
+{"serie":{
+  "vorlage":[ {"ops":[{"op":"zeile","teile":["{{f}}"]},{"op":"graph","id":"G","expr":"{{expr}}", ...}]},
+              {"ops":[{"je":"kand","dann":[{"op":"kandidat","id":"m{{k}}","x":"{{x}}","k":"{{k}}","text":"{{xt}}"}]}]} ],
+  "faelle":[ {"frage":"Geht das bei g genauso?","f":"g(x)=x^{2}-4x","expr":"x^2-4*x","kand":[{"k":0,"x":2,"xt":"2"}]}, ... ]}}
+```
+
+Der Player entfaltet je Fall einen Bogen. `{{name}}` wird aus dem Fall ersetzt (ein
+Platzhalter, der den ganzen Wert bildet, bleibt Zahl oder Liste); `{"je":"liste","dann":[…]}`
+wiederholt seine Einträge je Element der Liste, mit dem Element als Kontext plus `i` und
+`k`. Verschachtelung ist erlaubt (`tests` mit `pfeile` und `kappen` darin). Kennungen
+schreibt der Fall aus (`"id":"x0"`), nicht die Vorlage rechnet sie. So bleibt die
+Choreographie je Fall identisch (H3); der Prüfer beanstandet eine Serie, deren Fälle
+verschiedene Gerätefolgen ergeben. Vollständiges Beispiel: `beispiel-extrempunkte.json`.
+
+`schluss` auf oberster Ebene setzt den Text der Schlussszene.
+
 ## Der Prüfer
 
 ```

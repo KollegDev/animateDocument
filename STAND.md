@@ -100,13 +100,17 @@ Die Seite scrollt nicht. Sie bewegt sich nie um einen Pixel.
 - Ein Bild ist ein Block im Blatt wie jeder andere und bleibt ebenso stehen.
 - Die Abstände zwischen den Blöcken rechnet der Player so, dass die Bildhöhe aufgebraucht
   wird, höchstens 64 Pixel je Fuge. Was nicht passt, wird einmal verkleinert.
-- **Jeder Beat kostet dieselbe Strecke am Rad.** Ein Wisch trägt immer gleich weit.
-  `gewicht` bestimmt nicht mehr die Strecke, sondern das Aufbautempo innerhalb des Beats.
+- **Jeder Beat kostet dieselbe Strecke am Rad.** Ein Wisch trägt immer gleich weit, und es
+  gibt keine Ruhezonen: die Stücke eines Beats kacheln seine ganze Strecke (GL3). `gewicht`
+  wird ignoriert.
 
-Technisch: CSS `scroll-timeline-name: --rad` auf dem Rad, `timeline-scope: --rad` auf
-`:root`, jedes Element mit eigenem `animation-range` in Prozent. Kein Skript pro Bild.
-Fällt die Zeitleiste aus, schaltet der Player auf einen Scroll-Lauscher um (`html.zuFuss`).
-Bei `prefers-reduced-motion` wird die Seite ein gewöhnliches Dokument.
+**Player v2 (seit 2026-09-05, Kern des Goldlaufs).** Alles ist eine Funktion des
+Radstands p: ein rAF je Scroll-Ereignis liest p, jedes Element hat einen Zustand apply(u).
+Kein zweiter Mechanismus, keine CSS-Zeitleisten mehr. Jeder Beat kostet dieselbe Strecke,
+seine Stücke kacheln sie lückenlos (GL3), vor dem Blattwechsel bleibt die Blende frei.
+Geometrie (Pfeilwege, Anker) wird je Blatt nach MathJax und Einpassen gerechnet. Auf
+Schirmen ab 700 px steht die Bühne als Handy-Rahmen. Bei `prefers-reduced-motion` wird
+die Seite ein gewöhnliches Dokument. Ein sichtbarer Fehlerkasten ersetzt die Konsole.
 
 ## 3. Das Format
 
@@ -116,7 +120,9 @@ und `ops`. Vollständig beschrieben in `skill/blattkino/REFERENCE.md`.
 
 Operationen: `h, text, item, math, note, merksatz, frage, umformung, paar, tabelle,
 jetztihr, plot, point, hline, vline, region, sweep, wert, doppelgraph, binden, bildfolge,
-zoomfolge`. `clear` bleibt gültig und tut nichts. Ein Bogen kennt neben `frage` und
+zoomfolge`, dazu aus dem Goldlauf `satz, marke, merk, zeile, zeig, graph, punkt,
+beschriftung, kandidat, flug, pfeil, kappe, aufstieg, fahrt` und die `serie` als Vorlage
+mit Fällen. `clear` bleibt gültig und tut nichts. `gewicht` wird ignoriert. Ein Bogen kennt neben `frage` und
 `beats` das Feld `fortsetzung`, das die Beispielserie des vorigen Bogens weiterzählen
 lässt.
 
@@ -137,17 +143,23 @@ Die vier Geräte, in denen Scrollen dem Papier überlegen ist, alle freiwillig:
 
 | Datei | Rolle |
 |---|---|
-| `quelle/viewer-kopf.html` | Kopf und gesamtes CSS des Players |
-| `quelle/kern.js` | `compileExpr`, `makePlot` und die Zeichen-Methoden |
-| `quelle/viewer-js.js` | Aufbau, Zeitverteilung, Einpassen, Tor, Rückfall |
-| `quelle/bauen.sh` | setzt die drei Teile zu `skill/blattkino/player.html` und `player.html` zusammen |
+| `quelle/v2/kopf2.html` | Kopf und gesamtes CSS des Players (aus dem Goldlauf, plus v1-Blöcke) |
+| `quelle/v2/engine2.js` | die Gold-Engine: Chips, Zeilen, Graph, Pfeil, Flug, Fahrt, Kappe, Aufstieg |
+| `quelle/v2/ops2.js` | JSON zu Engine: alle Operationen, Serie-Entfaltung, Register je Bogen |
+| `quelle/v2/laufzeit2.js` | Zeit, render(p), Einpassen, Tor, Datei laden |
+| `quelle/v2/kern2.js` | `compileExpr` und `makePlot` (für den Doppelgraphen) |
+| `quelle/bauen.sh` | baut v2 nach `player.html` und `skill/blattkino/player.html` |
+| `quelle/v1/` | der abgelöste v1-Player, nur Geschichte |
 | `skill/blattkino/pruefe.mjs` | prüft eine Filmdatei gegen die Gesetze; Fehlercode bei schwerem Befund |
 | `skill/blattkino/baue.mjs` | baut aus Filmdatei plus Player eine eigenständige HTML-Datei |
-| `skill/harness-viewer.mjs` | 80 mechanische Tests über jsdom |
+| `skill/harness2.mjs` | 43 mechanische Tests über jsdom |
+| `skill/lauf2.mjs` | fährt einen Film über die ganze Radstrecke, zählt Fehler, `--dump` zeigt die Struktur |
+| `skill/abgleich2.mjs` | Vorabnahme: Filmdatei gegen gold/extrempunkte.html, Struktur, Fenster, Text |
 | `quelle/*.json` | die Filme im Quellzustand |
 
-Ablauf einer Änderung am Player: `quelle/` ändern, `bash quelle/bauen.sh`,
-`node skill/harness-viewer.mjs`, dann die Filme mit `baue.mjs` neu bauen und die
+Ablauf einer Änderung am Player: `quelle/v2/` ändern, `bash quelle/bauen.sh`,
+`node skill/harness2.mjs`, `node skill/abgleich2.mjs` (muss IDENTISCH melden), `node
+skill/lauf2.mjs FILM` je Film, dann die Filme mit `baue.mjs` neu bauen und die
 JSON-Dateien nach `filme/` spiegeln.
 
 Der Prüfer misst unter anderem: passt ein Bogen auf ein Blatt (698 Pixel, ein Graph 230,
@@ -158,12 +170,15 @@ Abdeckung des Inventars, sinnvolle Verwendung der vier Geräte.
 
 ## 5. Zustand
 
-- Player: `player.html`, 52 KB, eine Datei, keine Netzabhängigkeit ausser MathJax.
-- 86 Harness-Tests grün.
-- Drei Filme, alle mit 0 schweren, 0 mittleren, 0 leichten Befunden:
-  `filme/parabel.json` (8 Bögen, 20 Beats, die Vorführung),
-  `filme/ableitung.json` (14 Bögen, 30 Beats),
-  `filme/kurvendiskussion-1.json` (19 Bögen, 46 Beats).
+- Player v2: `player.html`, 65 KB, eine Datei, keine Netzabhängigkeit ausser MathJax und
+  den Plex-Schriften.
+- 43 Harness-Tests grün; Abgleich gegen den Goldlauf IDENTISCH; alle vier Filme laufen
+  über die ganze Radstrecke ohne Fehler.
+- Vier Filme: `filme/extrempunkte.json` (der Goldfilm als Datei, 8 Bögen, 31 Beats,
+  2 mittlere Befunde: zwei Blätter werden auf 0,95 eingepasst, wie im Goldlauf),
+  `filme/parabel.json` (8 Bögen, 20 Beats), `filme/ableitung.json` (14 Bögen, 30 Beats),
+  `filme/kurvendiskussion-1.json` (19 Bögen, 46 Beats), die drei alten mit 0/0/1
+  (der leichte Befund: `gewicht` steht noch drin und wird ignoriert).
 - Auslieferung: GitHub Pages, `KollegDev/animateDocument`, Domain studienkolleg.me.
 - Zwei Wege, einen Film auszuliefern:
   1. `player.html?film=filme/x.json` (üblich): Datei ablegen, eine Zeile in `index.html`.
@@ -181,6 +196,15 @@ Abdeckung des Inventars, sinnvolle Verwendung der vier Geräte.
 4. Vom restlichen grossen Testdokument sind erst vier Seiten verfilmt.
 5. `paar` ist gebaut, aber in keinem Film benutzt. Kandidat: `ableitung.json`, wo f und
    f' auseinander hervorgehen.
+6. **Player v2 gebaut** (Autorentscheid G4). Abnahme Schritt 1 steht aus: der Autor
+   vergleicht `player.html?film=filme/extrempunkte.json` am Handy mit
+   `gold/extrempunkte.html`. Danach Skill (SKILL.md für v2, Prüfer-Befunde GL1, GL2, GL4,
+   GL6, Beiakte), dann Blindtest Sonnet.
+7. **Sieben DD-Befunde, angenommen und noch nicht gebaut** (AUSTAUSCH B14): Merksatz ohne
+   Beleg auf dem Blatt (DD2), Serientabelle ohne Invariantenspalte (DD3), payoff nur auf
+   jetztihr (DD4), Meta-Fragen und `uebersicht` (DD5), Untergrenze Beats je Bogen und
+   Überflieg-Ersatz (DD6), Simulat-Auftrag als skill/blattkino/SIMULAT.md (DD7). Werden
+   mit v2 in Prüfer und Skill gebaut. Nicht vergessen.
 
 ## 6. Entschiedenes, mit Grund
 

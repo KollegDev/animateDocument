@@ -16,7 +16,8 @@ const spieler = process.argv[3] || path.join(path.dirname(new URL(import.meta.ur
 let compileExpr = () => true;
 try{
   const h = fs.readFileSync(spieler,'utf8');
-  const src = h.slice(h.indexOf('function compileExpr'), h.indexOf('function num('));
+  const ende = h.indexOf('function makePlot')>0 ? h.indexOf('function makePlot') : h.indexOf('function num(');
+  const src = h.slice(h.indexOf('function compileExpr'), ende);
   compileExpr = new Function(src + '; return compileExpr;')();
 }catch(e){ /* ohne Spieler wird expr nicht geprueft */ }
 
@@ -24,17 +25,46 @@ const befunde = [];
 const B = (schwere, wo, text) => befunde.push({schwere, wo, text});
 
 // ---------- Struktur ----------
-const boegen = Array.isArray(D.boegen) ? D.boegen
+const rohBoegen = Array.isArray(D.boegen) ? D.boegen
              : (Array.isArray(D.beats) ? [{beats:D.beats}] : null);
-if(!boegen){ console.log('SCHWER  Weder "boegen" noch "beats" vorhanden.'); process.exit(1); }
+if(!rohBoegen){ console.log('SCHWER  Weder "boegen" noch "beats" vorhanden.'); process.exit(1); }
+// ---------- Serie: Vorlage und Faelle, genau wie im Spieler entfaltet ----------
+function pfad(ctx,name){ let v=ctx; for(const t of String(name).split('.')){ if(v==null)return undefined; v=v[t]; } return v; }
+function ersetzen(wert,ctx){
+  if(typeof wert==='string'){ const g=wert.match(/^\{\{\s*([\w.]+)\s*\}\}$/); if(g)return pfad(ctx,g[1]);
+    return wert.replace(/\{\{\s*([\w.]+)\s*\}\}/g,(m,n)=>{ const v=pfad(ctx,n); return v===undefined?m:String(v); }); }
+  if(Array.isArray(wert)){ const aus=[]; for(const e of wert){
+      if(e&&typeof e==='object'&&!Array.isArray(e)&&e.je){ const l=pfad(ctx,e.je); if(!Array.isArray(l))continue;
+        l.forEach((elem,i)=>{ const c2=Object.assign({},ctx,(elem&&typeof elem==='object')?elem:{wert:elem},{i:i,k:(elem&&elem.k!==undefined)?elem.k:i});
+          for(const d of ersetzen(e.dann||[],c2))aus.push(d); }); }
+      else aus.push(ersetzen(e,ctx)); } return aus; }
+  if(wert&&typeof wert==='object'){ const o={}; for(const k in wert)o[k]=ersetzen(wert[k],ctx); return o; }
+  return wert; }
+const boegen=[];
+rohBoegen.forEach((bo,i)=>{
+  if(bo&&bo.serie){
+    if(!Array.isArray(bo.serie.vorlage)||!Array.isArray(bo.serie.faelle)){ B('SCHWER','Bogen '+(i+1),'serie ohne "vorlage" oder "faelle".'); return; }
+    // Die Serie soll das Muster konstant halten: jede Entfaltung muss dieselbe Folge von Geraeten ergeben (G5, AL3/H3)
+    const gestalten=[];
+    for(const fall of bo.serie.faelle){ const ctx=Object.assign({},fall);
+      const beats=ersetzen(bo.serie.vorlage,ctx);
+      // Je Beat die Menge der Geraete, nicht ihre Zahl: drei Kandidaten sind dasselbe Muster wie einer
+      gestalten.push(beats.map(b=>[...new Set((b.ops||[]).map(o=>o.op))].sort().join(',')).join(' | '));
+      boegen.push({frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx),beats:beats,serieFall:true,fortsetzung:bo.fortsetzung}); }
+    const arten=[...new Set(gestalten)];
+    if(arten.length>1) B('MITTEL','Bogen '+(i+1),'serie: die Faelle erzeugen verschiedene Geraetefolgen. Eine Serie haelt das Muster konstant.');
+  } else boegen.push(bo);
+});
 if(!D.titel) B('SCHWER','Kopf','Kein "titel". Jede Datei hiesse sonst gleich.');
 
 const OPS = ['clear','h','text','item','math','note','frage','umformung','tabelle','merksatz',
              'jetztihr','plot','point','hline','vline','region','sweep',
-             'wert','doppelgraph','binden','bildfolge','zoomfolge','paar'];
-const UEBERFLIEG = ['h','tabelle','merksatz','plot','jetztihr','doppelgraph','zoomfolge'];
+             'wert','doppelgraph','binden','bildfolge','zoomfolge','paar',
+             // v2 (Goldlauf)
+             'satz','marke','merk','zeile','zeig','graph','punkt','beschriftung','kandidat','flug','pfeil','kappe','aufstieg','fahrt'];
+const UEBERFLIEG = ['h','tabelle','merksatz','merk','plot','graph','jetztihr','doppelgraph','zoomfolge','marke'];
 // Geraete, die ein eigenes Bild aufmachen. Nach ihnen ist ein neues Bild noetig, um sie anzusprechen.
-const BILDER = ['plot','doppelgraph','zoomfolge'];
+const BILDER = ['plot','graph','doppelgraph','zoomfolge'];
 
 // ---------- Hoehenmodell ----------
 // Auf der Buehne zaehlt nicht mehr, wie lang ein Bogen scrollt: jeder Takt bekommt
@@ -57,7 +87,16 @@ function hoehe(o){
     // Ein Bild ist ein Block im Blatt wie jeder andere und kostet seine Hoehe.
     // 440 zu 290 auf 335 Pixel Breite sind 221; der Doppelgraph ist doppelt so hoch.
     case 'plot': case 'zoomfolge':   return 230;
+    case 'graph':       return Math.round((+o.h||200)*(335/340))+(o.legend?24:0);
     case 'doppelgraph':              return 460;
+    // v2: eine Zeile aus Chips, eine Marke, ein Satz
+    case 'zeile':       return o.stumm?0:26;
+    case 'zeig':        return 26;
+    case 'satz':        return 27*zeilen(o.t)+2;
+    case 'marke':       return 22;
+    case 'merk':        return 27*zeilen(o.t,44)+30;
+    case 'kandidat': case 'flug': case 'pfeil': case 'kappe': case 'aufstieg': case 'fahrt':
+    case 'punkt': case 'beschriftung': return 0;
     // Marken und Folgen zeichnen in ein vorhandenes Bild und kosten keine eigene Hoehe.
     case 'point': case 'hline': case 'vline': case 'region': case 'sweep':
     case 'binden': case 'bildfolge':  return 0;
@@ -72,12 +111,13 @@ const beatHoehe = b => (Array.isArray(b.ops)?b.ops:[]).reduce((n,o)=>n+hoehe(o),
                      + 27*zeilen(b.sub);
 // Ein Bogen ist ein Blatt und ein Blatt ist ein Bildschirm. Abzueglich Frage,
 // Sicherheitsraendern und dem kleinsten Abstand zwischen den Bloecken bleiben:
-const BLATT = 0.86*VH;
+const BLATT = 0.93*VH;
 // Jeder Block braucht mindestens diesen Abstand zum naechsten.
-const ABSTAND = 8;
+const ABSTAND = 16;
 // Wie viele Bloecke ein Beat im Blatt erzeugt: der Satz plus jede sichtbare Op.
 const SICHTBAR = ['h','text','item','math','note','frage','umformung','tabelle','merksatz',
-                  'jetztihr','plot','doppelgraph','zoomfolge','paar'];
+                  'jetztihr','plot','doppelgraph','zoomfolge','paar',
+                  'satz','marke','merk','zeile','graph'];
 const beatBloecke = b => (b.sub&&String(b.sub).trim()?1:0)
   + (Array.isArray(b.ops)?b.ops:[]).filter(o=>SICHTBAR.includes(o.op)).length
   + (Array.isArray(b.ops)?b.ops:[]).filter(o=>o.op==='jetztihr').length      // Loesung ist ein zweiter Block
@@ -106,7 +146,7 @@ function textVon(b){
 }
 
 // ---------- Durchlauf ----------
-let nBeats=0, gewichte=[], nFokus=0, alleTex=[], alleText=[];
+let nBeats=0, gewichte=[], nFokus=0, alleTex=[], alleText=[], nGewicht=0;
 let offenesBild=null;   // welches Bild gerade steht; Markierungen brauchen eines
 boegen.forEach((bo,bi)=>{
   offenesBild=null;     // jede Szene faengt mit leerer Buehne an
@@ -124,12 +164,12 @@ boegen.forEach((bo,bi)=>{
   // erscheint, steht am Ende gleichzeitig da: das ist der ausgelagerte Speicher.
   const bloecke = bs.reduce((n,b)=>n+beatBloecke(b),0);
   const hoeheB  = bs.reduce((n,b)=>n+beatHoehe(b),0) + Math.max(0,bloecke-1)*ABSTAND;
-  if(hoeheB > BLATT*1.15)
+  if(hoeheB > BLATT/0.68)
     B('SCHWER',wo,'passt nicht auf ein Blatt: '+Math.round(hoeheB)+' von '+Math.round(BLATT)
-      +' Pixeln bei '+bloecke+' Bloecken. Teilen.');
+      +' Pixeln bei '+bloecke+' Bloecken; der Spieler muesste unter 0,68 verkleinern. Teilen.');
   else if(hoeheB > BLATT)
-    B('MITTEL',wo,'fuellt das Blatt bis zum Rand: '+Math.round(hoeheB)+' von '+Math.round(BLATT)
-      +' Pixeln. Der Spieler verkleinert es.');
+    B('MITTEL',wo,'fuellt das Blatt ueber den Rand: '+Math.round(hoeheB)+' von '+Math.round(BLATT)
+      +' Pixeln, Verkleinerung auf '+(BLATT/hoeheB).toFixed(2)+'. Der Spieler passt es ein.');
 
   // Genau eine Aufloesung, und sie steht am Ende
   const pay = bs.map((b,i)=>b.payoff===true?i:-1).filter(i=>i>=0);
@@ -183,11 +223,15 @@ boegen.forEach((bo,bi)=>{
   bs.forEach((b,i)=>{
     nBeats++;
     const wob = wo+', Beat '+(i+1);
-    if(typeof b.sub!=='string'||!b.sub.trim()) B('SCHWER',wob,'ohne "sub".');
+    const hatSichtbares=(b.ops||[]).some(o=>o&&(SICHTBAR.includes(o.op)||['point','punkt','kappe','aufstieg','fahrt','flug','pfeil','wert','binden','bildfolge','beschriftung','kandidat','hline','vline','region'].includes(o.op)));
+    if((typeof b.sub!=='string'||!b.sub.trim())&&!hatSichtbares) B('SCHWER',wob,'ohne "sub" und ohne sichtbare Operation: ein leerer Beat.');
+    // GL3: gewicht steuert nichts mehr an der Zeit; einmal je Film gemeldet
+    if(b.gewicht!==undefined) nGewicht++;
     gewichte.push(Math.round(+b.gewicht||2));
     if(b.fokus===true)nFokus++;
     const ops = Array.isArray(b.ops)?b.ops:[];
-    if(ops.length>6) B('MITTEL',wob,ops.length+' Operationen. Ein Beat ist ein Gedanke.');
+    const nBloecke=ops.filter(o=>o&&SICHTBAR.includes(o.op)&&!(o.op==='zeile'&&o.stumm)).length;
+    if(nBloecke>6) B('MITTEL',wob,nBloecke+' Bloecke in einem Beat. Ein Beat ist ein Gedanke.');
     for(const o of ops){
       if(!o||!OPS.includes(o.op)){ B('SCHWER',wob,'unbekannte Operation "'+(o&&o.op)+'".'); continue; }
       if(o.op==='plot'||o.op==='zoomfolge'||o.op==='doppelgraph'){
@@ -273,10 +317,10 @@ boegen.forEach((bo,bi)=>{
 
 // ---------- Ueber das Ganze ----------
 const einzigG=[...new Set(gewichte)];
-if(einzigG.length===1) B('SCHWER','Ganzes','alle Beats haben Gewicht '+einzigG[0]+'. Es wurde nicht entschieden, was traegt.');
-else if(!gewichte.includes(3)) B('MITTEL','Ganzes','kein Beat mit Gewicht 3. Welcher Schritt traegt das Dokument?');
+// gewicht steuert seit GL3 nichts mehr; die Verteilung wird nicht mehr beurteilt.
+if(nGewicht) B('LEICHT','Ganzes',nGewicht+' Beats tragen "gewicht". Es wird ignoriert: jeder Beat kostet dieselbe Strecke, die Stuecke kacheln sie (GL3). Kann weg.');
 if(nFokus>Math.max(2,Math.round(nBeats/12))) B('MITTEL','Ganzes',nFokus+' Fokusstellen bei '+nBeats+' Beats. Wenn alles hervorsticht, sticht nichts hervor.');
-if(nFokus===0) B('LEICHT','Ganzes','keine Fokusstelle.');
+
 
 // Inventar-Abdeckung, wenn eines beiliegt
 if(typeof D.inventar==='string' && D.inventar.trim()){

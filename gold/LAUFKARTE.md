@@ -12,4 +12,6 @@ Zweck: die bestmoegliche Animation eines Dokumentabschnitts, unbeschraenkt durch
 | 5 | 2026-09-05 | Autor | Autorbefunde am Handy: Farbe auf ganzer Zeile falsch, Pfeil soll in die Klammer, Scrollschritte ungleich; Treue bestaetigt (Rechtskurve S. 37). Autor ernennt die Session zum Co-Autor des Prozesses | entfaellt | LEHREN_GOLD.md GL1 bis GL6; G3 in AUSTAUSCH (Briefing Steuerung und Bau) |
 | 6 | 2026-09-05 | Gold | extrempunkte.html Entwurf 3: Farbe nur auf eingesetzter Zahl (eng-Gruppen), Pfeile von oben in die Klammer, Aufbau kachelt die ganze Beatstrecke (keine Ruhezonen) | node --check, jsdom 0 Fehler ueber die ganze Strecke | Artifact aktualisiert; Autorurteil |
 
-Naechster Schritt: Filmformat mit den neuen Geraeten, Player in gold/, Goldlauf als Beispieldatei, Skill, Blindtest (Sonnet, nur Skill plus PDF), Iteration am Skill.
+| 7 | 2026-09-05 | Autor | Umentscheidung: Bau baut Format, Player, Skill, Blindtest; Gold ist Massstab und Richter | entfaellt | UEBERGABE_BAU.md geschrieben; G4 in AUSTAUSCH |
+
+Naechster Schritt (Gold): warten auf Bau-Schritt 1 (Goldfilm als Datei im neuen Format), dann Abgleich am Handy mit dem Autor; danach Blindtest-Filme gegen den Goldfilm messen und Simulat lesen lassen.

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>__TITEL__</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#191c20" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+:root{
+  --bg:#f4f5f2; --ink:#1f2429; --muted:#66717c; --line:#d3d8d3; --grid:#e4e8e3; --axis:#8a939b;
+  --curve:#3a434e; --hl:#fff3c9; --hlb:#dcb53a; --frage:#4d6376;
+  --k0:#c8502a; --k1:#2361a6; --k2:#2b8a5c;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#191c20; --ink:#e6e4de; --muted:#9aa3ad; --line:#353b42; --grid:#272c32; --axis:#7d858e;
+  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#9fb4c6;
+  --k0:#ea734c; --k1:#6ea2e8; --k2:#5cbd8c; } }
+:root[data-theme="dark"]{
+  --bg:#191c20; --ink:#e6e4de; --muted:#9aa3ad; --line:#353b42; --grid:#272c32; --axis:#7d858e;
+  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#9fb4c6;
+  --k0:#ea734c; --k1:#6ea2e8; --k2:#5cbd8c; }
+
+html{color-scheme:light dark; -webkit-text-size-adjust:100%;}
+html,body{height:100%; overflow:hidden; overscroll-behavior:none;}
+body{margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif; font-size:17px; line-height:1.5;
+  font-variant-numeric:tabular-nums;}
+*{-webkit-tap-highlight-color:transparent; box-sizing:border-box;}
+
+/* Das Rad: eine durchsichtige Flaeche ueber allem. Nur sie bewegt sich. */
+.rad{position:fixed; inset:0; height:100vh; height:100svh; z-index:20; overflow-y:auto; overflow-x:hidden;
+  -webkit-overflow-scrolling:touch; overscroll-behavior:none; scrollbar-width:none;}
+.rad::-webkit-scrollbar{width:0; height:0;}
+.weg{height:var(--kurbel,3000vh);}
+/* Die Buehne steht. */
+.buehne{position:fixed; inset:0; height:100vh; height:100svh; z-index:5; overflow:hidden;
+  pointer-events:none; background:var(--bg);}
+.szene{position:absolute; inset:0; display:flex; justify-content:center; align-items:flex-start;
+  padding:calc(env(safe-area-inset-top) + 14px) 14px calc(env(safe-area-inset-bottom) + 14px) 30px;
+  opacity:0; visibility:hidden;}
+.inhalt{position:relative; width:100%; max-width:34rem; display:flex; flex-direction:column; gap:14px;
+  transform-origin:top left;}
+.inhalt > *{flex:0 0 auto;}
+.frage{margin:0; font-size:.88rem; font-weight:600; color:var(--frage); border-left:3px solid var(--frage);
+  padding-left:10px; line-height:1.3;}
+h2{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:1.32rem; line-height:1.2; margin:0; text-wrap:balance;}
+.satz{margin:0; font-size:1.02rem;}
+.marke{margin:0; font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+.marke mjx-container{text-transform:none; letter-spacing:0; font-size:1.05rem; vertical-align:-.2em;}
+.zeile{display:flex; flex-wrap:wrap; align-items:baseline; gap:.25em .4em; font-size:1.06rem; line-height:1.35; margin:0;}
+.zeile.hl{background:var(--hl); border:1px solid var(--hlb); border-radius:6px; padding:5px 11px; align-self:flex-start;}
+.chip{display:inline-block; white-space:nowrap;}
+.gruppe{display:inline-flex; align-items:baseline; gap:.25em .4em; white-space:nowrap;}
+/* eng: eine Formel, in Chips zerlegt, damit die eingesetzte Zahl allein Farbe und Pfeilziel tragen kann */
+.gruppe.eng{gap:0;}
+.chip.leer{opacity:0;}
+.bild{flex-direction:column; align-items:center;}
+.bild .legende{font-size:.86rem; font-weight:600; color:var(--curve); margin:2px 0 0; align-self:flex-end; padding-right:6px;}
+.txt{color:var(--muted); font-size:.98rem;} .txt b{font-weight:600; color:inherit;}
+.k0{color:var(--k0);} .k1{color:var(--k1);} .k2{color:var(--k2);}
+.bild{width:100%; display:flex; justify-content:center;}
+.bild svg{display:block; width:100%; max-width:420px; height:auto;}
+.merk{margin:0; font-weight:600; line-height:1.35; border-left:4px solid var(--frage); padding:5px 0 5px 12px;}
+.ende{margin:0; text-align:center; color:var(--muted); font-size:1.1rem;}
+.el{opacity:0;}
+.pfeile{position:absolute; left:0; top:0; width:100%; height:100%; overflow:visible; pointer-events:none;}
+.flug{position:absolute; inset:0; pointer-events:none;}
+.token{position:absolute; left:0; top:0; opacity:0; white-space:nowrap; font-size:1.06rem; line-height:1.35; will-change:transform;}
+.token.txt{font-weight:600;}
+mjx-container{display:inline-block !important; margin:0 !important;}
+.bild svg text{font-family:"IBM Plex Sans",system-ui,sans-serif;}
+
+/* Fortschritt rechts */
+.fortschritt{position:fixed; right:0; top:0; width:4px; height:100vh; height:100svh; z-index:30;
+  background:color-mix(in srgb, var(--line) 70%, transparent);}
+.fortschritt i{display:block; width:100%; height:100%; background:var(--frage); transform:scaleY(0); transform-origin:50% 0;}
+
+/* Das Tor */
+.tor{position:fixed; inset:0; height:100vh; height:100svh; z-index:40; display:flex; align-items:center; justify-content:center;
+  background:var(--bg); color:var(--ink); padding:24px;}
+.tor .innen{max-width:32rem; width:100%;}
+.tor h1{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:2rem; line-height:1.15; margin:0 0 8px; text-wrap:balance;}
+.tor .quelle{margin:0 0 28px; color:var(--muted); font-size:.95rem;}
+.tor .start{font:600 1.05rem/1 "IBM Plex Sans",system-ui,sans-serif; color:var(--bg); background:var(--ink); border:0;
+  border-radius:10px; padding:16px 28px; cursor:pointer; min-height:52px; -webkit-appearance:none;}
+.tor .start:hover{background:var(--frage);}
+.tor .start:focus-visible{outline:3px solid var(--frage); outline-offset:3px;}
+.tor .hinweis{margin:16px 0 0; color:var(--muted); font-size:.9rem;}
+.tor .hinweis b{display:inline-block; color:var(--frage); animation:tippen 2.4s ease-in-out infinite;}
+@keyframes tippen{0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);}}
+html.laeuft .tor{display:none;}
+.raus{position:fixed; z-index:41; right:calc(env(safe-area-inset-right) + 12px); bottom:calc(env(safe-area-inset-bottom) + 12px);
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+  background:color-mix(in srgb, var(--bg) 82%, transparent); color:var(--muted);
+  font:400 19px/1 system-ui,sans-serif; cursor:pointer; display:none; align-items:center; justify-content:center; -webkit-appearance:none;}
+html.laeuft .raus{display:flex;}
+.raus:focus-visible{outline:3px solid var(--frage); outline-offset:2px;}
+
+/* Wer keine Bewegung will, bekommt ein gewoehnliches Dokument. */
+html.ruhig, html.ruhig body{height:auto; overflow:auto;}
+html.ruhig .rad, html.ruhig .tor, html.ruhig .raus, html.ruhig .fortschritt{display:none !important;}
+html.ruhig .buehne{position:static; height:auto; overflow:visible; pointer-events:auto;}
+html.ruhig .szene{position:static; opacity:1 !important; visibility:visible !important; padding:28px 16px 28px 24px;
+  border-bottom:1px solid var(--line);}
+html.ruhig .inhalt{transform:none !important; width:100% !important;}
+/* Auf breiten Schirmen steht die Buehne als Handy-Rahmen in der Mitte: ein Blatt ist ein Handybildschirm. */
+@media (min-width:700px) and (min-height:480px){
+  body{background:color-mix(in srgb, var(--bg) 88%, var(--ink));}
+  .rad, .buehne, .tor{inset:auto; left:50%; top:50%; width:390px; height:min(812px, calc(100vh - 24px)); height:min(812px, calc(100svh - 24px));
+    transform:translate(-50%,-50%); border-radius:18px;}
+  .buehne{box-shadow:0 0 0 1px var(--line), 0 24px 60px rgba(0,0,0,.22);}
+  .tor{box-shadow:0 0 0 1px var(--line);}
+  .fortschritt{right:auto; left:calc(50% + 191px); top:50%; transform:translateY(-50%); height:min(812px, calc(100vh - 24px)); height:min(812px, calc(100svh - 24px)); border-radius:0 18px 18px 0;}
+  .raus{right:calc(50% - 195px + 10px); bottom:calc(50% - min(406px, (100svh - 24px) / 2) + 10px);}
+  html.ruhig .buehne, html.ruhig .szene{transform:none; width:auto; height:auto; left:auto; top:auto; box-shadow:none;}
+}
+
+/* ---- Bloecke aus v1, die als Text weiterleben ---- */
+.notebox{margin:0; border-left:3px solid var(--k1); padding:2px 0 2px 13px; color:var(--muted); font-size:.95rem;}
+.item{display:flex; gap:.6em; align-items:baseline; margin:0;}
+.item b{color:var(--k1); font-weight:700; flex:none;}
+.fragezeile{margin:0; color:var(--k0); font-weight:600; font-size:1.04rem;}
+.mathline{font-size:1.04rem; margin:0; overflow-x:auto; overflow-y:hidden; padding:2px 0;}
+.kette{margin:0; border-left:2px solid var(--line); padding-left:14px; display:flex; flex-direction:column; gap:.3em;}
+.kette .warum{color:var(--muted); font-size:.86rem; margin:0;}
+.kette .mathline.alt{opacity:.45;}
+.mtab{width:100%; border-collapse:collapse; margin:0; font-size:.98rem;}
+.mtab th{text-align:left; font-weight:600; color:var(--muted); font-size:.82rem; border-bottom:1px solid var(--line); padding:0 12px 5px 0;}
+.mtab td{padding:6px 12px 6px 0; border-bottom:1px solid color-mix(in srgb, var(--line) 45%, transparent);}
+.mtab tr:last-child td{border-bottom:none;}
+.mtab .vor{color:var(--muted);}
+.paar{border-left:2px solid var(--line); padding-left:14px; margin:0;}
+.paar .pfeile2{display:flex; justify-content:space-between; gap:12px; font-size:.86rem; color:var(--muted); margin:.15em 0;}
+.paar .pfeile2 .hin{color:var(--k0); font-weight:600;} .paar .pfeile2 .zur{color:var(--k1); font-weight:600;}
+.jetzt{font-weight:600; margin:0;} .jetzt .markeJ{color:var(--k0); margin-right:.5em;}
+.loesung{color:var(--muted); border-left:3px solid var(--k2); padding:5px 0 5px 13px; margin:0;}
+.loesung b{color:var(--ink); font-weight:600; margin-right:.4em;} .loesung .dazu{margin-top:.25em;}
+.kette .mathline, .paar .mathline, .mtab td{ }
+</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'},startup:{typeset:false}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<script id="blattkino-daten" type="application/json">
+__BEATS_JSON__
+</script>
+<div class="fortschritt" role="progressbar" aria-label="Fortschritt" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="fortschritt"><i id="fill"></i></div>
+<div class="rad" id="rad" tabindex="0" aria-label="Fortschritt drehen"><div class="weg" id="weg"></div></div>
+<main class="buehne" id="buehne"></main>
+<div class="tor" id="tor"><div class="innen">
+  <h1 id="torTitel"></h1>
+  <p class="quelle" id="torQuelle"></p>
+  <button class="start" id="start" type="button">Starten</button>
+  <p class="hinweis">Wischen dreht den Film weiter <b>↓</b></p>
+</div></div>
+<button class="raus" id="raus" type="button" aria-label="Verlassen">✕</button>
+<div id="fehler" style="display:none; position:fixed; left:8px; bottom:8px; z-index:60; max-width:70%; font:12px/1.3 monospace; color:#fff; background:#b3261e; padding:6px 8px; border-radius:6px;"></div>
+<div id="diag" style="display:none; position:fixed; left:8px; top:8px; z-index:60; font:11px/1.3 monospace; color:#fff; background:rgba(0,0,0,.6); padding:4px 6px; border-radius:4px;"></div>
+<script>
+addEventListener('error',e=>{ const f=document.getElementById('fehler'); if(!f)return; f.style.display='block'; f.textContent=(e.message||'Fehler')+' @'+(e.lineno||'?'); });
+addEventListener('unhandledrejection',e=>{ const f=document.getElementById('fehler'); if(!f)return; f.style.display='block'; f.textContent='Promise: '+(e.reason&&e.reason.message||e.reason); });
+</script>
