@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Extrempunkte im Blattkino</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+:root{
+  --bg:#f4f5f2; --ink:#1f2429; --muted:#66717c; --line:#d3d8d3; --grid:#e4e8e3; --axis:#8a939b;
+  --curve:#3a434e; --hl:#fff3c9; --hlb:#dcb53a; --frage:#4d6376;
+  --k0:#c8502a; --k1:#2361a6; --k2:#2b8a5c;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#191c20; --ink:#e6e4de; --muted:#9aa3ad; --line:#353b42; --grid:#272c32; --axis:#7d858e;
+  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#9fb4c6;
+  --k0:#ea734c; --k1:#6ea2e8; --k2:#5cbd8c; } }
+:root[data-theme="dark"]{
+  --bg:#191c20; --ink:#e6e4de; --muted:#9aa3ad; --line:#353b42; --grid:#272c32; --axis:#7d858e;
+  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#9fb4c6;
+  --k0:#ea734c; --k1:#6ea2e8; --k2:#5cbd8c; }
+
+html{color-scheme:light dark; -webkit-text-size-adjust:100%;}
+html,body{height:100%; overflow:hidden; overscroll-behavior:none;}
+body{margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif; font-size:17px; line-height:1.5;
+  font-variant-numeric:tabular-nums;}
+*{-webkit-tap-highlight-color:transparent; box-sizing:border-box;}
+
+/* Das Rad: eine durchsichtige Flaeche ueber allem. Nur sie bewegt sich. */
+.rad{position:fixed; inset:0; height:100vh; height:100svh; z-index:20; overflow-y:auto; overflow-x:hidden;
+  -webkit-overflow-scrolling:touch; overscroll-behavior:none; scrollbar-width:none;}
+.rad::-webkit-scrollbar{width:0; height:0;}
+.weg{height:var(--kurbel,3000vh);}
+/* Die Buehne steht. */
+.buehne{position:fixed; inset:0; height:100vh; height:100svh; z-index:5; overflow:hidden;
+  pointer-events:none; background:var(--bg);}
+.szene{position:absolute; inset:0; display:flex; justify-content:center; align-items:flex-start;
+  padding:calc(env(safe-area-inset-top) + 14px) 14px calc(env(safe-area-inset-bottom) + 14px) 30px;
+  opacity:0; visibility:hidden;}
+.inhalt{position:relative; width:100%; max-width:34rem; display:flex; flex-direction:column; gap:14px;
+  transform-origin:top left;}
+.inhalt > *{flex:0 0 auto;}
+.frage{margin:0; font-size:.88rem; font-weight:600; color:var(--frage); border-left:3px solid var(--frage);
+  padding-left:10px; line-height:1.3;}
+h2{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:1.32rem; line-height:1.2; margin:0; text-wrap:balance;}
+.satz{margin:0; font-size:1.02rem;}
+.marke{margin:0; font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+.marke mjx-container{text-transform:none; letter-spacing:0; font-size:1.05rem; vertical-align:-.2em;}
+.zeile{display:flex; flex-wrap:wrap; align-items:baseline; gap:.25em .4em; font-size:1.06rem; line-height:1.35; margin:0;}
+.zeile.hl{background:var(--hl); border:1px solid var(--hlb); border-radius:6px; padding:5px 11px; align-self:flex-start;}
+.chip{display:inline-block; white-space:nowrap;}
+.gruppe{display:inline-flex; align-items:baseline; gap:.25em .4em; white-space:nowrap;}
+.chip.leer{opacity:0;}
+.bild{flex-direction:column; align-items:center;}
+.bild .legende{font-size:.86rem; font-weight:600; color:var(--curve); margin:2px 0 0; align-self:flex-end; padding-right:6px;}
+.txt{color:var(--muted); font-size:.98rem;} .txt b{font-weight:600; color:inherit;}
+.k0{color:var(--k0);} .k1{color:var(--k1);} .k2{color:var(--k2);}
+.bild{width:100%; display:flex; justify-content:center;}
+.bild svg{display:block; width:100%; max-width:420px; height:auto;}
+.merk{margin:0; font-weight:600; line-height:1.35; border-left:4px solid var(--frage); padding:5px 0 5px 12px;}
+.ende{margin:0; text-align:center; color:var(--muted); font-size:1.1rem;}
+.el{opacity:0;}
+.pfeile{position:absolute; left:0; top:0; width:100%; height:100%; overflow:visible; pointer-events:none;}
+.flug{position:absolute; inset:0; pointer-events:none;}
+.token{position:absolute; left:0; top:0; opacity:0; white-space:nowrap; font-size:1.06rem; line-height:1.35; will-change:transform;}
+.token.txt{font-weight:600;}
+mjx-container{display:inline-block !important; margin:0 !important;}
+.bild svg text{font-family:"IBM Plex Sans",system-ui,sans-serif;}
+
+/* Fortschritt rechts */
+.fortschritt{position:fixed; right:0; top:0; width:4px; height:100vh; height:100svh; z-index:30;
+  background:color-mix(in srgb, var(--line) 70%, transparent);}
+.fortschritt i{display:block; width:100%; height:100%; background:var(--frage); transform:scaleY(0); transform-origin:50% 0;}
+
+/* Das Tor */
+.tor{position:fixed; inset:0; height:100vh; height:100svh; z-index:40; display:flex; align-items:center; justify-content:center;
+  background:var(--bg); color:var(--ink); padding:24px;}
+.tor .innen{max-width:32rem; width:100%;}
+.tor h1{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:2rem; line-height:1.15; margin:0 0 8px; text-wrap:balance;}
+.tor .quelle{margin:0 0 28px; color:var(--muted); font-size:.95rem;}
+.tor .start{font:600 1.05rem/1 "IBM Plex Sans",system-ui,sans-serif; color:var(--bg); background:var(--ink); border:0;
+  border-radius:10px; padding:16px 28px; cursor:pointer; min-height:52px; -webkit-appearance:none;}
+.tor .start:hover{background:var(--frage);}
+.tor .start:focus-visible{outline:3px solid var(--frage); outline-offset:3px;}
+.tor .hinweis{margin:16px 0 0; color:var(--muted); font-size:.9rem;}
+.tor .hinweis b{display:inline-block; color:var(--frage); animation:tippen 2.4s ease-in-out infinite;}
+@keyframes tippen{0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);}}
+html.laeuft .tor{display:none;}
+.raus{position:fixed; z-index:41; right:calc(env(safe-area-inset-right) + 12px); bottom:calc(env(safe-area-inset-bottom) + 12px);
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+  background:color-mix(in srgb, var(--bg) 82%, transparent); color:var(--muted);
+  font:400 19px/1 system-ui,sans-serif; cursor:pointer; display:none; align-items:center; justify-content:center; -webkit-appearance:none;}
+html.laeuft .raus{display:flex;}
+.raus:focus-visible{outline:3px solid var(--frage); outline-offset:2px;}
+
+/* Wer keine Bewegung will, bekommt ein gewoehnliches Dokument. */
+html.ruhig, html.ruhig body{height:auto; overflow:auto;}
+html.ruhig .rad, html.ruhig .tor, html.ruhig .raus, html.ruhig .fortschritt{display:none !important;}
+html.ruhig .buehne{position:static; height:auto; overflow:visible; pointer-events:auto;}
+html.ruhig .szene{position:static; opacity:1 !important; visibility:visible !important; padding:28px 16px 28px 24px;
+  border-bottom:1px solid var(--line);}
+html.ruhig .inhalt{transform:none !important; width:100% !important;}
+/* Auf breiten Schirmen steht die Buehne als Handy-Rahmen in der Mitte: ein Blatt ist ein Handybildschirm. */
+@media (min-width:700px) and (min-height:480px){
+  body{background:color-mix(in srgb, var(--bg) 88%, var(--ink));}
+  .rad, .buehne, .tor{inset:auto; left:50%; top:50%; width:390px; height:min(812px, calc(100vh - 24px)); height:min(812px, calc(100svh - 24px));
+    transform:translate(-50%,-50%); border-radius:18px;}
+  .buehne{box-shadow:0 0 0 1px var(--line), 0 24px 60px rgba(0,0,0,.22);}
+  .tor{box-shadow:0 0 0 1px var(--line);}
+  .fortschritt{right:auto; left:calc(50% + 191px); top:50%; transform:translateY(-50%); height:min(812px, calc(100vh - 24px)); height:min(812px, calc(100svh - 24px)); border-radius:0 18px 18px 0;}
+  .raus{right:calc(50% - 195px + 10px); bottom:calc(50% - min(406px, (100svh - 24px) / 2) + 10px);}
+  html.ruhig .buehne, html.ruhig .szene{transform:none; width:auto; height:auto; left:auto; top:auto; box-shadow:none;}
+}
+</style>
+
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'},startup:{typeset:false}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+
+</head>
+<body>
+<div class="fortschritt" role="progressbar" aria-label="Fortschritt" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="fortschritt"><i id="fill"></i></div>
+<div class="rad" id="rad" tabindex="0" aria-label="Fortschritt drehen"><div class="weg" id="weg"></div></div>
+<main class="buehne" id="buehne"></main>
+<div class="tor" id="tor"><div class="innen">
+  <h1 id="torTitel">Extrempunkte</h1>
+  <p class="quelle">Kurvendiskussion 1, Seiten 35 bis 38</p>
+  <button class="start" id="start" type="button">Starten</button>
+  <p class="hinweis">Wischen dreht den Film weiter <b>↓</b></p>
+</div></div>
+<button class="raus" id="raus" type="button" aria-label="Verlassen">✕</button>
+<div id="fehler" style="display:none; position:fixed; left:8px; bottom:8px; z-index:60; max-width:70%; font:12px/1.3 monospace; color:#fff; background:#b3261e; padding:6px 8px; border-radius:6px;"></div>
+<div id="diag" style="display:none; position:fixed; left:8px; top:8px; z-index:60; font:11px/1.3 monospace; color:#fff; background:rgba(0,0,0,.6); padding:4px 6px; border-radius:4px;"></div>
+<script>
+addEventListener('error',e=>{ const f=document.getElementById('fehler'); if(!f)return; f.style.display='block'; f.textContent=(e.message||'Fehler')+' @'+(e.lineno||'?'); });
+addEventListener('unhandledrejection',e=>{ const f=document.getElementById('fehler'); if(!f)return; f.style.display='block'; f.textContent='Promise: '+(e.reason&&e.reason.message||e.reason); });
+</script>
+
+<script>
+'use strict';
+// ============================================================
+// Blattkino, Goldlauf. Eine Zeitleiste: der Radstand p wird gelesen, jedes Element
+// ist eine Funktion von p. Nichts laeuft von allein.
+// ============================================================
+const $=id=>document.getElementById(id);
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const eOut=u=>1-Math.pow(1-u,3);
+const eIO=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
+const NS='http://www.w3.org/2000/svg';
+const KF=['var(--k0)','var(--k1)','var(--k2)'];
+function fmt(v,n){ n=n===undefined?1:n; let s=(Math.round(v*Math.pow(10,n))/Math.pow(10,n)).toFixed(n);
+  s=s.replace('.',',').replace('-','\u2212'); if(/^\u22120(,0+)?$/.test(s))s=s.slice(1); return s; }
+function fmt0(v){ return Number.isInteger(v)?String(v).replace('-','\u2212'):fmt(v,2); }
+const svgEl=(tag,at,parent)=>{ const e=document.createElementNS(NS,tag); for(const k in at)e.setAttribute(k,at[k]); if(parent)parent.appendChild(e); return e; };
+const el=(tag,cls,txt)=>{ const e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e; };
+const esc=t=>{ const d=document.createElement('span'); d.textContent=String(t==null?'':t); return d.innerHTML; };
+
+// ---------------- Zustand beim Aufbau ----------------
+const SZENEN=[]; let szene=null, beat=null; const mathKnoten=[]; let TOTAL=1;
+
+function szeneAuf(frage){
+  const s=el('section','szene'); const inhalt=el('div','inhalt'); s.appendChild(inhalt);
+  if(frage){ inhalt.appendChild(el('p','frage',frage)); }
+  const pf=svgEl('svg',{class:'pfeile'}); const fl=el('div','flug');
+  inhalt.appendChild(pf); inhalt.appendChild(fl);
+  $('buehne').appendChild(s);
+  szene={kn:s,inhalt,pf,fl,beats:[],items:[],scale:1};
+  SZENEN.push(szene); return szene;
+}
+function beatAuf(g,payoff){ beat={gewicht:g||2,payoff:!!payoff,anteil:undefined,stuecke:[]}; szene.beats.push(beat); }
+// Ein Stueck: was gemeinsam erscheint. dauer ist sein Anteil an der Aufbaustrecke des Beats.
+function stueck(items,dauer){ const l=[].concat(items).filter(Boolean); if(!l.length||!beat)return; beat.stuecke.push({items:l,dauer:dauer||1}); for(const it of l)szene.items.push(it); }
+
+// ---------------- Elemente ----------------
+function riseItem(e){ e.classList.add('el'); return {apply(u){ const v=eOut(u); e.style.opacity=v; e.style.transform='translate3d(0,'+((1-v)*10).toFixed(2)+'px,0)'; }}; }
+function einfuegen(e){ szene.inhalt.insertBefore(e,szene.pf); return e; }
+function setzen(e,dauer){ einfuegen(e); stueck(riseItem(e),dauer); return e; }
+function h(t){ return setzen(el('h2',null,t)); }
+function satz(t){ return setzen(el('p','satz',t)); }
+function marke(t){ const e=el('p','marke'); e.innerHTML=t; if(/\\\(/.test(t))mathKnoten.push(e); return setzen(e); }
+function merk(t){ const e=el('p','merk'); e.innerHTML=t; if(/\\\(/.test(t))mathKnoten.push(e); return setzen(e); }
+// Ein Teil ist ein Chip (Formel oder Text); eine Liste von Teilen ist eine Gruppe, die nie umbricht.
+function chip(p,z){
+  let c;
+  if(typeof p==='string'){ c=el('span','chip'); c.textContent='\\('+p+'\\)'; mathKnoten.push(c); }
+  else if(p.tex!==undefined){ c=el('span','chip'+(p.k!==undefined?' k'+p.k:'')+(p.leer?' leer':'')); c.textContent='\\('+p.tex+'\\)'; mathKnoten.push(c); }
+  else { c=el('span','chip txt'+(p.k!==undefined?' k'+p.k:'')+(p.leer?' leer':'')); c.innerHTML=p.html||esc(p.t); }
+  if(p&&p.id)z.chips[p.id]=c; return c;
+}
+function zeile(parts,opt){
+  opt=opt||{}; const z=el('div','zeile'+(opt.hl?' hl':'')); z.chips={};
+  for(const p of parts){
+    if(Array.isArray(p)){ const g=el('span','gruppe'); for(const q of p)g.appendChild(chip(q,z)); z.appendChild(g); }
+    else z.appendChild(chip(p,z));
+  }
+  einfuegen(z);
+  if(!opt.stumm)zeig(z,opt);
+  return z;
+}
+// Eine Zeile erscheint als Ganzes, oder Chip fuer Chip in Leserichtung (folge).
+function zeig(z,opt){ opt=opt||{}; if(opt.folge){ for(const c of z.children)stueck(riseItem(c),opt.dauer||1); } else stueck(riseItem(z),opt.dauer); }
+
+// ---------------- Geometrie im Blatt ----------------
+function lokal(e){ const b=szene.inhalt.getBoundingClientRect(), r=e.getBoundingClientRect(), s=szene.scale||1;
+  return {x:(r.left-b.left)/s, y:(r.top-b.top)/s, w:r.width/s, h:r.height/s}; }
+
+// ---------------- Der Graph ----------------
+function graph(cfg){
+  const W=cfg.w||340, H=cfg.h||200, pl=30, pr=12, pt=16, pb=22;
+  const xmin=cfg.xmin, xmax=cfg.xmax, ymin=cfg.ymin, ymax=cfg.ymax, fn=cfg.fn;
+  const sx=x=>pl+(x-xmin)/(xmax-xmin)*(W-pl-pr), sy=y=>pt+(ymax-y)/(ymax-ymin)*(H-pt-pb);
+  const kx=(W-pl-pr)/(xmax-xmin), ky=(H-pt-pb)/(ymax-ymin);
+  const svg=svgEl('svg',{viewBox:'0 0 '+W+' '+H});
+  const L={grid:svgEl('g',{},svg),hinter:svgEl('g',{},svg),kurve:svgEl('g',{},svg),vorn:svgEl('g',{},svg)};
+  const step=r=>r<=8?1:(r<=16?2:5);
+  const xs=step(xmax-xmin), ys=step(ymax-ymin);
+  const y0=(ymin<=0&&ymax>=0)?sy(0):sy(ymin), x0=(xmin<=0&&xmax>=0)?sx(0):sx(xmin);
+  const lab=(x,y,t,anch,fill,size,parent)=>{ const e=svgEl('text',{x:x,y:y,fill:fill||'var(--muted)','font-size':size||12,'text-anchor':anch||'middle'},parent||L.vorn); e.textContent=t; return e; };
+  const ticks={};
+  for(let x=Math.ceil(xmin/xs)*xs;x<=xmax+1e-9;x+=xs){ svgEl('line',{x1:sx(x),y1:pt,x2:sx(x),y2:H-pb,stroke:'var(--grid)','stroke-width':1},L.grid);
+    if(Math.abs(x)>1e-9)ticks[x]=lab(sx(x),y0+14,fmt0(x),'middle','var(--muted)',11.5,L.grid); }
+  for(let y=Math.ceil(ymin/ys)*ys;y<=ymax+1e-9;y+=ys){ svgEl('line',{x1:pl,y1:sy(y),x2:W-pr,y2:sy(y),stroke:'var(--grid)','stroke-width':1},L.grid);
+    if(Math.abs(y)>1e-9)lab(x0-6,sy(y)+4,fmt0(y),'end','var(--muted)',11.5,L.grid); }
+  svgEl('line',{x1:pl,y1:y0,x2:W-pr+6,y2:y0,stroke:'var(--axis)','stroke-width':1.3},L.grid);
+  svgEl('path',{d:'M'+(W-pr+6)+' '+y0+' l -6 -3.5 v 7 z',fill:'var(--axis)'},L.grid);
+  svgEl('line',{x1:x0,y1:H-pb,x2:x0,y2:pt-6,stroke:'var(--axis)','stroke-width':1.3},L.grid);
+  svgEl('path',{d:'M'+x0+' '+(pt-6)+' l -3.5 6 h 7 z',fill:'var(--axis)'},L.grid);
+  lab(W-pr+4,y0+15,'x','end','var(--muted)',11.5,L.grid); lab(x0+9,pt+2,'y','start','var(--muted)',11.5,L.grid);
+  // Kurve
+  let d=''; const n=260;
+  for(let i=0;i<=n;i++){ const x=xmin+i*(xmax-xmin)/n; let y; try{y=fn(x);}catch(e){y=NaN;}
+    if(!isFinite(y)||y<ymin-0.6||y>ymax+0.6){ if(d&&!d.endsWith('M'))d+=' M'; continue; }
+    const px=sx(x).toFixed(1),py=sy(y).toFixed(1);
+    d+=(d===''||d.endsWith('M'))?((d===''?'M ':' ')+px+' '+py):(' L '+px+' '+py); }
+  d=d.replace(/ M$/,'');
+  const kurve=svgEl('path',{d:d,fill:'none',stroke:'var(--curve)','stroke-width':2.3,'stroke-linecap':'round','stroke-linejoin':'round'},L.kurve);
+  const kasten=el('div','bild'); kasten.appendChild(svg);
+  if(cfg.legend){ kasten.appendChild(el('p','legende',cfg.legend)); }
+  setzen(kasten); stueck(drawItem(kurve),cfg.dauer||3);
+  const meineSzene=szene;
+
+  const abl=x=>{ const hh=1e-4; return (fn(x+hh)-fn(x-hh))/(2*hh); };
+  const abl2=x=>{ const hh=1e-3; return (fn(x+hh)-2*fn(x)+fn(x-hh))/(hh*hh); };
+  const G={svg:svg,sx:sx,sy:sy,fn:fn,
+    // Ein Punkt des Bildes in Blattkoordinaten, mit Versatz in Bildpixeln
+    anchor(x,y,dy){ const r=svg.getBoundingClientRect(), b=meineSzene.inhalt.getBoundingClientRect(), s=meineSzene.scale||1;
+      const f=(r.width/s)/W; return {x:(r.left-b.left)/s+sx(x)*f, y:(r.top-b.top)/s+(sy(y)+(dy||0))*f}; },
+    // Kandidat: eine Stelle auf der x-Achse
+    marke(x,k,text){ const tri=svgEl('path',{d:'M'+sx(x)+' '+y0+' l -5 8 h 10 z',fill:KF[k],opacity:0},L.vorn);
+      const t=lab(sx(x),y0+21,text,'middle',KF[k],12.5); t.setAttribute('font-weight','600'); t.style.opacity=0;
+      return {nodes:[tri,t],tick:ticks[x]||null}; },
+    // Aufstieg: von der Stelle hinauf zur Kurve, dann zur y-Achse
+    aufstieg(x,y,k,text){ let p='M'+sx(x)+' '+y0; if(Math.abs(y)>1e-9)p+=' V'+sy(y); if(Math.abs(x)>1e-9)p+=' H'+x0;
+      const path=svgEl('path',{d:p,fill:'none',stroke:KF[k],'stroke-width':1.3,'stroke-dasharray':'4 3',opacity:0},L.hinter);
+      const it=drawItem(path,{linear:true});
+      if(text!==undefined&&Math.abs(y)>1e-9){ const t=lab(x0-6,sy(y)+4,text,'end',KF[k],12.5); t.setAttribute('font-weight','600'); t.style.opacity=0;
+        const a=it.apply; it.apply=u=>{ a(u); t.style.opacity=u>=0.95?1:0; }; }
+      return it; },
+    punkt(x,y,k){ const c=svgEl('circle',{cx:sx(x),cy:sy(y),r:4.6,fill:KF[k]},L.vorn); return landItem([c]); },
+    // Beschriftung eines Punktes; oben bei Gipfel, unten bei Tal
+    beschriftung(x,y,text,k){ const oben=abl2(x)<0; const rechts=sx(x)<W-90;
+      const t=lab(sx(x)+(rechts?8:-8),sy(y)+(oben?-9:17),text,rechts?'start':'end',KF[k],12.5); t.setAttribute('font-weight','600'); return landItem([t]); },
+    // Kappe: das Kurvenstueck um die Stelle, gebogen wie der Gipfel oder das Tal
+    kappe(x,r,k,text){ let d=''; const m=40; for(let i=0;i<=m;i++){ const xx=x-r+2*r*i/m; const yy=fn(xx); d+=(i?' L ':'M ')+sx(xx).toFixed(1)+' '+sy(yy).toFixed(1); }
+      const p=svgEl('path',{d:d,fill:'none',stroke:KF[k],'stroke-width':5,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0},L.vorn);
+      const it=drawItem(p); if(text){ const oben=abl2(x)<0; const t=lab(sx(x),sy(fn(x))+(oben?-11:20),text,'middle',KF[k],11.5); t.style.opacity=0;
+        const a=it.apply; it.apply=u=>{ a(u); t.style.opacity=u>=0.9?1:0; }; } return it; },
+    // Die Fahrt: der Finger ist x. Die Tangente faehrt, m laeuft mit, wird 0 am Gipfel und im Tal.
+    fahrt(o){ const g=svgEl('g',{},L.vorn); g.style.opacity=0;
+      const line=svgEl('line',{stroke:'var(--k0)','stroke-width':2.2,'stroke-linecap':'round'},g);
+      const dot=svgEl('circle',{r:4.2,fill:'var(--k0)'},g);
+      const t1=lab(0,0,'','start','var(--k0)',12.5,g); t1.setAttribute('font-weight','600');
+      const t2=lab(0,0,'','start','var(--ink)',12.5,g);
+      const geister=(o.geister||[]).map(xg=>{ const gg=svgEl('g',{},L.vorn); gg.style.opacity=0; const yg=fn(xg);
+        svgEl('line',{x1:sx(xg)-62,y1:sy(yg),x2:sx(xg)+62,y2:sy(yg),stroke:KF[o.k||0],'stroke-width':2,'stroke-linecap':'round'},gg);
+        const oben=abl2(xg)<0; const tt=lab(sx(xg)+66,sy(yg)+4,'m = 0','start',KF[o.k||0],12.5,gg); tt.setAttribute('font-weight','600');
+        return {g:gg,u:(xg-o.x0)/(o.x1-o.x0)}; });
+      return {apply(u){ if(u<=0){ g.style.opacity=0; for(const z of geister)z.g.style.opacity=0; return; }
+        const x=o.x0+(o.x1-o.x0)*u, y=fn(x), m=abl(x);
+        const dx=1, dy=-m*ky/kx; const nn=Math.hypot(dx,dy); const ex=dx/nn*64, ey=dy/nn*64;
+        const px=sx(x), py=sy(y);
+        line.setAttribute('x1',px-ex); line.setAttribute('y1',py-ey); line.setAttribute('x2',px+ex); line.setAttribute('y2',py+ey);
+        dot.setAttribute('cx',px); dot.setAttribute('cy',py);
+        const lx=pl+6, ly=pt+12;
+        t2.setAttribute('x',lx); t2.setAttribute('y',ly); t2.textContent='x = '+fmt(x);
+        t1.setAttribute('x',lx); t1.setAttribute('y',ly+16); t1.textContent='m = '+fmt(m);
+        g.style.opacity=u>0.96?clamp((1-u)/0.04,0,1):1;
+        for(const z of geister)z.g.style.opacity=clamp((u-z.u)/0.025,0,1); }}; }
+  };
+  return G;
+}
+function drawItem(p,opt){ opt=opt||{}; p.style.opacity=0;
+  const it={u:0,L:0,rechnen(){ try{ it.L=p.getTotalLength(); }catch(e){ it.L=1000; } if(!it.L)it.L=1000; p.style.strokeDasharray=it.L; it.apply(it.u); },
+    apply(u){ it.u=u; const v=opt.linear?u:eOut(u); p.style.strokeDashoffset=(it.L*(1-v)).toFixed(2); p.style.opacity=u>0?1:0; }};
+  return it; }
+function landItem(nodes){ const l=[].concat(nodes).filter(Boolean);
+  for(const n of l){ n.style.transformBox='fill-box'; n.style.transformOrigin='center'; n.style.opacity=0; }
+  return {apply(u){ const s=u<=0?0.3:(u<0.65?0.35+(u/0.65)*0.8:1.15-0.15*((u-0.65)/0.35));
+    for(const n of l){ n.style.opacity=u>0?1:0; n.style.transform='scale('+s.toFixed(3)+')'; } }}; }
+
+// ---------------- Pfeile ----------------
+// Pfeile laufen in der Rinne links vom Text: aus der Quelle nach unten in die Fuge, nach links in
+// die Rinne, senkrecht, waagerecht ins Ziel. Ein Stamm, mehrere Aeste. Sie ueberlagern keinen Text.
+function dist(a,b){ return Math.hypot(b.x-a.x,b.y-a.y); }
+function pathRund(pts,r){ if(pts.length<2)return ''; let d='M'+pts[0].x.toFixed(1)+' '+pts[0].y.toFixed(1);
+  for(let i=1;i<pts.length-1;i++){ const p0=pts[i-1],p1=pts[i],p2=pts[i+1]; const d1=dist(p0,p1),d2=dist(p1,p2);
+    if(d1<0.5||d2<0.5){ d+=' L'+p1.x.toFixed(1)+' '+p1.y.toFixed(1); continue; }
+    const rr=Math.min(r,d1/2,d2/2); const a={x:p1.x+(p0.x-p1.x)*rr/d1,y:p1.y+(p0.y-p1.y)*rr/d1}, b={x:p1.x+(p2.x-p1.x)*rr/d2,y:p1.y+(p2.y-p1.y)*rr/d2};
+    d+=' L'+a.x.toFixed(1)+' '+a.y.toFixed(1)+' Q'+p1.x.toFixed(1)+' '+p1.y.toFixed(1)+' '+b.x.toFixed(1)+' '+b.y.toFixed(1); }
+  const e=pts[pts.length-1]; d+=' L'+e.x.toFixed(1)+' '+e.y.toFixed(1); return d; }
+function pfeil(o){
+  const farbe=KF[o.k||0], lane=o.lane||0;
+  const p=svgEl('path',{fill:'none',stroke:farbe,'stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0},szene.pf);
+  const kopf=svgEl('path',{fill:farbe,d:'M1 0 L-6 -3.2 L-6 3.2 Z',opacity:0},szene.pf);
+  const it={typ:'pfeil',u:0,L:0,split:null,
+    rechnen(){ const rx=-12-lane*6, g=8+lane*4; const pts=[];
+      const zb=lokal(o.zu);
+      if(o.von&&o.von.typ==='pfeil'){ pts.push({x:o.von.split.x,y:o.von.split.y}); }
+      else { const vb=lokal(o.von); const s={x:vb.x+vb.w/2,y:vb.y+vb.h-2}; const gapS=vb.y+vb.h+g; pts.push(s,{x:s.x,y:gapS},{x:rx,y:gapS}); }
+      if(o.an==='oben'){ const dx=zb.x+Math.min(zb.w/2,10); const gapD=zb.y-g; const d={x:dx,y:zb.y-1};
+        pts.push({x:rx,y:gapD},{x:dx,y:gapD},d); it.split={x:rx,y:gapD}; }
+      else { const dy=zb.y+zb.h/2+(lane?2:-2); const d={x:zb.x-3,y:dy}; pts.push({x:rx,y:dy},d); it.split={x:rx,y:dy}; }
+      p.setAttribute('d',pathRund(pts,7)); try{ it.L=p.getTotalLength(); }catch(e){ it.L=300; } p.style.strokeDasharray=it.L;
+      const a=pts[pts.length-2], b=pts[pts.length-1]; const ang=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;
+      kopf.setAttribute('transform','translate('+b.x.toFixed(1)+' '+b.y.toFixed(1)+') rotate('+ang.toFixed(1)+')');
+      it.apply(it.u); },
+    apply(u){ it.u=u; p.style.strokeDashoffset=(it.L*(1-u)).toFixed(2); p.style.opacity=u>0?1:0; kopf.style.opacity=u>0.86?clamp((u-0.86)/0.1,0,1):0; }
+  };
+  stueck(it,o.dauer||1.6); return it;
+}
+// ---------------- Flug: eine Zahl wandert an ihren Ort ----------------
+function flug(o){
+  const t=el('span','token'+(o.k!==undefined?' k'+o.k:'')+(o.txt?' txt':'')); szene.fl.appendChild(t);
+  const it={typ:'flug',u:0,von:{x:0,y:0},zu:{x:0,y:0},
+    rechnen(){ t.innerHTML=o.von.innerHTML; const vb=lokal(o.von); it.von={x:vb.x,y:vb.y};
+      if(o.zu.anker){ const a=o.zu.anker(); const tb=t.getBoundingClientRect(); const s=szene.scale||1; it.zu={x:a.x-(tb.width/s)/2,y:a.y-(tb.height/s)/2}; }
+      else { const zb=lokal(o.zu); it.zu={x:zb.x,y:zb.y}; }
+      it.apply(it.u); },
+    apply(u){ it.u=u; const v=eIO(clamp(u,0,1)); const x=it.von.x+(it.zu.x-it.von.x)*v, y=it.von.y+(it.zu.y-it.von.y)*v;
+      t.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+      const da=u>=0.97; t.style.opacity=(u>0&&!da)?1:0;
+      if(o.zu.anker){ for(const n of (o.zu.zeig||[]))n.style.opacity=da?1:0; if(o.zu.tick)o.zu.tick.style.opacity=da?0:1; }
+      else { o.zu.style.opacity=da?1:0; } }
+  };
+  stueck(it,o.dauer||1.2); return it;
+}
+
+// ============================================================
+// Der Film
+// ============================================================
+const f=x=>x*x*x-3*x;
+
+function bogen(frage,beats){ szeneAuf(frage); for(const b of beats){ beatAuf(b.g,b.payoff); b.bau(); } }
+
+// B1: Woran erkennt man einen Gipfel?
+function bogen1(){ const R={};
+  bogen('Woran erkennt man einen Gipfel?',[
+    {g:2,bau(){ h('Extrempunkte (Hoch- und Tiefpunkte)');
+      satz('Ein Hochpunkt ist ein Gipfel des Graphen, ein Tiefpunkt ist ein Tal.');
+      R.G=graph({fn:f,xmin:-2.4,xmax:2.4,ymin:-4,ymax:4,legend:'f(x) = x\u00b3 \u2212 3x',h:215});
+      stueck(R.G.punkt(-1,2,0)); stueck(R.G.beschriftung(-1,2,'H(\u22121|2)',0));
+      stueck(R.G.punkt(1,-2,1)); stueck(R.G.beschriftung(1,-2,'T(1|\u22122)',1)); }},
+    {g:3,bau(){ satz('Fahrt mit der Tangente \u00fcber den Graphen. Die Zahl m ist ihre Steigung.');
+      beat.anteil=0.92; stueck(R.G.fahrt({x0:-2.2,x1:2.2,geister:[-1,1],k:0}),9); }},
+    {g:3,payoff:true,bau(){ satz('An beiden ist die Tangente waagerecht.'); zeile(["m=f'(x)=0"],{hl:true}); }}
+  ]); }
+
+// B2: Wo liegen Gipfel und Tal?
+function bogen2(){ const R={};
+  bogen('Wo liegen Gipfel und Tal?',[
+    {g:1,bau(){ satz('Gesucht sind die Stellen, an denen die Tangente waagerecht ist.');
+      marke('notwendige Bedingung: \\(f\'(x)=0\\)');
+      R.G=graph({fn:f,xmin:-2.4,xmax:2.4,ymin:-4,ymax:4,legend:'f(x) = x\u00b3 \u2212 3x',h:190,dauer:2}); }},
+    {g:2,bau(){ zeile(['f(x)=x^{3}-3x']); zeile(["f'(x)=3x^{2}-3"]); }},
+    {g:3,bau(){ const z=zeile(['3x^{2}-3=0','\\iff x^{2}=1',['\\iff x_1=',{tex:'-1',k:0,id:'x1'}],[',\\ x_2=',{tex:'1',k:1,id:'x2'}]],{folge:true});
+      R.x1=z.chips.x1; R.x2=z.chips.x2; }},
+    {g:2,payoff:true,bau(){ satz('Zwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht.');
+      const m1=R.G.marke(-1,0,'\u22121'), m2=R.G.marke(1,1,'1');
+      flug({von:R.x1,zu:{anker:()=>R.G.anchor(-1,0,15),zeig:m1.nodes,tick:m1.tick},k:0});
+      flug({von:R.x2,zu:{anker:()=>R.G.anchor(1,0,15),zeig:m2.nodes,tick:m2.tick},k:1}); }}
+  ]); }
+
+// B3: Welche Stelle ist der Gipfel, und wie hoch liegt er?
+function bogen3(){ const R={};
+  bogen('Welche Stelle ist der Gipfel, und wie hoch liegt er?',[
+    {g:1,bau(){ R.G=graph({fn:f,xmin:-2.4,xmax:2.4,ymin:-4,ymax:4,legend:'f(x) = x\u00b3 \u2212 3x',h:170,dauer:1});
+      const m1=R.G.marke(-1,0,'\u22121'), m2=R.G.marke(1,1,'1');
+      for(const m of [m1,m2]){ for(const n of m.nodes)n.style.opacity=1; if(m.tick)m.tick.style.opacity=0; }
+      const z=zeile([['x_1=',{tex:'-1',k:0,id:'x1'}],['\\qquad x_2=',{tex:'1',k:1,id:'x2'}]]); R.x1=z.chips.x1; R.x2=z.chips.x2;
+      marke('hinreichende Bedingung: \\(f\'\'(x)\\neq 0\\)'); zeile(["f''(x)=6x"]); }},
+    {g:3,bau(){ const z=zeile([{tex:"f''(-1)=6\\cdot(-1)=-6",k:0},'<0',{t:'',html:'\u2192 <b>H</b>ochpunkt',id:'art',k:0}],{stumm:true});
+      R.hp=z.chips.art.querySelector('b'); R.p1=pfeil({von:R.x1,zu:z,an:'links',lane:0,k:0}); zeig(z,{folge:true});
+      stueck(R.G.kappe(-1,0.42,0,'Rechtskurve'),1.4); }},
+    {g:2,bau(){ const z=zeile([{tex:"f''(1)=6\\cdot 1=6",k:1},'>0',{t:'',html:'\u2192 <b>T</b>iefpunkt',id:'art',k:1}],{stumm:true});
+      R.tp=z.chips.art.querySelector('b'); R.p2=pfeil({von:R.x2,zu:z,an:'links',lane:1,k:1}); zeig(z,{folge:true});
+      stueck(R.G.kappe(1,0.42,1,'Linkskurve'),1.4); }},
+    {g:3,bau(){ marke('y-Werte: \\(y=f(x)\\)');
+      const z1=zeile([[{tex:'f(-1)=(-1)^{3}-3\\cdot(-1)=-1+3=',k:0},{tex:'2',k:0,id:'y'}]],{stumm:true});
+      R.y1=z1.chips.y; pfeil({von:R.p1,zu:z1,an:'links',lane:0,k:0}); zeig(z1,{folge:true});
+      stueck(R.G.aufstieg(-1,2,0,'2'),1.4); stueck(R.G.punkt(-1,2,0));
+      const z2=zeile([[{tex:'f(1)=1^{3}-3\\cdot 1=1-3=',k:1},{tex:'-2',k:1,id:'y'}]],{stumm:true});
+      R.y2=z2.chips.y; pfeil({von:R.p2,zu:z2,an:'links',lane:1,k:1}); zeig(z2,{folge:true});
+      stueck(R.G.aufstieg(1,-2,1,'\u22122'),1.4); stueck(R.G.punkt(1,-2,1)); }},
+    {g:3,payoff:true,bau(){
+      const z=zeile([[{tex:'H(',k:0,leer:true,id:'a0'},{tex:'-1',k:0,leer:true,id:'x0'},'|',{tex:'2',k:0,leer:true,id:'y0'},')'],
+        [',\\quad',{tex:'T(',k:1,leer:true,id:'a1'},{tex:'1',k:1,leer:true,id:'x1'},'|',{tex:'-2',k:1,leer:true,id:'y1'},')']],{stumm:true});
+      zeig(z);
+      flug({von:R.hp,zu:z.chips.a0,k:0,txt:true}); flug({von:R.x1,zu:z.chips.x0,k:0}); flug({von:R.y1,zu:z.chips.y0,k:0});
+      stueck(R.G.beschriftung(-1,2,'H(\u22121|2)',0));
+      flug({von:R.tp,zu:z.chips.a1,k:1,txt:true}); flug({von:R.x2,zu:z.chips.x1,k:1}); flug({von:R.y2,zu:z.chips.y1,k:1});
+      stueck(R.G.beschriftung(1,-2,'T(1|\u22122)',1));
+      merk('Der y-Wert kommt aus \\(f(x)\\), nicht aus \\(f\'(x)\\).'); }}
+  ]); }
+
+// Die Serie: dieselbe Choreographie, neue Zahlen. Das Muster ist, was konstant bleibt.
+function serie(S){ const R={x:[],p:[],art:{},y:[]};
+  bogen(S.frage,[
+    {g:1,bau(){ zeile([S.f]); R.G=graph(Object.assign({fn:S.fn,legend:S.legend,h:S.h||172,dauer:2},S.plot)); }},
+    {g:2,bau(){ marke('notwendige Bedingung: \\('+S.n+'\'(x)=0\\)'); if(S.f1)zeile([S.f1]);
+      const mapP=p=>Array.isArray(p)?p.map(mapP):((typeof p==='string'||p.tex===undefined)?p:{tex:p.tex,k:p.k,id:p.k!==undefined?'x'+p.k:undefined});
+      const z=zeile(S.loes.map(mapP),{folge:true});
+      S.kand.forEach((c,i)=>{ R.x[i]=z.chips['x'+i]; const m=R.G.marke(c.x,i,fmt0(c.x));
+        flug({von:R.x[i],zu:{anker:()=>R.G.anchor(c.x,0,15),zeig:m.nodes,tick:m.tick},k:i,dauer:0.9}); }); }},
+    {g:2,bau(){ marke('hinreichende Bedingung: \\('+S.n+'\'\'(x)\\neq 0\\)'); zeile([S.f2]);
+      S.tests.forEach(T=>{ const b=T.art[0], rest=T.art.slice(1);
+        const z=zeile([{tex:T.tex,k:T.k[0]},T.vz,{t:'',html:'\u2192 <b>'+b+'</b>'+rest,id:'art',k:T.k[0]}],{stumm:true});
+        T.k.forEach(k=>{ R.p[k]=pfeil({von:R.x[k],zu:z,an:'links',lane:k,k:k,dauer:1.2}); R.art[k]=z.chips.art.querySelector('b'); });
+        zeig(z,{folge:true});
+        T.k.forEach(k=>stueck(R.G.kappe(S.kand[k].x,S.r||0.4,k),0.9)); }); }},
+    {g:3,payoff:true,bau(){ marke('y-Werte: \\(y='+S.n+'(x)\\)');
+      // Jede y-Zeile ist eine Liste von Gruppen; eine Gruppe rechnet einen Wert aus und endet mit ihm.
+      S.y.forEach(row=>{ const mapP=p=>typeof p==='string'?p:{tex:p.tex,k:p.k,id:(p.wert?'w':'z')+p.k};
+        const z=zeile(row.map(g=>g.map(mapP)),{stumm:true}); const flach=[].concat(...row);
+        const ziele=flach.filter(p=>p.ziel).map(p=>p.k); const mehrere=ziele.length>1;
+        ziele.forEach(k=>{ pfeil({von:R.p[k],zu:mehrere?z.chips['z'+k]:z,an:mehrere?'oben':'links',lane:k,k:k,dauer:1.2}); });
+        zeig(z,{folge:true});
+        flach.filter(p=>p.wert).forEach(p=>{ R.y[p.k]=z.chips['w'+p.k]; const c=S.kand[p.k];
+          stueck(R.G.aufstieg(c.x,c.y,p.k,fmt0(c.y)),1.1); stueck(R.G.punkt(c.x,c.y,p.k),0.7); }); });
+      // In der Serie fliegt nichts mehr zusammen: das Zusammensetzen wurde in Blatt 3 einmal gezeigt,
+      // beim dritten Auftreten wird nur noch gezeigt, nicht mehr erzaehlt (Simulat-Befund: Ablenkung).
+      const parts=S.erg.map((e,i)=>{ const g=[]; if(i)g.push(',\\ '); g.push({tex:e.tex+e.x+'\\,|\\,'+e.y+')',k:e.k}); return g; });
+      const z=zeile(parts,{stumm:true}); zeig(z,{folge:true,dauer:1.2});
+      S.erg.forEach(e=>{ const k=e.k; stueck(R.G.beschriftung(S.kand[k].x,S.kand[k].y,e.label,k),0.6); }); }}
+  ]); }
+
+// B8: Was bleibt als Weg?
+function bogen8(){
+  bogen('Was bleibt als Weg?',[
+    {g:1,bau(){ h('Schema'); marke('notwendige Bedingung'); zeile(["f'(x_0)=0"],{hl:true}); }},
+    {g:2,bau(){ marke('hinreichende Bedingung');
+      zeile([{tex:"f''(x_0)<0",k:0},{t:'\u2229',k:0},'\\rightarrow',{tex:'H(x_0\\,|\\,f(x_0))',k:0}]);
+      zeile([{tex:"f''(x_0)>0",k:1},{t:'\u222a',k:1},'\\rightarrow',{tex:'T(x_0\\,|\\,f(x_0))',k:1}]); }},
+    {g:3,payoff:true,bau(){
+      zeile(["f''(x_0)=0",'\\rightarrow',{t:'keine Entscheidung, Vorzeichen von f\u2032 links und rechts pr\u00fcfen'}]);
+      merk('\\(f\'(x)=0\\) liefert die Kandidaten: dort ist die Tangente waagerecht. \\(f\'\'\\) entscheidet: negativ hei\u00dft Rechtskurve, also Gipfel. Positiv hei\u00dft Linkskurve, also Tal.'); }}
+  ]); }
+
+function bauen(){
+  document.documentElement.lang='de'; document.title='Extrempunkte im Blattkino';
+  bogen1(); bogen2(); bogen3();
+  serie({n:'g',frage:'Geht das bei g genauso?',fn:x=>x*x-4*x,legend:'g(x) = x\u00b2 \u2212 4x',plot:{xmin:-1.2,xmax:5.2,ymin:-5,ymax:3},r:0.5,
+    f:'g(x)=x^{2}-4x',f1:"g'(x)=2x-4",loes:['2x-4=0',['\\iff x_1=',{tex:'2',k:0}]],
+    kand:[{x:2,y:-4}],f2:"g''(x)=2",tests:[{tex:"g''(2)=2",vz:'>0',art:'Tiefpunkt',k:[0]}],
+    y:[[[{tex:'g(2)=2^{2}-4\\cdot 2=',k:0,ziel:true},{tex:'-4',k:0,wert:true}]]],
+    erg:[{k:0,tex:'T(',x:'2',y:'-4',label:'T(2|\u22124)'}]});
+  serie({n:'h',frage:'Und mit zwei Kandidaten?',fn:x=>-x*x*x+3*x,legend:'h(x) = \u2212x\u00b3 + 3x',plot:{xmin:-2.4,xmax:2.4,ymin:-4,ymax:4},r:0.42,
+    f:'h(x)=-x^{3}+3x',f1:"h'(x)=-3x^{2}+3",loes:['-3x^{2}+3=0','\\iff x^{2}=1',['\\iff x_1=',{tex:'-1',k:0}],[',\\ x_2=',{tex:'1',k:1}]],
+    kand:[{x:-1,y:-2},{x:1,y:2}],f2:"h''(x)=-6x",
+    tests:[{tex:"h''(-1)=6",vz:'>0',art:'Tiefpunkt',k:[0]},{tex:"h''(1)=-6",vz:'<0',art:'Hochpunkt',k:[1]}],
+    y:[[[{tex:'h(-1)=-(-1)^{3}+3\\cdot(-1)=1-3=',k:0,ziel:true},{tex:'-2',k:0,wert:true}]],
+       [[{tex:'h(1)=-1^{3}+3\\cdot 1=-1+3=',k:1,ziel:true},{tex:'2',k:1,wert:true}]]],
+    erg:[{k:0,tex:'T(',x:'-1',y:'-2',label:'T(\u22121|\u22122)'},{k:1,tex:'H(',x:'1',y:'2',label:'H(1|2)'}]});
+  serie({n:'k',frage:'Und mit drei?',fn:x=>x*x*x*x-2*x*x,legend:'k(x) = x\u2074 \u2212 2x\u00b2',plot:{xmin:-1.9,xmax:1.9,ymin:-1.6,ymax:2.4},r:0.3,h:165,
+    f:'k(x)=x^{4}-2x^{2}',f1:"k'(x)=4x^{3}-4x=4x(x^{2}-1)",loes:['4x(x^{2}-1)=0',['\\iff x_1=',{tex:'0',k:0}],[',\\ x_2=',{tex:'-1',k:1}],[',\\ x_3=',{tex:'1',k:2}]],
+    kand:[{x:0,y:0},{x:-1,y:-1},{x:1,y:-1}],f2:"k''(x)=12x^{2}-4",
+    tests:[{tex:"k''(0)=-4",vz:'<0',art:'Hochpunkt',k:[0]},{tex:"k''(\\pm 1)=8",vz:'>0',art:'Tiefpunkte',k:[1,2]}],
+    y:[[[{tex:'k(0)=',k:0,ziel:true},{tex:'0',k:0,wert:true}],[{tex:',\\ k(-1)=1-2=',k:1,ziel:true},{tex:'-1',k:1,wert:true}],[{tex:',\\ k(1)=1-2=',k:2,ziel:true},{tex:'-1',k:2,wert:true}]]],
+    erg:[{k:0,tex:'H(',x:'0',y:'0',label:'H(0|0)'},{k:1,tex:'T_1(',x:'-1',y:'-1',label:'T\u2081(\u22121|\u22121)'},{k:2,tex:'T_2(',x:'1',y:'-1',label:'T\u2082(1|\u22121)'}]});
+  serie({n:'m',frage:'Und wenn e\u02e3 drinsteckt?',fn:x=>x*Math.exp(x),legend:'m(x) = x\u00b7e\u02e3',plot:{xmin:-4.6,xmax:1.1,ymin:-0.8,ymax:1.6},r:0.5,
+    f:'m(x)=x\\cdot e^{x}',f1:"m'(x)=1\\cdot e^{x}+x\\cdot e^{x}=(1+x)\\cdot e^{x}",loes:['(1+x)\\cdot e^{x}=0','\\iff 1+x=0',['\\iff x_1=',{tex:'-1',k:0}],{t:'| eˣ ≠ 0'}],
+    kand:[{x:-1,y:-1/Math.E}],f2:"m''(x)=(2+x)\\cdot e^{x}",tests:[{tex:"m''(-1)=1\\cdot e^{-1}\\approx 0{,}37",vz:'>0',art:'Tiefpunkt',k:[0]}],
+    y:[[[{tex:'m(-1)=-1\\cdot e^{-1}\\approx',k:0,ziel:true},{tex:'-0{,}37',k:0,wert:true}]]],
+    erg:[{k:0,tex:'T(',x:'-1',y:'-0{,}37',label:'T(\u22121|\u22120,37)'}]});
+  bogen8();
+  // Schluss
+  szeneAuf(null); beatAuf(1,false,null); const e=el('p','ende','Ende. Weiter im Dokument: Kr\u00fcmmungsverhalten, Seite 38.'); einfuegen(e); stueck(riseItem(e));
+  szene.inhalt.style.justifyContent='center'; szene.inhalt.style.minHeight='60vh';
+}
+
+// ============================================================
+// Die Zeit: jeder Beat kostet dieselbe Strecke am Rad. Das Gewicht bestimmt, wie viel der
+// Strecke der Aufbau belegt; der Rest ist Ruhe zum Lesen.
+// ============================================================
+function zeitVerteilen(){
+  let U=0; for(const s of SZENEN){ s.von=U; for(const b of s.beats){ b.von=U; U+=1; b.bis=U; } s.bis=U; }
+  for(const s of SZENEN)for(const b of s.beats){
+    const d=1, anteil=b.anteil!==undefined?b.anteil:(b.gewicht>=3?0.78:(b.gewicht<=1?0.42:0.6));
+    const bauL=d*anteil, ab=b.von+0.04; const gew=b.stuecke.map(x=>x.dauer), summe=gew.reduce((a,c)=>a+c,0)||1; let lauf=0;
+    b.stuecke.forEach((st,i)=>{ const a=ab+bauL*(lauf/summe); lauf+=gew[i];
+      const bb=Math.min(b.bis-0.02,a+Math.max(d*0.08,bauL*(gew[i]/summe)*0.9));
+      for(const it of st.items){ it.a=a; it.b=bb; } });
+  }
+  TOTAL=U; document.documentElement.style.setProperty('--kurbel',(Math.max(2,U)*100).toFixed(0)+'vh');
+}
+const BLENDE=0.09;
+function render(t){
+  const letzte=SZENEN[SZENEN.length-1];
+  for(const s of SZENEN){
+    let o; if(t<s.von-BLENDE||t>s.bis+BLENDE)o=0; else if(t<s.von)o=(t-(s.von-BLENDE))/BLENDE; else if(t>s.bis)o=1-(t-s.bis)/BLENDE; else o=1;
+    if(s===SZENEN[0]&&t<s.von)o=1; if(s===letzte&&t>s.bis)o=1;
+    s.kn.style.opacity=o.toFixed(3); s.kn.style.visibility=o>0?'visible':'hidden';
+    if(o<=0)continue;
+    for(const it of s.items){ const u=clamp((t-it.a)/(it.b-it.a),0,1); if(it.last!==u){ it.last=u;
+      try{ it.apply(u); }catch(e){ melden('apply: '+e.message); } } }
+  }
+}
+function melden(m){ const f=$('fehler'); if(!f)return; f.style.display='block'; f.textContent=m; }
+// ---------------- Einpassen: ein Bogen ist ein Blatt ----------------
+function einpassen(){
+  for(const s of SZENEN){
+    const inh=s.inhalt; inh.style.transform=''; inh.style.width=''; inh.style.gap='';
+    const kinder=[...inh.children].filter(k=>!k.classList.contains('pfeile')&&!k.classList.contains('flug'));
+    const cs=getComputedStyle(s.kn); const avail=s.kn.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    if(!avail||!kinder.length){ s.scale=1; continue; }
+    const mess=()=>{ let hh=0; for(const k of kinder)hh+=k.getBoundingClientRect().height; return hh; };
+    let f=1, hgt=mess(), n=kinder.length;
+    let gap=n>1?clamp((avail-hgt)/(n-1),16,26):0; inh.style.gap=gap+'px';
+    let tot=hgt+gap*(n-1);
+    for(let i=0;i<3&&tot>avail+1;i++){ f=Math.max(0.55,f*(avail/tot)); inh.style.width=(100/f).toFixed(2)+'%'; inh.style.transform='scale('+f.toFixed(4)+')';
+      hgt=mess()/f; tot=hgt+gap*(n-1); }
+    s.scale=f;
+  }
+  // Geometrie je Blatt, im Bezugssystem seines eigenen Inhalts
+  for(const s of SZENEN){ szene=s; for(const it of s.items)if(it.rechnen){ try{ it.rechnen(); }catch(e){ melden('rechnen: '+e.message); } } }
+}
+// ---------------- Fortschritt ----------------
+const rad=$('rad'), fill=$('fill'), leiste=$('fortschritt');
+let angefordert=false, bereit=false;
+function fortschritt(){ const hh=rad.scrollHeight-rad.clientHeight; return hh>0?clamp(rad.scrollTop/hh,0,1):0; }
+function anzeigen(){ angefordert=false; const p=fortschritt(); fill.style.transform='scaleY('+p.toFixed(4)+')';
+  leiste.setAttribute('aria-valuenow',String(Math.round(p*100))); if(bereit)render(p*TOTAL);
+  if(window.__diag){ const d=$('diag'); if(d){ d.style.display='block'; d.textContent='p='+p.toFixed(3)+' t='+(p*TOTAL).toFixed(2)+' top='+Math.round(rad.scrollTop)+'/'+rad.scrollHeight+' bereit='+bereit; } } }
+rad.addEventListener('scroll',()=>{ if(!angefordert){ angefordert=true; requestAnimationFrame(anzeigen); } },{passive:true});
+function neuMessen(){ clearTimeout(neuMessen._t); neuMessen._t=setTimeout(()=>{ einpassen(); for(const s of SZENEN)for(const it of s.items)it.last=undefined; anzeigen(); },160); }
+addEventListener('resize',neuMessen,{passive:true});
+
+// ---------------- Das Tor ----------------
+const klein=matchMedia('(pointer:coarse)').matches;
+const vollbildMoeglich=()=>!!(document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen);
+const imVollbild=()=>!!(document.fullscreenElement||document.webkitFullscreenElement);
+function starten(){ if(klein&&vollbildMoeglich()&&!imVollbild()){ try{ const e=document.documentElement; const p=(e.requestFullscreen||e.webkitRequestFullscreen).call(e,{navigationUI:'hide'}); if(p&&p.catch)p.catch(()=>{}); }catch(err){} }
+  document.documentElement.classList.add('laeuft'); requestAnimationFrame(()=>{ neuMessen(); rad.focus({preventScroll:true}); }); }
+$('start').addEventListener('click',starten);
+$('raus').addEventListener('click',()=>{ if(imVollbild()){ try{ (document.exitFullscreen||document.webkitExitFullscreen).call(document); }catch(e){} } else document.documentElement.classList.remove('laeuft'); });
+function vollbildGewechselt(){ neuMessen(); if(!imVollbild()&&klein&&vollbildMoeglich())document.documentElement.classList.remove('laeuft'); }
+addEventListener('fullscreenchange',vollbildGewechselt); addEventListener('webkitfullscreenchange',vollbildGewechselt);
+addEventListener('keydown',e=>{ if(e.key==='Escape'&&!imVollbild())document.documentElement.classList.remove('laeuft'); });
+if(klein&&vollbildMoeglich())$('start').textContent='Im Vollbild starten';
+
+// ---------------- Los ----------------
+function los(){
+  bauen(); zeitVerteilen();
+  const ruhig=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const knopf=$('start'); const knopfText=knopf.textContent; knopf.disabled=true; knopf.textContent='Wird vorbereitet …';
+  const fertig=()=>{ if(ruhig){ document.documentElement.classList.add('ruhig'); for(const s of SZENEN){ szene=s; s.kn.style.opacity=1; s.kn.style.visibility='visible'; s.scale=1; for(const it of s.items){ try{ if(it.rechnen)it.rechnen(); it.apply(1); }catch(e){} } } return; }
+    einpassen(); bereit=true; anzeigen(); knopf.disabled=false; knopf.textContent=knopfText; };
+  const typeset=()=>(window.MathJax&&MathJax.typesetPromise)?MathJax.typesetPromise(mathKnoten):Promise.resolve();
+  typeset().catch(()=>{}).then(()=>{ if(document.fonts&&document.fonts.ready)return document.fonts.ready; }).then(()=>setTimeout(fertig,40));
+}
+if(window.MathJax&&MathJax.startup&&MathJax.startup.promise)MathJax.startup.promise.then(los); else addEventListener('load',los);
+</script>
+</body>
+</html>
