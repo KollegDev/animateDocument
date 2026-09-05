@@ -51,6 +51,8 @@ h2{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:1.32re
 .zeile.hl{background:var(--hl); border:1px solid var(--hlb); border-radius:6px; padding:5px 11px; align-self:flex-start;}
 .chip{display:inline-block; white-space:nowrap;}
 .gruppe{display:inline-flex; align-items:baseline; gap:.25em .4em; white-space:nowrap;}
+/* eng: eine Formel, in Chips zerlegt, damit die eingesetzte Zahl allein Farbe und Pfeilziel tragen kann */
+.gruppe.eng{gap:0;}
 .chip.leer{opacity:0;}
 .bild{flex-direction:column; align-items:center;}
 .bild .legende{font-size:.86rem; font-weight:600; color:var(--curve); margin:2px 0 0; align-self:flex-end; padding-right:6px;}
@@ -190,7 +192,7 @@ function chip(p,z){
 function zeile(parts,opt){
   opt=opt||{}; const z=el('div','zeile'+(opt.hl?' hl':'')); z.chips={};
   for(const p of parts){
-    if(Array.isArray(p)){ const g=el('span','gruppe'); for(const q of p)g.appendChild(chip(q,z)); z.appendChild(g); }
+    if(Array.isArray(p)){ const eng=p[0]==='!eng'; const g=el('span','gruppe'+(eng?' eng':'')); for(const q of (eng?p.slice(1):p))g.appendChild(chip(q,z)); z.appendChild(g); }
     else z.appendChild(chip(p,z));
   }
   einfuegen(z);
@@ -313,11 +315,11 @@ function pfeil(o){
   const p=svgEl('path',{fill:'none',stroke:farbe,'stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0},szene.pf);
   const kopf=svgEl('path',{fill:farbe,d:'M1 0 L-6 -3.2 L-6 3.2 Z',opacity:0},szene.pf);
   const it={typ:'pfeil',u:0,L:0,split:null,
-    rechnen(){ const rx=-12-lane*6, g=8+lane*4; const pts=[];
+    rechnen(){ const rx=-12-lane*6, g=6+lane*3; const pts=[];
       const zb=lokal(o.zu);
       if(o.von&&o.von.typ==='pfeil'){ pts.push({x:o.von.split.x,y:o.von.split.y}); }
       else { const vb=lokal(o.von); const s={x:vb.x+vb.w/2,y:vb.y+vb.h-2}; const gapS=vb.y+vb.h+g; pts.push(s,{x:s.x,y:gapS},{x:rx,y:gapS}); }
-      if(o.an==='oben'){ const dx=zb.x+Math.min(zb.w/2,10); const gapD=zb.y-g; const d={x:dx,y:zb.y-1};
+      if(o.an==='oben'){ const dx=zb.x+zb.w/2+(o.versatz||0); const gapD=zb.y-g; const d={x:dx,y:zb.y+1};
         pts.push({x:rx,y:gapD},{x:dx,y:gapD},d); it.split={x:rx,y:gapD}; }
       else { const dy=zb.y+zb.h/2+(lane?2:-2); const d={x:zb.x-3,y:dy}; pts.push({x:rx,y:dy},d); it.split={x:rx,y:dy}; }
       p.setAttribute('d',pathRund(pts,7)); try{ it.L=p.getTotalLength(); }catch(e){ it.L=300; } p.style.strokeDasharray=it.L;
@@ -388,18 +390,19 @@ function bogen3(){ const R={};
       for(const m of [m1,m2]){ for(const n of m.nodes)n.style.opacity=1; if(m.tick)m.tick.style.opacity=0; }
       const z=zeile([['x_1=',{tex:'-1',k:0,id:'x1'}],['\\qquad x_2=',{tex:'1',k:1,id:'x2'}]]); R.x1=z.chips.x1; R.x2=z.chips.x2;
       marke('hinreichende Bedingung: \\(f\'\'(x)\\neq 0\\)'); zeile(["f''(x)=6x"]); }},
-    {g:3,bau(){ const z=zeile([{tex:"f''(-1)=6\\cdot(-1)=-6",k:0},'<0',{t:'',html:'\u2192 <b>H</b>ochpunkt',id:'art',k:0}],{stumm:true});
-      R.hp=z.chips.art.querySelector('b'); R.p1=pfeil({von:R.x1,zu:z,an:'links',lane:0,k:0}); zeig(z,{folge:true});
+    // Farbe sitzt nur auf der eingesetzten Zahl; der Pfeil muendet von oben in die Klammer (Autorbefund 2026-09-05).
+    {g:3,bau(){ const z=zeile([['!eng',{tex:"f''("},{tex:'-1',k:0,id:'e'},{tex:')=6\\cdot('},{tex:'-1',k:0},{tex:')=-6'}],'<0',{t:'',html:'\u2192 <b>H</b>ochpunkt',id:'art'}],{stumm:true});
+      R.hp=z.chips.art.querySelector('b'); R.p1=pfeil({von:R.x1,zu:z.chips.e,an:'oben',lane:0,k:0}); zeig(z,{folge:true});
       stueck(R.G.kappe(-1,0.42,0,'Rechtskurve'),1.4); }},
-    {g:2,bau(){ const z=zeile([{tex:"f''(1)=6\\cdot 1=6",k:1},'>0',{t:'',html:'\u2192 <b>T</b>iefpunkt',id:'art',k:1}],{stumm:true});
-      R.tp=z.chips.art.querySelector('b'); R.p2=pfeil({von:R.x2,zu:z,an:'links',lane:1,k:1}); zeig(z,{folge:true});
+    {g:2,bau(){ const z=zeile([['!eng',{tex:"f''("},{tex:'1',k:1,id:'e'},{tex:')=6\\cdot'},{tex:'1',k:1},{tex:'=6'}],'>0',{t:'',html:'\u2192 <b>T</b>iefpunkt',id:'art'}],{stumm:true});
+      R.tp=z.chips.art.querySelector('b'); R.p2=pfeil({von:R.x2,zu:z.chips.e,an:'oben',lane:1,k:1}); zeig(z,{folge:true});
       stueck(R.G.kappe(1,0.42,1,'Linkskurve'),1.4); }},
     {g:3,bau(){ marke('y-Werte: \\(y=f(x)\\)');
-      const z1=zeile([[{tex:'f(-1)=(-1)^{3}-3\\cdot(-1)=-1+3=',k:0},{tex:'2',k:0,id:'y'}]],{stumm:true});
-      R.y1=z1.chips.y; pfeil({von:R.p1,zu:z1,an:'links',lane:0,k:0}); zeig(z1,{folge:true});
+      const z1=zeile([['!eng',{tex:'f('},{tex:'-1',k:0,id:'e'},{tex:')=('},{tex:'-1',k:0},{tex:')^{3}-3\\cdot('},{tex:'-1',k:0},{tex:')=-1+3='},{tex:'2',k:0,id:'y'}]],{stumm:true});
+      R.y1=z1.chips.y; pfeil({von:R.p1,zu:z1.chips.e,an:'oben',lane:0,k:0}); zeig(z1,{folge:true});
       stueck(R.G.aufstieg(-1,2,0,'2'),1.4); stueck(R.G.punkt(-1,2,0));
-      const z2=zeile([[{tex:'f(1)=1^{3}-3\\cdot 1=1-3=',k:1},{tex:'-2',k:1,id:'y'}]],{stumm:true});
-      R.y2=z2.chips.y; pfeil({von:R.p2,zu:z2,an:'links',lane:1,k:1}); zeig(z2,{folge:true});
+      const z2=zeile([['!eng',{tex:'f('},{tex:'1',k:1,id:'e'},{tex:')='},{tex:'1',k:1},{tex:'{}^{3}-3\\cdot'},{tex:'1',k:1},{tex:'=1-3='},{tex:'-2',k:1,id:'y'}]],{stumm:true});
+      R.y2=z2.chips.y; pfeil({von:R.p2,zu:z2.chips.e,an:'oben',lane:1,k:1}); zeig(z2,{folge:true});
       stueck(R.G.aufstieg(1,-2,1,'\u22122'),1.4); stueck(R.G.punkt(1,-2,1)); }},
     {g:3,payoff:true,bau(){
       const z=zeile([[{tex:'H(',k:0,leer:true,id:'a0'},{tex:'-1',k:0,leer:true,id:'x0'},'|',{tex:'2',k:0,leer:true,id:'y0'},')'],
@@ -423,16 +426,16 @@ function serie(S){ const R={x:[],p:[],art:{},y:[]};
         flug({von:R.x[i],zu:{anker:()=>R.G.anchor(c.x,0,15),zeig:m.nodes,tick:m.tick},k:i,dauer:0.9}); }); }},
     {g:2,bau(){ marke('hinreichende Bedingung: \\('+S.n+'\'\'(x)\\neq 0\\)'); zeile([S.f2]);
       S.tests.forEach(T=>{ const b=T.art[0], rest=T.art.slice(1);
-        const z=zeile([{tex:T.tex,k:T.k[0]},T.vz,{t:'',html:'\u2192 <b>'+b+'</b>'+rest,id:'art',k:T.k[0]}],{stumm:true});
-        T.k.forEach(k=>{ R.p[k]=pfeil({von:R.x[k],zu:z,an:'links',lane:k,k:k,dauer:1.2}); R.art[k]=z.chips.art.querySelector('b'); });
+        const z=zeile([['!eng',{tex:T.pre},{tex:T.val,k:T.plain?undefined:T.k[0],id:'e'},{tex:T.post}],T.vz,{t:'',html:'\u2192 <b>'+b+'</b>'+rest,id:'art'}],{stumm:true});
+        T.k.forEach((k,i)=>{ R.p[k]=pfeil({von:R.x[k],zu:z.chips.e,an:'oben',lane:k,k:k,versatz:(i-(T.k.length-1)/2)*6,dauer:1.2}); R.art[k]=z.chips.art.querySelector('b'); });
         zeig(z,{folge:true});
         T.k.forEach(k=>stueck(R.G.kappe(S.kand[k].x,S.r||0.4,k),0.9)); }); }},
     {g:3,payoff:true,bau(){ marke('y-Werte: \\(y='+S.n+'(x)\\)');
       // Jede y-Zeile ist eine Liste von Gruppen; eine Gruppe rechnet einen Wert aus und endet mit ihm.
-      S.y.forEach(row=>{ const mapP=p=>typeof p==='string'?p:{tex:p.tex,k:p.k,id:(p.wert?'w':'z')+p.k};
-        const z=zeile(row.map(g=>g.map(mapP)),{stumm:true}); const flach=[].concat(...row);
-        const ziele=flach.filter(p=>p.ziel).map(p=>p.k); const mehrere=ziele.length>1;
-        ziele.forEach(k=>{ pfeil({von:R.p[k],zu:mehrere?z.chips['z'+k]:z,an:mehrere?'oben':'links',lane:k,k:k,dauer:1.2}); });
+      S.y.forEach(row=>{ const mapP=p=>typeof p==='string'?p:{tex:p.tex,k:p.k,id:p.wert?('w'+p.k):(p.ziel?('z'+p.k):undefined)};
+        const z=zeile(row.map(g=>g.map(mapP)),{stumm:true}); const flach=[].concat(...row).filter(p=>typeof p!=='string');
+        const ziele=flach.filter(p=>p.ziel).map(p=>p.k);
+        ziele.forEach(k=>{ pfeil({von:R.p[k],zu:z.chips['z'+k],an:'oben',lane:k,k:k,dauer:1.2}); });
         zeig(z,{folge:true});
         flach.filter(p=>p.wert).forEach(p=>{ R.y[p.k]=z.chips['w'+p.k]; const c=S.kand[p.k];
           stueck(R.G.aufstieg(c.x,c.y,p.k,fmt0(c.y)),1.1); stueck(R.G.punkt(c.x,c.y,p.k),0.7); }); });
@@ -460,26 +463,26 @@ function bauen(){
   bogen1(); bogen2(); bogen3();
   serie({n:'g',frage:'Geht das bei g genauso?',fn:x=>x*x-4*x,legend:'g(x) = x\u00b2 \u2212 4x',plot:{xmin:-1.2,xmax:5.2,ymin:-5,ymax:3},r:0.5,
     f:'g(x)=x^{2}-4x',f1:"g'(x)=2x-4",loes:['2x-4=0',['\\iff x_1=',{tex:'2',k:0}]],
-    kand:[{x:2,y:-4}],f2:"g''(x)=2",tests:[{tex:"g''(2)=2",vz:'>0',art:'Tiefpunkt',k:[0]}],
-    y:[[[{tex:'g(2)=2^{2}-4\\cdot 2=',k:0,ziel:true},{tex:'-4',k:0,wert:true}]]],
+    kand:[{x:2,y:-4}],f2:"g''(x)=2",tests:[{pre:"g''(",val:'2',post:')=2',vz:'>0',art:'Tiefpunkt',k:[0]}],
+    y:[[['!eng',{tex:'g('},{tex:'2',k:0,ziel:true},{tex:')='},{tex:'2',k:0},{tex:'{}^{2}-4\\cdot'},{tex:'2',k:0},{tex:'='},{tex:'-4',k:0,wert:true}]]],
     erg:[{k:0,tex:'T(',x:'2',y:'-4',label:'T(2|\u22124)'}]});
   serie({n:'h',frage:'Und mit zwei Kandidaten?',fn:x=>-x*x*x+3*x,legend:'h(x) = \u2212x\u00b3 + 3x',plot:{xmin:-2.4,xmax:2.4,ymin:-4,ymax:4},r:0.42,
     f:'h(x)=-x^{3}+3x',f1:"h'(x)=-3x^{2}+3",loes:['-3x^{2}+3=0','\\iff x^{2}=1',['\\iff x_1=',{tex:'-1',k:0}],[',\\ x_2=',{tex:'1',k:1}]],
     kand:[{x:-1,y:-2},{x:1,y:2}],f2:"h''(x)=-6x",
-    tests:[{tex:"h''(-1)=6",vz:'>0',art:'Tiefpunkt',k:[0]},{tex:"h''(1)=-6",vz:'<0',art:'Hochpunkt',k:[1]}],
-    y:[[[{tex:'h(-1)=-(-1)^{3}+3\\cdot(-1)=1-3=',k:0,ziel:true},{tex:'-2',k:0,wert:true}]],
-       [[{tex:'h(1)=-1^{3}+3\\cdot 1=-1+3=',k:1,ziel:true},{tex:'2',k:1,wert:true}]]],
+    tests:[{pre:"h''(",val:'-1',post:')=6',vz:'>0',art:'Tiefpunkt',k:[0]},{pre:"h''(",val:'1',post:')=-6',vz:'<0',art:'Hochpunkt',k:[1]}],
+    y:[[['!eng',{tex:'h('},{tex:'-1',k:0,ziel:true},{tex:')=-('},{tex:'-1',k:0},{tex:')^{3}+3\\cdot('},{tex:'-1',k:0},{tex:')=1-3='},{tex:'-2',k:0,wert:true}]],
+       [['!eng',{tex:'h('},{tex:'1',k:1,ziel:true},{tex:')=-'},{tex:'1',k:1},{tex:'{}^{3}+3\\cdot'},{tex:'1',k:1},{tex:'=-1+3='},{tex:'2',k:1,wert:true}]]],
     erg:[{k:0,tex:'T(',x:'-1',y:'-2',label:'T(\u22121|\u22122)'},{k:1,tex:'H(',x:'1',y:'2',label:'H(1|2)'}]});
   serie({n:'k',frage:'Und mit drei?',fn:x=>x*x*x*x-2*x*x,legend:'k(x) = x\u2074 \u2212 2x\u00b2',plot:{xmin:-1.9,xmax:1.9,ymin:-1.6,ymax:2.4},r:0.3,h:165,
     f:'k(x)=x^{4}-2x^{2}',f1:"k'(x)=4x^{3}-4x=4x(x^{2}-1)",loes:['4x(x^{2}-1)=0',['\\iff x_1=',{tex:'0',k:0}],[',\\ x_2=',{tex:'-1',k:1}],[',\\ x_3=',{tex:'1',k:2}]],
     kand:[{x:0,y:0},{x:-1,y:-1},{x:1,y:-1}],f2:"k''(x)=12x^{2}-4",
-    tests:[{tex:"k''(0)=-4",vz:'<0',art:'Hochpunkt',k:[0]},{tex:"k''(\\pm 1)=8",vz:'>0',art:'Tiefpunkte',k:[1,2]}],
-    y:[[[{tex:'k(0)=',k:0,ziel:true},{tex:'0',k:0,wert:true}],[{tex:',\\ k(-1)=1-2=',k:1,ziel:true},{tex:'-1',k:1,wert:true}],[{tex:',\\ k(1)=1-2=',k:2,ziel:true},{tex:'-1',k:2,wert:true}]]],
+    tests:[{pre:"k''(",val:'0',post:')=-4',vz:'<0',art:'Hochpunkt',k:[0]},{pre:"k''(",val:'\\pm 1',post:')=8',vz:'>0',art:'Tiefpunkte',k:[1,2],plain:true}],
+    y:[[['!eng',{tex:'k('},{tex:'0',k:0,ziel:true},{tex:')='},{tex:'0',k:0,wert:true}],['!eng',{tex:',\\ k('},{tex:'-1',k:1,ziel:true},{tex:')=1-2='},{tex:'-1',k:1,wert:true}],['!eng',{tex:',\\ k('},{tex:'1',k:2,ziel:true},{tex:')=1-2='},{tex:'-1',k:2,wert:true}]]],
     erg:[{k:0,tex:'H(',x:'0',y:'0',label:'H(0|0)'},{k:1,tex:'T_1(',x:'-1',y:'-1',label:'T\u2081(\u22121|\u22121)'},{k:2,tex:'T_2(',x:'1',y:'-1',label:'T\u2082(1|\u22121)'}]});
   serie({n:'m',frage:'Und wenn e\u02e3 drinsteckt?',fn:x=>x*Math.exp(x),legend:'m(x) = x\u00b7e\u02e3',plot:{xmin:-4.6,xmax:1.1,ymin:-0.8,ymax:1.6},r:0.5,
     f:'m(x)=x\\cdot e^{x}',f1:"m'(x)=1\\cdot e^{x}+x\\cdot e^{x}=(1+x)\\cdot e^{x}",loes:['(1+x)\\cdot e^{x}=0','\\iff 1+x=0',['\\iff x_1=',{tex:'-1',k:0}],{t:'| eˣ ≠ 0'}],
-    kand:[{x:-1,y:-1/Math.E}],f2:"m''(x)=(2+x)\\cdot e^{x}",tests:[{tex:"m''(-1)=1\\cdot e^{-1}\\approx 0{,}37",vz:'>0',art:'Tiefpunkt',k:[0]}],
-    y:[[[{tex:'m(-1)=-1\\cdot e^{-1}\\approx',k:0,ziel:true},{tex:'-0{,}37',k:0,wert:true}]]],
+    kand:[{x:-1,y:-1/Math.E}],f2:"m''(x)=(2+x)\\cdot e^{x}",tests:[{pre:"m''(",val:'-1',post:')=1\\cdot e^{-1}\\approx 0{,}37',vz:'>0',art:'Tiefpunkt',k:[0]}],
+    y:[[['!eng',{tex:'m('},{tex:'-1',k:0,ziel:true},{tex:')='},{tex:'-1',k:0},{tex:'\\cdot e^{-1}\\approx'},{tex:'-0{,}37',k:0,wert:true}]]],
     erg:[{k:0,tex:'T(',x:'-1',y:'-0{,}37',label:'T(\u22121|\u22120,37)'}]});
   bogen8();
   // Schluss
@@ -493,13 +496,16 @@ function bauen(){
 // ============================================================
 function zeitVerteilen(){
   let U=0; for(const s of SZENEN){ s.von=U; for(const b of s.beats){ b.von=U; U+=1; b.bis=U; } s.bis=U; }
-  for(const s of SZENEN)for(const b of s.beats){
-    const d=1, anteil=b.anteil!==undefined?b.anteil:(b.gewicht>=3?0.78:(b.gewicht<=1?0.42:0.6));
-    const bauL=d*anteil, ab=b.von+0.04; const gew=b.stuecke.map(x=>x.dauer), summe=gew.reduce((a,c)=>a+c,0)||1; let lauf=0;
-    b.stuecke.forEach((st,i)=>{ const a=ab+bauL*(lauf/summe); lauf+=gew[i];
-      const bb=Math.min(b.bis-0.02,a+Math.max(d*0.08,bauL*(gew[i]/summe)*0.9));
-      for(const it of st.items){ it.a=a; it.b=bb; } });
-  }
+  // Kontinuitaet (Autorbefund 2026-09-05): keine Ruhezonen. Die Stuecke eines Beats kacheln
+  // seine ganze Strecke lueckenlos; nur vor einem Blattwechsel bleibt die Blende frei, und die
+  // Blende selbst ist Bewegung. gewicht steuert nichts mehr an der Zeit.
+  for(const s of SZENEN)s.beats.forEach((b,bi)=>{
+    const letzter=bi===s.beats.length-1;
+    const von=b.von, bis=letzter?b.bis-BLENDE:b.bis, d=bis-von;
+    const gew=b.stuecke.map(x=>x.dauer), summe=gew.reduce((a,c)=>a+c,0)||1; let lauf=0;
+    b.stuecke.forEach((st,i)=>{ const a=von+d*(lauf/summe); lauf+=gew[i]; const bb=von+d*(lauf/summe);
+      for(const it of st.items){ it.a=a; it.b=Math.max(bb,a+0.001); } });
+  });
   TOTAL=U; document.documentElement.style.setProperty('--kurbel',(Math.max(2,U)*100).toFixed(0)+'vh');
 }
 const BLENDE=0.09;

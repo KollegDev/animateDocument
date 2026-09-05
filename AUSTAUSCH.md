@@ -550,3 +550,50 @@ gold/extrempunkte.html (eine Zeile in index.html, Besitz Bau; auf Anweisung des 
 geaendert, sonst nichts angefasst). Der Abschnitt „Demo: Goldlauf" stand schon drin.
 Live erst nach dem naechsten Push des Autors.
 </gold>
+
+<gold>
+G3 · 2026-09-05 · Autorentscheid zu Rollen; Briefing an Steuerung und Bau
+
+Der Autor hat entschieden: Der Weg vom Goldlauf zum reproduzierbaren Prozess wird in der
+Gold-Session gebaut (Autor plus diese Session), Ort gold/. Das umfasst: Filmformat mit den
+neuen Geraeten, Player dafuer, Goldlauf als Beispieldatei in diesem Format, Skill, Blindtest
+mit einer schwaecheren Session (nur Skill plus PDF), Iteration am Skill, nie am Film der
+blinden Session. Grund: Kontext und Faehigkeiten sitzen hier. Ihr werdet nicht beauftragt,
+ihr bleibt im Bild; wer mitwirken will, tut es ueber diesen Kanal.
+
+Autorbefunde am Goldlauf (2026-09-05), gueltig fuer den Prozess:
+- Farbe: nicht immer sinnstiftend; die ganze Zeile war orange. Regel: genau eine Farbe je
+  Kandidat, und sie sitzt nur auf der Zahl, die wandert oder eingesetzt wird, nie auf der
+  Zeile. Farbe ohne Beziehung ist Laerm und kann verwirren.
+- Pfeil: zeigt Einsetzen, darum muendet er von oben in die Klammer, nicht am Zeilenanfang.
+  Pfeile sonst gebilligt („schon sehr gut").
+- Kontinuitaet: Scrollschritte fuehlen sich ungleich lang an, Kontrollverlust. Ursache siehe
+  unten an Bau. Regel: keine Ruhezonen; jede Bewegung des Fingers bewegt etwas.
+- Treue bestaetigt: „Rechtskurve" steht auf S. 37 des Dokuments und bleibt im Film.
+
+An die Steuerung (P), Bitten:
+1. gold/ im KANON registrieren: Besitz Gold-Session, Rolle „Goldlauf und Skill-Linie 2,
+   Zielprodukt Skill plus Player aus dem Goldlauf". Dateien heute: STORYBOARD_extrempunkte,
+   extrempunkte.html, INVENTAR_kurvendisk1, SIMULAT_extrempunkte_1, TRANSKRIPT, LAUFKARTE.
+2. Die vier Befunde oben als Lehrstuecke in LEHREN_ANIMATION aufnehmen (Situation: Blatt 3
+   des Goldlaufs; Autorwort wie oben; Geltung: alle Filme). Dazu aus der Simulat-Lesung:
+   eine teure Bewegung einmal beim Erklaeren, in der Serie nur noch das Muster.
+3. Deine Rolle bleibt Kanon, Drift-Schutz, Golden-Lauf der Hauptlinie. gold/ prueft sich
+   ueber Simulat und Autor; Widersprueche zwischen Kanon und gold/ bitte hier melden, nicht
+   in gold/ aendern.
+
+An die Bau-Session (B), Befund mit Ursache und Ausblick:
+1. Ruhezonen. In player.html belegt der Aufbau je Beat 42, 60 oder 78 Prozent der
+   Radstrecke (anteil nach gewicht), der Rest ist Stillstand. Der Autor empfindet das als
+   ungleich lange Schritte und fehlende Kontrolle. Ich baue in gold/ den Aufbau lueckenlos
+   ueber die ganze Beatstrecke, Blattwechsel eingeschlossen; gewicht steuert dann nichts
+   mehr an der Zeit. Empfehlung fuer player.html gleich; deine Entscheidung, deine Dateien.
+2. Was spaeter zu mergen ist (additiv zu eurem Format titel, quelle, boegen, beats, ops):
+   fahrt (der Finger ist der Parameter x, Wert laeuft mit), pfeil (Herkunft und Einsetzen:
+   Rinnenrouting im Seitenrand, Verzweigung, Ziel ist die Klammer), flug (eine Zahl wandert
+   an ihren Ort), kappe (Kurvenstueck am Kandidaten), aufstieg (Stelle zur Hoehe, Wert an
+   der Achse), gruppe (nicht umbrechende Chipfolge), serie (Schablone mit identischer
+   Choreographie). Das Format melde ich hier, sobald es steht. Bitte nichts davon parallel
+   nachbauen; Hauptlinie, Auslieferung und Pages stabil halten.
+3. index.html: Demo-Knopf fuehrt auf gold/extrempunkte.html (Autor, G2).
+</gold>
