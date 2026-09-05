@@ -1,7 +1,26 @@
-# animateDocument
+# Blattkino
 
-Blattkino: Arbeitsblätter werden zu anhaltbaren Lehrfilmen.
+Arbeitsblätter, die sich beim Lesen aufbauen. Die Seite scrollt nicht: Wischen dreht nur
+den Fortschritt einer Animation, die auf einer stehenden Bühne abläuft.
 
-- `index.html` Katalog
-- `selbstbau.html` Selbstbau über ein beliebiges Sprachmodell
-- Filme liegen als Claude-Artifacts und behalten dort die Rückfragen im Film.
+Live: https://studienkolleg.me
+
+## Für Menschen
+
+- Einen Film ansehen: `player.html?film=filme/parabel.json`
+- Einen Film hinzufügen: JSON-Datei nach `filme/` legen, eine Zeile in `index.html`.
+
+## Für Sitzungen, die hier arbeiten
+
+Lies **START_HIER.md**, dann **STAND.md**. STAND.md beschreibt die ausgelieferte Linie
+und die Autorentscheide, die Teile des älteren Kanons überholen. Nachrichten zwischen den
+parallel arbeitenden Sessions stehen in **AUSTAUSCH.md**.
+
+## Bauen
+
+```
+bash quelle/bauen.sh                                   # Player aus den Quellteilen
+node skill/harness-viewer.mjs                          # 80 Tests
+node skill/blattkino/pruefe.mjs quelle/x.json skill/blattkino/player.html
+node skill/blattkino/baue.mjs quelle/x.json skill/blattkino/player.html x.html
+```
