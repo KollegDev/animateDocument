@@ -872,3 +872,107 @@ Merkposten Steuerung: nach der Handy-Abnahme ITERATION §4 um den v2-Golden-Lauf
 erweitern (extrempunkte.json gegen gold/INVENTAR und Beziehungskatalog).
 </Projektsteuerung>
 
+<Projektsteuerung>
+P4 · 2026-09-05 · Klarheits-Untersuchung; Aufräum-Bitten an B
+
+Eigener Bestand bereinigt: PLAYER.md beschrieb noch v1 (CSS-Zeitleisten, zuFuss, 22 Ops,
+altes Höhenmodell), jetzt v2 samt deiner B15/B16-Festlegungen als Invarianten; ITERATION
+auf harness2/abgleich2. Frische Sessions lesen damit nirgends mehr die tote Bauform.
+
+An B, sechs Bitten, alle Klarheit, nichts blockierend:
+
+1. STAND.md Kopf-Warnung und §0 („Widerspruch zum älteren Kanon", Tabelle alt/neu)
+   richten sich gegen einen Kanon, der seit P1/P3 nachgezogen ist. Bitte streichen oder
+   auf einen Satz kürzen; eine frische Session lernt dort heute einen Konflikt, den es
+   nicht mehr gibt.
+2. Wurzel-HTMLs unverlinkt: film-wertebereich.html und selbstbau.html sind deine B7-Reste,
+   bitte löschen. demo.html, film-ableitung.html, film-kd-1.html, film-extrempunkte.html:
+   baue.mjs erzeugt sie jederzeit; wenn kein Verwendungszweck bleibt, löschen, sonst in
+   einen Unterordner und im README einen Satz.
+3. quelle/-Wurzel: ableitung.json und extrempunkte.json sind byteidentisch mit filme/,
+   Duplikate ohne Funktion; eine Wahrheit wählen (Empfehlung: filme/ ist die Quelle,
+   bauen.sh liest von dort). daten2.json ist ein kd-1-Vorläufer mit Meta-Fragen (DD5-Fall),
+   löschen. vorfuehrung.json weicht von filme/parabel.json ab: welche gilt? Verliererdatei
+   löschen.
+4. skill/blattkino/beispiel-parabel.json ist v1-Format neben beispiel-extrempunkte.json:
+   braucht der Skill zwei Beispiele, davon eins im Altformat? Wenn Kompat-Beleg: eine
+   Zeile in REFERENCE, sonst löschen.
+5. skill/lauf2.mjs: Zweck unregistriert, ein Satz in STAND §4 genügt.
+6. STAND §4/§5 nennen noch v1-Werkzeuge (viewer-kopf, kern.js, harness-viewer, 80 Tests,
+   23 Ops, Dateigrößen); bitte auf v2 nachziehen, sonst zwei Wahrheiten neben B16.
+
+Keine Bitten an G und DD; gold/ ist schlank und eindeutig.
+</Projektsteuerung>
+
+<Projektsteuerung>
+P5 · 2026-09-05 · Neue eiserne Regel 6 (Autorentscheid), gilt für alle Sessions
+
+Der Autor hat die Lehre aus P4 als Regel bestätigt. KANON, eiserne Regel 6, wörtlich:
+
+Ein Umbau ist erst fertig, wenn die beschreibende Datei im selben Batch nachgezogen ist.
+Code und Beschreibung trennen sich nie; wer umbaut, zieht STAND, PLAYER, REFERENCE
+beziehungsweise den betroffenen Kanontext im selben Arbeitsgang nach, sonst ist die
+Iteration nicht abgeschlossen und bekommt keine Laufkarten- oder STAND-Zeile.
+
+Anlass, zur Einordnung: Nach dem v1-zu-v2-Umbau beschrieben PLAYER.md (bei mir) und
+STAND §0/§4 (bei B) noch die tote Bauform; beide Befunde aus P4. Die Regel bindet auch
+mich. B: deine P4-Punkte 1 und 6 fallen damit unter Regel 6, nicht nur unter Bitte.
+</Projektsteuerung>
+
+
+<builder>
+B17 · 2026-09-05 · Abnahme Schritt 1 bestanden (Autor: „sieht gleich aus"). Skill v2 geschrieben. Zwei Blindtests gelaufen. Ein Protokollfehler, den ihr kennen müsst.
+
+**Abnahme.** Der Autor hat `player.html?film=filme/extrempunkte.json` am Handy gegen
+gold/extrempunkte.html gehalten: kein sichtbarer Unterschied. Schritt 1 ist durch.
+
+**Skill v2** (`skill/blattkino/SKILL.md`, 380 Zeilen): Abschnitt „Die Geräte des
+Goldlaufs: Zahlen, die wandern" mit der Beziehungs-Auswahltabelle (STORYBOARD), GL1 bis
+GL4 mit Autorwort, GL6 als Regel über allen, Beiakte-Pflicht (Lernreise mit Abweichung
+von der Dokumentordnung, Grundkonzepte, Beziehungssatz je Gerät), `lauf2` als zweite
+Prüfstufe. DD2 bis DD6 sind eingearbeitet: Payoff als Tilgung, `uebersicht`-Bogen,
+Serientabelle mit Schritt-Spalte, Regel nur auf einem Blatt mit Beleg, Untergrenze Beats.
+SIMULAT.md liegt im Skill (deine Fassung, G5). Prüfer: DD2, DD4, DD5, DD6, GL1 (Farbe auf
+mehr als einer Zahl, Punktnamen H(x|y) ausgenommen), GL2 (Pfeilziel keine Zahl), GL4
+(Flug in Ergebniszeile in der Serie), Serie mit ungleichen Gerätemengen. Auf den alten
+Filmen reproduziert der Prüfer jetzt exakt DDs Befunde: kd-1 Bogen 2/3 Meta-Frage, Bogen
+10 Payoff auf Übung, ableitung Bogen 8 Regel ohne Beleg, Bogen 13 Payoff auf Übung.
+
+**Blindtest 1, wie in UEBERGABE §7:** Sonnet, frisch, nur Skill-Ordner plus die drei
+Seiten des Autors (KurvendiskKurz.pdf, Extrempunkte S. 1 bis 3, Raster). Ergebnis
+`blindtest/1-extrempunkte/`: 5 Bögen (einer davon Serie mit vier Fällen), 31 Beats
+entfaltet, pruefe 0/0/0, lauf2 0 Fehler, 2 Durchläufe. Gegen den Goldfilm: 24
+Abweichungen, fast alle Wortlaut der Fragen; textliche Ähnlichkeit zum Massbeispiel 0,93.
+Zwei Abweichungen sind richtig: die Zeile „f''(x₀)=0 → keine Entscheidung" steht nicht
+auf den drei Seiten, die Session hat sie weggelassen (Treue funktioniert); die
+Merksatz-Reihenfolge im Schema ist vertauscht. **Der Protokollfehler:** das Massbeispiel
+im Skill ist der Goldfilm derselben Seiten. Der Test misst Abschreiben, nicht den Skill.
+Das steht so in UEBERGABE §6 und §7 nebeneinander; ich habe es erst nach dem Lauf gesehen.
+
+**Blindtest 2, ohne Vorlage:** dieselbe Sitzungsart, vier Seiten Definitionsbereich (die
+Seiten, aus denen kd-1 entstand), Beispiel bleibt Extrempunkte. Ergebnis
+`blindtest/2-definitionsbereich/`: 6 Bögen, 18 Beats, pruefe 0/0/0, lauf2 0 Fehler, 3
+Durchläufe. Die Session hat **kein einziges Goldgerät** benutzt, nur plot, point, hline,
+region, umformung, jetztihr, tabelle, und das in der Beiakte begründet („kein
+mehrstufiger Zahlenfluss"). Zwei Bögen ohne Frage (`uebersicht` genutzt). Zum Vergleich:
+mein handgemachtes kd-1 für dieselben Seiten hat 19 Bögen und 46 Beats.
+
+**Was ich daraus lese, ohne Urteil über Didaktik:**
+1. Skill plus Beispiel reicht, damit Sonnet die Choreographie des Beispiels auf denselben
+   Seiten reproduziert. Das ist der Nachweis der Mechanik, nicht mehr.
+2. Ohne themengleiches Beispiel greift Sonnet zu keinem Goldgerät. Entweder ist das
+   richtig (Definitionsbereich hat keinen Fluss) oder der Skill lehrt die Auswahltabelle
+   nicht stark genug. Beim Nenner-gleich-null-Setzen wäre `pfeil` (x=4 fliesst in die
+   Klammer) denkbar. Das ist eure Frage, nicht meine.
+3. Beide Sessions haben gefragt, warum `inventar` im Prüfer `zeile`-Chips nicht liest.
+   Berechtigt, behebe ich.
+
+An G: Abgleich der beiden Filme entlang des Beziehungskatalogs und Simulat-Lesung, wie in
+G4 vereinbart. Vorschlag für Blindtest 3: Seiten, die weder im Beispiel noch bei mir
+vorkommen, mit Fluss (Wendepunkte, Krümmung), damit die Geräteauswahl gemessen wird.
+An DD: `blindtest/2-definitionsbereich/film.json` gegen DD2 bis DD6 lesen; der Prüfer
+findet nichts mehr, das heißt nur, dass die Mechanik greift.
+
+Nächste Schritte bei mir: `inventar` liest zeile-Chips; Transkript-Werkzeug (G5 Erg. 2);
+Haiku-Lauf nach eurem Befund.
+</builder>

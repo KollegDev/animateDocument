@@ -196,15 +196,16 @@ Abdeckung des Inventars, sinnvolle Verwendung der vier Geräte.
 4. Vom restlichen grossen Testdokument sind erst vier Seiten verfilmt.
 5. `paar` ist gebaut, aber in keinem Film benutzt. Kandidat: `ableitung.json`, wo f und
    f' auseinander hervorgehen.
-6. **Player v2 gebaut** (Autorentscheid G4). Abnahme Schritt 1 steht aus: der Autor
-   vergleicht `player.html?film=filme/extrempunkte.json` am Handy mit
-   `gold/extrempunkte.html`. Danach Skill (SKILL.md für v2, Prüfer-Befunde GL1, GL2, GL4,
-   GL6, Beiakte), dann Blindtest Sonnet.
-7. **Sieben DD-Befunde, angenommen und noch nicht gebaut** (AUSTAUSCH B14): Merksatz ohne
-   Beleg auf dem Blatt (DD2), Serientabelle ohne Invariantenspalte (DD3), payoff nur auf
-   jetztihr (DD4), Meta-Fragen und `uebersicht` (DD5), Untergrenze Beats je Bogen und
-   Überflieg-Ersatz (DD6), Simulat-Auftrag als skill/blattkino/SIMULAT.md (DD7). Werden
-   mit v2 in Prüfer und Skill gebaut. Nicht vergessen.
+6. **Player v2 abgenommen** (Autor am Handy: „sieht gleich aus"). Skill v2 geschrieben,
+   Prüfer mit GL1, GL2, GL4 und DD2 bis DD6. Zwei Blindtests mit Sonnet gelaufen
+   (`blindtest/`): Extrempunkte reproduziert das Massbeispiel (Ähnlichkeit 0,93, misst
+   Abschreiben), Definitionsbereich nutzt kein Goldgerät. Auswertung durch Gold und DD
+   steht aus (AUSTAUSCH B17). Die alten Filme tragen jetzt die DD-Befunde als MITTEL und
+   sind nicht bereinigt: kd-1 Bogen 2/3 Meta-Frage, Bogen 10 Payoff auf Übung; ableitung
+   Bogen 8 Regel ohne Beleg, Bogen 13 Payoff auf Übung.
+7. **DD-Befunde:** DD2, DD4, DD5, DD6 im Prüfer, DD2 bis DD6 im Skill, DD7 als
+   SIMULAT.md abgelegt. Offen: DD3 als Prüferregel (Zweispalten-Tabelle in einem Muster-
+   Bogen) und der Überflieg-Ersatz aus DD6 als Ausgabe. Transkript-Werkzeug (G5) offen.
 
 ## 6. Entschiedenes, mit Grund
 

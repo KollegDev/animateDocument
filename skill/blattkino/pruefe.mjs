@@ -325,6 +325,10 @@ boegen.forEach((bo,bi)=>{
       }
       // Alles zaehlt, was der Leser als Formel zu sehen bekommt, nicht nur math und umformung
       if(o.op==='math'&&o.tex) alleTex.push(o.tex);
+      // zeile: jeder TeX-Chip zaehlt, und die ganze Zeile zusammengezogen
+      if(o.op==='zeile'&&Array.isArray(o.teile)){ const tx=[]; const lauf=t=>{ for(const p of t){ if(Array.isArray(p))lauf(p); else if(typeof p==='string'&&p!=='!eng')tx.push(p); else if(p&&p.tex!==undefined)tx.push(String(p.tex)); } };
+        lauf(o.teile); for(const t of tx)alleTex.push(t); if(tx.length>1)alleTex.push(tx.join('')); }
+      if(o.op==='marke'&&o.t) alleTex.push(String(o.t));
       if(o.op==='wert'&&o.tex) alleTex.push(o.tex);
       if(o.op==='jetztihr'){ for(const f of [o.aufgabe,o.aufgabeTex,o.loesung,o.loesungTex]) if(f) alleTex.push(f); }
       if(o.op==='umformung'){

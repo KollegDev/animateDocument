@@ -1,0 +1,334 @@
+{
+ "titel": "Kurvendiskussion: Definitions- und Wertebereich",
+ "quelle": "Kurvendiskussion, Seiten 1 bis 4",
+ "inventar": "f(x)=x^{4}+3x^{3}+4x^{2}+6x+1, f(x)=\\frac{x}{x+1}, f(x)=e^{2x}, f(x)=\\sqrt{x+1}, f(x)=\\log(x^{2}+1), f(x)=e^{2x}\\cdot(x+4)^{2}, f(x)=\\frac{1}{x-4}, D_f:\\ x\\in\\mathbb{R}\\mid x\\neq4, f(4)=\\frac{1}{4-4}, f(4)=\\frac{1}{0}, f(x) = x² + 4, W_f:\\ y\\in\\mathbb{R}\\mid y\\geq4, f(x) = x⁴ − 2x², W_f:\\ y\\in\\mathbb{R}\\mid y\\geq-1, f(x) = −(x−1)² + 3, W_f:\\ y\\in\\mathbb{R}\\mid y\\leq3",
+ "boegen": [
+  {
+   "uebersicht": true,
+   "frage": null,
+   "beats": [
+    {
+     "sub": "Eine Kurvendiskussion untersucht eine Funktion unter mehreren Gesichtspunkten.",
+     "ops": [
+      {
+       "op": "h",
+       "t": "Kurvendiskussion"
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "sub": "Vier Gesichtspunkte gehören dazu:",
+     "ops": [
+      {
+       "op": "item",
+       "t": "Definitionsbereich und Wertebereich"
+      },
+      {
+       "op": "item",
+       "t": "Graphische Darstellung / Skizze"
+      },
+      {
+       "op": "item",
+       "t": "Symmetrieverhalten"
+      },
+      {
+       "op": "item",
+       "t": "y-Achsenschnittpunkt und Nullstellen"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "uebersicht": true,
+   "frage": null,
+   "beats": [
+    {
+     "sub": "Dabei können ganz unterschiedliche Funktionstypen auftreten.",
+     "ops": [
+      {
+       "op": "tabelle",
+       "art": "regel",
+       "kopf": [
+        "Typ",
+        "Beispiel"
+       ],
+       "zeilen": [
+        [
+         "!ganzrationale Funktion",
+         "f(x)=x^{4}+3x^{3}+4x^{2}+6x+1"
+        ],
+        [
+         "!gebrochenrationale Funktion",
+         "f(x)=\\frac{x}{x+1}"
+        ],
+        [
+         "!Exponentialfunktion",
+         "f(x)=e^{2x}"
+        ],
+        [
+         "!Wurzelfunktion",
+         "f(x)=\\sqrt{x+1}"
+        ],
+        [
+         "!Logarithmusfunktion",
+         "f(x)=\\log(x^{2}+1)"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "sub": "Diese Typen lassen sich auch zusammensetzen.",
+     "ops": [
+      {
+       "op": "math",
+       "tex": "f(x)=e^{2x}\\cdot(x+4)^{2}"
+      },
+      {
+       "op": "note",
+       "t": "Bei fortgeschrittenen Aufgaben werden solche Funktionen zu Funktionsscharen erweitert."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Warum darf bei f(x)=1/(x-4) nicht x=4 eingesetzt werden?",
+   "beats": [
+    {
+     "sub": "Der Definitionsbereich legt fest, welche x-Werte eingesetzt werden dürfen.",
+     "ops": [
+      {
+       "op": "marke",
+       "t": "Definitionsbereich"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=\\frac{1}{x-4}"
+      },
+      {
+       "op": "math",
+       "tex": "D_f:\\ x\\in\\mathbb{R}\\mid x\\neq4"
+      }
+     ]
+    },
+    {
+     "sub": "Wird die 4 trotzdem eingesetzt, entsteht im Nenner eine Null.",
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "f(4)=\\frac{1}{4-4}",
+         "warum": "4 für x eingesetzt"
+        },
+        {
+         "tex": "f(4)=\\frac{1}{0}",
+         "warum": "Nenner ausgerechnet"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "sub": "Durch Null darf nicht geteilt werden.",
+     "ops": []
+    },
+    {
+     "sub": "Allgemein schränken drei Situationen den Definitionsbereich ein:",
+     "ops": [
+      {
+       "op": "item",
+       "t": "Brüche"
+      },
+      {
+       "op": "item",
+       "t": "Wurzeln"
+      },
+      {
+       "op": "item",
+       "t": "Logarithmus"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Welche y-Werte kommen bei f(x)=x²+4 überhaupt heraus?",
+   "beats": [
+    {
+     "sub": "Der Wertebereich zeigt, welche y-Werte eine Funktion überhaupt annimmt.",
+     "ops": [
+      {
+       "op": "plot",
+       "id": "w",
+       "expr": "x^2+4",
+       "xmin": -4,
+       "xmax": 4,
+       "ymin": -1,
+       "ymax": 12,
+       "legend": "f(x) = x² + 4"
+      },
+      {
+       "op": "point",
+       "id": "w",
+       "x": 0,
+       "y": 4,
+       "label": "T(0|4)"
+      },
+      {
+       "op": "hline",
+       "id": "w",
+       "y": 4,
+       "label": "y = 4"
+      }
+     ]
+    },
+    {
+     "sub": "Oberhalb der Linie wird jeder Wert erreicht, unterhalb keiner.",
+     "ops": [
+      {
+       "op": "region",
+       "id": "w",
+       "y": 4,
+       "dir": "above",
+       "label": "Wertebereich: y ≥ 4"
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "sub": "Damit steht der Wertebereich fest.",
+     "ops": [
+      {
+       "op": "math",
+       "tex": "W_f:\\ y\\in\\mathbb{R}\\mid y\\geq4",
+       "hl": true
+      }
+     ]
+    },
+    {
+     "sub": "Der Wertebereich ist oft schwer zu erkennen. Er zeigt sich meist erst am Ende der Untersuchung.",
+     "ops": []
+    }
+   ]
+  },
+  {
+   "frage": "Ändert sich die Grenze, wenn es zwei tiefste Punkte gibt?",
+   "beats": [
+    {
+     "sub": "Bei dieser Funktion vierten Grades gibt es sogar zwei tiefste Punkte.",
+     "ops": [
+      {
+       "op": "plot",
+       "id": "v",
+       "expr": "x^4-2*x^2",
+       "xmin": -2,
+       "xmax": 2,
+       "ymin": -1.5,
+       "ymax": 4,
+       "legend": "f(x) = x⁴ − 2x²"
+      },
+      {
+       "op": "point",
+       "id": "v",
+       "x": -1,
+       "y": -1,
+       "label": "T₁(−1|−1)"
+      },
+      {
+       "op": "point",
+       "id": "v",
+       "x": 1,
+       "y": -1,
+       "label": "T₂(1|−1)"
+      },
+      {
+       "op": "point",
+       "id": "v",
+       "x": 0,
+       "y": 0,
+       "label": "H(0|0)"
+      }
+     ]
+    },
+    {
+     "sub": "Nach oben gibt es keine Grenze. Nach unten schon, bei y = −1.",
+     "ops": [
+      {
+       "op": "hline",
+       "id": "v",
+       "y": -1,
+       "label": "y = −1"
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "sub": "Zwei Tiefpunkte teilen sich eine gemeinsame Grenze.",
+     "ops": [
+      {
+       "op": "math",
+       "tex": "W_f:\\ y\\in\\mathbb{R}\\mid y\\geq-1",
+       "hl": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Gilt die gleiche Regel auch bei einer nach unten geöffneten Parabel?",
+   "beats": [
+    {
+     "sub": "Nun folgt eine Parabel, die nach unten geöffnet ist.",
+     "ops": [
+      {
+       "op": "plot",
+       "id": "d",
+       "expr": "-(x-1)^2+3",
+       "xmin": -3,
+       "xmax": 5,
+       "ymin": -6,
+       "ymax": 4,
+       "legend": "f(x) = −(x−1)² + 3"
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "fokus": true,
+     "sub": "Ihr höchster Punkt liegt bei H(1|3). Höher kommt die Kurve nicht.",
+     "ops": [
+      {
+       "op": "point",
+       "id": "d",
+       "x": 1,
+       "y": 3,
+       "label": "H(1|3)"
+      },
+      {
+       "op": "hline",
+       "id": "d",
+       "y": 3,
+       "label": "y = 3"
+      }
+     ]
+    },
+    {
+     "ops": [
+      {
+       "op": "jetztihr",
+       "t": "Wie lautet der Wertebereich in der gewohnten Schreibweise?",
+       "loesung": "W_f:\\ y\\in\\mathbb{R}\\mid y\\leq3"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "schluss": "Ende. Weiter im Dokument: Symmetrieverhalten, y-Achsenschnittpunkt und Nullstellen."
+}
