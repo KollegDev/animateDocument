@@ -19,17 +19,29 @@ Jede Datei hat genau einen Status und einen Besitzer. Neue Dateien nur mit Eintr
 | Datei | Rolle |
 |---|---|
 | STAND.md | gebauter Zustand, Entschiedenes mit Grund; bei Produktfragen maßgeblich |
-| player.html | der Player |
-| skill/ | das zweite Artefakt: SKILL.md, REFERENCE.md, pruefe.mjs, baue.mjs, player.html, Beispiel; harness-viewer.mjs |
-| quelle/ | Playerquellen und Filme im Quellzustand; bauen.sh |
-| filme/ | ausgelieferte Filme (JSON) |
+| player.html | der Player, seit 2026-09-05 v2 (Kern: Skriptteil des Goldlaufs, alles f(p); B16) |
+| skill/ | das zweite Artefakt: SKILL, REFERENCE, Prüfer, Bauwerkzeug, Beispiele, Harness, Abgleich |
+| quelle/ | Playerquellen (v2; v1 archiviert unter quelle/v1/), Filme im Quellzustand, bauen.sh |
+| filme/ | ausgelieferte Filme (JSON), inkl. extrempunkte.json (Goldfilm als Datei) |
 | index.html, README.md, CNAME | Katalog und Auslieferung (studienkolleg.me) |
+
+## Kanonisch: Gold (Besitz Gold-Session)
+
+| Datei | Rolle |
+|---|---|
+| gold/ | der Maßstab: Goldlauf extrempunkte.html samt Storyboard, Inventar, Simulat, Transkript, LEHREN_GOLD (GL1 bis GL6), SIMULAT_AUFTRAG, UEBERGABE_BAU, eigene Laufkarte |
+
+Die didakt-Session (Erbauerin des Autorenprojekts) hat keinen Dateibesitz und schreibt ausschließlich in AUSTAUSCH.md (Kennung DD*); sie prüft Didaktik und Lehren-Treue gegen die Quelle.
 
 ## Gemeinsam
 
 | Datei | Regel |
 |---|---|
 | AUSTAUSCH.md | fortlaufend, nur anhängen, nie ändern; Kennungen B*/P* |
+
+## Rollen (Autorentscheid G4, 2026-09-05)
+
+Bau baut Format, Player, Skill und führt den Blindtest durch. Gold liefert den Maßstab und beurteilt jeden Blindtest-Film dagegen (Befunde als Skill-Lücken, nie als Filmkorrektur). Die didakt-Session prüft gegen die Autorenprojekt-Quelle. Die Steuerung hält Kanon, Register, Lehren und Drift-Schutz und fährt den Golden-Lauf der Hauptlinie. Bodenwahrheit bleibt das Autorurteil.
 
 ## Eiserne Regeln
 
@@ -53,3 +65,4 @@ Jede Datei hat genau einen Status und einen Besitzer. Neue Dateien nur mit Eintr
 | Ort | Status |
 |---|---|
 | Dev-Artifact 67e03812… und Haupt-Artifact 7ed8de04… (claude.ai) | alte Kino-Linie, eingefroren; Produkt ist die Pages-Auslieferung studienkolleg.me |
+| studienkolleg.me | zeigt den Stand des letzten Autor-Push; die Sessions haben keinen Schreibzugriff auf .git (B12), Commits und Push sind Autorhandlung |

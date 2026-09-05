@@ -150,10 +150,17 @@ let nBeats=0, gewichte=[], nFokus=0, alleTex=[], alleText=[], nGewicht=0;
 let offenesBild=null;   // welches Bild gerade steht; Markierungen brauchen eines
 boegen.forEach((bo,bi)=>{
   offenesBild=null;     // jede Szene faengt mit leerer Buehne an
+  const chips={};       // Kennungen der Chips dieses Bogens
   const wo = 'Bogen '+(bi+1);
   const bs = Array.isArray(bo.beats)?bo.beats:[];
   if(!bs.length){ B('SCHWER',wo,'ohne Beats.'); return; }
-  if(!bo.frage) B('MITTEL',wo,'ohne "frage": die lebende Frage fehlt, die den Bogen zieht.');
+  // DD5: Uebersichtsboegen duerfen ohne Frage sein; erfundene Meta-Fragen nicht
+  if(bo.uebersicht!==true && !bo.frage) B('MITTEL',wo,'ohne "frage": die lebende Frage fehlt, die den Bogen zieht. Ist es eine Uebersicht des Dokuments, setze "uebersicht": true.');
+  if(bo.frage && /\b(Block|Kapitel|Abschnitt|Liste|Seite|Film|Dokument)\b/i.test(String(bo.frage)))
+    B('MITTEL',wo,'die "frage" spricht ueber das Dokument ("'+String(bo.frage).slice(0,50)+'"). Im Leser lebt sie nicht. Entweder eine echte Frage oder "uebersicht": true.');
+  // DD6: ein Blatt, das nach zwei Wischern abgeloest wird, ist kein Speicher
+  if(bs.length<3 && bo.uebersicht!==true && bo.reprise!==true && !bo.serieFall)
+    B('LEICHT',wo,'nur '+bs.length+' Beat(s). Das Blatt ist kaum aufgebaut, schon wird es abgeloest.');
 
   // Puffer: jeder Takt kostet dieselbe Strecke, also zaehlt die Zahl der Beats.
   // Was der Leser vor der Aufloesung noch im Kopf halten muss, ist begrenzt.
@@ -201,6 +208,12 @@ boegen.forEach((bo,bi)=>{
   bs.forEach((b,i)=>{ if(i>0 && (b.ops||[]).some(o=>o.op==='clear'))
     B('MITTEL',wo+', Beat '+(i+1),'"clear" mitten im Bogen zerschneidet ihn.'); });
 
+  // DD4: der Payoff tilgt die Schuld; eine Uebung allein tilgt nichts
+  bs.forEach((b,i)=>{ if(b.payoff!==true)return;
+    const sicht=(b.ops||[]).filter(o=>o&&SICHTBAR.includes(o.op)&&!(o.op==='zeile'&&o.stumm)).map(o=>o.op);
+    if(sicht.length&&sicht.every(op=>op==='jetztihr'))
+      B('MITTEL',wo+', Beat '+(i+1),'"payoff" sitzt auf einer Uebung. Eine Uebung prueft das Aufgeloeste, sie loest nichts auf. Der Payoff ist die Tilgung, die Uebung darf danach stehen.'); });
+
   // Regel ohne Serie
   const hatMerksatz = bs.some(b=>(b.ops||[]).some(o=>o.op==='merksatz'));
   // Ein Bogen mit "fortsetzung": true setzt den vorigen fort. Seine Serie zaehlt weiter,
@@ -217,6 +230,12 @@ boegen.forEach((bo,bi)=>{
   // Eine Marke zeigt eine Stelle. Drei Stellen tragen eine Regel ueber Stellen.
   const nMarken = alleOps.filter(o=>['binden','wert','point'].includes(o.op)).length
                 + alleOps.filter(o=>o.op==='bildfolge').reduce((n,o)=>n+(Array.isArray(o.stufen)?o.stufen.length:0),0);
+  // DD2: die Regel steht auf einem Blatt, das mindestens einen Beleg traegt
+  if(hatMerksatz){
+    const eigen=bs.flatMap(b=>(b.ops||[]));
+    const belege=eigen.filter(o=>['tabelle','math','zeile','umformung','paar','point','punkt','wert','binden','bildfolge','kandidat','aufstieg'].includes(o.op)).length;
+    if(belege===0) B('MITTEL',wo,'Merksatz ohne Beleg auf demselben Blatt. Die Faelle stehen auf dem vorigen Blatt, das schon weg ist; der Leser kann nicht zurueckblaettern. Reprise des letzten Falls hierher, oder die Regel zu den Faellen.');
+  }
   if(hatMerksatz && tabZeilen<4 && nMath<4 && nBilder<2 && nMarken<3)
     B('SCHWER',wo,'Regel ohne Serie: ein Merksatz, aber weniger als vier Beispiele. Nach einem Beispiel hat der Leser nur eine Ahnung.');
 
@@ -269,6 +288,26 @@ boegen.forEach((bo,bi)=>{
       }
       if(o.op==='binden'&&offenesBild!=='doppelgraph')
         B('SCHWER',wob,'"binden" ohne Doppelgraph. Der verbindende Strich braucht zwei Systeme.');
+      // Chips dieses Bogens fuer GL1 und GL2 einsammeln
+      if(o.op==='zeile'&&Array.isArray(o.teile)){
+        const lauf=(t)=>{ for(const p of t){ if(Array.isArray(p))lauf(p); else if(p&&typeof p==='object'){ if(p.id!==undefined)chips[p.id]=p;
+          // GL1: Farbe nur auf einer Zahl. Indizes und Hochzahlen zaehlen nicht als Zahl.
+          if(p.k!==undefined&&p.tex!==undefined){
+            // Ein benannter Punkt H(x|y) ist ein Objekt des Kandidaten, keine gefaerbte Zeile
+            const punkt=/^[A-Z](_\{?\d\}?)?\(/.test(String(p.tex));
+            const rein=String(p.tex).replace(/[_^]\{?-?\d+\}?/g,'').replace(/\{,\}/g,',');
+            const zahlen=(rein.match(/-?\d+(?:[.,]\d+)?/g)||[]).length;
+            if(zahlen>1&&!punkt) B('SCHWER',wob,'Farbe auf "'+String(p.tex).slice(0,30)+'": mehr als eine Zahl. Farbe sitzt nur auf der Zahl, die wandert oder eingesetzt wird (GL1).'); } } } };
+        lauf(o.teile); }
+      if(o.op==='pfeil'){
+        const z=chips[o.zu];
+        if(z===undefined) B('SCHWER',wob,'pfeil auf eine Kennung, die es in diesem Bogen nicht gibt ("'+o.zu+'").');
+        else if(z.tex===undefined || !/^-?\d+(?:[.,{}\d]*)?$/.test(String(z.tex).replace(/\\pm\s*/,'')))
+          B('MITTEL',wob,'pfeil endet auf "'+String(z.tex!==undefined?z.tex:z.t).slice(0,20)+'", das ist keine eingesetzte Zahl in einer Klammer (GL2).');
+      }
+      if(o.op==='flug'&&typeof o.zu==='string'){ const z=chips[o.zu];
+        if(z===undefined) B('SCHWER',wob,'flug in eine Kennung, die es in diesem Bogen nicht gibt ("'+o.zu+'").');
+        else if(bo.serieFall&&z.leer) B('MITTEL',wob,'flug in die Ergebniszeile innerhalb der Serie. Das Zusammenfliegen gehoert ins erklaerte Beispiel; in der Serie erscheint die Ergebniszeile nur (GL4).'); }
       if(BILDER.includes(o.op)) offenesBild=o.op;
       if(o.op==='clear') offenesBild=null;
       if(o.op==='tabelle'){

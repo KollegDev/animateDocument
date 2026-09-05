@@ -131,6 +131,56 @@ Ordnung; ein Film mit einem erfundenen Grenzuebergang ist es nicht. `wert` gilt,
 das Dokument selbst einen Funktionswert benutzt und ein Bild dazu da ist. Benutzt es
 keinen, gibt es nichts zu zeigen.
 
+## Die Geraete des Goldlaufs: Zahlen, die wandern
+
+Der Autor hat mit der Gold-Session den Massstab gebaut (`beispiel-extrempunkte.json`,
+acht Blaetter Extrempunkte). Daraus kommen Geraete fuer eine Beziehung, die Papier nie
+zeigen kann: **woher eine Zahl kommt und wohin sie geht.** Ein Verfahren wie
+„notwendige Bedingung, hinreichende Bedingung, y-Wert" ist ein Fluss von Zahlen zwischen
+drei Zeilen. Auf Papier muss der Leser den Fluss im Kopf herstellen. Im Film sieht er ihn.
+
+Jedes Geraet zeigt genau eine Beziehung. Das ist die Auswahltabelle:
+
+| Beziehung, die der Leser sonst im Kopf herstellen muesste | Geraet |
+|---|---|
+| A entsteht aus B und wird eingesetzt | `pfeil` von der Quelle, im Seitenrand entlang, **von oben in die Klammer** auf die eingesetzte Zahl |
+| dieselbe Zahl wird mehrfach eingesetzt | ein Stamm, mehrere Aeste: `pfeil` mit `von: {"pfeil": id}` |
+| eine Zahl bekommt ihren Ort im Bild | `flug` vom Chip zur Achsenmarke (`kandidat`), oder in einen leeren Chip der Ergebniszeile |
+| eine Stelle ist noch kein Punkt | `kandidat` auf der x-Achse; erst `aufstieg` hebt sie zur Hoehe, dann landet `punkt` |
+| wie das Bild an der Stelle aussieht | `kappe` auf dem Kurvenstueck, ∩ oder ∪, beschriftet mit dem Wortlaut des Dokuments |
+| ein Konzept ist selbst ein Lauf | `fahrt`: der Finger ist x, die Tangente faehrt, m laeuft mit, wird 0 am Gipfel und im Tal |
+| dasselbe Verfahren an neuen Zahlen | `serie`: eine Vorlage, viele Faelle, identische Choreographie |
+
+Eine Formelzeile ist dafuer eine `zeile` aus Chips: nur die eingesetzte Zahl bekommt eine
+Kennung, eine Farbe und ist Pfeilziel. Die Formel drum herum ist eine enge Gruppe
+(`["!eng", ...]`), damit sie nicht umbricht. Alles Weitere steht in REFERENCE.md.
+
+Vier Lehren des Autors dazu, jede mit ihrem Grund:
+
+- **Farbe sitzt auf der Zahl, die wandert, sonst nirgends (GL1).** Eine Farbe je Kandidat:
+  auf der Stelle, ihren Einsetzungen, ihrem y-Wert, ihrem Punkt. Nie auf ganzen Zeilen,
+  nie auf Text. Autorwort: „Farben koennen auch verwirren. Es muss damit vorsichtig
+  umgegangen werden." Farbe ist ein Zeiger; zeigt sie auf alles, zeigt sie auf nichts.
+- **Der Pfeil muendet von oben in die Klammer (GL2).** Er bedeutet „diese Zahl kommt hier
+  hinein". Zeilenanfang ist nie ein Ziel. Autorwort: „Die Pfeile sollen IN die Klammer
+  rein zeigen, denn es geht ja um das Einsetzen."
+- **Keine Ruhezonen am Rad (GL3).** Jeder Beat kostet dieselbe Strecke, seine Stuecke
+  kacheln sie lueckenlos. `gewicht` gibt es nicht mehr. Wer verweilen will, haelt die Hand
+  still. Autorwort: „Es ist unangenehm, dass ich das nicht selbst unter Kontrolle habe."
+- **Eine teure Bewegung einmal, in der Serie nur das Muster (GL4).** Das Zusammenfliegen
+  des Ergebnisses aus seinen Herkunftszahlen gehoert ins erklaerte Beispiel. In der Serie
+  bleiben Pfeile, Kappen und Aufstieg; die Ergebniszeile erscheint nur noch. Beim dritten
+  Auftreten wird gezeigt, nicht mehr erzaehlt.
+
+Und die Regel ueber allen: **jedes bewegte Element zeigt eine benannte Beziehung (GL6).**
+Kannst du sie nicht in einem Satz nennen, fliegt das Element. Diesen Satz schreibst du
+je Geraet in deine Antwort (Abschnitt „Beiakte" unten).
+
+`beispiel-extrempunkte.json` ist das Mass. Lies es ganz, bevor du das erste Blatt
+giesst: dort siehst du, wie ein Verfahren in Chips zerlegt wird, wie Pfeile aus einem
+Stamm verzweigen, wie die Serie aus einer Vorlage entsteht. Es ist kein Formular zum
+Ausfuellen; ein anderes Dokument hat einen anderen Fluss.
+
 ## Die Einheit ist der Bogen
 
 Nicht der Absatz und nicht die Dokumentzeile. Ein **Bogen** ist eine Spannung von ihrer
@@ -140,11 +190,18 @@ Jeder Bogen traegt eine `frage`: die Frage, die im Leser an dieser Stelle wirkli
 lebt. Sie erscheint nicht im Film, sie ist der Grund, warum es den Bogen gibt. Findest
 du keine, gehoert der Bogen nicht ins Dokument.
 
-Genau ein Beat traegt `payoff: true`. Er loest die Spannung und steht am Ende.
-Nichts Fremdes steht in einem offenen Bogen.
+Genau ein Beat traegt `payoff: true`. **Er tilgt die Schuld des Bogens**: die Antwort auf
+die lebende Frage, das Ergebnis, die Stelle im Bild. Konsolidierung darf danach stehen
+(ein Merksatz nach der Regel, eine Uebung); der Payoff ist die Tilgung, nicht das Letzte.
+Eine Uebungsaufgabe allein ist kein Payoff, sie prueft nur, was aufgeloest wurde.
 
-Ein Bogen ist typischerweise drei bis fuenf Beats und hoechstens anderthalb
-Bildschirme lang.
+Manche Boegen tragen keine lebende Frage, weil sie eine Uebersicht des Dokuments
+wiedergeben (ein Katalog, eine Gliederung). Dann `"uebersicht": true` und `"frage": null`.
+Das ist ehrlich; eine erfundene Frage („Womit faengt eine Kurvendiskussion an?") ist es
+nicht, denn im Leser lebt sie nicht.
+
+Ein Bogen ist ein Blatt und ein Blatt ein Bildschirm. Typisch drei bis fuenf Beats;
+unter drei ist das Blatt kaum aufgebaut, schon wird es abgeloest.
 
 ## Ablauf
 
@@ -178,7 +235,10 @@ schriftlich, kurz:
 - **Was ist blosse Aufzaehlung?** Gewicht 1, laeuft durch.
 
 Diese Reise gehoert in deine Antwort an den Nutzer, in fuenf Zeilen. Sie ist die
-Begruendung fuer alles Weitere und erscheint nie im Film.
+Begruendung fuer alles Weitere und erscheint nie im Film. **Eine der fuenf Zeilen sagt, wo
+die Filmordnung von der Dokumentordnung abweicht, oder stellt ausdruecklich fest, dass
+die Dokumentordnung schon die Lernordnung ist.** Sonst ist die Reise ein Wegwerfartefakt,
+das nichts bewirkt.
 
 ### 4. Bögen giessen
 
@@ -200,14 +260,27 @@ gehoert eines der vier Geraete hin. Wenn nein, lass sie weg.
 ### 5. Prüfen
 
 ```
-node pruefe.mjs film.json player.html
+node pruefe.mjs film.json player.html      # Befunde gegen die Gesetze
+node lauf2.mjs film.json player.html       # ganze Radstrecke, muss 0 Fehler melden
 ```
+
+`lauf2.mjs` liegt eine Ebene ueber diesem Ordner (`skill/lauf2.mjs`); es faehrt den Film
+im Spieler ab und meldet jede Operation, die zur Laufzeit scheitert (falsche Chip-Kennung,
+Pfeil ohne Ziel). `pruefe.mjs` sieht das nicht, weil es nur die Datei liest.
 
 Der Pruefer meldet Befunde, kein Lob. Jeder schwere Befund wird behoben, bevor gebaut
 wird. Ein Qualitaetsmangel wird nie am Satz repariert: **giesse den Bogen neu**, mit
 diesem Verstaendnis.
 
-### 6. Bauen
+### 6. Beiakte
+
+Deine Antwort an den Nutzer enthaelt neben der Datei: die Lernreise in fuenf Zeilen
+(mit der Abweichung von der Dokumentordnung), die Grundkonzepte des Abschnitts (was
+Verstaendnis konstituiert, keine Rechenschritte), und **je eingesetztem Geraet einen Satz,
+welche Beziehung es zeigt** (GL6). Fehlt der Satz zu einem Geraet, ist das Geraet
+Dekoration und fliegt. Keine Lobprosa, keine Nacherzaehlung des Films.
+
+### 7. Bauen
 
 `player.html` lesen, `__TITEL__` durch das Thema und `__BEATS_JSON__` durch den Inhalt
 der JSON-Datei ersetzen, Ergebnis schreiben. Programmatisch, nicht abtippen.
@@ -246,6 +319,19 @@ diesem Merkmal variiert.
 Gestalt, auch im Trivialfall: aus 4x wird 4x²/4, aus x wird 1x²/1, aus 7 wird 7/1·x¹.
 Gekuerzt wird erst hinter einem angehaengten Gleichheitszeichen. Ein Zwischenschritt,
 den die Regel nicht erzeugt, verdeckt sie.
+
+Das gilt auch fuer eine `tabelle`, denn dort landen Serien im Film. Eine Tabelle
+„Aufgabe, Ergebnis" zeigt das Muster nicht: der Schritt, der die Regel IST, steht in
+keiner Zeile, und der Leser abstrahiert aus der Gestalt der Aufgabe. Eine Musterserie
+traegt eine Spalte mit dem Schritt: Funktion | Nenner gleich null | Loesung. Und wo das
+Verfahren ein Fluss von Zahlen ist, traegt die `serie` mit Pfeilen es besser als jede
+Tabelle, weil die Tabelle den Fluss verbirgt.
+
+**Eine Regel steht auf einem Blatt, das mindestens einen ihrer Belege traegt.** Ein
+Merksatz auf einem Blatt, dessen Beispiele mit dem vorigen Blatt weggeblendet sind, steht
+im Leeren; der Leser kann nicht zurueckblaettern. Muss eine Serie geteilt werden, kommt
+der letzte Fall als Reprise mit auf das Blatt der Regel, oder die Regel bleibt bei den
+Faellen.
 
 **Der Plan bleibt unsichtbar.** Jeder Satz, der ankuendigt, praesentiert oder eine
 Planentscheidung ausspricht, ist Fueller und entsteht gar nicht erst. Kein "in diesem

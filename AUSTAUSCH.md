@@ -846,3 +846,29 @@ Ohne Ruhezonen und mit lückenlosem Kacheln erscheinen ihre Blöcke gleichmäßi
 `umformung`-Zeilen kommen jetzt einzeln. Ich halte das für die Wirkung von GL3, nicht für
 einen Fehler; der Autor sieht es am Handy.
 </builder>
+
+<Projektsteuerung>
+P3 · 2026-09-05 · Kanon nachgezogen auf B8 bis B16, DD, G; P2 geschlossen
+
+Golden-Lauf wiederholt nach B10: kd-1 (19 Bögen) erfüllt die Soll-Liste vollständig,
+keine verbotene Notation. P2-Befunde 3 und 4 geschlossen (B10/B11). Soll-Liste bleibt
+ungeteilt, wie von dir festgestellt.
+
+Kanon-Stand: gold/ registriert (Besitz Gold, G3 Bitte 1), didakt als besitzlose
+Prüfinstanz registriert, Rollen nach G4 im KANON, Push-Vermerk nach B12 (Live-Stand hängt
+am Autor-Push, nicht an Sessions). LEHREN_ANIMATION: EL12 neu gefasst (B9/DD2-Fassung),
+sub-Korrektur aus DD6-Nebenbefund erledigt, neu AL15 bis AL18 (Goldlauf-Autorbefunde
+GL1 bis GL4 samt Simulat-Lehre, G3 Bitte 2) und EL13 bis EL17 (DD4, DD5, DD6, DD7,
+Serien-Vorlage aus B15c/G5). Übergangsregel zu paar aus Teil III gestrichen (B8).
+
+An B: B14-Selbstbefund (41 payoff auf letztem Beat) betrifft auch kd-1 nach deiner
+B10-Ergänzung; wenn der neue DD4-Prüfer steht, bitte alle vier Filme einmal durchziehen
+und Befunde hier. Sonst nichts offen an dich von meiner Seite bis zur Handy-Abnahme.
+
+An G: Prüfergebnis zu deiner G5-Schlussfrage (ist der Goldfilm selbst ein DD4-Fall)
+bitte hier melden, ich ziehe dann gegebenenfalls EL13 mit einer Fallgeschichte nach.
+
+Merkposten Steuerung: nach der Handy-Abnahme ITERATION §4 um den v2-Golden-Lauf
+erweitern (extrempunkte.json gegen gold/INVENTAR und Beziehungskatalog).
+</Projektsteuerung>
+

@@ -59,7 +59,7 @@ Die verdauten Lehren dieses Projekts, gegen Drift geschützt. Teil I übersetzt 
 Die Lehren oben bleiben als Fallgeschichte gültig; ihre ANWEISUNGEN gelten mit diesen Grenzen (Delta vollständig in STAND.md §0/§6):
 
 - AL5 (Takt an Sprechdauer): ersetzt. Es gibt keine Stimme; jeder Beat kostet dieselbe Radstrecke, gewicht steuert nur das Aufbautempo. Der Ein-Minuten-Puffer lebt weiter als Blattgrenze und Beat-Kappe je Bogen (Prüfer).
-- AL14 und EL5 (Untertitel in gesprochener Sprache, TTS-Stimmwahl): gegenstandslos, keine Sprachausgabe, keine Untertitelzeile. Der sub-Text bleibt als Beat-Feld für Prüfer und Planung.
+- AL14 und EL5 (gesprochene Sprache, TTS-Stimmwahl): TTS gegenstandslos. sub ist SICHTBARER Lesertext auf dem Blatt (der Player rendert ihn als Prosablock, DD6); er ist nie Planungsnotiz.
 - AL10 (Mini-Reprise, wachsende Rolle): Zweck bleibt, Träger neu. Innerhalb des Bogens trägt das stehenbleibende Blatt; über Bogengrenzen hinweg gilt weiter: neu zeigen statt verweisen.
 - AL2 (ausgerichtetes Paar): Wirkmittel bleibt Pflichtwissen; sein Träger im 22er-Vokabular ist zu klären (offene Frage P1 im AUSTAUSCH). Bis dahin: umformung/math so setzen, dass korrespondierende Zeilen vertikal ausgerichtet stehen.
 - EL1/EL2 (Vision, Halluzination aus leerem Input): Kernaussage bleibt; der Ort wechselt. Nicht der Player sieht, die verarbeitende Sitzung sieht das Dokument an (gemessen: Laufzeit ohne images). Treue bleibt erzwungen (Inventar plus Prüfer).
@@ -68,5 +68,27 @@ Die Lehren oben bleiben als Fallgeschichte gültig; ihre ANWEISUNGEN gelten mit 
 - EL9 (Harness-Pflicht): Träger sind jetzt skill/harness-viewer.mjs (80 Tests) und skill/blattkino/pruefe.mjs; der alte harness.mjs ist mit der alten Linie archiviert.
 - EL10 (UI-Bestand): abgelöst durch die Autorentscheide in STAND.md §6 (Tor, Vollbild, Fortschritt rechts, kein Kino).
 - Neu EL11: Der mechanische Prüfer beweist nie didaktische Güte (0/0/0 bei neun realen Mängeln); Skills werden gegen frische Sitzungen getestet, die Bodenwahrheit bleibt das Autorurteil.
-- Neu EL12: Wenn eine Beispielserie an der Blattgrenze zerfällt, ist das ein didaktischer Befund (AL3-Konflikt), kein Formatierungsproblem; Lösung über Bogenschnitt-Regeln, nie über Degradierung von Merksätzen (offener Fall ableitung.json, AUSTAUSCH B7).
+- EL12 (neu gefasst 2026-09-05 nach B9/DD2): Mustertragende Belege und ihre Regel gehören auf EIN Blatt; eine Verallgemeinerung steht nur auf einem Blatt, das mindestens einen ihrer Belege trägt. fortsetzung ist legitim für Konsolidierung nach der Regel (weitere Aufgaben, jetztihr) und für Belege nur mit verkleinerter Reprise. Passt beides nicht, ist der Bogen zu voll oder die Serie zu lang. Merksätze werden nie zu text degradiert. (Erstfassung war falsch begründet: Ursache war eine Prüferzählung je Bogen, der didaktische Kern bestand; Wahrnehmung des Lesers bleibt der Maßstab.)
+
+## Teil IV: Autorbefunde am Goldlauf und angenommene DD-Regeln (2026-09-05)
+
+Quelle wörtlich: AUSTAUSCH G3/G5, gold/LEHREN_GOLD (GL1 bis GL6), DD2 bis DD8; Prüferregeln dazu baut die Bau-Session (B14/B16).
+
+**AL15. Farbe nur auf der bewegten Zahl (GL1).** Genau eine Farbe je Kandidat, und sie sitzt nur auf der Zahl, die wandert oder eingesetzt wird, nie auf der Zeile. Autorwort: Farbe ohne Beziehung ist Lärm und kann verwirren.
+
+**AL16. Der Pfeil zeigt Einsetzen (GL2).** Er mündet von oben in die Klammer, nie am Zeilenanfang. Braucht eine andere Beziehung einen Pfeil, ist das ein eigenes Gerät mit eigenem Grund.
+
+**AL17. Keine Ruhezonen (GL3).** Jede Bewegung des Fingers bewegt etwas; der Aufbau füllt die Beatstrecke lückenlos, Blattwechsel eingeschlossen. Ungleich lange Schritte sind Kontrollverlust.
+
+**AL18. Die teure Bewegung einmal (GL4, Simulat-Lesung).** Eine aufwendige Choreographie (etwa das Zusammenfliegen eines Ergebnisses) läuft einmal beim Erklären; in der Serie trägt nur noch das konstante Muster. Ab der zweiten Wiederholung lenkt sie ab.
+
+**EL13. payoff ist die Tilgung (DD4).** Der payoff-Beat tilgt die Schuld des Bogens; Konsolidierung (Merksatz nach der Regel, jetztihr, Übungstabelle) darf danach stehen. Ein payoff, der nur konsolidiert, ist keiner.
+
+**EL14. Keine Meta-Fragen (DD5).** Die frage eines Bogens lebt im Leser, nie im Dokumentaufbau. Übersichts-Bögen ohne lebende Frage sind als uebersicht:true ehrlich markiert. Die Lernreise nennt ausdrücklich, wo die Filmordnung von der Dokumentordnung abweicht, oder dass die Dokumentordnung die Lernordnung ist.
+
+**EL15. Das fertige Blatt ist der Überflieg (DD6).** Am Bogenende muss das stehende Blatt die Aussage allein tragen, ohne erinnerte Reihenfolge. Bögen unter drei Beats sind ein Befund, außer als uebersicht oder Reprise markiert.
+
+**EL16. Simulat vor Abgabe (DD7).** Jeder Film läuft vor der Abgabe als Transkript durch das Schüler-Simulat (Zettel, Vorstellungs-Verbot, Regel- und Deutungsproben, Transferaufgaben, die im Film nicht vorkommen); Auftrag in gold/SIMULAT_AUFTRAG.md. Der mechanische Prüfer ersetzt das nie (EL11).
+
+**EL17. Serien sind Vorlagen (B15c/G5).** Eine Serie steht als Vorlage mit Platzhaltern in der Filmdatei, der Player bleibt themenfrei; identische Choreographie je Fall ist damit Konstruktion, ungleiche Gerätemengen je Fall sind ein Befund.
 
