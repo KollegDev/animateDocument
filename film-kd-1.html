@@ -52,10 +52,11 @@ html,body{height:100%; overflow:hidden; overscroll-behavior:none;}
   padding:calc(env(safe-area-inset-top) + 16px) 18px calc(env(safe-area-inset-bottom) + 16px);
   padding-top:calc(env(safe-area-inset-top) + 16px);}
 
-.fortschritt{position:fixed; inset:0 0 auto 0; height:3px; z-index:30;
-  background:color-mix(in srgb, var(--line) 55%, transparent);}
-.fortschritt i{display:block; height:100%; width:100%; background:var(--accent);
-  transform:scaleX(0); transform-origin:0 50%;}
+/* Der Fortschritt steht rechts und senkrecht: er zeigt, dass gewischt wird und wie weit. */
+.fortschritt{position:fixed; right:0; top:0; width:5px; height:100vh; height:100svh; z-index:30;
+  background:color-mix(in srgb, var(--line) 70%, transparent);}
+.fortschritt i{display:block; width:100%; height:100%; background:var(--accent);
+  transform:scaleY(0); transform-origin:50% 0;}
 
 .szene{position:absolute; inset:calc(env(safe-area-inset-top) + 16px) 18px
        calc(env(safe-area-inset-bottom) + 16px) 18px;
@@ -68,28 +69,23 @@ html,body{height:100%; overflow:hidden; overscroll-behavior:none;}
 .frage{flex:none; margin:0; font-size:.98rem; line-height:1.35; font-weight:600; color:var(--accent);
   border-left:3px solid var(--accent); padding-left:12px; opacity:0;}
 
-/* Bild und Takte liegen im selben Feld, alle absolut. Dadurch bewegt sich beim Wechsel
-   nichts: ein Takt vor dem Bild nimmt das ganze Feld, einer danach steht darunter.
-   Der Sprung dazwischen faellt genau in eine Kreuzblende. */
-.feld{position:relative; flex:1 1 auto; min-height:0;}
-.bild{position:absolute; left:0; right:0; top:0; height:44vh; height:44svh;}
-.bild .lage{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-  opacity:0; background:var(--bg);}
-.bild .lage svg{display:block; width:auto; max-width:100%; max-height:100%;}
-.szene .bild svg{max-height:42vh; max-height:42svh;}
-.szene.ohnebild .bild{display:none;}
+/* Das Blatt nimmt die ganze Hoehe und fuellt sich von oben nach unten. Was einmal
+   dasteht, bleibt bis zum Ende des Bogens stehen: das Blatt ist der ausgelagerte
+   Speicher des Lesers und seine Orientierung. */
+.blatt{flex:1 1 auto; min-height:0; display:flex; flex-direction:column;
+  justify-content:flex-start; transform-origin:top center;}
+/* Kein Block darf zusammengedrueckt werden. Passt etwas nicht, wird das ganze Blatt
+   verkleinert, nicht eine einzelne Zeile plattgemacht. */
+.blatt > *{flex:0 0 auto;}
+.blatt.mittig{justify-content:center;}
 
-/* Alle Takte liegen uebereinander. Nur einer ist zu sehen. */
-.takt{position:absolute; inset:0; overflow:hidden; opacity:0; background:var(--bg);
-  transform-origin:top center;
-  display:flex; flex-direction:column; justify-content:center;}
-.takt.unterBild{top:calc(44vh + 10px); top:calc(44svh + 10px);}
-/* Ein Takt, der die Flaeche fuellt, beginnt oben; sonst steht sein Inhalt mittig. */
-.takt.voll{justify-content:flex-start;}
+/* Ein Bild ist ein Block im Blatt wie jeder andere. */
+.bild{display:flex; align-items:center; justify-content:center; width:100%; opacity:0;}
+.bild svg{display:block; width:auto; max-width:100%; height:auto;}
 
 /* ================= Der Satz auf der Buehne ================= */
-.el{margin:0 0 .7em; opacity:0;}
-.el:last-child{margin-bottom:0;}
+/* Die Abstaende macht das Blatt, damit es die Hoehe wirklich ausnutzt. */
+.el{margin:0; opacity:0;}
 h2.el{font-family:Spectral,Georgia,serif; font-weight:600; font-size:1.42rem; line-height:1.18;
   margin:0 0 .45em; text-wrap:balance;}
 h3.el{font-family:Spectral,Georgia,serif; font-weight:600; font-size:1.16rem; margin:0 0 .4em;}
@@ -115,6 +111,7 @@ p.satz{font-size:1.04rem;}
 .jetzt .marke{color:var(--accent); margin-right:.5em;}
 .loesung{color:var(--muted); border-left:3px solid var(--region); padding:5px 0 5px 13px; margin:.3em 0 0;}
 .loesung b{color:var(--ink); font-weight:600; margin-right:.4em;}
+.loesung .dazu{margin-top:.25em; color:var(--muted);}
 .fragezeile{color:var(--accent); font-weight:600; font-size:1.06rem;}
 
 /* Das Tor: davor laeuft nichts. Erst der Knopf startet den Film, auf dem Handy im
@@ -174,18 +171,17 @@ html.laeuft .raus{display:flex;}
 
 /* Das Rad ist der Regler. Jede Bewegung wirkt sofort, ohne Umweg ueber Skript. */
 @supports (animation-timeline: --rad){
-  .szene, .frage, .takt, .el, .bild .lage,
+  .szene, .frage, .el, .bild,
   .bild svg .schritt, .bild svg path.kurve, .bild svg g.zoomer{
     animation-timeline:--rad; animation-fill-mode:both;
     animation-timing-function:linear; animation-duration:auto;}
   .szene{animation-name:blende;}
-  .takt{animation-name:blende;}
-  .bild .lage{animation-name:blende;}
-  .szene.ab, .takt.ab, .bild .lage.ab{animation-name:blendeAb;}
+  .bild{animation-name:steigen;}
+  .szene.ab{animation-name:blendeAb;}
   /* Was am allerersten Punkt der Kurbel steht, hat keine Strecke zum Erscheinen. */
-  .frage.sofort, .el.sofort, .schritt.sofort{opacity:1; animation-name:none;}
-  .szene.auf, .takt.auf, .bild .lage.auf{animation-name:blendeAuf;}
-  .szene.ab.auf, .takt.ab.auf, .bild .lage.ab.auf{animation-name:none; opacity:1;}
+  .frage.sofort, .el.sofort, .bild.sofort, .schritt.sofort{opacity:1; animation-name:none;}
+  .szene.auf{animation-name:blendeAuf;}
+  .szene.ab.auf{animation-name:none; opacity:1;}
 
   .frage{animation-name:steigen;}
   .el{animation-name:steigen;}
@@ -203,10 +199,10 @@ html.laeuft .raus{display:flex;}
 .bild svg g.zoomer [stroke]{vector-effect:non-scaling-stroke;}
 
 /* Rueckfall: das Rad wird per Skript gelesen und der Fortschritt gesetzt. */
-html.zuFuss .szene, html.zuFuss .takt{transition:opacity .3s linear;}
-html.zuFuss .frage, html.zuFuss .el, html.zuFuss .bild svg .schritt{
+html.zuFuss .szene{transition:opacity .3s linear;}
+html.zuFuss .frage, html.zuFuss .el, html.zuFuss .bild, html.zuFuss .bild svg .schritt{
   transition:opacity .45s var(--auf), transform .45s var(--auf);}
-html.zuFuss .szene.an, html.zuFuss .takt.an, html.zuFuss .frage.an,
+html.zuFuss .szene.an, html.zuFuss .frage.an, html.zuFuss .bild.an,
 html.zuFuss .el.an, html.zuFuss .bild svg .schritt.an{opacity:1; transform:none;}
 html.zuFuss .bild svg .schritt.flaeche.an{opacity:var(--deck,.13);}
 html.zuFuss .bild svg .schritt.fluechtig:not(.letzte){display:none;}
@@ -222,13 +218,9 @@ html.zuFuss .bild svg path.kurve.an{stroke-dashoffset:0;}
     margin:0 auto 9vh; max-width:34rem; border-bottom:1px solid var(--line); padding-bottom:6vh;}
   .frage, .el{opacity:1 !important; transform:none !important; animation:none !important;
     transition:none !important;}
-  .feld{position:static;}
-  .bild{position:static; height:auto;}
-  .bild .lage{position:static; opacity:1 !important; animation:none !important; margin:0 0 1.5em;}
-  .takt.unterBild{top:auto;}
-  .takt{position:static; opacity:1 !important; overflow:visible; animation:none !important;
-    transform:none !important; margin-bottom:2.5em;}
-  .bild svg{max-height:none;}
+  .blatt{display:block; gap:0 !important; transform:none !important;}
+  .el{margin:0 0 1em;}
+  .bild{opacity:1 !important; animation:none !important; margin:1.5em 0;}
   .bild svg .schritt{opacity:1 !important; transform:none !important; animation:none !important;}
   .bild svg .schritt.flaeche{opacity:var(--deck,.13) !important;}
   .bild svg .schritt.fluechtig:not(.letzte){display:none;}
@@ -244,10 +236,10 @@ html.zuFuss .bild svg path.kurve.an{stroke-dashoffset:0;}
 </head>
 <body>
 <script id="blattkino-daten" type="application/json">
-{"titel":"Definitions- und Wertebereich","quelle":"Kurvendiskussion 1, Seiten 1 bis 4","boegen":[{"frage":"Was gehoert alles zu einer Kurvendiskussion?","beats":[{"sub":"Die Kurvendiskussion untersucht eine Funktion Schritt für Schritt.","ops":[{"op":"h","t":"Kurvendiskussion"},{"op":"h","t":"Übersicht"}],"gewicht":1},{"sub":"Der erste Block fragt, wo die Funktion lebt und wie sie aussieht.","ops":[{"op":"item","t":"Definitionsbereich und Wertebereich"},{"op":"item","t":"Graphische Darstellung / Skizze"},{"op":"item","t":"Symmetrieverhalten"},{"op":"item","t":"y-Achsenschnittpunkt und Nullstellen"}],"gewicht":1},{"sub":"Der zweite Block fragt, was am Rand und an den Lücken passiert.","ops":[{"op":"item","t":"Grenzverhalten im Unendlichen"},{"op":"item","t":"Polstellen und Definitionslücken"},{"op":"item","t":"Asymptoten"}],"gewicht":1},{"sub":"Der dritte Block braucht die Ableitungen.","ops":[{"op":"item","t":"Ableitungen"},{"op":"item","t":"Monotonieverhalten"},{"op":"item","t":"Extrempunkte (Hoch- und Tiefpunkte)"},{"op":"item","t":"Krümmungsverhalten"},{"op":"item","t":"Wendepunkte"},{"op":"item","t":"Sattelpunkte"}],"gewicht":1,"payoff":true}]},{"frage":"Welche Sorten von Funktionen kommen dabei vor?","beats":[{"sub":"Untersucht werden fünf Typen. Der erste ist die ganzrationale Funktion.","ops":[{"op":"clear"},{"op":"h","t":"Diese Funktionstypen werden untersucht"},{"op":"item","t":"ganzrationale Funktionen"},{"op":"math","tex":"f(x)=x^{4}+3x^{3}+4x^{2}+6x+1"}],"gewicht":1},{"sub":"Bei den gebrochenrationalen steht x im Nenner, bei den Exponentialfunktionen im Exponenten.","ops":[{"op":"item","t":"gebrochenrationale Funktionen"},{"op":"math","tex":"f(x)=\\frac{x}{x+1}"},{"op":"item","t":"Exponentialfunktionen"},{"op":"math","tex":"f(x)=e^{2x}"}],"gewicht":1},{"sub":"Bei den Wurzelfunktionen steht x unter der Wurzel, bei den Logarithmusfunktionen im Logarithmus.","ops":[{"op":"item","t":"Wurzelfunktionen"},{"op":"math","tex":"f(x)=\\sqrt{x+1}"},{"op":"item","t":"Logarithmusfunktionen"},{"op":"math","tex":"f(x)=log(x^{2}+1)"}],"gewicht":1},{"sub":"Diese Typen können auch zusammengesetzt sein.","ops":[{"op":"math","tex":"f(x)=e^{2x}\\cdot (x+4)^{2}"},{"op":"note","t":"Bei fortgeschrittenen Aufgaben können die Funktionen ausserdem zu Funktionsscharen erweitert werden."}],"gewicht":1,"payoff":true}]},{"frage":"Warum darf man bei dieser harmlosen Funktion die Vier nicht einsetzen?","beats":[{"sub":"Der Definitionsbereich sagt, welche x-Werte man einsetzen darf.","ops":[{"op":"clear"},{"op":"h","t":"Definitionsbereich"},{"op":"math","tex":"f(x)=\\frac{1}{x-4}"}],"gewicht":2},{"sub":"Eine einzige Zahl ist verboten.","ops":[{"op":"frage","t":"Warum darf man hier ausgerechnet die Vier nicht einsetzen?"}],"gewicht":2},{"sub":"Setzt man vier ein, steht null im Nenner.","ops":[{"op":"umformung","zeilen":[{"tex":"f(4)=\\frac{1}{4-4}","warum":"vier eingesetzt"},{"tex":"f(4)=\\frac{1}{0}"}]},{"op":"note","t":"und durch Null teilen darf man nicht."}],"gewicht":3,"fokus":true},{"sub":"Also sind alle reellen Zahlen erlaubt, nur die Vier nicht.","ops":[{"op":"math","tex":"D_f: x\\in\\mathbb{R}\\mid x\\neq 4","hl":true}],"gewicht":2,"payoff":true}]},{"frage":"Woran erkennt man ueberhaupt, dass etwas verboten sein koennte?","beats":[{"sub":"Genau drei Situationen schränken einen Definitionsbereich ein.","ops":[{"op":"h","t":"Drei Situationen"},{"op":"item","t":"(1) Brüche"},{"op":"item","t":"(2) Wurzeln"},{"op":"item","t":"(3) Logarithmus."}],"gewicht":1},{"sub":"Für jede gilt eine eigene Bedingung.","ops":[{"op":"tabelle","kopf":["!Situation","!Bedingung"],"zeilen":[["\\frac{1}{a}","a\\neq 0"],["\\sqrt{a}","a\\geqslant 0"],["log(a)","a>0"]],"art":"regel"}],"gewicht":2,"payoff":true}]},{"frage":"Wie rechnet man den Definitionsbereich eines Bruchs aus?","beats":[{"sub":"In Brüchen darf der Nenner nicht null werden.","ops":[{"op":"clear"},{"op":"h","t":"(1) Brüche"},{"op":"math","tex":"f(x)=\\frac{1}{a}\\;\\rightarrow\\; a\\neq 0","hl":true}],"gewicht":2},{"sub":"Man setzt den Nenner ungleich null und löst nach x auf.","ops":[{"op":"math","tex":"g(x)=\\frac{1}{x-2}"},{"op":"umformung","zeilen":[{"tex":"x-2\\neq 0","warum":"beide Seiten plus zwei"},{"tex":"x\\neq 2"}]}],"gewicht":2},{"sub":"Damit steht der Definitionsbereich da.","ops":[{"op":"math","tex":"D_g: x\\in\\mathbb{R}\\mid x\\neq 2","hl":true}],"gewicht":2,"payoff":true}]},{"frage":"Bleibt das Muster gleich, wenn der Nenner anders aussieht?","beats":[{"sub":"Dieselbe Rechnung, vier weitere Nenner.","ops":[{"op":"tabelle","kopf":["!Funktion","!Definitionsbereich"],"zeilen":[["f(x)=\\frac{1}{x^{2}-4}","x\\in\\mathbb{R}\\mid x\\neq 2 \\wedge x\\neq -2"],["f(x)=\\frac{x}{x+6}","x\\in\\mathbb{R}\\mid x\\neq -6"],["f(x)=\\frac{8}{x}","x\\in\\mathbb{R}\\mid x\\neq 0"],["f(x)=\\frac{9}{x^{2}}","x\\in\\mathbb{R}\\mid x\\neq 0"]]},{"op":"note","t":"∧ bedeutet \"und\", ∨ bedeutet \"oder\""}],"gewicht":2},{"sub":"Die Regel bleibt in jeder Zeile dieselbe.","ops":[{"op":"merksatz","t":"Nenner gleich null setzen, nach x auflösen, dieses x ausschliessen."}],"gewicht":2},{"sub":"Probiert es an einem eigenen Nenner.","ops":[{"op":"jetztihr","aufgabe":"f(x)=\\frac{5}{x-7}","loesung":"D_f: x\\in\\mathbb{R}\\mid x\\neq 7"}],"gewicht":2,"payoff":true}]},{"frage":"Warum gilt bei Wurzeln eine andere Bedingung?","beats":[{"sub":"Unter der Wurzel darf nichts Negatives stehen.","ops":[{"op":"clear"},{"op":"h","t":"(2) Wurzeln"},{"op":"math","tex":"f(x)=\\sqrt{a}\\;\\rightarrow\\; a\\geqslant 0","hl":true}],"gewicht":2},{"sub":"Aus der Bedingung wird eine Ungleichung.","ops":[{"op":"umformung","zeilen":[{"tex":"g(x)=\\sqrt{x+4}","warum":"der Radikand muss grösser oder gleich null sein"},{"tex":"x+4\\geqslant 0","warum":"beide Seiten minus vier"},{"tex":"x\\geqslant -4"}]}],"gewicht":2},{"sub":"Damit steht der Definitionsbereich da.","ops":[{"op":"math","tex":"D_g: x\\in\\mathbb{R}\\mid x\\geqslant -4","hl":true}],"gewicht":2,"payoff":true}]},{"frage":"Aendert sich etwas, wenn der Wurzelgrad wechselt?","beats":[{"sub":"Vier Wurzeln, dieselbe Bedingung.","ops":[{"op":"tabelle","kopf":["!Funktion","!Bedingung","!Definitionsbereich"],"zeilen":[["g(x)=\\sqrt{2x+4}","2x+4\\geqslant 0","x\\geqslant -2"],["g(x)=\\sqrt[5]{x-1}","x-1\\geqslant 0","x\\geqslant 1"],["g(x)=\\sqrt[3]{x+4}","x+4\\geqslant 0","x\\geqslant -4"],["g(x)=\\sqrt{x^{2}+1}","x^{2}+1\\geqslant 0","x\\in\\mathbb{R}"]]}],"gewicht":2},{"sub":"Die letzte Zeile verbietet nichts, denn ein Quadrat plus eins ist immer positiv.","ops":[{"op":"merksatz","t":"Radikand grösser oder gleich null setzen, nach x auflösen."}],"gewicht":2,"payoff":true}]},{"frage":"Und warum ist die Null beim Logarithmus verboten, bei der Wurzel aber erlaubt?","beats":[{"sub":"Im Logarithmus darf das Argument nur positiv sein.","ops":[{"op":"clear"},{"op":"h","t":"(3) Logarithmus"},{"op":"math","tex":"h(x)=log(a)\\;\\rightarrow\\; a>0","hl":true}],"gewicht":2},{"sub":"Der Unterschied ist ein Zeichen und er ist wichtig.","ops":[{"op":"tabelle","kopf":["!","!erlaubt"],"zeilen":[["\\sqrt{a}","a\\geqslant 0"],["log(a)","a>0"]],"art":"vergleich"},{"op":"note","t":"Anders als bei der Wurzel ist die Null hier nicht erlaubt, denn log(0) existiert nicht."}],"gewicht":3,"fokus":true,"payoff":true}]},{"frage":"Wie loest man das bei einem Logarithmus mit einer Klammer?","beats":[{"sub":"Zwei Umformungen, dann steht x allein.","ops":[{"op":"umformung","zeilen":[{"tex":"h(x)=log(3x+1)","warum":"das Argument muss grösser als null sein"},{"tex":"3x+1>0","warum":"beide Seiten minus eins"},{"tex":"3x>-1","warum":"beide Seiten durch drei"},{"tex":"x>-\\frac{1}{3}"}]}],"gewicht":2},{"sub":"Drei weitere Beispiele nach demselben Muster.","ops":[{"op":"tabelle","kopf":["!Funktion","!Definitionsbereich"],"zeilen":[["h(x)=log(3x+1)","x>-\\frac{1}{3}"],["h(x)=ln(x-5)","x>5"],["h(x)=ln(x)+2","x>0"],["h(x)=log(4-x^{2})","-2<x<2"]]},{"op":"note","t":"ln ist der Logarithmus zur Basis e, für den Definitionsbereich gilt dieselbe Regel wie für log."}],"gewicht":2},{"sub":"Auch hier bleibt die Regel dieselbe.","ops":[{"op":"merksatz","t":"Argument grösser als null setzen, nach x auflösen."}],"gewicht":2,"payoff":true}]},{"frage":"Welche y-Werte kommen bei einer Funktion ueberhaupt heraus?","beats":[{"sub":"Der Wertebereich geht in die andere Richtung als der Definitionsbereich.","ops":[{"op":"clear"},{"op":"h","t":"Wertebereich"},{"op":"math","tex":"f(x)=x^{2}+4"}],"gewicht":2},{"sub":"Am Graphen sieht man es sofort.","ops":[{"op":"plot","id":"p1","expr":"x^2+4","xmin":-4,"xmax":4,"ymin":0,"ymax":12,"legend":"f(x) = x² + 4"}],"gewicht":2},{"sub":"Der tiefste Punkt liegt bei T von null, vier.","ops":[{"op":"point","id":"p1","x":0,"y":4,"label":"T(0|4)"},{"op":"region","id":"p1","y":4,"dir":"above","label":"Wertebereich: y ≥ 4"}],"gewicht":2},{"sub":"Also ist y immer grösser oder gleich vier.","ops":[{"op":"math","tex":"W_f: y\\in\\mathbb{R}\\mid y\\geqslant 4","hl":true}],"gewicht":3,"fokus":true,"payoff":true}]},{"frage":"Sieht man den Wertebereich immer so leicht?","beats":[{"sub":"Meistens nicht.","ops":[{"op":"clear"},{"op":"note","t":"Den Wertebereich erkennt man oft erst am Ende der Aufgabe."},{"op":"note","t":"Erst nach Verhalten im Unendlichen, Extrempunkten und Nullstellen steht er fest."}],"gewicht":1},{"sub":"Und hier beginnt das nächste Beispiel.","ops":[{"op":"h","t":"Beispiele"},{"op":"math","tex":"f(x)=x^{4}-2x^{2}"}],"gewicht":1,"payoff":true}]}]}
+{"titel":"Definitions- und Wertebereich","quelle":"Kurvendiskussion 1, Seiten 1 bis 4","boegen":[{"frage":"Womit faengt eine Kurvendiskussion an?","beats":[{"sub":"Die Kurvendiskussion untersucht eine Funktion Schritt für Schritt.","gewicht":1,"ops":[{"op":"h","t":"Kurvendiskussion"}]},{"sub":"Der erste Block fragt, wo die Funktion lebt und wie sie aussieht.","gewicht":3,"payoff":true,"ops":[{"op":"item","t":"Definitionsbereich und Wertebereich"},{"op":"item","t":"Graphische Darstellung / Skizze"},{"op":"item","t":"Symmetrieverhalten"},{"op":"item","t":"y-Achsenschnittpunkt und Nullstellen"}]}]},{"frage":"Was untersucht man nach dem ersten Block noch?","beats":[{"sub":"Der zweite Block fragt, was am Rand und an den Lücken passiert.","gewicht":1,"ops":[{"op":"h","t":"Übersicht"},{"op":"item","t":"Grenzverhalten im Unendlichen"},{"op":"item","t":"Polstellen und Definitionslücken"},{"op":"item","t":"Asymptoten"}]},{"sub":"Der dritte Block braucht die Ableitungen.","gewicht":3,"payoff":true,"ops":[{"op":"item","t":"Ableitungen"},{"op":"item","t":"Monotonieverhalten"},{"op":"item","t":"Extrempunkte (Hoch- und Tiefpunkte)"},{"op":"item","t":"Krümmungsverhalten"},{"op":"item","t":"Wendepunkte"},{"op":"item","t":"Sattelpunkte"}]}]},{"frage":"Mit welchen Funktionstypen faengt die Liste an?","beats":[{"sub":"Untersucht werden fünf Typen.","gewicht":1,"ops":[{"op":"h","t":"Diese Funktionstypen werden untersucht"}]},{"sub":"Der erste ist die ganzrationale Funktion.","gewicht":2,"ops":[{"op":"item","t":"ganzrationale Funktionen"},{"op":"math","tex":"f(x)=x^{4}+3x^{3}+4x^{2}+6x+1"}]},{"sub":"Bei den gebrochenrationalen steht x im Nenner.","gewicht":3,"payoff":true,"ops":[{"op":"item","t":"gebrochenrationale Funktionen"},{"op":"math","tex":"f(x)=\\frac{x}{x+1}"}]}]},{"frage":"Wo kann das x sonst noch stehen?","beats":[{"sub":"Bei den Exponentialfunktionen steht x im Exponenten.","gewicht":2,"ops":[{"op":"h","t":"Diese Funktionstypen werden untersucht"},{"op":"item","t":"Exponentialfunktionen"},{"op":"math","tex":"f(x)=e^{2x}"}]},{"sub":"Bei den Wurzelfunktionen steht x unter der Wurzel.","gewicht":3,"payoff":true,"ops":[{"op":"item","t":"Wurzelfunktionen"},{"op":"math","tex":"f(x)=\\sqrt{x+1}"}]}]},{"frage":"Kommen diese Typen immer einzeln vor?","beats":[{"sub":"Bei den Logarithmusfunktionen steht x im Logarithmus.","gewicht":2,"ops":[{"op":"h","t":"Diese Funktionstypen werden untersucht"},{"op":"item","t":"Logarithmusfunktionen"},{"op":"math","tex":"f(x)=log(x^{2}+1)"}]},{"sub":"Diese Typen können auch zusammengesetzt sein.","gewicht":3,"payoff":true,"ops":[{"op":"math","tex":"f(x)=e^{2x}\\cdot (x+4)^{2}"},{"op":"note","t":"Bei fortgeschrittenen Aufgaben können die Funktionen ausserdem zu Funktionsscharen erweitert werden."}]}]},{"frage":"Was ist an der Vier anders als an allen anderen Zahlen?","beats":[{"sub":"Der Definitionsbereich sagt, welche x-Werte man einsetzen darf.","gewicht":1,"ops":[{"op":"h","t":"Definitionsbereich"},{"op":"math","tex":"f(x)=\\frac{1}{x-4}"}]},{"sub":"Eine einzige Zahl ist verboten.","gewicht":2,"ops":[{"op":"frage","t":"Warum darf man hier ausgerechnet die Vier nicht einsetzen?"}]},{"sub":"Setzt man vier ein, steht null im Nenner.","gewicht":3,"payoff":true,"fokus":true,"ops":[{"op":"umformung","zeilen":[{"tex":"f(4)=\\frac{1}{4-4}","warum":"vier eingesetzt"},{"tex":"f(4)=\\frac{1}{0}"}]},{"op":"note","t":"und durch Null teilen darf man nicht."}]}]},{"frage":"Wie schreibt man den erlaubten Bereich auf?","beats":[{"sub":"Also sind alle reellen Zahlen erlaubt.","gewicht":1,"ops":[{"op":"h","t":"Definitionsbereich"}]},{"sub":"Nur die Vier nicht.","gewicht":3,"payoff":true,"ops":[{"op":"math","tex":"D_f: x\\in\\mathbb{R}\\mid x\\neq 4","hl":true}]}]},{"frage":"Woran erkennt man ueberhaupt, dass etwas verboten sein koennte?","beats":[{"sub":"Genau drei Situationen schränken einen Definitionsbereich ein.","gewicht":1,"ops":[{"op":"h","t":"Drei Situationen"},{"op":"item","t":"(1) Brüche"},{"op":"item","t":"(2) Wurzeln"},{"op":"item","t":"(3) Logarithmus."}]},{"sub":"Für jede gilt eine eigene Bedingung.","gewicht":3,"payoff":true,"ops":[{"op":"tabelle","art":"regel","kopf":["!Situation","!Bedingung"],"zeilen":[["\\frac{1}{a}","a\\neq 0"],["\\sqrt{a}","a\\geqslant 0"],["log(a)","a>0"]]}]}]},{"frage":"Wie rechnet man den Definitionsbereich eines Bruchs aus?","beats":[{"sub":"In Brüchen darf der Nenner nicht null werden.","gewicht":1,"ops":[{"op":"h","t":"(1) Brüche"},{"op":"math","tex":"f(x)=\\frac{1}{a}\\;\\rightarrow\\; a\\neq 0","hl":true}]},{"sub":"Man setzt den Nenner ungleich null und löst nach x auf.","gewicht":2,"ops":[{"op":"math","tex":"g(x)=\\frac{1}{x-2}"},{"op":"umformung","zeilen":[{"tex":"x-2\\neq 0","warum":"beide Seiten plus zwei"},{"tex":"x\\neq 2"}]}]},{"sub":"Damit steht der Definitionsbereich da.","gewicht":3,"payoff":true,"ops":[{"op":"math","tex":"D_g: x\\in\\mathbb{R}\\mid x\\neq 2","hl":true}]}]},{"frage":"Bleibt das Muster gleich, wenn der Nenner anders aussieht?","beats":[{"sub":"Dieselbe Rechnung, vier weitere Nenner.","gewicht":1,"ops":[{"op":"tabelle","kopf":["!Funktion","!Definitionsbereich"],"zeilen":[["f(x)=\\frac{1}{x^{2}-4}","x\\in\\mathbb{R}\\mid x\\neq 2 \\wedge x\\neq -2"],["f(x)=\\frac{x}{x+6}","x\\in\\mathbb{R}\\mid x\\neq -6"],["f(x)=\\frac{8}{x}","x\\in\\mathbb{R}\\mid x\\neq 0"],["f(x)=\\frac{9}{x^{2}}","x\\in\\mathbb{R}\\mid x\\neq 0"]]},{"op":"note","t":"∧ bedeutet \"und\", ∨ bedeutet \"oder\""}]},{"sub":"Die Regel bleibt in jeder Zeile dieselbe.","gewicht":2,"ops":[{"op":"merksatz","t":"Nenner gleich null setzen, nach x auflösen, dieses x ausschliessen."}]},{"sub":"Probiert es an einem eigenen Nenner.","gewicht":3,"payoff":true,"ops":[{"op":"jetztihr","aufgabe":"f(x)=\\frac{5}{x-7}","loesung":"D_f: x\\in\\mathbb{R}\\mid x\\neq 7"}]}]},{"frage":"Warum gilt bei Wurzeln eine andere Bedingung?","beats":[{"sub":"Unter der Wurzel darf nichts Negatives stehen.","gewicht":1,"ops":[{"op":"h","t":"(2) Wurzeln"},{"op":"math","tex":"f(x)=\\sqrt{a}\\;\\rightarrow\\; a\\geqslant 0","hl":true}]},{"sub":"Aus der Bedingung wird eine Ungleichung.","gewicht":2,"ops":[{"op":"umformung","zeilen":[{"tex":"g(x)=\\sqrt{x+4}","warum":"der Radikand muss grösser oder gleich null sein"},{"tex":"x+4\\geqslant 0","warum":"beide Seiten minus vier"},{"tex":"x\\geqslant -4"}]}]},{"sub":"Damit steht der Definitionsbereich da.","gewicht":3,"payoff":true,"ops":[{"op":"math","tex":"D_g: x\\in\\mathbb{R}\\mid x\\geqslant -4","hl":true}]}]},{"frage":"Aendert sich etwas, wenn der Wurzelgrad wechselt?","beats":[{"sub":"Vier Wurzeln, dieselbe Bedingung.","gewicht":2,"ops":[{"op":"tabelle","kopf":["!Funktion","!Bedingung","!Definitionsbereich"],"zeilen":[["g(x)=\\sqrt{2x+4}","2x+4\\geqslant 0","x\\geqslant -2"],["g(x)=\\sqrt[5]{x-1}","x-1\\geqslant 0","x\\geqslant 1"],["g(x)=\\sqrt[3]{x+4}","x+4\\geqslant 0","x\\geqslant -4"],["g(x)=\\sqrt{x^{2}+1}","x^{2}+1\\geqslant 0","x\\in\\mathbb{R}"]]}]},{"sub":"Die letzte Zeile verbietet nichts, denn ein Quadrat plus eins ist immer positiv.","gewicht":3,"payoff":true,"ops":[{"op":"merksatz","t":"Radikand grösser oder gleich null setzen, nach x auflösen."}]}]},{"frage":"Und warum ist die Null beim Logarithmus verboten, bei der Wurzel aber erlaubt?","beats":[{"sub":"Im Logarithmus darf das Argument nur positiv sein.","gewicht":2,"ops":[{"op":"h","t":"(3) Logarithmus"},{"op":"math","tex":"h(x)=log(a)\\;\\rightarrow\\; a>0","hl":true}]},{"sub":"Der Unterschied ist ein Zeichen und er ist wichtig.","gewicht":3,"fokus":true,"payoff":true,"ops":[{"op":"tabelle","art":"vergleich","kopf":["!","!erlaubt"],"zeilen":[["\\sqrt{a}","a\\geqslant 0"],["log(a)","a>0"]]},{"op":"note","t":"Anders als bei der Wurzel ist die Null hier nicht erlaubt, denn log(0) existiert nicht."}]}]},{"frage":"Wie kommt man bei log(3x+1) an das x heran?","beats":[{"sub":"Zwei Umformungen, dann steht x allein.","gewicht":3,"payoff":true,"ops":[{"op":"h","t":"(3) Logarithmus"},{"op":"umformung","zeilen":[{"tex":"h(x)=log(3x+1)","warum":"das Argument muss grösser als null sein"},{"tex":"3x+1>0","warum":"beide Seiten minus eins"},{"tex":"3x>-1","warum":"beide Seiten durch drei"},{"tex":"x>-\\frac{1}{3}"}]}]}]},{"frage":"Bleibt die Regel bei anderen Logarithmen dieselbe?","beats":[{"sub":"Drei weitere Beispiele nach demselben Muster.","gewicht":2,"ops":[{"op":"tabelle","kopf":["!Funktion","!Definitionsbereich"],"zeilen":[["h(x)=log(3x+1)","x>-\\frac{1}{3}"],["h(x)=ln(x-5)","x>5"],["h(x)=ln(x)+2","x>0"],["h(x)=log(4-x^{2})","-2<x<2"]]},{"op":"note","t":"ln ist der Logarithmus zur Basis e, für den Definitionsbereich gilt dieselbe Regel wie für log."}]},{"sub":"Auch hier bleibt die Regel dieselbe.","gewicht":3,"payoff":true,"ops":[{"op":"merksatz","t":"Argument grösser als null setzen, nach x auflösen."}]}]},{"frage":"Welche y-Werte kommen bei einer Funktion ueberhaupt heraus?","beats":[{"sub":"Der Wertebereich geht in die andere Richtung als der Definitionsbereich.","gewicht":1,"ops":[{"op":"h","t":"Wertebereich"},{"op":"math","tex":"f(x)=x^{2}+4"}]},{"sub":"Am Graphen sieht man es sofort.","gewicht":2,"ops":[{"op":"plot","id":"p1","expr":"x^2+4","xmin":-4,"xmax":4,"ymin":0,"ymax":12,"legend":"f(x) = x² + 4"}]},{"sub":"Der tiefste Punkt liegt bei T von null, vier.","gewicht":2,"ops":[{"op":"point","id":"p1","x":0,"y":4,"label":"T(0|4)"},{"op":"region","id":"p1","y":4,"dir":"above","label":"Wertebereich: y ≥ 4"}]},{"sub":"Also ist y immer grösser oder gleich vier.","gewicht":3,"fokus":true,"payoff":true,"ops":[{"op":"math","tex":"W_f: y\\in\\mathbb{R}\\mid y\\geqslant 4","hl":true}]}]},{"frage":"Sieht man den Wertebereich immer so leicht?","beats":[{"sub":"Meistens nicht.","gewicht":1,"ops":[{"op":"note","t":"Den Wertebereich erkennt man oft erst am Ende der Aufgabe."},{"op":"note","t":"Erst nach Verhalten im Unendlichen, Extrempunkten und Nullstellen steht er fest."}]},{"sub":"Und hier beginnt das nächste Beispiel.","gewicht":3,"payoff":true,"ops":[{"op":"h","t":"Beispiele"},{"op":"math","tex":"f(x)=x^{4}-2x^{2}"}]}]}]}
 </script>
 
-<div class="fortschritt" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="fortschritt"><i id="fill"></i></div>
+<div class="fortschritt" role="progressbar" aria-label="Fortschritt" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="fortschritt"><i id="fill"></i></div>
 <div class="rad" id="rad" tabindex="0" aria-label="Fortschritt drehen"><div class="weg"></div></div>
 <main class="buehne" id="doc"></main>
 <div class="tor" id="tor"><div class="innen">
@@ -433,16 +425,19 @@ function makePlot(cfg, svgVor, dy){
 
 
 
-const DATEN=(()=>{
-  const leer={titel:'Blattkino',quelle:'',boegen:[]};
-  try{ const j=JSON.parse($('blattkino-daten').textContent);
-    if(!j||typeof j!=='object')return leer;
-    // Die Einheit ist der Bogen: eine Spannung von der Oeffnung bis zur Aufloesung.
-    // Eine flache Beat-Liste wird als ein einziger Bogen gelesen.
-    if(Array.isArray(j.boegen))return j;
-    if(Array.isArray(j.beats))return Object.assign({},j,{boegen:[{beats:j.beats}]});
-    return Object.assign({},leer,{titel:j.titel||'Blattkino',quelle:j.quelle||''});
-  }catch(e){ return leer; }
+const LEER={titel:'Blattkino',quelle:'',boegen:[]};
+// Die Einheit ist der Bogen: eine Spannung von der Oeffnung bis zur Aufloesung.
+// Eine flache Beat-Liste wird als ein einziger Bogen gelesen.
+function lesen(j){
+  if(!j||typeof j!=='object')return LEER;
+  if(Array.isArray(j.boegen))return j;
+  if(Array.isArray(j.beats))return Object.assign({},j,{boegen:[{beats:j.beats}]});
+  return Object.assign({},LEER,{titel:j.titel||'Blattkino',quelle:j.quelle||''});
+}
+let DATEN=(()=>{
+  const k=$('blattkino-daten');
+  if(!k)return LEER;
+  try{ return lesen(JSON.parse(k.textContent)); }catch(e){ return LEER; }
 })();
 
 const doc=$('doc');
@@ -454,12 +449,11 @@ const el=(tag,cls)=>{ const e=document.createElement(tag); if(cls)e.className=cl
 // ================= Zustand beim Aufbau =================
 // Die Buehne steht. Gebaut wird eine Liste von Szenen, jede mit Takten, jeder Takt mit
 // Stuecken. Ein Stueck ist, was gleichzeitig erscheint. Die Zeit wird erst danach verteilt.
-const SZENEN=[];        // {kn, frage, bild, mitBild, takte:[], lagen:[]}
+const SZENEN=[];        // {kn, frage, blatt, mitBild, takte:[]}
 let szene=null;         // laufende Szene
 let takt=null;          // laufender Takt {kn, stuecke:[], gewicht, bildAb:null}
 let ziel=null;          // wohin Textelemente wandern (der Takt-Knoten)
 let plots={};           // id -> {api,fn}
-let plotLage=null;      // laufende Bildlage
 let gewicht=2;
 const mathKnoten=[];
 
@@ -467,21 +461,20 @@ function szeneAuf(frageText){
   const s=el('section','szene');
   const f=el('p','frage');
   if(frageText){ f.textContent=String(frageText); s.appendChild(f); }
-  const feld=el('div','feld');
-  const bild=el('div','bild');
-  feld.appendChild(bild);
-  s.appendChild(feld);
+  // Ein Bogen ist ein Blatt. Es fuellt sich von oben nach unten und behaelt alles,
+  // bis der Bogen zu Ende ist: es ist der ausgelagerte Speicher des Lesers.
+  const blatt=el('div','blatt');
+  s.appendChild(blatt);
   doc.appendChild(s);
-  szene={kn:s, frage:frageText?f:null, bild:bild, takteKn:feld, feld:feld, takte:[], lagen:[], mitBild:false};
+  szene={kn:s, frage:frageText?f:null, blatt:blatt, takte:[], mitBild:false};
   SZENEN.push(szene);
-  plots={}; plotLage=null;
+  ziel=blatt; plots={};
 }
 function taktAuf(g,fokus){
-  const t=el('div','takt');
-  szene.takteKn.appendChild(t);
-  takt={kn:t, stuecke:[], gewicht:g, fokus:!!fokus, kurve:null, zoomer:null};
+  // Ein Takt ist nur noch ein Zeitabschnitt, kein eigener Kasten: alles steht im Blatt.
+  takt={stuecke:[], gewicht:g, fokus:!!fokus, kurve:null, zoomer:null};
   szene.takte.push(takt);
-  ziel=t;
+  ziel=szene.blatt;
 }
 // Ein Stueck: was gleichzeitig erscheint. luft ist Wartezeit davor, in Stueckbreiten.
 function stueck(knoten,luft){
@@ -502,14 +495,12 @@ function schritt(knoten,art){
     const a=Array.isArray(art)?(art[i]||art[art.length-1]):art; if(a)k.classList.add(a); } });
   stueck(liste);
 }
-// Ein Bild kommt in eine eigene Lage. Kommt spaeter ein zweites, loest es das erste ab.
+// Ein Bild ist ein Block im Blatt und erscheint wie jedes andere Stueck.
 function bildAuf(svg){
-  const lage=el('div','lage'); lage.appendChild(svg);
-  szene.bild.appendChild(lage); szene.mitBild=true;
-  const eintrag={kn:lage, takt:szene.takte.length-1};
-  szene.lagen.push(eintrag);
-  plotLage=eintrag;
-  return lage;
+  const kasten=el('div','bild'); kasten.appendChild(svg);
+  szene.blatt.appendChild(kasten); szene.mitBild=true;
+  stueck(kasten);
+  return kasten;
 }
 function plotAuf(o){
   const cfg={xmin:num(o.xmin,-5),xmax:num(o.xmax,5),ymin:num(o.ymin,-5),ymax:num(o.ymax,5),
@@ -564,15 +555,18 @@ const OPS={
   jetztihr(o){
     const a=el('p','jetzt');
     const m=el('span','marke'); m.textContent='Jetzt ihr:'; a.appendChild(m);
-    const tex=sauberTex(o.aufgabe);
-    const s2=el('span'); s2.textContent=tex?'\\('+tex+'\\)':String(o.t??''); a.appendChild(s2);
-    if(tex)mathKnoten.push(a);
+    // Aufgabe und Loesung koennen Formel sein oder Klartext, und beides zugleich.
+    const tex=sauberTex(o.aufgabe||o.aufgabeTex);
+    if(o.t!==undefined&&String(o.t).trim()){
+      const st=el('span'); st.textContent=String(o.t); a.appendChild(st); }
+    if(tex){ const s2=el('span'); s2.textContent=' \\('+tex+'\\)'; a.appendChild(s2); mathKnoten.push(a); }
     setzen(a);
     const lo=el('div','loesung');
     const b2=el('b'); b2.textContent='Lösung'; lo.appendChild(b2);
-    const lt=sauberTex(o.loesung);
-    const s3=el('span'); s3.textContent=lt?'\\('+lt+'\\)':String(o.loesungText||''); lo.appendChild(s3);
-    if(lt)mathKnoten.push(lo);
+    const lt=sauberTex(o.loesung||o.loesungTex);
+    if(lt){ const s3=el('span'); s3.textContent='\\('+lt+'\\) '; lo.appendChild(s3); mathKnoten.push(lo); }
+    if(o.loesungText!==undefined&&String(o.loesungText).trim()){
+      const s4=el('div','dazu'); s4.textContent=String(o.loesungText); lo.appendChild(s4); }
     setzen(lo,false,2.6);   // erst nach einer Strecke Nachdenkzeit
   },
   // Eine Frage stehen lassen, dann eine Strecke Stille, dann kommt die Antwort
@@ -749,12 +743,6 @@ function bauen(){
       for(;i<ops.length;i++){ const o=ops[i]; try{ if(o&&OPS[o.op])OPS[o.op](o); }
         catch(e){ if(window.__laut)try{console.log(o.op,e.message);}catch(_){} } }
     }
-    if(!szene.mitBild)szene.kn.classList.add('ohnebild');
-    // Erst ab dem Takt, in dem das erste Bild kommt, rueckt der Text darunter
-    if(szene.lagen.length){
-      const ab=Math.max(0,szene.lagen[0].takt);
-      szene.takte.forEach((t,i)=>{ if(i>=ab)t.kn.classList.add('unterBild'); });
-    }
   }
 
   // Schlussszene
@@ -801,15 +789,8 @@ function zeitVerteilen(){
     // Die Szene bleibt vom ersten bis zum letzten Takt stehen, mit kurzer Blende an den Raendern
     lage(s.kn, s.von, s.bis);
     if(s.frage)spanne(s.frage, s.von, s.von+Math.min(0.5,(s.bis-s.von)*0.14));
-    // Eine Bildlage haelt vom Takt ihrer Entstehung bis zur naechsten Lage oder zum Szenenende
-    s.lagen.forEach((lg,i)=>{
-      const start=s.takte[Math.max(0,lg.takt)].von;
-      const ende=(i+1<s.lagen.length)?s.takte[Math.max(0,s.lagen[i+1].takt)].von:s.bis;
-      lage(lg.kn, start, ende);
-    });
     for(const t of s.takte){
       const d=t.bis-t.von;
-      lage(t.kn, t.von, t.bis);
       // Jeder Takt kostet dieselbe Strecke. Das Gewicht bestimmt nicht mehr, wie weit
       // man drehen muss, sondern wie schnell der Takt sich aufbaut: ein schwerer Beat
       // baut ueber fast die ganze Strecke auf, ein leichter ist frueh fertig.
@@ -838,28 +819,41 @@ function zeitVerteilen(){
 }
 
 // ================= Einpassen =================
-// Kein Takt darf ueber die Buehne hinauslaufen. Wer zu voll ist, wird einmal verkleinert.
+// Ein Blatt soll die Hoehe wirklich ausnutzen: die Abstaende zwischen den Bloecken
+// werden so gewaehlt, dass der Rest der Buehne aufgebraucht wird. Was nicht passt,
+// wird einmal verkleinert.
+const ABSTAND_MIN=8, ABSTAND_MAX=64;
 function einpassen(){
   const zuVoll=[];
   for(const s of SZENEN){
-    for(const t of s.takte){
-      const H=t.kn.clientHeight; if(!H)continue;
-      t.kn.classList.remove('voll');
-      t.kn.style.transform=''; t.kn.style.width='';
-      const h=t.kn.scrollHeight;
-      if(h>H+2){
-        // Zu voll: oben beginnen und einmal verkleinern, damit nichts abgeschnitten wird
-        t.kn.classList.add('voll');
-        const f=Math.max(0.68,(H-2)/t.kn.scrollHeight);
-        t.kn.style.transform='scale('+f.toFixed(3)+')';
-        t.kn.style.width=(100/f).toFixed(2)+'%';
-        if(f<=0.7)zuVoll.push(t);
-      }
+    const b=s.blatt; if(!b)continue;
+    b.style.gap=''; b.style.transform=''; b.style.width=''; b.classList.remove('mittig');
+    const H=b.clientHeight; if(!H)continue;
+    const kinder=[...b.children];
+    const n=kinder.length; if(!n)continue;
+    // Hoehe des Inhalts ohne Abstaende
+    let h=0; for(const k of kinder)h+=k.getBoundingClientRect().height;
+    if(n>1){
+      const rest=H-h;
+      const a=Math.max(ABSTAND_MIN,Math.min(ABSTAND_MAX,rest/(n-1)));
+      b.style.gap=a.toFixed(1)+'px';
+      h+=a*(n-1);
+    }
+    if(h>H+2){
+      const f=Math.max(0.66,(H-2)/h);
+      b.style.transform='scale('+f.toFixed(3)+')';
+      b.style.width=(100/f).toFixed(2)+'%';
+      if(f<=0.68)zuVoll.push(s);
+    } else if(h < H*0.72){
+      // Bleibt trotz groesster Abstaende viel Luft, steht das Blatt mittig statt oben
+      b.classList.add('mittig');
     }
   }
-  if(zuVoll.length&&window.console)console.warn('Blattkino: '+zuVoll.length+' Takt(e) zu voll fuer die Buehne.');
+  if(zuVoll.length&&window.console)console.warn('Blattkino: '+zuVoll.length+' Blatt/Blaetter zu voll.');
 }
 addEventListener('resize',()=>{ clearTimeout(einpassen._t); einpassen._t=setTimeout(einpassen,180); },{passive:true});
+// Schriften und Formeln kommen spaeter als das Geruest. Danach noch einmal messen.
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>setTimeout(einpassen,60));
 
 // ================= Fortschritt =================
 const balken=$('fill'), leiste=$('fortschritt'), rad=$('rad');
@@ -872,7 +866,7 @@ function fortschritt(){
 function anzeigen(){
   angefordert=false;
   const p=fortschritt();
-  balken.style.transform='scaleX('+p.toFixed(4)+')';
+  balken.style.transform='scaleY('+p.toFixed(4)+')';
   leiste.setAttribute('aria-valuenow',String(Math.round(p*100)));
   if(document.documentElement.classList.contains('zuFuss'))vonHand(p*100);
 }
@@ -934,13 +928,14 @@ function starten(){
 function torZeigen(){
   document.documentElement.classList.remove('laeuft');
 }
-if(tor){
+function torFuellen(){
+  if(!tor)return;
   $('torTitel').textContent=String(DATEN.titel||'Blattkino');
-  if(DATEN.quelle)$('torQuelle').textContent=String(DATEN.quelle);
-  else $('torQuelle').remove();
+  const q=$('torQuelle');
+  if(q){ if(DATEN.quelle)q.textContent=String(DATEN.quelle); else q.remove(); }
   if(klein&&vollbildMoeglich())knopf.textContent='Im Vollbild starten';
-  knopf.addEventListener('click',starten);
 }
+if(tor)knopf.addEventListener('click',starten);
 if(raus)raus.addEventListener('click',()=>{ if(imVollbild())vollbildAus(); else torZeigen(); });
 function vollbildGewechselt(){
   const an=imVollbild();
@@ -954,12 +949,33 @@ addEventListener('fullscreenchange',vollbildGewechselt);
 addEventListener('webkitfullscreenchange',vollbildGewechselt);
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&!imVollbild())torZeigen(); });
 
-bauen();
-anzeigen();
-// Kann der Browser es grundsaetzlich nicht, sofort umschalten, sonst blitzt eine leere Seite auf.
-(function(){ let kann=false;
+function los(){
+  torFuellen();
+  bauen();
+  anzeigen();
+  // Kann der Browser es grundsaetzlich nicht, sofort umschalten, sonst blitzt eine leere Seite auf.
+  let kann=false;
   try{ kann=CSS.supports('animation-timeline','--rad'); }catch(e){}
-  if(!kann)zuFuss(); })();
-requestAnimationFrame(()=>requestAnimationFrame(pruefen));
+  if(!kann)zuFuss();
+  requestAnimationFrame(()=>requestAnimationFrame(pruefen));
+}
+
+// ---- Ein Film kann auch als eigene Datei danebenliegen: player.html?film=filme/x.json
+// Dann traegt die Seite den Spieler und die Datei nur den Inhalt.
+(function(){
+  let name='';
+  try{ name=new URLSearchParams(location.search).get('film')||''; }catch(e){}
+  // Nur eine harmlose Datei neben der Seite, keine fremde Herkunft, kein Aufstieg im Baum
+  const gut = /^[A-Za-z0-9_\-]+(\/[A-Za-z0-9_\-]+)*\.json$/.test(name) && name.indexOf('..')<0;
+  if(!name||!gut){ los(); return; }
+  fetch(name,{credentials:'omit'})
+    .then(r=>{ if(!r.ok)throw new Error(r.status); return r.json(); })
+    .then(j=>{ DATEN=lesen(j); los(); })
+    .catch(()=>{
+      DATEN=Object.assign({},LEER,{titel:'Film nicht gefunden',quelle:name});
+      los();
+      if(knopf)knopf.disabled=true;
+    });
+})();
 
 </script>

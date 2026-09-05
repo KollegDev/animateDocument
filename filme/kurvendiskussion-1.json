@@ -1,0 +1,819 @@
+{
+ "titel": "Definitions- und Wertebereich",
+ "quelle": "Kurvendiskussion 1, Seiten 1 bis 4",
+ "boegen": [
+  {
+   "frage": "Womit faengt eine Kurvendiskussion an?",
+   "beats": [
+    {
+     "sub": "Die Kurvendiskussion untersucht eine Funktion Schritt für Schritt.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Kurvendiskussion"
+      }
+     ]
+    },
+    {
+     "sub": "Der erste Block fragt, wo die Funktion lebt und wie sie aussieht.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "item",
+       "t": "Definitionsbereich und Wertebereich"
+      },
+      {
+       "op": "item",
+       "t": "Graphische Darstellung / Skizze"
+      },
+      {
+       "op": "item",
+       "t": "Symmetrieverhalten"
+      },
+      {
+       "op": "item",
+       "t": "y-Achsenschnittpunkt und Nullstellen"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Was untersucht man nach dem ersten Block noch?",
+   "beats": [
+    {
+     "sub": "Der zweite Block fragt, was am Rand und an den Lücken passiert.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Übersicht"
+      },
+      {
+       "op": "item",
+       "t": "Grenzverhalten im Unendlichen"
+      },
+      {
+       "op": "item",
+       "t": "Polstellen und Definitionslücken"
+      },
+      {
+       "op": "item",
+       "t": "Asymptoten"
+      }
+     ]
+    },
+    {
+     "sub": "Der dritte Block braucht die Ableitungen.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "item",
+       "t": "Ableitungen"
+      },
+      {
+       "op": "item",
+       "t": "Monotonieverhalten"
+      },
+      {
+       "op": "item",
+       "t": "Extrempunkte (Hoch- und Tiefpunkte)"
+      },
+      {
+       "op": "item",
+       "t": "Krümmungsverhalten"
+      },
+      {
+       "op": "item",
+       "t": "Wendepunkte"
+      },
+      {
+       "op": "item",
+       "t": "Sattelpunkte"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Mit welchen Funktionstypen faengt die Liste an?",
+   "beats": [
+    {
+     "sub": "Untersucht werden fünf Typen.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Diese Funktionstypen werden untersucht"
+      }
+     ]
+    },
+    {
+     "sub": "Der erste ist die ganzrationale Funktion.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "item",
+       "t": "ganzrationale Funktionen"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=x^{4}+3x^{3}+4x^{2}+6x+1"
+      }
+     ]
+    },
+    {
+     "sub": "Bei den gebrochenrationalen steht x im Nenner.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "item",
+       "t": "gebrochenrationale Funktionen"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=\\frac{x}{x+1}"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wo kann das x sonst noch stehen?",
+   "beats": [
+    {
+     "sub": "Bei den Exponentialfunktionen steht x im Exponenten.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Diese Funktionstypen werden untersucht"
+      },
+      {
+       "op": "item",
+       "t": "Exponentialfunktionen"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=e^{2x}"
+      }
+     ]
+    },
+    {
+     "sub": "Bei den Wurzelfunktionen steht x unter der Wurzel.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "item",
+       "t": "Wurzelfunktionen"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=\\sqrt{x+1}"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Kommen diese Typen immer einzeln vor?",
+   "beats": [
+    {
+     "sub": "Bei den Logarithmusfunktionen steht x im Logarithmus.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Diese Funktionstypen werden untersucht"
+      },
+      {
+       "op": "item",
+       "t": "Logarithmusfunktionen"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=log(x^{2}+1)"
+      }
+     ]
+    },
+    {
+     "sub": "Diese Typen können auch zusammengesetzt sein.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "f(x)=e^{2x}\\cdot (x+4)^{2}"
+      },
+      {
+       "op": "note",
+       "t": "Bei fortgeschrittenen Aufgaben können die Funktionen ausserdem zu Funktionsscharen erweitert werden."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Was ist an der Vier anders als an allen anderen Zahlen?",
+   "beats": [
+    {
+     "sub": "Der Definitionsbereich sagt, welche x-Werte man einsetzen darf.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Definitionsbereich"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=\\frac{1}{x-4}"
+      }
+     ]
+    },
+    {
+     "sub": "Eine einzige Zahl ist verboten.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "frage",
+       "t": "Warum darf man hier ausgerechnet die Vier nicht einsetzen?"
+      }
+     ]
+    },
+    {
+     "sub": "Setzt man vier ein, steht null im Nenner.",
+     "gewicht": 3,
+     "payoff": true,
+     "fokus": true,
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "f(4)=\\frac{1}{4-4}",
+         "warum": "vier eingesetzt"
+        },
+        {
+         "tex": "f(4)=\\frac{1}{0}"
+        }
+       ]
+      },
+      {
+       "op": "note",
+       "t": "und durch Null teilen darf man nicht."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wie schreibt man den erlaubten Bereich auf?",
+   "beats": [
+    {
+     "sub": "Also sind alle reellen Zahlen erlaubt.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Definitionsbereich"
+      }
+     ]
+    },
+    {
+     "sub": "Nur die Vier nicht.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "D_f: x\\in\\mathbb{R}\\mid x\\neq 4",
+       "hl": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Woran erkennt man ueberhaupt, dass etwas verboten sein koennte?",
+   "beats": [
+    {
+     "sub": "Genau drei Situationen schränken einen Definitionsbereich ein.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Drei Situationen"
+      },
+      {
+       "op": "item",
+       "t": "(1) Brüche"
+      },
+      {
+       "op": "item",
+       "t": "(2) Wurzeln"
+      },
+      {
+       "op": "item",
+       "t": "(3) Logarithmus."
+      }
+     ]
+    },
+    {
+     "sub": "Für jede gilt eine eigene Bedingung.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "tabelle",
+       "art": "regel",
+       "kopf": [
+        "!Situation",
+        "!Bedingung"
+       ],
+       "zeilen": [
+        [
+         "\\frac{1}{a}",
+         "a\\neq 0"
+        ],
+        [
+         "\\sqrt{a}",
+         "a\\geqslant 0"
+        ],
+        [
+         "log(a)",
+         "a>0"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wie rechnet man den Definitionsbereich eines Bruchs aus?",
+   "beats": [
+    {
+     "sub": "In Brüchen darf der Nenner nicht null werden.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "(1) Brüche"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=\\frac{1}{a}\\;\\rightarrow\\; a\\neq 0",
+       "hl": true
+      }
+     ]
+    },
+    {
+     "sub": "Man setzt den Nenner ungleich null und löst nach x auf.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "g(x)=\\frac{1}{x-2}"
+      },
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "x-2\\neq 0",
+         "warum": "beide Seiten plus zwei"
+        },
+        {
+         "tex": "x\\neq 2"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sub": "Damit steht der Definitionsbereich da.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "D_g: x\\in\\mathbb{R}\\mid x\\neq 2",
+       "hl": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Bleibt das Muster gleich, wenn der Nenner anders aussieht?",
+   "beats": [
+    {
+     "sub": "Dieselbe Rechnung, vier weitere Nenner.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "tabelle",
+       "kopf": [
+        "!Funktion",
+        "!Definitionsbereich"
+       ],
+       "zeilen": [
+        [
+         "f(x)=\\frac{1}{x^{2}-4}",
+         "x\\in\\mathbb{R}\\mid x\\neq 2 \\wedge x\\neq -2"
+        ],
+        [
+         "f(x)=\\frac{x}{x+6}",
+         "x\\in\\mathbb{R}\\mid x\\neq -6"
+        ],
+        [
+         "f(x)=\\frac{8}{x}",
+         "x\\in\\mathbb{R}\\mid x\\neq 0"
+        ],
+        [
+         "f(x)=\\frac{9}{x^{2}}",
+         "x\\in\\mathbb{R}\\mid x\\neq 0"
+        ]
+       ]
+      },
+      {
+       "op": "note",
+       "t": "∧ bedeutet \"und\", ∨ bedeutet \"oder\""
+      }
+     ]
+    },
+    {
+     "sub": "Die Regel bleibt in jeder Zeile dieselbe.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "merksatz",
+       "t": "Nenner gleich null setzen, nach x auflösen, dieses x ausschliessen."
+      }
+     ]
+    },
+    {
+     "sub": "Probiert es an einem eigenen Nenner.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "jetztihr",
+       "aufgabe": "f(x)=\\frac{5}{x-7}",
+       "loesung": "D_f: x\\in\\mathbb{R}\\mid x\\neq 7"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Warum gilt bei Wurzeln eine andere Bedingung?",
+   "beats": [
+    {
+     "sub": "Unter der Wurzel darf nichts Negatives stehen.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "(2) Wurzeln"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=\\sqrt{a}\\;\\rightarrow\\; a\\geqslant 0",
+       "hl": true
+      }
+     ]
+    },
+    {
+     "sub": "Aus der Bedingung wird eine Ungleichung.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "g(x)=\\sqrt{x+4}",
+         "warum": "der Radikand muss grösser oder gleich null sein"
+        },
+        {
+         "tex": "x+4\\geqslant 0",
+         "warum": "beide Seiten minus vier"
+        },
+        {
+         "tex": "x\\geqslant -4"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sub": "Damit steht der Definitionsbereich da.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "D_g: x\\in\\mathbb{R}\\mid x\\geqslant -4",
+       "hl": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Aendert sich etwas, wenn der Wurzelgrad wechselt?",
+   "beats": [
+    {
+     "sub": "Vier Wurzeln, dieselbe Bedingung.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "tabelle",
+       "kopf": [
+        "!Funktion",
+        "!Bedingung",
+        "!Definitionsbereich"
+       ],
+       "zeilen": [
+        [
+         "g(x)=\\sqrt{2x+4}",
+         "2x+4\\geqslant 0",
+         "x\\geqslant -2"
+        ],
+        [
+         "g(x)=\\sqrt[5]{x-1}",
+         "x-1\\geqslant 0",
+         "x\\geqslant 1"
+        ],
+        [
+         "g(x)=\\sqrt[3]{x+4}",
+         "x+4\\geqslant 0",
+         "x\\geqslant -4"
+        ],
+        [
+         "g(x)=\\sqrt{x^{2}+1}",
+         "x^{2}+1\\geqslant 0",
+         "x\\in\\mathbb{R}"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sub": "Die letzte Zeile verbietet nichts, denn ein Quadrat plus eins ist immer positiv.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "merksatz",
+       "t": "Radikand grösser oder gleich null setzen, nach x auflösen."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Und warum ist die Null beim Logarithmus verboten, bei der Wurzel aber erlaubt?",
+   "beats": [
+    {
+     "sub": "Im Logarithmus darf das Argument nur positiv sein.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "h",
+       "t": "(3) Logarithmus"
+      },
+      {
+       "op": "math",
+       "tex": "h(x)=log(a)\\;\\rightarrow\\; a>0",
+       "hl": true
+      }
+     ]
+    },
+    {
+     "sub": "Der Unterschied ist ein Zeichen und er ist wichtig.",
+     "gewicht": 3,
+     "fokus": true,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "tabelle",
+       "art": "vergleich",
+       "kopf": [
+        "!",
+        "!erlaubt"
+       ],
+       "zeilen": [
+        [
+         "\\sqrt{a}",
+         "a\\geqslant 0"
+        ],
+        [
+         "log(a)",
+         "a>0"
+        ]
+       ]
+      },
+      {
+       "op": "note",
+       "t": "Anders als bei der Wurzel ist die Null hier nicht erlaubt, denn log(0) existiert nicht."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wie kommt man bei log(3x+1) an das x heran?",
+   "beats": [
+    {
+     "sub": "Zwei Umformungen, dann steht x allein.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "h",
+       "t": "(3) Logarithmus"
+      },
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "h(x)=log(3x+1)",
+         "warum": "das Argument muss grösser als null sein"
+        },
+        {
+         "tex": "3x+1>0",
+         "warum": "beide Seiten minus eins"
+        },
+        {
+         "tex": "3x>-1",
+         "warum": "beide Seiten durch drei"
+        },
+        {
+         "tex": "x>-\\frac{1}{3}"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Bleibt die Regel bei anderen Logarithmen dieselbe?",
+   "beats": [
+    {
+     "sub": "Drei weitere Beispiele nach demselben Muster.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "tabelle",
+       "kopf": [
+        "!Funktion",
+        "!Definitionsbereich"
+       ],
+       "zeilen": [
+        [
+         "h(x)=log(3x+1)",
+         "x>-\\frac{1}{3}"
+        ],
+        [
+         "h(x)=ln(x-5)",
+         "x>5"
+        ],
+        [
+         "h(x)=ln(x)+2",
+         "x>0"
+        ],
+        [
+         "h(x)=log(4-x^{2})",
+         "-2<x<2"
+        ]
+       ]
+      },
+      {
+       "op": "note",
+       "t": "ln ist der Logarithmus zur Basis e, für den Definitionsbereich gilt dieselbe Regel wie für log."
+      }
+     ]
+    },
+    {
+     "sub": "Auch hier bleibt die Regel dieselbe.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "merksatz",
+       "t": "Argument grösser als null setzen, nach x auflösen."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Welche y-Werte kommen bei einer Funktion ueberhaupt heraus?",
+   "beats": [
+    {
+     "sub": "Der Wertebereich geht in die andere Richtung als der Definitionsbereich.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Wertebereich"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=x^{2}+4"
+      }
+     ]
+    },
+    {
+     "sub": "Am Graphen sieht man es sofort.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "plot",
+       "id": "p1",
+       "expr": "x^2+4",
+       "xmin": -4,
+       "xmax": 4,
+       "ymin": 0,
+       "ymax": 12,
+       "legend": "f(x) = x² + 4"
+      }
+     ]
+    },
+    {
+     "sub": "Der tiefste Punkt liegt bei T von null, vier.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "point",
+       "id": "p1",
+       "x": 0,
+       "y": 4,
+       "label": "T(0|4)"
+      },
+      {
+       "op": "region",
+       "id": "p1",
+       "y": 4,
+       "dir": "above",
+       "label": "Wertebereich: y ≥ 4"
+      }
+     ]
+    },
+    {
+     "sub": "Also ist y immer grösser oder gleich vier.",
+     "gewicht": 3,
+     "fokus": true,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "W_f: y\\in\\mathbb{R}\\mid y\\geqslant 4",
+       "hl": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Sieht man den Wertebereich immer so leicht?",
+   "beats": [
+    {
+     "sub": "Meistens nicht.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "note",
+       "t": "Den Wertebereich erkennt man oft erst am Ende der Aufgabe."
+      },
+      {
+       "op": "note",
+       "t": "Erst nach Verhalten im Unendlichen, Extrempunkten und Nullstellen steht er fest."
+      }
+     ]
+    },
+    {
+     "sub": "Und hier beginnt das nächste Beispiel.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Beispiele"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=x^{4}-2x^{2}"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

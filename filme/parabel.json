@@ -1,0 +1,430 @@
+{
+ "titel": "Eine Parabel, ganz gelesen",
+ "quelle": "Blattkino, Vorführung",
+ "boegen": [
+  {
+   "frage": "Was lässt sich an einer Parabel überhaupt ablesen?",
+   "beats": [
+    {
+     "sub": "Drei Fragen stellt man an fast jede Kurve.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "item",
+       "t": "Wo liegt sie am tiefsten?"
+      },
+      {
+       "op": "item",
+       "t": "Welche Werte erreicht sie?"
+      },
+      {
+       "op": "item",
+       "t": "Wie steil ist sie an einer Stelle?"
+      }
+     ]
+    },
+    {
+     "sub": "Alle drei stecken schon in dieser einen Kurve.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "plot",
+       "id": "p",
+       "expr": "x^2+1",
+       "xmin": -3,
+       "xmax": 3,
+       "ymin": -1,
+       "ymax": 10,
+       "legend": "f(x)=x²+1"
+      },
+      {
+       "op": "math",
+       "tex": "f(x)=x^{2}+1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wo liegt der tiefste Punkt, und welche Werte kommen heraus?",
+   "beats": [
+    {
+     "sub": "Ein Quadrat wird nie negativ. Kleiner als eins geht also nicht.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "plot",
+       "id": "w",
+       "expr": "x^2+1",
+       "xmin": -3,
+       "xmax": 3,
+       "ymin": -1,
+       "ymax": 10,
+       "legend": "f(x)=x²+1"
+      },
+      {
+       "op": "point",
+       "id": "w",
+       "x": 0,
+       "y": 1,
+       "label": "T(0|1)"
+      },
+      {
+       "op": "hline",
+       "id": "w",
+       "y": 1,
+       "label": "y = 1"
+      }
+     ]
+    },
+    {
+     "sub": "Oberhalb der Linie wird jeder Wert erreicht, unterhalb keiner.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "region",
+       "id": "w",
+       "y": 1,
+       "dir": "above",
+       "label": "erreichbar"
+      }
+     ]
+    },
+    {
+     "sub": "Damit steht der Wertebereich fest.",
+     "gewicht": 3,
+     "payoff": true,
+     "fokus": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "W_f=\\{\\,y \\mid y \\geq 1\\,\\}",
+       "hl": true
+      },
+      {
+       "op": "note",
+       "t": "Unter eins liegt kein einziger Punkt der Kurve."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wie steil ist die Kurve an einer einzigen Stelle?",
+   "beats": [
+    {
+     "sub": "Zwischen zwei Punkten lässt sich die Steigung ausrechnen.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "m=\\frac{f(1+h)-f(1)}{h}"
+      }
+     ]
+    },
+    {
+     "sub": "Nun rückt der zweite Punkt immer näher an den ersten heran.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "frage",
+       "t": "Was wird aus der Geraden, wenn h gegen null geht?"
+      },
+      {
+       "op": "plot",
+       "id": "s",
+       "expr": "x^2+1",
+       "xmin": -0.5,
+       "xmax": 4,
+       "ymin": -1,
+       "ymax": 11,
+       "legend": "f(x)=x²+1"
+      },
+      {
+       "op": "point",
+       "id": "s",
+       "x": 1,
+       "y": 2,
+       "label": "P(1|2)"
+      },
+      {
+       "op": "bildfolge",
+       "id": "s",
+       "art": "sekante",
+       "x": 1,
+       "stufen": [
+        2,
+        1,
+        0.5,
+        0
+       ],
+       "ziel": "Tangente"
+      }
+     ]
+    },
+    {
+     "sub": "Die Geraden kippen nicht wild, sie laufen auf eine einzige zu.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "merksatz",
+       "t": "Diese Grenzlage heisst Tangente."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Warum darf h nicht einfach null sein?",
+   "beats": [
+    {
+     "sub": "Unten stünde eine Null, und durch null teilt man nicht.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "h",
+       "t": "Erst umformen, dann kürzen"
+      }
+     ]
+    },
+    {
+     "sub": "Also wird zuerst umgeformt.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "m=\\frac{(1+h)^{2}+1-2}{h}",
+         "warum": "f(x)=x²+1 eingesetzt"
+        },
+        {
+         "tex": "m=\\frac{1+2h+h^{2}-1}{h}",
+         "warum": "Klammer ausmultipliziert"
+        },
+        {
+         "tex": "m=\\frac{2h+h^{2}}{h}",
+         "warum": "1 und minus 1 heben sich auf"
+        },
+        {
+         "tex": "m=2+h",
+         "warum": "durch h gekürzt"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sub": "Jetzt steht kein h mehr unten, und erst jetzt darf es verschwinden.",
+     "gewicht": 3,
+     "payoff": true,
+     "fokus": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "m=2+0=2",
+       "hl": true
+      },
+      {
+       "op": "note",
+       "t": "An der Stelle 1 ist die Steigung 2."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Sieht man das auch, wenn man nah genug herangeht?",
+   "beats": [
+    {
+     "sub": "Das Bild fährt in den Punkt hinein.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "zoomfolge",
+       "id": "z",
+       "expr": "x^2+1",
+       "x": 1,
+       "zoom": 14,
+       "xmin": -1,
+       "xmax": 4,
+       "ymin": -1,
+       "ymax": 11,
+       "label": "P(1|2)"
+      }
+     ]
+    },
+    {
+     "sub": "Der Wert steht zugleich in der Formel und als Stelle im Bild.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "wert",
+       "id": "z",
+       "x": 1,
+       "tex": "f(1)=2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "sub": "Aus der Nähe liegt die Kurve auf ihrer Tangente.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "note",
+       "t": "Der Unterschied verschwindet."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Was passiert, wenn man das an jeder Stelle macht?",
+   "beats": [
+    {
+     "sub": "Dieselbe Rechnung an anderen Stellen ergibt jedes Mal das Doppelte.",
+     "gewicht": 1,
+     "ops": [
+      {
+       "op": "tabelle",
+       "art": "serie",
+       "kopf": [
+        "Stelle x",
+        "Steigung"
+       ],
+       "zeilen": [
+        [
+         "1",
+         "2 \\cdot 1 = 2"
+        ],
+        [
+         "2",
+         "2 \\cdot 2 = 4"
+        ],
+        [
+         "3",
+         "2 \\cdot 3 = 6"
+        ],
+        [
+         "4",
+         "2 \\cdot 4 = 8"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sub": "Diese Zuordnung von Stelle zu Steigung ist selbst eine Funktion.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "math",
+       "tex": "f'(x)=2x"
+      },
+      {
+       "op": "merksatz",
+       "t": "Sie heisst Ableitung."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wie hängen die Kurve und ihre Steigungen zusammen?",
+   "beats": [
+    {
+     "sub": "Oben die Kurve, darunter ihre Steigungen.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "doppelgraph",
+       "id": "d",
+       "expr": "x^2+1",
+       "expr2": "2*x",
+       "xmin": -3,
+       "xmax": 3,
+       "ymin": -1,
+       "ymax": 10,
+       "ymin2": -6,
+       "ymax2": 6,
+       "legend": "f(x)=x²+1",
+       "legend2": "f'(x)=2x"
+      },
+      {
+       "op": "binden",
+       "x": 1,
+       "label": "f(1)=2",
+       "label2": "f'(1)=2"
+      }
+     ]
+    },
+    {
+     "sub": "Wo die untere Kurve die Achse trifft, liegt oben der tiefste Punkt.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "binden",
+       "x": 0,
+       "label": "tiefster Punkt",
+       "label2": "f'(0)=0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Findet man den tiefsten Punkt auch ohne Bild?",
+   "beats": [
+    {
+     "sub": "Man braucht nur die Ableitung und die Frage, wo sie null wird.",
+     "gewicht": 2,
+     "ops": [
+      {
+       "op": "jetztihr",
+       "t": "Wo liegt der tiefste Punkt?",
+       "aufgabe": "g(x)=x^{2}-6x",
+       "loesung": "g'(x)=2x-6",
+       "loesungText": "2x-6=0 ergibt x=3"
+      }
+     ]
+    },
+    {
+     "sub": "Das Bild bestätigt die Rechnung.",
+     "gewicht": 3,
+     "payoff": true,
+     "ops": [
+      {
+       "op": "plot",
+       "id": "g",
+       "expr": "x^2-6*x",
+       "xmin": -1,
+       "xmax": 7,
+       "ymin": -10,
+       "ymax": 8,
+       "legend": "g(x)=x²-6x"
+      },
+      {
+       "op": "vline",
+       "id": "g",
+       "x": 3,
+       "label": "x = 3"
+      },
+      {
+       "op": "point",
+       "id": "g",
+       "x": 3,
+       "y": -9,
+       "label": "T(3|-9)"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
