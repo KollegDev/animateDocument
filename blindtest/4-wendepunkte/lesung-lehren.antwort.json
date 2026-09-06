@@ -1,0 +1,33 @@
+{
+  "befunde": [
+    {
+      "wo": "Blatt 1, Wisch 3",
+      "regel": "Reprise statt Verweis",
+      "zitat": "wie bei den Extrempunkten, nur eine Ableitung höher",
+      "befund": "Der Merksatz vergleicht mit dem Extrempunkte-Verfahren, das in diesem Transkript nirgends gezeigt wird, statt es zu reprisieren.",
+      "schwere": "schwer"
+    },
+    {
+      "wo": "Blatt 2, Wisch 1",
+      "regel": "Fachwort ohne Erklärung",
+      "zitat": "notwendige Bedingung: f''(x)=0",
+      "befund": "Notwendige und hinreichende Bedingung treten als Fachbegriffe auf, ohne dass ihr Unterschied je in einem Halbsatz erklaert wird.",
+      "schwere": "mittel"
+    },
+    {
+      "wo": "Blatt 4, Wisch 4",
+      "regel": "konstante Notation in der Serie",
+      "zitat": "Zeile liegt bereit, noch unsichtbar: [W(0 | 0) orange]",
+      "befund": "Die Ergebniszeile blendet komplett per Chip fuer Chip ein, waehrend Blatt 3 dieselbe Zeile per Luecken fuellt, in die einzelne Kopien einfliegen; die Notation der Serie weicht vom erklaerten Beispiel ab.",
+      "schwere": "mittel"
+    }
+  ],
+  "trug": [
+    "jede Blattfrage wird binnen hoechstens vier Wischen getilgt",
+    "das einzige Uebersichtsblatt steht am Ende, nie als Eroeffnung",
+    "kein Satz spricht ueber den Film, das Blatt oder das Wischen",
+    "Zwischenwerte wandern per Pfeilanimation zeilenweise weiter statt referenziert zu werden",
+    "jeder Merksatz ausser dem in Blatt 1 steht neben einem sichtbaren Beleg"
+  ],
+  "urteil": "Der Film haelt Bogenlaenge, Kernnotation und Meta-Freiheit durchgehend ein, verletzt aber die Treue durch einen unbelegten Verweis auf ein nicht gezeigtes Verfahren und die Notationskonstanz der Serie bei der letzten Ergebniszeile."
+}

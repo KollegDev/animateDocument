@@ -1,0 +1,54 @@
+{
+  "befunde": [
+    {
+      "wo": "Blatt 1, Wisch 1",
+      "regel": "Antwort nie vor der Not",
+      "zitat": "Beschriftung W(0|0) erscheint am Punkt (0|0), orange.",
+      "befund": "Der fertig beschriftete Wendepunkt W(0|0) erscheint, bevor ueberhaupt eine Frage oder ein Problem sichtbar war, das ihn noetig macht.",
+      "schwere": "schwer"
+    },
+    {
+      "wo": "Blatt 7, Wisch 2",
+      "regel": "Farbe nur auf wandernder Zahl",
+      "zitat": "f'''(x_0)≠ 0 orange]→[W(x_0 | f(x_0)) orange",
+      "befund": "Eine ganze Schema-Zeile aus Formel, Pfeil und Ergebnis traegt Farbe, obwohl x_0 kein wandernder Kandidat ist, sondern ein Platzhalter im allgemeinen Schema.",
+      "schwere": "schwer"
+    },
+    {
+      "wo": "Blatt 3, Wisch 3",
+      "regel": "Zahl eingesetzt: ein Stamm, mehrere Aeste",
+      "zitat": "muendet von oben auf die 0 in der Klammer der naechsten Zeile",
+      "befund": "Die Zahl 0 wird an drei Stellen der Zielzeile eingesetzt (f(0), 0³, 3·0), beschrieben ist aber nur ein einzelner Pfeil statt Stamm mit mehreren Aesten.",
+      "schwere": "mittel"
+    },
+    {
+      "wo": "Blatt 6, Wisch 4",
+      "regel": "Zahl eingesetzt: ein Stamm, mehrere Aeste",
+      "zitat": "muendet von oben auf die 2 in der Klammer der naechsten Zeile",
+      "befund": "Die Zahl 2 wird an zwei Stellen eingesetzt (p(2) und (2-2)), aber nur ein Pfeil ist beschrieben, der zweite Ast fehlt.",
+      "schwere": "mittel"
+    },
+    {
+      "wo": "Blatt 5, Wisch 4",
+      "regel": "Zahl eingesetzt: Pfeil je Kandidat",
+      "zitat": "muendet von oben auf die ±√((1)/(3)) in der Klammer der naechsten Zeile",
+      "befund": "Die y-Wert-Formel fasst orangen und blauen Kandidaten zusammen, aber nur der orange Pfeil ist beschrieben, der blaue Ast fuer den zweiten Kandidaten fehlt.",
+      "schwere": "mittel"
+    },
+    {
+      "wo": "Blatt 4, Wisch 3 (ebenso Blatt 5/6, Wisch 3)",
+      "regel": "Kappe auf Kurvenstueck mit Wortlaut des Dokuments",
+      "zitat": "Im Graphen leuchtet das Kurvenstueck um x = -0.9 dick orange auf.",
+      "befund": "Die Kappe auf dem Kurvenstueck leuchtet ohne den Wortlaut (rechtsgekruemmt/linksgekruemmt), den Blatt 1 an derselben Stelle noch zeigte, die gezeigte Beziehung bleibt unbenannt.",
+      "schwere": "mittel"
+    }
+  ],
+  "trug": [
+    "Kandidat blass an der Achse, dann kraeftig, dann Aufstiegslinie zum Punkt in Kandidatenfarbe (Blatt 2 zu 3)",
+    "Zwei Kandidaten mit zwei durchgehenden Farben von der Ableitung bis zur Achsenmarke (Blatt 5, Wisch 2)",
+    "Die Serie h, k, p verzichtet korrekt auf die Kopie-fliegt-in-Luecke-Montage und zeigt die W-Zeile nur Chip fuer Chip",
+    "Pfeil von der 0 in f'''(...) mit Farbe sauber bis in die naechste Klammer gefuehrt (Blatt 3, Wisch 2)",
+    "Flug der Zahl von der Zeile zur Achsenmarke, die dabei kraeftig wird, zeigt Ort-wird-Zahl klar (Blatt 4, Wisch 2)"
+  ],
+  "urteil": "Die Grundbeziehungen Kandidat, Flug zur Achse und Aufstieg zum Punkt tragen sauber als Bewegung, aber Mehrfach-Einsetzungen bekommen zu wenige Aeste, eine Schema-Zeile traegt Farbe statt einer wandernden Zahl, den Kurvenkappen der Serie fehlt der Wortlaut, und der Wendepunkt erscheint in Blatt 1 vor der Not."
+}

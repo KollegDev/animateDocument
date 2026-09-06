@@ -1,0 +1,19 @@
+{
+  "befunde": [
+    {"wo": "Blatt 2, Wisch 3", "regel": "Katalog 1: Einsetzen ohne Pfeil", "zitat": "y=f(0)=(0-3)^2-4", "befund": "0 wird in die Klammer eingesetzt, aber kein Pfeil von einer Quelle in die Klammer ist beschrieben.", "schwere": "schwer"},
+    {"wo": "Blatt 3, Wisch 3", "regel": "Katalog 1: Einsetzen ohne Pfeil", "zitat": "g(0)=2· 0^2-8=-8", "befund": "0 wird wieder eingesetzt, ohne dass ein Pfeil die Quelle zeigt.", "schwere": "schwer"},
+    {"wo": "Blatt 4, Wisch 3", "regel": "Katalog 1 und 2: Einsetzen ohne Pfeil, kein Stamm mit Aesten", "zitat": "h(0)=0^3-4· 0=0", "befund": "0 wird zweimal eingesetzt, aber weder ein Pfeil noch eine Verzweigung in mehrere Aeste ist zu sehen.", "schwere": "schwer"},
+    {"wo": "Blatt 5, Wisch 3", "regel": "Katalog 1 und 2: Einsetzen ohne Pfeil, kein Stamm mit Aesten", "zitat": "k(0)=0^2-6· 0+8=8", "befund": "0 wird erneut zweimal eingesetzt, wieder ohne Pfeil oder Verzweigung.", "schwere": "schwer"},
+    {"wo": "Blatt 6, Wisch 3", "regel": "Katalog 1: Einsetzen ohne Pfeil", "zitat": "m(0)=e^0-1=1-1=0", "befund": "0 wird eingesetzt, ohne dass ein Pfeil die Quelle zeigt.", "schwere": "schwer"},
+    {"wo": "Blatt 4, Wisch 3", "regel": "Katalog 8: Serie zeigt volle Bewegung statt Ergebniszeile", "zitat": "An der x-Achse steht die orange Achsenmarke 0.", "befund": "Die teure Achsenmarke-Aufstieg-Punkt-Choreographie des y-Achsenschnittpunkts aus Blatt 2 wiederholt sich hier zum dritten Mal vollstaendig statt nur die Ergebniszeile zu zeigen.", "schwere": "schwer"},
+    {"wo": "Blatt 7, Wisch 3", "regel": "Regel 12: leerer Wisch", "zitat": "Die Nullstelle verlangt y=0, aufgelöst nach x.", "befund": "Der Wisch zeigt nur einen Satz im Kasten, keine Bewegung.", "schwere": "mittel"}
+  ],
+  "trug": [
+    "Nullstellen loesen sich als Kopie aus der Zeile und fliegen zur Achsenmarke, bevor der Punkt entsteht",
+    "Kandidat-Achse-Aufstieg-Punkt fuer den y-Achsenschnittpunkt in Blatt 2 zeigt Wert als Formelzeile und Hilfslinie zugleich",
+    "Farbe sitzt durchgehend nur auf der wandernden Zahl, nie auf Zeilen oder Text",
+    "Drei Kandidaten in Blatt 4 (0, 2, -2) bekommen je eine eigene Farbe und einen eigenen Flug zur Achse",
+    "Die Gleichung steht in jedem Blatt vor der Loesungszeile, nie das Ergebnis zuerst"
+  ],
+  "urteil": "Der Film haelt Katalog 1 (Pfeil beim Einsetzen) und Katalog 8 (Serie nur als Ergebniszeile) an mehreren Stellen des y-Achsenschnittpunkts nicht ein und laesst Blatt 7 einmal ohne jede Bewegung, waehrend Nullstellen-Flug, Farbregeln und die Reihenfolge Problem-vor-Antwort sauber sitzen."
+}

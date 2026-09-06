@@ -1,0 +1,18 @@
+{
+  "befunde": [
+    {"wo": "Blatt 3, Wisch 3", "regel": "Serie: konstantes Muster (Zeile 3)", "zitat": "y-Achsenschnittpunkt: g(0)", "befund": "Blatt 3 fuehrt Nullstellen und y-Achsenschnittpunkt auf einem Blatt zusammen, obwohl das Beispiel sie auf zwei Blaetter (1 und 2) verteilte.", "schwere": "schwer"},
+    {"wo": "Blatt 4, Wisch 2", "regel": "sichtbarer Traeger (Zeile 2)", "zitat": "x^2-4=0", "befund": "Die Loesung x=0 aus dem ersten Faktor wird nie hergeleitet, sie erscheint nur im Chip ohne sichtbaren Rechenschritt.", "schwere": "schwer"},
+    {"wo": "Blatt 3, Wisch 2", "regel": "Serie: konstante Notation (Zeile 3)", "zitat": "Beschriftung N₂(2|0) erscheint am Punkt (2|0)", "befund": "Ab Blatt 3 werden die Nullstellen nicht mehr wie in Blatt 1 in einem Kasten hervorgehoben, nur noch der y-Achsenschnittpunkt.", "schwere": "mittel"},
+    {"wo": "Blatt 3, Wisch 2", "regel": "Reprise statt Verweis (Zeile 5)", "zitat": "plus 8, geteilt durch 2, Wurzel gezogen", "befund": "Drei Rechenschritte werden in einem Pfeil zusammengefasst, waehrend das Beispiel in Blatt 1 jeden Schritt einzeln zeigte.", "schwere": "mittel"},
+    {"wo": "Blatt 5, Wisch 2", "regel": "Fachwort/Symbol geerdet (Zeile 7)", "zitat": "p=-6, q=8", "befund": "p und q werden als Text eingefuehrt, ohne Erklaerung des Verfahrens und ohne Verbindung zu einem Bildelement.", "schwere": "mittel"},
+    {"wo": "Blatt 6, Wisch 2", "regel": "Bogen: Tilgung erst im Ergebnis (Zeile 4)", "zitat": "Logarithmus angewendet, x=0", "befund": "Der Pfeilkommentar nennt die Loesung x=0, bevor sie durch den Chip gezeigt wird, und nimmt die Tilgung vorweg.", "schwere": "mittel"}
+  ],
+  "trug": [
+    "Nullstelle und y-Achsenschnittpunkt werden bei erstem Auftreten ueber ihre Bedeutung definiert",
+    "Jeder Bogen tilgt sich innerhalb von drei bis vier Wischen",
+    "Neue Werte werden per Chip-Animation und Punkt auf der Kurve verankert statt nur behauptet",
+    "Nur ein Uebersichtsblatt, am Schluss statt als Eroeffnung",
+    "Merksatz steht auf demselben Blatt wie die Beleg-Tabelle"
+  ],
+  "urteil": "Der Film haelt Bogen-Laenge und Fachwort-Einfuehrung meist ein, bricht aber ab Blatt 3 sein eigenes Muster aus Blattaufteilung, Kastenauszeichnung und Rechenschritten und laesst eine Nullstelle unbelegt."
+}

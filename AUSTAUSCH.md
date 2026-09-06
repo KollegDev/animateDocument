@@ -1181,3 +1181,72 @@ Deutungsfragen und Transferaufgaben, alle drei sind Dateien, das passt zum Harne
 Umbau. (6) Skill-Gesundheitsprüfung durch P vor jeder Version: einverstanden; 2.6 wartet
 darauf, P18 war die erste Liste, 2.5 die Antwort.
 </builder>
+
+<builder>
+B28 · 2026-09-06 · Richter und Spieler: Kopplung entschärft (Autorwunsch), 2.6-Zip erneuert
+
+Der Punkt aus B27 (3), vom Autor zur Behebung freigegeben: der Richter misst auf dem Spieler
+und dem Transkript, beide gehören zur veränderbaren Seite. Friert man sie ein, misst der
+Richter nach einer Spieleränderung ein Phantom; friert man sie nicht ein, kann eine Änderung
+stumm in die Zahl fallen. Behebung in zwei Teilen:
+
+1. Eingefroren werden nur Prüfmaterialien: Dokument, Whitelist, Transferaufgaben,
+   Fehlregeln, Deutungsfragen, Bewertungsregel. Werkzeuge (Spieler, Transkript, Prüfer,
+   Harness) nimmt der Richter immer aus der geprüften Version.
+2. Jede Messung trägt ihren Werkzeugstand: `simulat2.mjs` schreibt Skill-Version und
+   Kurzhashes von player.html, transkript.mjs, pruefe.mjs und sich selbst sowie Hash und
+   `skill`-Feld des Films in `zustand.json` und in die erste Zeile von BERICHT.md
+   („Gemessen mit: …"). Zwei Zahlen sind nur vergleichbar, wenn diese Zeile bis auf den
+   Film gleich ist; sonst zuerst der Eichlauf: der Goldfilm unter den neuen Werkzeugen muss
+   dieselbe Zahl geben wie unter den alten. Ändert eine Spieler- oder Transkriptänderung die
+   Goldzahl, ist sie eine Messänderung und braucht Golds Abnahme, bevor sie in eine Runde
+   geht.
+
+Damit ist der Richter von der veränderbaren Seite getrennt, ohne dass er neue Geräte blind
+übersieht. An G für `richter/`: nur Materialien und LESEN.md hineinlegen, keine Kopien der
+Werkzeuge. Zip 2.6 erneuert (gleiche Version, Harness-Ergänzung).
+</builder>
+
+<builder>
+B29 · 2026-09-06 · Autorentscheid: der Feedback-Loop muss schneller sein als der Autor. Schnellrunde ab jetzt; Blattschleifen-Simulat nur noch als seltene Tiefenprobe
+
+Autor wörtlich: „Der ganze Zweck des agentischen Reviews ist ein schneller Feedback-Loop,
+und wenn der langsamer ist als ich, dann bringt er nichts." Er ist ab jetzt in jeder Runde
+selbst dabei und gibt Feedback. Gemessene Zeiten heute: Blattschleifen-Simulat mit Sonnet 30
+bis 40 Minuten je Film (acht sequenzielle Köpfe), mit Haiku 6 Minuten; ein Guss durch eine
+frische Session 30 bis 40 Minuten; eine Ein-Kopf-Lesung des ganzen Transkripts 4 bis 6
+Minuten, zwei parallel ebenso.
+
+**Schnellrunde, gültig ab jetzt (ersetzt P19 Schritt 2 und die Blattschleife als
+Regelinstrument; Schritt 1, 3, 5, 6 bleiben):**
+1. Guss: frische Session, installierter Skill plus Seitenbilder; zwei bis drei Themen
+   parallel, damit je 40 Minuten mehrere Filme entstehen.
+2. Sofort, Sekunden: `pruefe`, `lauf2`, Transkript, Werkzeugstand.
+3. Schnellrichter, 5 Minuten, parallel: zwei Sonnet-Lesungen des ganzen Transkripts mit
+   festem Formular (`simulat/lesung.mjs`: Lesart Beziehung und Choreographie, Lesart
+   Lehren-Treue), höchstens zehn Befunde je Lesart mit Belegstelle, gesammelt und nummeriert
+   in `BEFUNDE.md` des Trials. Optional daneben, ebenfalls 6 Minuten: Haiku-Blattschleife nur
+   für Transfer und Fehlregeln.
+4. Autor, 10 Minuten: sieht den Film am Handy mit `BEFUNDE.md` in der Hand und antwortet
+   mit Nummern: stimmt, stimmt nicht, fehlt plus eigener Befund. Das ist Fangquote und
+   Richterkalibrierung in einem Schritt, ohne Formular.
+5. Verwertung, B, 10 Minuten: bestätigte Befunde werden Prüferregel, wenn mechanisch
+   möglich, sonst Skill-Satz mit Miniatur; falsche Befunde kalibrieren den Lesungsprompt;
+   Escapes (Autor fand, Richter nicht) gehen in Lesungsprompt und Prüfer. Neue Version, Zip.
+Eine Runde damit rund eine Stunde Wanduhr, davon 15 Minuten Autor; der agentische Teil
+liegt bei 6 Minuten. Die Blattschleife mit Sonnet bleibt als Tiefenprobe für Baseline und
+Hold-out (P19 Schritt 4), nicht je Runde.
+
+**Erste Schnellrunde ist gelaufen:** `blindtest/4-wendepunkte/BEFUNDE.md` (9 Befunde) und
+`blindtest/5-nullstellen/BEFUNDE.md` (13 Befunde), je zwei Sonnet-Lesungen, 5 Minuten
+parallel. Haiku als Lektor war in der Probe schwächer (hielt die Aufstiegslinie in
+Kandidatenfarbe für einen Farbfehler, prüfte Satzlängen an Transkriptbeschreibungen); der
+Lesungsprompt trägt dafür jetzt Lesehinweise, und das Transkript sagt „hervorgehoben,
+Kasten" statt „gelb hinterlegt", weil zwei Köpfe den Kasten als Farbe lasen. Der Autor
+antwortet auf die Nummern; das ist Lesart 5 in neuer Form.
+
+An P: TRIALS.md bekommt je Trial die Spalten Befunde (Richter), bestätigt, falsch, Escapes.
+An G und DD: eure Lesungen bleiben willkommen, aber sie sind nicht mehr die Taktgeber; wenn
+ihr lest, bitte im selben Formular (Nummer, Blatt, Wisch, Regel, Zitat, Befund), damit der
+Autor eine Liste sieht.
+</builder>

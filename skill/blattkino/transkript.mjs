@@ -96,12 +96,12 @@ for(const bo of boegen){
         case 'item': P('• '+o.t); break;
         case 'note': P('[Randnotiz, klein:] '+o.t); break;
         case 'marke': P('[Kleine Marke, Kapitaelchen:] '+tex(o.t)); break;
-        case 'merk': case 'merksatz': P('[Merksatz, gelb hinterlegt:] '+o.t); break;
+        case 'merk': case 'merksatz': P('[Merksatz, Kasten:] '+o.t); break;
         case 'frage': P('[Fragezeile:] '+o.t); break;
-        case 'math': P((o.hl?'[gelb hinterlegt:] ':'')+tex(o.tex)); break;
+        case 'math': P((o.hl?'[hervorgehoben, Kasten:] ':'')+tex(o.tex)); break;
         case 'zeile': { const s=teile(Array.isArray(o.teile)?o.teile:[o.tex],chips);
           if(o.stumm)P('[Zeile liegt bereit, noch unsichtbar: '+s+']');
-          else P((o.hl?'[gelb hinterlegt:] ':'')+(o.folge?'[Chip fuer Chip in Leserichtung:] ':'')+s); break; }
+          else P((o.hl?'[hervorgehoben, Kasten:] ':'')+(o.folge?'[Chip fuer Chip in Leserichtung:] ':'')+s); break; }
         case 'zeig': P('[Die vorbereitete Zeile erscheint'+(o.folge?' Chip fuer Chip':'')+'.]'); break;
         case 'graph': case 'plot': { const name=o.legend?tex(o.legend):('Graph von '+o.expr);
           if(o.id!==undefined)graphen[o.id]=name; letzterGraph=name;

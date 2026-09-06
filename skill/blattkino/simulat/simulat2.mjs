@@ -12,7 +12,7 @@
 // Ablauf: init schreibt prompt-01.md. Die orchestrierende Sitzung gibt den Prompt einem frischen
 // Agenten, speichert dessen JSON, ruft antwort auf; das schreibt prompt-02.md usw.; nach dem
 // letzten Blatt prompt-regel.md; nach dessen Antwort bericht.
-import fs from 'fs'; import path from 'path'; import {execFileSync} from 'child_process';
+import fs from 'fs'; import path from 'path'; import {execFileSync} from 'child_process'; import crypto from 'crypto';
 
 const [,, befehl, ...arg]=process.argv;
 const hier=path.dirname(new URL(import.meta.url).pathname);
@@ -30,6 +30,16 @@ function zitatDrin(zitat,text){ const z=hart(zitat), t=hart(text); if(z.length<6
   // Toleranz: 80 Prozent der Woerter des Zitats in Folge? Einfach: alle Woerter ab 3 Zeichen kommen vor
   const w=norm(zitat).split(' ').filter(x=>x.length>=3); if(w.length<2)return false;
   const tn=norm(text); return w.filter(x=>tn.includes(x)).length>=Math.ceil(0.8*w.length); }
+
+// ---------- Werkzeugstand: jede Zahl traegt, womit sie gemessen wurde ----------
+// Der Richter friert Aufgaben, Whitelist und Dokument ein, nicht die Werkzeuge; damit eine
+// Aenderung an Spieler oder Transkript nie stumm in eine Messung faellt, steht ihr Stand im Bericht.
+function werkzeugstand(){
+  const h=f=>{ try{ return crypto.createHash('sha1').update(fs.readFileSync(f)).digest('hex').slice(0,10); }catch(e){ return 'fehlt'; } };
+  const ordner=path.join(hier,'..');
+  let version='?'; try{ const m=fs.readFileSync(path.join(ordner,'SKILL.md'),'utf8').match(/\*\*Version ([0-9.]+)/); if(m)version=m[1]; }catch(e){}
+  return {skill:version,player:h(path.join(ordner,'player.html')),transkript:h(path.join(ordner,'transkript.mjs')),pruefe:h(path.join(ordner,'pruefe.mjs')),simulat:h(new URL(import.meta.url).pathname)};
+}
 
 // ---------- Transkript je Blatt ----------
 function blaetterAus(film){
@@ -115,13 +125,15 @@ Antworte NUR mit einem JSON-Objekt dieser Form:
 
 // ---------- Befehle ----------
 function init(){
-  const [ordner,film,wissenP,transferP,fehlP]=arg.filter(a=>!a.startsWith('--'));
   const themaI=arg.indexOf('--thema');
+  const pos=arg.filter((a,i)=>!a.startsWith('--')&&!(themaI>=0&&i===themaI+1));
+  const [ordner,film,wissenP,transferP,fehlP]=pos;
   fs.mkdirSync(ordner,{recursive:true});
   const T=blaetterAus(film); const F=json(film);
   const Z={film:path.resolve(film),titel:F.titel||'',thema:themaI>=0?arg[themaI+1]:(F.titel||''),
     wissen:json(wissenP),transfer:json(transferP),fehlregeln:fehlP?json(fehlP):[],
-    blaetter:T.blaetter,schluss:T.schluss,zettel:[],zettelJeBlatt:[],antworten:[],flags:[],naechstes:1,fertig:false};
+    blaetter:T.blaetter,schluss:T.schluss,zettel:[],zettelJeBlatt:[],antworten:[],flags:[],naechstes:1,fertig:false,
+    werkzeuge:werkzeugstand(),filmSkill:F.skill||'?',filmHash:crypto.createHash('sha1').update(fs.readFileSync(film)).digest('hex').slice(0,10)};
   // Transferaufgaben duerfen nicht im Film vorkommen (sonst misst die Probe Wiedererkennen)
   const ganz=T.blaetter.map(b=>b.text).join('\n');
   for(const t of Z.transfer){ for(const s of (t.verboten||[])) if(hart(ganz).includes(hart(s))) Z.flags.push('Transfer '+t.id+': „'+s+'" kommt im Film vor; die Probe misst dort Wiedererkennen.'); }
@@ -221,7 +233,7 @@ function bericht(){
   const erste={transfer_falsch:R.transfer.filter(t=>!t.richtig).map(t=>t.id+' ('+t.loesung+' statt '+t.erwartet.join(', ')+')'),
     fehlregeln_ungebrochen:R.fehlregeln.filter(f=>f.ungebrochen).map(f=>f.id+': '+f.text+' ['+f.ergebnis+']'),
     deutung_unmoeglich:deutNicht};
-  const aus={film:Z.titel,thema:Z.thema,blaetter:Z.blaetter.length,transfer:R.transfer,transfer_bestanden:R.transfer.length>0&&R.transfer.every(t=>t.richtig),
+  const aus={film:Z.titel,thema:Z.thema,blaetter:Z.blaetter.length,gemessen_mit:Object.assign({film:Z.filmHash,filmSkill:Z.filmSkill},Z.werkzeuge||{}),transfer:R.transfer,transfer_bestanden:R.transfer.length>0&&R.transfer.every(t=>t.richtig),
     regeln:R.regeln,fehlregeln:R.fehlregeln,erste_klasse:erste,fremdvokabular:R.fremdvokabular||[],
     zweite_klasse:{stockstellen:st.length,glauben:zaehl('glauben'),ungedeckte_schritte:ungedeckt+' von '+schritte,skips:zaehl('skip'),ruecksprung:zaehl('ruecksprung'),vorstellung:zaehl('vorstellung'),rechenfehler:zaehl('rechenfehler'),lastmarken:zaehl('lastmarke'),verwechslung:zaehl('verwechslung')},
     bewegungen:{trug:trug,dekoration:deko},flags:Z.flags.concat(Z.antworten.flatMap(a=>a.flags.map(f=>'Blatt '+a.blatt+': '+f))),
@@ -229,6 +241,7 @@ function bericht(){
   schreib(path.join(ordner,'BERICHT.json'),JSON.stringify(aus,null,1));
   const L=[]; const P=s=>L.push(s);
   P('# Simulat v2: '+Z.titel+' ('+Z.blaetter.length+' Blaetter)'); P('');
+  P('Gemessen mit: Skill '+(Z.werkzeuge?Z.werkzeuge.skill:'?')+', Film '+Z.filmHash+' (skill '+Z.filmSkill+'), player '+(Z.werkzeuge?Z.werkzeuge.player:'?')+', transkript '+(Z.werkzeuge?Z.werkzeuge.transkript:'?')+', simulat '+(Z.werkzeuge?Z.werkzeuge.simulat:'?')); P('');
   P('**Transferprobe: '+(aus.transfer_bestanden?'BESTANDEN':'NICHT BESTANDEN')+'** ('+R.transfer.filter(t=>t.richtig).length+' von '+R.transfer.length+')');
   for(const t of R.transfer) P('- '+t.id+' '+t.aufgabe+' → '+t.loesung+' ['+(t.richtig?'richtig':(t.teilweise?'teilweise':'falsch'))+', Quelle '+t.quelle+']');
   P(''); P('**Regelfassung des Schuelers:**'); for(const r of R.regeln) P('- '+r);

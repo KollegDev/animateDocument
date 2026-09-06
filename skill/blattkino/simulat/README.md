@@ -22,3 +22,19 @@ Dateien: `WISSEN-*.json` (Whitelist mit Kennungen; `-eng` ohne Loesungsweg), `TR
 In einer Skill-Sitzung (SKILL.md Schritt 7): `init`, dann je Prompt-Datei EIN frischer Agent, der nur diese Datei liest und sein JSON schreibt, dann `antwort`, zuletzt `bericht`. Fuer ein neues Thema zuerst `WISSEN-<thema>.json` (Vorwissen laut Buchreihenfolge, ohne Loesungsweg des Themas), `TRANSFER-<thema>.json` (zwei Aufgaben derselben Sorte, nicht im Film, mit Loesung) und bei Bedarf Fehlregeln aus `FEHLREGELN-kurvendiskussion.json` waehlen.
 
 Laeufe 2026-09-06 (Sonnet als Schueler, Haiku bei null2h): AUSTAUSCH B25.
+
+## Schnellrichter (`lesung.mjs`)
+
+Zwei Lektoren statt eines Schuelers: je ein frischer Kopf liest das ganze Transkript mit
+festem Formular (Lesart Beziehung und Choreographie, Lesart Lehren-Treue), hoechstens zehn
+Befunde mit Belegstelle. Vier bis sechs Minuten, parallel. Ergebnis `BEFUNDE.md`, nummeriert,
+damit der Autor mit Nummern antwortet (stimmt, stimmt nicht, fehlt).
+
+```
+node lesung.mjs prompts LAUF film.json     # schreibt lesung-beziehung.md, lesung-lehren.md
+# je Datei ein frischer Agent (Sonnet), Antwort nach LAUF/lesung-<name>.antwort.json
+node lesung.mjs sammeln LAUF               # schreibt LAUF/BEFUNDE.md
+```
+
+Die Blattschleife (`simulat2.mjs`) ist die Tiefenprobe fuer Baseline und Hold-out; je Runde
+laeuft der Schnellrichter.

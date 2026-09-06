@@ -113,6 +113,7 @@ Die vier Geräte, in denen Scrollen dem Papier überlegen ist, alle freiwillig:
 | `skill/blattkino/baue.mjs` | baut aus Filmdatei plus Player eine eigenständige HTML-Datei |
 | `skill/blattkino/transkript.mjs` | schreibt den Film als Leseerlebnis (Blatt, Wisch, Bewegung, Farbe); Eingabe des Simulats |
 | `skill/blattkino/simulat/simulat2.mjs` | Simulat v2: Blattschleife, Zettel, Quellenpflicht, Regel-, Fehlregel- und Transferprobe, Nullfilm; Läufe in `skill/simulat-laeufe/` |
+| `skill/blattkino/simulat/lesung.mjs` | Schnellrichter: zwei Ein-Kopf-Lesungen (Beziehung, Lehren) mit Formular, `BEFUNDE.md` je Trial; 5 Minuten (B29) |
 | `skill/harness2.mjs` | 43 mechanische Tests über jsdom |
 | `skill/blattkino/lauf2.mjs` | fährt einen Film über die ganze Radstrecke, zählt Fehler, `--dump` zeigt die Struktur; liegt im Skill, damit die installierte Fassung vollständig ist |
 | `skill/abgleich2.mjs` | Vorabnahme: Filmdatei gegen gold/extrempunkte.html, Struktur, Fenster, Text |
