@@ -2,7 +2,7 @@
 
 ## Die Datei
 
-Jede Datei traegt `"skill": "2.6"`, die Version aus dem Kopf von SKILL.md, mit der sie
+Jede Datei traegt `"skill": "2.6.1"`, die Version aus dem Kopf von SKILL.md, mit der sie
 entstanden ist. Der Pruefer meldet das Fehlen. So ist jeder Film seiner Skill-Fassung
 zuzuordnen, auch wenn der Skill weitergezogen ist.
 
@@ -258,6 +258,11 @@ Ruhezonen: wer verweilen will, hält die Hand still.
 
 ### Zeilen aus Chips
 
+Jeder Chip ist ein eigenes MathJax-Fragment. Ein `\frac`, `\sqrt` oder eine Klammer darf nie
+über eine Chipgrenze laufen; was zusammengehört, steht in einem Chip. Ein Bruch mit einer
+eingesetzten Zahl im Zähler ist darum entweder ein ganzer Chip (Farbe auf dem Bruch) oder
+bleibt eine Zeile ohne Chips.
+
 ```json
 {"op":"zeile","id":"z1","teile":["3x^{2}-3=0","\\iff x^{2}=1",["\\iff x_1=",{"tex":"-1","k":0,"id":"x1"}]],
  "folge":true,"hl":false,"stumm":false,"dauer":1}
@@ -320,6 +325,12 @@ im Film. Jeder Fall setzt also jedes Feld der Vorlage. Vollständiges Beispiel:
 `beispiel-extrempunkte.json`.
 
 `schluss` auf oberster Ebene setzt den Text der Schlussszene.
+
+`seiten` auf oberster Ebene ist die Liste der Seitenbilder des Dokuments (relative Pfade ohne
+`..`, jpg/png/webp); ein Bogen (oder ein Serienfall) traegt `seite` (Nummer in dieser Liste, ab
+1). Der Spieler zeigt die Seiten als Ansicht ueber dem Film: Wisch nach links oeffnet sie bei der
+Seite des laufenden Bogens, Wisch nach rechts oder das Kreuz schliesst; am Rechner Taste d oder
+der Knopf „Dokument". Farben: `k` 0 bis 3 (orange, blau, gruen, violett).
 
 ## Der Prüfer
 

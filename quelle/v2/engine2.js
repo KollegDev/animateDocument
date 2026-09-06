@@ -3,7 +3,7 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const eOut=u=>1-Math.pow(1-u,3);
 const eIO=u=>u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;
 const NS='http://www.w3.org/2000/svg';
-const KF=['var(--k0)','var(--k1)','var(--k2)'];
+const KF=['var(--k0)','var(--k1)','var(--k2)','var(--k3)'];
 function fmt(v,n){ n=n===undefined?1:n; let s=(Math.round(v*Math.pow(10,n))/Math.pow(10,n)).toFixed(n);
   s=s.replace('.',',').replace('-','\u2212'); if(/^\u22120(,0+)?$/.test(s))s=s.slice(1); return s; }
 function fmt0(v){ return Number.isInteger(v)?String(v).replace('-','\u2212'):fmt(v,2); }
@@ -78,20 +78,23 @@ function graph(cfg){
   const kx=(W-pl-pr)/(xmax-xmin), ky=(H-pt-pb)/(ymax-ymin);
   const svg=svgEl('svg',{viewBox:'0 0 '+W+' '+H});
   const L={grid:svgEl('g',{},svg),hinter:svgEl('g',{},svg),kurve:svgEl('g',{},svg),vorn:svgEl('g',{},svg)};
-  const step=r=>r<=8?1:(r<=16?2:5);
-  const xs=step(xmax-xmin), ys=step(ymax-ymin);
+  // Tickabstand nach Pixeldichte: Beschriftungen brauchen Luft (waagerecht 26 px, senkrecht 18 px)
+  const stepFuer=(r,px,min)=>{ for(const s of [0.5,1,2,5,10,20,50,100]){ if(px/r*s>=min)return s; } return 100; };
+  const xs=stepFuer(xmax-xmin,W-pl-pr,26), ys=stepFuer(ymax-ymin,H-pt-pb,18);
   const y0=(ymin<=0&&ymax>=0)?sy(0):sy(ymin), x0=(xmin<=0&&xmax>=0)?sx(0):sx(xmin);
   const lab=(x,y,t,anch,fill,size,parent)=>{ const e=svgEl('text',{x:x,y:y,fill:fill||'var(--muted)','font-size':size||12,'text-anchor':anch||'middle'},parent||L.vorn); e.textContent=t; return e; };
   const ticks={};
+  const yticks={}; const beschriftungen=[];
   for(let x=Math.ceil(xmin/xs)*xs;x<=xmax+1e-9;x+=xs){ svgEl('line',{x1:sx(x),y1:pt,x2:sx(x),y2:H-pb,stroke:'var(--grid)','stroke-width':1},L.grid);
-    if(Math.abs(x)>1e-9)ticks[x]=lab(sx(x),y0+14,fmt0(x),'middle','var(--muted)',11.5,L.grid); }
+    // keine Zahl unter dem Pfeilkopf der x-Achse und keine dicht am linken Rand
+    if(Math.abs(x)>1e-9&&sx(x)<W-pr-10&&sx(x)>pl+4)ticks[x]=lab(sx(x),y0+14,fmt0(x),'middle','var(--muted)',11.5,L.grid); }
   for(let y=Math.ceil(ymin/ys)*ys;y<=ymax+1e-9;y+=ys){ svgEl('line',{x1:pl,y1:sy(y),x2:W-pr,y2:sy(y),stroke:'var(--grid)','stroke-width':1},L.grid);
-    if(Math.abs(y)>1e-9)lab(x0-6,sy(y)+4,fmt0(y),'end','var(--muted)',11.5,L.grid); }
+    if(Math.abs(y)>1e-9&&sy(y)>pt+6&&Math.abs(sy(y)-y0)>9)yticks[+y.toFixed(6)]=lab(x0-6,sy(y)+4,fmt0(y),'end','var(--muted)',11.5,L.grid); }
   svgEl('line',{x1:pl,y1:y0,x2:W-pr+6,y2:y0,stroke:'var(--axis)','stroke-width':1.3},L.grid);
   svgEl('path',{d:'M'+(W-pr+6)+' '+y0+' l -6 -3.5 v 7 z',fill:'var(--axis)'},L.grid);
   svgEl('line',{x1:x0,y1:H-pb,x2:x0,y2:pt-6,stroke:'var(--axis)','stroke-width':1.3},L.grid);
   svgEl('path',{d:'M'+x0+' '+(pt-6)+' l -3.5 6 h 7 z',fill:'var(--axis)'},L.grid);
-  lab(W-pr+4,y0+15,'x','end','var(--muted)',11.5,L.grid); lab(x0+9,pt+2,'y','start','var(--muted)',11.5,L.grid);
+  lab(W-pr+6,y0-6,'x','end','var(--muted)',11.5,L.grid); lab(x0+9,pt+2,'y','start','var(--muted)',11.5,L.grid);
   // Kurve
   let d=''; const n=260;
   for(let i=0;i<=n;i++){ const x=xmin+i*(xmax-xmin)/n; let y; try{y=fn(x);}catch(e){y=NaN;}
@@ -120,7 +123,9 @@ function graph(cfg){
       const path=svgEl('path',{d:p,fill:'none',stroke:KF[k],'stroke-width':1.3,'stroke-dasharray':'4 3',opacity:0},L.hinter);
       const it=drawItem(path,{linear:true});
       if(text!==undefined&&Math.abs(y)>1e-9){ const t=lab(x0-6,sy(y)+4,text,'end',KF[k],12.5); t.setAttribute('font-weight','600'); t.style.opacity=0;
-        const a=it.apply; it.apply=u=>{ a(u); t.style.opacity=u>=0.95?1:0; }; }
+        // Achsenzahlen, die der Wert ueberdecken wuerde, treten zurueck
+        const nah=Object.keys(yticks).filter(yy=>Math.abs(sy(+yy)-sy(y))<11).map(yy=>yticks[yy]);
+        const a=it.apply; it.apply=u=>{ a(u); const an=u>=0.95; t.style.opacity=an?1:0; for(const n of nah)n.style.opacity=an?0:1; }; }
       return it; },
     punkt(x,y,k){ const c=svgEl('circle',{cx:sx(x),cy:sy(y),r:4.6,fill:KF[k===undefined?0:k]},L.vorn); return landItem([c]); },
     // Aus v1: gestrichelte Hilfslinien und ein schraffierter Bereich, hinter der Kurve
@@ -143,7 +148,7 @@ function graph(cfg){
       const l1=svgEl('line',{x1:sx(x),y1:sy(y),x2:sx(x),y2:y0,stroke:KF[kk],'stroke-width':1.1,'stroke-dasharray':'4 3',opacity:0},L.hinter);
       const l2=svgEl('line',{x1:sx(x),y1:sy(y),x2:x0,y2:sy(y),stroke:KF[kk],'stroke-width':1.1,'stroke-dasharray':'4 3',opacity:0},L.hinter);
       const c=svgEl('circle',{cx:sx(x),cy:sy(y),r:4.2,fill:KF[kk],opacity:0},L.vorn);
-      const t=text?lab(sx(x)+9,sy(y)-9,text,'start',KF[kk],12.5,L.vorn):null; if(t)t.style.opacity=0;
+      const rechts=sx(x)<W-80; const t=text?lab(sx(x)+(rechts?9:-9),sy(y)-9,text,rechts?'start':'end',KF[kk],12.5,L.vorn):null; if(t)t.style.opacity=0;
       return {apply(u){ const v=eOut(u); for(const n of [l1,l2,c])n.style.opacity=u>0?(0.75*v).toFixed(3):0; c.style.opacity=u>0?v:0; if(t)t.style.opacity=u>0.6?1:0; }}; },
     // Zoomfolge: das ganze Bild faehrt in eine Stelle hinein (aus v1)
     zoom(x,zf){ let y; try{ y=fn(x); }catch(e){ y=0; } const g=svgEl('g',{},svg);
@@ -157,8 +162,16 @@ function graph(cfg){
       if(dash)l.setAttribute('stroke-dasharray','6 4'); return l; },
     abl:abl, abl2:abl2, xmin:xmin, xmax:xmax, ymin:ymin, ymax:ymax,
     // Beschriftung eines Punktes; oben bei Gipfel, unten bei Tal
-    beschriftung(x,y,text,k){ const oben=abl2(x)<0; const rechts=sx(x)<W-90;
-      const t=lab(sx(x)+(rechts?8:-8),sy(y)+(oben?-9:17),text,rechts?'start':'end',KF[k],12.5); t.setAttribute('font-weight','600'); return landItem([t]); },
+    beschriftung(x,y,text,k){ let oben=abl2(x)<0; const rechts=sx(x)<W-90;
+      // Nahe der x-Achse steht die Beschriftung oben, sonst laeuft sie in die Achsenzahlen; nahe dem oberen Rand unten
+      if(Math.abs(sy(y)-y0)<16)oben=true; if(sy(y)-14<pt)oben=false; if(sy(y)+20>H-pb)oben=true;
+      // Beschriftungen weichen einander aus: gleiche Seite und Ueberlappung, dann die andere Seite, sonst nach rechts ruecken
+      const breite=String(text).length*6.6+4; const box=(o,dx)=>{ const x1=sx(x)+dx+(rechts?8:-8); return {l:rechts?x1:x1-breite, r:rechts?x1+breite:x1, y:sy(y)+(o?-9:17)}; };
+      const kollidiert=b=>beschriftungen.some(q=>Math.abs(q.y-b.y)<13&&q.l<b.r+4&&b.l<q.r+4);
+      let dx=0; if(kollidiert(box(oben,0))){ const ok=oben?(sy(y)+20<=H-pb):(sy(y)-14>=pt); const nahAchse=Math.abs(sy(y)-y0)<16;
+        if(!nahAchse&&ok&&!kollidiert(box(!oben,0)))oben=!oben; else { for(let v=12;v<=120;v+=12){ if(!kollidiert(box(oben,v))){ dx=v; break; } } } }
+      const b=box(oben,dx); beschriftungen.push(b);
+      const t=lab(sx(x)+dx+(rechts?8:-8),b.y,text,rechts?'start':'end',KF[k],12.5); t.setAttribute('font-weight','600'); return landItem([t]); },
     // Kappe: das Kurvenstueck um die Stelle, gebogen wie der Gipfel oder das Tal
     kappe(x,r,k,text){ let d=''; const m=40; for(let i=0;i<=m;i++){ const xx=x-r+2*r*i/m; const yy=fn(xx); d+=(i?' L ':'M ')+sx(xx).toFixed(1)+' '+sy(yy).toFixed(1); }
       const p=svgEl('path',{d:d,fill:'none',stroke:KF[k],'stroke-width':5,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0},L.vorn);

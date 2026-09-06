@@ -1,14 +1,17 @@
 ---
 name: blattkino
-description: Blattkino 2.6 (Buehne, Goldgeraete, Inventar, Simulat-Harness). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
+description: Blattkino 2.6.1 (Buehne, Goldgeraete, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
 ---
 
 # Blattkino
 
-**Version 2.6 (2026-09-06).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
+**Version 2.6.1 (2026-09-06).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
 auch in der `description` oben.
 
 Aenderungsprotokoll (Version, Datum, Anlass):
+- 2.6.1, 2026-09-06: Werkzeuge, Regeln unveraendert: Spieler mit Halo hinter jeder Bildschrift, Achsenzahlen
+  nach Pixeldichte, Beschriftungen weichen Achse und einander aus, vierte Farbe k3, Dokument-
+  Ansicht (Wisch nach links, Feld `seiten`, je Bogen `seite`); `simulat/lesung.mjs` (Schnellrichter).
 - 2.6, 2026-09-06: nach P19 Nr. 1: Simulat-Harness (`simulat/`) im Skill-Ordner, Schritt 7 laeuft
   darauf mit frischen Koepfen je Blatt; Berichte der Projektlaeufe ausserhalb.
 - 2.5, 2026-09-06: Neuguss nach P18: sieben Widersprueche aufgeloest (JSON statt HTML als
@@ -288,6 +291,9 @@ ungebrochen blieb, was der Schueler nicht deuten konnte und wo er glauben musste
 Befund erster Klasse geht zurueck in den Guss, als Neuguss des Bogens.
 
 ### 8. Abgabe
+
+Die Datei nennt ihre Seiten (`"seiten": ["dokumente/…/seite-09.jpg", …]`, je Bogen `"seite": n`),
+damit der Leser mit einem Wisch nach links die Dokumentseite zum Vergleich sieht.
 
 Neben `film.json`: `INVENTAR.md`, `TRANSKRIPT.md`, `BERICHT.md` des Simulats, `BEIAKTE.md` mit Lernreise, Storyboard,
 den Grundkonzepten des Abschnitts (was Verstaendnis konstituiert, keine Rechenschritte) und

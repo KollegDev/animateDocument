@@ -89,7 +89,8 @@
       }
      ]
     }
-   ]
+   ],
+   "seite": 1
   },
   {
    "frage": "Wo liegt diese Stelle?",
@@ -178,7 +179,8 @@
       }
      ]
     }
-   ]
+   ],
+   "seite": 2
   },
   {
    "frage": "Ist es wirklich ein Wendepunkt, und wie hoch liegt er?",
@@ -424,7 +426,8 @@
       }
      ]
     }
-   ]
+   ],
+   "seite": 2
   },
   {
    "serie": {
@@ -773,7 +776,8 @@
         "y": 0,
         "text": "W(0|0)"
        }
-      ]
+      ],
+      "seite": 3
      },
      {
       "frage": "Und mit zwei Wendestellen?",
@@ -941,7 +945,8 @@
         "y": -0.5556,
         "text": "W₂(0,58|−0,56)"
        }
-      ]
+      ],
+      "seite": 3
      },
      {
       "frage": "Und wenn die Kurve verschoben ist?",
@@ -1067,7 +1072,8 @@
         "y": 1,
         "text": "W(2|1)"
        }
-      ]
+      ],
+      "seite": 3
      }
     ]
    }
@@ -1138,5 +1144,10 @@
    ]
   }
  ],
- "schluss": "Ende. Weiter im Dokument: Sattelpunkte, Seite 32."
+ "schluss": "Ende. Weiter im Dokument: Sattelpunkte, Seite 32.",
+ "seiten": [
+  "dokumente/Testdokumentgross/seite-30.jpg",
+  "dokumente/Testdokumentgross/seite-31.jpg",
+  "dokumente/Testdokumentgross/seite-32.jpg"
+ ]
 }

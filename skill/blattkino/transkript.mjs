@@ -39,9 +39,10 @@ const fm=k=>FM[kk(k)];   // ein oranger Punkt
 const ff=k=>FF[kk(k)];   // die orange Marke
 const fn=k=>FN[kk(k)];   // der orangen Zahl
 function tex(s){
-  return String(s==null?'':s)
-    .replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g,'($1)/($2)')
-    .replace(/\\sqrt(\[\d\])?\{([^}]*)\}/g,'√($2)')
+  let t=String(s==null?'':s).replace(/\\left|\\right/g,'');
+  // Brueche, Wurzeln, Hoch- und Tiefstellungen von innen nach aussen, damit verschachtelte Klammern ganz bleiben
+  for(let i=0;i<8;i++){ const v=t; t=t.replace(/([_^])\{([^{}]*)\}/g,'$1$2').replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g,'($1)/($2)').replace(/\\sqrt(\[\d\])?\{([^{}]*)\}/g,'√($2)'); if(t===v)break; }
+  return t
     .replace(/\\cdot/g,'·').replace(/\\(neq|ne)(?![a-zA-Z])/g,'≠').replace(/\\(leq|le|leqslant)(?![a-zA-Z])/g,'≤').replace(/\\(geq|ge|geqslant)(?![a-zA-Z])/g,'≥')
     .replace(/\\(iff|Leftrightarrow)(?![a-zA-Z])/g,'⟺').replace(/\\(rightarrow|to)(?![a-zA-Z])/g,'→').replace(/\\Rightarrow(?![a-zA-Z])/g,'⇒')
     .replace(/\\infty/g,'∞').replace(/\\pm(?![a-zA-Z])/g,'±').replace(/\\mid(?![a-zA-Z])/g,' | ').replace(/\\in(?![a-zA-Z])/g,'∈').replace(/\\mathbb\{R\}/g,'ℝ').replace(/\\approx(?![a-zA-Z])/g,'≈')

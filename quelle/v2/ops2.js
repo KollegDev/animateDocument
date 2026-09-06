@@ -57,7 +57,7 @@ function entfalten(bo){
   return bo.serie.faelle.map(fall=>{
     const ctx=Object.assign({},fall);
     return {frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx),
-            beats:ersetzen(bo.serie.vorlage,ctx), serieFall:true};
+            beats:ersetzen(bo.serie.vorlage,ctx), serieFall:true, seite:fall.seite!==undefined?fall.seite:bo.seite};
   });
 }
 
@@ -255,6 +255,8 @@ function bauen(){
   for(const bo of boegen){
     const bs=(bo&&Array.isArray(bo.beats))?bo.beats:[]; if(!bs.length)continue;
     szeneAuf(bo.frage?String(bo.frage):null); neuesRegister();
+    // Seite des Dokuments, die dieser Bogen zeigt (Nummer in der Liste "seiten", ab 1)
+    if(bo.seite!==undefined&&szene)szene.seite=parseInt(bo.seite,10)||0;
     for(const b of bs){ if(!b||typeof b!=='object')continue;
       beatAuf(2,b.payoff===true);
       const ops=Array.isArray(b.ops)?b.ops:[];

@@ -1,0 +1,22 @@
+{
+  "befunde": [
+    {"wo": "Blatt 3, Wisch 3", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Eine Kopie der orangen 2 loest sich aus der Zeile", "befund": "Die Nullstellen von g spielen die komplette Flug- und Marken-Choreographie aus Blatt 1 erneut ab, statt nur die Ergebniszeile zu zeigen.", "schwere": "schwer"},
+    {"wo": "Blatt 5, Wisch 3", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Eine Kopie der orangen 0 loest sich aus der Zeile", "befund": "Auch bei h laeuft die volle teure Animation ein drittes Mal, obwohl das Verfahren bereits erklaert ist.", "schwere": "schwer"},
+    {"wo": "Blatt 7, Wisch 3", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Eine Kopie der orangen 4 loest sich aus der Zeile", "befund": "Bei k wird die identische Flugchoreographie ein viertes Mal originalgetreu wiederholt statt zur Ergebniszeile zu kuerzen.", "schwere": "schwer"},
+    {"wo": "Blatt 9, Wisch 3", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Eine Kopie der orangen 0 loest sich aus der Zeile", "befund": "Selbst fuer die einzige Nullstelle von m laeuft die volle teure Bewegung ein fuenftes Mal statt der Serien-Kurzform.", "schwere": "schwer"},
+    {"wo": "Blatt 4, Wisch 2", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Ein violetter Pfeil zieht sich langsam von der 0", "befund": "Der y-Achsenschnittpunkt von g wiederholt Pfeil, Wartemarke und Chip-Reveal aus Blatt 2 vollstaendig statt nur das Ergebnis zu zeigen.", "schwere": "schwer"},
+    {"wo": "Blatt 6, Wisch 2", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Ein violetter Pfeil zieht sich langsam von der 0", "befund": "Auch bei h laeuft die komplette Einsetz-Animation ein drittes Mal ab, obwohl h(0) trivial ist.", "schwere": "schwer"},
+    {"wo": "Blatt 8, Wisch 2", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Ein violetter Pfeil zieht sich langsam von der 0", "befund": "Bei k wird dieselbe teure Pfeil-Animation ein viertes Mal originalgetreu wiederholt.", "schwere": "schwer"},
+    {"wo": "Blatt 10, Wisch 2", "regel": "Serie: teure Bewegung nur im Beispiel (Katalog Zeile 8)", "zitat": "Ein violetter Pfeil zieht sich langsam von der 0", "befund": "Bei m wird die teure Pfeil-Animation ein fuenftes Mal originalgetreu wiederholt statt nur S_y zu zeigen.", "schwere": "schwer"},
+    {"wo": "Blatt 7, Wisch 2", "regel": "Farbe je Kandidat / Einsetzen mit Pfeil (Katalog Zeile 1 und Regelsatz)", "zitat": "p=[-6 gruen] q=[8 gruen]", "befund": "p und q tragen dieselbe Farbe statt je einer eigenen, und ihr Einsetzen in die pq-Formel geschieht ohne den geforderten Pfeil.", "schwere": "mittel"},
+    {"wo": "Blatt 11, Wisch 3", "regel": "Wisch mit nur einem Satz ist leer (Regelsatz)", "zitat": "Die Nullstelle verlangt y=0, aufgelöst nach x.", "befund": "Der Wisch zeigt ausschliesslich einen Merksatz im Kasten, keine Bewegung und kein Bild.", "schwere": "mittel"}
+  ],
+  "trug": [
+    "Blatt 1: Zahlen fliegen blass zu kraeftig von der Zeile zur Achsenmarke, dann erst der Punkt",
+    "Blatt 2: violetter Pfeil traegt die 0 sichtbar von oben in die Klammer der naechsten Zeile",
+    "Blatt 2, Wisch 4: Kandidat an der Achse, gestrichelter Aufstieg zur Hoehe, dann erst der Punkt",
+    "Blatt 5: drei Kandidaten behalten ueber Flug, Punkt und Beschriftung je eine eigene Farbe",
+    "Blatt 1: Beschriftung N₂(5|0) erscheint am Punkt in dessen eigener Kandidatenfarbe"
+  ],
+  "urteil": "Die Grundbeziehungen sitzen im jeweils erklaerten Beispiel sauber, aber acht der zehn Wiederholungen spielen die teure Bewegung erneut statt zur Ergebniszeile zu kuerzen, und Blatt 7 verletzt zusaetzlich Farb- und Einsetzregel bei p und q."
+}

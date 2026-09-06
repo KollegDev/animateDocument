@@ -153,7 +153,8 @@
       }
      ]
     }
-   ]
+   ],
+   "seite": 2
   },
   {
    "frage": "Wo schneidet er die y-Achse?",
@@ -240,7 +241,8 @@
       }
      ]
     }
-   ]
+   ],
+   "seite": 2
   },
   {
    "serie": {
@@ -711,8 +713,15 @@
       }
      ]
     }
-   ]
+   ],
+   "seite": 4
   }
  ],
- "schluss": "Ende. Weiter im Dokument: Grenzverhalten im Unendlichen, Seite 12."
+ "schluss": "Ende. Weiter im Dokument: Grenzverhalten im Unendlichen, Seite 12.",
+ "seiten": [
+  "dokumente/Testdokumentgross/seite-09.jpg",
+  "dokumente/Testdokumentgross/seite-10.jpg",
+  "dokumente/Testdokumentgross/seite-11.jpg",
+  "dokumente/Testdokumentgross/seite-12.jpg"
+ ]
 }

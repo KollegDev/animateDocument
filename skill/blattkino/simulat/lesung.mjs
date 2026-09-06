@@ -28,7 +28,7 @@ Der Katalog der Beziehungen und ihrer Traeger:
 - wie das Bild an der Stelle aussieht: Kappe auf dem Kurvenstueck, mit dem Wortlaut des Dokuments.
 - ein Konzept ist ein Lauf: Fahrt (die Tangente faehrt, m laeuft mit).
 - eine Zahl ist im Bild eine Stelle: Wert (Formelzeile und Hilfslinie zugleich).
-- dasselbe Verfahren an neuen Zahlen: Serie mit identischer Choreographie; die teure Bewegung nur im erklaerten Beispiel, in der Serie erscheint die Ergebniszeile nur.
+- dasselbe Verfahren an neuen Zahlen: Serie mit identischer Choreographie. Pfeile in die Klammer, Fluege zur Achsenmarke, Kappen und Aufstieg BLEIBEN in jedem Serienfall, sie sind das Muster. Nur die teure Bewegung, das Zusammenfliegen der Ergebniszeile aus Herkunftskopien, gehoert allein ins erklaerte Beispiel; in der Serie erscheint die Ergebniszeile einfach.
 Regeln dazu: Farbe sitzt nur auf der Zahl, die wandert, eine Farbe je Kandidat, nie auf Zeilen oder Text. Bewegung nur dort, wo der Leser sich etwas nicht selbst denken kann; ein Trivialschritt (4 minus 4 gleich 0) als eigene Zeile ist Dekoration, ein Graph, den er sich nicht vorstellen kann, traegt. Antwort nie vor der Not: das Ergebnis kommt, nachdem das Problem sichtbar war. Jeder Beat zeigt etwas; ein Wisch, bei dem nur ein Satz erscheint, ist leer.
 
 Lesehinweise: Saetze in eckigen Klammern sind Beschreibungen des Transkripts, kein Text des Films; Sprach- und Satzregeln gelten nur fuer Text ausserhalb der Klammern. „hervorgehoben, Kasten" ist ein Kasten um eine Ergebniszeile, keine Kandidatenfarbe. Die gestrichelte Aufstiegslinie und der Punkt tragen die Farbe ihres Kandidaten; das ist richtig. Der Schlusssatz nach dem letzten Blatt ist Abspann, kein Blatt.`;

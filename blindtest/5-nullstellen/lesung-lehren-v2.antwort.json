@@ -1,0 +1,20 @@
+{
+  "befunde": [
+    {"wo": "Blatt 5, Wisch 3", "regel": "konstante Notation (N-Index)", "zitat": "N_1(0 | 0), N_2(2 | 0), N_3(-2 | 0)", "befund": "Die N-Nummerierung folgt hier der Berechnungsreihenfolge, in Blatt 1, 3 und 7 aber der aufsteigenden x-Position.", "schwere": "schwer"},
+    {"wo": "Blatt 7, Wisch 2", "regel": "Formel-Traeger fehlerhaft", "zitat": "x_1,2=-(p)/(2)±√(((p)/(2))^2)-q", "befund": "Die Wurzel schliesst q nicht ein, obwohl das folgende Ergebnis die vollstaendige p-q-Formel voraussetzt.", "schwere": "schwer"},
+    {"wo": "Blatt 7, Wisch 2", "regel": "Symbol nicht im Bild geerdet", "zitat": "p=[-6 gruen] q=[8 gruen]", "befund": "p und q erscheinen ohne sichtbare Verbindung zu -6 und 8 in der Gleichung direkt darueber.", "schwere": "mittel"},
+    {"wo": "Blatt 4, Wisch 2", "regel": "Serie ohne konstantes Muster", "zitat": "g([0 violett])=2·[0 violett]^2-8=-8", "befund": "Die zwei Pfeil-Rechenschritte aus Blatt 2 fehlen; das Ergebnis steht bereits fertig in der Zeile.", "schwere": "mittel"},
+    {"wo": "Blatt 9, Wisch 2", "regel": "konstante Notation (Symbolschreibweise)", "zitat": "↓ \\(\\ln(1)=0\\)", "befund": "Rohe Formelklammern erscheinen im sichtbaren Text statt der sonst durchgehenden Pfeil-Prosa-Notation.", "schwere": "mittel"},
+    {"wo": "Blatt 9, Wisch 2", "regel": "Fachwort unerklaert", "zitat": "↓ Logarithmus angewendet", "befund": "Der Begriff Logarithmus wird beim ersten Auftreten nicht im Halbsatz erklaert.", "schwere": "mittel"},
+    {"wo": "Blatt 2, Wisch 1", "regel": "Klassifikationshuelle", "zitat": "y-Achsenschnittpunkt: Schnittpunkt mit der y-Achse.", "befund": "Der erste Satz wiederholt nur den Begriff, ohne die Bedingung x=0 zu nennen.", "schwere": "mittel"},
+    {"wo": "Blatt 11, Wisch 1", "regel": "Tabelle ohne Schritt-Spalte", "zitat": "| Funktion | Nullstellen | y-Achsenschnittpunkt |", "befund": "Die Uebersichtstabelle zeigt Aufgabe und Ergebnis, aber keine Schritt-Spalte.", "schwere": "mittel"}
+  ],
+  "trug": [
+    "Farbcodierte Chips fliegen sichtbar zur Achse und erden jede Zahl im Graphen.",
+    "Jede Funktionsgleichung wird auf ihrem neuen Blatt neu gezeigt statt nur referenziert.",
+    "Jeder Bogen oeffnet mit einer Frage im Kopf und tilgt sie in hoechstens vier Wischen.",
+    "Der Merksatz auf Blatt 11 steht direkt neben der Belegtabelle.",
+    "Die Zwei-Blatt-Struktur Nullstelle dann y-Achsenschnittpunkt bleibt fuer alle fuenf Funktionen konstant."
+  ],
+  "urteil": "Der Film traegt Grundmuster und Farbcodierung stabil durch fuenf Funktionen, bricht aber mittendrin die eigene N-Indizierung, zeigt die p-q-Formel fehlerhaft und laesst p, q sowie den Begriff Logarithmus ungeerdet beziehungsweise unerklaert."
+}

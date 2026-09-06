@@ -375,7 +375,7 @@ boegen.forEach((bo,bi)=>{
       if(o.op==='pfeil'){
         const z=chips[o.zu];
         if(z===undefined) B('SCHWER',wob,'pfeil auf eine Kennung, die es in diesem Bogen nicht gibt ("'+o.zu+'").');
-        else if(z.tex===undefined || !/^-?(\d+(?:[.,{}\d]*)?|sqrt\(.*\)|\(\d+\)\/\(\d+\))$/.test(flach(z.tex).replace(/\s+/g,'').replace(/^pm/,'')))
+        else if(z.tex===undefined || !/^-?(\d+(?:[.,{}\d]*)?|sqrt\(.*\)|\(\d+\)\/\(\d+\))$/.test(flach(z.tex).replace(/\s+/g,'').replace(/^pm/,'').replace(/^\((-?[\d.,]+)\)$/,'$1')))
           B('MITTEL',wob,'pfeil endet auf "'+String(z.tex!==undefined?z.tex:z.t).slice(0,20)+'", das ist keine eingesetzte Zahl in einer Klammer (GL2).');
       }
       if(o.op==='flug'&&typeof o.zu==='string'){ const z=chips[o.zu];

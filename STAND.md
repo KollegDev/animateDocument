@@ -60,6 +60,18 @@ Die Seite scrollt nicht. Sie bewegt sich nie um einen Pixel.
   gibt keine Ruhezonen: die Stücke kacheln die Strecke lückenlos (GL3). `gewicht` wird
   ignoriert. Autorbefund 2026-09-05: gleiche Strecke je Beat liess dünne Beats leer laufen.
 
+**Lesbarkeit im Bild (2.6.1, Autorbefund „Schrift überschneidet sich").** Jede Schrift im
+Graphen trägt einen Halo in Hintergrundfarbe; Achsenzahlen werden nach Pixeldichte
+ausgedünnt (waagerecht mindestens 26 px, senkrecht 18 px Abstand), keine Zahl unter dem
+Achsenpfeil; Punktbeschriftungen stehen nahe der x-Achse oben und weichen einander aus
+(andere Seite oder nach rechts rücken); ein Aufstiegswert verdrängt die Achsenzahl an
+derselben Höhe. Vierte Kandidatenfarbe k3 (violett).
+
+**Dokument zum Vergleich (2.6.1, Autorwunsch).** Die Datei nennt `seiten` (Seitenbilder aus
+`dokumente/`), ein Bogen `seite`. Wisch nach links öffnet die Seitenansicht bei der Seite des
+laufenden Bogens, Wisch nach rechts oder Kreuz schliesst; am Rechner Taste d oder Knopf
+„Dokument". Goldfilm, Trial 4 und 5 tragen `seiten`.
+
 **Player v2 (seit 2026-09-05, Kern des Goldlaufs).** Alles ist eine Funktion des
 Radstands p: ein rAF je Scroll-Ereignis liest p, jedes Element hat einen Zustand apply(u).
 Kein zweiter Mechanismus, keine CSS-Zeitleisten mehr. Ein Beat kostet Strecke nach seinen
@@ -114,6 +126,7 @@ Die vier Geräte, in denen Scrollen dem Papier überlegen ist, alle freiwillig:
 | `skill/blattkino/transkript.mjs` | schreibt den Film als Leseerlebnis (Blatt, Wisch, Bewegung, Farbe); Eingabe des Simulats |
 | `skill/blattkino/simulat/simulat2.mjs` | Simulat v2: Blattschleife, Zettel, Quellenpflicht, Regel-, Fehlregel- und Transferprobe, Nullfilm; Läufe in `skill/simulat-laeufe/` |
 | `skill/blattkino/simulat/lesung.mjs` | Schnellrichter: zwei Ein-Kopf-Lesungen (Beziehung, Lehren) mit Formular, `BEFUNDE.md` je Trial; 5 Minuten (B29) |
+| `blindtest/5-nullstellen/film-v2.json` | Fassung 2 von Trial 5 (Hand, nach Schnellrichter-Befunden): Pfeil für jede eingesetzte Null, jeder Schritt einzeln, ein Blatt je Frage, x₁=0 hergeleitet; BEFUNDE-v2.md daneben |
 | `skill/harness2.mjs` | 43 mechanische Tests über jsdom |
 | `skill/blattkino/lauf2.mjs` | fährt einen Film über die ganze Radstrecke, zählt Fehler, `--dump` zeigt die Struktur; liegt im Skill, damit die installierte Fassung vollständig ist |
 | `skill/abgleich2.mjs` | Vorabnahme: Filmdatei gegen gold/extrempunkte.html, Struktur, Fenster, Text |
@@ -164,7 +177,7 @@ Bögen).
 
 **Offen, mit Priorität:**
 
-1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Stand: Skill 2.6
+1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Stand: Skill 2.6.1
    (Neuguss nach P18: 2.960 Wörter statt 4.700, ein Geräte-Katalog, jede Regel einmal, kein
    Selbst-Simulat, JSON als einziges Ergebnis). Trials 4 und 5 liefen mit 2.3: Mechanik grün,
    Autorurteil offen. Trial 6 mit installierter 2.5.
@@ -185,7 +198,7 @@ Bögen).
 8. Installierte Skill-Fassung (Autorentscheid P8, Weg 2): die im Skill-Werkzeug installierte
    Fassung ist noch 1.x. `save_skill` ersetzt nur SKILL.md und liesse REFERENCE, Prüfer und
    Spieler alt; darum liefert jeder Skill-Batch eine `blattkino.skill` (Zip des Ordners), die
-   der Autor über „Save skill" installiert. Bis 2.6 installiert ist, läuft kein Trial 6.
+   der Autor über „Save skill" installiert. Bis 2.6.1 installiert ist, läuft kein Trial 6.
    Versionierung: Kopf von SKILL.md, Feld `skill` in jedem Film, git-Tag je Version durch den
    Autor beim Push.
 

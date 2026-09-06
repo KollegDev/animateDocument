@@ -1250,3 +1250,53 @@ An G und DD: eure Lesungen bleiben willkommen, aber sie sind nicht mehr die Takt
 ihr lest, bitte im selben Formular (Nummer, Blatt, Wisch, Regel, Zitat, Befund), damit der
 Autor eine Liste sieht.
 </builder>
+
+<builder>
+B30 · 2026-09-06 · Autorbefund zu Trial 5 (Schrift überschneidet sich) behoben im Spieler; Dokument-Ansicht per Wisch; Trial 5 Fassung 2 mit Schnellrichter-Befunden; Zip 2.6.1
+
+**Autorbefund, Lesart 5 zu Trial 5:** „Die Schrift überschneidet sich; es bräuchte eine
+z-Ebene oder eine andere Methode, mit der Überschneidung von Text mit anderen visuellen
+Elementen verhindert wird." Am Bild geprüft (Screenshots des Spielers im Handy-Rahmen): bei
+Graphen von 110 Pixel Höhe standen die Achsenzahlen 8, 6, 4, 2 übereinander, die
+Punktbeschriftung N₁(1|0) lag auf der Achsenzahl 1, der Aufstiegswert 5 auf der Achsenzahl
+5, das x der Achse auf der 7. Kein Escape des Richters im Sinn von P19, weil keine Lesart das
+Bild sieht; der Prüfer sah es nicht, weil sein Höhenmodell Blöcke zählt, nicht Zeichen.
+
+**Behoben im Spieler (Werkzeug, keine Skill-Regel):** Halo in Hintergrundfarbe hinter jeder
+Bildschrift (paint-order), Achsenzahlen nach Pixeldichte ausgedünnt, keine Zahl unter dem
+Achsenpfeil, Punktbeschriftungen nahe der x-Achse immer oben und mit Ausweichen (andere
+Seite oder nach rechts), Aufstiegswert verdrängt die Achsenzahl auf seiner Höhe, vierte
+Farbe k3. Goldabgleich bleibt IDENTISCH (Struktur, Fenster, Text; die Bildgeometrie ist
+nicht Teil des Abgleichs). Eichlauf des Goldfilms unter 2.6.1 steht aus, weil der Richter
+das Bild nicht misst; wer das Bild misst, ist der Autor.
+
+**Dokument-Ansicht, Autorwunsch für das Review:** Wisch nach links zeigt die Dokumentseiten
+(Feld `seiten`, je Bogen `seite`, Bilder aus `dokumente/`), Wisch nach rechts oder Kreuz
+zurück; Rechner: Taste d oder Knopf „Dokument". Goldfilm, Trial 4 und 5 tragen die Felder.
+
+**Trial 5, Fassung 2** (`blindtest/5-nullstellen/film-v2.json`, Katalog „Blindtest 5, Fassung
+2"), von Hand nach den Schnellrichter-Befunden, Autorwunsch: Pfeil für jede eingesetzte Null
+(x = 0 als Chip, Pfeil in die Klammer, in Beispiel und Serie), jeder Rechenschritt eine
+Zeile (g: plus 8, geteilt durch 2, Wurzel; h: erster Faktor gleich Null, x₁ = 0 hergeleitet),
+p und q als Chips vor der p-q-Formel, „Logarithmus angewendet" ohne vorweggenommenes
+Ergebnis, Nullstellen-Ergebnis im Kasten auch in der Serie, ein Blatt je Frage (Nullstellen,
+y-Achsenschnittpunkt) wie im erklärten Beispiel, Abspann ohne Meta. 11 Bögen, 35 Beats,
+0 schwer, 1 mittel, lauf2 0 Fehler, 25,3 Bildschirme. Nicht übernommen: Blatt 7 Merksatz als
+alleiniger Payoff (ist der Träger), N-Nummerierung nach Dokument.
+
+**Zweite Schnellrunde auf Fassung 2** (`BEFUNDE-v2.md`, 18 Befunde): acht davon rügen, dass
+Pfeil und Flug in der Serie wiederholt werden; das ist GL4 falsch gelesen (nur das
+Zusammenfliegen der Ergebniszeile ist die teure Bewegung, Pfeile und Flüge bleiben das
+Muster). Lesungsprompt präzisiert. Ein Befund war ein Transkriptfehler (Wurzel mit
+verschachtelten Klammern falsch geglättet), behoben. Bleiben: Schema-Tabelle ohne
+Schritt-Spalte (DD3, berechtigt), p und q in einer Farbe (bewusst: ein Einsetzakt, fünf
+Kandidaten auf einem Blatt bei vier Farben), „Logarithmus" unerklärt (Dokumentwort).
+Kalibrierung des Richters läuft also mit: von 18 Befunden 9 falsch, 3 Geschmack, 6 stehen.
+
+**Werkzeugbefund, wichtig für alle:** Chips einer `zeile` sind eigene MathJax-Fragmente. Ein
+`\frac` oder `\sqrt`, das über Chipgrenzen läuft, zerbricht. Einsetzen in eine p-q-Formel
+lässt sich darum nicht als Pfeil in die Klammer zeigen; die Fassung 2 zeigt p und q als
+Chips vor der Formel und die Formel ganz. REFERENCE trägt den Satz.
+
+Zip 2.6.1 beim Autor; Trial 6 weiter erst nach Installation.
+</builder>

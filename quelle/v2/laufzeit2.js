@@ -76,9 +76,34 @@ addEventListener('fullscreenchange',vollbildGewechselt); addEventListener('webki
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&!imVollbild())document.documentElement.classList.remove('laeuft'); });
 if(klein&&vollbildMoeglich())$('start').textContent='Im Vollbild starten';
 
+// ---------------- Das Dokument zum Vergleich ----------------
+// Die Datei nennt ihre Seiten ("seiten": ["dokumente/x/seite-09.jpg", ...]); ein Bogen darf "seite": n
+// tragen (Nummer in dieser Liste, ab 1). Wisch nach links oeffnet, nach rechts schliesst.
+const GUTES_BILD=/^[A-Za-z0-9_\-]+(\/[A-Za-z0-9_\-]+)*\.(jpg|jpeg|png|webp)$/;
+function dokBauen(){
+  const liste=(DATEN&&Array.isArray(DATEN.seiten))?DATEN.seiten.filter(s=>typeof s==='string'&&GUTES_BILD.test(s)&&s.indexOf('..')<0):[];
+  const wo=$('dokseiten'); if(!wo)return; wo.textContent='';
+  liste.forEach((src,i)=>{ const im=document.createElement('img'); im.src=src; im.alt='Seite '+(i+1); im.loading='lazy'; im.dataset.nr=String(i+1); wo.appendChild(im); });
+  const k=$('dokknopf'); if(k)k.classList.toggle('da',liste.length>0);
+  dokBauen.n=liste.length;
+}
+function aktuellerBogen(){ const p=rad.scrollHeight>rad.clientHeight?rad.scrollTop/(rad.scrollHeight-rad.clientHeight):0; const t=p*TOTAL; return SZENEN.find(s=>t>=s.von&&t<s.bis)||SZENEN[SZENEN.length-1]; }
+function dokAuf(){ if(!dokBauen.n)return; const d=$('dok'); d.classList.add('offen');
+  const s=aktuellerBogen(); const nr=s&&s.seite?+s.seite:0; const im=nr?d.querySelector('img[data-nr="'+nr+'"]'):null;
+  if(im)im.scrollIntoView({block:'start'}); else d.scrollTop=0; }
+function dokZu(){ $('dok').classList.remove('offen'); rad.focus({preventScroll:true}); }
+$('dokknopf').addEventListener('click',dokAuf); $('dokzu').addEventListener('click',dokZu);
+addEventListener('keydown',e=>{ if(e.key==='d'||e.key==='D'){ if($('dok').classList.contains('offen'))dokZu(); else dokAuf(); } });
+// Wischgeste: waagerecht mit wenig senkrechtem Anteil
+function wisch(el,links,rechts){ let x0=0,y0=0,t0=0;
+  el.addEventListener('touchstart',e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; t0=Date.now(); },{passive:true});
+  el.addEventListener('touchend',e=>{ const t=e.changedTouches[0]; const dx=t.clientX-x0, dy=t.clientY-y0; if(Date.now()-t0>700)return;
+    if(Math.abs(dx)>60&&Math.abs(dy)<Math.abs(dx)*0.6){ if(dx<0&&links)links(); if(dx>0&&rechts)rechts(); } },{passive:true}); }
+wisch(rad,dokAuf,null); wisch($('dok'),null,dokZu);
+
 // ---------------- Los ----------------
 function los(){
-  torFuellen();
+  torFuellen(); dokBauen();
   try{ bauen(); }catch(e){ melden('bauen: '+e.message); }
   zeitVerteilen();
   const ruhig=matchMedia('(prefers-reduced-motion: reduce)').matches;
