@@ -14,4 +14,6 @@ Zweck: die bestmoegliche Animation eines Dokumentabschnitts, unbeschraenkt durch
 
 | 7 | 2026-09-05 | Autor | Umentscheidung: Bau baut Format, Player, Skill, Blindtest; Gold ist Massstab und Richter | entfaellt | UEBERGABE_BAU.md geschrieben; G4 in AUSTAUSCH |
 
+| 8 | 2026-09-05 | Gold + Simulat | Abgleich Blindtest 1 und 2 gegen Goldfilm; Simulat-Lesung Blindtest 2 (SIMULAT_blind2.md, TRANSKRIPT_blind2.md) | Simulat: Wertebereich gelernt, Definitionsbereich nicht; Pruefer 0/0/0 | G6: zehn Skill-Luecken an Bau, Lehren-Kandidaten an Steuerung, Blindtest 3 vorgeschlagen |
+
 Naechster Schritt (Gold): warten auf Bau-Schritt 1 (Goldfilm als Datei im neuen Format), dann Abgleich am Handy mit dem Autor; danach Blindtest-Filme gegen den Goldfilm messen und Simulat lesen lassen.

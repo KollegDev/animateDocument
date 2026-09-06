@@ -1,6 +1,6 @@
 {
  "titel": "Definitions- und Wertebereich",
- "quelle": "Kurvendiskussion 1, Seiten 1 bis 4",
+ "quelle": "Kurvendiskussion 1 (grosses Dokument), Seiten 1 bis 8",
  "boegen": [
   {
    "frage": "Womit faengt eine Kurvendiskussion an?",
@@ -948,5 +948,6 @@
     }
    ]
   }
- ]
+ ],
+ "inventar": "S1 Übersicht: 13 Punkte in 3 Blöcken (D/W, Skizze, Symmetrie, Sy/Nullstellen | Grenzverhalten, Polstellen/Lücken, Asymptoten | Ableitungen, Monotonie, Extrempunkte, Krümmung, Wendepunkte, Sattelpunkte). Funktionstypen: ganzrational x^4+3x^3+4x^2+6x+1; gebrochenrational x/(x+1); Exponential e^{2x}; Wurzel sqrt(x+1); Logarithmus log(x^2+1); zusammengesetzt e^{2x}(x+4)^2; Funktionsscharen. S2 Definitionsbereich: f=1/(x-4), D_f: x∈R|x≠4; f(4)=1/(4-4)=1/0. Drei Situationen: (1) Brüche 1/a→a≠0, (2) Wurzeln sqrt(a)→a≥0, (3) Logarithmus log(a)→a>0. Brüche: g=1/(x-2), x-2≠0⟺x≠2, D_g. Serie: 1/(x^2-4)→x≠2∧x≠-2; x/(x+6)→x≠-6; 8/x→x≠0; 9/x^2→x≠0. S3 Wurzeln: g=sqrt(x+4), x+4≥0⟺x≥-4. Serie: sqrt(2x+4)→x≥-2; 5te Wurzel(x-1)→x≥1; 3te Wurzel(x+4)→x≥-4; sqrt(x^2+1)→gilt für jedes x, D_g: x∈R. (3) Logarithmus: Argument >0, log(0) existiert nicht. S4 Graph log(x): x>0, log(1)=0, x→0+: log→-∞, x=0 nicht erlaubt. h=log(3x+1)→3x+1>0⟺x>-1/3. Serie: ln(x-5)→x>5; ln(x)+2→x>0; log(4-x^2)→4-x^2>0⟺x^2<4⟺-2<x<2. Hinweis ln Basis e, gleiche Regel. Wertebereich: welche y-Werte entstehen. S5 f=x^2+4, Graph mit T(0|4), Bereich y≥4 grün; W_f: y∈R|y≥4. „Wertebereich ist schwer zu erkennen, meist erst am Ende\". Beispiel f=x^4-2x^2. S6 Graph x^4-2x^2: H(0|0), T1(-1|-1), T2(1|-1), Strich y=-1; W_f: y≥-1. Dann f=-(x-1)^2+3. S7 Graph -(x-1)^2+3, H(1|3), Strich y=3; W_f: y≤3. Dann g=x^3-3x. S8 Graph x^3-3x: H(-1|2), T(1|-2); links→-∞, rechts→+∞; W_g: y∈R. Symmetrie: achsensymmetrisch f=2x^4-3x^2."
 }

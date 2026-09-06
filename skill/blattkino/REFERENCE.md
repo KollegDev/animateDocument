@@ -11,8 +11,9 @@
 }
 ```
 
-`inventar` ist freiwillig und wird nicht in den Film übernommen. Liegt es bei, prüft
-`pruefe.mjs` damit die Abdeckung.
+`inventar` ist **Pflicht** (schwerer Befund, wenn es fehlt) und wird nicht in den Film
+übernommen. Es entsteht vor dem ersten Bogen, Seite für Seite mit Marken `S1:`, `S2:`.
+`pruefe.mjs` prüft damit die Abdeckung des Films.
 
 ## Der Bogen
 
@@ -31,8 +32,6 @@ warum es diesen Bogen gibt. Genau ein Beat trägt `"payoff": true` und steht am 
 ```json
 {
   "sub": "Der einführende Satz. Steht im Dokument, vor den Formeln des Beats.",
-  "gewicht": 2,
-  "fokus": false,
   "payoff": false,
   "ops": [ ... ]
 }
@@ -41,16 +40,13 @@ warum es diesen Bogen gibt. Genau ein Beat trägt `"payoff": true` und steht am 
 | Feld | Werte | Wirkung |
 |---|---|---|
 | `sub` | Fliesstext | Ein lesbarer Satz, kein Untertitel. Führt ein, was danach kommt. |
-| `gewicht` | 1, 2, 3 | Aufbautempo innerhalb des Takts. Jeder Takt kostet dieselbe Strecke am Rad; 3 baut über fast die ganze Strecke auf, 1 ist früh fertig. Fehlt es, gilt 2. |
-| `fokus` | `true` | Solange dieser Beat im Lesefeld steht, tritt alles andere zurück. Ein bis zwei Mal je Dokument. |
-| `payoff` | `true` | Dieser Beat löst den Bogen auf. Ohne eigenes `gewicht` bekommt er 3. |
+| `payoff` | `true` | Dieser Beat löst den Bogen auf: die Tilgung der lebenden Frage. |
+| `gewicht`, `fokus` | veraltet | Werden ignoriert; der Prüfer meldet `gewicht` als überflüssig. Die Strecke eines Beats hängt an seinem Inhalt (unten). |
 
 Der Bogen selbst kennt ausser `frage` und `beats` ein drittes Feld: `"fortsetzung": true`
 sagt, dass dieser Bogen den vorigen fortsetzt. Dann zählt dessen Beispielserie für einen
 `merksatz` hier weiter. Nutze es, wenn eine Serie nicht auf ein Blatt passt und geteilt
 werden muss; ohne das Feld wäre die Regel im zweiten Bogen ohne Serie.
-
-Haben alle Beats Gewicht 2, wurde nicht entschieden. Der Prüfer meldet das.
 
 ## Operationen
 
@@ -250,9 +246,11 @@ fliegen lassen, Pfeile im Seitenrand führen und die Tangente mit dem Finger fah
 dieser Geräte zeigt eine benannte Beziehung (GL6); wer es einbaut, sagt in der Beiakte in
 einem Satz, welche. Referenz für das Verhalten ist gold/UEBERGABE_BAU.md §3.
 
-**Zeit (GL3):** jeder Beat kostet dieselbe Radstrecke. Seine Stücke kacheln sie lückenlos
-nach ihrem `dauer`-Anteil (Vorgabe 1); vor einem Blattwechsel bleibt die Blende frei.
-`gewicht` wird ignoriert. Es gibt keine Ruhezonen: wer verweilen will, hält die Hand still.
+**Zeit (GL3):** jedes Stück kostet dieselbe Radstrecke. Ein Beat ist `0,2 + 0,11 · Σ dauer`
+Bildschirme lang (mindestens 0,35, höchstens 1,6); seine Stücke kacheln diese Strecke
+lückenlos nach ihrem `dauer`-Anteil (Vorgabe 1, `graph` 3, `pfeil` 1,6, `fahrt` 9); vor einem
+Blattwechsel bleibt die Blende (0,09) frei. `gewicht` wird ignoriert. Es gibt keine
+Ruhezonen: wer verweilen will, hält die Hand still.
 
 ### Zeilen aus Chips
 
@@ -312,7 +310,10 @@ wiederholt seine Einträge je Element der Liste, mit dem Element als Kontext plu
 `k`. Verschachtelung ist erlaubt (`tests` mit `pfeile` und `kappen` darin). Kennungen
 schreibt der Fall aus (`"id":"x0"`), nicht die Vorlage rechnet sie. So bleibt die
 Choreographie je Fall identisch (H3); der Prüfer beanstandet eine Serie, deren Fälle
-verschiedene Gerätefolgen ergeben. Vollständiges Beispiel: `beispiel-extrempunkte.json`.
+verschiedene Gerätefolgen ergeben. Ein Platzhalter, den der Fall nicht setzt, bleibt als
+`{{name}}` stehen; als `k` ergibt das keine Farbe (Spieler: k0), als Text steht er sichtbar
+im Film. Jeder Fall setzt also jedes Feld der Vorlage. Vollständiges Beispiel:
+`beispiel-extrempunkte.json`.
 
 `schluss` auf oberster Ebene setzt den Text der Schlussszene.
 
@@ -326,8 +327,31 @@ Er meldet drei Schweregrade und beendet sich mit Fehlercode, solange etwas Schwe
 offen ist. Geprüft werden unter anderem: genau eine Auflösung je Bogen und ihre Lage,
 Überflieg-Träger je Bogen, Regel ohne Serie, Notationsgestalt in Musterserien, Verweise
 statt Reprisen, geleakter Plan und Füller, Gedankenstriche, Gendern, Dezimalpunkt, Sätze
-mit mehreren Nebensätzen, Gewichts- und Fokusverteilung, Gültigkeit jedes `expr` und die
-Abdeckung des Inventars.
+mit mehreren Nebensätzen, Gültigkeit jedes `expr`, die Abdeckung des Inventars samt
+Seitenmarken, Farbe ohne Beziehung (GL1), Pfeilziel ohne Zahl (GL2), Flug in die
+Ergebniszeile innerhalb der Serie (GL4), Umformung mit „eingesetzt" ohne Pfeil oder Flug,
+neuer Inhalt nach dem Payoff, Film ohne Merksatz, Übersicht als Eröffnung, drei
+gleichartige Fälle ohne Serie, Regieanweisungen („Film", „Blatt", „wischen", „der Finger").
+
+## Das Transkript
+
+```
+node transkript.mjs film.json > TRANSKRIPT.md
+```
+
+schreibt den Film als Leseerlebnis auf: Blatt für Blatt, Wisch für Wisch, jede Bewegung in
+eckigen Klammern mit ihrer Farbe, Serien entfaltet. Es ist die Eingabe für das Simulat
+(`SIMULAT.md`); der Simulat-Leser bekommt nur dieses Transkript, nie die Datei.
+
+`lauf2.mjs` (eine Ebene höher, `skill/lauf2.mjs`) fährt den Film im Spieler über die ganze
+Radstrecke ab und meldet, was zur Laufzeit scheitert; `pruefe.mjs` sieht das nicht.
+
+`beispiel-parabel.json` ist ein frei komponierter Film (`"frei": true`) für die Altgeräte
+(`plot`, `bildfolge`, `zoomfolge`, `doppelgraph`, `binden`, `wert`); `beispiel-extrempunkte.json`
+ist der Goldfilm mit den Goldgeräten.
+
+`--hoehe` gibt je Bogen die gerechnete Hoehe und Blockzahl aus, je Beat Hoehe und Bloecke;
+damit laesst sich ein zu voller Bogen gezielt teilen.
 
 ### Die Zahlen, mit denen er rechnet
 
@@ -374,8 +398,9 @@ Fällen.
 **Inventar.** Der Prüfer sucht die Elemente aus `inventar` in allem, was der Leser als
 Formel zu sehen bekommt: `math`, `umformung` (auch über Zeilen hinweg zusammengezogen),
 `tabelle`-Zellen, `wert`, `jetztihr` und den Legenden der Graphen. Findet er etwas nicht,
-fehlt es wirklich. `inventar` ist freiwillig, aber es ist deine einzige Absicherung gegen
-stilles Weglassen; lösche es nicht, um Befunde loszuwerden.
+fehlt es wirklich. `inventar` ist Pflicht und deine einzige Absicherung gegen stilles
+Weglassen; kürze es nicht, um Befunde loszuwerden. Ein Inventar, das nur nennt, was der
+Film zeigt, ist Selbstbetrug.
 
 ## Bauen
 
@@ -419,7 +444,7 @@ startet er ins Vollbild. `titel` und `quelle` erscheinen dort, nicht als eigene 
 | ein Beat | ein Zeitabschnitt: seine Blöcke kommen dazu und bleiben stehen |
 | eine Op | ein Block im Blatt: erscheint an seinem endgültigen Platz, nichts rutscht nach |
 | `plot`, `doppelgraph`, `zoomfolge` | ein Bildblock, der ebenso stehen bleibt |
-| `gewicht` | wie schnell der Beat sich aufbaut (die Strecke ist bei allen gleich) |
+| `dauer` einer Op | ihr Anteil an der Strecke des Beats; die Summe bestimmt, wie lang der Beat ist |
 
 **Ein Bogen muss auf einen Bildschirm passen.** Alles, was in ihm vorkommt, steht am Ende
 gleichzeitig da: das Blatt ist der ausgelagerte Speicher des Lesers. Was nicht passt, wird

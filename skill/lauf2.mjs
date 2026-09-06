@@ -3,7 +3,10 @@
 import {JSDOM} from 'jsdom'; import fs from 'fs'; import path from 'path';
 const hier=path.dirname(new URL(import.meta.url).pathname);
 const film=process.argv[2]; if(!film){ console.error('Aufruf: node lauf2.mjs film.json [player.html] [--dump]'); process.exit(2); }
-const spieler=process.argv[3]&&!process.argv[3].startsWith('--')?process.argv[3]:path.join(hier,'..','quelle','v2','player2.html');
+// Spieler: Argument, sonst quelle/v2/player2.html (im Projekt), sonst blattkino/player.html (im Skill-Ordner)
+let spieler=process.argv[3]&&!process.argv[3].startsWith('--')?process.argv[3]:path.join(hier,'..','quelle','v2','player2.html');
+if(!fs.existsSync(spieler)){ const alt=path.join(hier,'blattkino','player.html'); if(fs.existsSync(alt))spieler=alt; }
+if(!fs.existsSync(spieler)){ console.error('Spieler nicht gefunden: '+spieler+'. Aufruf: node lauf2.mjs film.json player.html'); process.exit(2); }
 const dump=process.argv.includes('--dump');
 const daten=JSON.parse(fs.readFileSync(film,'utf8'));
 const tpl=fs.readFileSync(spieler,'utf8');

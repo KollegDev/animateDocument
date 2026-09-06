@@ -1,0 +1,1141 @@
+{
+ "titel": "Wendepunkte",
+ "quelle": "Kurvendiskussion 1, Seiten 30 bis 32",
+ "inventar": "S30: Ueberschrift Wendepunkte. Satz: Ein Wendepunkt ist die Stelle, an der Linkskurve und Rechtskurve sich abwechseln.\nS31: Graph f(x)=x^{3}-3x, orange rechtsgekruemmt (f''<0) fuer x<0, violett linksgekruemmt (f''>0) fuer x>0, Punkt Wendepunkt W(0|0), Achsen x von -2 bis 2, y von -4 bis 2. Beispiel: f(x)=x^{3}-3x. notwendige Bedingung: f''(x)=0. f''(x)=6x. 6x=0 \\iff x_1=0. hinreichende Bedingung: f'''(x)\\neq 0. f'''(x)=6. f'''(0)=6\\neq 0 \\rightarrow Wendepunkt. y-Wert: f(0)=0^{3}-3\\cdot 0=0. W(0|0). Satz: Das Vorgehen ist wie bei den Extrempunkten, nur eine Ableitung hoeher: f'' statt f', f''' statt f''. Ueberschrift Weitere Beispiele:\nS32: h(x)=-x^{3}+3x. notwendige Bedingung: h''(x)=-6x=0 \\iff x_1=0. hinreichende Bedingung: h'''(x)=-6, h'''(0)=-6\\neq 0 \\rightarrow Wendepunkt. y-Wert: h(0)=0. W(0|0). k(x)=x^{4}-2x^{2}. notwendige Bedingung: k''(x)=12x^{2}-4=0 \\iff x^{2}=\\frac{1}{3} \\iff x_1=-\\sqrt{\\frac{1}{3}}, x_2=\\sqrt{\\frac{1}{3}}. hinreichende Bedingung: k'''(x)=24x, k'''(\\pm\\sqrt{\\frac{1}{3}})=\\pm 24\\sqrt{\\frac{1}{3}}\\neq 0 \\rightarrow Wendepunkte. y-Werte: k(\\pm\\sqrt{\\frac{1}{3}})=(\\frac{1}{3})^{2}-2\\cdot\\frac{1}{3}=\\frac{1}{9}-\\frac{6}{9}=-\\frac{5}{9}. W_1(-\\sqrt{\\frac{1}{3}}\\,|\\,-\\frac{5}{9})\\approx W_1(-0{,}58|-0{,}56), W_2(\\sqrt{\\frac{1}{3}}\\,|\\,-\\frac{5}{9})\\approx W_2(0{,}58|-0{,}56). p(x)=(x-2)^{3}+1. notwendige Bedingung: p''(x)=6(x-2)=0 \\iff x_1=2. hinreichende Bedingung: p'''(x)=6, p'''(2)=6\\neq 0 \\rightarrow Wendepunkt. y-Wert: p(2)=(2-2)^{3}+1=1. W(2|1). Ueberschrift Schema: notwendige Bedingung: f''(x_0)=0. hinreichende Bedingung: f'''(x_0)\\neq 0 \\rightarrow Wendepunkt W(x_0|f(x_0)). f'''(x_0)=0 \\rightarrow keine Entscheidung, Vorzeichen von f'' links und rechts pruefen.",
+ "boegen": [
+  {
+   "frage": "Woran erkennt man die Stelle, an der Rechts- und Linkskurve sich abwechseln?",
+   "beats": [
+    {
+     "ops": [
+      {
+       "op": "h",
+       "t": "Wendepunkte"
+      },
+      {
+       "op": "satz",
+       "t": "Ein Wendepunkt ist die Stelle, an der Linkskurve und Rechtskurve sich abwechseln."
+      },
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "x^3-3*x",
+       "xmin": -2.4,
+       "xmax": 2.4,
+       "ymin": -4,
+       "ymax": 4,
+       "legend": "f(x) = x³ − 3x",
+       "h": 210,
+       "dauer": 3
+      },
+      {
+       "op": "punkt",
+       "x": 0,
+       "y": 0,
+       "k": 0
+      },
+      {
+       "op": "beschriftung",
+       "x": 0,
+       "y": 0,
+       "text": "W(0|0)",
+       "k": 0,
+       "dauer": 1
+      }
+     ]
+    },
+    {
+     "ops": [
+      {
+       "op": "satz",
+       "t": "Links davon ist die Kurve rechtsgekrümmt, rechts davon linksgekrümmt."
+      },
+      {
+       "op": "kappe",
+       "x": -0.95,
+       "r": 0.75,
+       "k": 0,
+       "text": "rechtsgekrümmt (f'' < 0)",
+       "dauer": 1.4
+      },
+      {
+       "op": "kappe",
+       "x": 0.95,
+       "r": 0.75,
+       "k": 0,
+       "text": "linksgekrümmt (f'' > 0)",
+       "dauer": 1.4
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "ops": [
+      {
+       "op": "satz",
+       "t": "Dort wechselt das Vorzeichen von f''."
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "f''(x)=0"
+       ],
+       "hl": true
+      },
+      {
+       "op": "merk",
+       "t": "Das Vorgehen ist wie bei den Extrempunkten, nur eine Ableitung höher: f'' statt f', f''' statt f''."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Wo liegt diese Stelle?",
+   "beats": [
+    {
+     "ops": [
+      {
+       "op": "satz",
+       "t": "Gesucht ist die Stelle, an der die Krümmung wechselt."
+      },
+      {
+       "op": "marke",
+       "t": "notwendige Bedingung: \\(f''(x)=0\\)"
+      },
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "x^3-3*x",
+       "xmin": -2.4,
+       "xmax": 2.4,
+       "ymin": -4,
+       "ymax": 4,
+       "legend": "f(x) = x³ − 3x",
+       "h": 185,
+       "dauer": 2
+      }
+     ]
+    },
+    {
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        "f(x)=x^{3}-3x"
+       ]
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "f''(x)=6x"
+       ]
+      }
+     ]
+    },
+    {
+     "ops": [
+      {
+       "op": "zeile",
+       "folge": true,
+       "teile": [
+        "6x=0",
+        [
+         "\\iff x_1=",
+         {
+          "tex": "0",
+          "k": 0,
+          "id": "x1"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "ops": [
+      {
+       "op": "satz",
+       "t": "Eine Stelle. Ob dort wirklich die Krümmung wechselt, ist damit noch nicht sicher."
+      },
+      {
+       "op": "kandidat",
+       "id": "m1",
+       "x": 0,
+       "k": 0,
+       "text": "0"
+      },
+      {
+       "op": "flug",
+       "von": "x1",
+       "zu": {
+        "kandidat": "m1"
+       },
+       "k": 0,
+       "dauer": 1.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "frage": "Ist es wirklich ein Wendepunkt, und wie hoch liegt er?",
+   "beats": [
+    {
+     "ops": [
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "x^3-3*x",
+       "xmin": -2.4,
+       "xmax": 2.4,
+       "ymin": -4,
+       "ymax": 4,
+       "legend": "f(x) = x³ − 3x",
+       "h": 165,
+       "dauer": 1
+      },
+      {
+       "op": "kandidat",
+       "id": "m1",
+       "x": 0,
+       "k": 0,
+       "text": "0",
+       "sofort": true
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "x_1=",
+         {
+          "tex": "0",
+          "k": 0,
+          "id": "x1"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "marke",
+       "t": "hinreichende Bedingung: \\(f'''(x)\\neq 0\\)"
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "f'''(x)=6"
+       ]
+      }
+     ]
+    },
+    {
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "z1",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "f'''("
+         },
+         {
+          "tex": "0",
+          "k": 0,
+          "id": "e1"
+         },
+         {
+          "tex": ")=6"
+         }
+        ],
+        "\\neq 0",
+        {
+         "t": "→ Wendepunkt",
+         "fett": "W",
+         "id": "art1"
+        }
+       ]
+      },
+      {
+       "op": "pfeil",
+       "id": "p1",
+       "von": "x1",
+       "zu": "e1",
+       "lane": 0,
+       "k": 0,
+       "dauer": 1.6
+      },
+      {
+       "op": "zeig",
+       "zeile": "z1",
+       "folge": true
+      }
+     ]
+    },
+    {
+     "ops": [
+      {
+       "op": "marke",
+       "t": "y-Wert: \\(y=f(x)\\)"
+      },
+      {
+       "op": "zeile",
+       "id": "y1",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "f("
+         },
+         {
+          "tex": "0",
+          "k": 0,
+          "id": "ye1"
+         },
+         {
+          "tex": ")="
+         },
+         {
+          "tex": "0",
+          "k": 0
+         },
+         {
+          "tex": "^{3}-3\\cdot"
+         },
+         {
+          "tex": "0",
+          "k": 0
+         },
+         {
+          "tex": "="
+         },
+         {
+          "tex": "0",
+          "k": 0,
+          "id": "yw1"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "pfeil",
+       "von": {
+        "pfeil": "p1"
+       },
+       "zu": "ye1",
+       "lane": 0,
+       "k": 0,
+       "dauer": 1.6
+      },
+      {
+       "op": "zeig",
+       "zeile": "y1",
+       "folge": true
+      },
+      {
+       "op": "aufstieg",
+       "x": 0,
+       "y": 0,
+       "k": 0,
+       "text": "0",
+       "dauer": 1.4
+      },
+      {
+       "op": "punkt",
+       "x": 0,
+       "y": 0,
+       "k": 0
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "erg",
+       "stumm": true,
+       "teile": [
+        [
+         {
+          "tex": "W(",
+          "k": 0,
+          "leer": true,
+          "id": "a0"
+         },
+         {
+          "tex": "0",
+          "k": 0,
+          "leer": true,
+          "id": "x0e"
+         },
+         "|",
+         {
+          "tex": "0",
+          "k": 0,
+          "leer": true,
+          "id": "y0e"
+         },
+         ")"
+        ]
+       ]
+      },
+      {
+       "op": "zeig",
+       "zeile": "erg"
+      },
+      {
+       "op": "flug",
+       "von": "art1",
+       "zu": "a0",
+       "k": 0,
+       "txt": true,
+       "dauer": 1.2
+      },
+      {
+       "op": "flug",
+       "von": "x1",
+       "zu": "x0e",
+       "k": 0,
+       "dauer": 1.2
+      },
+      {
+       "op": "flug",
+       "von": "yw1",
+       "zu": "y0e",
+       "k": 0,
+       "dauer": 1.2
+      },
+      {
+       "op": "beschriftung",
+       "x": 0,
+       "y": 0,
+       "text": "W(0|0)",
+       "k": 0,
+       "dauer": 1
+      },
+      {
+       "op": "merk",
+       "t": "Der y-Wert kommt aus \\(f(x)\\), nicht aus \\(f''(x)\\)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "serie": {
+    "vorlage": [
+     {
+      "ops": [
+       {
+        "op": "zeile",
+        "teile": [
+         "{{f}}"
+        ]
+       },
+       {
+        "op": "graph",
+        "id": "G",
+        "expr": "{{expr}}",
+        "xmin": "{{xmin}}",
+        "xmax": "{{xmax}}",
+        "ymin": "{{ymin}}",
+        "ymax": "{{ymax}}",
+        "legend": "{{legend}}",
+        "h": "{{h}}",
+        "dauer": 2
+       }
+      ]
+     },
+     {
+      "ops": [
+       {
+        "op": "marke",
+        "t": "notwendige Bedingung: \\({{n}}''(x)=0\\)"
+       },
+       {
+        "op": "zeile",
+        "teile": [
+         "{{f2}}"
+        ]
+       },
+       {
+        "op": "zeile",
+        "folge": true,
+        "teile": "{{loes}}"
+       },
+       {
+        "je": "kand",
+        "dann": [
+         {
+          "op": "kandidat",
+          "id": "m{{k}}",
+          "x": "{{x}}",
+          "k": "{{k}}",
+          "text": "{{xt}}"
+         },
+         {
+          "op": "flug",
+          "von": "x{{k}}",
+          "zu": {
+           "kandidat": "m{{k}}"
+          },
+          "k": "{{k}}",
+          "dauer": 0.9
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "ops": [
+       {
+        "op": "marke",
+        "t": "hinreichende Bedingung: \\({{n}}'''(x)\\neq 0\\)"
+       },
+       {
+        "op": "zeile",
+        "teile": [
+         "{{f3}}"
+        ]
+       },
+       {
+        "je": "tests",
+        "dann": [
+         {
+          "op": "zeile",
+          "id": "t{{i}}",
+          "stumm": true,
+          "teile": [
+           [
+            "!eng",
+            {
+             "tex": "{{pre}}"
+            },
+            {
+             "tex": "{{val}}",
+             "k": "{{kf}}",
+             "id": "e{{i}}"
+            },
+            {
+             "tex": "{{post}}"
+            }
+           ],
+           "{{vz}}",
+           {
+            "t": "→ {{art}}",
+            "fett": "{{fett}}",
+            "id": "art{{i}}"
+           }
+          ]
+         },
+         {
+          "je": "pfeile",
+          "dann": [
+           {
+            "op": "pfeil",
+            "id": "p{{k}}",
+            "von": "x{{k}}",
+            "zu": "e{{ti}}",
+            "lane": "{{k}}",
+            "k": "{{k}}",
+            "versatz": "{{versatz}}",
+            "dauer": 1.2
+           }
+          ]
+         },
+         {
+          "op": "zeig",
+          "zeile": "t{{i}}",
+          "folge": true
+         },
+         {
+          "je": "kappen",
+          "dann": [
+           {
+            "op": "kappe",
+            "x": "{{x}}",
+            "r": "{{r}}",
+            "k": "{{k}}",
+            "dauer": 0.9
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "payoff": true,
+      "ops": [
+       {
+        "op": "marke",
+        "t": "{{ywort}}: \\(y={{n}}(x)\\)"
+       },
+       {
+        "je": "y",
+        "dann": [
+         {
+          "op": "zeile",
+          "id": "y{{i}}",
+          "stumm": true,
+          "teile": "{{teile}}"
+         },
+         {
+          "je": "pfeile",
+          "dann": [
+           {
+            "op": "pfeil",
+            "von": {
+             "pfeil": "p{{k}}"
+            },
+            "zu": "z{{k}}",
+            "lane": "{{k}}",
+            "k": "{{k}}",
+            "dauer": 1.2
+           }
+          ]
+         },
+         {
+          "op": "zeig",
+          "zeile": "y{{i}}",
+          "folge": true
+         },
+         {
+          "je": "werte",
+          "dann": [
+           {
+            "op": "aufstieg",
+            "x": "{{x}}",
+            "y": "{{y}}",
+            "k": "{{k}}",
+            "text": "{{yt}}",
+            "dauer": 1.1
+           },
+           {
+            "op": "punkt",
+            "x": "{{x}}",
+            "y": "{{y}}",
+            "k": "{{k}}",
+            "dauer": 0.7
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "op": "zeile",
+        "id": "erg",
+        "stumm": true,
+        "teile": "{{erg}}"
+       },
+       {
+        "op": "zeig",
+        "zeile": "erg",
+        "folge": true,
+        "dauer": 1.2
+       },
+       {
+        "je": "besch",
+        "dann": [
+         {
+          "op": "beschriftung",
+          "x": "{{x}}",
+          "y": "{{y}}",
+          "text": "{{text}}",
+          "k": "{{k}}",
+          "dauer": 0.6
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "faelle": [
+     {
+      "frage": "Geht das bei h genauso?",
+      "n": "h",
+      "expr": "-x^3+3*x",
+      "legend": "h(x) = −x³ + 3x",
+      "xmin": -2.2,
+      "xmax": 2.2,
+      "ymin": -4.3,
+      "ymax": 4.3,
+      "h": 172,
+      "f": "h(x)=-x^{3}+3x",
+      "f2": "h''(x)=-6x",
+      "loes": [
+       "-6x=0",
+       [
+        "\\iff x_1=",
+        {
+         "tex": "0",
+         "k": 0,
+         "id": "x0"
+        }
+       ]
+      ],
+      "kand": [
+       {
+        "k": 0,
+        "x": 0,
+        "xt": "0"
+       }
+      ],
+      "f3": "h'''(x)=-6",
+      "tests": [
+       {
+        "i": 0,
+        "pre": "h'''(",
+        "val": "0",
+        "post": ")=-6",
+        "kf": 0,
+        "vz": "\\neq 0",
+        "art": "Wendepunkt",
+        "fett": "W",
+        "pfeile": [
+         {
+          "k": 0,
+          "versatz": 0,
+          "ti": 0
+         }
+        ],
+        "kappen": [
+         {
+          "x": -0.9,
+          "r": 0.6,
+          "k": 0
+         },
+         {
+          "x": 0.9,
+          "r": 0.6,
+          "k": 0
+         }
+        ]
+       }
+      ],
+      "ywort": "y-Wert",
+      "y": [
+       {
+        "i": 0,
+        "teile": [
+         [
+          "!eng",
+          {
+           "tex": "h("
+          },
+          {
+           "tex": "0",
+           "k": 0,
+           "id": "z0"
+          },
+          {
+           "tex": ")="
+          },
+          {
+           "tex": "0",
+           "k": 0,
+           "id": "w0"
+          }
+         ]
+        ],
+        "pfeile": [
+         {
+          "k": 0
+         }
+        ],
+        "werte": [
+         {
+          "k": 0,
+          "x": 0,
+          "y": 0,
+          "yt": "0"
+         }
+        ]
+       }
+      ],
+      "erg": [
+       [
+        {
+         "tex": "W(0\\,|\\,0)",
+         "k": 0
+        }
+       ]
+      ],
+      "besch": [
+       {
+        "k": 0,
+        "x": 0,
+        "y": 0,
+        "text": "W(0|0)"
+       }
+      ]
+     },
+     {
+      "frage": "Und mit zwei Wendestellen?",
+      "n": "k",
+      "expr": "x^4-2*x^2",
+      "legend": "k(x) = x⁴ − 2x²",
+      "xmin": -1.9,
+      "xmax": 1.9,
+      "ymin": -1.6,
+      "ymax": 2.4,
+      "h": 165,
+      "f": "k(x)=x^{4}-2x^{2}",
+      "f2": "k''(x)=12x^{2}-4",
+      "loes": [
+       "12x^{2}-4=0",
+       "\\iff x^{2}=\\frac{1}{3}",
+       [
+        "\\iff x_1=",
+        {
+         "tex": "-\\sqrt{\\frac{1}{3}}",
+         "id": "x0"
+        }
+       ],
+       [
+        ",\\ x_2=",
+        {
+         "tex": "\\sqrt{\\frac{1}{3}}",
+         "id": "x1"
+        }
+       ]
+      ],
+      "kand": [
+       {
+        "k": 0,
+        "x": -0.5774,
+        "xt": "-\\sqrt{\\frac{1}{3}}"
+       },
+       {
+        "k": 1,
+        "x": 0.5774,
+        "xt": "\\sqrt{\\frac{1}{3}}"
+       }
+      ],
+      "f3": "k'''(x)=24x",
+      "tests": [
+       {
+        "i": 0,
+        "pre": "k'''(",
+        "val": "\\pm\\sqrt{\\frac{1}{3}}",
+        "post": ")=\\pm 24\\sqrt{\\frac{1}{3}}",
+        "vz": "\\neq 0",
+        "art": "Wendepunkte",
+        "fett": "W",
+        "pfeile": [
+         {
+          "k": 0,
+          "versatz": -3,
+          "ti": 0
+         },
+         {
+          "k": 1,
+          "versatz": 3,
+          "ti": 0
+         }
+        ],
+        "kappen": [
+         {
+          "x": -0.877,
+          "r": 0.25,
+          "k": 0
+         },
+         {
+          "x": -0.277,
+          "r": 0.25,
+          "k": 0
+         },
+         {
+          "x": 0.277,
+          "r": 0.25,
+          "k": 1
+         },
+         {
+          "x": 0.877,
+          "r": 0.25,
+          "k": 1
+         }
+        ]
+       }
+      ],
+      "ywort": "y-Werte",
+      "y": [
+       {
+        "i": 0,
+        "teile": [
+         [
+          "!eng",
+          {
+           "tex": "k("
+          },
+          {
+           "tex": "\\pm\\sqrt{\\frac{1}{3}}",
+           "id": "z0"
+          },
+          {
+           "tex": ")=("
+          },
+          {
+           "tex": "\\frac{1}{3}"
+          },
+          {
+           "tex": ")^{2}-2\\cdot\\frac{1}{3}=\\frac{1}{9}-\\frac{6}{9}="
+          },
+          {
+           "tex": "-\\frac{5}{9}",
+           "id": "w0"
+          }
+         ]
+        ],
+        "pfeile": [
+         {
+          "k": 0
+         }
+        ],
+        "werte": [
+         {
+          "k": 0,
+          "x": -0.5774,
+          "y": -0.5556,
+          "yt": "−0,56"
+         },
+         {
+          "k": 1,
+          "x": 0.5774,
+          "y": -0.5556,
+          "yt": "−0,56"
+         }
+        ]
+       }
+      ],
+      "erg": [
+       [
+        {
+         "tex": "W_1(-0{,}58\\,|\\,-0{,}56)",
+         "k": 0
+        }
+       ],
+       [
+        ",\\ ",
+        {
+         "tex": "W_2(0{,}58\\,|\\,-0{,}56)",
+         "k": 1
+        }
+       ]
+      ],
+      "besch": [
+       {
+        "k": 0,
+        "x": -0.5774,
+        "y": -0.5556,
+        "text": "W₁(−0,58|−0,56)"
+       },
+       {
+        "k": 1,
+        "x": 0.5774,
+        "y": -0.5556,
+        "text": "W₂(0,58|−0,56)"
+       }
+      ]
+     },
+     {
+      "frage": "Und wenn die Kurve verschoben ist?",
+      "n": "p",
+      "expr": "(x-2)^3+1",
+      "legend": "p(x) = (x−2)³ + 1",
+      "xmin": 0.3,
+      "xmax": 3.7,
+      "ymin": -3,
+      "ymax": 5,
+      "h": 172,
+      "f": "p(x)=(x-2)^{3}+1",
+      "f2": "p''(x)=6(x-2)",
+      "loes": [
+       "6(x-2)=0",
+       [
+        "\\iff x_1=",
+        {
+         "tex": "2",
+         "k": 0,
+         "id": "x0"
+        }
+       ]
+      ],
+      "kand": [
+       {
+        "k": 0,
+        "x": 2,
+        "xt": "2"
+       }
+      ],
+      "f3": "p'''(x)=6",
+      "tests": [
+       {
+        "i": 0,
+        "pre": "p'''(",
+        "val": "2",
+        "post": ")=6",
+        "kf": 0,
+        "vz": "\\neq 0",
+        "art": "Wendepunkt",
+        "fett": "W",
+        "pfeile": [
+         {
+          "k": 0,
+          "versatz": 0,
+          "ti": 0
+         }
+        ],
+        "kappen": [
+         {
+          "x": 1.3,
+          "r": 0.55,
+          "k": 0
+         },
+         {
+          "x": 2.7,
+          "r": 0.55,
+          "k": 0
+         }
+        ]
+       }
+      ],
+      "ywort": "y-Wert",
+      "y": [
+       {
+        "i": 0,
+        "teile": [
+         [
+          "!eng",
+          {
+           "tex": "p("
+          },
+          {
+           "tex": "2",
+           "k": 0,
+           "id": "z0"
+          },
+          {
+           "tex": ")=("
+          },
+          {
+           "tex": "2",
+           "k": 0
+          },
+          {
+           "tex": "-2)^{3}+1="
+          },
+          {
+           "tex": "1",
+           "k": 0,
+           "id": "w0"
+          }
+         ]
+        ],
+        "pfeile": [
+         {
+          "k": 0
+         }
+        ],
+        "werte": [
+         {
+          "k": 0,
+          "x": 2,
+          "y": 1,
+          "yt": "1"
+         }
+        ]
+       }
+      ],
+      "erg": [
+       [
+        {
+         "tex": "W(2\\,|\\,1)",
+         "k": 0
+        }
+       ]
+      ],
+      "besch": [
+       {
+        "k": 0,
+        "x": 2,
+        "y": 1,
+        "text": "W(2|1)"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "frage": "Was bleibt als Weg?",
+   "beats": [
+    {
+     "ops": [
+      {
+       "op": "h",
+       "t": "Schema"
+      },
+      {
+       "op": "marke",
+       "t": "notwendige Bedingung"
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "f''(x_0)=0"
+       ],
+       "hl": true
+      }
+     ]
+    },
+    {
+     "ops": [
+      {
+       "op": "marke",
+       "t": "hinreichende Bedingung"
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        {
+         "tex": "f'''(x_0)\\neq 0",
+         "k": 0
+        },
+        "\\rightarrow",
+        {
+         "tex": "W(x_0\\,|\\,f(x_0))",
+         "k": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        "f'''(x_0)=0",
+        "\\rightarrow",
+        {
+         "t": "keine Entscheidung, Vorzeichen von f'' links und rechts prüfen"
+        }
+       ]
+      },
+      {
+       "op": "merk",
+       "t": "\\(f''(x)=0\\) liefert die Kandidaten: dort kann die Krümmung wechseln. \\(f'''\\) entscheidet: ungleich null heißt wirklich Wendepunkt."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "schluss": "Ende. Weiter im Dokument: Sattelpunkte, Seite 32."
+}

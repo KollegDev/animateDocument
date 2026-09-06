@@ -830,8 +830,17 @@ function bauen(){
   szene.inhalt.style.justifyContent='center'; szene.inhalt.style.minHeight='60vh';
 }
 
+// Was ein Beat am Rad kostet. Nicht jeder Beat gleich viel (das liess duenne Beats leer
+// laufen, Autorbefund 2026-09-05: „viel scrollen fuer mindere Wirkung"), sondern jedes
+// Stueck gleich viel: ein Wisch bringt immer etwa gleich viel Neues. Ein Beat mit acht
+// Stuecken kostet rund einen Bildschirm, einer mit zwei Stuecken einen halben.
+const JE_STUECK=0.11, BEAT_MIN=0.35, BEAT_MAX=1.6;
+function beatStrecke(b){
+  const summe=b.stuecke.reduce((a,st)=>a+(+st.dauer||1),0);
+  return clamp(0.2+JE_STUECK*summe, BEAT_MIN, BEAT_MAX);
+}
 function zeitVerteilen(){
-  let U=0; for(const s of SZENEN){ s.von=U; for(const b of s.beats){ b.von=U; U+=1; b.bis=U; } s.bis=U; }
+  let U=0; for(const s of SZENEN){ s.von=U; for(const b of s.beats){ b.von=U; U+=beatStrecke(b); b.bis=U; } s.bis=U; }
   // Kontinuitaet (Autorbefund 2026-09-05): keine Ruhezonen. Die Stuecke eines Beats kacheln
   // seine ganze Strecke lueckenlos; nur vor einem Blattwechsel bleibt die Blende frei, und die
   // Blende selbst ist Bewegung. gewicht steuert nichts mehr an der Zeit.

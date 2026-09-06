@@ -12,9 +12,12 @@ Live: https://studienkolleg.me
 
 ## Für Sitzungen, die hier arbeiten
 
-Lies **START_HIER.md**, dann **STAND.md**. STAND.md beschreibt die ausgelieferte Linie
-und die Autorentscheide, die Teile des älteren Kanons überholen. Nachrichten zwischen den
-parallel arbeitenden Sessions stehen in **AUSTAUSCH.md**.
+Lies **START_HIER.md**, dann **STAND.md**. STAND.md beschreibt die ausgelieferte Linie.
+Nachrichten zwischen den parallel arbeitenden Sessions stehen in **AUSTAUSCH.md**.
+
+Filme liegen an genau einer Stelle: ausgelieferte in `filme/`, Blindtests in
+`blindtest/<n>/film.json` (mit Beiakte daneben); der Katalog `index.html` verlinkt beide
+direkt ueber `player.html?film=...`. `quelle/` enthaelt nur die Spielerquellen.
 
 ## Bauen
 
@@ -22,7 +25,8 @@ parallel arbeitenden Sessions stehen in **AUSTAUSCH.md**.
 bash quelle/bauen.sh                                   # Player v2 aus quelle/v2
 node skill/harness2.mjs                                # 43 Tests
 node skill/abgleich2.mjs                               # Vorabnahme gegen gold/extrempunkte.html
-node skill/lauf2.mjs quelle/x.json [--dump]            # ganze Radstrecke, 0 Fehler
-node skill/blattkino/pruefe.mjs quelle/x.json skill/blattkino/player.html
-node skill/blattkino/baue.mjs quelle/x.json skill/blattkino/player.html x.html
+node skill/lauf2.mjs filme/x.json [--dump]            # ganze Radstrecke, 0 Fehler
+node skill/blattkino/pruefe.mjs filme/x.json skill/blattkino/player.html
+node skill/blattkino/baue.mjs filme/x.json skill/blattkino/player.html x.html
+node skill/blattkino/transkript.mjs filme/x.json > TRANSKRIPT.md   # Leseerlebnis fuer das Simulat
 ```

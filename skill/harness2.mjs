@@ -48,7 +48,12 @@ console.log('— Bauform v2 —');
 
 console.log('— Die Zeit: keine Ruhezonen (GL3) —');
 { const a=await welt(D); const s=a.bk.SZENEN[0];
-  ck('Jeder Beat kostet dieselbe Strecke (1)', s.beats.every(b=>Math.abs((b.bis-b.von)-1)<1e-9));
+  ck('Ein Beat kostet Strecke nach seinen Stuecken, zwischen 0,35 und 1,6',
+     s.beats.every(b=>(b.bis-b.von)>=0.35-1e-9&&(b.bis-b.von)<=1.6+1e-9),
+     s.beats.map(b=>(b.bis-b.von).toFixed(2)).join(' '));
+  ck('Ein dichter Beat kostet mehr als ein duenner', (b=>{ const n=b=>b.stuecke.reduce((a,st)=>a+st.dauer,0);
+     const dicht=s.beats.reduce((x,y)=>n(x)>=n(y)?x:y), duenn=s.beats.reduce((x,y)=>n(x)<=n(y)?x:y);
+     return n(dicht)===n(duenn) || (dicht.bis-dicht.von)>(duenn.bis-duenn.von); })());
   const fenster=[]; for(const b of s.beats)for(const st of b.stuecke)for(const it of st.items)fenster.push([it.a,it.b]);
   ck('Die Stuecke kacheln den Beat lueckenlos', (()=>{ const b=s.beats[0]; const its=[]; for(const st of b.stuecke)for(const it of st.items)its.push(it);
      for(let i=1;i<its.length;i++)if(Math.abs(its[i].a-its[i-1].b)>1e-6)return false; return Math.abs(its[0].a-b.von)<1e-6; })());

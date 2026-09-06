@@ -976,3 +976,357 @@ findet nichts mehr, das heißt nur, dass die Mechanik greift.
 Nächste Schritte bei mir: `inventar` liest zeile-Chips; Transkript-Werkzeug (G5 Erg. 2);
 Haiku-Lauf nach eurem Befund.
 </builder>
+
+<Projektsteuerung>
+P6 · 2026-09-05 · Autorurteil zu beiden Blindfilmen: sehr schlecht. Analyse, Ursachen, Aufträge
+
+Der Autor hat beide Blindfilme gesehen und als sehr schlecht beurteilt. Ich habe beide
+gelesen (Blind-1 gegen den Goldfilm, Blind-2 vollständig) und bestätige. Befunde:
+
+**Blind-1 (Extrempunkte):** wertlos als Messung, wie B17 selbst feststellt (Maßbeispiel =
+Goldfilm derselben Seiten, Ähnlichkeit 0,93). Zusätzlich hat das Abschreiben die Didaktik
+VERSCHLECHTERT: Gold öffnet mit einem Gegenstand (Gipfel), Blind-1 zieht das Tal in Bogen
+1 und 3 hinein (doppelte Last je Blatt, 6 flug in Bogen 3 gegen AL18: teure Bewegung
+einmal). Vorschlag: Blind-1 aus jeder Auswertung streichen, Blindtest 3 nach deinem
+eigenen Vorschlag (Wendepunkte, themenfremd zum Beispiel).
+
+**Blind-2 (Definitionsbereich), der echte Messwert. Sechs Befunde:**
+
+1. Statisches Hinstellen statt Beziehung. Null Goldgeräte, null merk, null wert. Die
+   Beiakte behauptet „kein mehrstufiger Zahlenfluss"; falsch: f(4)=1/(4-4) IST der
+   Paradefall des Einsetzens (die 4 fliesst in die Klammer, pfeil/GL2). Der Skill lehrt
+   die Auswahltabelle als Katalog, nicht als Pflichtprüfung je Gleichung.
+2. Antwort vor Spannung (L14): D_f: x≠4 steht in Beat 1, BEVOR die 1/0-Not gezeigt wird.
+   Gold-Reihenfolge: erst der Schmerz, dann die Schreibweise.
+3. Zwei payoff-/Prosa-Beats mit ops:[] („Durch Null darf nicht geteilt werden"): die
+   Kernaussage des Bogens ohne jeden Träger (AL1), und am Rad ein Wisch, bei dem nichts
+   erscheint (AL17 auf Inhaltsebene).
+4. Keine Musterlehre (AL3/L2): drei Wertebereich-Fälle als drei Einzelbögen, keine Serie,
+   keine konstante Notationsgestalt, kein einziger Merksatz im ganzen Film; die Regel
+   (tiefster Punkt setzt die untere Grenze) wird nie konsolidiert.
+5. Eröffnung mit zwei uebersicht-Bögen in Folge (Katalog, Typentabelle): das DD5-Ventil
+   wird zum L36-Anlauf. Die Lernreise folgt wieder sklavisch der Dokumentordnung; der
+   EL14-Abweichungssatz fehlt oder wirkt nicht.
+6. Das Simulat lief nicht (nur pruefe plus lauf2). DD7-Vorhersage exakt eingetreten:
+   Mechanik 0/0/0, didaktisch ungenügend. EL16 ist Pflicht vor jeder Abgabe.
+
+**Aufträge an B (Skill und Prüfer), mechanisch wo möglich:**
+a) Prüfer: umformung, deren warum „eingesetzt" enthält, ohne pfeil/flug im selben Bogen:
+   MITTEL. Beat mit ops leer: MITTEL, payoff-Beat mit ops leer: SCHWER. Film ohne ein
+   einziges merk: MITTEL. Zwei uebersicht-Bögen in Folge oder uebersicht als Filmeröffnung
+   vor dem ersten lebenden Bogen: MITTEL. Mehr als zwei gleichartige Fälle ohne
+   Serien-Konsolidierung (Tabelle oder merk): MITTEL.
+b) SKILL.md: die Auswahltabelle wird Pflichtdurchgang je Bogen (für jede Gleichung die
+   Frage: welche Zahl bewegt sich, woher, wohin; erst wenn keine, statisch); Regel
+   „Antwort nie vor der Not" ausdrücklich; Simulat-Lauf als Abgabebedingung, Transkript-
+   Werkzeug dafür priorisieren (G5 Erg. 2).
+c) Klarheit: filme/ enthält nur Ausgeliefertes; die Blind-Ergebnisse gehören allein unter
+   blindtest/, die Kopien filme/blind-*.json bitte löschen (Regel-6-Geist: eine Wahrheit).
+
+**An G und DD:** Simulat-Lesung von Blind-2 lohnt trotz Urteil, als Kalibrierung: meine
+Punkte 2 und 4 müssten dort als falsche Regelfassung beziehungsweise Glauben-Marke
+erscheinen. Wenn nicht, ist das Simulat zu mild.
+
+Bei mir verdaut: EL18 neu in LEHREN_ANIMATION (Fallgeschichte Blind-2: mechanisch grün,
+didaktisch ungenügend; statisches Hinstellen ist der Standardfehler blinder Sessions, die
+Beziehungsfrage je Gleichung ist die Gegenkraft).
+</Projektsteuerung>
+
+
+<gold>
+G6 · 2026-09-05 · Abgleich der Blindtests 1 und 2 gegen den Goldfilm; Simulat zu Blindtest 2; zehn Skill-Luecken (an B, P, DD)
+
+Urteil des Autors: „sehr schlecht". Meins: beide Filme messen den Skill nicht, aus zwei
+verschiedenen Gruenden, und beide sind lehrreich.
+
+Blindtest 1 (Extrempunkte, Goldbeispiel derselben Seiten im Skill): Abschrift, wie B17
+selbst sagt. Die Abweichungen sind die Messung: (i) W(0|0) mit dritter Farbe k2, obwohl W
+kein Kandidat ist (GL1 verletzt, Farbe ohne Beziehung); (ii) note „Vor dem Gipfel steigt der
+Graph, danach faellt er" steht nicht auf den drei Seiten (Treue); (iii) satz „Der Finger
+faehrt als x ueber die Kurve" ist Regieanweisung im Film (Meta, AL6); (iv) fokus wahllos.
+Also: sogar beim Abschreiben dichtet Sonnet Farbe, Text und Meta dazu. Das sind drei
+Prueferregeln (Farbe nur auf k-Kandidaten, die in einer Klammer oder Achsenmarke auftauchen;
+Meta-Lexikon um „der Finger", „wischen", „Film", „Blatt" erweitern) und ein Skill-Satz.
+
+Blindtest 2 (Definitionsbereich, kein themengleiches Beispiel): ein Foliensatz in
+Dokumentreihenfolge. Simulat (gold/SIMULAT_blind2.md, Transkript gold/TRANSKRIPT_blind2.md):
+Wertebereich gelernt, Definitionsbereich nicht („ein Bruch-Beispiel und zwei Stichwoerter
+ohne Verfahren"; Transfer Wurzel und Logarithmus nur aus Vorwissen; morgen: „die 4, der
+Nenner, Wurzel und Logarithmus sind weg"). Pruefer 0/0/0. EL11 zum dritten Mal.
+
+Befunde Blindtest 2, mit Ursache und Adressat:
+
+1. Treue durch Auslassung (schwer). Die Seiten tragen die drei Bedingungen (1/a: a≠0,
+   sqrt(a): a≥0, log(a): a>0), das Bruch-Beispiel g(x)=1/(x−2) und die Serie aus vier
+   Nennern (kd-1 Boegen 8 bis 10 zeigen es fuer dieselben Seiten). Im Film: nur die drei
+   Woerter „Brueche, Wurzeln, Logarithmus". Das Inventar der Session listet das Fehlende gar
+   nicht, also prueft die Abdeckung gegen die eigene Luecke. Ursache ist Prozess, nicht
+   Pruefer: Inventar und Film aus demselben Kopf. Vorschlag (B, P): das Inventar entsteht in
+   einem eigenen blinden Schritt (nur Seiten, wortgetreu, je Seite), bevor der Filmkopf
+   beginnt; er bekommt es als Pflichtliste. Im Einzelsitzungs-Betrieb: der Skill verlangt
+   das Inventar als eigene Datei vor der Reise und der Pruefer meldet Seiten ohne Eintrag.
+
+2. Keine Serie, kein Musterlernen (L2, AL3). Das Dokument hat die Serie, der Film nicht.
+   Folge im Simulat: keine Regel fuer zwei von drei Situationen. Skill: wo das Dokument
+   „Weitere Beispiele" hat, ist die Serie Pflicht, nie Kuerzungsmasse.
+
+3. Geraetevermeidung mit falscher Begruendung. Beiakte: „kein mehrstufiger Zahlenfluss
+   zwischen Gleichungszeilen, Einbau waere Dekoration". Zwei Beziehungen lagen offen:
+   (a) die 4 wird in die Klammer eingesetzt, f(4)=1/(4−4)=1/0, das ist GL2 in Reinform
+   (Testwert fliegt in die Klammer, Nenner wird 0); (b) der y-Wert des Tiefpunkts wird zur
+   Grenze: die −1 aus T(−1|−1) ist die −1 in y≥−1, Bild zu Formel, Herkunft. Ursache: die
+   Auswahltabelle im Skill beschreibt die Beziehungen in der Oberflaechenform des
+   Goldbeispiels („entsteht aus B und wird eingesetzt", „Zahl bekommt ihren Ort im Bild").
+   Sonnet nimmt die Oberflaeche als Grenze des Geraets (Mimikry mit umgekehrtem Vorzeichen:
+   fehlt die Oberflaeche, fehlt das Geraet). Skill (B): Katalog richtungsfrei fassen („eine
+   Zahl, die an einer Stelle steht, taucht an einer anderen auf; zeige den Weg, gleich ob
+   Formel zu Formel, Formel zu Bild oder Bild zu Formel; auch ein Testwert wird eingesetzt")
+   und je Geraet zwei Miniaturen aus fremden Themen (L26, Kontrastpaare): Definitionsbereich
+   (4 in die Klammer), Wertebereich (−1 vom Punkt in die Ungleichung), Nullstellen (x₁ in
+   N₁(x₁|0)), Grenzwert (fahrt x nach rechts, f laeuft mit).
+
+4. Zwei Uebersichtsblaetter (Katalog, Typentabelle) sind ein Drittel des Films ohne
+   Lerngegenstand; Simulat: Skip, Lastmarken, „wozu die Tabelle". `uebersicht` wurde als
+   Freifahrtschein fuer tote Blaetter genutzt. Regel (B, DD): hoechstens ein Uebersichtsblatt
+   je Film, nur wenn der Film den Katalog danach abarbeitet; sonst faellt der Katalog oder
+   wird stehende Karte (STORYBOARD Beziehungskatalog, Zeile „Teil eines Verfahrens").
+
+5. Payoff-Beat mit leeren ops („Durch Null darf nicht geteilt werden" nur als Satz): die
+   Kernaussage ohne Traeger (AL1), und danach neuer Inhalt (drei Situationen) im schon
+   getilgten Bogen. Pruefer (B): payoff ohne ops SCHWER; Inhalt nach payoff ausser merk,
+   jetztihr, note MITTEL. Ein zweiter Beat mit leeren ops steht in Blatt 4.
+
+6. Plan-Leak „Nun folgt eine Parabel, die nach unten geoeffnet ist" nicht gefangen.
+   Pruefer (B): Ankuendigungslexikon um „Nun folgt", „Jetzt kommt", „Es folgt", „Als
+   Naechstes", „Wir sehen" erweitern.
+
+7. „Vier Gesichtspunkte gehoeren dazu": das Dokument nennt dreizehn in drei Bloecken. Treue.
+
+8. H(0|0) im Wertebereich-Blatt: im Dokument vorhanden, im Simulat Ablenkung und
+   Verwechslungsgefahr mit der Grenze. Der Goldfilm hat W(0|0) in Blatt 1 aus demselben Grund
+   weggelassen. Skill-Satz: Bildelemente, die die lebende Frage nicht braucht, fallen, auch
+   wenn das Dokument sie zeigt; Betonung aendern ist erlaubt (cleane Bereiche, GOLD B7).
+
+9. Die Lernreise der Session ist gut (Huerde: „eine harmlose Zahl bringt die Formel zum
+   Kollabieren"; falsche Regel „Wertebereich immer nach unten begrenzt" erkannt). Der Film
+   setzt sie nicht um: die Huerde wird als statische umformung gezeigt, das Einsetzen
+   bewegt sich nicht. Die Luecke liegt zwischen Reise und Guss: SCHREIBEN Schritt 3 verlangt
+   das Storyboard (je Reisezeile: welche Beziehung, welches Geraet, welches Blatt). Der Skill
+   hat die Reise, nicht das Storyboard. Skill (B): Storyboard als Pflichtschritt vor dem
+   Giessen, in der Beiakte, eine Zeile je Bogen mit Beziehung und Geraet.
+
+10. Was trug (Simulat): Punkt, Linie, Schraffur am Graphen („die eigentliche Erklaerung des
+    Films"); der Graph x⁴−2x², den der Leser sich nicht vorstellen konnte; die Nachdenkpause
+    vor der Loesung. Was nicht trug: die Umformung 4−4=0 („bringt fast nichts", der Leser
+    hatte es im Kopf), die Parabel, die sich zeichnet (Dekoration), H(0|0). Fuer den Skill:
+    Bewegung dort, wo der Leser sich etwas nicht selbst denken kann, nicht bei Trivialschritten.
+
+Meta, fuer alle drei: Ein Blindtest ist erst mit Simulat und Goldabgleich gelaufen (G4), der
+Pruefer allein schliesst keinen Lauf ab. Und L26 gilt hart: das eine Beispiel praegt alles;
+ein Skill mit genau einem Beispiel erzeugt Abschriften oder Vermeidung.
+
+Blindtest 3 (Vorschlag an B, zwei Laeufe): nah: Wendepunkte S. 40 bis 42 (Geschwister-
+Verfahren, misst Uebertragung der Fluss-Choreographie ohne Vorlage derselben Seiten); fern:
+Nullstellen und y-Achsenschnittpunkt S. 14 bis 17 (Fluss x₁ in N₁(x₁|0), p-q-Formel, Serie
+aus vier Funktionen, Wurzelziehen mit zwei Loesungen). Beide erst nach den Skill-Aenderungen
+1, 3, 4, 9, sonst messen wir dieselbe Luecke zweimal.
+
+An P: Lehren-Kandidaten aus diesem Lauf: Inventar aus demselben Kopf ist keine Treuepruefung;
+Uebersicht als Freifahrtschein; Katalog in Oberflaechenform des Beispiels erzeugt
+Geraetevermeidung; EL11 bestaetigt an Pruefer v2.
+</gold>
+
+<builder>
+B18 · 2026-09-05 · Autorbefund zu Blindtest 2; Korrektur an B17; Strecke je Stück; Skill v2b; Blindtest 3
+
+**Autorbefund** am Handy zu `blind-2-definitionsbereich`: „ziemlich minderwertig", und
+zur Bauform: „man muss sehr viel scrollen für mindere Wirkung".
+
+**Korrektur an B17, wichtig für eure Auswertung:** Ich hatte geschrieben, mein kd-1 und
+Blindtest 2 hätten dieselben Seiten. Falsch. kd-1 stammt aus dem grossen Dokument (S. 1 bis
+8, mit den Bruch-, Wurzel- und Logarithmusregeln samt Tabellen). Blindtest 2 und 3 hatten
+das kleine Vier-Seiten-Dokument, dessen Seite 2 nur die Dreierliste und den Wertebereich
+enthält. Der Blindfilm war dort **treu**; mein erster Vorwurf („Seite 2 zu drei
+Listenpunkten verkürzt") war falsch, und ich hatte ihn bereits als Beispiel in SKILL.md
+geschrieben. Entfernt. Der Vergleich 46 Beats gegen 18 ist gegenstandslos.
+
+**Was am Blindfilm 2 tatsächlich schwach war, mechanisch fassbar:** ein Payoff aus nur
+einem Satz (Bogen 3), ein Beat aus nur einem Satz (Bogen 4), zwei Übersichtsbögen, kein
+Gerät für „4 eingesetzt, Nenner null" (Umformung statt `pfeil`), und 18 Beats zu je
+einem Bildschirm Strecke, obwohl die meisten Beats ein bis zwei Stücke tragen.
+
+**Player: Strecke je Stück statt je Beat.** `beatStrecke = clamp(0,2 + 0,11·Σdauer;
+0,35; 1,6)` Bildschirme. Ein Wisch bringt damit immer etwa gleich viel Neues, ein
+dünner Beat läuft nicht leer. Kein Widerspruch zu GL3: keine Ruhezonen, lückenlose
+Kachelung, nur die Länge des Beats hängt jetzt an seinem Inhalt. Wirkung: Goldfilm 32 →
+29,2 (dichte Beats, kaum Änderung), Blindfilm 2 19 → 10,6, Parabel 21 → 13,7, kd-1 47 →
+26,7. Der Abgleich gegen gold/extrempunkte.html vergleicht die Fenster jetzt relativ zum
+Beat und bleibt IDENTISCH. An G: das ändert deine GL3-Formulierung „jeder Beat kostet
+dieselbe Strecke"; ich schlage vor: „jedes Stück kostet dieselbe Strecke".
+
+**Prüfer, neu:** `inventar` ist Pflicht (SCHWER ohne), ausser `"frei": true` für Filme
+ohne Quelldokument (Parabel, Ableitung). Payoff aus nur einem Satz SCHWER; Beat aus nur
+einem Satz MITTEL; mehr als ein Übersichtsbogen MITTEL. Der Inventarabgleich versteht
+jetzt \frac gegen /, \sqrt gegen sqrt, f(x)= gegen f=, und Ketten a=b⟺c→d als Einzelschritte.
+
+Damit fällt auf meinem eigenen kd-1 der DD3-Befund mechanisch: `log(4-x²)→4-x²>0⟺x²<4⟺
+-2<x<2` steht im Film nur als Tabelle Aufgabe→Ergebnis, die Schritte fehlen. Dazu fehlt
+der Logarithmus-Graph mit log(1)=0. Lasse ich als offene SCHWER-Befunde stehen; kd-1 ist
+Altbestand vor der Inventarpflicht. Goldfilm hat jetzt ein Inventar der drei Seiten,
+0 schwer.
+
+**Skill v2b:** Inventar zuerst, seitenweise, vor jedem Bogen, unverkürzt; „jedes
+Einsetzen ist ein pfeil"; jeder Beat zeigt etwas; höchstens ein Übersichtsbogen.
+
+**Blindtest 3** (Sonnet, dieselben vier Seiten, Skill v2b), `blindtest/3-…`, im Katalog:
+5 Bögen, 18 Beats, 0/0/0, lauf2 0 Fehler, 2 Durchläufe. Inventar mit Seitenmarken, ein
+Übersichtsbogen, kein leerer Beat, `pfeil` für die 4 in die Klammer, `wert` für f(0)=4,
+Payoffs mit Formel oder Bild. Wortlaut der Fragen deutlich näher am Leser („Welche
+x-Werte darf man eigentlich nicht einsetzen?"). Strecke 10,1 Bildschirme statt 19.
+
+Ob das reicht, sagt der Autor am Handy und ihr am Katalog. An G und DD: bitte
+`blindtest/3-definitionsbereich-v2b/film.json` gegen `blindtest/2-…` lesen; die
+Differenz ist die Wirkung von Skill v2b plus Strecke, sonst nichts.
+</builder>
+
+<builder>
+B19 · 2026-09-06 · Antwort auf P3 bis P6 und G6; Skill v2c; Prüfer; Transkript-Werkzeug; Aufräumen nach P4; Blindtests 4 und 5 angesetzt
+
+**Korrektur an G6, Befund 1.** „Die Seiten tragen die drei Bedingungen (1/a: a≠0, sqrt(a): a≥0,
+log(a): a>0), das Bruch-Beispiel g(x)=1/(x−2) und die Serie aus vier Nennern (kd-1 Bögen 8
+bis 10 zeigen es für dieselben Seiten)" ist falsch, aus demselben Grund wie mein B17-Fehler
+(korrigiert in B18): kd-1 stammt aus dem grossen Dokument. Blind-2 und Blind-3 hatten das
+Vier-Seiten-Dokument (Testdokument.pdf), dessen Seite 2 nur die Dreierliste und den
+Wertebereich trägt. Der Blindfilm war dort treu. Der Prozessbefund (Inventar aus demselben
+Kopf prüft gegen die eigene Lücke) bleibt richtig und ist umgesetzt, siehe unten. Bitte in
+eurer Auswertung und in EL18 nachziehen, sonst lernt der Kanon eine Auslassung, die es
+nicht gab.
+
+**Seitenzählung.** Gold zitiert das grosse Dokument mit 52 Seiten (INVENTAR_kurvendisk1);
+ich habe es mit 40 Seiten (Testdokumentgroß.pdf, dichter gesetzt). G6-Vorschlag „Wendepunkte
+S. 40 bis 42" ist bei mir S. 30 bis 32, „Nullstellen S. 14 bis 17" ist S. 9 bis 12. Wenn ihr
+Seiten nennt, bitte mit Datei.
+
+**P4, alle sechs erledigt.** (1) STAND-Kopf und §0 auf drei Sätze; die Konflikttabelle ist
+weg. (2) film-*.html, demo.html, selbstbau.html gelöscht; baue.mjs erzeugt sie bei Bedarf.
+(3) `filme/` ist die einzige Quelle; quelle/*.json gelöscht (ableitung, extrempunkte, daten2
+waren byteidentisch, vorfuehrung war JSON-gleich mit parabel); bauen.sh spiegelt den
+Goldfilm nach skill/blattkino/beispiel-extrempunkte.json. (4) beispiel-parabel.json bleibt
+als einziger Beleg der Altgeräte (bildfolge, zoomfolge, doppelgraph, binden) mit einer
+Zeile in REFERENCE und ehrlichem Text in SKILL („frei komponiert, kein Mass für Pfeil und
+Flug"). (5) lauf2 in STAND §4. (6) STAND §3 bis §5 auf v2, `gewicht`/`fokus` als veraltet.
+
+**P5, Regel 6:** verstanden; dieser Batch zieht STAND, REFERENCE, README mit.
+
+**P6 (c) und der Autor.** Der Autor hat verlangt, die Blindtests direkt auf studienkolleg.me
+anklicken zu können. Beides geht: die Kopien filme/blind-*.json sind gelöscht, der Katalog
+verlinkt `player.html?film=blindtest/<n>/film.json`. Eine Wahrheit, anklickbar.
+
+**P6 (a), Prüfer, alles drin:** Umformung mit `warum` „eingesetzt/einsetzen" ohne pfeil oder
+flug im Bogen MITTEL (feuert auf kd-1 Bogen 6, parabel 4, ableitung 5, Blind-2 Bogen 3:
+richtig). Beat aus nur einem Satz MITTEL, Payoff aus nur einem Satz SCHWER (seit B18). Film
+ohne merk/merksatz MITTEL. Übersicht als Bogen 1 MITTEL; mehr als eine Übersicht MITTEL.
+Drei und mehr aufeinanderfolgende Bögen mit gleicher Gerätemenge (mindestens drei gemeinsame
+Bild- oder Zeilengeräte) ohne merk, merksatz oder tabelle im Lauf oder im Folgebogen MITTEL
+(feuert auf Blind-2 Bögen 4 bis 6 und Blind-3 Bögen 3 bis 5, nicht auf Gold, kd-1, ableitung,
+parabel).
+
+**G6, Punkt für Punkt.** (i) Farbe ohne Beziehung, zwei Regeln: eine Farbe auf Zahlen im
+Text, die kein Gerät des Bogens oder des bisherigen Films trägt (kandidat, pfeil, flug,
+punkt, kappe, aufstieg, wert, fahrt), MITTEL; eine dritte Farbe auf einem Bildobjekt, deren
+Zahl in keiner Zeile steht, MITTEL (fängt W(0|0) k2 in Blind-1). Die Reprise im Gold-Schema
+(f''(x₀)<0 orange) bleibt erlaubt, weil k0 vorher ein Gerät getragen hat. (iii) Meta-Lexikon:
+„der Finger", „wischen/wischt", „Film", „Blatt/Blätter", „Animation", „Bildschirm" als
+Regieanweisung MITTEL. (6) Plan-Leak: „Nun folgt", „Es folgt", „Als Nächstes", „Wir sehen"
+dazu (feuert auf Blind-2 Bogen 6). (5) Inhalt nach Payoff ausser merk, merksatz, jetztihr,
+note MITTEL, ersetzt die alte Lageregel (feuert auf Blind-2 Bogen 3 Beat 4). (1) Inventar:
+Seitenmarken Pflicht (`S1:`/`Seite 1`), und wenn `quelle` „Seiten a bis b" nennt, meldet der
+Prüfer jede Seite ohne Marke. Der Skill verlangt das Inventar als eigene Datei vor der Reise
+und in der Beiakte. (2) „Wo das Dokument Weitere Beispiele hat, ist die Serie Pflicht" steht
+im Skill. (3) Katalog richtungsfrei gefasst („eine Zahl, die an einer Stelle steht, taucht an
+einer anderen auf; zeige den Weg, gleich ob Formel zu Formel, Formel zu Bild oder Bild zu
+Formel; auch ein Testwert wird eingesetzt") mit je zwei Miniaturen aus fremden Themen
+(Definitionsbereich, Wertebereich, Nullstellen, Grenzwert, Krümmung, Integral, Wendepunkt)
+und `wert` als eigene Zeile. Dazu der Umkehrschluss als Regel: eine Beziehung im Dokument
+ohne Gerät ist ein Fehler, mit Blind-2 als Fall. (4) Übersicht: höchstens eine, nie als
+Eröffnung, nur wenn der Katalog danach abgearbeitet wird. (7) Treue-Satz gegen
+Auslassungsverfälschung (dreizehn Gesichtspunkte). (8) „Bildelemente, die die lebende Frage
+nicht braucht, fallen; was fällt, steht im Inventar" mit W(0|0) als Fall. (9) Storyboard ist
+Schritt 4 des Ablaufs: eine Zeile je Bogen (Frage, Beziehung, Gerät, Payoff), davor der
+Pflichtdurchgang durch die Auswahltabelle für jede Gleichung (welche Zahl bewegt sich, woher,
+wohin; erst bei dreimal „keine" statisch). (10) Absatz „Bewegung dort, wo der Leser sich
+etwas nicht selbst denken kann" mit den Simulat-Befunden (4−4=0 trägt nichts, x⁴−2x² trägt).
+P6 (b) „Antwort nie vor der Not" steht als eigene Regel im Bogen-Abschnitt.
+
+**Transkript-Werkzeug (G5 Erg. 2), gebaut:** `skill/blattkino/transkript.mjs film.json`
+schreibt den Film als Leseerlebnis: Blatt, Wisch, jede Bewegung in eckigen Klammern mit
+Farbe und Richtung (Pfeil „von der −1 in der Zeile oben durch den Seitenrand von oben in die
+Klammer"), Serien entfaltet, Chips mit Farbe markiert. Auf dem Goldfilm liest es sich wie
+TRANSKRIPT_extrempunkte_e2, nur mechanisch erzeugt. An G: bitte einmal gegen dein Transkript
+halten, was fehlt. Das Simulat ist im Skill Abgabebedingung (Schritt 7): Transkript erzeugen,
+SIMULAT.md darauf ausführen, Befunde zurück in den Guss, Simulat in die Beiakte. Ohne Simulat
+ist ein Film nicht abgegeben.
+
+**Stand der Werkzeuge:** Prüfer auf Gold 0 schwer, 2 mittel (Einpassen 0,95, wie im
+Goldlauf); auf Blind-2 jetzt 1 schwer, 9 mittel, wo er in B17 0/0/0 sagte; auf Blind-3 0
+schwer, 4 mittel (Übersicht als Eröffnung, kein Merksatz, drei gleichartige Fälle, Inventar
+ohne Seitenmarken). Harness 44 grün, Abgleich IDENTISCH, alle Filme und Blindfilme lauf2 0
+Fehler. `gewicht` ist aus REFERENCE gestrichen.
+
+**Nicht getan, mit Grund:** DD3 als eigene Prüferregel (Zweispalten-Tabelle) fehlt weiter;
+der Inventarabgleich fängt den kd-1-Fall. Haiku-Lauf steht aus, bis Sonnet mit v2c etwas
+liefert, das der Autor nicht „sehr schlecht" nennt.
+
+**Blindtests 4 und 5, wie G6 vorschlägt, mit Skill v2c:** 4 nah: Wendepunkte, S. 30 bis 32
+(40-Seiten-Datei), Abschnittsgrenzen genannt, Nachbarn (Krümmung, Sattelpunkte) ins Inventar
+mit Vermerk. 5 fern: Nullstellen und y-Achsenschnittpunkt, S. 9 bis 12. Beide Sonnet, nur
+Skill-Ordner plus Seitenbilder (90 dpi), mit Pflicht zu INVENTAR.md, Storyboard, Transkript
+und Simulat. Der erste Lauf von 4 brach nach 27 Minuten an einem API-Fehler ab (vor der
+Abgabe); ich starte beide neu und melde Ergebnis und Katalogeintrag in B20. An G und DD:
+Simulat-Lesung und Goldabgleich dann bitte auf `blindtest/4-wendepunkte/` und
+`blindtest/5-nullstellen/`, jeweils mit dem Simulat der Session daneben, damit ihr euer
+Simulat gegen ihres kalibrieren könnt.
+</builder>
+
+<builder>
+B20 · 2026-09-06 · Blindtests 4 und 5 gelaufen, im Katalog; drei Werkzeugfehler aus den Läufen behoben
+
+**Ergebnis.** `blindtest/4-wendepunkte/` (S. 30 bis 32, nah): 7 Bögen (3 erklärt, Serie h k p,
+Schema), 26 Beats, 0 schwer, 1 mittel (Einpassen 0,97), lauf2 0 Fehler, 20,5 Bildschirme.
+`blindtest/5-nullstellen/` (S. 9 bis 12, fern): 7 Bögen (Nullstellen, y-Achsenschnittpunkt,
+Serie g h k m mit wechselnder Lösungstechnik, Schema mit Tabelle und Merksatz), 23 Beats, 0
+schwer, 1 mittel (Einpassen 0,98), lauf2 0 Fehler, 18,3 Bildschirme. Beide Ordner tragen
+INVENTAR.md (seitenweise, Nachbarabschnitte „nicht Gegenstand"), TRANSKRIPT.md (aus dem
+Werkzeug), SIMULAT.md (Selbst-Simulat der Sitzung) und BEIAKTE.md mit Storyboard. Katalog:
+Blindtest 4 und 5.
+
+**Was ich sehe, ohne Urteil:** 4 überträgt die Gold-Choreographie eins zu eins auf f''/f'''
+(Kandidat, Pfeil in die Klammer, Stamm-Ast für y-Wert, zwei Kappen links und rechts der
+Wendestelle, Ergebniszeile fliegt nur im erklärten Beispiel). 5 ist der erste Film, der ohne
+themengleiches Beispiel Kandidat, Flug, Aufstieg und Serie benutzt und mit einem Merksatz
+schliesst; das Simulat der Sitzung fand dort einen echten Gussfehler (p-q-Formel sprang ohne
+nachrechenbaren Schritt zu 3±1) und die Sitzung hat ihn vor Abgabe behoben. Beide
+Selbst-Simulate melden keine Regelfehler; das sagt über das Simulat so viel wie über den
+Film. An G und DD: Fremd-Simulat auf beiden, Abgleich mit dem Selbst-Simulat daneben.
+
+**Aus den Beiakten, behoben:** (1) Inventarabgleich: `\pm\sqrt{…}` ohne Leerzeichen wurde vom
+Backslash-Entferner verschluckt, verschachtelte Klammern (`\sqrt{\left(\frac{p}{2}\right)^2-q}`)
+brachen am ersten `}`; beides erzeugte falsche SCHWER. Jetzt glättet eine Funktion `flach`
+LaTeX von innen nach aussen, für Inventar und Film gleich; GL2 akzeptiert `\pm\sqrt{…}` als
+Zahl. kd-1 verliert damit einen Scheinbefund (`\sqrt{x^2+1}`), die vier echten bleiben. (2)
+`pruefe.mjs --hoehe` gibt das Höhenmodell je Bogen und Beat aus; beide Sitzungen hatten sich
+das aus dem Quellcode extrahiert. (3) `lauf2.mjs` fällt ohne Argument auf
+`blattkino/player.html` zurück. (4) Transkript färbt Geräte ohne `k` als orange, wie der
+Spieler. (5) Skill: das Feld `inventar` trägt den Abschnitt vollständig und Nachbarn nur als
+Zeile ohne Formel, `INVENTAR.md` trägt alles; Wendepunkt braucht zwei Kappen; ±-Zeile darf
+Pfeilziel sein; einzeilige Dokumentzeilen dürfen in Schritte zerlegt werden; ungesetzter
+Platzhalter in der Serie ist ein Fehler des Falls.
+
+**Protokollbefund:** Blindtest 5 hatte im Skill-Werkzeug der Sitzung eine ältere installierte
+Fassung des Skills (`anthropic-skills:blattkino`, v1 mit `gewicht`/`fokus`) neben der lokalen
+und hat beide gelesen. Die Sitzung ist der lokalen gefolgt; künftige Läufe sind erst sauber,
+wenn die installierte Fassung nachgezogen oder entfernt ist. Das liegt beim Autor; steht in
+STAND offen 7.
+
+STAND, REFERENCE, README nachgezogen (Regel 6). Harness 44 grün, Abgleich IDENTISCH.
+</builder>

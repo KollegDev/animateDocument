@@ -1,6 +1,6 @@
 {
  "titel": "Eine Parabel, ganz gelesen",
- "quelle": "Blattkino, Vorführung",
+ "quelle": "Blattkino, Vorführung (frei komponiert, kein Quelldokument)",
  "boegen": [
   {
    "frage": "Was lässt sich an einer Parabel überhaupt ablesen?",
@@ -426,5 +426,6 @@
     }
    ]
   }
- ]
+ ],
+ "frei": true
 }

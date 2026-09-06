@@ -22,7 +22,10 @@ function dump(w,SZENEN){
   return SZENEN.map(s=>{
     const frage=s.inhalt.querySelector('.frage');
     const beats=s.beats.map(b=>b.stuecke.map(st=>st.items.map(x=>(x.typ||(x.rechnen?'geom':'item'))).join('+')+'×'+(+st.dauer).toFixed(2)));
-    const fenster=[]; for(const b of s.beats)for(const st of b.stuecke)for(const it of st.items)fenster.push((+it.a).toFixed(3)+'–'+(+it.b).toFixed(3));
+    // Zeitfenster relativ zum Beat: die absolute Strecke je Beat ist seit dem Autorbefund
+    // „viel scrollen, mindere Wirkung" nicht mehr 1, die Kachelung innerhalb des Beats aber identisch
+    const fenster=[]; s.beats.forEach((b,bi)=>{ const letzter=bi===s.beats.length-1; const d=((letzter?b.bis-0.09:b.bis)-b.von)||1;
+      for(const st of b.stuecke)for(const it of st.items)fenster.push(((it.a-b.von)/d).toFixed(3)+'–'+((it.b-b.von)/d).toFixed(3)); });
     const bloecke=[...s.inhalt.children].filter(k=>!k.classList.contains('pfeile')&&!k.classList.contains('flug')&&!k.classList.contains('frage'))
       .map(k=>{ let cls=(k.className||k.tagName.toLowerCase()).replace(/\bel\b/g,'').trim();
         let t=k.textContent.replace(/\s+/g,' ').trim();
@@ -36,7 +39,7 @@ const gold=welt(fs.readFileSync(path.join(wurzel,'gold','extrempunkte.html'),'ut
 await warten(gold,()=>gold.__innen.bereit());
 const G=dump(gold,gold.__innen.SZENEN);
 // Meine Fassung
-const film=JSON.parse(fs.readFileSync(process.argv[2]||path.join(wurzel,'quelle','extrempunkte.json'),'utf8'));
+const film=JSON.parse(fs.readFileSync(process.argv[2]||path.join(wurzel,'filme','extrempunkte.json'),'utf8'));
 let tpl=fs.readFileSync(path.join(wurzel,'quelle','v2','player2.html'),'utf8');
 const mein=welt(tpl.replace('__TITEL__',film.titel).replace('__BEATS_JSON__',JSON.stringify(film).replace(/<\//g,'<\\/')));
 await warten(mein,()=>mein.__bk&&mein.__bk.bereit());

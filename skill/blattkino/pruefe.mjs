@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Prueft eine Blattkino-Datei gegen die Gesetze aus matheguss.
-// Aufruf:  node pruefe.mjs film.json [player.html]
+// Aufruf:  node pruefe.mjs film.json [player.html] [--hoehe]   (--hoehe zeigt das Hoehenmodell je Bogen und Beat)
 // Ausgabe: Befunde, je einer pro Zeile. Kein Lob, keine Nacherzaehlung.
 import fs from 'fs';
 import path from 'path';
@@ -56,6 +56,11 @@ rohBoegen.forEach((bo,i)=>{
   } else boegen.push(bo);
 });
 if(!D.titel) B('SCHWER','Kopf','Kein "titel". Jede Datei hiesse sonst gleich.');
+// Das Inventar ist der Treue-Vertrag. Ohne es kann niemand pruefen, was weggelassen wurde.
+// Ein frei komponierter Film ("frei": true) hat kein Quelldokument und damit kein Inventar.
+if(D.frei===true) B('LEICHT','Kopf','frei komponierter Film: keine Treuepruefung moeglich.');
+else if(typeof D.inventar!=='string'||D.inventar.trim().length<40)
+  B('SCHWER','Kopf','Kein "inventar" (oder zu kurz). Das Inventar ist Pflicht: jede Formel, jede Tabellenzeile, jeder Graph des Dokuments, wortgetreu, BEVOR der erste Bogen entsteht. Ohne Inventar ist Weglassen unsichtbar.');
 
 const OPS = ['clear','h','text','item','math','note','frage','umformung','tabelle','merksatz',
              'jetztihr','plot','point','hline','vline','region','sweep',
@@ -66,6 +71,15 @@ const UEBERFLIEG = ['h','tabelle','merksatz','merk','plot','graph','jetztihr','d
 // Geraete, die ein eigenes Bild aufmachen. Nach ihnen ist ein neues Bild noetig, um sie anzusprechen.
 const BILDER = ['plot','graph','doppelgraph','zoomfolge'];
 
+// LaTeX glaetten: Befehle zu Woertern, \frac und \sqrt von innen nach aussen zu a/b und sqrt(a).
+// Dieselbe Gestalt fuer Inventar und Film, damit \pm\sqrt{\frac{1}{3}} und pm sqrt(1/3) zusammenfallen.
+function flach(s){
+  let t=String(s==null?'':s).replace(/\\left|\\right/g,'').replace(/\\(cdot|quad|qquad|mid|in|mathbb|le|ge|leq|geq|geqslant|leqslant|neq|ne|rightarrow|iff|to|infty|pm|approx|ln|log|sin|cos|tan|e)(?![a-zA-Z])/g,' $1 ').replace(/\\[,;!]/g,' ');
+  for(let i=0;i<6;i++){ const v=t;
+    t=t.replace(/([_^])\{([^{}]*)\}/g,'$1$2').replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g,'($1)/($2)').replace(/\\sqrt(\[\d\])?\{([^{}]*)\}/g,' sqrt($2)');
+    if(t===v)break; }
+  return t;
+}
 // ---------- Hoehenmodell ----------
 // Auf der Buehne zaehlt nicht mehr, wie lang ein Bogen scrollt: jeder Takt bekommt
 // dieselbe Strecke am Rad. Gemessen wird jetzt, ob ein Beat auf einen Bildschirm passt.
@@ -125,7 +139,9 @@ const beatBloecke = b => (b.sub&&String(b.sub).trim()?1:0)
 
 // ---------- Sprach- und Haltungsfilter ----------
 const GEBRABBEL = [
-  [/\b(in diesem Kapitel|in diesem Abschnitt|wir werden|wir schauen uns|zuerst schauen wir|der Weg beginnt)\b/i,'geleakter Plan'],
+  [/\b(in diesem Kapitel|in diesem Abschnitt|wir werden|wir schauen uns|zuerst schauen wir|der Weg beginnt|nun folgt|es folgt|als n(ae|ä)chstes|wir sehen)\b/i,'geleakter Plan'],
+  // G6: Regieanweisung im Film. Der Leser sieht Mathematik, keinen Film, kein Blatt, keinen Finger.
+  [/\b(der Finger|wischen|wischt|Film|Blatt|Bl(ae|ä)tter|Animation|Bildschirm)\b/,'Regieanweisung (Meta)'],
   [/\b(ihr erinnert euch|wie wir gesehen haben|wie oben gezeigt|wie vorhin|von vorhin|weiter oben)\b/i,'Verweis statt Reprise'],
   [/\b(der Trick|ganz einfach|keine Sorge|natuerlich ist das|wie ihr seht)\b/i,'Fuellwort'],
   [/\b(lasst uns|jetzt kommt|gleich sehen wir)\b/i,'Ankuendigung'],
@@ -148,6 +164,38 @@ function textVon(b){
 // ---------- Durchlauf ----------
 let nBeats=0, gewichte=[], nFokus=0, alleTex=[], alleText=[], nGewicht=0;
 let offenesBild=null;   // welches Bild gerade steht; Markierungen brauchen eines
+const farbenOhneZahl=new Set();  // dritte Farbe auf einem Punkt, den keine Zahl im Text traegt (G6 i)
+const geraetKFilm=new Set();     // Farben, die ein Geraet im Film schon getragen hat: spaetere Reprise im Text ist erlaubt
+const filmHatSerie=boegen.filter(b=>b&&b.serieFall).length>=3;
+const nUebersicht=boegen.filter(b=>b&&b.uebersicht===true).length;
+if(nUebersicht>1) B('MITTEL','Ganzes',nUebersicht+' Uebersichtsboegen. Hoechstens einer je Film, und nur, wenn der Film den Katalog danach abarbeitet. Zwei sind Aufschub.');
+// P6/G6: der Film oeffnet mit einem Gegenstand (Gold: der Gipfel), nicht mit einer Karte
+if(boegen.length&&boegen[0]&&boegen[0].uebersicht===true) B('MITTEL','Bogen 1','der Film oeffnet mit einer Uebersicht. Erst ein lebender Bogen mit Gegenstand und Frage, die Karte danach oder gar nicht.');
+// P6: ein Film ohne einen einzigen Merksatz konsolidiert nichts
+if(!boegen.some(b=>(b.beats||[]).some(bt=>(bt.ops||[]).some(o=>o&&(o.op==='merk'||o.op==='merksatz')))))
+  B('MITTEL','Ganzes','kein einziger Merksatz im Film. Was der Leser morgen noch wissen soll, steht nirgends als Regel.');
+// P6: mehr als zwei gleichartige Faelle als Einzelboegen ohne Serie, Tabelle oder Merksatz
+{ const GER=['plot','graph','hline','vline','region','point','punkt','wert','umformung','zeile','pfeil','flug','kappe','aufstieg','kandidat','bildfolge','zoomfolge','doppelgraph','binden'];
+  const KONS=['merk','merksatz','tabelle'];
+  const menge=b=>new Set((b.beats||[]).flatMap(bt=>(bt.ops||[])).map(o=>o&&o.op).filter(op=>GER.includes(op)));
+  const kons=b=>!!b&&(b.beats||[]).some(bt=>(bt.ops||[]).some(o=>o&&KONS.includes(o.op)));
+  let lauf=[];
+  const pruefLauf=(ende)=>{ if(lauf.length>=3){ const naechster=boegen[ende]; if(!lauf.some(i=>kons(boegen[i]))&&!kons(naechster))
+      B('MITTEL','Bogen '+(lauf[0]+1)+' bis '+(lauf[lauf.length-1]+1),lauf.length+' gleichartige Faelle als Einzelboegen, ohne Serie, Tabelle oder Merksatz. Drei Faelle ohne Muster sind drei Einzelheiten; der Leser nimmt keine Regel mit.'); } lauf=[]; };
+  boegen.forEach((b,i)=>{ if(!b||b.uebersicht===true||b.serieFall){ pruefLauf(i); return; }
+    const m=menge(b); if(m.size<3){ pruefLauf(i); return; }
+    if(lauf.length){ const gemeinsam=[...m].filter(op=>menge(boegen[lauf[lauf.length-1]]).has(op)&&lauf.every(j=>menge(boegen[j]).has(op)));
+      if(gemeinsam.length>=3){ lauf.push(i); return; } pruefLauf(i); }
+    lauf.push(i); });
+  pruefLauf(boegen.length); }
+// G6: Inventar mit Seitenmarken, jede Seite der Quelle hat einen Eintrag
+if(typeof D.inventar==='string'&&D.inventar.trim().length>=40){
+  const marken=new Set((D.inventar.match(/\b(?:Seite|S\.?)\s*(\d{1,3})\b/g)||[]).map(m=>+m.replace(/\D/g,'')));
+  if(!marken.size) B('MITTEL','Kopf','Inventar ohne Seitenmarken ("Seite 1:", "S2:"). Ohne sie ist nicht pruefbar, ob eine Seite ganz fehlt.');
+  else { const q=String(D.quelle||'').match(/Seiten?\s*(\d{1,3})\s*(?:bis|-|–)\s*(\d{1,3})/);
+    if(q){ const a=+q[1], b=+q[2]; const fehlend=[]; for(let n=a;n<=b;n++)if(!marken.has(n))fehlend.push(n);
+      if(fehlend.length) B('MITTEL','Kopf','Inventar ohne Eintrag fuer Seite '+fehlend.join(', ')+' (Quelle nennt Seiten '+a+' bis '+b+'). Jede Seite bekommt ihren Absatz, auch wenn sie leer ist ("Seite 3: nur Aufgaben").'); } }
+}
 boegen.forEach((bo,bi)=>{
   offenesBild=null;     // jede Szene faengt mit leerer Buehne an
   const chips={};       // Kennungen der Chips dieses Bogens
@@ -171,6 +219,7 @@ boegen.forEach((bo,bi)=>{
   // erscheint, steht am Ende gleichzeitig da: das ist der ausgelagerte Speicher.
   const bloecke = bs.reduce((n,b)=>n+beatBloecke(b),0);
   const hoeheB  = bs.reduce((n,b)=>n+beatHoehe(b),0) + Math.max(0,bloecke-1)*ABSTAND;
+  if(process.argv.includes('--hoehe')) console.log(wo+': '+Math.round(hoeheB)+' px, '+bloecke+' Bloecke  |  '+bs.map((b,i)=>'B'+(i+1)+' '+Math.round(beatHoehe(b))+'px/'+beatBloecke(b)).join('  '));
   if(hoeheB > BLATT/0.68)
     B('SCHWER',wo,'passt nicht auf ein Blatt: '+Math.round(hoeheB)+' von '+Math.round(BLATT)
       +' Pixeln bei '+bloecke+' Bloecken; der Spieler muesste unter 0,68 verkleinern. Teilen.');
@@ -182,7 +231,10 @@ boegen.forEach((bo,bi)=>{
   const pay = bs.map((b,i)=>b.payoff===true?i:-1).filter(i=>i>=0);
   if(pay.length===0) B('SCHWER',wo,'ohne "payoff": kein Beat loest die Spannung auf.');
   else if(pay.length>1) B('MITTEL',wo,pay.length+' Beats mit "payoff". Ein Bogen hat eine Aufloesung.');
-  else if(pay[0] < bs.length-2) B('MITTEL',wo,'die Aufloesung steht '+(bs.length-1-pay[0])+' Beats vor dem Ende. Danach steht Fremdes im offenen Bogen.');
+  // G6: nach der Tilgung nur noch Merksatz, Uebung, Randnotiz. Neuer Inhalt gehoert in einen neuen Bogen.
+  if(pay.length===1){ const NACH=['merk','merksatz','jetztihr','note','zeig','clear'];
+    bs.slice(pay[0]+1).forEach((b,j)=>{ const fremd=(b.ops||[]).filter(o=>o&&SICHTBAR.includes(o.op)&&!NACH.includes(o.op)&&!(o.op==='zeile'&&o.stumm)).map(o=>o.op);
+      if(fremd.length) B('MITTEL',wo+', Beat '+(pay[0]+2+j),'neuer Inhalt nach der Aufloesung ('+[...new Set(fremd)].join(', ')+'). Der Bogen ist getilgt; was danach kommt, ist ein neuer Bogen mit eigener Frage. Erlaubt danach: merk, jetztihr, note.'); }); }
 
   // Von einem Bild sprechen und keines zeigen
   // Aufzaehlungen nennen Dinge, sie versprechen sie nicht. "Skizze" in einer Schrittliste
@@ -214,8 +266,22 @@ boegen.forEach((bo,bi)=>{
     if(sicht.length&&sicht.every(op=>op==='jetztihr'))
       B('MITTEL',wo+', Beat '+(i+1),'"payoff" sitzt auf einer Uebung. Eine Uebung prueft das Aufgeloeste, sie loest nichts auf. Der Payoff ist die Tilgung, die Uebung darf danach stehen.'); });
 
+  // P6: Einsetzen als Wort in der Umformung, aber keine Zahl bewegt sich
+  { const eigen=bs.flatMap(b=>(b.ops||[]));
+    const bewegt=eigen.some(o=>o&&(o.op==='pfeil'||o.op==='flug'));
+    const setzt=eigen.filter(o=>o&&o.op==='umformung').flatMap(o=>(o.zeilen||[]).map(z=>z&&z.warum)).filter(w=>typeof w==='string'&&/einsetz|eingesetzt|setzen wir|setzt man/i.test(w));
+    if(setzt.length&&!bewegt) B('MITTEL',wo,'Umformung sagt „'+String(setzt[0]).slice(0,40)+'", aber keine Zahl bewegt sich. Einsetzen ist der Paradefall des Pfeils: die Zahl fliesst von oben in die Klammer (GL2). Umformung zeigt nur das Ergebnis.');
+    // G6: eine Farbe auf einer Zahl im Text braucht ein Geraet, das die Beziehung zeigt
+    const geraetK=new Set(eigen.filter(o=>o&&['kandidat','pfeil','flug','punkt','point','kappe','aufstieg','wert','beschriftung','fahrt'].includes(o.op)).map(o=>o.k===undefined?(['pfeil','kandidat','kappe','aufstieg','fahrt'].includes(o.op)?0:undefined):+o.k).filter(k=>k!==undefined));
+    const chipK=new Set(); const lauf=t=>{ for(const p of (t||[])){ if(Array.isArray(p))lauf(p); else if(p&&typeof p==='object'&&p.k!==undefined)chipK.add(+p.k); } };
+    for(const o of eigen) if(o&&o.op==='zeile') lauf(o.teile);
+    const gleichFall = bo.serieFall===true;
+    for(const k of chipK) if(!geraetK.has(k)&&!geraetKFilm.has(k)&&!gleichFall) B('MITTEL',wo,'Farbe k'+k+' auf Zahlen im Text, aber kein Geraet traegt sie (keine Achsenmarke, kein Pfeil, kein Punkt). Farbe ist ein Zeiger auf eine Beziehung; ohne Beziehung ist sie Dekoration (GL1).');
+    for(const k of geraetK) if(k>=2&&!chipK.has(k)) farbenOhneZahl.add(wo+': k'+k);
+    for(const k of geraetK) geraetKFilm.add(k);
+  }
   // Regel ohne Serie
-  const hatMerksatz = bs.some(b=>(b.ops||[]).some(o=>o.op==='merksatz'));
+  const hatMerksatz = bs.some(b=>(b.ops||[]).some(o=>o.op==='merksatz'||o.op==='merk'));
   // Ein Bogen mit "fortsetzung": true setzt den vorigen fort. Seine Serie zaehlt weiter,
   // damit eine Blattgrenze eine Musterserie nicht zerreisst.
   const vorherBs = (bo.fortsetzung===true && bi>0 && Array.isArray(boegen[bi-1].beats))
@@ -236,7 +302,8 @@ boegen.forEach((bo,bi)=>{
     const belege=eigen.filter(o=>['tabelle','math','zeile','umformung','paar','point','punkt','wert','binden','bildfolge','kandidat','aufstieg'].includes(o.op)).length;
     if(belege===0) B('MITTEL',wo,'Merksatz ohne Beleg auf demselben Blatt. Die Faelle stehen auf dem vorigen Blatt, das schon weg ist; der Leser kann nicht zurueckblaettern. Reprise des letzten Falls hierher, oder die Regel zu den Faellen.');
   }
-  if(hatMerksatz && tabZeilen<4 && nMath<4 && nBilder<2 && nMarken<3)
+  // Eine Serie im Film (drei und mehr Faelle) traegt die Regel; sonst muss das Blatt selbst die Faelle zeigen
+  if(hatMerksatz && !filmHatSerie && tabZeilen<4 && nMath<4 && nBilder<2 && nMarken<3)
     B('SCHWER',wo,'Regel ohne Serie: ein Merksatz, aber weniger als vier Beispiele. Nach einem Beispiel hat der Leser nur eine Ahnung.');
 
   bs.forEach((b,i)=>{
@@ -244,6 +311,11 @@ boegen.forEach((bo,bi)=>{
     const wob = wo+', Beat '+(i+1);
     const hatSichtbares=(b.ops||[]).some(o=>o&&(SICHTBAR.includes(o.op)||['point','punkt','kappe','aufstieg','fahrt','flug','pfeil','wert','binden','bildfolge','beschriftung','kandidat','hline','vline','region'].includes(o.op)));
     if((typeof b.sub!=='string'||!b.sub.trim())&&!hatSichtbares) B('SCHWER',wob,'ohne "sub" und ohne sichtbare Operation: ein leerer Beat.');
+    // Ein Beat, der nur aus seinem Satz besteht, zeigt nichts. Ein Payoff aus einem Satz tilgt nichts.
+    if(!hatSichtbares && typeof b.sub==='string' && b.sub.trim()){
+      if(b.payoff===true) B('SCHWER',wob,'"payoff" besteht nur aus einem Satz. Die Tilgung ist ein Ergebnis, eine Stelle im Bild, eine Formel; ein Satz behauptet sie nur.');
+      else B('MITTEL',wob,'Beat besteht nur aus seinem Satz. Was soll der Leser sehen? Entweder eine Operation dazu oder den Satz zum vorigen Beat.');
+    }
     // GL3: gewicht steuert nichts mehr an der Zeit; einmal je Film gemeldet
     if(b.gewicht!==undefined) nGewicht++;
     gewichte.push(Math.round(+b.gewicht||2));
@@ -302,7 +374,7 @@ boegen.forEach((bo,bi)=>{
       if(o.op==='pfeil'){
         const z=chips[o.zu];
         if(z===undefined) B('SCHWER',wob,'pfeil auf eine Kennung, die es in diesem Bogen nicht gibt ("'+o.zu+'").');
-        else if(z.tex===undefined || !/^-?\d+(?:[.,{}\d]*)?$/.test(String(z.tex).replace(/\\pm\s*/,'')))
+        else if(z.tex===undefined || !/^-?(\d+(?:[.,{}\d]*)?|sqrt\(.*\)|\(\d+\)\/\(\d+\))$/.test(flach(z.tex).replace(/\s+/g,'').replace(/^pm/,'')))
           B('MITTEL',wob,'pfeil endet auf "'+String(z.tex!==undefined?z.tex:z.t).slice(0,20)+'", das ist keine eingesetzte Zahl in einer Klammer (GL2).');
       }
       if(o.op==='flug'&&typeof o.zu==='string'){ const z=chips[o.zu];
@@ -362,17 +434,29 @@ boegen.forEach((bo,bi)=>{
 const einzigG=[...new Set(gewichte)];
 // gewicht steuert seit GL3 nichts mehr; die Verteilung wird nicht mehr beurteilt.
 if(nGewicht) B('LEICHT','Ganzes',nGewicht+' Beats tragen "gewicht". Es wird ignoriert: jeder Beat kostet dieselbe Strecke, die Stuecke kacheln sie (GL3). Kann weg.');
+if(farbenOhneZahl.size) B('MITTEL','Ganzes','dritte Farbe auf Bildobjekten ohne Zahl im Text ('+[...farbenOhneZahl].join('; ')+'). Ein Punkt bekommt nur die Farbe eines Kandidaten, dessen Zahl in einer Klammer oder Achsenmarke steht; sonst keine (GL1).');
 if(nFokus>Math.max(2,Math.round(nBeats/12))) B('MITTEL','Ganzes',nFokus+' Fokusstellen bei '+nBeats+' Beats. Wenn alles hervorsticht, sticht nichts hervor.');
 
 
 // Inventar-Abdeckung, wenn eines beiliegt
 if(typeof D.inventar==='string' && D.inventar.trim()){
-  const norm=s=>String(s).toLowerCase().replace(/\\[a-z]+/g,'').replace(/[^a-z0-9]/g,'');
+  // Gleiche Gestalt fuer LaTeX und Kurzschrift: \frac{a}{b} wie a/b, \sqrt{a} wie sqrt(a), f(x)= wie f=
+  const norm=s=>flach(s).toLowerCase()
+    .replace(/\\[a-z]+/g,'').replace(/\b([a-z])\(x\)/g,'$1').replace(/[^a-z0-9]/g,'');
   const heu=norm(alleTex.join(' ')+' '+alleText.join(' '));
-  const kand=(D.inventar.match(/[A-Za-z_\\][^\s,;]*\s*[=<>][^\s,;]+|\\frac\{[^}]*\}\{[^}]*\}|\\sqrt(\[\d\])?\{[^}]*\}/g)||[]);
+  // Kandidaten aus dem geglaetteten Inventar: verschachtelte Klammern sind dann schon aufgeloest
+  const kand=(flach(D.inventar).match(/[A-Za-z_(][^\s,;]*\s*[=<>][^\s,;]+|sqrt\([^()\s]*\)/g)||[]);
   let fehlt=0;
-  for(const k of kand){ const n=norm(k); if(n.length<4)continue;
-    if(!heu.includes(n.slice(0,Math.min(n.length,14)))){ fehlt++; if(fehlt<=6)B('SCHWER','Inventar','fehlt im Film: '+k.trim()); } }
+  const da=n=>heu.includes(n.slice(0,Math.min(n.length,14)));
+  for(let k of kand){ k=String(k).replace(/[.;:,]+$/,''); const n=norm(k); if(n.length<4)continue;
+    // Ein Wort vor dem Zeichen ("Argument >0") ist Prosa, keine Formel
+    if(/^[A-Za-zÄÖÜäöü]{4,}\s*[=<>]/.test(k))continue;
+    if(da(n))continue;
+    // Eine Kette a=b⟺c→d darf im Film als einzelne Schritte stehen
+    const teile=k.split(/=|⟺|→|\\iff|\\rightarrow|\\Rightarrow|\\to\b/).map(t=>t.trim()).filter(Boolean);
+    let ok=false;
+    if(teile.length>=2){ ok=true; for(const t of teile){ const st=norm(t); if(st.length>=3&&!da(st)){ ok=false; break; } } }
+    if(!ok){ fehlt++; if(fehlt<=6)B('SCHWER','Inventar','fehlt im Film: '+k.trim()); } }
   if(fehlt>6) B('SCHWER','Inventar','und '+(fehlt-6)+' weitere Elemente fehlen.');
 }
 
@@ -382,6 +466,6 @@ befunde.sort((a,b)=>ord[a.schwere]-ord[b.schwere]);
 for(const f of befunde) console.log(f.schwere.padEnd(7)+f.wo.padEnd(22)+f.text);
 const z=s=>befunde.filter(f=>f.schwere===s).length;
 console.log('');
-console.log(boegen.length+' Boegen, '+nBeats+' Beats, Gewichte '+JSON.stringify(gewichte.reduce((m,g)=>(m[g]=(m[g]||0)+1,m),{}))+', '+nFokus+' Fokus');
+console.log(boegen.length+' Boegen, '+nBeats+' Beats');
 console.log(z('SCHWER')+' schwer, '+z('MITTEL')+' mittel, '+z('LEICHT')+' leicht');
 process.exit(z('SCHWER')?1:0);

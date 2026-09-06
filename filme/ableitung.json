@@ -1,6 +1,6 @@
 {
  "titel": "Was die Ableitung ist",
- "quelle": "Differentialrechnung, Einstieg",
+ "quelle": "Differentialrechnung, Einstieg (frei komponiert, kein Quelldokument)",
  "boegen": [
   {
    "frage": "Was heisst Steigung bei einer Geraden?",
@@ -570,12 +570,6 @@
        "ymax2": 8,
        "legend": "f(x)=x²-6x",
        "legend2": "f'(x)=2x-6"
-      },
-      {
-       "op": "binden",
-       "x": 3,
-       "label": "tiefster Punkt",
-       "label2": "f'(3)=0"
       }
      ]
     },
@@ -583,9 +577,17 @@
      "sub": "Bei drei liegt der tiefste Punkt.",
      "gewicht": 3,
      "payoff": true,
-     "ops": []
+     "ops": [
+      {
+       "op": "binden",
+       "x": 3,
+       "label": "tiefster Punkt",
+       "label2": "f'(3)=0"
+      }
+     ]
     }
    ]
   }
- ]
+ ],
+ "frei": true
 }
