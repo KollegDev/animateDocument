@@ -1,0 +1,41 @@
+{
+  "regeln": [
+    {"regel": "Damit eine Stelle x0 überhaupt als Hoch- oder Tiefpunkt infrage kommt, muss die erste Ableitung dort null sein; das liefert aber erstmal nur Kandidaten, keine sicheren Extrempunkte."},
+    {"regel": "Ob ein solcher Kandidat wirklich ein Hoch- oder Tiefpunkt ist und welcher von beiden, entscheide ich, indem ich x0 in die zweite Ableitung einsetze: kommt etwas Negatives heraus, ist es ein Hochpunkt, kommt etwas Positives heraus, ist es ein Tiefpunkt."},
+    {"regel": "Kommt bei der zweiten Ableitung an der Stelle genau null heraus, kann ich damit nicht entscheiden und muss stattdessen vergleichen, ob die erste Ableitung links und rechts von x0 das Vorzeichen wechselt."}
+  ],
+  "fehlregeln": [
+    {"id": "F1", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "H/T(x0|f(x0))"},
+    {"id": "F2", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "f'(x0)=0 (Kandidaten)"},
+    {"id": "F3", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "f''(x0)<0(∩,orange)->H=Gipfel; >0(∪,blau)->T=Tal."},
+    {"id": "F4", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F5", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F14", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "H/T(x0|f(x0))"}
+  ],
+  "transfer": [
+    {
+      "id": "T1",
+      "loesung": "T(-1 | -1)",
+      "rechnung": "p'(x)=2x+2; p'(x)=0 => x=-1 (Kandidat). p''(x)=2; p''(-1)=2>0 => Tiefpunkt. p(-1)=1-2=-1.",
+      "quelle": "regel; W3; W2"
+    },
+    {
+      "id": "T2",
+      "loesung": "H(-2 | 16) und T(2 | -16)",
+      "rechnung": "q'(x)=3x^2-12; q'(x)=0 => x^2=4 => x=2 oder x=-2 (Kandidaten). q''(x)=6x; q''(2)=12>0 => Tiefpunkt; q''(-2)=-12<0 => Hochpunkt. q(2)=8-24=-16; q(-2)=-8+24=16.",
+      "quelle": "regel; W3; W2 (x^2=4 analog zu x^2=1, zwei Loesungen)"
+    }
+  ],
+  "deutungen": [
+    {"symbol": "H", "was": "Abkürzung für Hochpunkt, den 'Gipfel' - der Punkt, an dem f'' negativ ist.", "wo": "Zettel Z:2 und letztes Blatt, Wisch 2 (orange).", "quelle": "Z:2"},
+    {"symbol": "T", "was": "Abkürzung für Tiefpunkt, das 'Tal' - der Punkt, an dem f'' positiv ist.", "wo": "Zettel Z:2 und letztes Blatt, Wisch 2 (blau).", "quelle": "Z:2"},
+    {"symbol": "∩ (orange)", "was": "Zeichen für die Kurvenform am Hochpunkt, verknüpft mit f''(x0)<0. Warum genau negatives f'' zu dieser Kuppelform (Rechtskurve) gehört, kann ich nicht deuten.", "wo": "Zettel Z:2, letztes Blatt Wisch 2.", "quelle": "Z:2, Offenpunkt siehe Z:4"},
+    {"symbol": "∪ (blau)", "was": "Zeichen für die Kurvenform am Tiefpunkt, verknüpft mit f''(x0)>0. Die genaue Begründung (Linkskurve) kann ich nicht deuten.", "wo": "Zettel Z:2, letztes Blatt Wisch 2.", "quelle": "Z:2, Offenpunkt siehe Z:4"},
+    {"symbol": "notwendige Bedingung", "was": "Name für die Bedingung f'(x0)=0; sie muss erfüllt sein, damit ein Punkt überhaupt Kandidat ist, reicht aber allein nicht.", "wo": "Letztes Blatt Wisch 1; Zettel Z:1 ('notw.Bed.').", "quelle": "Z:1"},
+    {"symbol": "hinreichende Bedingung", "was": "Name für die zusätzliche Prüfung mit f'', die endgültig entscheidet, ob H oder T vorliegt.", "wo": "Letztes Blatt Wisch 2; Zettel Z:2 ('hinr.Bed.').", "quelle": "Z:2"}
+  ],
+  "schluss": {
+    "kann": "Ich kann jetzt bei f'(x0)=0 mithilfe von f''(x0) entscheiden, ob ein Hoch- oder ein Tiefpunkt vorliegt, und im Fall f''(x0)=0 stattdessen über das Vorzeichen von f' links und rechts entscheiden.",
+    "morgen": "Morgen wüsste ich noch, was auf meinem Zettel steht: notwendige Bedingung f'(x0)=0 liefert Kandidaten, hinreichende Bedingung mit f'' entscheidet H (f''<0) oder T (f''>0), bei f''(x0)=0 hilft das Vorzeichen von f' - warum das alles so funktioniert und der eˣ-Fall bleiben aber offen."
+  }
+}

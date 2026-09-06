@@ -42,9 +42,9 @@ function tex(s){
   return String(s==null?'':s)
     .replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g,'($1)/($2)')
     .replace(/\\sqrt(\[\d\])?\{([^}]*)\}/g,'√($2)')
-    .replace(/\\cdot/g,'·').replace(/\\neq|\\ne\b/g,'≠').replace(/\\le\b|\\leq\b/g,'≤').replace(/\\ge\b|\\geq\b/g,'≥')
-    .replace(/\\iff|\\Leftrightarrow/g,'⟺').replace(/\\rightarrow|\\to\b/g,'→').replace(/\\Rightarrow/g,'⇒')
-    .replace(/\\infty/g,'∞').replace(/\\pm/g,'±').replace(/\\in\b/g,'∈').replace(/\\mathbb\{R\}/g,'ℝ')
+    .replace(/\\cdot/g,'·').replace(/\\(neq|ne)(?![a-zA-Z])/g,'≠').replace(/\\(leq|le|leqslant)(?![a-zA-Z])/g,'≤').replace(/\\(geq|ge|geqslant)(?![a-zA-Z])/g,'≥')
+    .replace(/\\(iff|Leftrightarrow)(?![a-zA-Z])/g,'⟺').replace(/\\(rightarrow|to)(?![a-zA-Z])/g,'→').replace(/\\Rightarrow(?![a-zA-Z])/g,'⇒')
+    .replace(/\\infty/g,'∞').replace(/\\pm(?![a-zA-Z])/g,'±').replace(/\\mid(?![a-zA-Z])/g,' | ').replace(/\\in(?![a-zA-Z])/g,'∈').replace(/\\mathbb\{R\}/g,'ℝ').replace(/\\approx(?![a-zA-Z])/g,'≈')
     .replace(/\\quad|\\qquad|\\,|\\;|\\!|\\ /g,' ').replace(/\\left|\\right/g,'').replace(/\\text\{([^}]*)\}/g,'$1').replace(/\\mathrm\{([^}]*)\}/g,'$1')
     .replace(/\{,\}/g,',').replace(/\^\{([^}]*)\}/g,'^$1').replace(/_\{([^}]*)\}/g,'_$1').replace(/\{\}/g,'')
     .replace(/\\\(|\\\)/g,'').replace(/[{}]/g,'').replace(/\\([a-zA-Z]+)/g,'$1').replace(/\s+/g,' ').trim();
@@ -79,10 +79,11 @@ for(const bo of boegen){
   const chips={}, graphen={}, pfeile={}, kand={}; let letzterGraph=null;
   const gname=o=>{ const id=(o&&o.id!==undefined)?o.id:null; return (id!==null&&graphen[id])?graphen[id]:(letzterGraph||'dem Bild'); };
   P('');
-  P('## Blatt '+nr+(bo.frage?' (oben klein: „'+bo.frage+'")':' (ohne Frage)')+(bo.uebersicht?' [Uebersichtsblatt]':'')+(bo.serieFall?' [Serienfall]':''));
+  // Kein Regie-Vermerk (Serie, Uebersicht): der Leser sieht nur das Blatt
+  P('## Blatt '+nr+(bo.frage?' (oben klein: „'+bo.frage+'")':' (ohne Frage)'));
   bs.forEach((b,bi)=>{
     P('');
-    P('**Wisch '+(bi+1)+(b.payoff?' (Aufloesung)':'')+':**');
+    P('**Wisch '+(bi+1)+':**');
     const ops=Array.isArray(b.ops)?b.ops:[];
     // Ueberschrift vor dem Satz, wie im Spieler
     let i=0; while(i<ops.length&&ops[i]&&(ops[i].op==='clear'||ops[i].op==='h')){ if(ops[i].op==='h')P('Ueberschrift: '+ops[i].t); i++; }

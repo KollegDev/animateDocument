@@ -1,0 +1,40 @@
+{
+  "schritte": [
+    { "text": "Die kleine Ueberschrift fragt, woran man einen Gipfel erkennt - das passt wohl zum Huegel-Punkt, der gleich kommt.", "quelle": "B:Woran erkennt man einen Gipfel?" },
+    { "text": "Ich sehe eine Kurve entstehen, links geht sie hoch zu einem Huegel, rechts runter zu einer Mulde.", "quelle": "B:[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]" },
+    { "text": "Der orange Punkt (-1|2) sitzt genau oben auf dem Huegel der Kurve.", "quelle": "B:Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x." },
+    { "text": "Der blaue Punkt (1|-2) sitzt genau unten in der Mulde der Kurve.", "quelle": "B:Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x." },
+    { "text": "H und T sind wohl nur Namen fuer den Huegel-Punkt und den Mulden-Punkt, passend zu Hoch- und Tiefpunkte.", "quelle": "B:Hoch- und Tiefpunkte" },
+    { "text": "Die Beruehrgerade, die ueber die Kurve faehrt, ist wohl das, was ich als Tangente kenne, die die Kurve an einer Stelle x beruehrt.", "quelle": "W4" },
+    { "text": "Wenn bei x=-1 und x=1 ein Abdruck stehen bleibt, wird die Gerade dort wohl waagerecht, genau dort wo H und T sitzen.", "quelle": "B:bei x = -1, 1 bleibt je ein blasser Abdruck stehen" },
+    { "text": "Gelb steht m=f'(x)=0: das bestaetigt, an H und T ist die Steigung der Beruehrgeraden null.", "quelle": "B:m=f'(x)=0" },
+    { "text": "Ich rechne kurz nach: f'(x) von x^3-3x ist 3x^2-3, das gleich 0 gibt x^2=1, also x=1 oder x=-1 - genau die x-Werte von H und T.", "quelle": "W3; W2; B:m=f'(x)=0" }
+  ],
+  "stockstellen": [
+    { "art": "lastmarke", "zitat": "Extrempunkte (Hoch- und Tiefpunkte)", "warum": "Fachwort, das laut meinem Wissen nicht dazugehoert und auf dem Blatt nicht erklaert wird." },
+    { "art": "lastmarke", "zitat": "Beruehrgerade", "warum": "neues Fachwort, das nirgends erklaert wird, ich verbinde es nur ueber W4 mit Tangente." },
+    { "art": "raten", "zitat": "oben im Bild laufen x und m mit", "warum": "m wird an dieser Stelle noch nicht erklaert, ich vermute nur wegen der Beruehrgeraden, dass es mit Steigung zu tun hat." },
+    { "art": "vorstellung", "zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.", "warum": "warum genau der Buchstabe H hier steht, zeigt das Blatt nicht, ich verbinde ihn nur ueber die Ueberschrift mit Hoch." }
+  ],
+  "bewegungen": [
+    { "zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]", "urteil": "trug", "warum": "zeigt mir die Form der Kurve mit Huegel und Mulde, die ich sonst haette ausrechnen muessen" },
+    { "zitat": "[Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.]", "urteil": "trug", "warum": "hebt genau die Stelle hervor, die spaeter wichtig wird, ohne dass ich selbst suchen muss" },
+    { "zitat": "[Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.]", "urteil": "dekoration", "warum": "gibt nur einen Namen, erklaert aber nicht, warum die Stelle besonders ist" },
+    { "zitat": "[Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.]", "urteil": "trug", "warum": "hebt die zweite wichtige Stelle hervor, symmetrisch zur ersten" },
+    { "zitat": "[Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.]", "urteil": "dekoration", "warum": "wieder nur ein Name ohne Begruendung" },
+    { "zitat": "[Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve; oben im Bild laufen x und m mit; bei x = -1, 1 bleibt je ein blasser Abdruck stehen.]", "urteil": "trug", "warum": "zeigt mir selbst, dass die Gerade genau bei H und T waagerecht wird, statt dass ich es mir denken muss" }
+  ],
+  "deutungen": [
+    { "symbol": "H", "was": "Name/Marke fuer den Punkt, an dem die Kurve vermutlich einen Hochpunkt hat", "wo": "am oberen Punkt (-1|2) der Kurve, orange", "quelle": "B:Woran erkennt man einen Gipfel?; B:Hoch- und Tiefpunkte" },
+    { "symbol": "T", "was": "Name/Marke fuer den Punkt, an dem die Kurve vermutlich einen Tiefpunkt hat", "wo": "am unteren Punkt (1|-2) der Kurve, blau", "quelle": "B:Hoch- und Tiefpunkte" },
+    { "symbol": "Beruehrgerade", "was": "vermutlich dasselbe wie die Tangente aus meinem Wissen, eine Gerade, die die Kurve an einer Stelle beruehrt", "wo": "die orange Linie mit Punkt, die ueber die Kurve faehrt", "quelle": "W4" },
+    { "symbol": "m", "was": "der Zahlenwert der Steigung der Beruehrgeraden, also f'(x)", "wo": "oben im Bild, laeuft neben x mit, waehrend die Gerade ueber die Kurve faehrt", "quelle": "B:m=f'(x)=0" },
+    { "symbol": "blasser Abdruck", "was": "eine stehenbleibende Markierung, die zeigt, wo die Gerade waagerecht war", "wo": "bei x=-1 und x=1, genau dort wo vorher H und T markiert wurden", "quelle": "B:bei x = -1, 1 bleibt je ein blasser Abdruck stehen" }
+  ],
+  "zettel": [
+    "f(x)=x^3-3x: H(-1|2) oben am Huegel, T(1|-2) unten in der Mulde.",
+    "Bei H und T ist die Beruehrgerade (Tangente) waagerecht: m=f'(x)=0.",
+    "f'(x)=3x^2-3=0 -> x^2=1 -> x=-1 oder x=1, passt zu H und T.",
+    "Offene Woerter: Extrempunkte, Beruehrgerade - nicht erklaert, nur vermutet."
+  ]
+}

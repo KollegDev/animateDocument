@@ -1,0 +1,57 @@
+{
+  "schritte": [
+    {"text": "Neues Thema: jetzt kommt eine Funktion, in der e^x drinsteckt, nicht nur x-Potenzen wie vorher.", "quelle": "B:\"Und wenn eˣ drinsteckt?\""},
+    {"text": "m(x)=x·e^x ist einfach die Funktionsvorschrift, m(x) ist der y-Wert zu x.", "quelle": "W1"},
+    {"text": "Der gezeichnete Graph zeigt: fuer negative x geht die Kurve erst runter, hat irgendwo ein Tief, ab 0 wieder hoch - passt zu meinem alten Muster von k.", "quelle": "B:\"[Graph zeichnet sich: m(x) = x·eˣ, x von -4.6 bis 1.1, y von -0.8 bis 1.6.]\""},
+    {"text": "Erster Schritt wie bei k: ich brauche m'(x)=0, das heisst hier \"notwendige Bedingung\" - genau das \"notwendig\" von meinem Zettel.", "quelle": "Z:1"},
+    {"text": "m'(x)=1·e^x+x·e^x=(1+x)·e^x - ich weiss nicht, wieso man x·e^x so ableitet, das nehme ich einfach hin.", "quelle": "keine"},
+    {"text": "(1+x)·e^x=0 und eˣ ist nie 0, also muss 1+x=0 sein, also x=-1 - einfache Gleichungslogik.", "quelle": "W2"},
+    {"text": "x_1=-1 ist der einzige Kandidat auf diesem Blatt, anders als bei k, wo es drei waren.", "quelle": "B:\"x_1=[-1 orange]\""},
+    {"text": "Die orange -1 fliegt zur x-Achse - derselbe Wert wie in der Rechnung, jetzt im Bild markiert.", "quelle": "B:\"[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]\""},
+    {"text": "Jetzt die \"hinreichende Bedingung\": m''(x)≠0 - das muss die zweite Ableitung sein, so wie k'' bei mir.", "quelle": "W5"},
+    {"text": "m''(x)=(2+x)·e^x - wieder eine Ableitung, die ich nicht nachvollziehen kann, ich glaube sie einfach.", "quelle": "keine"},
+    {"text": "Setze x=-1 ein: 2+(-1)=1, also m''(-1)=1·e^-1≈0,37 - das kann ich selbst nachrechnen, stimmt.", "quelle": "W8"},
+    {"text": "0,37>0, und nach meinem alten Muster (k''>0 -> Tief) ist das auch hier ein Tiefpunkt, T.", "quelle": "Z:3"},
+    {"text": "Die Kurve leuchtet genau bei x=-1 orange auf - da liegt also der Tiefpunkt im Bild.", "quelle": "B:\"[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.]\""},
+    {"text": "Jetzt noch der y-Wert: y=m(x), also x=-1 in die urspruengliche Funktion einsetzen.", "quelle": "W1"},
+    {"text": "m(-1)=-1·e^-1≈-0,37 - stimmt mit meiner Rechnung von eben ueberein, nur mit anderem Vorzeichen.", "quelle": "W8"},
+    {"text": "Die gestrichelte Linie und der Punkt zeigen mir das Ganze nochmal im Bild: bei x=-1 ist y=-0,37.", "quelle": "B:\"[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −0,37.]\""},
+    {"text": "Ergebnis T(-1|-0,37) - wie P(x|y) bei mir, nur mit T statt P, wie schon T1/T2 auf meinem Zettel.", "quelle": "Z:2"}
+  ],
+  "stockstellen": [
+    {"art": "stocken", "zitat": "m'(x)=1· e^x+x· e^x=(1+x)· e^x", "warum": "Keine Regel fuer Ableitung von e^x oder Produkten aus zwei Termen auf meiner Wissensliste (W3 nur reine Potenzen), ich weiss nicht woher die Umformung kommt."},
+    {"art": "glauben", "zitat": "m''(x)=(2+x)· e^x", "warum": "Gleiches Problem wie bei m'(x); ich uebernehme es diesmal einfach ohne zu pruefen, weil ich es eh nicht nachrechnen kann."},
+    {"art": "lastmarke", "zitat": "notwendige Bedingung: m'(x)=0", "warum": "Fachwort \"notwendige Bedingung\" wird nicht erklaert, nur ueber Z:1 zu erahnen."},
+    {"art": "lastmarke", "zitat": "hinreichende Bedingung: m''(x)≠ 0", "warum": "Fachwort \"hinreichende Bedingung\" bleibt unerklaert, laut Z:3 war schon vorher unklar warum das so ist."},
+    {"art": "verwechslung", "zitat": "hinreichende Bedingung: m''(x)≠ 0 ... m''([-1 orange])=1· e^-1approx 0,37>0", "warum": "Ueberschrift verlangt nur \"ungleich 0\", gerechnet wird aber mit \"groesser 0\" - unklar ob das dasselbe meint oder nur ein Sonderfall ist."},
+    {"art": "vorstellung", "zitat": "[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.]", "warum": "Kann mir eine \"blasse\", noch nicht \"kraeftige\" Achsenmarke nicht wirklich vorstellen, nur als Textbeschreibung."},
+    {"art": "lastmarke", "zitat": "[Ein oranger Punkt landet bei (-1|-0.3679) in m(x) = x·eˣ.]", "warum": "Zwei verschiedene Schreibweisen fuer dieselbe Zahl (Punkt statt Komma, vier statt zwei Nachkommastellen) verwirren kurz."},
+    {"art": "skip", "zitat": "[Kleine Marke, Kapitaelchen:]", "warum": "Immer dieselbe Formatierungsmarke vor jedem Wisch, ab dem zweiten Mal ueberspringe ich sie."},
+    {"art": "skip", "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.", "warum": "Immer dieselbe Enthuellungs-Animation, wird nach dem ersten Mal langweilig, ich lese nur noch das Ergebnis."}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: m(x) = x·eˣ, x von -4.6 bis 1.1, y von -0.8 bis 1.6.]", "urteil": "trug", "warum": "zeigt mir die Form der Kurve, ohne dass ich selbst Werte einsetzen und einen Verlauf ausrechnen muss"},
+    {"zitat": "[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.]", "urteil": "dekoration", "warum": "sagt mir nichts Neues, ich weiss aus der Rechnung schon, dass x=-1 der Kandidat ist"},
+    {"zitat": "[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]", "urteil": "trug", "warum": "verbindet sichtbar die ausgerechnete Zahl mit der Stelle im Graphen, das haette ich sonst selbst zuordnen muessen"},
+    {"zitat": "[Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]", "urteil": "trug", "warum": "zeigt mir, dass genau dieses x=-1 jetzt in m'' eingesetzt wird, ich muss den Wert nicht selbst mitziehen"},
+    {"zitat": "[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.]", "urteil": "trug", "warum": "markiert die Stelle am echten Kurvenverlauf, wo der Tiefpunkt liegt"},
+    {"zitat": "[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von -1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]", "urteil": "dekoration", "warum": "macht nur nochmal denselben Trick wie eben, ich weiss schon, dass -1 eingesetzt wird"},
+    {"zitat": "[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −0,37.]", "urteil": "trug", "warum": "zeigt am Bild, wie man von x=-1 zum y-Wert -0,37 kommt, statt es sich nur aus der Formel vorzustellen"},
+    {"zitat": "[Ein oranger Punkt landet bei (-1|-0.3679) in m(x) = x·eˣ.]", "urteil": "dekoration", "warum": "der Punkt ist schon durch die gestrichelte Linie klar, das Landen zeigt nichts zusaetzlich Neues"},
+    {"zitat": "[Beschriftung T(−1|−0,37) erscheint am Punkt (-1|-0.3679), orange.]", "urteil": "trug", "warum": "gibt dem Punkt endlich seinen Namen mit Koordinaten direkt im Bild, das fasst das Ergebnis zusammen"}
+  ],
+  "deutungen": [
+    {"symbol": "Serienfall", "was": "kann ich nicht deuten", "wo": "in der Ueberschriftzeile von Blatt 7", "quelle": "kann ich nicht deuten"},
+    {"symbol": "notwendige Bedingung", "was": "eine Bedingung, die ein Kandidat erstmal erfuellen muss, bevor man weiss ob Hoch oder Tief - so wie k'=0 bei mir", "wo": "kleine Kapitaelchen-Marke ueber Wisch 2", "quelle": "Z:1"},
+    {"symbol": "hinreichende Bedingung", "was": "der Test mit der zweiten Ableitung, der am Ende Hoch oder Tief entscheidet - warum, weiss ich immer noch nicht", "wo": "kleine Kapitaelchen-Marke ueber Wisch 3", "quelle": "Z:3"},
+    {"symbol": "x_1", "was": "die erste (und hier einzige) Loesung von m'(x)=0", "wo": "in der Chip-Zeile von Wisch 2 und als Marke auf der x-Achse", "quelle": "B:\"x_1=[-1 orange]\""},
+    {"symbol": "T", "was": "Abkuerzung fuer Tiefpunkt, so wie T1 und T2 auf meinem Zettel", "wo": "in der Klammer bei Wisch 3 und in der Beschriftung am Punkt in Wisch 4", "quelle": "Z:2"},
+    {"symbol": "-0.3679 (Punkt-Schreibweise)", "was": "kann ich nicht deuten, warum hier ploetzlich ein Punkt statt Komma steht", "wo": "im Klammertext beim Punkt-landet-Satz in Wisch 4", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "Z:1 Bei e^x-Funktionen genauso: m'=0 notwendig, x_1=-1 einziger Kandidat bei m(x)=x*e^x.",
+    "Z:2 m''(-1)=1*e^-1≈0,37>0 -> Tiefpunkt T(-1|-0,37); Muster k''>0->Tief bestaetigt sich.",
+    "Z:3 Ableiten von e^x/Produkten kenne ich nicht, glaube die Formeln m',m'' einfach.",
+    "Z:4 notwendig/hinreichend bleiben unerklaert; Pfeile/Farben zeigen nur Zuordnung."
+  ]
+}

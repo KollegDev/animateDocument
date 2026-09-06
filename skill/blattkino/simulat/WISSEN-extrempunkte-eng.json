@@ -1,0 +1,26 @@
+[
+ {
+  "id": "W1",
+  "text": "Funktionen und ihre Graphen lesen: f(x) ist der y-Wert an der Stelle x; ein Punkt hat die Form P(x|y)."
+ },
+ {
+  "id": "W2",
+  "text": "Terme umformen und einfache Gleichungen loesen (ausklammern, x^2=1 gibt x=1 oder x=-1, Wurzelziehen mit zwei Loesungen)."
+ },
+ {
+  "id": "W3",
+  "text": "Ableitungsregeln: Potenzregel, Faktor- und Summenregel; f'(x) von x^3-3x ist 3x^2-3."
+ },
+ {
+  "id": "W4",
+  "text": "f'(x) ist die Steigung der Tangente an der Stelle x; f' positiv heisst steigend, negativ heisst fallend."
+ },
+ {
+  "id": "W5",
+  "text": "f'' ist die Ableitung von f'."
+ },
+ {
+  "id": "W8",
+  "text": "Bruchrechnen und Dezimalzahlen mit Komma."
+ }
+]

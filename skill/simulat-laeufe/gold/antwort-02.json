@@ -1,0 +1,38 @@
+{
+  "schritte": [
+    {"text": "Die Ueberschrift 'Wo liegen Gipfel und Tal' ist genau meine alte Frage von Z:3.", "quelle": "Z:3"},
+    {"text": "Waagerechte Tangente kenne ich schon: bei H und T ist die Tangente waagerecht.", "quelle": "Z:2"},
+    {"text": "f'(x)=0 heisst Steigung null, also waagerecht - das passt zu W:4.", "quelle": "W:4"},
+    {"text": "Den Graphen von x³-3x kenne ich schon: H(-1|2) und T(1|-2) stehen auf meinem Zettel.", "quelle": "Z:1"},
+    {"text": "f'(x)=3x²-3 ist genau das Beispiel, das ich auswendig kann.", "quelle": "W:3"},
+    {"text": "Nachgerechnet: Ableitung von x³ ist 3x², von -3x ist -3, zusammen 3x²-3 - stimmt.", "quelle": "W:3"},
+    {"text": "3x²-3=0 -> x²=1 -> x=1 oder x=-1, genau die Regel von der Whitelist.", "quelle": "W:2"},
+    {"text": "Die Loesungen -1 und 1 sind dieselben Zahlen wie bei H(-1|2) und T(1|-2) auf meinem Zettel.", "quelle": "Z:1"},
+    {"text": "'Ob Gipfel oder Tal, sagt das noch nicht' - f'=0 allein reicht also nicht, das koennte meine offene Frage Z:4 erklaeren.", "quelle": "B:\"Ob Gipfel oder Tal, sagt das noch nicht.\""}
+  ],
+  "stockstellen": [
+    {"art": "lastmarke", "zitat": "notwendige Bedingung", "warum": "unerklaertes Fachwort; ich weiss von Extrempunkten nur, was auf meinem Zettel steht, nicht warum es 'notwendig' heisst"},
+    {"art": "stocken", "zitat": "Wo liegen Gipfel und Tal?", "warum": "meine alte Frage Z:3, ob 'Gipfel' ueberall der hoechste Punkt ist, wird auf diesem Blatt nicht beantwortet"},
+    {"art": "vorstellung", "zitat": "[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]", "warum": "es wird nur die x-Achse markiert; dass die Kurve dort bei y=2 ist (aus Z:1), zeigt das Blatt nicht mehr, das muss ich mir vorstellen"},
+    {"art": "glauben", "zitat": "3x^2-3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau]", "warum": "das Zeichen ⟺ wird nicht erklaert, ich glaube einfach, dass die drei Formen gleichwertig sind"}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]", "urteil": "trug", "warum": "zeigt sofort die S-Form mit Huegel und Mulde, ohne dass ich sie mir selbst vorstellen muss"},
+    {"zitat": "[Chip fuer Chip in Leserichtung:] 3x^2-3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau]", "urteil": "dekoration", "warum": "die Umformung kenne ich schon aus W:2, das haeppchenweise Erscheinen aendert am Rechnen nichts"},
+    {"zitat": "[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]", "urteil": "trug", "warum": "verbindet die Rechnung mit der Stelle im Graphen, das haette ich sonst selbst zuordnen muessen"},
+    {"zitat": "[Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.]", "urteil": "trug", "warum": "zeigt mir ebenso, wo x=1 im Bild liegt, statt dass ich es selbst suchen muss"}
+  ],
+  "deutungen": [
+    {"symbol": "notwendige Bedingung", "was": "eine Voraussetzung, die erfuellt sein muss, aber vielleicht nicht die einzige", "wo": "kleine Kapitaelchen-Marke ueber f'(x)=0", "quelle": "B:\"notwendige Bedingung: f'(x)=0\""},
+    {"symbol": "orange / blau", "was": "feste Farbe fuer jede Loesung: orange fuer x1=-1, blau fuer x2=1", "wo": "bei den Zahlen im Chip und spaeter an der x-Achse", "quelle": "B:\"x_1=[-1 orange] , x_2=[1 blau]\""},
+    {"symbol": "Achsenmarke", "was": "ein Zeichen auf der x-Achse, das einen bestimmten x-Wert markiert", "wo": "auf der x-Achse des Graphen bei -1 und bei 1", "quelle": "B:\"Achsenmarke −1\""},
+    {"symbol": "blass / kraeftig", "was": "blass = Kandidat, noch nicht bestaetigt; kraeftig = jetzt am richtigen Punkt angekommen", "wo": "Farbzustand der Achsenmarken vor und nach dem Flug", "quelle": "B:\"noch blass\""},
+    {"symbol": "⟺", "was": "vermutlich 'ist gleichwertig zu' zwischen den Gleichungen", "wo": "zwischen 3x^2-3=0, x^2=1 und den Loesungen im Chip", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "notwendige Bedingung: f'(x)=0. Bei x³-3x: x=-1 (orange) und x=1 (blau) sind Kandidaten.",
+    "Ob Gipfel oder Tal, sagt f'=0 noch nicht - offen wie in Z:3/Z:4 von vorher.",
+    "Graph von x³-3x zeigt Huegel bei -1 und Mulde bei 1, passt zu H(-1|2), T(1|-2).",
+    "Unklar: '⟺' und warum 'notwendig' - hinreichende Bedingung fehlt noch."
+  ]
+}

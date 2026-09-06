@@ -1,0 +1,114 @@
+{
+  "schritte": [
+    {
+      "text": "f''(x)=6x ist gegeben und neu für mich.",
+      "quelle": "B:f''(x)=6x"
+    },
+    {
+      "text": "Bei x₁=-1: ich rechne f''(-1) = 6·(-1) = -6, das ist kleiner als 0.",
+      "quelle": "B:f''([-1 orange])=6·([-1 orange])=-6<0"
+    },
+    {
+      "text": "Bei x₂=1: ich rechne f''(1) = 6·1 = 6, das ist größer als 0.",
+      "quelle": "B:f''([1 blau])=6·[1 blau]=6>0"
+    },
+    {
+      "text": "Der Punkt bei x=-1 hat y-Wert: (-1)³ - 3·(-1) = -1 + 3 = 2, also (-1|2).",
+      "quelle": "B:f([-1 orange])=([-1 orange])^3-3·([-1 orange])=-1+3=[2 orange]"
+    },
+    {
+      "text": "Der Punkt bei x=1 hat y-Wert: 1³ - 3·1 = 1 - 3 = -2, also (1|-2).",
+      "quelle": "B:f([1 blau])=[1 blau]^3-3·[1 blau]=1-3=[-2 blau]"
+    },
+    {
+      "text": "Das Blatt nennt den Punkt (-1|2) mit H und den Punkt (1|-2) mit T.",
+      "quelle": "B:Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange. Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau."
+    }
+  ],
+  "stockstellen": [
+    {
+      "art": "glauben",
+      "zitat": "f''([-1 orange])=6·([-1 orange])=-6<0 und f''([1 blau])=6·[1 blau]=6>0",
+      "warum": "Das Blatt zeigt mir diese Rechnungen, aber nicht, warum negative oder positive f'' etwas über die Punkte aussagt."
+    },
+    {
+      "art": "vorstellung",
+      "zitat": "Beschriftung H(−1|2) und Beschriftung T(1|−2)",
+      "warum": "Ich sehe H und T im Bild, aber die Begriffe Hochpunkt und Tiefpunkt werden nicht erklärt—ich muss glauben, was diese Namen bedeuten."
+    },
+    {
+      "art": "glauben",
+      "zitat": "Die ganze Wisch 5",
+      "warum": "Ich sehe, dass die Werte in die Zeile fliegen und Namen erscheinen, aber warum genau diese Punkte H und T heißen, bleibt unklar."
+    }
+  ],
+  "bewegungen": [
+    {
+      "zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]",
+      "urteil": "trug",
+      "warum": "Zeigt dir die Form der Kurve, auf der alles stattfindet."
+    },
+    {
+      "zitat": "[Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]",
+      "urteil": "trug",
+      "warum": "Verbindet die Stelle x=-1 mit der Berechnung f''(-1)."
+    },
+    {
+      "zitat": "[Ein blauer Pfeil zieht sich langsam von der 1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.]",
+      "urteil": "trug",
+      "warum": "Verbindet die Stelle x=1 mit der Berechnung f''(1)."
+    },
+    {
+      "zitat": "[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.]",
+      "urteil": "trug",
+      "warum": "Hebt den Bereich hervor, wo die orange Berechnung stattfindet."
+    },
+    {
+      "zitat": "[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 2.]",
+      "urteil": "trug",
+      "warum": "Zeigt dir den Punkt (-1|2) optisch auf der Kurve und seiner Position in der y-Koordinate."
+    },
+    {
+      "zitat": "[Von der Achsenmarke 1 laeuft eine gestrichelte blaue Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −2.]",
+      "urteil": "trug",
+      "warum": "Zeigt dir den Punkt (1|-2) optisch auf der Kurve und seiner Position in der y-Koordinate."
+    },
+    {
+      "zitat": "[Eine Kopie der orangen art1 loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann art1).]",
+      "urteil": "trug",
+      "warum": "Erklärt dir visuell, dass die x-Werte in die neue Zeile gehören."
+    }
+  ],
+  "deutungen": [
+    {
+      "symbol": "f''(x)",
+      "was": "die zweite Ableitung von f (Ableitung der Ableitung f')",
+      "wo": "in der Zeile f''(x)=6x, angewendet bei x=-1 und x=1",
+      "quelle": "W:W5"
+    },
+    {
+      "symbol": "H(-1|2)",
+      "was": "ein Punkt mit einem Namen H; liegt bei x=-1, y=2",
+      "wo": "im Graph orange markiert und beschriftet",
+      "quelle": "B:Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange"
+    },
+    {
+      "symbol": "T(1|-2)",
+      "was": "ein Punkt mit einem Namen T; liegt bei x=1, y=-2",
+      "wo": "im Graph blau markiert und beschriftet",
+      "quelle": "B:Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau"
+    },
+    {
+      "symbol": "<0 und >0",
+      "was": "Vergleiche: kleiner als Null (negativ) und größer als Null (positiv)",
+      "wo": "in f''(-1)=-6<0 und f''(1)=6>0",
+      "quelle": "W:W8"
+    }
+  ],
+  "zettel": [
+    "Z:5 f''(x)=6x ist eine neue Funktion; ich rechne f''(-1)=-6<0 und f''(1)=6>0.",
+    "Z:6 Die Punkte sind (-1|2)=H und (1|-2)=T; das Blatt nennt sie Hochpunkt und Tiefpunkt.",
+    "Z:7 Ich weiß nicht, warum f''<0 oder f''>0 etwas über Hoch- oder Tiefpunkte aussagt.",
+    "Z:8 Blatt 3 vorbei; H und T sind besondere Punkte mit f'=0, aber der Zusammenhang zu f'' bleibt unklar."
+  ]
+}

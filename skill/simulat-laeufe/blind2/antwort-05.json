@@ -1,0 +1,46 @@
+{
+  "schritte": [
+    {"text": "Oben steht eine Frage: ob sich die Grenze ändert, wenn es zwei tiefste Punkte gibt - das scheint das Ziel des Blattes zu sein.", "quelle": "B:Ändert sich die Grenze, wenn es zwei tiefste Punkte gibt?"},
+    {"text": "Der Graph zeichnet sich und zeigt gleich eine Kurve mit zwei Tälern - die Form muss ich mir nicht selbst vorstellen, ich sehe sie.", "quelle": "B:Graph zeichnet sich: f(x) = x⁴ − 2x², x von -2 bis 2, y von -1.5 bis 4."},
+    {"text": "Der Text sagt 'zwei tiefste Punkte' - das könnte endlich erklären, was das 'T' bei den Punkten bedeutet, das ich als unklar notiert hatte.", "quelle": "Z:4"},
+    {"text": "T1 liegt bei (-1|-1) - ich lese das wie einen normalen Punkt P(x|y), nur mit anderem Buchstaben.", "quelle": "W:W1"},
+    {"text": "T2 liegt bei (1|-1) - gleiche Höhe wie T1, nur bei x=1 statt x=-1, spiegelbildlich dazu.", "quelle": "B:Ein oranger Punkt landet bei (1|-1), Beschriftung T₂(1|−1)."},
+    {"text": "Ein dritter Punkt H(0|0) taucht oben zwischen den beiden Tälern auf - dieser Buchstabe kommt im Fließtext gar nicht vor.", "quelle": "B:Ein oranger Punkt landet bei (0|0), Beschriftung H(0|0)."},
+    {"text": "Nach oben keine Grenze, nach unten eine bei y=-1 - das erinnert an den Wertebereich von früher, nur diesmal von unten begrenzt.", "quelle": "Z:1"},
+    {"text": "Die waagerechte Linie bei y=-1 liegt genau auf Höhe von T1 und T2 - das zeigt mir direkt, warum gerade diese Höhe die Grenze ist.", "quelle": "B:Eine waagerechte Linie bei y = -1 mit Beschriftung y = −1 erscheint."},
+    {"text": "Die Aufloesung sagt: die zwei Tiefpunkte teilen sich eine gemeinsame Grenze - es ändert sich also nichts. Das beantwortet die Frage von oben.", "quelle": "B:Zwei Tiefpunkte teilen sich eine gemeinsame Grenze."},
+    {"text": "Die Formel unten ist wieder W_f: y∈ℝ...y≥-1, mit demselben 'mid', das schon beim letzten Blatt unklar war.", "quelle": "Z:3"},
+    {"text": "Das Zeichen ≥ in 'y≥-1' kenne ich aus dem Lösen von Ungleichungen.", "quelle": "W:W2"}
+  ],
+  "stockstellen": [
+    {"art": "lastmarke", "zitat": "Funktion vierten Grades", "warum": "unerklärtes Fachwort, von 'Grad' einer Funktion steht nichts in meinem Wissen."},
+    {"art": "vorstellung", "zitat": "Nach oben gibt es keine Grenze.", "warum": "der Graph zeigt nur x bis ±2 und y bis 4; was jenseits davon passiert, sehe ich nicht, das muss ich mir nur einbilden."},
+    {"art": "ruecksprung", "zitat": "W_f: y∈ℝmid y≥-1", "warum": "ich springe zu Z:3 zurück, wo genau dieses 'mid' schon einmal als unklar notiert war."},
+    {"art": "raten", "zitat": "H(0|0)", "warum": "ich rate, dass H für einen Hochpunkt steht, weil er zwischen T1 und T2 liegt, aber das Blatt sagt es nicht."},
+    {"art": "verwechslung", "zitat": "T₁(−1|−1)", "warum": "der Index 1 gehört zum x-Wert -1 und Index 2 zum x-Wert 1 - das lässt sich leicht vertauschen."},
+    {"art": "skip", "zitat": "(Aufloesung)", "warum": "das Wort steht nur als Überschrift, kostet mich aber Prosa-Aufwand ohne eigenen Inhalt, also überspringe ich es."}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: f(x) = x⁴ − 2x², x von -2 bis 2, y von -1.5 bis 4.]", "urteil": "trug", "warum": "zeigt mir die Doppel-Tal-Form direkt, ich müsste sie sonst aus der Formel erraten."},
+    {"zitat": "[Ein oranger Punkt landet bei (-1|-1), Beschriftung T₁(−1|−1).]", "urteil": "trug", "warum": "gibt mir Koordinate und Lage sofort, ohne dass ich f(-1) selbst ausrechnen muss."},
+    {"zitat": "[Ein oranger Punkt landet bei (1|-1), Beschriftung T₂(1|−1).]", "urteil": "trug", "warum": "zeigt mir die Symmetrie zu T1 direkt, statt dass ich sie vermuten muss."},
+    {"zitat": "[Ein oranger Punkt landet bei (0|0), Beschriftung H(0|0).]", "urteil": "trug", "warum": "zeigt mir einen dritten wichtigen Punkt, auch wenn der Buchstabe H unklar bleibt."},
+    {"zitat": "[Eine waagerechte Linie bei y = -1 mit Beschriftung y = −1 erscheint.]", "urteil": "trug", "warum": "macht sichtbar, dass beide Tiefpunkte dieselbe Höhe teilen, statt dass ich das im Kopf vergleichen muss."},
+    {"zitat": "[gelb hinterlegt:]", "urteil": "dekoration", "warum": "die Farbe hebt die Formel nur hervor, zeigt aber keinen neuen Inhalt."}
+  ],
+  "deutungen": [
+    {"symbol": "Funktion vierten Grades", "was": "kann ich nicht deuten", "wo": "Text direkt über dem Graphen", "quelle": "kann ich nicht deuten"},
+    {"symbol": "x⁴", "was": "kann ich nicht deuten", "wo": "in der Formel f(x) = x⁴ − 2x² oben im Blatt", "quelle": "kann ich nicht deuten"},
+    {"symbol": "T (T₁, T₂)", "was": "vermutlich Tiefpunkt, weil der Text von 'zwei tiefsten Punkten' spricht und genau zwei so beschriftete Punkte erscheinen", "wo": "die beiden orangen Punkte unten im Graph bei (-1|-1) und (1|-1)", "quelle": "B:Bei dieser Funktion vierten Grades gibt es sogar zwei tiefste Punkte."},
+    {"symbol": "H", "was": "kann ich nicht deuten", "wo": "oranger Punkt oben zwischen den beiden Tälern bei (0|0)", "quelle": "kann ich nicht deuten"},
+    {"symbol": "Grenze", "was": "der Rand des Wertebereichs, hier der kleinste y-Wert, den die Funktion erreicht", "wo": "die waagerechte Linie bei y=-1", "quelle": "Z:1"},
+    {"symbol": "mid", "was": "kann ich nicht deuten", "wo": "in der gelb hinterlegten Formel zwischen 'ℝ' und 'y≥-1'", "quelle": "kann ich nicht deuten"},
+    {"symbol": "≥", "was": "größer-gleich-Zeichen, Vergleichszeichen wie beim Lösen von Ungleichungen", "wo": "in der Formel 'y≥-1'", "quelle": "W:W2"}
+  ],
+  "zettel": [
+    "Wertebereich=mögliche y-Werte. Neu: 2 Tiefpunkte teilen sich 1 Grenze (y≥-1).",
+    "T-Punkte: T1,T2 unten (Tiefpunkte, wie Z:4 vermutet); H(0|0) oben - Bedeutung offen.",
+    "Formel W_f: y∈ℝ mid y≥-1 - 'mid' immer noch unklar (schon in Z:3); ≥ kenne ich aus W2.",
+    "Graph zeigt nur x=-2..2, y bis 4; ob's oben wirklich 'keine Grenze' gibt, sehe ich nicht."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schritte": [
+    { "text": "Der Graph von f(x)=x^3-3x wird gezeichnet - passt genau zu dem, was ich in Z:1 stehen habe.", "quelle": "B:'f(x) = x³ − 3x, x von -2.4 bis 2.4' + Z:1" },
+    { "text": "Orange Marke bei -1, blaue Marke bei 1 an der x-Achse - das sind meine zwei Stellen aus Z:1.", "quelle": "B:'die orange Achsenmarke −1' + Z:1" },
+    { "text": "x_1 und x_2 sind wohl einfach Namen für diese zwei Stellen, x_1=-1 (orange), x_2=1 (blau).", "quelle": "B:'x_1=[-1 orange] x_2=[1 blau]'" },
+    { "text": "f''(x)=6x - das folgt aus f'(x)=3x²-3 (Z:1) mit der Potenzregel: Ableitung von 3x² ist 6x, von -3 ist 0.", "quelle": "W3+W5; B:'f''(x)=6x'" },
+    { "text": "Der Pfeil zieht die -1 von oben in die Klammer von f'' - das heißt, x=-1 wird eingesetzt.", "quelle": "B:'Ein oranger Pfeil zieht sich langsam von der -1 ... muendet von oben auf die -1 in der Klammer'" },
+    { "text": "f''(-1)=6·(-1)=-6 - rechne kurz nach, stimmt. Und -6<0.", "quelle": "B:'f''([-1 orange])=6·([-1 orange])=-6<0'" },
+    { "text": "Die Kurve leuchtet um x=-1 orange auf - das ist genau die Stelle, die in Z:2 schon 'Gipfel' hieß.", "quelle": "B:'leuchtet das Kurvenstueck um x = -1 dick orange auf' + Z:2" },
+    { "text": "Gleiche Rechnung mit der 1: f''(1)=6·1=6>0 - stimmt, spare mir die Erklärung, ist wie eben.", "quelle": "B:'f''([1 blau])=6·[1 blau]=6>0'" },
+    { "text": "f(-1)=(-1)³-3·(-1)=-1+3=2 - genau die 2 aus Z:2 (H(-1|2)).", "quelle": "B:'f([-1 orange])=...=-1+3=[2 orange]' + Z:2" },
+    { "text": "Gestrichelte Linie von -1 über die Kurve zur y-Achse zeigt bildlich, wie die 2 zustande kommt.", "quelle": "B:'gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse'" },
+    { "text": "f(1)=1-3=-2 - wieder wie in Z:2 (T(1|-2)).", "quelle": "B:'f([1 blau])=...=1-3=[-2 blau]' + Z:2" },
+    { "text": "Leere Zeile mit Lücken 'Lücke Lücke|Lücke)' zweimal - da soll offenbar sowas wie 'X(x|y)' reinkommen.", "quelle": "B:'[Luecke][Luecke]|[Luecke])'" },
+    { "text": "'art1' fliegt in die erste Lücke - was das Wort ist, weiß ich nicht.", "quelle": "B:'Eine Kopie der orangen art1 loest sich aus der Zeile'" },
+    { "text": "-1 und 2 füllen die restlichen Lücken, die Zeile zeigt jetzt 'art1(-1|2)'.", "quelle": "B:'Eine Kopie der orangen -1 ... Eine Kopie der orangen 2 ...'" },
+    { "text": "Direkt am Punkt (-1|2) erscheint 'H(-1|2)' - H kenne ich schon aus Z:2 als Kürzel für den Gipfel.", "quelle": "B:'Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange' + Z:2" },
+    { "text": "Gleiches in Blau: art2, 1, -2 -> 'art2(1|-2)', dann Label T(1|-2) - T ist aus Z:2 der Tal-Punkt.", "quelle": "B:'Beschriftung T(1−2) erscheint' + Z:2" },
+    { "text": "Die Überschrift fragte 'Welche Stelle ist der Gipfel, und wie hoch liegt er' - Antwort: x=-1, Höhe 2. Warum negatives f'' zum Gipfel gehört, sagt das Blatt aber nicht.", "quelle": "B:'Welche Stelle ist der Gipfel, und wie hoch liegt er?' + Z:3" }
+  ],
+  "stockstellen": [
+    { "art": "vorstellung", "zitat": "f''([-1 orange])=6·([-1 orange])=-6<0 ... leuchtet ... orange auf", "warum": "das Blatt zeigt nirgends eine Regel oder Zwischenschritt, WARUM f''<0 einen Gipfel bedeutet" },
+    { "art": "stocken", "zitat": "Eine Kopie der orangen art1 loest sich aus der Zeile", "warum": "'art1' ist ein Wort, das ich aus keinem W-Punkt und keinem Zettel kenne, ich kann die Lücke selbst nicht füllen" },
+    { "art": "raten", "zitat": "art1(-1|2) ... Beschriftung H(−1|2) erscheint", "warum": "ich vermute nur, dass 'art1' am Ende sowas wie 'H' heißen soll, gesagt wird das nicht" },
+    { "art": "ruecksprung", "zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange", "warum": "ich springe zurück zu Z:2, um zu prüfen ob H schon mal auftauchte - ja, dort stand's schon" },
+    { "art": "skip", "zitat": "f''([1 blau])=6·[1 blau]=6>0", "warum": "gleiche Form wie eben bei -1, ich spare mir die nochmalige Herleitung" },
+    { "art": "vorstellung", "zitat": "Welche Stelle ist der Gipfel, und wie hoch liegt er?", "warum": "die Überschrift-Frage wird nur an zwei Beispielen vorgeführt, nicht allgemein beantwortet oder bewiesen - bleibt wie Z:3 offen" }
+  ],
+  "bewegungen": [
+    { "zitat": "Graph zeichnet sich: f(x) = x³ − 3x ...", "urteil": "dekoration", "warum": "zeigt nur wieder, was schon in Z:1 stand, nichts, das ich neu denken musste" },
+    { "zitat": "An der x-Achse steht die orange Achsenmarke −1 / blaue Achsenmarke 1", "urteil": "trug", "warum": "gibt mir die Farbcodierung, ohne die ich mir sonst hätte merken müssen, welche Zahl gemeint ist" },
+    { "zitat": "Ein oranger Pfeil zieht sich langsam von der -1 ... muendet von oben auf die -1 in der Klammer", "urteil": "trug", "warum": "zeigt bildlich das Einsetzen von x=-1 in f'', das hätte ich sonst selbst überlegen müssen" },
+    { "zitat": "Ein blauer Pfeil zieht sich langsam von der 1 ... muendet ... auf die 1", "urteil": "dekoration", "warum": "gleiche Idee wie der orange Pfeil eben, nichts Neues mehr" },
+    { "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip", "urteil": "dekoration", "warum": "zeigt nur zeitversetzt, was ich sowieso aus der fertigen Formel lesen kann" },
+    { "zitat": "Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf", "urteil": "trug", "warum": "zeigt, WO auf der Kurve etwas Besonderes ist, auch ohne dass erklärt wird warum" },
+    { "zitat": "Im Graphen leuchtet das Kurvenstueck um x = 1 dick blau auf", "urteil": "dekoration", "warum": "gleiches Muster wie bei orange, zeigt nichts zusätzlich Neues" },
+    { "zitat": "Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse", "urteil": "trug", "warum": "macht sichtbar, wie aus x=-1 der Wert 2 auf der y-Achse wird" },
+    { "zitat": "Von der Achsenmarke 1 laeuft eine gestrichelte blaue Linie senkrecht zur Kurve und waagerecht zur y-Achse", "urteil": "dekoration", "warum": "gleiche Konstruktion wie eben in Orange, schon verstanden" },
+    { "zitat": "[Luecke][Luecke]|[Luecke]) ,[Luecke][Luecke]|[Luecke])", "urteil": "trug", "warum": "zeigt die Form 'X(x|y)', in die die Buchstaben und Zahlen nachher fallen" },
+    { "zitat": "Eine Kopie der orangen art1 loest sich aus der Zeile und fliegt in die Luecke", "urteil": "dekoration", "warum": "die Bewegung zeigt nur, dass 'art1' irgendwohin fliegt, was es bedeutet sagt sie mir nicht" },
+    { "zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange", "urteil": "trug", "warum": "verbindet endlich Rechnung und Bild direkt am Punkt, statt dass ich es mir zusammenreimen muss" },
+    { "zitat": "Beschriftung T(1−2) erscheint am Punkt (1|-2), blau", "urteil": "dekoration", "warum": "gleiches Prinzip wie bei H, schon verstanden" }
+  ],
+  "deutungen": [
+    { "symbol": "f''(x)", "was": "die zweite Ableitung, laut W5 einfach die Ableitung von f'", "wo": "steht als eigene Zeile unter dem Graphen", "quelle": "W5" },
+    { "symbol": "x_1, x_2", "was": "Namen/Nummerierung für die zwei Stellen mit f'=0 (-1 und 1)", "wo": "unter dem Graphen bei den Achsenmarken", "quelle": "B:'x_1=[-1 orange] x_2=[1 blau]'" },
+    { "symbol": "Farbcode orange/blau", "was": "orange steht immer für die Stelle -1, blau immer für die Stelle 1", "wo": "an Achsenmarken, Pfeilen, Kurvenstücken, Linien und Punkten", "quelle": "B:'die orange Achsenmarke −1' / 'die blaue Achsenmarke 1'" },
+    { "symbol": "art1 / art2", "was": "kann ich nicht deuten", "wo": "fliegt in die Zeile mit den Lücken in Wisch 5", "quelle": "B:'Eine Kopie der orangen art1 loest sich aus der Zeile'" },
+    { "symbol": "H(-1|2)", "was": "Kürzel für den Punkt, den ich 'Gipfel' nenne, mit seinen Koordinaten", "wo": "steht am Punkt (-1|2) im Graphen, orange", "quelle": "Z:2" },
+    { "symbol": "T(1|-2)", "was": "Kürzel für den Punkt, den ich 'Tal' nenne, mit seinen Koordinaten", "wo": "steht am Punkt (1|-2) im Graphen, blau", "quelle": "Z:2" }
+  ],
+  "zettel": [
+    "f(x)=x^3-3x, f'=3x^2-3, f''=6x (Potenzregel, W3+W5); nachgerechnet, stimmt.",
+    "x=-1: f''=-6<0 -> H(-1|2) 'Gipfel'; x=1: f''=6>0 -> T(1|-2) 'Tal' (Z:2 bestaetigt).",
+    "Offen (wie Z:3): warum f''-Vorzeichen Gipfel/Tal macht - nur gezeigt, nicht erklaert.",
+    "Unklar (Z:4): Fachwort fuer Gipfel/Tal; 'art1/art2' bei H/T-Label nicht deutbar."
+  ]
+}

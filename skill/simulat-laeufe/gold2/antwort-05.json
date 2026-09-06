@@ -1,0 +1,47 @@
+{
+  "schritte": [
+    {"text": "Neue Funktion h(x)=-x^3+3x, Graph zeichnet sich vor mir.", "quelle": "B:\"h(x)=-x^3+3x\""},
+    {"text": "notwendige Bedingung heisst wieder: Kandidat kommt aus Ableitung=0, wie bei g.", "quelle": "Z:3"},
+    {"text": "h'(x)=-3x^2+3 rechne ich nach: Potenzregel auf -x^3 gibt -3x^2, auf 3x gibt 3.", "quelle": "W:W3"},
+    {"text": "-3x^2+3=0 zu x^2=1 umgeformt kann ich nachrechnen: durch -3 teilen.", "quelle": "W:W2"},
+    {"text": "x^2=1 hat zwei Loesungen, x=1 oder x=-1 - genau die Regel, die ich kenne.", "quelle": "W:W2"},
+    {"text": "hinreichende Bedingung wieder mit h'' - das Wort kenne ich schon vom letzten Blatt.", "quelle": "Z:3"},
+    {"text": "h''(x)=-6x pruefe ich: Ableitung von -3x^2 ist -6x, von 3 ist 0.", "quelle": "W:W5"},
+    {"text": "h''(-1)=6>0 gibt Tiefpunkt - passt zu meiner Regel: positiv->Tief.", "quelle": "Z:2"},
+    {"text": "h''(1)=-6<0 gibt Hochpunkt - das ist neu, negativ->Hoch hab ich noch nie so gesehen.", "quelle": "B:\"Hochpunkt(fett: H)\""},
+    {"text": "y-Wert kommt aus h(x), nicht aus h'(x) oder h''(x) - wie auf meinem Zettel.", "quelle": "Z:2"},
+    {"text": "h(-1)=-(-1)^3+3(-1)=1-3=-2 rechne ich nach: (-1)^3=-1, minus davon ist 1, plus -3 ist -2.", "quelle": "W:W2"},
+    {"text": "Punkt (-1|-2) - die Schreibweise P(x|y) kenn ich.", "quelle": "W:W1"},
+    {"text": "h(1)=-1+3=2 passt, symmetrisch zur ersten Rechnung.", "quelle": "W:W2"},
+    {"text": "T(-1|-2) und H(1|2) - jetzt hab ich beide Typen an einer Funktion, nicht nur einen wie bei g.", "quelle": "B:\"[T(-1 | -2) orange] ,[H(1 | 2) blau]\""}
+  ],
+  "stockstellen": [
+    {"art": "vorstellung", "zitat": "Graph zeichnet sich: h(x) = −x³ + 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "warum": "ich sehe nur den fertigen Graphen, keine Wertetabelle oder Zwischenschritte, wie er entsteht"},
+    {"art": "glauben", "zitat": "h''([1 blau])=-6<0→ Hochpunkt(fett: H)", "warum": "warum negatives h'' einen Hochpunkt bedeutet, wird nicht erklaert, ich uebernehme es nur wie bei Tiefpunkt"},
+    {"art": "skip", "zitat": "[Kleine Marke, Kapitaelchen:]", "warum": "dieselbe Formatierungs-Anweisung kommt in jedem Wisch, ich lese sie nur noch als Signal fuer neue Zeile"},
+    {"art": "skip", "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.", "warum": "steht fast gleich viermal da, ich achte nur noch auf den Inhalt der Zeile, nicht mehr auf das Erscheinen selbst"},
+    {"art": "vorstellung", "zitat": "[Serienfall]", "warum": "das Wort steht nur da, ich weiss nicht, was es mir zeigen soll oder wo im Bild ich es sehen wuerde"}
+  ],
+  "bewegungen": [
+    {"zitat": "Graph zeichnet sich: h(x) = −x³ + 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "urteil": "trug", "warum": "zeigt mir die Form der Kurve, die ich sonst aus der Formel muehsam haette skizzieren muessen"},
+    {"zitat": "Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.", "urteil": "trug", "warum": "verbindet die Loesung x=-1 sichtbar mit der Stelle auf der Achse, sonst haette ich das selbst suchen muessen"},
+    {"zitat": "Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.", "urteil": "trug", "warum": "zeigt mir, dass genau dieses x in h'' eingesetzt wird, sonst haette ich raten muessen welches x gemeint ist"},
+    {"zitat": "Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.", "urteil": "trug", "warum": "ich sehe die Kurve dort wie ein Tal geformt, das erklaert mir Tiefpunkt ohne dass es gesagt wird"},
+    {"zitat": "Im Graphen leuchtet das Kurvenstueck um x = 1 dick blau auf.", "urteil": "trug", "warum": "ich sehe dort einen Huegel, das passt zu Hochpunkt, auch ohne Erklaerung des Wortes"},
+    {"zitat": "Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −2.", "urteil": "trug", "warum": "zeigt mir genau, wie aus x=-1 der y-Wert -2 am Graphen abgelesen wird"},
+    {"zitat": "Ein oranger Punkt landet bei (-1|-2) in h(x) = −x³ + 3x.", "urteil": "trug", "warum": "bestaetigt die Schreibweise P(x|y), die ich schon kenne, direkt am Graphen"},
+    {"zitat": "Beschriftung T(−1|−2) erscheint am Punkt (-1|-2), orange.", "urteil": "dekoration", "warum": "sagt mir nichts Neues, das ich nicht schon aus der Rechnung und der Zettel-Regel wusste"},
+    {"zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.", "urteil": "dekoration", "warum": "das Erscheinen selbst zeigt mir nichts, nur der Inhalt der Zeile zaehlt"}
+  ],
+  "deutungen": [
+    {"symbol": "Hochpunkt / H", "was": "ein Punkt, an dem h'' negativ ist - Gegenstueck zum Tiefpunkt", "wo": "am Punkt (1|2), fett blaues H", "quelle": "B:\"Hochpunkt(fett: H)\""},
+    {"symbol": "Kandidaten (zwei)", "was": "die zwei Loesungen x=-1 und x=1 aus h'=0, beide moegliche Hoch- oder Tiefpunkte", "wo": "als orange -1 und blaue 1 auf der x-Achse", "quelle": "Z:3"},
+    {"symbol": "Serienfall", "was": "kann ich nicht deuten", "wo": "kann ich nicht deuten", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "Muster jetzt an 2 Kandidaten bestaetigt: h'=0->x=-1,x=1 (notwendig).",
+    "h''(-1)=6>0->Tief T(-1|-2); h''(1)=-6<0->Hoch H(1|2). y aus h(x).",
+    "Vorzeichen h'' entscheidet H/T: + -> Tief, - -> Hoch. Warum? unklar.",
+    "Kurvenstueck an T faellt/steigt wie Tal, an H wie Huegel - aber Begriff fehlt."
+  ]
+}

@@ -1,0 +1,449 @@
+{
+ "film": "Kurvendiskussion: Definitions- und Wertebereich",
+ "thema": "Definitionsbereich und Wertebereich",
+ "blaetter": 6,
+ "transfer": [
+  {
+   "id": "T1",
+   "aufgabe": "Definitionsbereich von f(x)=3/(x+5).",
+   "erwartet": [
+    "x≠-5"
+   ],
+   "loesung": "D_f: x∈R, x≠-5",
+   "quelle": "W:W2|W:W4",
+   "richtig": true,
+   "teilweise": true
+  },
+  {
+   "id": "T2",
+   "aufgabe": "Definitionsbereich von g(x)=sqrt(x-2).",
+   "erwartet": [
+    "x≥2"
+   ],
+   "loesung": "kann ich nicht sicher bestimmen",
+   "quelle": "W:W3",
+   "richtig": false,
+   "teilweise": false
+  },
+  {
+   "id": "T3",
+   "aufgabe": "Definitionsbereich von h(x)=log(x+1).",
+   "erwartet": [
+    "x>-1"
+   ],
+   "loesung": "kann ich nicht sicher bestimmen",
+   "quelle": "W:W3",
+   "richtig": false,
+   "teilweise": false
+  },
+  {
+   "id": "T4",
+   "aufgabe": "Wertebereich von k(x)=(x-2)^2+1.",
+   "erwartet": [
+    "y≥1"
+   ],
+   "loesung": "W_k: y∈ℝmid ygeq1",
+   "quelle": "regel|Z:2|W:W5",
+   "richtig": true,
+   "teilweise": true
+  }
+ ],
+ "transfer_bestanden": false,
+ "regeln": [
+  "Wenn eine Parabel nach oben geöffnet ist, kommt sie nie tiefer als ihr tiefster Punkt, also sind alle y-Werte mindestens so groß wie die y-Koordinate dieses tiefsten Punkts.",
+  "Wenn eine Parabel nach unten geöffnet ist, kommt sie nie höher als ihr höchster Punkt, also sind alle y-Werte höchstens so groß wie die y-Koordinate dieses höchsten Punkts."
+ ],
+ "fehlregeln": [
+  {
+   "id": "F6",
+   "text": "Verboten sind nur Zahlen, die den Nenner null machen; Wurzel und Logarithmus haben keine Einschraenkung.",
+   "ergebnis": "passt zu allen gesehenen Beispielen",
+   "ungebrochen": true
+  },
+  {
+   "id": "F7",
+   "text": "Bei einem Nenner x-a ist x=a eine Nullstelle des Graphen (ein Punkt auf der x-Achse), keine Luecke.",
+   "ergebnis": "passt zu allen gesehenen Beispielen",
+   "ungebrochen": true
+  },
+  {
+   "id": "F8",
+   "text": "Der Wertebereich ist immer nach unten begrenzt (y groesser gleich tiefster Punkt).",
+   "ergebnis": "widerlegt, Gegenbeispiel belegt",
+   "zitat": "Ihr höchster Punkt liegt bei H(1|3). Höher kommt die Kurve nicht. ... W_f: y∈ℝmid yleq3",
+   "ungebrochen": false
+  },
+  {
+   "id": "F9",
+   "text": "Der Wertebereich ist die Menge der x-Werte, die man einsetzen darf.",
+   "ergebnis": "widerlegt, Gegenbeispiel belegt",
+   "zitat": "Wie lautet der Wertebereich in der gewohnten Schreibweise? ... W_f: y∈ℝmid yleq3",
+   "ungebrochen": false
+  },
+  {
+   "id": "F14",
+   "text": "Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe).",
+   "ergebnis": "passt zu allen gesehenen Beispielen",
+   "ungebrochen": true
+  }
+ ],
+ "erste_klasse": {
+  "transfer_falsch": [
+   "T2 (kann ich nicht sicher bestimmen statt x≥2)",
+   "T3 (kann ich nicht sicher bestimmen statt x>-1)"
+  ],
+  "fehlregeln_ungebrochen": [
+   "F6: Verboten sind nur Zahlen, die den Nenner null machen; Wurzel und Logarithmus haben keine Einschraenkung. [passt zu allen gesehenen Beispielen]",
+   "F7: Bei einem Nenner x-a ist x=a eine Nullstelle des Graphen (ein Punkt auf der x-Achse), keine Luecke. [passt zu allen gesehenen Beispielen]",
+   "F14: Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe). [passt zu allen gesehenen Beispielen]"
+  ],
+  "deutung_unmoeglich": [
+   "Blatt 1: Definitionsbereich und Wertebereich",
+   "Blatt 1: Symmetrieverhalten",
+   "Blatt 2: ganzrationale Funktion",
+   "Blatt 2: e",
+   "Blatt 2: Funktionsscharen",
+   "Blatt 3: mid",
+   "Blatt 4: mid / geq",
+   "Blatt 5: Funktion vierten Grades",
+   "Blatt 5: x⁴",
+   "Blatt 5: H",
+   "Blatt 5: mid",
+   "Blatt 6: f(x) = −(x−1)² + 3",
+   "Blatt 6: mid",
+   "Schluss: mid"
+  ]
+ },
+ "fremdvokabular": [
+  "tiefer",
+  "mindestens",
+  "koordinate",
+  "tiefsten",
+  "punkts",
+  "höchstens",
+  "höchsten",
+  "ausgeschlossen",
+  "meinem",
+  "wissen",
+  "gesicherte",
+  "bestimmen",
+  "meiner"
+ ],
+ "zweite_klasse": {
+  "stockstellen": 38,
+  "glauben": 6,
+  "ungedeckte_schritte": "3 von 61",
+  "skips": 2,
+  "ruecksprung": 3,
+  "vorstellung": 6,
+  "rechenfehler": 0,
+  "lastmarken": 8,
+  "verwechslung": 4
+ },
+ "bewegungen": {
+  "trug": [
+   "Blatt 2: [Randnotiz, klein:]",
+   "Blatt 4: [Graph zeichnet sich: f(x) = x² + 4, x von -4 bis 4, y von -1 bis 12.]",
+   "Blatt 4: [Ein oranger Punkt landet bei (0|4), Beschriftung T(0|4).]",
+   "Blatt 4: [Eine waagerechte Linie bei y = 4 mit Beschriftung y = 4 erscheint.]",
+   "Blatt 4: [Der Bereich oberhalb von y = 4 wird schraffiert, Beschriftung Wertebereich: y ≥",
+   "Blatt 5: [Graph zeichnet sich: f(x) = x⁴ − 2x², x von -2 bis 2, y von -1.5 bis 4.]",
+   "Blatt 5: [Ein oranger Punkt landet bei (-1|-1), Beschriftung T₁(−1|−1).]",
+   "Blatt 5: [Ein oranger Punkt landet bei (1|-1), Beschriftung T₂(1|−1).]",
+   "Blatt 5: [Ein oranger Punkt landet bei (0|0), Beschriftung H(0|0).]",
+   "Blatt 5: [Eine waagerechte Linie bei y = -1 mit Beschriftung y = −1 erscheint.]",
+   "Blatt 6: [Graph zeichnet sich: f(x) = −(x−1)² + 3, x von -3 bis 5, y von -6 bis 4.]",
+   "Blatt 6: [Ein oranger Punkt landet bei (1|3), Beschriftung H(1|3).]",
+   "Blatt 6: [Eine waagerechte Linie bei y = 3 mit Beschriftung y = 3 erscheint.]"
+  ],
+  "dekoration": [
+   "Blatt 2: [Tabelle erscheint als Ganzes.]",
+   "Blatt 3: [Kleine Marke, Kapitaelchen:] Definitionsbereich",
+   "Blatt 5: [gelb hinterlegt:]"
+  ]
+ },
+ "flags": [
+  "Blatt 1: Satzlaenge 19: „Vier Gesichtspunkte gehören dazu: • Definitionsbereich und W\"",
+  "Blatt 1: Rechenlast: 10 Schritte auf einem Blatt",
+  "Blatt 2: Rechenlast: 9 Schritte auf einem Blatt",
+  "Blatt 3: Rechenlast: 9 Schritte auf einem Blatt",
+  "Blatt 4: Rechenlast: 14 Schritte auf einem Blatt",
+  "Blatt 5: Rechenlast: 11 Schritte auf einem Blatt"
+ ],
+ "zettel_je_blatt": [
+  [
+   "Kurvendiskussion: eine Funktion wird unter mehreren Gesichtspunkten untersucht.",
+   "4 Punkte: Def./Wertebereich(?), Graph/Skizze, Symmetrie(?), Nullstellen+y-Punkt.",
+   "Skizze kenne ich von Graphen (W1); Nullstellen vermutlich f(x)=0 loesen (W2).",
+   "Definitionsbereich, Wertebereich, Symmetrieverhalten: neue Woerter, unklar."
+  ],
+  [
+   "Kurvendisk.: 4 Punkte - Def/Wertebereich?, Skizze, Symmetrie?, Nullstellen+y.",
+   "Viele Typen: ganzrational, gebrochenrational, Exponential-, Wurzel-, Log-Fkt.",
+   "e (Exponentialfkt.) kenn ich nicht; Wurzel/Log kenne ich vom TR (W3).",
+   "Typen mischbar: e^2x*(x+4)^2. Funktionsscharen = neues unklares Wort."
+  ],
+  [
+   "Definitionsbereich = welche x-Werte erlaubt sind (neu, vorher nicht gekannt).",
+   "Beispiel: 1/(x-4), x=4 verboten weil Nenner dann 0 wird (durch 0 nicht teilbar).",
+   "D_f evtl. 'Definitionsbereich von f'; ∈/ℝ noch unsicher gedeutet (geraten).",
+   "Wurzel/Log schränken Def.bereich auch ein, aber ohne Beispiel/Bild - unklar warum."
+  ],
+  [
+   "Wertebereich = welche y-Werte eine Funktion annimmt (neu, Gegenstück zu Def.bereich).",
+   "Beispiel: f(x)=x²+4, Punkt (0|4) markiert 'T', Bereich y≥4 farbig markiert.",
+   "Formel W_f: y∈ℝ...(mid/geq unklar), keine geschw. Klammern wie sonst erwartet.",
+   "T statt P bei Punkt unklar; 'Untersuchung' unklar; W_f zeigt sich oft erst spät."
+  ],
+  [
+   "Wertebereich=mögliche y-Werte. Neu: 2 Tiefpunkte teilen sich 1 Grenze (y≥-1).",
+   "T-Punkte: T1,T2 unten (Tiefpunkte, wie Z:4 vermutet); H(0|0) oben - Bedeutung offen.",
+   "Formel W_f: y∈ℝ mid y≥-1 - 'mid' immer noch unklar (schon in Z:3); ≥ kenne ich aus W2.",
+   "Graph zeigt nur x=-2..2, y bis 4; ob's oben wirklich 'keine Grenze' gibt, sehe ich nicht."
+  ],
+  [
+   "NEU: unten offene Parabel -> Hochpunkt H -> W_f: y≤Wert (Blatt6: y≤3, H(1|3)).",
+   "Gesamtregel: oben offen->Tiefpunkt->y≥Wert; unten offen->Hochpunkt->y≤Wert.",
+   "H = Hochpunkt (löst alte Frage zu H(0|0) aus Z:2, dort wohl auch ein Hochpunkt).",
+   "'mid' weiterhin unklar (schon 2x in Formel gesehen, Bedeutung nicht erklärt)."
+  ]
+ ],
+ "morgen": [],
+ "schluss": {
+  "kann": "Ich kann jetzt bei einer Parabel am Öffnungsverhalten (oben oder unten) erkennen, ob der Wertebereich vom tiefsten Punkt aus nach oben (y≥...) oder vom höchsten Punkt aus nach unten (y≤...) begrenzt ist.",
+  "morgen": "Morgen wüsste ich noch aus meinem Zettel: die Gesamtregel (oben offen -> Tiefpunkt -> y≥Wert; unten offen -> Hochpunkt -> y≤Wert), dass H für Hochpunkt steht, und dass mir die Bedeutung von 'mid' weiterhin unklar ist."
+ },
+ "stockstellen": [
+  {
+   "blatt": 1,
+   "art": "glauben",
+   "zitat": "Ich nehme an, dass die vier Punkte später einzeln genauer erklärt werden, weil dieses Blatt keine Frage stellt.",
+   "warum": "Schritt ohne belegte Quelle (keine)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 1,
+   "art": "lastmarke",
+   "zitat": "Definitionsbereich und Wertebereich",
+   "warum": "unerklärtes Fachwort, das laut meinem Wissen gar nicht existiert"
+  },
+  {
+   "blatt": 1,
+   "art": "lastmarke",
+   "zitat": "Symmetrieverhalten",
+   "warum": "neues Fachwort, auf diesem Blatt nicht erklärt"
+  },
+  {
+   "blatt": 1,
+   "art": "vorstellung",
+   "zitat": "Vier Gesichtspunkte gehören dazu:",
+   "warum": "keine Skizze oder Beispielfunktion, an der ich mir die vier Punkte vorstellen könnte"
+  },
+  {
+   "blatt": 1,
+   "art": "glauben",
+   "zitat": "Eine Kurvendiskussion untersucht eine Funktion unter mehreren Gesichtspunkten.",
+   "warum": "ich nehme den Satz hin, ohne ihn selbst nachvollziehen zu können"
+  },
+  {
+   "blatt": 1,
+   "art": "raten",
+   "zitat": "y-Achsenschnittpunkt",
+   "warum": "ich vermute P(0|f(0)), aber sicher weiß ich es aus diesem Blatt nicht"
+  },
+  {
+   "blatt": 2,
+   "art": "glauben",
+   "zitat": "Exponentialfunktion mit e^2x - das e kenn ich gar nicht, weder vom Taschenrechner noch sonst woher.",
+   "warum": "Schritt ohne belegte Quelle (keine)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 2,
+   "art": "stocken",
+   "zitat": "f(x)=e^2x",
+   "warum": "das Zeichen e ist mir völlig unbekannt, ich weiß nicht, was das für eine Zahl oder Operation ist"
+  },
+  {
+   "blatt": 2,
+   "art": "lastmarke",
+   "zitat": "ganzrationale Funktion",
+   "warum": "unerklärtes Fachwort, ich kann mir unter 'ganzrational' nichts vorstellen"
+  },
+  {
+   "blatt": 2,
+   "art": "lastmarke",
+   "zitat": "gebrochenrationale Funktion",
+   "warum": "unerklärtes Fachwort, nur über den Bruch im Beispiel zu erahnen"
+  },
+  {
+   "blatt": 2,
+   "art": "vorstellung",
+   "zitat": "f(x)=e^2x·(x+4)^2",
+   "warum": "es wird nicht gezeigt, wie man zwei Funktionstypen zusammensetzt, nur das fertige Ergebnis steht da"
+  },
+  {
+   "blatt": 2,
+   "art": "lastmarke",
+   "zitat": "Funktionsscharen",
+   "warum": "komplett neues Fachwort ohne jede Erklärung, nur in einer Randnotiz erwähnt"
+  },
+  {
+   "blatt": 2,
+   "art": "skip",
+   "zitat": "Bei fortgeschrittenen Aufgaben werden solche Funktionen zu Funktionsscharen erweitert.",
+   "warum": "klein und als Randnotiz markiert, wirkt nicht wichtig für jetzt, ich lese schnell drüber"
+  },
+  {
+   "blatt": 3,
+   "art": "glauben",
+   "zitat": "Der Definitionsbereich legt fest, welche x-Werte eingesetzt werden dürfen.",
+   "warum": "Das Thema kannte ich vorher nicht, ich kann den Satz nicht selbst prüfen, ich nehme ihn einfach hin."
+  },
+  {
+   "blatt": 3,
+   "art": "ruecksprung",
+   "zitat": "Definitionsbereich",
+   "warum": "Ich musste zu Z:1 zurück, wo 'Def/Wertebereich?' mit Fragezeichen stand, um das Wort einzuordnen."
+  },
+  {
+   "blatt": 3,
+   "art": "stocken",
+   "zitat": "x∈ℝmid x≠4",
+   "warum": "'mid' klebt ohne Abstand zwischen ℝ und x, das sieht wie ein Fehler aus, kein Wort, das ich kenne."
+  },
+  {
+   "blatt": 3,
+   "art": "lastmarke",
+   "zitat": "Der Definitionsbereich legt fest, welche x-Werte eingesetzt werden dürfen.",
+   "warum": "Ein neuer, unerklärter Fachbegriff gleich im ersten Satz macht ihn schwer."
+  },
+  {
+   "blatt": 3,
+   "art": "vorstellung",
+   "zitat": "• Wurzeln • Logarithmus",
+   "warum": "Es gibt kein Beispiel oder Bild dazu, warum Wurzel oder Logarithmus den Definitionsbereich einschränken, nur beim Bruch wurde es vorgerechnet."
+  },
+  {
+   "blatt": 3,
+   "art": "raten",
+   "zitat": "D_f",
+   "warum": "Steht nicht extra erklärt da, ich errate aus der Nähe zum Wort 'Definitionsbereich', dass D_f die Abkürzung dafür ist."
+  },
+  {
+   "blatt": 4,
+   "art": "raten",
+   "zitat": "Beschriftung T(0|4)",
+   "warum": "T wird nirgends erklärt, ich vermute nur wegen W5, dass es der tiefste Punkt ist."
+  },
+  {
+   "blatt": 4,
+   "art": "verwechslung",
+   "zitat": "T(0|4)",
+   "warum": "Ich kenne Punkte nur als P(x|y) aus W1, T ist ein neuer Buchstabe ohne Erklärung."
+  },
+  {
+   "blatt": 4,
+   "art": "stocken",
+   "zitat": "W_f: y∈ℝmid ygeq4",
+   "warum": "'mid' und 'geq' sehen aus wie Wörter oder Fehler, ich kann die Formel so nicht lesen."
+  },
+  {
+   "blatt": 4,
+   "art": "verwechslung",
+   "zitat": "W_f: y∈ℝmid ygeq4",
+   "warum": "Ich hatte geschweifte Klammern wie bei der Mengenschreibweise aus W4 erwartet, hier fehlen sie."
+  },
+  {
+   "blatt": 4,
+   "art": "lastmarke",
+   "zitat": "Er zeigt sich meist erst am Ende der Untersuchung.",
+   "warum": "'Untersuchung' ist ein Fachwort, das hier nicht erklärt wird."
+  },
+  {
+   "blatt": 4,
+   "art": "vorstellung",
+   "zitat": "Der Wertebereich ist oft schwer zu erkennen.",
+   "warum": "Es fehlt ein Beispiel oder Bild, wann er schwer zu erkennen ist, das kann ich mir nicht vorstellen."
+  },
+  {
+   "blatt": 5,
+   "art": "lastmarke",
+   "zitat": "Funktion vierten Grades",
+   "warum": "unerklärtes Fachwort, von 'Grad' einer Funktion steht nichts in meinem Wissen."
+  },
+  {
+   "blatt": 5,
+   "art": "vorstellung",
+   "zitat": "Nach oben gibt es keine Grenze.",
+   "warum": "der Graph zeigt nur x bis ±2 und y bis 4; was jenseits davon passiert, sehe ich nicht, das muss ich mir nur einbilden."
+  },
+  {
+   "blatt": 5,
+   "art": "ruecksprung",
+   "zitat": "W_f: y∈ℝmid y≥-1",
+   "warum": "ich springe zu Z:3 zurück, wo genau dieses 'mid' schon einmal als unklar notiert war."
+  },
+  {
+   "blatt": 5,
+   "art": "raten",
+   "zitat": "H(0|0)",
+   "warum": "ich rate, dass H für einen Hochpunkt steht, weil er zwischen T1 und T2 liegt, aber das Blatt sagt es nicht."
+  },
+  {
+   "blatt": 5,
+   "art": "verwechslung",
+   "zitat": "T₁(−1|−1)",
+   "warum": "der Index 1 gehört zum x-Wert -1 und Index 2 zum x-Wert 1 - das lässt sich leicht vertauschen."
+  },
+  {
+   "blatt": 5,
+   "art": "skip",
+   "zitat": "(Aufloesung)",
+   "warum": "das Wort steht nur als Überschrift, kostet mich aber Prosa-Aufwand ohne eigenen Inhalt, also überspringe ich es."
+  },
+  {
+   "blatt": 6,
+   "art": "glauben",
+   "zitat": "Damit scheint die Regel zu sein: Tiefpunkt gibt ≥, Hochpunkt gibt ≤ - aber ob das immer so ist, weiß ich nicht sicher.",
+   "warum": "Schritt ohne belegte Quelle (keine)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 6,
+   "art": "raten",
+   "zitat": "Gilt die gleiche Regel auch bei einer nach unten geöffneten Parabel?",
+   "warum": "ich vermute nur, dass mit 'Regel' die Bauweise der W_f-Formel aus Z:3 gemeint ist - explizit steht das nicht da."
+  },
+  {
+   "blatt": 6,
+   "art": "vorstellung",
+   "zitat": "f(x) = −(x−1)² + 3",
+   "warum": "warum der Scheitel genau bei x=1 liegt (wegen der Klammer (x−1)²), wird nicht gezeigt, nur der fertige Punkt H(1|3)."
+  },
+  {
+   "blatt": 6,
+   "art": "ruecksprung",
+   "zitat": "Ihr höchster Punkt liegt bei H(1|3).",
+   "warum": "ich schaue zurück zu Z:2, wo H(0|0) mit 'Bedeutung offen' notiert war, um zu prüfen ob es dasselbe H ist."
+  },
+  {
+   "blatt": 6,
+   "art": "verwechslung",
+   "zitat": "W_f: y∈ℝmid yleq3",
+   "warum": "auf dem alten Zettel (Z:3) stand 'y≥-1' mit echtem Zeichen, hier steht 'yleq3' ausgeschrieben - sieht anders aus, bin nicht sicher ob's dasselbe meint."
+  },
+  {
+   "blatt": 6,
+   "art": "stocken",
+   "zitat": "y∈ℝmid yleq3",
+   "warum": "'mid' war schon in Z:3 unklar und bleibt es - keine neue Erklärung auf diesem Blatt."
+  },
+  {
+   "blatt": 6,
+   "art": "glauben",
+   "zitat": "Tiefpunkt gibt ≥, Hochpunkt gibt ≤",
+   "warum": "das ist meine eigene Verallgemeinerung aus nur zwei Beispielen, auf dem Blatt steht keine allgemeine Regel dafür."
+  }
+ ]
+}

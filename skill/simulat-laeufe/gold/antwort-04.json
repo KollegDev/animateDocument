@@ -1,0 +1,46 @@
+{
+  "schritte": [
+    {"text": "g(x)=x²-4x ist eine neue Funktion, aber das Blatt macht offenbar wieder dasselbe wie vorher.", "quelle": "B:Geht das bei g genauso?"},
+    {"text": "Ich sehe den Graphen von g, eine Parabel - lese ihn wie f vorher, x eingesetzt gibt y.", "quelle": "W:W1"},
+    {"text": "notwendige Bedingung: g'(x)=0 - dieses Wort kenne ich nicht, ich weiß nur, dass g' gesucht wird.", "quelle": "B:notwendige Bedingung: g'(x)=0"},
+    {"text": "g'(x)=2x-4 kann ich selbst nachrechnen: Ableitung von x² ist 2x, von -4x ist -4.", "quelle": "W:W3"},
+    {"text": "2x-4=0 löse ich: 2x=4, x=2 - passt zu x_1=2 im Blatt.", "quelle": "W:W2"},
+    {"text": "Die Kopie der 2 fliegt zur x-Achse - das ist derselbe x-Wert, den ich gerade ausgerechnet habe.", "quelle": "B:Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig."},
+    {"text": "hinreichende Bedingung: g''≠0 - das Wort kenne ich schon von früher, aber warum das reicht, weiß ich immer noch nicht.", "quelle": "Z:1"},
+    {"text": "g''(x)=2, weil g'' die Ableitung von g'=2x-4 ist: Ableitung von 2x ist 2, von -4 ist 0.", "quelle": "W:W5"},
+    {"text": "g''(2)=2>0 → T. Das passt zu meiner alten Regel: positiv heißt T.", "quelle": "Z:2"},
+    {"text": "y-Werte: y=g(x) - der y-Wert kommt aus der Funktion selbst, genau wie ich es notiert habe.", "quelle": "Z:3"},
+    {"text": "g(2)=2²-4·2=4-8=-4 - das kann ich in zwei Schritten nachrechnen.", "quelle": "W:W2"},
+    {"text": "Der Punkt (2|-4) liegt auf der Kurve - die Punktform P(x|y) kenne ich.", "quelle": "W:W1"},
+    {"text": "T(2|-4) - die Beschriftung passt zum Muster T(1|-2), das ich schon auf dem Zettel habe.", "quelle": "Z:3"}
+  ],
+  "stockstellen": [
+    {"art": "lastmarke", "zitat": "notwendige Bedingung: g'(x)=0", "warum": "unerklärtes Fachwort, das weder auf meinem Zettel noch in meinem Wissen (W1-W8) steht"},
+    {"art": "glauben", "zitat": "hinreichende Bedingung: g''(x)≠ 0", "warum": "ich weiß aus Z:1 immer noch nicht, warum das reicht - ich nehme es nur wieder hin"},
+    {"art": "skip", "zitat": "x_1=[2 orange]", "warum": "warum der Index 1, wenn nur eine Lösung auftaucht, denke ich nicht weiter darüber nach"},
+    {"art": "vorstellung", "zitat": "Tiefpunkt(fett: T)", "warum": "warum das Vorzeichen von g'' über Hoch- oder Tiefpunkt entscheidet, kann ich mir nicht herleiten, nur wiedererkennen"}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: g(x) = x² − 4x, x von -1.2 bis 5.2, y von -5 bis 3.]", "urteil": "trug", "warum": "zeigt mir die Form der Parabel, die ich aus dem Term allein nicht sicher wüsste"},
+    {"zitat": "[Chip fuer Chip in Leserichtung:] 2x-4=0 ⟺ x_1=[2 orange]", "urteil": "dekoration", "warum": "zeigt die Gleichung nur häppchenweise, ich hätte sie auch am Stück lesen können"},
+    {"zitat": "[Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig.]", "urteil": "trug", "warum": "zeigt mir, wo x=2 auf der x-Achse des Graphen liegt, ohne dass ich selbst suchen muss"},
+    {"zitat": "[Ein oranger Pfeil zieht sich langsam von der 2 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile.]", "urteil": "dekoration", "warum": "zeigt nur, dass dieselbe Zahl eingesetzt wird - das weiß ich schon aus Z:2"},
+    {"zitat": "[Im Graphen leuchtet das Kurvenstueck um x = 2 dick orange auf.]", "urteil": "trug", "warum": "zeigt mir die Stelle auf der echten Kurve, die zum Tiefpunkt gehört"},
+    {"zitat": "[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von 2 durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile.]", "urteil": "dekoration", "warum": "wieder nur dieselbe Zahl weitergereicht, nichts, was ich nicht schon wüsste"},
+    {"zitat": "[Von der Achsenmarke 2 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −4.]", "urteil": "dekoration", "warum": "zeigt nur, was ich schon selbst ausgerechnet habe (g(2)=-4)"},
+    {"zitat": "[Ein oranger Punkt landet bei (2|-4) in g(x) = x² − 4x.]", "urteil": "trug", "warum": "zeigt mir genau, wo der Punkt auf der Kurve liegt - das musste ich mir sonst vorstellen"},
+    {"zitat": "[Beschriftung T(2|−4) erscheint am Punkt (2|-4), orange.]", "urteil": "dekoration", "warum": "bestätigt nur das Muster T(x|y), das ich schon von Z:3 kenne"}
+  ],
+  "deutungen": [
+    {"symbol": "notwendige Bedingung", "was": "kann ich nicht deuten", "wo": "kleine Kapitälchen-Marke über der Zeile g'(x)=2x-4", "quelle": "kann ich nicht deuten"},
+    {"symbol": "hinreichende Bedingung", "was": "eine Bedingung, die mit g''≠0 geprüft wird - warum sie 'hinreichend' heißt, bleibt unklar", "wo": "kleine Kapitälchen-Marke über der Zeile g''(x)=2", "quelle": "Z:1"},
+    {"symbol": "T", "was": "Abkürzung für Tiefpunkt", "wo": "in der Klammer '→ Tiefpunkt(fett: T)' und als Beschriftung am Punkt (2|-4)", "quelle": "Z:2"},
+    {"symbol": "x_1", "was": "kann ich nicht deuten", "wo": "in der Zeile 2x-4=0 ⟺ x_1=2", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "notwendige Bedingung: g'(x)=0 finden (neues Wort, kann ich nicht deuten).",
+    "hinreichende Bedingung g''≠0 wieder da - warum das reicht bleibt weiter unklar.",
+    "Muster bestaetigt: g''(2)=2>0→T(2|-4), y-Wert aus g(x), wie bei f (Z2/Z3).",
+    "Rechtskurve/Linkskurve weiter unklar; x_1-Index unklar, wenn nur eine Loesung da ist."
+  ]
+}

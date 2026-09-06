@@ -1,0 +1,59 @@
+{
+  "schritte": [
+    {"text": "Oben steht eine neue kleine Ueberschrift: es geht jetzt um Faelle mit e^x, nicht mehr nur um Potenzen.", "quelle": "B:\"Und wenn eˣ drinsteckt?\""},
+    {"text": "m(x)=x·eˣ ist einfach eine neue Funktion wie vorher h(x); der Buchstabe wechselt, das Prinzip bleibt: m(x) ist der y-Wert an der Stelle x.", "quelle": "W:W1"},
+    {"text": "Waehrend sich der Graph zeichnet, sehe ich schon vor jeder Rechnung: irgendwo links von 0 gibt es einen Einbruch nach unten und dann steigt die Kurve wieder.", "quelle": "B:\"Graph zeichnet sich: m(x) = x·eˣ, x von -4.6 bis 1.1, y von -0.8 bis 1.6.\""},
+    {"text": "notwendige Bedingung m'(x)=0 - das kenne ich schon vom letzten Blatt: erst ableiten, dann gleich Null setzen.", "quelle": "Z:1"},
+    {"text": "m'(x)=1·e^x+x·e^x=(1+x)·e^x - wie man von x·e^x genau auf diese Ableitung kommt, wird nicht gezeigt; ich uebernehme die Formel einfach.", "quelle": "keine"},
+    {"text": "(1+x)·e^x=0 wird zu 1+x=0, weil ein Produkt nur Null ist, wenn ein Faktor Null ist - das kenne ich vom Ausklammern.", "quelle": "W:W2"},
+    {"text": "x_1=-1 ist die einzige Loesung; der Index 1 heisst nur, es koennte noch mehr Loesungen geben, genau wie auf dem Zettel notiert.", "quelle": "Z:1"},
+    {"text": "Die orange -1 fliegt zur x-Achse und macht dort die Marke kraeftig - das zeigt mir direkt, wo dieser x-Wert im Bild liegt, ohne dass ich selbst suchen muss.", "quelle": "B:\"Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.\""},
+    {"text": "hinreichende Bedingung m''(x)≠0 kenne ich auch schon: zweite Ableitung bilden und das Vorzeichen pruefen.", "quelle": "Z:2"},
+    {"text": "m''(x)=(2+x)·e^x wird wieder ohne Zwischenschritt hingeschrieben; wie man von m' dahin kommt, sehe ich nicht.", "quelle": "keine"},
+    {"text": "m''(-1)=1·e^-1≈0,37>0, also Tiefpunkt - positives Vorzeichen heisst T, genau wie auf dem Zettel notiert.", "quelle": "Z:2"},
+    {"text": "Der orange Pfeil von der -1 oben bis zur Klammer bei m'' unten zeigt mir genau, dass hier dieselbe Zahl -1 eingesetzt wird - das muesste ich sonst selbst nachvollziehen.", "quelle": "B:\"Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.\""},
+    {"text": "Das dick orange aufleuchtende Kurvenstueck bei x=-1 verbindet die Rechnung mit genau der Stelle, die ich vorhin schon als Einbruch im Graph gesehen habe.", "quelle": "B:\"Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.\""},
+    {"text": "y-Werte: y=m(x) - auch das kenne ich schon, der y-Wert eines Punktes ist einfach der Funktionswert.", "quelle": "Z:3"},
+    {"text": "m(-1)=-1·e^-1≈-0,37 - das kann ich kurz nachrechnen: -1 mal 0,37 ist -0,37.", "quelle": "W:W8"},
+    {"text": "Die gestrichelte Linie von der Achsenmarke -1 zur Kurve und dann waagerecht zur y-Achse zeigt mir, wie man von einem x-Wert auf der Kurve zum y-Wert an der Achse kommt.", "quelle": "B:\"Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −0,37.\""},
+    {"text": "Der Punkt (-1|-0,37) bzw. T(-1|-0,37) ist die Punktschreibweise, die ich schon kenne: P(x|y).", "quelle": "W:W1"},
+    {"text": "Der fertige Punkt heisst T ohne Index, weil es hier nur einen Tiefpunkt gibt - Index braucht man laut Zettel nur bei mehreren gleichnamigen Punkten.", "quelle": "Z:1"},
+    {"text": "Oben taucht wieder [Serienfall] auf - das Wort hatte ich schon auf dem letzten Zettel als unbekannt notiert und verstehe es immer noch nicht.", "quelle": "Z:4"}
+  ],
+  "stockstellen": [
+    {"art": "vorstellung", "zitat": "m'(x)=1· e^x+x· e^x=(1+x)· e^x", "warum": "Der Schritt von x·e^x zur Ableitung wird nicht gezeigt; das ist eine Produktregel, aber Produktregel steht nicht auf meiner Whitelist (nur Potenz-, Faktor-, Summenregel)."},
+    {"art": "glauben", "zitat": "m''(x)=(2+x)· e^x", "warum": "Auch hier fehlt der Zwischenschritt von m' zu m''; ich vertraue dem Muster, weil es schon beim ersten Mal nicht nachvollziehbar war."},
+    {"art": "glauben", "zitat": "eˣ ≠ 0", "warum": "Wird einfach behauptet, dass e^x nie Null wird, ohne Begruendung; dafuer habe ich keine Regel."},
+    {"art": "lastmarke", "zitat": "[Serienfall]", "warum": "Unerklaertes Fachwort, war schon auf meinem alten Zettel (Z:4) als unbekannt vermerkt und wird auch hier nicht erklaert."},
+    {"art": "stocken", "zitat": "(-1|-0.3679)", "warum": "Ploetzlich vier Nachkommastellen statt der 0,37 von vorher; kurz irritiert, ob das dieselbe Zahl ist."}
+  ],
+  "bewegungen": [
+    {"zitat": "Graph zeichnet sich: m(x) = x·eˣ, x von -4.6 bis 1.1, y von -0.8 bis 1.6.", "urteil": "trug", "warum": "zeigt schon vor jeder Rechnung, dass irgendwo ein Tiefpunkt liegen muss"},
+    {"zitat": "Kleine Marke, Kapitaelchen: notwendige Bedingung: m'(x)=0", "urteil": "dekoration", "warum": "nur eine Formatierung/Ueberschrift, keine zusaetzliche Information"},
+    {"zitat": "Chip fuer Chip in Leserichtung: (1+x)· e^x=0⟺ 1+x=0 ⟺ x_1=[-1 orange]| eˣ ≠ 0", "urteil": "trug", "warum": "zeigt die Reihenfolge der logischen Schritte, die ich sonst selbst ordnen muesste"},
+    {"zitat": "An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.", "urteil": "dekoration", "warum": "nur Vorbereitung, zeigt noch nichts Neues"},
+    {"zitat": "Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.", "urteil": "trug", "warum": "verbindet den Rechenwert x_1=-1 direkt mit der Stelle im Graph"},
+    {"zitat": "Kleine Marke, Kapitaelchen: hinreichende Bedingung: m''(x)≠ 0", "urteil": "dekoration", "warum": "wieder nur eine Ueberschrift ohne neuen Inhalt"},
+    {"zitat": "Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.", "urteil": "trug", "warum": "zeigt, dass genau dieser Wert -1 in m'' eingesetzt wird, ohne dass ich selbst suchen muss"},
+    {"zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.", "urteil": "dekoration", "warum": "nur die Art des Erscheinens, der Inhalt selbst steht schon in der Formel"},
+    {"zitat": "Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.", "urteil": "trug", "warum": "verbindet die Rechnung mit genau dem Kurvenstueck, das ich vorhin als Einbruch gesehen habe"},
+    {"zitat": "Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von -1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.", "urteil": "trug", "warum": "zeigt, dass -1 jetzt in m(x) eingesetzt wird"},
+    {"zitat": "Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −0,37.", "urteil": "trug", "warum": "zeigt geometrisch, wie man vom x-Wert auf der Kurve zum y-Wert an der Achse kommt"},
+    {"zitat": "Ein oranger Punkt landet bei (-1|-0.3679) in m(x) = x·eˣ.", "urteil": "trug", "warum": "markiert die genaue Stelle des Tiefpunkts auf der Kurve"},
+    {"zitat": "Beschriftung T(−1|−0,37) erscheint am Punkt (-1|-0.3679), orange.", "urteil": "trug", "warum": "verbindet die formale Punktbezeichnung T(x|y) direkt mit der sichtbaren Stelle im Graph"}
+  ],
+  "deutungen": [
+    {"symbol": "e^x", "was": "kann ich nicht deuten", "wo": "kann ich nicht deuten", "quelle": "kann ich nicht deuten"},
+    {"symbol": "m(x)", "was": "der Funktionswert (y-Wert) an der Stelle x, so wie vorher h(x)", "wo": "steht links vom Gleichheitszeichen in m(x)=x·eˣ und ist die gezeichnete Kurve im Graph", "quelle": "W:W1"},
+    {"symbol": "x_1", "was": "die erste (und hier einzige) Loesung von m'(x)=0; der Index zeigt, welche Loesung gemeint ist, falls es mehrere gaebe", "wo": "in der Gleichungszeile nach dem Doppelpfeil, orange markiert", "quelle": "Z:1"},
+    {"symbol": "T(-1|-0,37)", "was": "die Punktschreibweise fuer den gefundenen Tiefpunkt: T mit den Koordinaten (x|y)", "wo": "am orangen Punkt auf der Kurve im Graph", "quelle": "Z:3"},
+    {"symbol": "eˣ ≠ 0", "was": "kann ich nicht deuten", "wo": "kann ich nicht deuten", "quelle": "kann ich nicht deuten"},
+    {"symbol": "[Serienfall]", "was": "kann ich nicht deuten", "wo": "kann ich nicht deuten", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "notw.Bed.: h'=0 (versch. Loesungen moeglich); hinr.Bed.: h''≠0, >0->T, <0->H.",
+    "Punkt H(x|y)/T_i(x|y), Index nur bei mehreren gleichen Punkten.",
+    "Neu: e^x-Fall: m'=(1+x)e^x, m''=(2+x)e^x - Herleitung (Produktregel?) fehlt.",
+    "Offen: warum h',h'' das entscheiden; eˣ≠0 unbegruendet; 'Serienfall' weiter unbekannt."
+  ]
+}

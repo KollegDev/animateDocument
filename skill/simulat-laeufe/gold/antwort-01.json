@@ -1,0 +1,47 @@
+{
+  "schritte": [
+    {"text": "Ich lese die Kleinueberschrift 'Woran erkennt man einen Gipfel?' als die Frage, die dieses Blatt beantworten soll.", "quelle": "B:Woran erkennt man einen Gipfel?"},
+    {"text": "Die Ueberschrift 'Extrempunkte (Hoch- und Tiefpunkte)' sagt mir: Extrempunkte ist der Oberbegriff fuer beide.", "quelle": "B:Extrempunkte (Hoch- und Tiefpunkte)"},
+    {"text": "Ich stelle mir den Graphen wie eine Landschaft vor: Hochpunkt = Gipfel, Tiefpunkt = Tal.", "quelle": "B:Ein Hochpunkt ist ein Gipfel des Graphen, ein Tiefpunkt ist ein Tal."},
+    {"text": "Jetzt sehe ich die Kurve von f(x)=x^3-3x wirklich gezeichnet: sie kommt von unten links, hat eine Kuppe, ein Tal, und steigt dann wieder.", "quelle": "B:Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4."},
+    {"text": "Ich pruefe den oranen Punkt nach: f(-1) = (-1)³-3·(-1) = -1+3 = 2, also liegt (-1|2) wirklich auf der Kurve.", "quelle": "W:W1"},
+    {"text": "Die Beschriftung H(-1|2) benutzt offenbar dieselbe Schreibweise wie P(x|y), nur mit dem Buchstaben H statt P.", "quelle": "W:W1"},
+    {"text": "Ich pruefe den blauen Punkt: f(1) = 1³-3·1 = 1-3 = -2, passt zu T(1|-2).", "quelle": "W:W1"},
+    {"text": "In Wisch 2 faehrt eine Tangente ueber die Kurve; m ist ihre Steigung - das kenne ich schon: f'(x) ist die Steigung der Tangente.", "quelle": "W:W4"},
+    {"text": "Ich beobachte, dass genau bei x=-1 und x=1 ein blasser Abdruck stehen bleibt - genau dort, wo vorher H und T markiert waren.", "quelle": "B:bei x = -1, 1 bleibt je ein blasser Abdruck stehen"},
+    {"text": "Wisch 3 loest es auf: an H und T ist die Tangente waagerecht, also ist die Steigung dort null.", "quelle": "B:An beiden ist die Tangente waagerecht."},
+    {"text": "Die gelbe Formel m=f'(x)=0 fasst das zusammen: waagerechte Tangente heisst f'(x)=0, das kenne ich aus W4.", "quelle": "W:W4"},
+    {"text": "Ich rechne nach: f'(x)=3x²-3, also 3x²-3=0, x²=1, x=1 oder x=-1 - genau die beiden markierten Stellen.", "quelle": "W:W3+W2"}
+  ],
+  "stockstellen": [
+    {"art": "verwechslung", "zitat": "Ein Hochpunkt ist ein Gipfel des Graphen", "warum": "Der Graph steigt rechts von x=1 spaeter wieder ueber y=2, trotzdem heisst (-1|2) 'Gipfel' - das Blatt sagt nicht, dass nur die naehere Umgebung gemeint ist."},
+    {"art": "vorstellung", "zitat": "oben im Bild laufen x und m mit", "warum": "Ich sehe nicht, wie der Wert m fuer jede Stelle x berechnet wird, nur dass er oben mitlaeuft."},
+    {"art": "glauben", "zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "warum": "Ich kann nur die zwei markierten Punkte nachrechnen, den Rest des Kurvenverlaufs glaube ich einfach der Zeichnung."},
+    {"art": "raten", "zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.", "warum": "Nirgends steht woertlich, dass H fuer 'Hochpunkt' steht, ich vermute es nur aus dem Zusammenhang."}
+  ],
+  "bewegungen": [
+    {"zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "urteil": "trug", "warum": "zeigte mir die tatsaechliche Form der Kurve, die ich aus der Formel allein nicht haette sehen koennen"},
+    {"zitat": "Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.", "urteil": "trug", "warum": "zeigte mir direkt, dass dieser Punkt auf der Kurve liegt, statt dass ich es nur glauben muesste"},
+    {"zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.", "urteil": "trug", "warum": "verband den neuen Buchstaben H direkt mit einem konkreten Punkt, statt ihn nur abstrakt zu nennen"},
+    {"zitat": "Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.", "urteil": "trug", "warum": "zeigte mir direkt, dass dieser Punkt auf der Kurve liegt"},
+    {"zitat": "Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.", "urteil": "trug", "warum": "verband den Buchstaben T mit dem konkreten Tiefpunkt"},
+    {"zitat": "Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve; oben im Bild laufen x und m mit; bei x = -1, 1 bleibt je ein blasser Abdruck stehen.", "urteil": "trug", "warum": "zeigte mir, dass genau an H und T etwas Besonderes mit der Tangente passiert, ohne dass ich das haette herleiten koennen"},
+    {"zitat": "[gelb hinterlegt:] m=f'(x)=0", "urteil": "dekoration", "warum": "nur farbliche Hervorhebung, die Information steckt im Text m=f'(x)=0 selbst, nicht in der gelben Farbe"}
+  ],
+  "deutungen": [
+    {"symbol": "Extrempunkte", "was": "Oberbegriff fuer Hoch- und Tiefpunkte zusammen", "wo": "in der Ueberschrift von Wisch 1", "quelle": "B:Extrempunkte (Hoch- und Tiefpunkte)"},
+    {"symbol": "Hochpunkt", "was": "ein Gipfel des Graphen", "wo": "am oranen Punkt (-1|2)", "quelle": "B:Ein Hochpunkt ist ein Gipfel des Graphen"},
+    {"symbol": "Tiefpunkt", "was": "ein Tal des Graphen", "wo": "am blauen Punkt (1|-2)", "quelle": "B:ein Tiefpunkt ist ein Tal"},
+    {"symbol": "H(−1|2)", "was": "Kurzname fuer den Hochpunkt mit den Koordinaten x=-1, y=2, wie P(x|y)", "wo": "am oranen Punkt", "quelle": "W:W1"},
+    {"symbol": "T(1|−2)", "was": "Kurzname fuer den Tiefpunkt mit den Koordinaten x=1, y=-2", "wo": "am blauen Punkt", "quelle": "W:W1"},
+    {"symbol": "m", "was": "die Steigung der Tangente an der aktuellen Stelle x", "wo": "oben im Bild, laeuft beim Wischen mit", "quelle": "B:Die Zahl m ist ihre Steigung."},
+    {"symbol": "waagerecht", "was": "die Tangente hat Steigung 0, verlaeuft parallel zur x-Achse", "wo": "bei den blassen Abdruecken an x=-1 und x=1", "quelle": "W:W4"},
+    {"symbol": "m=f'(x)=0", "was": "Bedingung dafuer, dass die Tangente an dieser Stelle waagerecht ist", "wo": "gelb hinterlegt am Ende von Wisch 3", "quelle": "W:W4"}
+  ],
+  "zettel": [
+    "Extrempunkte = Hoch-/Tiefpunkte; Bsp: f(x)=x³-3x hat H(-1|2), T(1|-2).",
+    "Bei H,T: Tangente waagerecht, m=f'(x)=0. Check: f'=3x²-3=0 -> x=±1 stimmt.",
+    "Unklar: ist 'Gipfel' der hoechste Punkt insgesamt oder nur in der Naehe von x=-1?",
+    "Offen: warum genau nur an waagerechten Stellen H/T liegen (nicht ueberall wo m=0)."
+  ]
+}

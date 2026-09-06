@@ -1,0 +1,6 @@
+[
+ {"id":"T1","aufgabe":"Definitionsbereich von f(x)=3/(x+5).","loesung":["x≠-5"],"verboten":["3/(x+5)"]},
+ {"id":"T2","aufgabe":"Definitionsbereich von g(x)=sqrt(x-2).","loesung":["x≥2"],"verboten":["sqrt(x-2)"]},
+ {"id":"T3","aufgabe":"Definitionsbereich von h(x)=log(x+1).","loesung":["x>-1"],"verboten":["log(x+1)"]},
+ {"id":"T4","aufgabe":"Wertebereich von k(x)=(x-2)^2+1.","loesung":["y≥1"],"verboten":["(x-2)^2+1"]}
+]

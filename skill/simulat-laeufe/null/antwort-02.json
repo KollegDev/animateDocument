@@ -1,0 +1,36 @@
+{
+  "schritte": [
+    { "text": "Lese die kleine Ueberschrift: es geht um Gipfel und Tal - das kenne ich als H und T aus Z:1.", "quelle": "B:Wo liegen Gipfel und Tal?" },
+    { "text": "Die Marke 'notwendige Bedingung: f'(x)=0' - neuer Name, aber die Gleichung f'(x)=0 kenne ich schon aus Z:2.", "quelle": "B:notwendige Bedingung: f'(x)=0" },
+    { "text": "Der Graph zeichnet sich als f(x)=x^3-3x - genau die Funktion mit Huegel und Mulde aus Z:1.", "quelle": "Z:1" },
+    { "text": "f(x)=x^3-3x, f'(x)=3x^2-3 - stimmt genau mit der Ableitungsregel ueberein, die ich auswendig kenne.", "quelle": "W:3" },
+    { "text": "3x^2-3=0 wird zu x^2=1: Faktor 3 rausteilen, das rechne ich kurz nach, passt.", "quelle": "B:3x^2-3=0" },
+    { "text": "x^2=1 gibt x=1 oder x=-1, genau das Wurzelziehen mit zwei Loesungen.", "quelle": "W:2" },
+    { "text": "x_1=-1 orange, x_2=1 blau - dieselben Zahlen wie in Z:3, jetzt nur farbig markiert.", "quelle": "Z:3" },
+    { "text": "Die orange -1 und die blaue 1 wandern zur x-Achse des Graphen und werden dort kraeftig - das sind wohl die x-Stellen von H und T.", "quelle": "B:fliegt zur x-Achse des Graphen" }
+  ],
+  "stockstellen": [
+    { "art": "lastmarke", "zitat": "notwendige Bedingung: f'(x)=0", "warum": "das Fachwort 'notwendige Bedingung' wird nicht erklaert, warum gerade notwendig und nicht z.B. hinreichend." },
+    { "art": "verwechslung", "zitat": "An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.", "warum": "die Marke sitzt auf der x-Achse bei y=0, aber H liegt laut Z:1 bei y=2 - leicht zu verwechseln mit dem Punkt H selbst statt nur seiner x-Koordinate." },
+    { "art": "skip", "zitat": "Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.", "warum": "wiederholt genau das Muster der orangen -1 von eben, das ueberspringe ich." }
+  ],
+  "bewegungen": [
+    { "zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "urteil": "trug", "warum": "zeigt den Kurvenverlauf mit Huegel und Mulde, den ich sonst nur aus Z:1 als Text im Kopf haette." },
+    { "zitat": "Chip fuer Chip in Leserichtung", "urteil": "dekoration", "warum": "die Umformung selbst steht schon identisch in Z:3, das einzelne Einblenden zeigt nichts Neues." },
+    { "zitat": "An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.", "urteil": "trug", "warum": "zeigt vorab, wo die -1 auf der Achse landen wird, statt dass ich es raten muss." },
+    { "zitat": "Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.", "urteil": "trug", "warum": "verbindet sichtbar die ausgerechnete Zahl -1 mit ihrer Stelle im Graphen, statt dass ich das nur behaupte." },
+    { "zitat": "Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.", "urteil": "dekoration", "warum": "wiederholt nur dieselbe Bewegung wie bei der -1, das habe ich schon verstanden (skip)." }
+  ],
+  "deutungen": [
+    { "symbol": "Gipfel/Tal", "was": "umgangssprachlich fuer Hochpunkt H und Tiefpunkt T", "wo": "kleine Ueberschrift oben auf dem Blatt", "quelle": "Z:1" },
+    { "symbol": "notwendige Bedingung", "was": "Name fuer die Gleichung f'(x)=0, die bei H und T gelten muss", "wo": "kleine Marke in Kapitaelchen ueber dem Graphen", "quelle": "B:notwendige Bedingung: f'(x)=0" },
+    { "symbol": "notwendig (Zusatz zu Bedingung)", "was": "kann ich nicht deuten", "wo": "gleiche Marke wie oben", "quelle": "kann ich nicht deuten" },
+    { "symbol": "orange/blaue Achsenmarke", "was": "der x-Wert der Loesung, x_1=-1 bzw. x_2=1, farblich passend zum jeweiligen Chip", "wo": "auf der x-Achse des Graphen", "quelle": "B:fliegt zur x-Achse des Graphen" }
+  ],
+  "zettel": [
+    "f(x)=x^3-3x: H(-1|2)=Gipfel/Huegel, T(1|-2)=Tal/Mulde, f'(x)=3x^2-3=0 dort.",
+    "Neuer Name: notwendige Bedingung = f'(x)=0; warum 'notwendig', bleibt offen.",
+    "x^2=1 -> x=-1(orange), x=1(blau); Marken fliegen zur x-Achse - passt zu H,T.",
+    "Offene Woerter: Extrempunkte, Beruehrgerade, notwendige Bedingung - unerklaert."
+  ]
+}

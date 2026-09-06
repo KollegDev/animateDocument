@@ -1,0 +1,29 @@
+{
+  "regeln": [
+    {"regel": "Wenn ich die vermutete Sonderstelle in f'' einsetze und eine negative Zahl herauskommt, ist dort ein Gipfel; kommt eine positive Zahl heraus, ist dort ein Tal."},
+    {"regel": "Die Hoehe so einer Sonderstelle bekomme ich, indem ich dieselbe Stelle in die urspruengliche Funktion f einsetze, nicht in f' oder f''."}
+  ],
+  "fehlregeln": [
+    {"id": "F1", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "x=-1: f''=-6<0 -> H(-1|2) 'Gipfel'"},
+    {"id": "F2", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F3", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "x=1: f''=6>0 -> T(1|-2) 'Tal'"},
+    {"id": "F4", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F5", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F14", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""}
+  ],
+  "transfer": [
+    {"id": "T1", "loesung": "T(-1|-1)", "rechnung": "p'(x)=2x+2; 2x+2=0 -> x=-1; p''(x)=2; p''(-1)=2>0 -> Tal; p(-1)=1-2=-1", "quelle": "W3, W2, W5, regel"},
+    {"id": "T2", "loesung": "H(-2|16), T(2|-16)", "rechnung": "q'(x)=3x^2-12; 3x^2-12=0 -> x^2=4 -> x=2 oder x=-2; q''(x)=6x; q''(-2)=-12<0 -> Gipfel, q(-2)=-8+24=16; q''(2)=12>0 -> Tal, q(2)=8-24=-16", "quelle": "W3, W2, W5, regel"}
+  ],
+  "deutungen": [
+    {"symbol": "H(x|y)", "was": "Bezeichnung fuer einen Punkt, den der Film 'Gipfel' nennt, in der Punktschreibweise x|y", "wo": "Blatt 3, Wisch 5: Beschriftung H(-1|2) am Punkt (-1|2)", "quelle": "B: Wisch5, auch Z:2"},
+    {"symbol": "T(x|y)", "was": "Bezeichnung fuer einen Punkt, den der Film 'Tal' nennt, gleiche Punktschreibweise", "wo": "Blatt 3, Wisch 5: Beschriftung T(1|-2) am Punkt (1|-2)", "quelle": "B: Wisch5, auch Z:2"},
+    {"symbol": "art1 / art2", "was": "kann ich nicht deuten", "wo": "Blatt 3, Wisch 5, vorbereitete Zeile vor dem Einsetzen der Beschriftungen", "quelle": "Z:4 - kann ich nicht deuten"},
+    {"symbol": "f''(x)", "was": "die Ableitung von f', zeigt ob die Steigung von f waechst oder faellt", "wo": "Zettel Z:1 (f''=6x) und Blatt 3, Wisch 1 (f''(x)=6x)", "quelle": "W5 (Z:1)"},
+    {"symbol": "'Gipfel' / 'Tal'", "was": "die Woerter, die der Film fuer die besonderen Punkte benutzt; ob das das eigentliche Fachwort ist, weiss ich nicht sicher", "wo": "Zettel Z:2 ('Gipfel', 'Tal')", "quelle": "Z:4 - kann ich nicht sicher deuten"}
+  ],
+  "schluss": {
+    "kann": "Ich kann jetzt bei einer gegebenen Stelle entscheiden, ob dort ein Gipfel oder ein Tal liegt, indem ich sie in f'' einsetze, und die Hoehe durch Einsetzen in f ausrechnen.",
+    "morgen": "Auf meinem Zettel stuende noch, dass x=-1 mit f''=-6 zu H(-1|2) und x=1 mit f''=6 zu T(1|-2) gehoert, aber auch, dass mir nicht klar ist, warum das Vorzeichen von f'' das entscheidet."
+  }
+}

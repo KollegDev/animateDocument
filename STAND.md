@@ -112,7 +112,7 @@ Die vier Geräte, in denen Scrollen dem Papier überlegen ist, alle freiwillig:
 | `skill/blattkino/pruefe.mjs` | prüft eine Filmdatei gegen die Gesetze; Fehlercode bei schwerem Befund |
 | `skill/blattkino/baue.mjs` | baut aus Filmdatei plus Player eine eigenständige HTML-Datei |
 | `skill/blattkino/transkript.mjs` | schreibt den Film als Leseerlebnis (Blatt, Wisch, Bewegung, Farbe); Eingabe des Simulats |
-| `skill/blattkino/SIMULAT.md` | Simulat-Auftrag (Fassung Gold); im Skill Abgabebedingung |
+| `skill/blattkino/simulat/simulat2.mjs` | Simulat v2: Blattschleife, Zettel, Quellenpflicht, Regel-, Fehlregel- und Transferprobe, Nullfilm; Läufe in `skill/simulat-laeufe/` |
 | `skill/harness2.mjs` | 43 mechanische Tests über jsdom |
 | `skill/blattkino/lauf2.mjs` | fährt einen Film über die ganze Radstrecke, zählt Fehler, `--dump` zeigt die Struktur; liegt im Skill, damit die installierte Fassung vollständig ist |
 | `skill/abgleich2.mjs` | Vorabnahme: Filmdatei gegen gold/extrempunkte.html, Struktur, Fenster, Text |
@@ -163,23 +163,28 @@ Bögen).
 
 **Offen, mit Priorität:**
 
-1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Skill v2c (Storyboard-
-   Pflicht, richtungsfreier Katalog mit Miniaturen, Simulat als Abgabebedingung, Transkript-
-   Werkzeug) ist geschrieben und mit Blindtest 4 und 5 gemessen: Mechanik grün, Urteil offen.
-   Bekannte Schwäche: das Selbst-Simulat der erzeugenden Sitzung ist mild (beide Läufe
-   melden keine Regelfehler); das Fremd-Simulat entscheidet.
-2. kd-1 trägt vier offene Inventar-Befunde (Logarithmus-Graph, Schritte der Serientabelle);
+1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Stand: Skill 2.6
+   (Neuguss nach P18: 2.960 Wörter statt 4.700, ein Geräte-Katalog, jede Regel einmal, kein
+   Selbst-Simulat, JSON als einziges Ergebnis). Trials 4 und 5 liefen mit 2.3: Mechanik grün,
+   Autorurteil offen. Trial 6 mit installierter 2.5.
+2. Simulat v2 (`skill/blattkino/simulat/`, AUSTAUSCH B25): Blattschleife mit frischen Köpfen, Zettel,
+   deterministische Quellenpflicht, Regel-, Fehlregel- und Transferprobe. Gold besteht,
+   Blindfilm 2 fällt richtig durch (Wurzel, Logarithmus), der Nullfilm fällt NICHT durch:
+   ein Formel-Skelett mit einem durchgerechneten Beispiel genügt Sonnet wie Haiku für den
+   Transfer. Abnahme nach P16 damit nicht erreicht; Vorschlag in B25 (Fehlregel-Probe statt
+   Transfer als Nullfilm-Kriterium, Transfer auf die Serie zielen). Entscheidung offen.
+3. kd-1 trägt vier offene Inventar-Befunde (Logarithmus-Graph, Schritte der Serientabelle);
    Altbestand vor der Inventarpflicht. Neu giessen oder aus dem Katalog nehmen.
-3. Vom grossen Testdokument sind erst vier Seiten verfilmt.
-4. `paar` ist gebaut, aber in keinem Film benutzt. Kandidat: `ableitung.json`.
-5. DD3 als eigene Prüferregel (Zweispalten-Tabelle im Musterbogen) fehlt; der
+4. Vom grossen Testdokument sind erst vier Seiten verfilmt.
+5. `paar` ist gebaut, aber in keinem Film benutzt. Kandidat: `ableitung.json`.
+6. DD3 als eigene Prüferregel (Zweispalten-Tabelle im Musterbogen) fehlt; der
    Inventarabgleich fängt den Fall bisher indirekt. Überflieg-Ersatz aus DD6 als Ausgabe
    fehlt.
-6. Haiku-Lauf des Skills steht aus.
-7. Installierte Skill-Fassung (Autorentscheid P8, Weg 2): die im Skill-Werkzeug installierte
+7. Haiku-Lauf des Skills steht aus.
+8. Installierte Skill-Fassung (Autorentscheid P8, Weg 2): die im Skill-Werkzeug installierte
    Fassung ist noch 1.x. `save_skill` ersetzt nur SKILL.md und liesse REFERENCE, Prüfer und
    Spieler alt; darum liefert jeder Skill-Batch eine `blattkino.skill` (Zip des Ordners), die
-   der Autor über „Save skill" installiert. Bis 2.4 installiert ist, läuft kein Trial 6.
+   der Autor über „Save skill" installiert. Bis 2.6 installiert ist, läuft kein Trial 6.
    Versionierung: Kopf von SKILL.md, Feld `skill` in jedem Film, git-Tag je Version durch den
    Autor beim Push.
 

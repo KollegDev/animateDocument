@@ -1,0 +1,4 @@
+[
+ {"id":"T1","aufgabe":"Bestimme die Extrempunkte von p(x)=x^2+2x (Art und Koordinaten).","loesung":["T(-1|-1)"],"verboten":["x^2+2x"]},
+ {"id":"T2","aufgabe":"Bestimme die Extrempunkte von q(x)=x^3-12x (Art und Koordinaten).","loesung":["H(-2|16)","T(2|-16)"],"verboten":["x^3-12x"]}
+]

@@ -1,0 +1,71 @@
+{
+  "schritte": [
+    {"text": "Ueberschrift 'Und mit zwei Kandidaten?' sagt mir: diesmal gibt es zwei Loesungen statt einer.", "quelle": "B:Und mit zwei Kandidaten?"},
+    {"text": "h(x)=-x^3+3x ist die Funktionsgleichung, der Graph zeichnet ihren Verlauf.", "quelle": "B:h(x)=-x^3+3x"},
+    {"text": "'notwendige Bedingung: h'(x)=0' kenne ich aus Z:1, das Wort bleibt weiter undeutbar.", "quelle": "Z:1"},
+    {"text": "Ich rechne h'(x) nach: Potenzregel auf -x^3 gibt -3x^2, auf 3x gibt 3, zusammen -3x^2+3 - stimmt.", "quelle": "W:3"},
+    {"text": "-3x^2+3=0 fuehrt zu x^2=1, das kenne ich: x=1 oder x=-1.", "quelle": "W:2"},
+    {"text": "Zwei Loesungen x_1=-1, x_2=1 - jetzt verstehe ich den Index: er zaehlt mehrere Loesungen.", "quelle": "Z:4"},
+    {"text": "Die Marken -1 und 1 fliegen zur x-Achse des Graphen, dort sehe ich, wo die Loesungen liegen.", "quelle": "B:fliegt zur x-Achse des Graphen"},
+    {"text": "'hinreichende Bedingung: h''(x)≠0' wie in Z:2 - warum das reicht, weiss ich immer noch nicht.", "quelle": "Z:2"},
+    {"text": "h''(x) rechne ich nach: Ableitung von -3x^2+3 ist -6x, Potenzregel passt.", "quelle": "W:3"},
+    {"text": "h''(-1)=6>0 -> Tiefpunkt(fett T): jetzt steht ausgeschrieben, was T ueberhaupt bedeutet.", "quelle": "B:Tiefpunkt(fett: T)"},
+    {"text": "Das Muster ist wie bei Z:3: positive zweite Ableitung -> T.", "quelle": "Z:3"},
+    {"text": "Das Kurvenstueck um x=-1 leuchtet orange - ich sehe im Bild, wo der Tiefpunkt liegt.", "quelle": "B:leuchtet das Kurvenstueck um x = -1 dick orange auf"},
+    {"text": "h''(1)=-6<0 -> Hochpunkt(fett H): H wird hier zum ersten Mal erklaert.", "quelle": "B:Hochpunkt(fett: H)"},
+    {"text": "'y-Werte: y=h(x)' kenne ich aus Z:3 - der y-Wert kommt wie bei f aus der Funktionsgleichung.", "quelle": "Z:3"},
+    {"text": "h(-1)=-(-1)^3+3*(-1)=1-3=-2, das rechne ich nach, stimmt.", "quelle": "B:h([-1 orange])=-([-1 orange])^3+3·([-1 orange])=1-3=[-2 orange]"},
+    {"text": "Der Punkt (-1|-2) liegt auf der Kurve, Schreibweise P(x|y) kenne ich aus W:1.", "quelle": "W:1"},
+    {"text": "h(1)=-1+3=2, stimmt auch.", "quelle": "B:h([1 blau])=-[1 blau]^3+3·[1 blau]=-1+3=[2 blau]"},
+    {"text": "T(-1|-2) und H(1|2) verbinden Punkt und Buchstabe - wie T(2|-4) bei Z:3.", "quelle": "Z:3"}
+  ],
+  "stockstellen": [
+    {"art": "stocken", "zitat": "notwendige Bedingung: h'(x)=0", "warum": "das Wort bleibt trotz Wiederholung aus Z:1 unerklaert, ich erkenne nur das Muster."},
+    {"art": "stocken", "zitat": "hinreichende Bedingung: h''(x)≠ 0", "warum": "warum das reicht, bleibt weiterhin offen, genau wie schon in Z:2."},
+    {"art": "verwechslung", "zitat": "notwendige Bedingung / hinreichende Bedingung", "warum": "beide aehnlich klingenden Bedingungen stehen nur als leeres Muster da, ich koennte sie vertauschen."},
+    {"art": "ruecksprung", "zitat": "x_1=[-1 orange] , x_2=[1 blau]", "warum": "ich springe zurueck zu Z:4 (x_1-Index unklar) - mit zwei Loesungen klaert sich das jetzt."},
+    {"art": "lastmarke", "zitat": "[Serienfall]", "warum": "unerklaertes Etikett ohne Kontext, ich kann es nicht einordnen."},
+    {"art": "lastmarke", "zitat": "Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.", "warum": "langer Satz mit vielen Ortsangaben, schwer auf einmal zu erfassen."},
+    {"art": "glauben", "zitat": "h''([-1 orange])=6>0→ Tiefpunkt(fett: T)", "warum": "ich uebernehme die Regel '>0 -> Tiefpunkt', verstehe aber nicht warum, weil mir das Thema Extrempunkte fehlt."},
+    {"art": "skip", "zitat": "Ein blauer Pfeil zieht sich langsam von der 1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.", "warum": "exaktes Spiegelbild des Orange-Falls, ich lese nur noch das Ergebnis."},
+    {"art": "skip", "zitat": "Ein blauer Pfeil zieht sich langsam von dem Stamm des Pfeils von 1 durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.", "warum": "wiederholt das Orange-Muster aus Wisch 4, keine neue Information."}
+  ],
+  "bewegungen": [
+    {"zitat": "Graph zeichnet sich: h(x) = −x³ + 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "urteil": "trug", "warum": "zeigt den Kurvenverlauf, den ich sonst selbst haette skizzieren muessen"},
+    {"zitat": "Chip fuer Chip in Leserichtung: -3x^2+3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau]", "urteil": "trug", "warum": "zeigt Schritt fuer Schritt die Umformung und dass zwei getrennte Loesungen entstehen"},
+    {"zitat": "An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.", "urteil": "dekoration", "warum": "kuendigt nur etwas an, ohne selbst neue Information zu liefern"},
+    {"zitat": "Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.", "urteil": "trug", "warum": "verbindet die algebraische Loesung -1 mit ihrer Stelle auf der x-Achse im Bild"},
+    {"zitat": "An der x-Achse bei 1 wartet eine blaue Achsenmarke 1, noch blass.", "urteil": "dekoration", "warum": "gleiche blosse Ankuendigung wie bei orange"},
+    {"zitat": "Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.", "urteil": "trug", "warum": "zeigt, dass auch die zweite Loesung 1 eine Stelle auf der x-Achse ist"},
+    {"zitat": "Zeile liegt bereit, noch unsichtbar: h''([-1 orange])=6>0→ Tiefpunkt(fett: T) - erscheint Chip fuer Chip", "urteil": "trug", "warum": "zeigt mir erstmals ausgeschrieben, dass T fuer Tiefpunkt steht und woran man ihn erkennt"},
+    {"zitat": "Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.", "urteil": "trug", "warum": "zeigt, dass genau die vorher gefundene -1 jetzt in h'' eingesetzt wird"},
+    {"zitat": "Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.", "urteil": "trug", "warum": "zeigt mir, wo der Tiefpunkt tatsaechlich auf der Kurve liegt"},
+    {"zitat": "Zeile liegt bereit, noch unsichtbar: h''([1 blau])=-6<0→ Hochpunkt(fett: H) - erscheint Chip fuer Chip", "urteil": "trug", "warum": "definiert das neue Wort H als Hochpunkt, analog zu T"},
+    {"zitat": "Ein blauer Pfeil zieht sich langsam von der 1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.", "urteil": "dekoration", "warum": "wiederholt nur das Orange-Muster, ich weiss schon was passiert"},
+    {"zitat": "Im Graphen leuchtet das Kurvenstueck um x = 1 dick blau auf.", "urteil": "trug", "warum": "zeigt die Lage des Hochpunkts auf der Kurve"},
+    {"zitat": "Zeile liegt bereit, noch unsichtbar: h([-1 orange])=-([-1 orange])^3+3·([-1 orange])=1-3=[-2 orange] - erscheint Chip fuer Chip", "urteil": "trug", "warum": "zeigt mir die Rechnung, mit der der y-Wert -2 entsteht"},
+    {"zitat": "Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von -1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.", "urteil": "dekoration", "warum": "gleiche Pfeil-Idee wie in Wisch 3, zeigt nichts grundsaetzlich Neues"},
+    {"zitat": "Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −2.", "urteil": "trug", "warum": "zeigt grafisch, wie x=-1 und y=-2 zusammengehoeren, ohne dass ich es selbst ablesen muss"},
+    {"zitat": "Ein oranger Punkt landet bei (-1|-2) in h(x) = −x³ + 3x.", "urteil": "trug", "warum": "zeigt den Punkt direkt auf der Kurve in der Schreibweise P(x|y)"},
+    {"zitat": "Ein blauer Pfeil zieht sich langsam von dem Stamm des Pfeils von 1 durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.", "urteil": "dekoration", "warum": "wiederholt exakt das Orange-Muster aus Wisch 4"},
+    {"zitat": "Von der Achsenmarke 1 laeuft eine gestrichelte blaue Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 2.", "urteil": "dekoration", "warum": "gleiches Muster wie bei orange, keine neue Erkenntnis mehr"},
+    {"zitat": "Ein blauer Punkt landet bei (1|2) in h(x) = −x³ + 3x.", "urteil": "dekoration", "warum": "wiederholt den orangen Punkt-Fall mit anderen Werten"},
+    {"zitat": "Zeile liegt bereit, noch unsichtbar: [T(-1 | -2) orange] ,[H(1 | 2) blau] - erscheint Chip fuer Chip; Beschriftung T(−1|−2) erscheint am Punkt (-1|-2), orange.", "urteil": "trug", "warum": "zeigt die fertige Paarung von Punkt und Buchstabe T am richtigen Ort"},
+    {"zitat": "Beschriftung H(1|2) erscheint am Punkt (1|2), blau.", "urteil": "dekoration", "warum": "wiederholt nur das gleiche Muster wie bei T"}
+  ],
+  "deutungen": [
+    {"symbol": "notwendige Bedingung", "was": "Bedingung h'(x)=0 zu loesen, um Kandidaten fuer Extrempunkte zu finden - warum sie 'notwendig' heisst, bleibt unklar", "wo": "kleine Marke vor h'(x)=-3x^2+3", "quelle": "Z:1"},
+    {"symbol": "hinreichende Bedingung", "was": "Pruefung h''(x)≠0, entscheidet ob T oder H - warum das 'reicht', bleibt unklar", "wo": "kleine Marke vor h''(x)=-6x", "quelle": "Z:2"},
+    {"symbol": "x_1, x_2", "was": "Nummerierung fuer mehrere Loesungen derselben Gleichung", "wo": "in der Zeile x_1=-1, x_2=1", "quelle": "B:x_1=[-1 orange] , x_2=[1 blau]"},
+    {"symbol": "Tiefpunkt (T)", "was": "Punkt der Kurve mit h''>0 an der Loesung, fett T genannt", "wo": "in der Zeile 'Tiefpunkt(fett: T)' und am Punkt (-1|-2)", "quelle": "B:Tiefpunkt(fett: T)"},
+    {"symbol": "Hochpunkt (H)", "was": "Punkt der Kurve mit h''<0 an der Loesung, fett H genannt", "wo": "in der Zeile 'Hochpunkt(fett: H)' und am Punkt (1|2)", "quelle": "B:Hochpunkt(fett: H)"},
+    {"symbol": "T(x|y) / H(x|y) Schreibweise", "was": "Kombination aus Extrempunkt-Buchstabe und Punktkoordinaten, wie P(x|y)", "wo": "an den Punkten (-1|-2) und (1|2) im Graphen", "quelle": "Z:3"},
+    {"symbol": "Serienfall", "was": "kann ich nicht deuten", "wo": "als Etikett oben bei der Ueberschrift", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "notw. Bed.: h'(x)=0, evtl. mehrere Loesungen x_1,x_2,... (Index=welche Loesung).",
+    "hinr. Bed.: h''(x_i)>0->T (Tief), h''(x_i)<0->H (Hoch); warum bleibt unklar.",
+    "y-Wert: y=h(x_i) wie gehabt; Beschriftung dann T(x|y) oder H(x|y) am Punkt.",
+    "Offen: warum h', h'' das entscheiden; Rechts/Linkskurve; Thema Extrempunkte fehlt mir."
+  ]
+}

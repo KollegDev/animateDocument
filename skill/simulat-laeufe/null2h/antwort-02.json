@@ -1,0 +1,79 @@
+{
+  "schritte": [
+    {
+      "text": "Ich sehe, wie sich der Graph von f(x)=x³−3x zeigt; das ist die Funktion mit den zwei speziellen Punkten, die ich bereits kenne.",
+      "quelle": "B:[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]"
+    },
+    {
+      "text": "Die Ableitung ist f'(x)=3x²−3; das kann ich mit der Potenzregel nachrechnen und es stimmt.",
+      "quelle": "B:f'(x)=3x^2-3, W3:Potenzregel"
+    },
+    {
+      "text": "Ich löse 3x²−3=0 durch Umformen: erst durch 3 dividieren, dann Wurzel ziehen; das gibt x=−1 und x=1.",
+      "quelle": "B:3x^2-3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau], W2:Gleichungen lösen"
+    },
+    {
+      "text": "Diese beiden x-Werte werden auf der x-Achse des Graphen markiert—orange bei −1, blau bei 1.",
+      "quelle": "B:[An der x-Achse bei -1 wartet eine orange Achsenmarke, An der x-Achse bei 1 wartet eine blaue Achsenmarke]"
+    },
+    {
+      "text": "Das Blatt zeigt mir, wo auf dem Graphen etwas Besonderes geschieht, aber nicht noch nicht, warum gerade diese zwei Stellen.",
+      "quelle": "Z:2, Z:4"
+    }
+  ],
+  "stockstellen": [
+    {
+      "art": "glauben",
+      "zitat": "3x^2-3=0",
+      "warum": "Das Blatt setzt f'(x)=0 ohne zu sagen, warum. Ich weiß, daß f'(x)=0 eine waagerechte Tangente bedeutet (Z:2), aber nicht, warum das mit den Extrempunkten zusammenhängt."
+    },
+    {
+      "art": "raten",
+      "zitat": "3x^2-3=0⟺ x^2=1",
+      "warum": "Ich rate, daß wir setzen f'(x)=0, um die Kandidaten für Extrempunkte zu finden, aber das ist nicht gesagt."
+    }
+  ],
+  "bewegungen": [
+    {
+      "zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]",
+      "urteil": "trug",
+      "warum": "Die Animation zeigt mir die ganze Funktion visuell; sonst hätte ich nur die Punkte aus meinen Notizen, nicht die Kurvenform."
+    },
+    {
+      "zitat": "[Eine Kopie der orangen -1 löst sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kräftig.]",
+      "urteil": "trug",
+      "warum": "Die Flugbahn verbindet die Lösung der Gleichung mit dem Graphen; ich verstehe, daß −1 eine spezielle Stelle auf der x-Achse ist."
+    },
+    {
+      "zitat": "[Eine Kopie der blauen 1 löst sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kräftig.]",
+      "urteil": "trug",
+      "warum": "Wie die Bewegung davor: die Bewegung zeigt, daß 1 ebenfalls eine spezielle Stelle ist."
+    }
+  ],
+  "deutungen": [
+    {
+      "symbol": "⟺",
+      "was": "Das ist ein Äquivalenzpfeil; er zeigt, daß zwei Gleichungen dasselbe sagen.",
+      "wo": "In der Umformung 3x^2-3=0⟺ x^2=1",
+      "quelle": "B:3x^2-3=0⟺ x^2=1 ⟺ x_1"
+    },
+    {
+      "symbol": "orange und blau Markierungen",
+      "was": "Das sind farbliche Unterscheidungen der zwei x-Werte −1 und 1.",
+      "wo": "Bei der x-Achse des Graphen und in der Gleichungslösung.",
+      "quelle": "B:x_1=[-1 orange] , x_2=[1 blau]"
+    },
+    {
+      "symbol": "f'(x)=0",
+      "was": "Eine Bedingung; sie bedeutet, daß die Ableitung an dieser Stelle Null ist.",
+      "wo": "Im Gleichungsausdruck 3x^2-3=0, was f'(x)=0 ist.",
+      "quelle": "W4:f'(x) ist die Steigung der Tangente"
+    }
+  ],
+  "zettel": [
+    "Z:1  f(x)=x³−3x hat zwei x-Werte mit f'(x)=0: x₁=−1 (orange), x₂=1 (blau); dort treffen waagerechte Tangenten.",
+    "Z:2  Diese x-Werte finde ich durch Lösen von 3x²−3=0, äquivalent zu x²=1 nach W2.",
+    "Z:3  Der Graph zeigt diese zwei Stellen deutlich; sie sind besondere Punkte mit y=(−1|2) und (1|−2).",
+    "Z:4  Warum gerade f'(x)=0? Das Blatt sagt nicht, warum das Extrempunkte findet—das erklär ich noch nicht."
+  ]
+}

@@ -2,7 +2,7 @@
 
 ## Die Datei
 
-Jede Datei traegt `"skill": "2.4"`, die Version aus dem Kopf von SKILL.md, mit der sie
+Jede Datei traegt `"skill": "2.6"`, die Version aus dem Kopf von SKILL.md, mit der sie
 entstanden ist. Der Pruefer meldet das Fehlen. So ist jeder Film seiner Skill-Fassung
 zuzuordnen, auch wenn der Skill weitergezogen ist.
 
@@ -329,7 +329,7 @@ node pruefe.mjs film.json player.html
 
 Er meldet drei Schweregrade und beendet sich mit Fehlercode, solange etwas Schweres
 offen ist. Geprüft werden unter anderem: genau eine Auflösung je Bogen und ihre Lage,
-Überflieg-Träger je Bogen, Regel ohne Serie, Notationsgestalt in Musterserien, Verweise
+Träger je Bogen (Überschrift, Tabelle, Merksatz, Bild oder Aufgabe), Regel ohne Serie, Notationsgestalt in Musterserien, Verweise
 statt Reprisen, geleakter Plan und Füller, Gedankenstriche, Gendern, Dezimalpunkt, Sätze
 mit mehreren Nebensätzen, Gültigkeit jedes `expr`, die Abdeckung des Inventars samt
 Seitenmarken, Farbe ohne Beziehung (GL1), Pfeilziel ohne Zahl (GL2), Flug in die
@@ -344,8 +344,9 @@ node transkript.mjs film.json > TRANSKRIPT.md
 ```
 
 schreibt den Film als Leseerlebnis auf: Blatt für Blatt, Wisch für Wisch, jede Bewegung in
-eckigen Klammern mit ihrer Farbe, Serien entfaltet. Es ist die Eingabe für das Simulat
-(`SIMULAT.md`); der Simulat-Leser bekommt nur dieses Transkript, nie die Datei.
+eckigen Klammern mit ihrer Farbe, Serien entfaltet. Es liegt dem Film bei und ist die
+Eingabe für das Schüler-Simulat (`simulat/simulat2.mjs`, SKILL.md Schritt 7); der
+Simulat-Leser bekommt je Blatt nur seinen Ausschnitt, nie die Datei.
 
 `lauf2.mjs` (im selben Ordner) fährt den Film im Spieler über die ganze Radstrecke ab und
 meldet, was zur Laufzeit scheitert; `pruefe.mjs` sieht das nicht. Es braucht `jsdom`
@@ -407,33 +408,26 @@ fehlt es wirklich. `inventar` ist Pflicht und deine einzige Absicherung gegen st
 Weglassen; kürze es nicht, um Befunde loszuwerden. Ein Inventar, das nur nennt, was der
 Film zeigt, ist Selbstbetrug.
 
-## Bauen
+## Ausliefern
 
-```
-node baue.mjs film.json            # neben player.html
-node baue.mjs film.json player.html film.html
-```
-
-`baue.mjs` setzt den Titel und die Daten in `player.html` ein. Von Hand ersetzen ist
-möglich, aber fehleranfällig: der Datenblock steht in einem `<script>`-Element, und ein
-`</script>` irgendwo im Text zerreisst die Seite. `baue.mjs` entschärft das.
-
-Das Ergebnis ist eine einzelne HTML-Datei ohne Netzabhängigkeit ausser MathJax, die
-lokal, auf jedem Hosting und als Artifact läuft. Als Artifact mit `capabilities: {}`
-und `favicon: "🎞️"`.
-
-### Oder gar nicht bauen
-
-Der Spieler kann den Film auch als eigene Datei nachladen:
+Der übliche Weg: der Spieler liegt einmal auf der Seite, jeder Film ist seine JSON-Datei.
 
 ```
 player.html?film=filme/ableitung.json
 ```
 
-Dann liegt der Spieler einmal auf der Seite und jeder Film ist nur seine JSON-Datei.
-Der Name muss neben der Seite liegen und auf `.json` enden; fremde Herkunft und `..`
-werden abgewiesen. Für studienkolleg.me ist das der übliche Weg: die JSON-Datei nach
-`filme/` legen, eine Zeile in den Katalog, fertig.
+Der Name muss neben der Seite liegen und auf `.json` enden; fremde Herkunft und `..` werden
+abgewiesen. Für studienkolleg.me: die JSON-Datei nach `filme/` legen, eine Zeile in den
+Katalog, fertig.
+
+Nur wer eine Datei ohne Server braucht (offline, Artifact), baut beide zusammen:
+
+```
+node baue.mjs film.json player.html film.html
+```
+
+`baue.mjs` setzt Titel und Daten in `player.html` ein und entschärft `</script>` im Text.
+Ergebnis: eine HTML-Datei ohne Netzabhängigkeit ausser MathJax.
 
 ## Was der Spieler daraus macht
 

@@ -13,6 +13,8 @@ Jede Datei hat genau einen Status und einen Besitzer. Neue Dateien nur mit Eintr
 | PLAYER.md | didaktischer Grund der Bauform, Invarianten der Schnittstellen |
 | ITERATION.md | Verbesserungs-Loop, Golden-Lauf, Methodenschleife |
 | LAUFKARTE.md | eine Zeile pro Steuerungs-Iteration |
+| SKILL_LEDGER.md | Regel-Ledger des Skills: Kennung, Beleg-Trial, Prüferregel, zuletzt gegriffen; Grundlage für Streichungen und Lückenbefunde (angelegt, sobald Bau die S-Kennungen vergibt) |
+| RECHERCHE_RUNDE_1.md, RECHERCHE_RUNDE_2.md | Rohberichte der Recherche mit Quellen (Schüler, Animation, Simulat, Skill, Richter; Limitationen und ihre Nachbildung); Lesequelle für alle Sessions |
 | TRIALS.md | Register der Blindläufe: Skill-Version, Dokument, fünf Lesarten, Autorurteil, Escapes und Regeln; Kennzahl Fangquote |
 
 ## Kanonisch: Bau (Besitz Bau-Session; Steuerung fasst nie an, Bitten über AUSTAUSCH)
@@ -38,7 +40,8 @@ Die didakt-Session (Erbauerin des Autorenprojekts) hat keinen Dateibesitz und sc
 
 | Datei | Regel |
 |---|---|
-| AUSTAUSCH.md | fortlaufend, nur anhängen, nie ändern; Kennungen B*/P* |
+| AUSTAUSCH.md | fortlaufend, nur anhängen, nie ändern; Kennungen B*/G*/DD*/P*; oben die Kurzfassung des Archivs, darunter nur lebende Threads |
+| AUSTAUSCH_ARCHIV.md | erledigte Threads wörtlich; nie ganz einlesen, die Kurzfassung genügt (Archivregel P10/P11; Steuerung verschiebt) |
 
 ## Rollen (Autorentscheid G4, 2026-09-05)
 

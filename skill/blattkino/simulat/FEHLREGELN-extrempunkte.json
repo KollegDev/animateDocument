@@ -1,0 +1,32 @@
+[
+ {
+  "id": "F1",
+  "thema": "extrempunkte",
+  "text": "Der y-Wert eines Extrempunkts ist f'(x0) oder f''(x0), also die Zahl, die man beim Pruefen ausgerechnet hat."
+ },
+ {
+  "id": "F2",
+  "thema": "extrempunkte",
+  "text": "Wo f'(x)=0 ist, liegt immer ein Hoch- oder Tiefpunkt."
+ },
+ {
+  "id": "F3",
+  "thema": "extrempunkte",
+  "text": "f''(x0)>0 bedeutet Hochpunkt, weil positiv oben ist."
+ },
+ {
+  "id": "F4",
+  "thema": "extrempunkte",
+  "text": "Ein Extrempunkt liegt immer bei x=0 oder bei x=1 und x=-1."
+ },
+ {
+  "id": "F5",
+  "thema": "extrempunkte",
+  "text": "Der Hochpunkt ist der hoechste Punkt des ganzen Graphen."
+ },
+ {
+  "id": "F14",
+  "thema": "allgemein",
+  "text": "Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe)."
+ }
+]

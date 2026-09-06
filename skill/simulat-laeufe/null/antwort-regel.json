@@ -1,0 +1,43 @@
+{
+  "regeln": [
+    {"regel": "Um moegliche Extremstellen zu finden, loese ich f'(x)=0 und bekomme so nur Kandidaten, noch keine Gewissheit."},
+    {"regel": "Fuer jeden Kandidaten setze ich ihn in f'' ein: eine negative Zahl bedeutet Hochpunkt, eine positive Zahl bedeutet Tiefpunkt."},
+    {"regel": "Kommt bei f'' genau null heraus, entscheidet das nichts, dann schaue ich stattdessen, ob f' links und rechts von der Stelle das Vorzeichen wechselt."}
+  ],
+  "fehlregeln": [
+    {"id": "F1", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "H(x_0 | f(x_0)) orange"},
+    {"id": "F2", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "notwendige Bedingung (Wisch 1) steht getrennt von hinreichende Bedingung (Wisch 2)"},
+    {"id": "F3", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "f''(x0)>0->T(blau)"},
+    {"id": "F4", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F5", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F14", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "f(x) ist der y-Wert an der Stelle x; f'(x) ist die Steigung der Tangente an der Stelle x"}
+  ],
+  "transfer": [
+    {
+      "id": "T1",
+      "loesung": "T(-1 | -1)",
+      "rechnung": "p(x)=x^2+2x; p'(x)=2x+2=0 -> x=-1; p''(x)=2, also p''(-1)=2>0 -> Tiefpunkt; p(-1)=1-2=-1",
+      "quelle": "regel(A1+A2), W3, Z:1"
+    },
+    {
+      "id": "T2",
+      "loesung": "H(-2 | 16) und T(2 | -16)",
+      "rechnung": "q(x)=x^3-12x; q'(x)=3x^2-12=0 -> x^2=4 -> x=2 oder x=-2 (W2); q''(x)=6x; q''(-2)=-12<0 -> Hochpunkt, q(-2)=-8+24=16; q''(2)=12>0 -> Tiefpunkt, q(2)=8-24=-16",
+      "quelle": "regel(A1+A2), W2, W3, Z:1"
+    }
+  ],
+  "deutungen": [
+    {"symbol": "f'(x_0)=0", "was": "die notwendige Bedingung, gelb markiert, an der eine waagerechte Tangente vermutet wird", "wo": "Blatt 4, Wisch 1", "quelle": "B:Wisch1, Z:1"},
+    {"symbol": "f''(x_0)<0", "was": "die Bedingung, die zusammen mit f'(x_0)=0 einen Hochpunkt anzeigt, orange markiert", "wo": "Blatt 4, Wisch 2", "quelle": "B:Wisch2, Z:1"},
+    {"symbol": "f''(x_0)>0", "was": "die Bedingung, die zusammen mit f'(x_0)=0 einen Tiefpunkt anzeigt, blau markiert", "wo": "Blatt 4, Wisch 2", "quelle": "B:Wisch2, Z:1"},
+    {"symbol": "H(x_0 | f(x_0))", "was": "Schreibweise fuer den Hochpunkt als Punkt mit x-Koordinate x_0 und y-Koordinate f(x_0), passend zur allgemeinen Punktform P(x|y)", "wo": "Blatt 4, Wisch 2, orange", "quelle": "B:Wisch2, W1"},
+    {"symbol": "T(x_0 | f(x_0))", "was": "Schreibweise fuer den Tiefpunkt als Punkt mit x-Koordinate x_0 und y-Koordinate f(x_0)", "wo": "Blatt 4, Wisch 2, blau", "quelle": "B:Wisch2, W1"},
+    {"symbol": "∩", "was": "kann ich nicht deuten", "wo": "Blatt 4, Wisch 2, orange neben f''(x_0)<0", "quelle": "Z:3"},
+    {"symbol": "∪", "was": "kann ich nicht deuten", "wo": "Blatt 4, Wisch 2, blau neben f''(x_0)>0", "quelle": "Z:3"},
+    {"symbol": "orange/blau", "was": "Farbcode, der Bedingung, Symbol und Punktbezeichnung optisch verbindet, damit ich sie nicht selbst zuordnen muss", "wo": "durchgehend auf Blatt 4, Wisch 2", "quelle": "Z:4"}
+  ],
+  "schluss": {
+    "kann": "Ich kann jetzt bei f'(x0)=0 anhand des Vorzeichens von f''(x0) entscheiden, ob dort ein Hochpunkt oder ein Tiefpunkt liegt, und im Fall f''(x0)=0 stattdessen das Vorzeichen von f' links und rechts pruefen.",
+    "morgen": "Morgen wuesste ich noch, was auf meinem Zettel steht: notwendig f'(x0)=0, hinreichend f''(x0)<0 fuer H (orange) bzw. f''(x0)>0 fuer T (blau), bei f''(x0)=0 keine Entscheidung sondern Vorzeichenpruefung von f', dass Farbe Bedingung-Form-Punkt verbindet, und dass offen bleibt, was ∩/∪ genau bedeuten."
+  }
+}

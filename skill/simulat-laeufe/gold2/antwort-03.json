@@ -1,0 +1,54 @@
+{
+  "schritte": [
+    { "text": "Der Graph zeigt wieder f(x)=x³-3x - das ist genau die Funktion von meinem Zettel.", "quelle": "Z:1" },
+    { "text": "Die Ueberschrift fragt nach 'dem Gipfel' - das ist genau mein Wort aus Z:3 fuer H.", "quelle": "B:Welche Stelle ist der Gipfel, und wie hoch liegt er?" },
+    { "text": "Orange -1 und blau 1 auf der x-Achse sind wieder meine x1 und x2 von vorher.", "quelle": "Z:1" },
+    { "text": "Neu: 'hinreichende Bedingung' - das Gegenstueck zur 'notwendigen Bedingung', die ich schon nicht verstanden hatte.", "quelle": "Z:2" },
+    { "text": "f'' ist laut meinem Wissen die Ableitung von f' - das rechne ich nach: Ableitung von 3x²-3 ist 6x (Potenzregel).", "quelle": "W:5" },
+    { "text": "f''(-1)=6·(-1)=-6, das stimmt mit der -6<0 auf dem Blatt ueberein.", "quelle": "B:f''([-1 orange])=6·([-1 orange])=-6<0→ Hochpunkt(fett: H)" },
+    { "text": "Warum aus f''<0 folgt, dass -1 ein Hochpunkt ist, steht nirgends - das nehme ich einfach so hin.", "quelle": "keine" },
+    { "text": "'Hochpunkt' ausgeschrieben bestaetigt meine alte Vermutung: H stand fuer Gipfel/Hochpunkt.", "quelle": "Z:3" },
+    { "text": "Spiegelbildlich fuer blau: f''(1)=6·1=6>0 -> Tiefpunkt, bestaetigt T=Tal/Tiefpunkt.", "quelle": "Z:3" },
+    { "text": "'y-Werte: y=f(x)' ist nichts Neues - genau das bedeutet f(x) laut meinem Wissen.", "quelle": "W:1" },
+    { "text": "f(-1)=(-1)³-3·(-1)=-1+3=2 - genau der Wert, den ich schon als y=2 fuer x1 auf dem Zettel hatte.", "quelle": "Z:1" },
+    { "text": "f(1)=1³-3·1=1-3=-2 - stimmt mit meinem alten y=-2 fuer x2 ueberein.", "quelle": "Z:1" },
+    { "text": "Die Punkte (-1|2) und (1|-2) sind ganz normale P(x|y)-Punkte, wie ich sie kenne.", "quelle": "W:1" },
+    { "text": "Am Ende steht H(-1|2) und T(1|-2) - die kurze Schreibweise aus Buchstabe plus Punktklammer.", "quelle": "B:Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange." },
+    { "text": "Der gelbe Merksatz warnt genau vor dem Fehler, den ich fast gemacht haette: y kommt aus f(x), nicht aus f'(x), obwohl ich x ueber f'(x)=0 gefunden habe.", "quelle": "B:Der y-Wert kommt aus \\(f(x)\\), nicht aus \\(f'(x)\\)." }
+  ],
+  "stockstellen": [
+    { "art": "lastmarke", "zitat": "hinreichende Bedingung: f''(x)≠ 0", "warum": "Das Fachwort 'hinreichend' wird nicht erklaert, nur als Formel hingestellt, und passt zu meinem schon unklaren 'notwendig' aus Z:2." },
+    { "art": "skip", "zitat": "hinreichende Bedingung: f''(x)≠ 0", "warum": "Ich versuche nicht zu ergruenden, warum das Wort 'hinreichend' passt, ich nehme nur die Formel mit und gehe weiter." },
+    { "art": "glauben", "zitat": "f''([-1 orange])=6·([-1 orange])=-6<0→ Hochpunkt(fett: H)", "warum": "Warum negatives f'' einen Hochpunkt bedeutet, wird nicht gezeigt, das glaube ich nur, weil es dasteht." },
+    { "art": "glauben", "zitat": "f''([1 blau])=6·[1 blau]=6>0→ Tiefpunkt(fett: T)", "warum": "Gleiches Problem wie bei H: die Begruendung fuer 'positiv -> Tiefpunkt' fehlt, ich glaube es nur." },
+    { "art": "stocken", "zitat": "Rechtskurve", "warum": "Dieses Wort kommt aus dem Nichts, ich habe ueberhaupt keinen Anknuepfungspunkt dafuer in meinem Wissen." },
+    { "art": "stocken", "zitat": "Linkskurve", "warum": "Genau wie bei 'Rechtskurve' - kein Bezug zu etwas, das ich kenne." },
+    { "art": "raten", "zitat": "dabei klein „Rechtskurve\"", "warum": "Ich vermute, dass Rechtskurve etwas mit dem Hochpunkt und der negativen f''-Zahl zu tun hat, weil beides an derselben Stelle auftaucht, aber das steht nirgends so da." },
+    { "art": "ruecksprung", "zitat": "H/T = Gipfel/Tal: weiterhin nur Vermutung aus Farben, noch nicht entschieden.", "warum": "Ich schaue auf Z:3 zurueck, um zu pruefen, ob meine alte Vermutung jetzt durch 'Hochpunkt'/'Tiefpunkt' bestaetigt wird." },
+    { "art": "verwechslung", "zitat": "Der y-Wert kommt aus \\(f(x)\\), nicht aus \\(f'(x)\\).", "warum": "Ich haette fast gedacht, der y-Wert koennte aus f'(x) kommen, weil ich x ja ueber f'(x)=0 gefunden hatte." }
+  ],
+  "bewegungen": [
+    { "zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "urteil": "trug", "warum": "Zeigt mir die tatsaechliche Kurvenform, die ich vorher nur aus den Farben geraten hatte." },
+    { "zitat": "An der x-Achse steht die orange Achsenmarke −1.", "urteil": "dekoration", "warum": "Markiert nur einen Wert, den ich schon aus Z:1 kenne, ohne etwas Neues zu zeigen." },
+    { "zitat": "Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.", "urteil": "trug", "warum": "Zeigt mir genau, welche Zahl in welche Luecke der Formel eingesetzt wird, ohne dass ich das selbst raten muss." },
+    { "zitat": "Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf, dabei klein „Rechtskurve\".", "urteil": "dekoration", "warum": "Das Wort bleibt fuer mich unverstaendlich, es hilft mir nicht zu begreifen, warum das ein Hochpunkt ist." },
+    { "zitat": "Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 2.", "urteil": "trug", "warum": "Zeigt mir bildlich, wo die 2 auf der Kurve herkommt, statt dass ich mir das nur denken muss." },
+    { "zitat": "Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.", "urteil": "trug", "warum": "Setzt die berechneten Zahlen konkret als Punkt auf die Kurve, das macht die P(x|y)-Form greifbar." },
+    { "zitat": "Eine Kopie der orangen → Hochpunkt loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann → Hochpunkt).", "urteil": "trug", "warum": "Zeigt mir die fertige, kurze Schreibweise H(-1|2), die ich vorher nur in Einzelteilen hatte." },
+    { "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.", "urteil": "dekoration", "warum": "Das ist nur Tempo/Aufbau der Zeile, liefert selbst keine neue Information." }
+  ],
+  "deutungen": [
+    { "symbol": "hinreichende Bedingung", "was": "eine zweite Bedingung neben der notwendigen (f'=0), hier konkret f''(x)≠0 - warum das 'hinreichend' heisst, kann ich nicht deuten", "wo": "kleine Kapitaelchen-Marke ueber der Zeile f''(x)=6x", "quelle": "B:hinreichende Bedingung: f''(x)≠ 0" },
+    { "symbol": "Rechtskurve", "was": "kann ich nicht deuten", "wo": "kleines Label neben dem orange leuchtenden Kurvenstueck um x=-1", "quelle": "kann ich nicht deuten" },
+    { "symbol": "Linkskurve", "was": "kann ich nicht deuten", "wo": "kleines Label neben dem blau leuchtenden Kurvenstueck um x=1", "quelle": "kann ich nicht deuten" },
+    { "symbol": "Hochpunkt", "was": "der Punkt, den ich bisher nur als Buchstabe H und als Vermutung 'Gipfel' kannte", "wo": "fett geschrieben in der Zeile mit f''(-1)=-6<0", "quelle": "Z:3" },
+    { "symbol": "Tiefpunkt", "was": "der Punkt, den ich bisher nur als Buchstabe T und als Vermutung 'Tal' kannte", "wo": "fett geschrieben in der Zeile mit f''(1)=6>0", "quelle": "Z:3" },
+    { "symbol": "H(-1|2)", "was": "Kurzschreibweise: Buchstabe H direkt vor der Punktklammer im P(x|y)-Format", "wo": "Beschriftung am orangen Punkt im Graphen (Wisch 5)", "quelle": "W:1" }
+  ],
+  "zettel": [
+    "H(-1|2): f''(-1)=-6<0->Hochpunkt. T(1|-2): f''(1)=6>0->Tiefpunkt. f''(x)=6x.",
+    "Warum f''-Vorzeichen -> H/T weiss ich nicht, nur geglaubt (Thema fehlt mir).",
+    "Merksatz: y-Wert kommt aus f(x), NICHT aus f'(x) - x fand ich ueber f'(x)=0.",
+    "Unklar: 'hinreichend' (vs 'notwendig'), 'Rechtskurve'/'Linkskurve' unklar."
+  ]
+}

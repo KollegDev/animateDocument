@@ -1,0 +1,292 @@
+{
+ "film": "Extrempunkte (Nullfilm)",
+ "thema": "Extrempunkte (Hoch- und Tiefpunkte, notwendige und hinreichende Bedingung)",
+ "blaetter": 3,
+ "transfer": [
+  {
+   "id": "T1",
+   "aufgabe": "Bestimme die Extrempunkte von p(x)=x^2+2x (Art und Koordinaten).",
+   "erwartet": [
+    "T(-1|-1)"
+   ],
+   "loesung": "T(-1|-1)",
+   "quelle": "W3, W2, W5, regel",
+   "richtig": true,
+   "teilweise": true
+  },
+  {
+   "id": "T2",
+   "aufgabe": "Bestimme die Extrempunkte von q(x)=x^3-12x (Art und Koordinaten).",
+   "erwartet": [
+    "H(-2|16)",
+    "T(2|-16)"
+   ],
+   "loesung": "H(-2|16), T(2|-16)",
+   "quelle": "W3, W2, W5, regel",
+   "richtig": true,
+   "teilweise": true
+  }
+ ],
+ "transfer_bestanden": true,
+ "regeln": [
+  "Wenn ich die vermutete Sonderstelle in f'' einsetze und eine negative Zahl herauskommt, ist dort ein Gipfel; kommt eine positive Zahl heraus, ist dort ein Tal.",
+  "Die Hoehe so einer Sonderstelle bekomme ich, indem ich dieselbe Stelle in die urspruengliche Funktion f einsetze, nicht in f' oder f''."
+ ],
+ "fehlregeln": [
+  {
+   "id": "F1",
+   "text": "Der y-Wert eines Extrempunkts ist f'(x0) oder f''(x0), also die Zahl, die man beim Pruefen ausgerechnet hat.",
+   "ergebnis": "widerlegt, Gegenbeispiel belegt",
+   "zitat": "x=-1: f''=-6<0 -> H(-1|2) 'Gipfel'",
+   "ungebrochen": false
+  },
+  {
+   "id": "F2",
+   "text": "Wo f'(x)=0 ist, liegt immer ein Hoch- oder Tiefpunkt.",
+   "ergebnis": "passt zu allen gesehenen Beispielen",
+   "ungebrochen": true
+  },
+  {
+   "id": "F3",
+   "text": "f''(x0)>0 bedeutet Hochpunkt, weil positiv oben ist.",
+   "ergebnis": "widerlegt, Gegenbeispiel belegt",
+   "zitat": "x=1: f''=6>0 -> T(1|-2) 'Tal'",
+   "ungebrochen": false
+  },
+  {
+   "id": "F4",
+   "text": "Ein Extrempunkt liegt immer bei x=0 oder bei x=1 und x=-1.",
+   "ergebnis": "passt zu allen gesehenen Beispielen",
+   "ungebrochen": true
+  },
+  {
+   "id": "F5",
+   "text": "Der Hochpunkt ist der hoechste Punkt des ganzen Graphen.",
+   "ergebnis": "passt zu allen gesehenen Beispielen",
+   "ungebrochen": true
+  },
+  {
+   "id": "F14",
+   "text": "Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe).",
+   "ergebnis": "passt zu allen gesehenen Beispielen",
+   "ungebrochen": true
+  }
+ ],
+ "erste_klasse": {
+  "transfer_falsch": [],
+  "fehlregeln_ungebrochen": [
+   "F2: Wo f'(x)=0 ist, liegt immer ein Hoch- oder Tiefpunkt. [passt zu allen gesehenen Beispielen]",
+   "F4: Ein Extrempunkt liegt immer bei x=0 oder bei x=1 und x=-1. [passt zu allen gesehenen Beispielen]",
+   "F5: Der Hochpunkt ist der hoechste Punkt des ganzen Graphen. [passt zu allen gesehenen Beispielen]",
+   "F14: Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe). [passt zu allen gesehenen Beispielen]"
+  ],
+  "deutung_unmoeglich": [
+   "Blatt 3: art1 / art2",
+   "Schluss: art1 / art2",
+   "Schluss: 'Gipfel' / 'Tal'"
+  ]
+ },
+ "fremdvokabular": [
+  "vermutete",
+  "sonderstelle",
+  "dieselbe"
+ ],
+ "zweite_klasse": {
+  "stockstellen": 20,
+  "glauben": 7,
+  "ungedeckte_schritte": "5 von 38",
+  "skips": 2,
+  "ruecksprung": 2,
+  "vorstellung": 4,
+  "rechenfehler": 0,
+  "lastmarken": 2,
+  "verwechslung": 0
+ },
+ "bewegungen": {
+  "trug": [
+   "Blatt 1: Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.",
+   "Blatt 1: Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.",
+   "Blatt 1: Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.",
+   "Blatt 1: Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2",
+   "Blatt 1: [gelb hinterlegt:] m=f'(x)=0",
+   "Blatt 2: [Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]",
+   "Blatt 2: [Chip fuer Chip in Leserichtung:]",
+   "Blatt 2: [Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des G",
+   "Blatt 3: An der x-Achse steht die orange Achsenmarke −1 / blaue Achsenmarke 1",
+   "Blatt 3: Ein oranger Pfeil zieht sich langsam von der -1 ... muendet von oben auf die -1 ",
+   "Blatt 3: Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf",
+   "Blatt 3: Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve",
+   "Blatt 3: [Luecke][Luecke]|[Luecke]) ,[Luecke][Luecke]|[Luecke])",
+   "Blatt 3: Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange"
+  ],
+  "dekoration": [
+   "Blatt 1: Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.",
+   "Blatt 1: Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.",
+   "Blatt 2: [An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.] / [An der",
+   "Blatt 3: Graph zeichnet sich: f(x) = x³ − 3x ...",
+   "Blatt 3: Ein blauer Pfeil zieht sich langsam von der 1 ... muendet ... auf die 1",
+   "Blatt 3: Die vorbereitete Zeile erscheint Chip fuer Chip",
+   "Blatt 3: Im Graphen leuchtet das Kurvenstueck um x = 1 dick blau auf",
+   "Blatt 3: Von der Achsenmarke 1 laeuft eine gestrichelte blaue Linie senkrecht zur Kurve u",
+   "Blatt 3: Eine Kopie der orangen art1 loest sich aus der Zeile und fliegt in die Luecke",
+   "Blatt 3: Beschriftung T(1−2) erscheint am Punkt (1|-2), blau"
+  ]
+ },
+ "flags": [
+  "Blatt 1: Rechenlast: 11 Schritte auf einem Blatt",
+  "Blatt 2: Rechenlast: 10 Schritte auf einem Blatt",
+  "Blatt 3: Rechenlast: 17 Schritte auf einem Blatt"
+ ],
+ "zettel_je_blatt": [
+  [
+   "f(x)=x³−3x hat H(−1|2) und T(1|−2); Berührgerade=Tangente (W4).",
+   "m = Steigung der Tangente = f'(x); bei H,T ist m=f'(x)=0 (geglaubt).",
+   "Unklar: warum Steigung genau dort null ist; H/T evtl. Hoch-/Tiefpunkt.",
+   "Offen: Extrempunkte als Oberbegriff, Berührgerade unerklärt gelassen."
+  ],
+  [
+   "Z:1 f(x)=x^3-3x, f'(x)=3x^2-3 (W3, passt); f'=0 <=> x^2=1 <=> x=-1 oder x=1 (W2).",
+   "Z:2 x=-1: Gipfel=H(-1|2); x=1: Tal=T(1|-2) (Z:1); Marken flogen zur Achse (trug).",
+   "Z:3 Unklar bleibt: warum f'=0 genau Gipfel/Tal ergibt - nur gezeigt, nicht bewiesen.",
+   "Z:4 Offen: Fachwort fuer Gipfel/Tal (evtl. 'Extrempunkte'?), Warum bleibt unerklaert."
+  ],
+  [
+   "f(x)=x^3-3x, f'=3x^2-3, f''=6x (Potenzregel, W3+W5); nachgerechnet, stimmt.",
+   "x=-1: f''=-6<0 -> H(-1|2) 'Gipfel'; x=1: f''=6>0 -> T(1|-2) 'Tal' (Z:2 bestaetigt).",
+   "Offen (wie Z:3): warum f''-Vorzeichen Gipfel/Tal macht - nur gezeigt, nicht erklaert.",
+   "Unklar (Z:4): Fachwort fuer Gipfel/Tal; 'art1/art2' bei H/T-Label nicht deutbar."
+  ]
+ ],
+ "morgen": [],
+ "schluss": {
+  "kann": "Ich kann jetzt bei einer gegebenen Stelle entscheiden, ob dort ein Gipfel oder ein Tal liegt, indem ich sie in f'' einsetze, und die Hoehe durch Einsetzen in f ausrechnen.",
+  "morgen": "Auf meinem Zettel stuende noch, dass x=-1 mit f''=-6 zu H(-1|2) und x=1 mit f''=6 zu T(1|-2) gehoert, aber auch, dass mir nicht klar ist, warum das Vorzeichen von f'' das entscheidet."
+ },
+ "stockstellen": [
+  {
+   "blatt": 1,
+   "art": "skip",
+   "zitat": "Woran erkennt man einen Gipfel?",
+   "warum": "Bildhafte Umschreibung ohne Rechenbezug, die überspringe ich."
+  },
+  {
+   "blatt": 1,
+   "art": "lastmarke",
+   "zitat": "Extrempunkte (Hoch- und Tiefpunkte)",
+   "warum": "Unerklärtes Fachwort, das nicht auf meiner Whitelist steht."
+  },
+  {
+   "blatt": 1,
+   "art": "lastmarke",
+   "zitat": "Beruehrgerade",
+   "warum": "Unerklärtes Fachwort auf dem Blatt, nur über W4 erschlossen."
+  },
+  {
+   "blatt": 1,
+   "art": "raten",
+   "zitat": "oben im Bild laufen x und m mit",
+   "warum": "m wird an dieser Stelle noch nicht erklärt, ich muss raten, dass es die Steigung ist."
+  },
+  {
+   "blatt": 1,
+   "art": "vorstellung",
+   "zitat": "bei x = -1, 1 bleibt je ein blasser Abdruck stehen",
+   "warum": "Das Blatt zeigt keinen Winkel, ob die Gerade dort wirklich waagrecht ist, sehe ich nicht."
+  },
+  {
+   "blatt": 1,
+   "art": "glauben",
+   "zitat": "m=f'(x)=0",
+   "warum": "Die Gleichung wird als fertige Tatsache hingestellt, ich kann nicht herleiten, warum sie an H und T gilt."
+  },
+  {
+   "blatt": 2,
+   "art": "glauben",
+   "zitat": "Also waere -1 der Gipfel und 1 das Tal, weil dort die Steigung null ist - warum genau, weiss ich nicht.",
+   "warum": "Schritt ohne belegte Quelle (keine)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 2,
+   "art": "vorstellung",
+   "zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]",
+   "warum": "Keine Linie verbindet den Huegel der Kurve mit der Marke bei -1, das muss ich mir selbst dazudenken."
+  },
+  {
+   "blatt": 2,
+   "art": "ruecksprung",
+   "zitat": "dort wird die Achsenmarke −1 kraeftig",
+   "warum": "Ich springe zurueck zu Z:1, um zu pruefen, ob -1 wirklich zu H passt."
+  },
+  {
+   "blatt": 2,
+   "art": "glauben",
+   "zitat": "Wo liegen Gipfel und Tal?",
+   "warum": "Dass Steigung=0 automatisch Gipfel oder Tal bedeutet, wird nicht erklaert, nur durch die Bewegung nahegelegt (wie schon Z:2, Z:3)."
+  },
+  {
+   "blatt": 3,
+   "art": "glauben",
+   "zitat": "Orange Marke bei -1, blaue Marke bei 1 an der x-Achse - das sind meine zwei Stellen aus Z:1.",
+   "warum": "Schritt ohne belegte Quelle (B:'die orange Achsenmarke −1' + Z:1)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 3,
+   "art": "glauben",
+   "zitat": "f(-1)=(-1)³-3·(-1)=-1+3=2 - genau die 2 aus Z:2 (H(-1|2)).",
+   "warum": "Schritt ohne belegte Quelle (B:'f([-1 orange])=...=-1+3=[2 orange]' +)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 3,
+   "art": "glauben",
+   "zitat": "f(1)=1-3=-2 - wieder wie in Z:2 (T(1|-2)).",
+   "warum": "Schritt ohne belegte Quelle (B:'f([1 blau])=...=1-3=[-2 blau]' + Z:2)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 3,
+   "art": "glauben",
+   "zitat": "Gleiches in Blau: art2, 1, -2 -> 'art2(1|-2)', dann Label T(1|-2) - T ist aus Z:2 der Tal-Punkt.",
+   "warum": "Schritt ohne belegte Quelle (B:'Beschriftung T(1−2) erscheint' + Z:2)",
+   "mechanisch": true
+  },
+  {
+   "blatt": 3,
+   "art": "vorstellung",
+   "zitat": "f''([-1 orange])=6·([-1 orange])=-6<0 ... leuchtet ... orange auf",
+   "warum": "das Blatt zeigt nirgends eine Regel oder Zwischenschritt, WARUM f''<0 einen Gipfel bedeutet"
+  },
+  {
+   "blatt": 3,
+   "art": "stocken",
+   "zitat": "Eine Kopie der orangen art1 loest sich aus der Zeile",
+   "warum": "'art1' ist ein Wort, das ich aus keinem W-Punkt und keinem Zettel kenne, ich kann die Lücke selbst nicht füllen"
+  },
+  {
+   "blatt": 3,
+   "art": "raten",
+   "zitat": "art1(-1|2) ... Beschriftung H(−1|2) erscheint",
+   "warum": "ich vermute nur, dass 'art1' am Ende sowas wie 'H' heißen soll, gesagt wird das nicht"
+  },
+  {
+   "blatt": 3,
+   "art": "ruecksprung",
+   "zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange",
+   "warum": "ich springe zurück zu Z:2, um zu prüfen ob H schon mal auftauchte - ja, dort stand's schon"
+  },
+  {
+   "blatt": 3,
+   "art": "skip",
+   "zitat": "f''([1 blau])=6·[1 blau]=6>0",
+   "warum": "gleiche Form wie eben bei -1, ich spare mir die nochmalige Herleitung"
+  },
+  {
+   "blatt": 3,
+   "art": "vorstellung",
+   "zitat": "Welche Stelle ist der Gipfel, und wie hoch liegt er?",
+   "warum": "die Überschrift-Frage wird nur an zwei Beispielen vorgeführt, nicht allgemein beantwortet oder bewiesen - bleibt wie Z:3 offen"
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+  "regeln": [
+    {"regel": "Dort, wo die Tangente an den Graphen waagerecht ist (die Steigung also null wird), kann ein Hoch- oder Tiefpunkt liegen - das ist erstmal nur ein Kandidat."},
+    {"regel": "Kommt an so einer Stelle beim zweiten Ableiten eine negative Zahl heraus, ist es ein Gipfel; kommt eine positive Zahl heraus, ist es ein Tal."},
+    {"regel": "Kommt beim zweiten Ableiten an der Stelle null heraus, weiss ich noch nicht, was es ist, dann muss ich schauen, ob die Steigung davor und danach das Vorzeichen wechselt."}
+  ],
+  "fehlregeln": [
+    {"id": "F1", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "H(x_0 | f(x_0))"},
+    {"id": "F2", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F3", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "[f''(x_0)>0 blau][∪ blau]→[T(x_0 | f(x_0)) blau]"},
+    {"id": "F4", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F5", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F14", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "H(x_0 | f(x_0))"}
+  ],
+  "transfer": [
+    {
+      "id": "T1",
+      "loesung": "Tiefpunkt T(-1 | -1)",
+      "rechnung": "p'(x)=2x+2; p'(x)=0 -> x=-1 (Kandidat); p''(x)=2, p''(-1)=2>0 -> Tal/T; p(-1)=(-1)^2+2*(-1)=1-2=-1",
+      "quelle": "regel|Z:1|W:W3|W:W4|W:W5"
+    },
+    {
+      "id": "T2",
+      "loesung": "Tiefpunkt T(2 | -16) und Hochpunkt H(-2 | 16)",
+      "rechnung": "q'(x)=3x^2-12; q'(x)=0 -> x^2=4 -> x=2 oder x=-2 (Kandidaten, Wurzelziehen mit zwei Loesungen); q''(x)=6x; q''(2)=12>0 -> Tal/T, q(2)=2^3-12*2=8-24=-16; q''(-2)=-12<0 -> Gipfel/H, q(-2)=(-2)^3-12*(-2)=-8+24=16",
+      "quelle": "regel|Z:1|W:W2|W:W3|W:W4|W:W5"
+    }
+  ],
+  "deutungen": [
+    {
+      "symbol": "notwendige Bedingung",
+      "was": "kann ich nicht deuten - nur eine Bezeichnung ueber f'(x_0)=0, warum 'notwendig' nicht automatisch reicht, wurde nicht erklaert",
+      "wo": "Blatt 8, Wisch 1, kleine Marke in Kapitaelchen ueber dem gelb hinterlegten f'(x_0)=0",
+      "quelle": "Z:3"
+    },
+    {
+      "symbol": "hinreichende Bedingung",
+      "was": "kann ich nicht deuten",
+      "wo": "Blatt 8, Wisch 2, kleine Marke in Kapitaelchen",
+      "quelle": "Z:3"
+    },
+    {
+      "symbol": "∩ (orange)",
+      "was": "gehoert zur Gipfel-Bedingung f''(x_0)<0 und wird 'Rechtskurve' genannt; was das Zeichen selbst genau zeigt, kann ich nicht sicher deuten",
+      "wo": "Blatt 8, Wisch 2, orange neben f''(x_0)<0",
+      "quelle": "Z:3|Z:4"
+    },
+    {
+      "symbol": "∪ (blau)",
+      "was": "gehoert zur Tal-Bedingung f''(x_0)>0 und wird 'Linkskurve' genannt; was das Zeichen selbst genau zeigt, kann ich nicht sicher deuten",
+      "wo": "Blatt 8, Wisch 2, blau neben f''(x_0)>0",
+      "quelle": "Z:3|Z:4"
+    },
+    {
+      "symbol": "H(x_0 | f(x_0))",
+      "was": "der Hochpunkt (Gipfel) als Punkt geschrieben, genau wie P(x|y): der x-Wert ist x_0, der y-Wert ist f(x_0)",
+      "wo": "Blatt 8, Wisch 2, orange",
+      "quelle": "W:W1"
+    },
+    {
+      "symbol": "T(x_0 | f(x_0))",
+      "was": "der Tiefpunkt (Tal) als Punkt geschrieben, genau wie P(x|y): der x-Wert ist x_0, der y-Wert ist f(x_0)",
+      "wo": "Blatt 8, Wisch 2, blau",
+      "quelle": "W:W1"
+    },
+    {
+      "symbol": "Rechtskurve / Linkskurve",
+      "was": "kann ich nicht deuten - Fachwoerter, der Grund, warum sie gelten, wurde nicht gezeigt",
+      "wo": "Blatt 8, Wisch 3, im Merksatz",
+      "quelle": "Z:3|Z:4"
+    },
+    {
+      "symbol": "gelb hinterlegt",
+      "was": "Farbmarkierung fuer eine wichtige Bedingung bzw. Regel, die ich mir merken soll",
+      "wo": "Blatt 8, Wisch 1 (bei f'(x_0)=0) und Wisch 3 (beim Merksatz)",
+      "quelle": "Z:1"
+    }
+  ],
+  "schluss": {
+    "kann": "Ich kann jetzt zu einer Funktion mit f'(x)=0 die Kandidaten finden und mit f'' entscheiden, ob dort ein Hochpunkt oder ein Tiefpunkt liegt, und den Punkt als H(x_0|f(x_0)) bzw. T(x_0|f(x_0)) aufschreiben.",
+    "morgen": "Morgen wuesste ich noch, was auf meinem Zettel steht: f'(x0)=0 ist der Kandidat, f''<0 gibt Gipfel/H und f''>0 gibt Tal/T, und dass ich bei f''(x0)=0 das Vorzeichen von f' pruefen muss, auch wenn ich darin noch ungeuebt bin."
+  }
+}

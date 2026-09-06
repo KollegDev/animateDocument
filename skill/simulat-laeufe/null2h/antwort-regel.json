@@ -1,0 +1,40 @@
+{
+  "regeln": [
+    {"regel": "Wo die erste Ableitung f'(x)=0 ist, liegen kritische Stellen, an denen Extrempunkte sein können."},
+    {"regel": "Wenn f''(x)<0 an einer kritischen Stelle ist, liegt dort ein Hochpunkt."},
+    {"regel": "Wenn f''(x)>0 an einer kritischen Stelle ist, liegt dort ein Tiefpunkt."},
+    {"regel": "Die y-Koordinate eines Extrempunkts findet man, indem man den x-Wert in die ursprüngliche Funktion f einsetzt, nicht in f' oder f''."}
+  ],
+  "fehlregeln": [
+    {"id": "F1", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "f([-1 orange])=([-1 orange])^3-3·([-1 orange])=-1+3=[2 orange] - der y-Wert ist f(-1)=2, nicht f'(-1) oder f''(-1)"},
+    {"id": "F2", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F3", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "f''([1 blau])=6·[1 blau]=6>0, aber [1 blau]) ist T(1|-2), ein Tiefpunkt, nicht ein Hochpunkt"},
+    {"id": "F4", "passt_zu_allen_beispielen": true, "gegenbeispiel_zitat": ""},
+    {"id": "F5", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "Der Graph zeigt, dass nach x=1 die Kurve wieder steigt und über den Punkt (-1|2) hinauswächst, daher ist H(-1|2) nicht der höchste Punkt des ganzen Graphen"},
+    {"id": "F14", "passt_zu_allen_beispielen": false, "gegenbeispiel_zitat": "f''([1 blau])=6·[1 blau]=6>0 und f([1 blau])=1³-3·1=-2, also f'(1)≠f(1)"}
+  ],
+  "transfer": [
+    {
+      "id": "T1",
+      "loesung": "T(-1|-1)",
+      "rechnung": "p'(x)=2x+2=0 → x=-1; p''(-1)=2>0 → Tiefpunkt; p(-1)=1-2=-1",
+      "quelle": "regel"
+    },
+    {
+      "id": "T2",
+      "loesung": "H(-2|16), T(2|-16)",
+      "rechnung": "q'(x)=3x²-12=0 → x²=4 → x=±2; q''(-2)=-12<0 → H; q''(2)=12>0 → T; q(-2)=-8+24=16; q(2)=8-24=-16",
+      "quelle": "regel"
+    }
+  ],
+  "deutungen": [
+    {"symbol": "f'(x)", "was": "Die erste Ableitung, gibt die Steigung der Tangente an der Stelle x an", "wo": "Im Blatt oben die Gleichung f'(x)=0, im Graphen die Stelle, wo die Kurve waagerecht ist", "quelle": "W4, Z:2"},
+    {"symbol": "f''(x)", "was": "Die zweite Ableitung, Ableitung von f', zeigt die Krümmung der Kurve", "wo": "Im Blatt die berechneten Werte f''(-1)=-6 und f''(1)=6", "quelle": "W5, Z:1"},
+    {"symbol": "H und T", "was": "Hochpunkt und Tiefpunkt, Extrempunkte mit ihren Koordinaten", "wo": "Im Graph als farbliche Punkte markiert und benannt (orange H, blau T)", "quelle": "Z:2, Blatt 3 Wisch 5"},
+    {"symbol": "(x|y)", "was": "Notation für einen Punkt mit x-Koordinate und y-Koordinate", "wo": "Bei der Beschriftung der Punkte: (-1|2) und (1|-2)", "quelle": "W1, Z:2"}
+  ],
+  "schluss": {
+    "kann": "Ich kann nun Extrempunkte von ganzrationalen Funktionen bestimmen, indem ich f'(x)=0 setze, die kritischen Stellen berechne, mit f''(x) prüfe, ob es Hoch- oder Tiefpunkt ist, und den y-Wert über f berechne.",
+    "morgen": "Ich weiß noch, dass f''<0 einen Hochpunkt anzeigt und f''>0 einen Tiefpunkt, und dass ich den y-Wert in f einsetze, nicht in f' oder f''."
+  }
+}

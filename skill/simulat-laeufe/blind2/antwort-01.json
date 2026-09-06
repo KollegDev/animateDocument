@@ -1,0 +1,37 @@
+{
+  "schritte": [
+    {"text": "Ich lese die Überschrift 'Kurvendiskussion' - ein Wort, das ich so noch nicht gesehen habe.", "quelle": "B:Kurvendiskussion"},
+    {"text": "Der Satz sagt, eine Funktion wird unter mehreren Gesichtspunkten untersucht - was das genau heißt, bleibt offen.", "quelle": "B:Eine Kurvendiskussion untersucht eine Funktion unter mehreren Gesichtspunkten."},
+    {"text": "Eine Funktion kenne ich: f(x) ist der y-Wert an der Stelle x.", "quelle": "W:W1"},
+    {"text": "Wisch 2 zeigt eine Liste mit vier Punkten - das ist wohl die Auflösung von 'Gesichtspunkte'.", "quelle": "B:Vier Gesichtspunkte gehören dazu:"},
+    {"text": "Erster Punkt 'Definitionsbereich und Wertebereich' - diese Wörter sagen mir nichts.", "quelle": "B:Definitionsbereich und Wertebereich"},
+    {"text": "Zweiter Punkt 'Graphische Darstellung / Skizze' - das könnte die Zeichnung eines Graphen sein, wie ich sie von Funktionen kenne.", "quelle": "W:W1"},
+    {"text": "Dritter Punkt 'Symmetrieverhalten' - neues Wort, ich kann es mit meinem Wissen nicht verbinden.", "quelle": "B:Symmetrieverhalten"},
+    {"text": "Vierter Punkt 'y-Achsenschnittpunkt' - das müsste der Punkt mit x=0 sein, also P(0|f(0)).", "quelle": "W:W1"},
+    {"text": "'Nullstellen' könnten die x-Werte sein, für die man f(x)=0 löst, wie eine Gleichung.", "quelle": "W:W2"},
+    {"text": "Ich nehme an, dass die vier Punkte später einzeln genauer erklärt werden, weil dieses Blatt keine Frage stellt.", "quelle": "keine"}
+  ],
+  "stockstellen": [
+    {"art": "lastmarke", "zitat": "Definitionsbereich und Wertebereich", "warum": "unerklärtes Fachwort, das laut meinem Wissen gar nicht existiert"},
+    {"art": "lastmarke", "zitat": "Symmetrieverhalten", "warum": "neues Fachwort, auf diesem Blatt nicht erklärt"},
+    {"art": "vorstellung", "zitat": "Vier Gesichtspunkte gehören dazu:", "warum": "keine Skizze oder Beispielfunktion, an der ich mir die vier Punkte vorstellen könnte"},
+    {"art": "glauben", "zitat": "Eine Kurvendiskussion untersucht eine Funktion unter mehreren Gesichtspunkten.", "warum": "ich nehme den Satz hin, ohne ihn selbst nachvollziehen zu können"},
+    {"art": "raten", "zitat": "y-Achsenschnittpunkt", "warum": "ich vermute P(0|f(0)), aber sicher weiß ich es aus diesem Blatt nicht"}
+  ],
+  "bewegungen": [],
+  "deutungen": [
+    {"symbol": "Kurvendiskussion", "was": "eine Untersuchung einer Funktion, die aus vier Punkten besteht", "wo": "Überschrift von Wisch 1, aufgelöst durch die Liste in Wisch 2", "quelle": "B:Vier Gesichtspunkte gehören dazu:"},
+    {"symbol": "Gesichtspunkte", "was": "die vier Punkte, die man sich bei einer Funktion ansieht", "wo": "Liste in Wisch 2", "quelle": "B:Vier Gesichtspunkte gehören dazu:"},
+    {"symbol": "Definitionsbereich und Wertebereich", "was": "kann ich nicht deuten", "wo": "erster Punkt der Liste in Wisch 2", "quelle": "kann ich nicht deuten"},
+    {"symbol": "Graphische Darstellung / Skizze", "was": "eine Zeichnung des Funktionsgraphen", "wo": "zweiter Punkt der Liste in Wisch 2", "quelle": "W:W1"},
+    {"symbol": "Symmetrieverhalten", "was": "kann ich nicht deuten", "wo": "dritter Punkt der Liste in Wisch 2", "quelle": "kann ich nicht deuten"},
+    {"symbol": "y-Achsenschnittpunkt", "was": "vermutlich der Punkt, an dem der Graph die y-Achse schneidet, also P(0|f(0))", "wo": "vierter Punkt der Liste in Wisch 2", "quelle": "W:W1"},
+    {"symbol": "Nullstellen", "was": "vermutlich die x-Werte, für die f(x)=0 ist", "wo": "vierter Punkt der Liste in Wisch 2", "quelle": "W:W2"}
+  ],
+  "zettel": [
+    "Kurvendiskussion: eine Funktion wird unter mehreren Gesichtspunkten untersucht.",
+    "4 Punkte: Def./Wertebereich(?), Graph/Skizze, Symmetrie(?), Nullstellen+y-Punkt.",
+    "Skizze kenne ich von Graphen (W1); Nullstellen vermutlich f(x)=0 loesen (W2).",
+    "Definitionsbereich, Wertebereich, Symmetrieverhalten: neue Woerter, unklar."
+  ]
+}

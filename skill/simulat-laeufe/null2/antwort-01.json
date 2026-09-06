@@ -1,0 +1,44 @@
+{
+  "schritte": [
+    {"text": "Der Titel spricht von einem Gipfel - das klingt nach einem höchsten Punkt einer Kurve.", "quelle": "B:Woran erkennt man einen Gipfel?"},
+    {"text": "Extrempunkte, Hoch- und Tiefpunkte - neue Wörter, das Thema kenne ich nicht.", "quelle": "B:Extrempunkte (Hoch- und Tiefpunkte)"},
+    {"text": "f(x) = x³ − 3x ist eine Funktion, ich kann für x-Werte den y-Wert ausrechnen.", "quelle": "W1"},
+    {"text": "Ich rechne nach: f(-1) = (-1)³ - 3·(-1) = -1+3 = 2, passt zu (-1|2).", "quelle": "B:Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x."},
+    {"text": "H(-1|2) benennt wohl diesen Punkt als 'Hochpunkt', wegen der Überschrift Hoch- und Tiefpunkte.", "quelle": "B:Hoch- und Tiefpunkte"},
+    {"text": "Ich rechne nach: f(1) = 1³ - 3·1 = 1-3 = -2, passt zu (1|-2).", "quelle": "B:Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x."},
+    {"text": "T(1|-2) ist dann wohl der 'Tiefpunkt', analog zu H.", "quelle": "B:Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau."},
+    {"text": "Eine Berührgerade, die die Kurve berührt und entlangfährt, ist wohl die Tangente aus W4.", "quelle": "W4"},
+    {"text": "m läuft oben mit x mit - ich vermute, m ist der Wert der Steigung an der Stelle x.", "quelle": "B:oben im Bild laufen x und m mit"},
+    {"text": "Bei x=-1 und x=1 bleibt ein Abdruck stehen - genau dort, wo H und T liegen.", "quelle": "B:bei x = -1, 1 bleibt je ein blasser Abdruck stehen"},
+    {"text": "Gelb hervorgehoben steht m=f'(x)=0 - an H und T ist die Steigung der Tangente also null.", "quelle": "B:m=f'(x)=0"}
+  ],
+  "stockstellen": [
+    {"art": "skip", "zitat": "Woran erkennt man einen Gipfel?", "warum": "Bildhafte Umschreibung ohne Rechenbezug, die überspringe ich."},
+    {"art": "lastmarke", "zitat": "Extrempunkte (Hoch- und Tiefpunkte)", "warum": "Unerklärtes Fachwort, das nicht auf meiner Whitelist steht."},
+    {"art": "lastmarke", "zitat": "Beruehrgerade", "warum": "Unerklärtes Fachwort auf dem Blatt, nur über W4 erschlossen."},
+    {"art": "raten", "zitat": "oben im Bild laufen x und m mit", "warum": "m wird an dieser Stelle noch nicht erklärt, ich muss raten, dass es die Steigung ist."},
+    {"art": "vorstellung", "zitat": "bei x = -1, 1 bleibt je ein blasser Abdruck stehen", "warum": "Das Blatt zeigt keinen Winkel, ob die Gerade dort wirklich waagrecht ist, sehe ich nicht."},
+    {"art": "glauben", "zitat": "m=f'(x)=0", "warum": "Die Gleichung wird als fertige Tatsache hingestellt, ich kann nicht herleiten, warum sie an H und T gilt."}
+  ],
+  "bewegungen": [
+    {"zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "urteil": "trug", "warum": "zeigte mir die tatsächliche Kurvenform, die ich aus der Formel allein nicht sofort sehen würde"},
+    {"zitat": "Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.", "urteil": "trug", "warum": "zeigte mir, an welcher Stelle überhaupt etwas Besonderes ist, nicht nur dass dort ein Wert liegt"},
+    {"zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.", "urteil": "dekoration", "warum": "fügt nur einen Namen hinzu, keine neue Information über den Punkt selbst"},
+    {"zitat": "Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.", "urteil": "trug", "warum": "zeigte die zweite besondere Stelle, farblich von der ersten unterschieden"},
+    {"zitat": "Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.", "urteil": "dekoration", "warum": "nur Beschriftung, keine neue Rechnung oder Form"},
+    {"zitat": "Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve; oben im Bild laufen x und m mit; bei x = -1, 1 bleibt je ein blasser Abdruck stehen.", "urteil": "trug", "warum": "zeigte, dass sich m mit der Steigung ändert und genau bei H und T stehen bleibt, das hätte ich sonst nicht gesehen"},
+    {"zitat": "[gelb hinterlegt:] m=f'(x)=0", "urteil": "trug", "warum": "hebt die entscheidende Formel hervor, sonst hätte ich sie als normalen Text überlesen"}
+  ],
+  "deutungen": [
+    {"symbol": "H", "was": "Kennzeichnung eines Hochpunkts (der höchste Punkt in seiner Nähe)", "wo": "am orangen Punkt (-1|2)", "quelle": "B:Hoch- und Tiefpunkte"},
+    {"symbol": "T", "was": "Kennzeichnung eines Tiefpunkts (der tiefste Punkt in seiner Nähe)", "wo": "am blauen Punkt (1|-2)", "quelle": "B:Hoch- und Tiefpunkte"},
+    {"symbol": "Berührgerade", "was": "eine Gerade, die die Kurve an einer Stelle berührt, also die Tangente", "wo": "die orange Linie, die beim Wischen über die Kurve fährt", "quelle": "W4"},
+    {"symbol": "m", "was": "der Wert der Steigung der Tangente an der Stelle x, also f'(x)", "wo": "oben im Bild, läuft neben x mit", "quelle": "B:m=f'(x)=0"}
+  ],
+  "zettel": [
+    "f(x)=x³−3x hat H(−1|2) und T(1|−2); Berührgerade=Tangente (W4).",
+    "m = Steigung der Tangente = f'(x); bei H,T ist m=f'(x)=0 (geglaubt).",
+    "Unklar: warum Steigung genau dort null ist; H/T evtl. Hoch-/Tiefpunkt.",
+    "Offen: Extrempunkte als Oberbegriff, Berührgerade unerklärt gelassen."
+  ]
+}

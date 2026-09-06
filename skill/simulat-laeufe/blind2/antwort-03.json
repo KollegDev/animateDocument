@@ -1,0 +1,38 @@
+{
+  "schritte": [
+    { "text": "Oben steht eine konkrete Frage: warum darf man bei f(x)=1/(x-4) nicht x=4 einsetzen - klingt nach Bruchrechnen.", "quelle": "B:Warum darf bei f(x)=1/(x-4) nicht x=4 eingesetzt werden?" },
+    { "text": "Neues Wort 'Definitionsbereich' - laut Satz legt es fest, welche x-Werte man einsetzen darf.", "quelle": "B:Der Definitionsbereich legt fest, welche x-Werte eingesetzt werden dürfen." },
+    { "text": "Das könnte das 'Def' sein, das auf meinem alten Zettel bei der Kurvendiskussion mit Fragezeichen stand.", "quelle": "Z:1" },
+    { "text": "f(x)=1/(x-4) ist derselbe Bruch wie in der Überschrift, der Nenner ist x-4.", "quelle": "B:f(x)=(1)/(x-4)" },
+    { "text": "D_f: x∈ℝ ... x≠4 - ich lese das als 'x ist eine reelle Zahl, darf aber nicht 4 sein'.", "quelle": "W:W4" },
+    { "text": "Jetzt wird vorgerechnet: für x wird die 4 eingesetzt, aus f(x) wird f(4)=1/(4-4).", "quelle": "B:4 für x eingesetzt" },
+    { "text": "4-4 rechne ich selbst nach: das ist 0, also steht unten wirklich eine 0 - passt zu f(4)=1/(0).", "quelle": "B:f(4)=(1)/(0)" },
+    { "text": "Durch 0 darf man nicht teilen - das wusste ich schon aus der Bruchrechnung, damit ist die Frage von oben beantwortet.", "quelle": "W:W2" },
+    { "text": "Am Ende steht, dass auch Wurzeln und Logarithmus den Definitionsbereich einschränken, nicht nur Brüche.", "quelle": "B:Allgemein schränken drei Situationen den Definitionsbereich ein" }
+  ],
+  "stockstellen": [
+    { "art": "glauben", "zitat": "Der Definitionsbereich legt fest, welche x-Werte eingesetzt werden dürfen.", "warum": "Das Thema kannte ich vorher nicht, ich kann den Satz nicht selbst prüfen, ich nehme ihn einfach hin." },
+    { "art": "ruecksprung", "zitat": "Definitionsbereich", "warum": "Ich musste zu Z:1 zurück, wo 'Def/Wertebereich?' mit Fragezeichen stand, um das Wort einzuordnen." },
+    { "art": "stocken", "zitat": "x∈ℝmid x≠4", "warum": "'mid' klebt ohne Abstand zwischen ℝ und x, das sieht wie ein Fehler aus, kein Wort, das ich kenne." },
+    { "art": "lastmarke", "zitat": "Der Definitionsbereich legt fest, welche x-Werte eingesetzt werden dürfen.", "warum": "Ein neuer, unerklärter Fachbegriff gleich im ersten Satz macht ihn schwer." },
+    { "art": "vorstellung", "zitat": "• Wurzeln • Logarithmus", "warum": "Es gibt kein Beispiel oder Bild dazu, warum Wurzel oder Logarithmus den Definitionsbereich einschränken, nur beim Bruch wurde es vorgerechnet." },
+    { "art": "raten", "zitat": "D_f", "warum": "Steht nicht extra erklärt da, ich errate aus der Nähe zum Wort 'Definitionsbereich', dass D_f die Abkürzung dafür ist." }
+  ],
+  "bewegungen": [
+    { "zitat": "[Kleine Marke, Kapitaelchen:] Definitionsbereich", "urteil": "dekoration", "warum": "zeigt nur noch einmal das Wort, das im Satz direkt davor schon steht - keine neue Information." }
+  ],
+  "deutungen": [
+    { "symbol": "Definitionsbereich", "was": "der Bereich bzw. die Menge der x-Werte, die man einsetzen darf", "wo": "im ersten Satz von Wisch 1 und in der kleinen Marke darüber", "quelle": "B:Der Definitionsbereich legt fest, welche x-Werte eingesetzt werden dürfen." },
+    { "symbol": "D_f", "was": "vermutlich Kurzschreibweise für 'Definitionsbereich von f'", "wo": "direkt unter der Funktionsgleichung f(x)=(1)/(x-4)", "quelle": "B:Definitionsbereich" },
+    { "symbol": "∈", "was": "Zeichen für 'ist Element von', hier also 'x ist eine reelle Zahl'", "wo": "zwischen 'x' und 'ℝ' in 'x∈ℝ'", "quelle": "W:W4" },
+    { "symbol": "ℝ", "was": "die Menge der reellen Zahlen", "wo": "nach dem ∈-Zeichen in 'D_f: x∈ℝ...'", "quelle": "W:W4" },
+    { "symbol": "mid", "was": "kann ich nicht deuten", "wo": "zwischen ℝ und x≠4, ohne Abstand", "quelle": "kann ich nicht deuten" },
+    { "symbol": "↓", "was": "Pfeil, der zeigt, dass jetzt der nächste Rechenschritt kommt (einsetzen bzw. ausrechnen)", "wo": "zwischen den Gleichungszeilen in Wisch 2", "quelle": "B:4 für x eingesetzt" }
+  ],
+  "zettel": [
+    "Definitionsbereich = welche x-Werte erlaubt sind (neu, vorher nicht gekannt).",
+    "Beispiel: 1/(x-4), x=4 verboten weil Nenner dann 0 wird (durch 0 nicht teilbar).",
+    "D_f evtl. 'Definitionsbereich von f'; ∈/ℝ noch unsicher gedeutet (geraten).",
+    "Wurzel/Log schränken Def.bereich auch ein, aber ohne Beispiel/Bild - unklar warum."
+  ]
+}

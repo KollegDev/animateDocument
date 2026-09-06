@@ -1,0 +1,45 @@
+{
+  "schritte": [
+    {"text": "Ich lese die Überschrift: es geht um die y-Werte von f(x)=x²+4.", "quelle": "B:Welche y-Werte kommen bei f(x)=x²+4 überhaupt heraus?"},
+    {"text": "y-Werte einer Funktion kenne ich als f(x)-Werte zu einem x.", "quelle": "W:W1"},
+    {"text": "Der Satz sagt mir: Wertebereich = alle y-Werte, die die Funktion annimmt.", "quelle": "B:Der Wertebereich zeigt, welche y-Werte eine Funktion überhaupt annimmt."},
+    {"text": "Das klingt wie Definitionsbereich, nur für y statt für x.", "quelle": "Z:1"},
+    {"text": "Der Graph ist eine Parabel, die nach oben geöffnet ist, wegen x².", "quelle": "W:W5"},
+    {"text": "Der orangene Punkt (0|4) müsste der tiefste Punkt der Parabel sein, der Scheitel.", "quelle": "W:W5"},
+    {"text": "Ich rechne kurz nach: f(0) = 0²+4 = 4, das passt zum Punkt (0|4).", "quelle": "B:[Ein oranger Punkt landet bei (0|4), Beschriftung T(0|4).]"},
+    {"text": "Die waagerechte Linie bei y=4 geht genau durch diesen Punkt.", "quelle": "B:[Eine waagerechte Linie bei y = 4 mit Beschriftung y = 4 erscheint.]"},
+    {"text": "Über der Linie wird laut Text jeder Wert erreicht, darunter keiner.", "quelle": "B:Oberhalb der Linie wird jeder Wert erreicht, unterhalb keiner."},
+    {"text": "Die Schraffur oberhalb zeigt das nochmal als Bild: Wertebereich y ≥ 4.", "quelle": "B:[Der Bereich oberhalb von y = 4 wird schraffiert, Beschriftung Wertebereich: y ≥ 4.]"},
+    {"text": "y ≥ 4 ist eine Ungleichung, so etwas kenne ich vom Lösen von Ungleichungen.", "quelle": "W:W2"},
+    {"text": "W_f müsste analog zu D_f von früher 'Wertebereich von f' bedeuten.", "quelle": "Z:3"},
+    {"text": "Bei 'y∈ℝmid ygeq4' erkenne ich '∈' und 'ℝ' wieder, aber genauso unsicher wie vorher.", "quelle": "Z:3"},
+    {"text": "Das Blatt sagt: der Wertebereich zeigt sich oft erst am Ende der Untersuchung.", "quelle": "B:Der Wertebereich ist oft schwer zu erkennen. Er zeigt sich meist erst am Ende der Untersuchung."}
+  ],
+  "stockstellen": [
+    {"art": "raten", "zitat": "Beschriftung T(0|4)", "warum": "T wird nirgends erklärt, ich vermute nur wegen W5, dass es der tiefste Punkt ist."},
+    {"art": "verwechslung", "zitat": "T(0|4)", "warum": "Ich kenne Punkte nur als P(x|y) aus W1, T ist ein neuer Buchstabe ohne Erklärung."},
+    {"art": "stocken", "zitat": "W_f: y∈ℝmid ygeq4", "warum": "'mid' und 'geq' sehen aus wie Wörter oder Fehler, ich kann die Formel so nicht lesen."},
+    {"art": "verwechslung", "zitat": "W_f: y∈ℝmid ygeq4", "warum": "Ich hatte geschweifte Klammern wie bei der Mengenschreibweise aus W4 erwartet, hier fehlen sie."},
+    {"art": "lastmarke", "zitat": "Er zeigt sich meist erst am Ende der Untersuchung.", "warum": "'Untersuchung' ist ein Fachwort, das hier nicht erklärt wird."},
+    {"art": "vorstellung", "zitat": "Der Wertebereich ist oft schwer zu erkennen.", "warum": "Es fehlt ein Beispiel oder Bild, wann er schwer zu erkennen ist, das kann ich mir nicht vorstellen."}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: f(x) = x² + 4, x von -4 bis 4, y von -1 bis 12.]", "urteil": "trug", "warum": "zeigt Form und Lage der Parabel, ohne dass ich Punkte selbst berechnen muss"},
+    {"zitat": "[Ein oranger Punkt landet bei (0|4), Beschriftung T(0|4).]", "urteil": "trug", "warum": "markiert den tiefsten Punkt direkt, den ich sonst hätte suchen müssen"},
+    {"zitat": "[Eine waagerechte Linie bei y = 4 mit Beschriftung y = 4 erscheint.]", "urteil": "trug", "warum": "zeigt die Grenze visuell, statt dass ich sie nur aus dem Punkt ableiten muss"},
+    {"zitat": "[Der Bereich oberhalb von y = 4 wird schraffiert, Beschriftung Wertebereich: y ≥ 4.]", "urteil": "trug", "warum": "zeigt mir als Bild, welcher Bereich gemeint ist, statt es nur zu behaupten"}
+  ],
+  "deutungen": [
+    {"symbol": "Wertebereich", "was": "die Menge aller y-Werte, die eine Funktion annimmt", "wo": "Text über dem Graph in Wisch 1", "quelle": "B:Der Wertebereich zeigt, welche y-Werte eine Funktion überhaupt annimmt."},
+    {"symbol": "T(0|4)", "was": "vermutlich der tiefste Punkt der Parabel, aber unsicher warum 'T' statt 'P'", "wo": "oranger Punkt im Graph in Wisch 1", "quelle": "W:W5"},
+    {"symbol": "mid / geq", "was": "kann ich nicht deuten", "wo": "im gelb hinterlegten Kasten in Wisch 3", "quelle": "kann ich nicht deuten"},
+    {"symbol": "W_f", "was": "vermutlich 'Wertebereich von f', analog zu D_f", "wo": "im gelb hinterlegten Kasten in Wisch 3", "quelle": "Z:3"},
+    {"symbol": "y ≥ 4", "was": "eine Ungleichung: alle y, die größer oder gleich 4 sind", "wo": "Beschriftung bei der Schraffur in Wisch 2 und im Kasten in Wisch 3", "quelle": "W:W2"}
+  ],
+  "zettel": [
+    "Wertebereich = welche y-Werte eine Funktion annimmt (neu, Gegenstück zu Def.bereich).",
+    "Beispiel: f(x)=x²+4, Punkt (0|4) markiert 'T', Bereich y≥4 farbig markiert.",
+    "Formel W_f: y∈ℝ...(mid/geq unklar), keine geschw. Klammern wie sonst erwartet.",
+    "T statt P bei Punkt unklar; 'Untersuchung' unklar; W_f zeigt sich oft erst spät."
+  ]
+}

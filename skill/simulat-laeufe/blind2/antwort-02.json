@@ -1,0 +1,39 @@
+{
+  "schritte": [
+    {"text": "Es gibt also nicht nur eine Funktion, sondern ganz verschiedene Sorten davon.", "quelle": "B:Dabei können ganz unterschiedliche Funktionstypen auftreten."},
+    {"text": "Die erste heißt ganzrationale Funktion, das Beispiel hat x^4, x^3, x^2 - erinnert an die Parabel, nur mit mehr Potenzen.", "quelle": "W:W5"},
+    {"text": "Bei der zweiten steht x oben und x+1 unten wie ein Bruch - wäre x=-1, ginge das nicht, weil der Nenner 0 wäre.", "quelle": "W:W2"},
+    {"text": "Exponentialfunktion mit e^2x - das e kenn ich gar nicht, weder vom Taschenrechner noch sonst woher.", "quelle": "keine"},
+    {"text": "Wurzelfunktion, √(x+1) - die Wurzel kenne ich vom Taschenrechner, aber hier steht x drin statt einer festen Zahl.", "quelle": "W:W3"},
+    {"text": "Logarithmusfunktion, log(x^2+1) - log kenne ich auch nur als Tasten-Rechnung, log(1)=0, aber hier wieder mit x.", "quelle": "W:W3"},
+    {"text": "Die Tabelle kommt auf einmal, ich muss selbst von oben nach unten lesen, es wird nichts extra erklärt.", "quelle": "B:[Tabelle erscheint als Ganzes.]"},
+    {"text": "Jetzt werden die Typen gemischt: e^2x mal (x+4)^2 - das (x+4)^2 sieht aus wie eine verschobene Parabel, mal die Exponentialfunktion von oben.", "quelle": "W:W5"},
+    {"text": "Die kleine Randnotiz sagt, das geht später noch weiter zu 'Funktionsscharen' - klingt nach einer schwereren Stufe, die ich jetzt nicht brauche.", "quelle": "B:Bei fortgeschrittenen Aufgaben werden solche Funktionen zu Funktionsscharen erweitert."}
+  ],
+  "stockstellen": [
+    {"art": "stocken", "zitat": "f(x)=e^2x", "warum": "das Zeichen e ist mir völlig unbekannt, ich weiß nicht, was das für eine Zahl oder Operation ist"},
+    {"art": "lastmarke", "zitat": "ganzrationale Funktion", "warum": "unerklärtes Fachwort, ich kann mir unter 'ganzrational' nichts vorstellen"},
+    {"art": "lastmarke", "zitat": "gebrochenrationale Funktion", "warum": "unerklärtes Fachwort, nur über den Bruch im Beispiel zu erahnen"},
+    {"art": "vorstellung", "zitat": "f(x)=e^2x·(x+4)^2", "warum": "es wird nicht gezeigt, wie man zwei Funktionstypen zusammensetzt, nur das fertige Ergebnis steht da"},
+    {"art": "lastmarke", "zitat": "Funktionsscharen", "warum": "komplett neues Fachwort ohne jede Erklärung, nur in einer Randnotiz erwähnt"},
+    {"art": "skip", "zitat": "Bei fortgeschrittenen Aufgaben werden solche Funktionen zu Funktionsscharen erweitert.", "warum": "klein und als Randnotiz markiert, wirkt nicht wichtig für jetzt, ich lese schnell drüber"}
+  ],
+  "bewegungen": [
+    {"zitat": "[Tabelle erscheint als Ganzes.]", "urteil": "dekoration", "warum": "die Tabelle erscheint nur, zeigt aber keinen Ablauf oder Zusammenhang, den ich mir selbst hätte erdenken müssen"},
+    {"zitat": "[Randnotiz, klein:]", "urteil": "trug", "warum": "die kleine Schrift zeigt mir, dass das nur ein Nebengedanke ist, den ich nicht so ernst nehmen muss"}
+  ],
+  "deutungen": [
+    {"symbol": "ganzrationale Funktion", "was": "kann ich nicht deuten", "wo": "erste Zeile der Tabelle", "quelle": "kann ich nicht deuten"},
+    {"symbol": "gebrochenrationale Funktion", "was": "eine Funktion, bei der ein Bruch mit x im Nenner steht", "wo": "zweite Zeile der Tabelle, Beispiel x/(x+1)", "quelle": "W:W2"},
+    {"symbol": "e", "was": "kann ich nicht deuten", "wo": "im Beispiel f(x)=e^2x", "quelle": "kann ich nicht deuten"},
+    {"symbol": "Wurzelfunktion / √", "was": "die Wurzel, die ich vom Taschenrechner kenne, jetzt mit x statt einer festen Zahl", "wo": "im Beispiel √(x+1)", "quelle": "W:W3"},
+    {"symbol": "Logarithmusfunktion / log", "was": "der Logarithmus vom Taschenrechner, jetzt mit x statt einer festen Zahl", "wo": "im Beispiel log(x^2+1)", "quelle": "W:W3"},
+    {"symbol": "Funktionsscharen", "was": "kann ich nicht deuten", "wo": "Randnotiz unten am Blatt", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "Kurvendisk.: 4 Punkte - Def/Wertebereich?, Skizze, Symmetrie?, Nullstellen+y.",
+    "Viele Typen: ganzrational, gebrochenrational, Exponential-, Wurzel-, Log-Fkt.",
+    "e (Exponentialfkt.) kenn ich nicht; Wurzel/Log kenne ich vom TR (W3).",
+    "Typen mischbar: e^2x*(x+4)^2. Funktionsscharen = neues unklares Wort."
+  ]
+}

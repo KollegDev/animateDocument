@@ -1,0 +1,38 @@
+{
+  "schritte": [
+    {"text": "Die Kurve ist wieder x^3-3x, dieselbe wie auf dem alten Zettel mit H und T.", "quelle": "Z:1"},
+    {"text": "Das Blatt zeichnet den Graphen genau in dem Bereich, wo ich Huegel und Mulde sehen kann.", "quelle": "B:\"Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.\""},
+    {"text": "f'(x)=3x^2-3 kenne ich exakt so, keine eigene Rechnung noetig.", "quelle": "W:W3"},
+    {"text": "3x^2-3=0 rechne ich um: 3x^2=3, also x^2=1 - zwei einfache Schritte, nachgerechnet.", "quelle": "W:W2"},
+    {"text": "x^2=1 gibt x=1 oder x=-1, genau wie im Merksatz.", "quelle": "W:W2"},
+    {"text": "Orange gehoert zu -1, blau zu 1 - offenbar nur ein Farbcode fuer die zwei Loesungen.", "quelle": "B:\"x_1=[-1 orange] , x_2=[1 blau]\""},
+    {"text": "Die -1 fliegt genau an die Stelle auf der x-Achse, wo vorher blass eine Marke wartete.", "quelle": "B:\"dort wird die Achsenmarke −1 kraeftig\""},
+    {"text": "-1 ist die x-Koordinate von H(-1|2), 1 ist die x-Koordinate von T(1|-2) - passt zu den geflogenen Marken.", "quelle": "Z:1"},
+    {"text": "Also waere -1 der Gipfel und 1 das Tal, weil dort die Steigung null ist - warum genau, weiss ich nicht.", "quelle": "keine"},
+    {"text": "Die Ueberschrift fragt genau das, was die Marken gerade gezeigt haben: Gipfel bei -1, Tal bei 1.", "quelle": "B:\"Wo liegen Gipfel und Tal?\""}
+  ],
+  "stockstellen": [
+    {"art": "vorstellung", "zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]", "warum": "Keine Linie verbindet den Huegel der Kurve mit der Marke bei -1, das muss ich mir selbst dazudenken."},
+    {"art": "ruecksprung", "zitat": "dort wird die Achsenmarke −1 kraeftig", "warum": "Ich springe zurueck zu Z:1, um zu pruefen, ob -1 wirklich zu H passt."},
+    {"art": "glauben", "zitat": "Wo liegen Gipfel und Tal?", "warum": "Dass Steigung=0 automatisch Gipfel oder Tal bedeutet, wird nicht erklaert, nur durch die Bewegung nahegelegt (wie schon Z:2, Z:3)."}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]", "urteil": "trug", "warum": "zeigt Huegel und Mulde der Kurve direkt, ohne dass ich sie mir vorstellen muss"},
+    {"zitat": "[Chip fuer Chip in Leserichtung:]", "urteil": "trug", "warum": "trennt die Umformung in einzelne, einzeln pruefbare Schritte statt alles auf einmal"},
+    {"zitat": "[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.] / [An der x-Achse bei 1 wartet eine blaue Achsenmarke 1, noch blass.]", "urteil": "dekoration", "warum": "zeigt nur, dass dort spaeter etwas hinkommt, sagt mir aber nichts Neues"},
+    {"zitat": "[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.] / [Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.]", "urteil": "trug", "warum": "verbindet die ausgerechneten Werte direkt mit den Stellen auf der Kurve, das haette ich sonst selbst zuordnen muessen"}
+  ],
+  "deutungen": [
+    {"symbol": "⟺", "was": "Zeichen fuer 'ist gleichwertig mit', verbindet Gleichung und umgeformte Gleichung", "wo": "zwischen den Zeilen in Wisch 3", "quelle": "W:W2"},
+    {"symbol": "x_1, x_2", "was": "Namen/Nummerierung fuer die zwei Loesungen der Gleichung x^2=1", "wo": "Wisch 3, neben -1 und 1", "quelle": "W:W2"},
+    {"symbol": "orange/blau", "was": "Farbcode, der eine Loesung mit ihrer Achsenmarke auf dem Graphen verbindet", "wo": "Wisch 3 und Wisch 4, an -1 bzw. 1", "quelle": "B:\"x_1=[-1 orange] , x_2=[1 blau]\""},
+    {"symbol": "Gipfel/Tal", "was": "umgangssprachliche Namen fuer die Punkte, die ich in Z:1 H und T genannt habe", "wo": "Ueberschrift des Blatts", "quelle": "Z:1"},
+    {"symbol": "Achsenmarke", "was": "eine Markierung auf der Achse (Achse+Marke), hier bei x=-1 bzw. x=1", "wo": "auf der x-Achse des Graphen in Wisch 4", "quelle": "B:\"Achsenmarke\""}
+  ],
+  "zettel": [
+    "Z:1 f(x)=x^3-3x, f'(x)=3x^2-3 (W3, passt); f'=0 <=> x^2=1 <=> x=-1 oder x=1 (W2).",
+    "Z:2 x=-1: Gipfel=H(-1|2); x=1: Tal=T(1|-2) (Z:1); Marken flogen zur Achse (trug).",
+    "Z:3 Unklar bleibt: warum f'=0 genau Gipfel/Tal ergibt - nur gezeigt, nicht bewiesen.",
+    "Z:4 Offen: Fachwort fuer Gipfel/Tal (evtl. 'Extrempunkte'?), Warum bleibt unerklaert."
+  ]
+}

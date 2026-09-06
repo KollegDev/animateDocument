@@ -1,0 +1,38 @@
+{
+  "schritte": [
+    {"text": "Die Überschrift fragt, ob die alte Regel auch für eine nach unten geöffnete Parabel gilt - 'nach unten geöffnet' kenne ich aus W5.", "quelle": "W:W5"},
+    {"text": "Der Graph zeichnet sich und fällt von einem Gipfel nach beiden Seiten ab - passt zu einer nach unten geöffneten Parabel.", "quelle": "B:[Graph zeichnet sich: f(x) = −(x−1)² + 3, x von -3 bis 5, y von -6 bis 4.]"},
+    {"text": "Ich rechne kurz nach: f(1) = -(1-1)² + 3 = -0 + 3 = 3 - das passt zum angezeigten Punkt H(1|3).", "quelle": "B:f(x) = −(x−1)² + 3"},
+    {"text": "H(1|3) ist also der höchste Punkt - ich springe zu Z:2 zurück: H(0|0) war dort auch 'oben', also wohl auch ein Hochpunkt.", "quelle": "Z:2"},
+    {"text": "Die Linie bei y=3 zeigt: kein y-Wert der Kurve kommt über 3 - genau wie die Grenze y≥-1 vorher, nur diesmal von oben.", "quelle": "Z:1"},
+    {"text": "Bevor ich die Lösung lese, versuche ich selbst: weil die Kurve nie über 3 kommt, muss der Wertebereich y≤3 sein.", "quelle": "B:Höher kommt die Kurve nicht."},
+    {"text": "Die Lösung y∈ℝ mid y≤3 bestätigt meine Vermutung - anders als bei der Tiefpunkt-Parabel (dort ≥) ist es hier ≤.", "quelle": "B:W_f: y∈ℝmid yleq3"},
+    {"text": "Damit scheint die Regel zu sein: Tiefpunkt gibt ≥, Hochpunkt gibt ≤ - aber ob das immer so ist, weiß ich nicht sicher.", "quelle": "keine"}
+  ],
+  "stockstellen": [
+    {"art": "raten", "zitat": "Gilt die gleiche Regel auch bei einer nach unten geöffneten Parabel?", "warum": "ich vermute nur, dass mit 'Regel' die Bauweise der W_f-Formel aus Z:3 gemeint ist - explizit steht das nicht da."},
+    {"art": "vorstellung", "zitat": "f(x) = −(x−1)² + 3", "warum": "warum der Scheitel genau bei x=1 liegt (wegen der Klammer (x−1)²), wird nicht gezeigt, nur der fertige Punkt H(1|3)."},
+    {"art": "ruecksprung", "zitat": "Ihr höchster Punkt liegt bei H(1|3).", "warum": "ich schaue zurück zu Z:2, wo H(0|0) mit 'Bedeutung offen' notiert war, um zu prüfen ob es dasselbe H ist."},
+    {"art": "verwechslung", "zitat": "W_f: y∈ℝmid yleq3", "warum": "auf dem alten Zettel (Z:3) stand 'y≥-1' mit echtem Zeichen, hier steht 'yleq3' ausgeschrieben - sieht anders aus, bin nicht sicher ob's dasselbe meint."},
+    {"art": "stocken", "zitat": "y∈ℝmid yleq3", "warum": "'mid' war schon in Z:3 unklar und bleibt es - keine neue Erklärung auf diesem Blatt."},
+    {"art": "glauben", "zitat": "Tiefpunkt gibt ≥, Hochpunkt gibt ≤", "warum": "das ist meine eigene Verallgemeinerung aus nur zwei Beispielen, auf dem Blatt steht keine allgemeine Regel dafür."}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: f(x) = −(x−1)² + 3, x von -3 bis 5, y von -6 bis 4.]", "urteil": "trug", "warum": "zeigt die tatsächliche Form der fallenden Kurve, die ich aus der Formel allein nicht sicher hätte erschließen können."},
+    {"zitat": "[Ein oranger Punkt landet bei (1|3), Beschriftung H(1|3).]", "urteil": "trug", "warum": "zeigt mir genau, wo der höchste Punkt liegt, statt dass ich ihn selbst suchen müsste."},
+    {"zitat": "[Eine waagerechte Linie bei y = 3 mit Beschriftung y = 3 erscheint.]", "urteil": "trug", "warum": "macht sichtbar, dass y=3 für alle x eine Grenze ist, nicht nur ein einzelner Punktwert."}
+  ],
+  "deutungen": [
+    {"symbol": "H(1|3)", "was": "der höchste Punkt der Kurve (wie ein Gipfel), Gegenstück zum Tiefpunkt", "wo": "oranger Punkt oben auf der Kurve, in der Mitte zwischen den Ästen", "quelle": "B:Ihr höchster Punkt liegt bei H(1|3)."},
+    {"symbol": "f(x) = −(x−1)² + 3", "was": "die Rechenvorschrift der Parabel; das Minus vorne sagt mir laut W5, dass sie nach unten geöffnet ist - (x−1)² und +3 kann ich nicht deuten", "wo": "als Text über dem Graphen, bevor er sich zeichnet", "quelle": "W:W5"},
+    {"symbol": "mid", "was": "kann ich nicht deuten", "wo": "in der Lösungsformel zwischen 'y∈ℝ' und 'y≤3'", "quelle": "kann ich nicht deuten"},
+    {"symbol": "waagerechte Linie bei y=3", "was": "eine Grenzlinie, die die obere Schranke aller möglichen y-Werte markiert", "wo": "waagerecht quer über dem Graphen auf Höhe 3", "quelle": "Z:1"},
+    {"symbol": "y∈ℝ", "was": "heißt wohl, dass y eine reelle Zahl ist - so wie x laut W4 eine reelle Zahl ist", "wo": "am Anfang der Lösungsformel, vor dem 'mid'", "quelle": "W:W4"}
+  ],
+  "zettel": [
+    "NEU: unten offene Parabel -> Hochpunkt H -> W_f: y≤Wert (Blatt6: y≤3, H(1|3)).",
+    "Gesamtregel: oben offen->Tiefpunkt->y≥Wert; unten offen->Hochpunkt->y≤Wert.",
+    "H = Hochpunkt (löst alte Frage zu H(0|0) aus Z:2, dort wohl auch ein Hochpunkt).",
+    "'mid' weiterhin unklar (schon 2x in Formel gesehen, Bedeutung nicht erklärt)."
+  ]
+}

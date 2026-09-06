@@ -1,0 +1,7 @@
+[
+ {"id":"W1","text":"Funktionen und ihre Graphen lesen: f(x) ist der y-Wert an der Stelle x; ein Punkt hat die Form P(x|y)."},
+ {"id":"W2","text":"Bruchrechnen: ein Bruch mit Nenner 0 ist nicht definiert; Terme umformen, lineare Gleichungen und Ungleichungen loesen."},
+ {"id":"W3","text":"Wurzel und Logarithmus als Rechenoperationen vom Taschenrechner: sqrt(9)=3, log(1)=0; was man dort eintippen darf, weisst du nicht sicher."},
+ {"id":"W4","text":"x ist eine reelle Zahl (x in R); Mengenschreibweise mit geschweiften Klammern einmal gesehen."},
+ {"id":"W5","text":"Parabeln: x^2 ist nach oben geoeffnet, -x^2 nach unten; der Scheitel ist der tiefste oder hoechste Punkt."}
+]

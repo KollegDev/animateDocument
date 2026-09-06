@@ -1,0 +1,16 @@
+[
+ {"id":"F1","thema":"extrempunkte","text":"Der y-Wert eines Extrempunkts ist f'(x0) oder f''(x0), also die Zahl, die man beim Pruefen ausgerechnet hat."},
+ {"id":"F2","thema":"extrempunkte","text":"Wo f'(x)=0 ist, liegt immer ein Hoch- oder Tiefpunkt."},
+ {"id":"F3","thema":"extrempunkte","text":"f''(x0)>0 bedeutet Hochpunkt, weil positiv oben ist."},
+ {"id":"F4","thema":"extrempunkte","text":"Ein Extrempunkt liegt immer bei x=0 oder bei x=1 und x=-1."},
+ {"id":"F5","thema":"extrempunkte","text":"Der Hochpunkt ist der hoechste Punkt des ganzen Graphen."},
+ {"id":"F6","thema":"definitionsbereich","text":"Verboten sind nur Zahlen, die den Nenner null machen; Wurzel und Logarithmus haben keine Einschraenkung."},
+ {"id":"F7","thema":"definitionsbereich","text":"Bei einem Nenner x-a ist x=a eine Nullstelle des Graphen (ein Punkt auf der x-Achse), keine Luecke."},
+ {"id":"F8","thema":"wertebereich","text":"Der Wertebereich ist immer nach unten begrenzt (y groesser gleich tiefster Punkt)."},
+ {"id":"F9","thema":"wertebereich","text":"Der Wertebereich ist die Menge der x-Werte, die man einsetzen darf."},
+ {"id":"F10","thema":"nullstellen","text":"Eine Nullstelle ist der Punkt, an dem der Graph die y-Achse schneidet (x=0 einsetzen)."},
+ {"id":"F11","thema":"nullstellen","text":"Beim Wurzelziehen gibt es genau eine Loesung, die positive."},
+ {"id":"F12","thema":"wendepunkte","text":"Ein Wendepunkt liegt immer bei x=0."},
+ {"id":"F13","thema":"wendepunkte","text":"f''(x0)=0 reicht, dort ist immer ein Wendepunkt."},
+ {"id":"F14","thema":"allgemein","text":"Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe)."}
+]

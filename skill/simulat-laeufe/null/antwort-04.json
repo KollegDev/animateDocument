@@ -1,0 +1,47 @@
+{
+  "schritte": [
+    { "text": "Oben klein steht 'Was bleibt als Weg?' - ich lese es als Ankuendigung einer Zusammenfassung, aber sicher bin ich mir nicht.", "quelle": "B:\"Was bleibt als Weg?\"" },
+    { "text": "'Schema' als Titel von Wisch 1: jetzt kommt komprimierte Form, keine neue Herleitung.", "quelle": "B:\"Ueberschrift: Schema\"" },
+    { "text": "'notwendige Bedingung' kenne ich schon: das war f'=0.", "quelle": "Z:2" },
+    { "text": "f'(x_0)=0, gelb markiert, ist genau diese Bedingung, nur mit x_0 statt einer Zahl.", "quelle": "B:\"f'(x_0)=0\"" },
+    { "text": "'hinreichende Bedingung' kenne ich auch vom Zettel: f''≠0.", "quelle": "Z:2" },
+    { "text": "Hier wird f''≠0 aufgeteilt in zwei Faelle: f''(x_0)<0 und f''(x_0)>0, statt nur 'ungleich Null'.", "quelle": "B:\"f''(x_0)<0 orange ... f''(x_0)>0 blau\"" },
+    { "text": "f''(x_0)<0 -> H passt zu meiner Zahl von vorher: f''(-1)=-6<0 -> Hochpunkt.", "quelle": "Z:1" },
+    { "text": "f''(x_0)>0 -> T passt ebenso: f''(1)=6>0 -> Tiefpunkt.", "quelle": "Z:1" },
+    { "text": "H(x_0 | f(x_0)) ist ein Punkt P(x|y), genau wie ich Punkte immer lese.", "quelle": "W1" },
+    { "text": "Kurzer Check: x_0=-1 in f''(x)=6x eingesetzt ergibt -6, kleiner 0, stimmt mit H ueberein.", "quelle": "Z:1" },
+    { "text": "Wisch 3: f''(x_0)=0 heisst keine Entscheidung moeglich, dann Vorzeichen von f' links und rechts pruefen.", "quelle": "B:\"f''(x_0)=0→keine Entscheidung, Vorzeichen von f′ links und rechts prüfen\"" },
+    { "text": "'Vorzeichen links/rechts pruefen' ist genau das Verfahren, das ich fuer Monotonie schon kenne.", "quelle": "W6" },
+    { "text": "Eigene Vermutung: 'hinreichend' heisst wohl deshalb f''≠0, weil bei f''=0 keine Entscheidung mehr moeglich ist - aber das steht so nicht da.", "quelle": "keine" }
+  ],
+  "stockstellen": [
+    { "art": "stocken", "zitat": "Was bleibt als Weg?", "warum": "Die Formulierung ist bildlich gemeint (Weg als Methode), ich bin nicht sicher, ob ich das richtig lese." },
+    { "art": "raten", "zitat": "∩ orange", "warum": "Ich vermute eine Huegelform, aber ob das dasselbe ist wie die fruehere 'Rechtskurve', weiss ich nicht sicher." },
+    { "art": "raten", "zitat": "∪ blau", "warum": "Analog vermute ich eine Muldenform, die Verbindung zu 'Linkskurve' ist nur eine Vermutung." },
+    { "art": "lastmarke", "zitat": "notwendige Bedingung / hinreichende Bedingung", "warum": "Diese Fachwoerter bleiben unerklaert, warum sie so heissen - schon auf dem Zettel als offen notiert." },
+    { "art": "skip", "zitat": "f''(x_0)<0 ... f''(x_0)>0", "warum": "Die abstrakte Schreibweise mit x_0 statt Zahlen ist zaeh, ich uebernehme das Ergebnis direkt vom Zettel statt es neu herzuleiten." },
+    { "art": "glauben", "zitat": "deshalb wohl 'hinreichend' nur bei ≠0", "warum": "Das ist meine eigene Schlussfolgerung, das Blatt sagt das nicht woertlich." }
+  ],
+  "bewegungen": [
+    { "zitat": "[Kleine Marke, Kapitaelchen:] notwendige Bedingung", "urteil": "dekoration", "warum": "hebt das Wort nur optisch hervor, ich kannte es schon vom Zettel" },
+    { "zitat": "[gelb hinterlegt:] f'(x_0)=0", "urteil": "dekoration", "warum": "markiert die Formel als wichtig, aber ich haette sie auch ohne Farbe erkannt" },
+    { "zitat": "[Kleine Marke, Kapitaelchen:] hinreichende Bedingung", "urteil": "dekoration", "warum": "gleiche optische Hervorhebung wie oben, kein neuer Inhalt" },
+    { "zitat": "[f''(x_0)<0 orange][∩ orange]→[H(x_0 | f(x_0)) orange]", "urteil": "trug", "warum": "die durchgehende Farbe orange zeigt sofort, dass Bedingung, Form und Punkt zusammengehoeren, ohne dass ich das erschliessen muss" },
+    { "zitat": "[f''(x_0)>0 blau][∪ blau]→[T(x_0 | f(x_0)) blau]", "urteil": "trug", "warum": "gleiches Prinzip in Blau fuer den anderen Fall, spart mir das Zuordnen" }
+  ],
+  "deutungen": [
+    { "symbol": "Schema", "was": "eine kompakte, formelhafte Zusammenfassung von etwas, das vorher ausfuehrlicher gezeigt wurde", "wo": "Ueberschrift von Wisch 1", "quelle": "B:\"Ueberschrift: Schema\"" },
+    { "symbol": "notwendige Bedingung", "was": "die Bedingung f'(x_0)=0, ohne die kein Extrempunkt vorliegen kann", "wo": "kleine Marke ueber der gelben Formel in Wisch 1", "quelle": "Z:2" },
+    { "symbol": "hinreichende Bedingung", "was": "die Bedingung an f'' (verschieden von 0), die sicher sagt, ob H oder T vorliegt", "wo": "kleine Marke ueber den farbigen Zeilen in Wisch 2", "quelle": "Z:2" },
+    { "symbol": "∩", "was": "vermutlich ein Symbol fuer eine Huegelform der Kurve, passend zu H", "wo": "orange, zwischen f''(x_0)<0 und H(...) in Wisch 2", "quelle": "kann ich nicht deuten" },
+    { "symbol": "∪", "was": "vermutlich ein Symbol fuer eine Muldenform der Kurve, passend zu T", "wo": "blau, zwischen f''(x_0)>0 und T(...) in Wisch 2", "quelle": "kann ich nicht deuten" },
+    { "symbol": "H(x_0 | f(x_0))", "was": "ein Punkt in der Form P(x|y): x-Wert x_0, y-Wert f(x_0)", "wo": "am Ende der orangen Kette in Wisch 2", "quelle": "W1" },
+    { "symbol": "T(x_0 | f(x_0))", "was": "ein Punkt in der Form P(x|y): x-Wert x_0, y-Wert f(x_0)", "wo": "am Ende der blauen Kette in Wisch 2", "quelle": "W1" }
+  ],
+  "zettel": [
+    "notwendig: f'(x0)=0. hinreichend: f''(x0)<0->H(orange), f''(x0)>0->T(blau).",
+    "f''(x0)=0: keine Entscheidung, dann Vorzeichen von f' links/rechts pruefen (W6).",
+    "Offen: was ∩/∪ genau sind (Rechtskurve/Linkskurve?), warum die Namen so heissen.",
+    "Farbe orange/blau verbindet Bedingung-Form-Punkt, spart eigenes Zuordnen (trug)."
+  ]
+}

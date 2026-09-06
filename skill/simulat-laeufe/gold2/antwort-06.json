@@ -1,0 +1,54 @@
+{
+  "schritte": [
+    {"text": "'Und mit drei?' oben klein laesst mich an Z:1 denken, wo es nur 2 Kandidaten gab.", "quelle": "B:\"Und mit drei?\""},
+    {"text": "k(x)=x^4-2x^2 ist die neue Funktion, x eingesetzt gibt den y-Wert.", "quelle": "W1"},
+    {"text": "Der gezeichnete Graph zeigt schon vor jeder Rechnung einen Huegel und zwei Taeler.", "quelle": "keine"},
+    {"text": "'notwendige Bedingung: k'(x)=0' kenne ich aus Z:1, also suche ich zuerst die Nullstellen von k'.", "quelle": "Z:1"},
+    {"text": "k'(x)=4x^3-4x rechne ich nach: Potenzregel auf x^4 gibt 4x^3, auf -2x^2 gibt -4x, Summenregel verbindet beides.", "quelle": "W3"},
+    {"text": "4x(x^2-1) ist dasselbe wie 4x^3-4x, nur mit x ausgeklammert.", "quelle": "W2"},
+    {"text": "4x(x^2-1)=0 heisst x=0 oder x^2=1, also x=1 oder x=-1 - macht zusammen drei Kandidaten statt zwei.", "quelle": "W2"},
+    {"text": "Die fliegenden Farbkopien zeigen mir, wo x=0, x=-1, x=1 auf der x-Achse des Graphen liegen.", "quelle": "B:\"Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen\""},
+    {"text": "'hinreichende Bedingung: k''(x)≠0' ist ein neuer Name, aber die Idee kenne ich aus Z:3: Vorzeichen von h'' entscheidet H oder T.", "quelle": "Z:3"},
+    {"text": "k''(x)=12x^2-4 rechne ich nach: Ableitung von 4x^3-4x ist 12x^2-4.", "quelle": "W3"},
+    {"text": "k''(0)=12*0-4=-4<0, nach dem Muster aus Z:3 (minus -> Hoch) also Hochpunkt bei x=0.", "quelle": "Z:3"},
+    {"text": "k''(±1)=12*1-4=8>0, nach Z:3 (plus -> Tief) also Tiefpunkte bei x=-1 und x=1.", "quelle": "Z:3"},
+    {"text": "Die aufleuchtenden Kurvenstuecke bei x=0 (Huegelform) und x=±1 (Talform) passen zu Z:4.", "quelle": "Z:4"},
+    {"text": "y=k(x) heisst, ich setze die x-Werte in k ein, um die y-Werte der Punkte zu bekommen.", "quelle": "W1"},
+    {"text": "k(0)=0^4-2*0^2=0, passt zur gezeigten Zeile.", "quelle": "W2"},
+    {"text": "k(-1)=(-1)^4-2*(-1)^2=1-2=-1, passt zur gezeigten Rechnung.", "quelle": "W2"},
+    {"text": "k(1)=1-2=-1 genauso, also liegen beide Tiefpunkte auf gleicher Hoehe y=-1.", "quelle": "W2"},
+    {"text": "Die Endpunkte H(0|0), T_1(-1|-1), T_2(1|-1) sind Punkte in der Form P(x|y).", "quelle": "W1"}
+  ],
+  "stockstellen": [
+    {"art": "raten", "zitat": "[Graph zeichnet sich: k(x) = x⁴ − 2x², x von -1.9 bis 1.9, y von -1.6 bis 2.4.]", "warum": "ich rate aus der gezeichneten Kurve schon Huegel/Tal-Form, bevor etwas gerechnet ist."},
+    {"art": "ruecksprung", "zitat": "Und mit drei?", "warum": "ich springe zurueck zu Z:1, wo nur 2 Kandidaten (x=-1,x=1) vorkamen, und frage mich was jetzt anders ist."},
+    {"art": "stocken", "zitat": "4x(x^2-1)=0 ⟺ x_1=[0 orange] , x_2=[-1 blau] , x_3=[1 gruen]", "warum": "ich erwartete wie vorher nur zwei Loesungen, hier kommt x=0 zusaetzlich dazu, weil ein x ausklammerbar war."},
+    {"art": "lastmarke", "zitat": "hinreichende Bedingung: k''(x)≠ 0", "warum": "das Wort 'hinreichend' wird benutzt, aber nicht erklaert, warum genau diese Bedingung reicht."},
+    {"art": "vorstellung", "zitat": "k''([0 orange])=-4<0→Hochpunkt(fett: H)", "warum": "ich kann mir nicht vorstellen, warum aus dem Vorzeichen von k'' eine Huegelform folgt - das Blatt zeigt nur das Ergebnis, keinen Zwischenschritt mit Steigungen."},
+    {"art": "glauben", "zitat": "k''(± 1)=8>0→ Tiefpunkte(fett: T)", "warum": "ich glaube dem Muster aus Z:3 (plus -> Tief), ohne dass hier erklaert wird warum."},
+    {"art": "skip", "zitat": "Eine Kopie der blauen -1 ... kraeftig. / Eine Kopie der gruenen 1 ... kraeftig.", "warum": "gleiches Muster wie bei orange, das schaue ich mir nicht einzeln nochmal an."},
+    {"art": "verwechslung", "zitat": "[T_1(-1 | -1) blau] ,[T_2(1 | -1) gruen]", "warum": "T1 und T2 haben denselben y-Wert -1, ohne auf Farbe/x-Wert zu achten vertausche ich sie leicht."}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: k(x) = x⁴ − 2x², x von -1.9 bis 1.9, y von -1.6 bis 2.4.]", "urteil": "trug", "warum": "zeigt mir sofort die Form der Kurve, ohne dass ich eine Wertetabelle rechnen muss"},
+    {"zitat": "[An der x-Achse bei 0 wartet eine orange Achsenmarke 0, noch blass.]", "urteil": "dekoration", "warum": "zeigt nur, dass dort spaeter etwas passiert, noch keine neue Information"},
+    {"zitat": "[Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 0 kraeftig.]", "urteil": "trug", "warum": "verbindet die algebraische Loesung x=0 sichtbar mit der Stelle auf der x-Achse, das haette ich sonst selbst zuordnen muessen"},
+    {"zitat": "[Ein oranger Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]", "urteil": "trug", "warum": "zeigt mir, dass genau dieser x-Wert in k'' eingesetzt wird, ich muss die Zeilen nicht selbst verknuepfen"},
+    {"zitat": "[Im Graphen leuchtet das Kurvenstueck um x = 0 dick orange auf.]", "urteil": "trug", "warum": "zeigt mir direkt, wie die Kurve dort aussieht, ohne dass ich es mir vorstellen muss"},
+    {"zitat": "[Von der Achsenmarke 0 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 0.]", "urteil": "trug", "warum": "zeigt mir, wie x=0 ueber die Kurve zum y-Wert 0 fuehrt, statt dass ich das selbst nachvollziehen muss"},
+    {"zitat": "[Ein oranger Punkt landet bei (0|0) in k(x) = x⁴ − 2x².]", "urteil": "dekoration", "warum": "der Punkt steht schon durch die Rechnung fest, das Landen zeigt nichts Neues"}
+  ],
+  "deutungen": [
+    {"symbol": "hinreichende Bedingung", "was": "die zusaetzliche Pruefung, die aus einem Kandidaten wirklich H oder T macht", "wo": "kleine Marke ueber k''(x)=12x^2-4 in Wisch 3", "quelle": "B:\"hinreichende Bedingung: k''(x)≠ 0\""},
+    {"symbol": "x_1, x_2, x_3", "was": "einfach durchnummerierte Loesungen der Gleichung 4x(x^2-1)=0, keine neue Rechenbedeutung", "wo": "in der Zeile 4x(x^2-1)=0 ⟺ x_1=0, x_2=-1, x_3=1", "quelle": "B:\"4x(x^2-1)=0 ⟺ x_1=[0 orange] , x_2=[-1 blau] , x_3=[1 gruen]\""},
+    {"symbol": "±1", "was": "Kurzschreibweise fuer 'sowohl x=1 als auch x=-1' zusammen", "wo": "in k''(± 1)=8>0→ Tiefpunkte(fett: T)", "quelle": "B:\"k''(± 1)=8>0→ Tiefpunkte(fett: T)\""},
+    {"symbol": "Farben orange/blau/gruen", "was": "Markierung, die denselben Kandidaten durch alle Wische hindurch verfolgt, keine eigene mathematische Bedeutung", "wo": "an Zahlen, Pfeilen und Kurvenstuecken im ganzen Blatt", "quelle": "B:\"x_1=[0 orange] , x_2=[-1 blau] , x_3=[1 gruen]\""},
+    {"symbol": "T_1, T_2", "was": "zwei verschiedene Tiefpunkte, durchnummeriert weil es diesmal mehr als einen gibt", "wo": "Beschriftung an den Punkten (-1|-1) und (1|-1)", "quelle": "B:\"[T_1(-1 | -1) blau] ,[T_2(1 | -1) gruen]\""}
+  ],
+  "zettel": [
+    "Z:1 k'=0: bei k(x)=x^4-2x^2 gibt's 3 Kandidaten x=0,-1,1 (notwendig, noch nicht H/T).",
+    "Z:2 k''(0)=-4<0->H(0|0); k''(-1)=k''(1)=8>0->T1(-1|-1),T2(1|-1).",
+    "Z:3 Muster: k''<0->Hoch, k''>0->Tief, auch bei 3 Kandidaten. Warum bleibt unklar.",
+    "Z:4 Farben markieren nur den Kandidaten - keine eigene mathematische Bedeutung."
+  ]
+}

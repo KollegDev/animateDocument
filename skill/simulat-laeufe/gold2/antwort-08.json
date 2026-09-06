@@ -1,0 +1,50 @@
+{
+  "schritte": [
+    {"text": "Ueberschrift 'Schema' - das wirkt wie eine Zusammenfassung von dem, was ich vorher einzeln gemacht habe.", "quelle": "B:Schema"},
+    {"text": "f'(x_0)=0 heisst jetzt 'notwendige Bedingung' - genau das Muster wie mein m'=0 vorher.", "quelle": "Z:1"},
+    {"text": "Ich merke, dass 'notwendig' hier wieder nicht erklaert wird, das war schon auf dem letzten Blatt so.", "quelle": "Z:4"},
+    {"text": "'hinreichende Bedingung' klingt wie das Gegenstueck zu 'notwendig', aber wieder nur benannt, nicht erklaert.", "quelle": "B:hinreichende Bedingung"},
+    {"text": "f''(x_0)<0 -> orange -> H: wenn bei mir k''>0 ein Tief gab, muss <0 wohl das Gegenteil geben, also Hoch.", "quelle": "Z:2"},
+    {"text": "f''(x_0)>0 -> blau -> T: das ist genau mein alter Fall, T(-1|-0,37) mit m''(-1)>0.", "quelle": "Z:2"},
+    {"text": "f''(x_0)=0 ist ein Fall, den ich noch nirgends hatte: dann muss man Vorzeichen von f' pruefen.", "quelle": "B:f''(x_0)=0→keine Entscheidung, Vorzeichen von f′ links und rechts prüfen"},
+    {"text": "Vorzeichen von f' pruefen kenne ich im Prinzip: positiv=steigend, negativ=fallend.", "quelle": "W:W4"},
+    {"text": "'Tangente waagerecht' passt zu f'=0, weil f' ja die Steigung der Tangente ist.", "quelle": "W:W4"},
+    {"text": "Jetzt verstehe ich, warum vorhin H bei f''<0 auftauchte: negativ->Gipfel.", "quelle": "B:negativ heißt Rechtskurve, also Gipfel"},
+    {"text": "Positiv->Tal bestaetigt endgueltig, dass T = Tiefpunkt aus meinem alten Beispiel ist.", "quelle": "B:Positiv heißt Linkskurve, also Tal"},
+    {"text": "Ich glaube einfach, dass diese drei Wische wirklich alle Faelle abdecken, ich pruefe das nicht nach.", "quelle": "keine"}
+  ],
+  "stockstellen": [
+    {"art": "lastmarke", "zitat": "notwendige Bedingung", "warum": "Fachwort ohne Erklaerung, nur Kapitaelchen-Marke, laut Z:4 bleibt das unerklaert."},
+    {"art": "lastmarke", "zitat": "hinreichende Bedingung", "warum": "gleiches unerklaertes Fachwort wie 'notwendig', nur mit anderem Adjektiv."},
+    {"art": "verwechslung", "zitat": "notwendige Bedingung / hinreichende Bedingung", "warum": "beide heissen nur 'Bedingung' mit aehnlichem Aufbau, ich kann mir nicht merken welche zuerst greift."},
+    {"art": "raten", "zitat": "H(x_0 | f(x_0))", "warum": "ich errate H als Abkuerzung fuer einen hohen Punkt, das Thema Extrempunkte kenne ich offiziell nicht."},
+    {"art": "vorstellung", "zitat": "[∩ orange] ... [∪ blau]", "warum": "es gibt keine echte Kurve oder Skizze zu sehen, nur die Symbole, ich kann mir die Kurvenform nicht wirklich vorstellen."},
+    {"art": "vorstellung", "zitat": "Vorzeichen von f′ links und rechts prüfen", "warum": "es fehlt ein Bild oder Beispiel, wie dieses Pruefen konkret aussieht."},
+    {"art": "skip", "zitat": "negativ heißt Rechtskurve, also Gipfel", "warum": "die Begruendung mit der Kurvenrichtung ist mir zu viel Prosa, ich nehme nur 'Gipfel' als Ergebnis mit."},
+    {"art": "glauben", "zitat": "f''(x_0)=0→keine Entscheidung, Vorzeichen von f′ links und rechts prüfen", "warum": "ich rechne das nicht nach, ich glaube das einfach so, wie schon bei Z:3 die Ableitungsformeln."}
+  ],
+  "bewegungen": [
+    {"zitat": "[Kleine Marke, Kapitälchen:] notwendige Bedingung", "urteil": "dekoration", "warum": "nur Hervorhebung als Fachbegriff, erklaert den Inhalt nicht neu"},
+    {"zitat": "[gelb hinterlegt:] f'(x_0)=0", "urteil": "dekoration", "warum": "Farbe zeigt nur Wichtigkeit, keine zusaetzliche Information zur Formel"},
+    {"zitat": "[Kleine Marke, Kapitälchen:] hinreichende Bedingung", "urteil": "dekoration", "warum": "gleiche reine Hervorhebung wie bei 'notwendig'"},
+    {"zitat": "[f''(x_0)<0 orange][∩ orange]→[H(x_0 | f(x_0)) orange]", "urteil": "trug", "warum": "der Pfeil zeigt mir direkt, dass aus der Bedingung ein bestimmter Punkttyp folgt, ohne dass ich selbst herleiten muss"},
+    {"zitat": "[f''(x_0)>0 blau][∪ blau]→[T(x_0 | f(x_0)) blau]", "urteil": "trug", "warum": "bestaetigt sofort mein Muster aus Z:2, ohne dass ich neu rechnen muss"},
+    {"zitat": "[Merksatz, gelb hinterlegt:] \\(f'(x)=0\\) liefert die Kandidaten: dort ist die Tangente waagerecht.", "urteil": "trug", "warum": "fasst die Farben und Pfeile aus Wisch 2 erst in Worte, die sie verstaendlich machen"}
+  ],
+  "deutungen": [
+    {"symbol": "notwendige Bedingung", "was": "Fachname fuer die Regel f'(x_0)=0, die ein Kandidat erfuellen muss, bevor man weiterschaut", "wo": "Kapitaelchen-Marke ueber der gelben Formel in Wisch 1", "quelle": "B:notwendige Bedingung"},
+    {"symbol": "hinreichende Bedingung", "was": "Fachname fuer die Regel, die per f'' entscheidet, ob ein Kandidat wirklich Hoch- oder Tiefpunkt ist", "wo": "Kapitaelchen-Marke in Wisch 2", "quelle": "B:hinreichende Bedingung"},
+    {"symbol": "∩", "was": "Symbol fuer eine Kurve, die wie ein Gipfel nach unten geoeffnet ist, gehoert zu f''<0", "wo": "orange neben f''(x_0)<0 in Wisch 2", "quelle": "B:negativ heißt Rechtskurve, also Gipfel"},
+    {"symbol": "∪", "was": "Symbol fuer eine Kurve, die wie ein Tal nach oben geoeffnet ist, gehoert zu f''>0", "wo": "blau neben f''(x_0)>0 in Wisch 2", "quelle": "B:Positiv heißt Linkskurve, also Tal"},
+    {"symbol": "H(x_0 | f(x_0))", "was": "Punkt im Format wie P(x|y), ein Gipfel-Punkt (H wohl fuer 'Hoch')", "wo": "orange am Ende der Pfeilkette in Wisch 2", "quelle": "W:W1"},
+    {"symbol": "T(x_0 | f(x_0))", "was": "Punkt im Format wie P(x|y), ein Tiefpunkt - genau wie mein T(-1|-0,37)", "wo": "blau am Ende der Pfeilkette in Wisch 2", "quelle": "Z:2"},
+    {"symbol": "x_0", "was": "ein allgemeiner Platzhalter fuer eine bestimmte Stelle/x-Wert, so wie x bei P(x|y)", "wo": "in allen Formeln auf Blatt 8", "quelle": "W:W1"},
+    {"symbol": "Rechtskurve/Linkskurve", "was": "Bezeichnung fuer die Kruemmungsrichtung der Kurve, verknuepft mit Gipfel bzw. Tal", "wo": "im Merksatz in Wisch 3", "quelle": "B:negativ heißt Rechtskurve, also Gipfel"}
+  ],
+  "zettel": [
+    "Z:1 Schema: f'(x0)=0 notwendig (Kandidat); f''<0->Gipfel/H, f''>0->Tal/T (Z:2).",
+    "Z:2 f''(x0)=0: keine Entscheidung, Vorzeichen von f' pruefen (neu, ungeuebt).",
+    "Z:3 notwendig/hinreichend, Rechtskurve/Linkskurve bleiben Fachwoerter ohne Erklaerung.",
+    "Z:4 H,T wie P(x|y) aus W1; warum rechts/links-Kurve gilt, wird nicht gezeigt (geglaubt)."
+  ]
+}

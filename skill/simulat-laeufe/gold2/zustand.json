@@ -1,0 +1,2132 @@
+{
+ "film": "/sessions/epic-cool-faraday/mnt/animateDocuments/filme/extrempunkte.json",
+ "titel": "Extrempunkte",
+ "thema": "Extrempunkte (Hoch- und Tiefpunkte, notwendige und hinreichende Bedingung)",
+ "wissen": [
+  {
+   "id": "W1",
+   "text": "Funktionen und ihre Graphen lesen: f(x) ist der y-Wert an der Stelle x; ein Punkt hat die Form P(x|y)."
+  },
+  {
+   "id": "W2",
+   "text": "Terme umformen und einfache Gleichungen loesen (ausklammern, x^2=1 gibt x=1 oder x=-1, Wurzelziehen mit zwei Loesungen)."
+  },
+  {
+   "id": "W3",
+   "text": "Ableitungsregeln: Potenzregel, Faktor- und Summenregel; f'(x) von x^3-3x ist 3x^2-3."
+  },
+  {
+   "id": "W4",
+   "text": "f'(x) ist die Steigung der Tangente an der Stelle x; f' positiv heisst steigend, negativ heisst fallend."
+  },
+  {
+   "id": "W5",
+   "text": "f'' ist die Ableitung von f'."
+  },
+  {
+   "id": "W8",
+   "text": "Bruchrechnen und Dezimalzahlen mit Komma."
+  }
+ ],
+ "transfer": [
+  {
+   "id": "T1",
+   "aufgabe": "Bestimme die Extrempunkte von p(x)=x^2+2x (Art und Koordinaten).",
+   "loesung": [
+    "T(-1|-1)"
+   ],
+   "verboten": [
+    "x^2+2x"
+   ]
+  },
+  {
+   "id": "T2",
+   "aufgabe": "Bestimme die Extrempunkte von q(x)=x^3-12x (Art und Koordinaten).",
+   "loesung": [
+    "H(-2|16)",
+    "T(2|-16)"
+   ],
+   "verboten": [
+    "x^3-12x"
+   ]
+  }
+ ],
+ "fehlregeln": [
+  {
+   "id": "F1",
+   "thema": "extrempunkte",
+   "text": "Der y-Wert eines Extrempunkts ist f'(x0) oder f''(x0), also die Zahl, die man beim Pruefen ausgerechnet hat."
+  },
+  {
+   "id": "F2",
+   "thema": "extrempunkte",
+   "text": "Wo f'(x)=0 ist, liegt immer ein Hoch- oder Tiefpunkt."
+  },
+  {
+   "id": "F3",
+   "thema": "extrempunkte",
+   "text": "f''(x0)>0 bedeutet Hochpunkt, weil positiv oben ist."
+  },
+  {
+   "id": "F4",
+   "thema": "extrempunkte",
+   "text": "Ein Extrempunkt liegt immer bei x=0 oder bei x=1 und x=-1."
+  },
+  {
+   "id": "F5",
+   "thema": "extrempunkte",
+   "text": "Der Hochpunkt ist der hoechste Punkt des ganzen Graphen."
+  },
+  {
+   "id": "F14",
+   "thema": "allgemein",
+   "text": "Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe)."
+  }
+ ],
+ "blaetter": [
+  {
+   "nr": 1,
+   "titel": "(oben klein: „Woran erkennt man einen Gipfel?\")",
+   "text": "## Blatt 1 (oben klein: „Woran erkennt man einen Gipfel?\")\n\n**Wisch 1:**\nUeberschrift: Extrempunkte (Hoch- und Tiefpunkte)\nEin Hochpunkt ist ein Gipfel des Graphen, ein Tiefpunkt ist ein Tal.\n[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]\n[Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.]\n[Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.]\n[Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.]\n[Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.]\n\n**Wisch 2:**\nFahrt mit der Tangente über den Graphen. Die Zahl m ist ihre Steigung.\n[Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve; oben im Bild laufen x und m mit; bei x = -1, 1 bleibt je ein blasser Abdruck stehen.]\n\n**Wisch 3 (Aufloesung):**\nAn beiden ist die Tangente waagerecht.\n[gelb hinterlegt:] m=f'(x)=0"
+  },
+  {
+   "nr": 2,
+   "titel": "(oben klein: „Wo liegen Gipfel und Tal?\")",
+   "text": "## Blatt 2 (oben klein: „Wo liegen Gipfel und Tal?\")\n\n**Wisch 1:**\nGesucht sind die Stellen, an denen die Tangente waagerecht ist.\n[Kleine Marke, Kapitaelchen:] notwendige Bedingung: f'(x)=0\n[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]\n\n**Wisch 2:**\nf(x)=x^3-3x\nf'(x)=3x^2-3\n\n**Wisch 3:**\n[Chip fuer Chip in Leserichtung:] 3x^2-3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau]\n\n**Wisch 4 (Aufloesung):**\nZwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht.\n[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.]\n[An der x-Achse bei 1 wartet eine blaue Achsenmarke 1, noch blass.]\n[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]\n[Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.]"
+  },
+  {
+   "nr": 3,
+   "titel": "(oben klein: „Welche Stelle ist der Gipfel, und wie hoch liegt er?\")",
+   "text": "## Blatt 3 (oben klein: „Welche Stelle ist der Gipfel, und wie hoch liegt er?\")\n\n**Wisch 1:**\n[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]\n[An der x-Achse steht die orange Achsenmarke −1.]\n[An der x-Achse steht die blaue Achsenmarke 1.]\nx_1=[-1 orange] x_2=[1 blau]\n[Kleine Marke, Kapitaelchen:] hinreichende Bedingung: f''(x)≠ 0\nf''(x)=6x\n\n**Wisch 2:**\n[Zeile liegt bereit, noch unsichtbar: f''([-1 orange])=6·([-1 orange])=-6<0→ Hochpunkt(fett: H)]\n[Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf, dabei klein „Rechtskurve\".]\n\n**Wisch 3:**\n[Zeile liegt bereit, noch unsichtbar: f''([1 blau])=6·[1 blau]=6>0→ Tiefpunkt(fett: T)]\n[Ein blauer Pfeil zieht sich langsam von der 1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = 1 dick blau auf, dabei klein „Linkskurve\".]\n\n**Wisch 4:**\n[Kleine Marke, Kapitaelchen:] y-Werte: y=f(x)\n[Zeile liegt bereit, noch unsichtbar: f([-1 orange])=([-1 orange])^3-3·([-1 orange])=-1+3=[2 orange]]\n[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von -1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 2.]\n[Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.]\n[Zeile liegt bereit, noch unsichtbar: f([1 blau])=[1 blau]^3-3·[1 blau]=1-3=[-2 blau]]\n[Ein blauer Pfeil zieht sich langsam von dem Stamm des Pfeils von 1 durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Von der Achsenmarke 1 laeuft eine gestrichelte blaue Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −2.]\n[Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.]\n\n**Wisch 5 (Aufloesung):**\n[Zeile liegt bereit, noch unsichtbar: [Luecke][Luecke]|[Luecke]) ,[Luecke][Luecke]|[Luecke])]\n[Die vorbereitete Zeile erscheint.]\n[Eine Kopie der orangen → Hochpunkt loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann → Hochpunkt).]\n[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann -1).]\n[Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann 2).]\n[Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.]\n[Eine Kopie der blauen → Tiefpunkt loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann → Tiefpunkt).]\n[Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann 1).]\n[Eine Kopie der blauen -2 loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann -2).]\n[Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.]\n[Merksatz, gelb hinterlegt:] Der y-Wert kommt aus \\(f(x)\\), nicht aus \\(f'(x)\\)."
+  },
+  {
+   "nr": 4,
+   "titel": "(oben klein: „Geht das bei g genauso?\") [Serienfall]",
+   "text": "## Blatt 4 (oben klein: „Geht das bei g genauso?\") [Serienfall]\n\n**Wisch 1:**\ng(x)=x^2-4x\n[Graph zeichnet sich: g(x) = x² − 4x, x von -1.2 bis 5.2, y von -5 bis 3.]\n\n**Wisch 2:**\n[Kleine Marke, Kapitaelchen:] notwendige Bedingung: g'(x)=0\ng'(x)=2x-4\n[Chip fuer Chip in Leserichtung:] 2x-4=0 ⟺ x_1=[2 orange]\n[An der x-Achse bei 2 wartet eine orange Achsenmarke 2, noch blass.]\n[Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig.]\n\n**Wisch 3:**\n[Kleine Marke, Kapitaelchen:] hinreichende Bedingung: g''(x)≠ 0\ng''(x)=2\n[Zeile liegt bereit, noch unsichtbar: g''([2 orange])=2>0→ Tiefpunkt(fett: T)]\n[Ein oranger Pfeil zieht sich langsam von der 2 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = 2 dick orange auf.]\n\n**Wisch 4 (Aufloesung):**\n[Kleine Marke, Kapitaelchen:] y-Werte: y=g(x)\n[Zeile liegt bereit, noch unsichtbar: g([2 orange])=[2 orange]^2-4·[2 orange]=[-4 orange]]\n[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von 2 durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Von der Achsenmarke 2 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −4.]\n[Ein oranger Punkt landet bei (2|-4) in g(x) = x² − 4x.]\n[Zeile liegt bereit, noch unsichtbar: [T(2 | -4) orange]]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Beschriftung T(2|−4) erscheint am Punkt (2|-4), orange.]"
+  },
+  {
+   "nr": 5,
+   "titel": "(oben klein: „Und mit zwei Kandidaten?\") [Serienfall]",
+   "text": "## Blatt 5 (oben klein: „Und mit zwei Kandidaten?\") [Serienfall]\n\n**Wisch 1:**\nh(x)=-x^3+3x\n[Graph zeichnet sich: h(x) = −x³ + 3x, x von -2.4 bis 2.4, y von -4 bis 4.]\n\n**Wisch 2:**\n[Kleine Marke, Kapitaelchen:] notwendige Bedingung: h'(x)=0\nh'(x)=-3x^2+3\n[Chip fuer Chip in Leserichtung:] -3x^2+3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau]\n[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.]\n[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]\n[An der x-Achse bei 1 wartet eine blaue Achsenmarke 1, noch blass.]\n[Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.]\n\n**Wisch 3:**\n[Kleine Marke, Kapitaelchen:] hinreichende Bedingung: h''(x)≠ 0\nh''(x)=-6x\n[Zeile liegt bereit, noch unsichtbar: h''([-1 orange])=6>0→ Tiefpunkt(fett: T)]\n[Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.]\n[Zeile liegt bereit, noch unsichtbar: h''([1 blau])=-6<0→ Hochpunkt(fett: H)]\n[Ein blauer Pfeil zieht sich langsam von der 1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = 1 dick blau auf.]\n\n**Wisch 4 (Aufloesung):**\n[Kleine Marke, Kapitaelchen:] y-Werte: y=h(x)\n[Zeile liegt bereit, noch unsichtbar: h([-1 orange])=-([-1 orange])^3+3·([-1 orange])=1-3=[-2 orange]]\n[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von -1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −2.]\n[Ein oranger Punkt landet bei (-1|-2) in h(x) = −x³ + 3x.]\n[Zeile liegt bereit, noch unsichtbar: h([1 blau])=-[1 blau]^3+3·[1 blau]=-1+3=[2 blau]]\n[Ein blauer Pfeil zieht sich langsam von dem Stamm des Pfeils von 1 durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Von der Achsenmarke 1 laeuft eine gestrichelte blaue Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 2.]\n[Ein blauer Punkt landet bei (1|2) in h(x) = −x³ + 3x.]\n[Zeile liegt bereit, noch unsichtbar: [T(-1 | -2) orange] ,[H(1 | 2) blau]]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Beschriftung T(−1|−2) erscheint am Punkt (-1|-2), orange.]\n[Beschriftung H(1|2) erscheint am Punkt (1|2), blau.]"
+  },
+  {
+   "nr": 6,
+   "titel": "(oben klein: „Und mit drei?\") [Serienfall]",
+   "text": "## Blatt 6 (oben klein: „Und mit drei?\") [Serienfall]\n\n**Wisch 1:**\nk(x)=x^4-2x^2\n[Graph zeichnet sich: k(x) = x⁴ − 2x², x von -1.9 bis 1.9, y von -1.6 bis 2.4.]\n\n**Wisch 2:**\n[Kleine Marke, Kapitaelchen:] notwendige Bedingung: k'(x)=0\nk'(x)=4x^3-4x=4x(x^2-1)\n[Chip fuer Chip in Leserichtung:] 4x(x^2-1)=0 ⟺ x_1=[0 orange] , x_2=[-1 blau] , x_3=[1 gruen]\n[An der x-Achse bei 0 wartet eine orange Achsenmarke 0, noch blass.]\n[Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 0 kraeftig.]\n[An der x-Achse bei -1 wartet eine blaue Achsenmarke −1, noch blass.]\n[Eine Kopie der blauen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]\n[An der x-Achse bei 1 wartet eine gruene Achsenmarke 1, noch blass.]\n[Eine Kopie der gruenen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.]\n\n**Wisch 3:**\n[Kleine Marke, Kapitaelchen:] hinreichende Bedingung: k''(x)≠ 0\nk''(x)=12x^2-4\n[Zeile liegt bereit, noch unsichtbar: k''([0 orange])=-4<0→ Hochpunkt(fett: H)]\n[Ein oranger Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = 0 dick orange auf.]\n[Zeile liegt bereit, noch unsichtbar: k''(± 1)=8>0→ Tiefpunkte(fett: T)]\n[Ein blauer Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die ± 1 in der Klammer der naechsten Zeile.]\n[Ein gruener Pfeil zieht sich langsam von der 1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die ± 1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = -1 dick blau auf.]\n[Im Graphen leuchtet das Kurvenstueck um x = 1 dick gruen auf.]\n\n**Wisch 4 (Aufloesung):**\n[Kleine Marke, Kapitaelchen:] y-Werte: y=k(x)\n[Zeile liegt bereit, noch unsichtbar: k([0 orange])=[0 orange] , k([-1 blau])=1-2=[-1 blau] , k([1 gruen])=1-2=[-1 gruen]]\n[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von 0 durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]\n[Ein blauer Pfeil zieht sich langsam von dem Stamm des Pfeils von ± 1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]\n[Ein gruener Pfeil zieht sich langsam von dem Stamm des Pfeils von ± 1 durch den Seitenrand nach unten und muendet von oben auf die 1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Von der Achsenmarke 0 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 0.]\n[Ein oranger Punkt landet bei (0|0) in k(x) = x⁴ − 2x².]\n[Von der Achsenmarke -1 laeuft eine gestrichelte blaue Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −1.]\n[Ein blauer Punkt landet bei (-1|-1) in k(x) = x⁴ − 2x².]\n[Von der Achsenmarke 1 laeuft eine gestrichelte gruene Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −1.]\n[Ein gruener Punkt landet bei (1|-1) in k(x) = x⁴ − 2x².]\n[Zeile liegt bereit, noch unsichtbar: [H(0 | 0) orange] ,[T_1(-1 | -1) blau] ,[T_2(1 | -1) gruen]]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Beschriftung H(0|0) erscheint am Punkt (0|0), orange.]\n[Beschriftung T₁(−1|−1) erscheint am Punkt (-1|-1), blau.]\n[Beschriftung T₂(1|−1) erscheint am Punkt (1|-1), gruen.]"
+  },
+  {
+   "nr": 7,
+   "titel": "(oben klein: „Und wenn eˣ drinsteckt?\") [Serienfall]",
+   "text": "## Blatt 7 (oben klein: „Und wenn eˣ drinsteckt?\") [Serienfall]\n\n**Wisch 1:**\nm(x)=x· e^x\n[Graph zeichnet sich: m(x) = x·eˣ, x von -4.6 bis 1.1, y von -0.8 bis 1.6.]\n\n**Wisch 2:**\n[Kleine Marke, Kapitaelchen:] notwendige Bedingung: m'(x)=0\nm'(x)=1· e^x+x· e^x=(1+x)· e^x\n[Chip fuer Chip in Leserichtung:] (1+x)· e^x=0⟺ 1+x=0 ⟺ x_1=[-1 orange]| eˣ ≠ 0\n[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.]\n[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]\n\n**Wisch 3:**\n[Kleine Marke, Kapitaelchen:] hinreichende Bedingung: m''(x)≠ 0\nm''(x)=(2+x)· e^x\n[Zeile liegt bereit, noch unsichtbar: m''([-1 orange])=1· e^-1approx 0,37>0→ Tiefpunkt(fett: T)]\n[Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.]\n\n**Wisch 4 (Aufloesung):**\n[Kleine Marke, Kapitaelchen:] y-Werte: y=m(x)\n[Zeile liegt bereit, noch unsichtbar: m([-1 orange])=[-1 orange]· e^-1approx[-0,37 orange]]\n[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von -1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Zeile.]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −0,37.]\n[Ein oranger Punkt landet bei (-1|-0.3679) in m(x) = x·eˣ.]\n[Zeile liegt bereit, noch unsichtbar: [T(-1 | -0,37) orange]]\n[Die vorbereitete Zeile erscheint Chip fuer Chip.]\n[Beschriftung T(−1|−0,37) erscheint am Punkt (-1|-0.3679), orange.]"
+  },
+  {
+   "nr": 8,
+   "titel": "(oben klein: „Was bleibt als Weg?\")",
+   "text": "## Blatt 8 (oben klein: „Was bleibt als Weg?\")\n\n**Wisch 1:**\nUeberschrift: Schema\n[Kleine Marke, Kapitaelchen:] notwendige Bedingung\n[gelb hinterlegt:] f'(x_0)=0\n\n**Wisch 2:**\n[Kleine Marke, Kapitaelchen:] hinreichende Bedingung\n[f''(x_0)<0 orange][∩ orange]→[H(x_0 | f(x_0)) orange]\n[f''(x_0)>0 blau][∪ blau]→[T(x_0 | f(x_0)) blau]\n\n**Wisch 3 (Aufloesung):**\nf''(x_0)=0→keine Entscheidung, Vorzeichen von f′ links und rechts prüfen\n[Merksatz, gelb hinterlegt:] \\(f'(x)=0\\) liefert die Kandidaten: dort ist die Tangente waagerecht. \\(f''\\) entscheidet: negativ heißt Rechtskurve, also Gipfel. Positiv heißt Linkskurve, also Tal."
+  }
+ ],
+ "schluss": "Ende. Weiter im Dokument: Krümmungsverhalten, Seite 38.",
+ "zettel": [
+  "Z:1 Schema: f'(x0)=0 notwendig (Kandidat); f''<0->Gipfel/H, f''>0->Tal/T (Z:2).",
+  "Z:2 f''(x0)=0: keine Entscheidung, Vorzeichen von f' pruefen (neu, ungeuebt).",
+  "Z:3 notwendig/hinreichend, Rechtskurve/Linkskurve bleiben Fachwoerter ohne Erklaerung.",
+  "Z:4 H,T wie P(x|y) aus W1; warum rechts/links-Kurve gilt, wird nicht gezeigt (geglaubt)."
+ ],
+ "zettelJeBlatt": [
+  [
+   "Extrempunkte=Hoch-/Tiefpunkte. H(-1|2)=Gipfel orange, T(1|-2)=Tal blau, beide auf x³-3x.",
+   "Tangente=Beruehrgerade, m=Steigung=f'(x). Bei H,T: Tangente waagerecht, also m=f'(x)=0.",
+   "Offen: WIE man x=-1,1 aus f'(x)=0 rechnerisch findet, zeigt das Blatt nicht (Luecke).",
+   "Unsicher: ob H/T wirklich fuer Hochpunkt/Tiefpunkt stehen - nur aus Kontext geraten."
+  ],
+  [
+   "f=x^3-3x,f'=3x^2-3=0: x1=-1(orange,H,y=2), x2=1(blau,T,y=-2).",
+   "notwendige Bedingung f'(x)=0 = Fachwort unklar, nur 'muss gelten' vermutet.",
+   "H/T = Gipfel/Tal: weiterhin nur Vermutung aus Farben, noch nicht entschieden.",
+   "Wie man x1,x2 rechnet, zeigt Blatt 2 jetzt (3x^2-3=0 -> x^2=1 -> x=±1)."
+  ],
+  [
+   "H(-1|2): f''(-1)=-6<0->Hochpunkt. T(1|-2): f''(1)=6>0->Tiefpunkt. f''(x)=6x.",
+   "Warum f''-Vorzeichen -> H/T weiss ich nicht, nur geglaubt (Thema fehlt mir).",
+   "Merksatz: y-Wert kommt aus f(x), NICHT aus f'(x) - x fand ich ueber f'(x)=0.",
+   "Unklar: 'hinreichend' (vs 'notwendig'), 'Rechtskurve'/'Linkskurve' unklar."
+  ],
+  [
+   "g(x)=x^2-4x wie f: notwendig g'=0->x=2, hinreichend g''!=0.",
+   "g''(2)=2>0->Tiefpunkt T(2|-4), y-Wert kommt aus g(x) nicht g'(x).",
+   "notwendig=x-Kandidat(g'=0); hinreichend=bestaetigt H/T(g''!=0). Warum? unklar, Thema fehlt",
+   "Unklar: Rechtskurve/Linkskurve. 'g''!=0' vs Vorzeichen(H/T) - Blatt trennt das nicht klar."
+  ],
+  [
+   "Muster jetzt an 2 Kandidaten bestaetigt: h'=0->x=-1,x=1 (notwendig).",
+   "h''(-1)=6>0->Tief T(-1|-2); h''(1)=-6<0->Hoch H(1|2). y aus h(x).",
+   "Vorzeichen h'' entscheidet H/T: + -> Tief, - -> Hoch. Warum? unklar.",
+   "Kurvenstueck an T faellt/steigt wie Tal, an H wie Huegel - aber Begriff fehlt."
+  ],
+  [
+   "Z:1 k'=0: bei k(x)=x^4-2x^2 gibt's 3 Kandidaten x=0,-1,1 (notwendig, noch nicht H/T).",
+   "Z:2 k''(0)=-4<0->H(0|0); k''(-1)=k''(1)=8>0->T1(-1|-1),T2(1|-1).",
+   "Z:3 Muster: k''<0->Hoch, k''>0->Tief, auch bei 3 Kandidaten. Warum bleibt unklar.",
+   "Z:4 Farben markieren nur den Kandidaten - keine eigene mathematische Bedeutung."
+  ],
+  [
+   "Z:1 Bei e^x-Funktionen genauso: m'=0 notwendig, x_1=-1 einziger Kandidat bei m(x)=x*e^x.",
+   "Z:2 m''(-1)=1*e^-1≈0,37>0 -> Tiefpunkt T(-1|-0,37); Muster k''>0->Tief bestaetigt sich.",
+   "Z:3 Ableiten von e^x/Produkten kenne ich nicht, glaube die Formeln m',m'' einfach.",
+   "Z:4 notwendig/hinreichend bleiben unerklaert; Pfeile/Farben zeigen nur Zuordnung."
+  ],
+  [
+   "Z:1 Schema: f'(x0)=0 notwendig (Kandidat); f''<0->Gipfel/H, f''>0->Tal/T (Z:2).",
+   "Z:2 f''(x0)=0: keine Entscheidung, Vorzeichen von f' pruefen (neu, ungeuebt).",
+   "Z:3 notwendig/hinreichend, Rechtskurve/Linkskurve bleiben Fachwoerter ohne Erklaerung.",
+   "Z:4 H,T wie P(x|y) aus W1; warum rechts/links-Kurve gilt, wird nicht gezeigt (geglaubt)."
+  ]
+ ],
+ "antworten": [
+  {
+   "blatt": 1,
+   "schritte": [
+    {
+     "text": "Klein oben steht eine Leitfrage, die ich im Kopf behalte: wie erkennt man einen Gipfel.",
+     "quelle": "B:\"Woran erkennt man einen Gipfel?\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Die Ueberschrift verraet sofort: Extrempunkte sind einfach Hoch- und Tiefpunkte, mehr nicht.",
+     "quelle": "B:\"Extrempunkte (Hoch- und Tiefpunkte)\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Hochpunkt = Gipfel, Tiefpunkt = Tal - zwei einfache Bilder, die ich sofort verstehe.",
+     "quelle": "B:\"Ein Hochpunkt ist ein Gipfel des Graphen, ein Tiefpunkt ist ein Tal.\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Den Term f(x)=x³-3x kenne ich, aber wie die Kurve aussieht, sehe ich erst durch das gezeichnete Bild.",
+     "quelle": "W:W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Ich rechne nach: f(-1) = (-1)³-3·(-1) = -1+3 = 2, der orange Punkt (-1|2) stimmt.",
+     "quelle": "W:W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "H(-1|2) folgt der Schreibweise P(x|y), die ich kenne, nur mit einem neuen Buchstaben H davor.",
+     "quelle": "W:W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Ich rechne nach: f(1) = 1³-3·1 = 1-3 = -2, der blaue Punkt (1|-2) stimmt.",
+     "quelle": "W:W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "m als Steigung der Tangente ist fuer mich dasselbe wie f'(x), das kenne ich schon.",
+     "quelle": "W:W4",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Die wandernde Beruehrgerade mit Abdruck genau bei -1 und 1 zeigt mir: dort ist etwas anders als sonst.",
+     "quelle": "B:\"bei x = -1, 1 bleibt je ein blasser Abdruck stehen\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Waagerechte Tangente heisst fuer mich: Steigung Null, also f'(x)=0 genau an diesen Stellen.",
+     "quelle": "B:\"An beiden ist die Tangente waagerecht.\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Die gelb hinterlegte Formel m=f'(x)=0 ist die Antwort auf die Leitfrage oben: so erkennt man einen Gipfel.",
+     "quelle": "B:\"m=f'(x)=0\"",
+     "art": "B",
+     "gedeckt": true
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "glauben",
+     "zitat": "An beiden ist die Tangente waagerecht.",
+     "warum": "dass waagerecht genau Steigung Null bedeutet, steht nirgends in meinem Wissen (W4 kennt nur positiv/negativ), ich uebernehme es einfach als gegeben"
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "m=f'(x)=0",
+     "warum": "das Blatt zeigt nie die Umformung, mit der man aus dieser Gleichung tatsaechlich x=-1 und x=1 ausrechnet; dieser Rechenweg fehlt komplett"
+    },
+    {
+     "art": "raten",
+     "zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.",
+     "warum": "nirgends steht ausdruecklich, dass H fuer Hochpunkt und T fuer Tiefpunkt steht, ich schliesse das nur aus Naehe und Farbe"
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]",
+     "urteil": "trug",
+     "warum": "zeigt mir den Kurvenverlauf, den ich sonst muehsam durch viele Punkte haette ausrechnen muessen"
+    },
+    {
+     "zitat": "[Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.]",
+     "urteil": "trug",
+     "warum": "zeigt mir direkt, wo der erste besondere Punkt liegt, ohne dass ich die Kurve absuchen muss"
+    },
+    {
+     "zitat": "[Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.]",
+     "urteil": "trug",
+     "warum": "gibt dem Punkt einen Namen und verknuepft die Farbe orange mit ihm"
+    },
+    {
+     "zitat": "[Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.]",
+     "urteil": "trug",
+     "warum": "zeigt mir den zweiten besonderen Punkt und erspart mir das Suchen"
+    },
+    {
+     "zitat": "[Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.]",
+     "urteil": "trug",
+     "warum": "gibt dem zweiten Punkt einen Namen und verknuepft die Farbe blau mit ihm"
+    },
+    {
+     "zitat": "[Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve; oben im Bild laufen x und m mit; bei x = -1, 1 bleibt je ein ",
+     "urteil": "trug",
+     "warum": "zeigt mir, dass sich die Steigung staendig aendert und genau bei -1 und 1 etwas Besonderes markiert wird, ohne dass ich das selbst haette vermuten muessen"
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "Extrempunkte",
+     "was": "Oberbegriff fuer Hoch- und Tiefpunkte",
+     "wo": "in der Ueberschrift von Wisch 1",
+     "quelle": "B:\"Extrempunkte (Hoch- und Tiefpunkte)\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Hochpunkt",
+     "was": "ein Gipfel des Graphen",
+     "wo": "der orange Punkt bei (-1|2)",
+     "quelle": "B:\"Ein Hochpunkt ist ein Gipfel des Graphen\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Tiefpunkt",
+     "was": "ein Tal des Graphen",
+     "wo": "der blaue Punkt bei (1|-2)",
+     "quelle": "B:\"ein Tiefpunkt ist ein Tal\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "H(-1|2)",
+     "was": "Beschriftung des Hochpunkts in der Schreibweise P(x|y)",
+     "wo": "orange am Punkt (-1|2)",
+     "quelle": "B:\"Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "T(1|-2)",
+     "was": "Beschriftung des Tiefpunkts in der Schreibweise P(x|y)",
+     "wo": "blau am Punkt (1|-2)",
+     "quelle": "B:\"Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "m",
+     "was": "die Steigung der Tangente, dasselbe wie f'(x)",
+     "wo": "oben im Bild, laeuft beim Wischen mit",
+     "quelle": "W:W4",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Beruehrgerade",
+     "was": "die Tangente, die die Kurve beruehrt",
+     "wo": "die orange Linie, die beim Wischen ueber die Kurve faehrt",
+     "quelle": "W:W4",
+     "gedeckt": true
+    },
+    {
+     "symbol": "waagerecht",
+     "was": "die Tangente hat Steigung 0, verlaeuft flach",
+     "wo": "an den Punkten H und T, wo die Tangente eingezeichnet ist",
+     "quelle": "B:\"An beiden ist die Tangente waagerecht.\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "gelb hinterlegt",
+     "was": "kann ich nicht deuten",
+     "wo": "der Kasten mit m=f'(x)=0",
+     "quelle": "kann ich nicht deuten",
+     "gedeckt": null
+    }
+   ],
+   "flags": [
+    "Rechenlast: 11 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 0
+  },
+  {
+   "blatt": 2,
+   "schritte": [
+    {
+     "text": "Ich lese: 'Gesucht sind die Stellen, an denen die Tangente waagerecht ist.' - Tangente kenne ich als Beruehrgerade mit Steigung m=f'(x).",
+     "quelle": "Z:2",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Waagerechte Tangente heisst Steigung 0, also f'(x)=0 - das passt zur notwendigen Bedingung oben.",
+     "quelle": "W:W4",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "'notwendige Bedingung' ist ein Wort, das ich nicht kenne, ich nehme es einfach hin.",
+     "quelle": "keine",
+     "art": "keine",
+     "gedeckt": false
+    },
+    {
+     "text": "Der Graph von f(x)=x^3-3x zeichnet sich, das ist dieselbe Funktion, die auf meinem Zettel steht mit Gipfel und Tal.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "In Wisch 2 steht f(x)=x^3-3x - passt zu dem, was ich schon weiss.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "f'(x)=3x^2-3 - genau das ist das Beispiel, das ich auswendig kenne.",
+     "quelle": "W:W3",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "3x^2-3=0 wird zu x^2=1 - das rechne ich kurz nach: 3x^2=3, also x^2=1, stimmt.",
+     "quelle": "W:W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "x^2=1 gibt x=1 oder x=-1, so wie ich es weiss.",
+     "quelle": "W:W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "x_1=-1 ist orange, x_2=1 ist blau - dieselben Farben wie H(-1|2) orange und T(1|-2) blau auf meinem Zettel.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Also vermute ich: -1 gehoert zum Gipfel (Hochpunkt), 1 zum Tal (Tiefpunkt), wegen der Farben.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Aber der Text sagt: 'Zwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht.' - meine Vermutung ist also noch nicht bestaetigt.",
+     "quelle": "B:Zwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Die Zahlen -1 und 1 fliegen zur x-Achse und werden dort stark - jetzt sehe ich die Stellen direkt im Graphen.",
+     "quelle": "B:Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Damit ist die Luecke von vorher geschlossen: jetzt weiss ich, WIE man x=-1 und x=1 aus f'(x)=0 rechnet.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "glauben",
+     "zitat": "'notwendige Bedingung' ist ein Wort, das ich nicht kenne, ich nehme es einfach hin.",
+     "warum": "Schritt ohne belegte Quelle (keine)",
+     "mechanisch": true
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "notwendige Bedingung: f'(x)=0",
+     "warum": "Fachwort ohne Erklaerung, das Thema Extrempunkte kenne ich laut meiner Liste nicht."
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "notwendige Bedingung: f'(x)=0",
+     "warum": "Warum diese Bedingung nur 'notwendig' und nicht schon ausreichend ist, zeigt das Blatt nicht, das kann ich mir nicht vorstellen."
+    },
+    {
+     "art": "raten",
+     "zitat": "3x^2-3=0⟺ x^2=1",
+     "warum": "Das Zeichen ⟺ steht nicht in meiner Wissensliste, ich vermute nur, dass es 'ist gleichwertig mit' bedeutet."
+    },
+    {
+     "art": "verwechslung",
+     "zitat": "x_1=[-1 orange] , x_2=[1 blau]",
+     "warum": "Ich verlasse mich nur auf die Farben aus Z:1, um Gipfel/Tal zuzuordnen, das koennte auch vertauscht sein."
+    },
+    {
+     "art": "ruecksprung",
+     "zitat": "x_1=[-1 orange] , x_2=[1 blau]",
+     "warum": "Ich springe zurueck zu Z:1, um zu pruefen, ob orange=Gipfel und blau=Tal wirklich zusammenpassen."
+    },
+    {
+     "art": "glauben",
+     "zitat": "Zwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht.",
+     "warum": "Das ist eine Behauptung ueber die Methode, die ich nicht nachrechnen kann, ich glaube sie einfach."
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.",
+     "urteil": "trug",
+     "warum": "Ich sehe die S-Kurve direkt und muss sie mir nicht selbst vorstellen, das passt zu Gipfel/Tal aus Z:1."
+    },
+    {
+     "zitat": "Chip fuer Chip in Leserichtung: 3x^2-3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau]",
+     "urteil": "trug",
+     "warum": "Das zeigt genau die Rechnung, die auf Blatt 1 fehlte (Z:3), ich muss sie nicht selbst erfinden."
+    },
+    {
+     "zitat": "An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.",
+     "urteil": "trug",
+     "warum": "Ich sehe schon vorher, wo -1 auf der Achse liegt, ohne selbst zu messen."
+    },
+    {
+     "zitat": "An der x-Achse bei 1 wartet eine blaue Achsenmarke 1, noch blass.",
+     "urteil": "trug",
+     "warum": "Genauso fuer die Stelle 1, ich muss die Position nicht selbst schaetzen."
+    },
+    {
+     "zitat": "Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.",
+     "urteil": "trug",
+     "warum": "Das verbindet die ausgerechnete Zahl -1 direkt mit ihrer Stelle im Graphen, das haette ich sonst selbst zuordnen muessen."
+    },
+    {
+     "zitat": "Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.",
+     "urteil": "trug",
+     "warum": "Genauso fuer die 1, die Verbindung Rechnung-zu-Graph wird mir gezeigt statt selbst gedacht."
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "notwendige Bedingung",
+     "was": "kann ich nicht deuten",
+     "wo": "kleine Marke in Kapitaelchen ueber dem Graphen in Wisch 1",
+     "quelle": "keine",
+     "gedeckt": null
+    },
+    {
+     "symbol": "⟺",
+     "was": "kann ich nicht deuten",
+     "wo": "zwischen den Gleichungen in Wisch 3",
+     "quelle": "keine",
+     "gedeckt": null
+    },
+    {
+     "symbol": "orange (bei x_1=-1)",
+     "was": "Farbmarkierung, die laut meinem Zettel zum Gipfel/Hochpunkt gehoert",
+     "wo": "an x_1 in Wisch 3 und an der Achsenmarke -1 in Wisch 4",
+     "quelle": "Z:1",
+     "gedeckt": true
+    },
+    {
+     "symbol": "blau (bei x_2=1)",
+     "was": "Farbmarkierung, die laut meinem Zettel zum Tal/Tiefpunkt gehoert",
+     "wo": "an x_2 in Wisch 3 und an der Achsenmarke 1 in Wisch 4",
+     "quelle": "Z:1",
+     "gedeckt": true
+    },
+    {
+     "symbol": "x_1, x_2",
+     "was": "Namen fuer die zwei Loesungen von x^2=1, damit man sie auseinanderhalten kann",
+     "wo": "in Wisch 3 vor den Werten -1 und 1",
+     "quelle": "W:W2",
+     "gedeckt": true
+    }
+   ],
+   "flags": [
+    "Rechenlast: 13 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 1
+  },
+  {
+   "blatt": 3,
+   "schritte": [
+    {
+     "text": "Der Graph zeigt wieder f(x)=x³-3x - das ist genau die Funktion von meinem Zettel.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Die Ueberschrift fragt nach 'dem Gipfel' - das ist genau mein Wort aus Z:3 fuer H.",
+     "quelle": "B:Welche Stelle ist der Gipfel, und wie hoch liegt er?",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Orange -1 und blau 1 auf der x-Achse sind wieder meine x1 und x2 von vorher.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Neu: 'hinreichende Bedingung' - das Gegenstueck zur 'notwendigen Bedingung', die ich schon nicht verstanden hatte.",
+     "quelle": "Z:2",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "f'' ist laut meinem Wissen die Ableitung von f' - das rechne ich nach: Ableitung von 3x²-3 ist 6x (Potenzregel).",
+     "quelle": "W:5",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "f''(-1)=6·(-1)=-6, das stimmt mit der -6<0 auf dem Blatt ueberein.",
+     "quelle": "B:f''([-1 orange])=6·([-1 orange])=-6<0→ Hochpunkt(fett: H)",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Warum aus f''<0 folgt, dass -1 ein Hochpunkt ist, steht nirgends - das nehme ich einfach so hin.",
+     "quelle": "keine",
+     "art": "keine",
+     "gedeckt": false
+    },
+    {
+     "text": "'Hochpunkt' ausgeschrieben bestaetigt meine alte Vermutung: H stand fuer Gipfel/Hochpunkt.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Spiegelbildlich fuer blau: f''(1)=6·1=6>0 -> Tiefpunkt, bestaetigt T=Tal/Tiefpunkt.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "'y-Werte: y=f(x)' ist nichts Neues - genau das bedeutet f(x) laut meinem Wissen.",
+     "quelle": "W:1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "f(-1)=(-1)³-3·(-1)=-1+3=2 - genau der Wert, den ich schon als y=2 fuer x1 auf dem Zettel hatte.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "f(1)=1³-3·1=1-3=-2 - stimmt mit meinem alten y=-2 fuer x2 ueberein.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Die Punkte (-1|2) und (1|-2) sind ganz normale P(x|y)-Punkte, wie ich sie kenne.",
+     "quelle": "W:1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Am Ende steht H(-1|2) und T(1|-2) - die kurze Schreibweise aus Buchstabe plus Punktklammer.",
+     "quelle": "B:Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Der gelbe Merksatz warnt genau vor dem Fehler, den ich fast gemacht haette: y kommt aus f(x), nicht aus f'(x), obwohl ich x ueber f'(x)=0 gefunden habe.",
+     "quelle": "B:Der y-Wert kommt aus \\(f(x)\\), nicht aus \\(f'(x)\\).",
+     "art": "B",
+     "gedeckt": true
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "glauben",
+     "zitat": "Warum aus f''<0 folgt, dass -1 ein Hochpunkt ist, steht nirgends - das nehme ich einfach so hin.",
+     "warum": "Schritt ohne belegte Quelle (keine)",
+     "mechanisch": true
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "hinreichende Bedingung: f''(x)≠ 0",
+     "warum": "Das Fachwort 'hinreichend' wird nicht erklaert, nur als Formel hingestellt, und passt zu meinem schon unklaren 'notwendig' aus Z:2."
+    },
+    {
+     "art": "skip",
+     "zitat": "hinreichende Bedingung: f''(x)≠ 0",
+     "warum": "Ich versuche nicht zu ergruenden, warum das Wort 'hinreichend' passt, ich nehme nur die Formel mit und gehe weiter."
+    },
+    {
+     "art": "glauben",
+     "zitat": "f''([-1 orange])=6·([-1 orange])=-6<0→ Hochpunkt(fett: H)",
+     "warum": "Warum negatives f'' einen Hochpunkt bedeutet, wird nicht gezeigt, das glaube ich nur, weil es dasteht."
+    },
+    {
+     "art": "glauben",
+     "zitat": "f''([1 blau])=6·[1 blau]=6>0→ Tiefpunkt(fett: T)",
+     "warum": "Gleiches Problem wie bei H: die Begruendung fuer 'positiv -> Tiefpunkt' fehlt, ich glaube es nur."
+    },
+    {
+     "art": "stocken",
+     "zitat": "Rechtskurve",
+     "warum": "Dieses Wort kommt aus dem Nichts, ich habe ueberhaupt keinen Anknuepfungspunkt dafuer in meinem Wissen."
+    },
+    {
+     "art": "stocken",
+     "zitat": "Linkskurve",
+     "warum": "Genau wie bei 'Rechtskurve' - kein Bezug zu etwas, das ich kenne."
+    },
+    {
+     "art": "raten",
+     "zitat": "dabei klein „Rechtskurve\"",
+     "warum": "Ich vermute, dass Rechtskurve etwas mit dem Hochpunkt und der negativen f''-Zahl zu tun hat, weil beides an derselben Stelle auftaucht, aber das steht nirgends so da."
+    },
+    {
+     "art": "ruecksprung",
+     "zitat": "H/T = Gipfel/Tal: weiterhin nur Vermutung aus Farben, noch nicht entschieden.",
+     "warum": "Ich schaue auf Z:3 zurueck, um zu pruefen, ob meine alte Vermutung jetzt durch 'Hochpunkt'/'Tiefpunkt' bestaetigt wird."
+    },
+    {
+     "art": "verwechslung",
+     "zitat": "Der y-Wert kommt aus \\(f(x)\\), nicht aus \\(f'(x)\\).",
+     "warum": "Ich haette fast gedacht, der y-Wert koennte aus f'(x) kommen, weil ich x ja ueber f'(x)=0 gefunden hatte."
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.",
+     "urteil": "trug",
+     "warum": "Zeigt mir die tatsaechliche Kurvenform, die ich vorher nur aus den Farben geraten hatte."
+    },
+    {
+     "zitat": "An der x-Achse steht die orange Achsenmarke −1.",
+     "urteil": "dekoration",
+     "warum": "Markiert nur einen Wert, den ich schon aus Z:1 kenne, ohne etwas Neues zu zeigen."
+    },
+    {
+     "zitat": "Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Z",
+     "urteil": "trug",
+     "warum": "Zeigt mir genau, welche Zahl in welche Luecke der Formel eingesetzt wird, ohne dass ich das selbst raten muss."
+    },
+    {
+     "zitat": "Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf, dabei klein „Rechtskurve\".",
+     "urteil": "dekoration",
+     "warum": "Das Wort bleibt fuer mich unverstaendlich, es hilft mir nicht zu begreifen, warum das ein Hochpunkt ist."
+    },
+    {
+     "zitat": "Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 2.",
+     "urteil": "trug",
+     "warum": "Zeigt mir bildlich, wo die 2 auf der Kurve herkommt, statt dass ich mir das nur denken muss."
+    },
+    {
+     "zitat": "Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.",
+     "urteil": "trug",
+     "warum": "Setzt die berechneten Zahlen konkret als Punkt auf die Kurve, das macht die P(x|y)-Form greifbar."
+    },
+    {
+     "zitat": "Eine Kopie der orangen → Hochpunkt loest sich aus der Zeile und fliegt in die Luecke der Zeile (dort steht dann → Hochpunkt).",
+     "urteil": "trug",
+     "warum": "Zeigt mir die fertige, kurze Schreibweise H(-1|2), die ich vorher nur in Einzelteilen hatte."
+    },
+    {
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.",
+     "urteil": "dekoration",
+     "warum": "Das ist nur Tempo/Aufbau der Zeile, liefert selbst keine neue Information."
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "hinreichende Bedingung",
+     "was": "eine zweite Bedingung neben der notwendigen (f'=0), hier konkret f''(x)≠0 - warum das 'hinreichend' heisst, kann ich nicht deuten",
+     "wo": "kleine Kapitaelchen-Marke ueber der Zeile f''(x)=6x",
+     "quelle": "B:hinreichende Bedingung: f''(x)≠ 0",
+     "gedeckt": null
+    },
+    {
+     "symbol": "Rechtskurve",
+     "was": "kann ich nicht deuten",
+     "wo": "kleines Label neben dem orange leuchtenden Kurvenstueck um x=-1",
+     "quelle": "kann ich nicht deuten",
+     "gedeckt": null
+    },
+    {
+     "symbol": "Linkskurve",
+     "was": "kann ich nicht deuten",
+     "wo": "kleines Label neben dem blau leuchtenden Kurvenstueck um x=1",
+     "quelle": "kann ich nicht deuten",
+     "gedeckt": null
+    },
+    {
+     "symbol": "Hochpunkt",
+     "was": "der Punkt, den ich bisher nur als Buchstabe H und als Vermutung 'Gipfel' kannte",
+     "wo": "fett geschrieben in der Zeile mit f''(-1)=-6<0",
+     "quelle": "Z:3",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Tiefpunkt",
+     "was": "der Punkt, den ich bisher nur als Buchstabe T und als Vermutung 'Tal' kannte",
+     "wo": "fett geschrieben in der Zeile mit f''(1)=6>0",
+     "quelle": "Z:3",
+     "gedeckt": true
+    },
+    {
+     "symbol": "H(-1|2)",
+     "was": "Kurzschreibweise: Buchstabe H direkt vor der Punktklammer im P(x|y)-Format",
+     "wo": "Beschriftung am orangen Punkt im Graphen (Wisch 5)",
+     "quelle": "W:1",
+     "gedeckt": true
+    }
+   ],
+   "flags": [
+    "Rechenlast: 15 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 1
+  },
+  {
+   "blatt": 4,
+   "schritte": [
+    {
+     "text": "Oben steht 'Geht das bei g genauso?' - ich soll also dieselbe Rechnung wie bei f nochmal machen, nur mit g.",
+     "quelle": "B:Geht das bei g genauso?",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "g(x)=x^2-4x ist eine neue Funktion, aehnlich aufgebaut wie f vorher.",
+     "quelle": "B:g(x)=x^2-4x",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Der Graph zeigt eine Parabel von x=-1.2 bis 5.2, y von -5 bis 3.",
+     "quelle": "B:Graph zeichnet sich: g(x) = x^2 - 4x, x von -1.2 bis 5.2, y von -5 bis 3.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Jetzt sehe ich den Namen fuer die erste Formel: g'(x)=0 heisst 'notwendige Bedingung'.",
+     "quelle": "B:notwendige Bedingung: g'(x)=0",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "g'(x)=2x-4 rechne ich mit der Potenzregel nach: aus x^2 wird 2x, aus -4x wird -4.",
+     "quelle": "W:3",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "2x-4=0 loese ich selbst: 2x=4, x=2 - passt genau zu x_1=2 im Blatt.",
+     "quelle": "B:2x-4=0 <=> x_1=2",
+     "art": "B",
+     "gedeckt": false
+    },
+    {
+     "text": "Die orange 2 fliegt zur x-Achse und wird dort fett - so sehe ich, wo x=2 im Graphen liegt.",
+     "quelle": "B:Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Jetzt kommt 'hinreichende Bedingung: g''(x)!=0' - das zweite unklare Wort von meinem Zettel Z:4.",
+     "quelle": "B:hinreichende Bedingung: g''(x)!= 0",
+     "art": "B",
+     "gedeckt": false
+    },
+    {
+     "text": "g''(x)=2, weil bei der Ableitung von 2x-4 nur die 2 uebrigbleibt, die -4 faellt weg.",
+     "quelle": "W:5",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Der Pfeil zieht die 2 von oben in die Klammer unten - es ist immer noch derselbe x-Wert.",
+     "quelle": "B:Ein oranger Pfeil zieht sich langsam von der 2 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Warum g''(2)>0 einen Tiefpunkt bedeutet, weiss ich nicht wirklich - ich glaube es nur, wie schon auf Z:2 notiert.",
+     "quelle": "keine",
+     "art": "keine",
+     "gedeckt": false
+    },
+    {
+     "text": "g''(2)=2>0 -> Tiefpunkt T, genau wie bei Z:1, wo positives f'' auch Tiefpunkt ergab.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Das Kurvenstueck bei x=2 leuchtet orange auf - das ist die Stelle, um die es geht.",
+     "quelle": "B:Im Graphen leuchtet das Kurvenstueck um x = 2 dick orange auf.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Jetzt 'y-Werte: y=g(x)' - genau mein Merksatz Z:3, der y-Wert kommt aus g, nicht aus g'.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "g(2)=2^2-4*2=4-8=-4, das rechne ich selbst nach und es stimmt mit dem Blatt ueberein.",
+     "quelle": "B:g(2)=2^2-4*2=-4",
+     "art": "B",
+     "gedeckt": false
+    },
+    {
+     "text": "Die gestrichelte Linie von der 2 zur Kurve und zur y-Achse zeigt -4 - passt zu meiner Rechnung.",
+     "quelle": "B:Von der Achsenmarke 2 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht -4.",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Der Punkt (2|-4) landet auf der Kurve, das ist P(x|y) wie ich es kenne.",
+     "quelle": "W:1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Am Ende steht T(2|-4) am Punkt - Tiefpunkt bei x=2, y=-4, wie Z:1 es vormacht.",
+     "quelle": "B:Beschriftung T(2|-4) erscheint am Punkt (2|-4), orange.",
+     "art": "B",
+     "gedeckt": true
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "glauben",
+     "zitat": "2x-4=0 loese ich selbst: 2x=4, x=2 - passt genau zu x_1=2 im Blatt.",
+     "warum": "Schritt ohne belegte Quelle (B:2x-4=0 <=> x_1=2)",
+     "mechanisch": true
+    },
+    {
+     "art": "glauben",
+     "zitat": "Jetzt kommt 'hinreichende Bedingung: g''(x)!=0' - das zweite unklare Wort von meinem Zettel Z:4.",
+     "warum": "Schritt ohne belegte Quelle (B:hinreichende Bedingung: g''(x)!= 0)",
+     "mechanisch": true
+    },
+    {
+     "art": "glauben",
+     "zitat": "Warum g''(2)>0 einen Tiefpunkt bedeutet, weiss ich nicht wirklich - ich glaube es nur, wie schon auf Z:2 notiert.",
+     "warum": "Schritt ohne belegte Quelle (keine)",
+     "mechanisch": true
+    },
+    {
+     "art": "glauben",
+     "zitat": "g(2)=2^2-4*2=4-8=-4, das rechne ich selbst nach und es stimmt mit dem Blatt ueberein.",
+     "warum": "Schritt ohne belegte Quelle (B:g(2)=2^2-4*2=-4)",
+     "mechanisch": true
+    },
+    {
+     "art": "glauben",
+     "zitat": "g''(2 orange)=2>0-> Tiefpunkt(fett: T)",
+     "warum": "Ich glaube nur, dass positives g'' einen Tiefpunkt bedeutet, verstehen tue ich es nicht (Thema fehlt mir, wie schon Z:2)."
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "notwendige Bedingung: g'(x)=0",
+     "warum": "Das Fachwort 'notwendig' wird nur als Label ueber die Formel gesetzt, nicht erklaert."
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "hinreichende Bedingung: g''(x)!= 0",
+     "warum": "Das Fachwort 'hinreichend' bleibt unerklaert, genau wie schon in Z:4 notiert."
+    },
+    {
+     "art": "verwechslung",
+     "zitat": "hinreichende Bedingung: g''(x)!= 0",
+     "warum": "Das Label sagt nur 'ungleich 0', aber gleich danach entscheidet das Vorzeichen (>0) ueber H oder T - das Blatt trennt das nicht auseinander."
+    },
+    {
+     "art": "ruecksprung",
+     "zitat": "Geht das bei g genauso?",
+     "warum": "Diese Frage zwingt mich, extra auf Z:1 zurueckzuschauen, ob die alte Vorzeichen-Regel hier wirklich genauso gilt."
+    },
+    {
+     "art": "skip",
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.",
+     "warum": "Beim dritten Mal ist mir das zu langsam, ich weiss schon, dass T(2|-4) rauskommt, und lese nur noch drueber."
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "notwendige Bedingung: g'(x)=0 ... hinreichende Bedingung: g''(x)!= 0",
+     "warum": "Warum man beide Bedingungen zusammen braucht und nicht nur eine, zeigt das Blatt nirgends als Bild, das muesste ich mir selbst dazudenken."
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "Graph zeichnet sich: g(x) = x^2 - 4x, x von -1.2 bis 5.2, y von -5 bis 3.",
+     "urteil": "dekoration",
+     "warum": "zeigt nur die Ausgangsform, markiert noch nichts, das ich sonst haette suchen muessen"
+    },
+    {
+     "zitat": "Chip fuer Chip in Leserichtung: 2x-4=0 <=> x_1=2",
+     "urteil": "trug",
+     "warum": "zeigt die Reihenfolge Gleichung-vor-Loesung, statt dass ich sie selbst ordnen muss"
+    },
+    {
+     "zitat": "Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig.",
+     "urteil": "trug",
+     "warum": "zeigt mir direkt, wo x=2 im Graphen liegt, ohne dass ich es suchen muss"
+    },
+    {
+     "zitat": "Ein oranger Pfeil zieht sich langsam von der 2 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zei",
+     "urteil": "trug",
+     "warum": "zeigt, dass in g'' dieselbe 2 eingesetzt wird, ohne dass ich es mir merken muss"
+    },
+    {
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip. (Wisch 3)",
+     "urteil": "dekoration",
+     "warum": "nur Tempo, ich habe g''(2)=2 schon selbst berechnet"
+    },
+    {
+     "zitat": "Im Graphen leuchtet das Kurvenstueck um x = 2 dick orange auf.",
+     "urteil": "trug",
+     "warum": "zeigt mir die passende Stelle auf der Kurve, ohne dass ich sie selbst suchen muss"
+    },
+    {
+     "zitat": "Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von 2 durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten ",
+     "urteil": "trug",
+     "warum": "zeigt weiter, dass fuer g(x) wieder derselbe x=2-Wert verwendet wird"
+    },
+    {
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip. (Wisch 4, g(2)=...=-4)",
+     "urteil": "dekoration",
+     "warum": "nur Tempo, das Ergebnis -4 habe ich schon selbst nachgerechnet"
+    },
+    {
+     "zitat": "Von der Achsenmarke 2 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht -4.",
+     "urteil": "trug",
+     "warum": "zeigt geometrisch, wie -4 am Graphen abzulesen ist, statt dass ich es mir nur rechnerisch vorstellen muss"
+    },
+    {
+     "zitat": "Ein oranger Punkt landet bei (2|-4) in g(x) = x^2 - 4x.",
+     "urteil": "trug",
+     "warum": "markiert den Punkt direkt im Bild, den ich sonst selbst haette einzeichnen muessen"
+    },
+    {
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip. (Wisch 4, T(2|-4))",
+     "urteil": "dekoration",
+     "warum": "nur Tempo, das Ergebnis T(2|-4) ist schon klar"
+    },
+    {
+     "zitat": "Beschriftung T(2|-4) erscheint am Punkt (2|-4), orange.",
+     "urteil": "trug",
+     "warum": "verbindet die Formel-Notation T(2|-4) endlich mit dem echten Punkt im Bild, wie P(x|y) aus W1"
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "notwendige Bedingung",
+     "was": "eine Formel, die erfuellt sein muss, damit x ueberhaupt ein Kandidat fuer H/T ist (hier: g'(x)=0)",
+     "wo": "kleine Kapitaelchen-Marke ueber der Zeile g'(x)=2x-4",
+     "quelle": "B:notwendige Bedingung: g'(x)=0",
+     "gedeckt": true
+    },
+    {
+     "symbol": "hinreichende Bedingung",
+     "was": "eine zweite Formel, die zusaetzlich bestaetigt, dass wirklich ein Hoch- oder Tiefpunkt vorliegt (hier: g''(x)!=0)",
+     "wo": "kleine Kapitaelchen-Marke ueber der Zeile g''(x)=2",
+     "quelle": "B:hinreichende Bedingung: g''(x)!= 0",
+     "gedeckt": false
+    },
+    {
+     "symbol": "x_1",
+     "was": "kann ich nicht deuten, warum da eine 1 als Index steht - es gibt hier doch nur eine Loesung",
+     "wo": "in der Zeile 2x-4=0 <=> x_1=2",
+     "quelle": "kann ich nicht deuten",
+     "gedeckt": null
+    },
+    {
+     "symbol": "orange Farbe",
+     "was": "eine Markierung, die denselben Wert (x=2 bzw. den zugehoerigen Punkt) durch die ganze Rechnung und im Bild verfolgbar macht",
+     "wo": "an der 2 im Term, an der Achsenmarke, am Pfeil, am Kurvenstueck, am Punkt und an T(2|-4)",
+     "quelle": "B:Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 krae",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Aufloesung",
+     "was": "die Ankuendigung, dass jetzt das Endergebnis (der Tiefpunkt) gezeigt wird",
+     "wo": "Ueberschrift von Wisch 4",
+     "quelle": "B:Wisch 4 (Aufloesung):",
+     "gedeckt": true
+    }
+   ],
+   "flags": [
+    "Zettelzeile auf 90 Zeichen gekuerzt",
+    "Rechenlast: 18 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 4
+  },
+  {
+   "blatt": 5,
+   "schritte": [
+    {
+     "text": "Neue Funktion h(x)=-x^3+3x, Graph zeichnet sich vor mir.",
+     "quelle": "B:\"h(x)=-x^3+3x\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "notwendige Bedingung heisst wieder: Kandidat kommt aus Ableitung=0, wie bei g.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "h'(x)=-3x^2+3 rechne ich nach: Potenzregel auf -x^3 gibt -3x^2, auf 3x gibt 3.",
+     "quelle": "W:W3",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "-3x^2+3=0 zu x^2=1 umgeformt kann ich nachrechnen: durch -3 teilen.",
+     "quelle": "W:W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "x^2=1 hat zwei Loesungen, x=1 oder x=-1 - genau die Regel, die ich kenne.",
+     "quelle": "W:W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "hinreichende Bedingung wieder mit h'' - das Wort kenne ich schon vom letzten Blatt.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "h''(x)=-6x pruefe ich: Ableitung von -3x^2 ist -6x, von 3 ist 0.",
+     "quelle": "W:W5",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "h''(-1)=6>0 gibt Tiefpunkt - passt zu meiner Regel: positiv->Tief.",
+     "quelle": "Z:2",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "h''(1)=-6<0 gibt Hochpunkt - das ist neu, negativ->Hoch hab ich noch nie so gesehen.",
+     "quelle": "B:\"Hochpunkt(fett: H)\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "y-Wert kommt aus h(x), nicht aus h'(x) oder h''(x) - wie auf meinem Zettel.",
+     "quelle": "Z:2",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "h(-1)=-(-1)^3+3(-1)=1-3=-2 rechne ich nach: (-1)^3=-1, minus davon ist 1, plus -3 ist -2.",
+     "quelle": "W:W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Punkt (-1|-2) - die Schreibweise P(x|y) kenn ich.",
+     "quelle": "W:W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "h(1)=-1+3=2 passt, symmetrisch zur ersten Rechnung.",
+     "quelle": "W:W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "T(-1|-2) und H(1|2) - jetzt hab ich beide Typen an einer Funktion, nicht nur einen wie bei g.",
+     "quelle": "B:\"[T(-1 | -2) orange] ,[H(1 | 2) blau]\"",
+     "art": "B",
+     "gedeckt": true
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "vorstellung",
+     "zitat": "Graph zeichnet sich: h(x) = −x³ + 3x, x von -2.4 bis 2.4, y von -4 bis 4.",
+     "warum": "ich sehe nur den fertigen Graphen, keine Wertetabelle oder Zwischenschritte, wie er entsteht"
+    },
+    {
+     "art": "glauben",
+     "zitat": "h''([1 blau])=-6<0→ Hochpunkt(fett: H)",
+     "warum": "warum negatives h'' einen Hochpunkt bedeutet, wird nicht erklaert, ich uebernehme es nur wie bei Tiefpunkt"
+    },
+    {
+     "art": "skip",
+     "zitat": "[Kleine Marke, Kapitaelchen:]",
+     "warum": "dieselbe Formatierungs-Anweisung kommt in jedem Wisch, ich lese sie nur noch als Signal fuer neue Zeile"
+    },
+    {
+     "art": "skip",
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.",
+     "warum": "steht fast gleich viermal da, ich achte nur noch auf den Inhalt der Zeile, nicht mehr auf das Erscheinen selbst"
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "[Serienfall]",
+     "warum": "das Wort steht nur da, ich weiss nicht, was es mir zeigen soll oder wo im Bild ich es sehen wuerde"
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "Graph zeichnet sich: h(x) = −x³ + 3x, x von -2.4 bis 2.4, y von -4 bis 4.",
+     "urteil": "trug",
+     "warum": "zeigt mir die Form der Kurve, die ich sonst aus der Formel muehsam haette skizzieren muessen"
+    },
+    {
+     "zitat": "Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.",
+     "urteil": "trug",
+     "warum": "verbindet die Loesung x=-1 sichtbar mit der Stelle auf der Achse, sonst haette ich das selbst suchen muessen"
+    },
+    {
+     "zitat": "Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten Z",
+     "urteil": "trug",
+     "warum": "zeigt mir, dass genau dieses x in h'' eingesetzt wird, sonst haette ich raten muessen welches x gemeint ist"
+    },
+    {
+     "zitat": "Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.",
+     "urteil": "trug",
+     "warum": "ich sehe die Kurve dort wie ein Tal geformt, das erklaert mir Tiefpunkt ohne dass es gesagt wird"
+    },
+    {
+     "zitat": "Im Graphen leuchtet das Kurvenstueck um x = 1 dick blau auf.",
+     "urteil": "trug",
+     "warum": "ich sehe dort einen Huegel, das passt zu Hochpunkt, auch ohne Erklaerung des Wortes"
+    },
+    {
+     "zitat": "Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −2.",
+     "urteil": "trug",
+     "warum": "zeigt mir genau, wie aus x=-1 der y-Wert -2 am Graphen abgelesen wird"
+    },
+    {
+     "zitat": "Ein oranger Punkt landet bei (-1|-2) in h(x) = −x³ + 3x.",
+     "urteil": "trug",
+     "warum": "bestaetigt die Schreibweise P(x|y), die ich schon kenne, direkt am Graphen"
+    },
+    {
+     "zitat": "Beschriftung T(−1|−2) erscheint am Punkt (-1|-2), orange.",
+     "urteil": "dekoration",
+     "warum": "sagt mir nichts Neues, das ich nicht schon aus der Rechnung und der Zettel-Regel wusste"
+    },
+    {
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.",
+     "urteil": "dekoration",
+     "warum": "das Erscheinen selbst zeigt mir nichts, nur der Inhalt der Zeile zaehlt"
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "Hochpunkt / H",
+     "was": "ein Punkt, an dem h'' negativ ist - Gegenstueck zum Tiefpunkt",
+     "wo": "am Punkt (1|2), fett blaues H",
+     "quelle": "B:\"Hochpunkt(fett: H)\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Kandidaten (zwei)",
+     "was": "die zwei Loesungen x=-1 und x=1 aus h'=0, beide moegliche Hoch- oder Tiefpunkte",
+     "wo": "als orange -1 und blaue 1 auf der x-Achse",
+     "quelle": "Z:3",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Serienfall",
+     "was": "kann ich nicht deuten",
+     "wo": "kann ich nicht deuten",
+     "quelle": "kann ich nicht deuten",
+     "gedeckt": null
+    }
+   ],
+   "flags": [
+    "Rechenlast: 14 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 0
+  },
+  {
+   "blatt": 6,
+   "schritte": [
+    {
+     "text": "'Und mit drei?' oben klein laesst mich an Z:1 denken, wo es nur 2 Kandidaten gab.",
+     "quelle": "B:\"Und mit drei?\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "k(x)=x^4-2x^2 ist die neue Funktion, x eingesetzt gibt den y-Wert.",
+     "quelle": "W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Der gezeichnete Graph zeigt schon vor jeder Rechnung einen Huegel und zwei Taeler.",
+     "quelle": "keine",
+     "art": "keine",
+     "gedeckt": false
+    },
+    {
+     "text": "'notwendige Bedingung: k'(x)=0' kenne ich aus Z:1, also suche ich zuerst die Nullstellen von k'.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "k'(x)=4x^3-4x rechne ich nach: Potenzregel auf x^4 gibt 4x^3, auf -2x^2 gibt -4x, Summenregel verbindet beides.",
+     "quelle": "W3",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "4x(x^2-1) ist dasselbe wie 4x^3-4x, nur mit x ausgeklammert.",
+     "quelle": "W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "4x(x^2-1)=0 heisst x=0 oder x^2=1, also x=1 oder x=-1 - macht zusammen drei Kandidaten statt zwei.",
+     "quelle": "W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Die fliegenden Farbkopien zeigen mir, wo x=0, x=-1, x=1 auf der x-Achse des Graphen liegen.",
+     "quelle": "B:\"Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "'hinreichende Bedingung: k''(x)≠0' ist ein neuer Name, aber die Idee kenne ich aus Z:3: Vorzeichen von h'' entscheidet H oder T.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "k''(x)=12x^2-4 rechne ich nach: Ableitung von 4x^3-4x ist 12x^2-4.",
+     "quelle": "W3",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "k''(0)=12*0-4=-4<0, nach dem Muster aus Z:3 (minus -> Hoch) also Hochpunkt bei x=0.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "k''(±1)=12*1-4=8>0, nach Z:3 (plus -> Tief) also Tiefpunkte bei x=-1 und x=1.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Die aufleuchtenden Kurvenstuecke bei x=0 (Huegelform) und x=±1 (Talform) passen zu Z:4.",
+     "quelle": "Z:4",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "y=k(x) heisst, ich setze die x-Werte in k ein, um die y-Werte der Punkte zu bekommen.",
+     "quelle": "W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "k(0)=0^4-2*0^2=0, passt zur gezeigten Zeile.",
+     "quelle": "W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "k(-1)=(-1)^4-2*(-1)^2=1-2=-1, passt zur gezeigten Rechnung.",
+     "quelle": "W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "k(1)=1-2=-1 genauso, also liegen beide Tiefpunkte auf gleicher Hoehe y=-1.",
+     "quelle": "W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Die Endpunkte H(0|0), T_1(-1|-1), T_2(1|-1) sind Punkte in der Form P(x|y).",
+     "quelle": "W1",
+     "art": "W",
+     "gedeckt": true
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "glauben",
+     "zitat": "Der gezeichnete Graph zeigt schon vor jeder Rechnung einen Huegel und zwei Taeler.",
+     "warum": "Schritt ohne belegte Quelle (keine)",
+     "mechanisch": true
+    },
+    {
+     "art": "raten",
+     "zitat": "[Graph zeichnet sich: k(x) = x⁴ − 2x², x von -1.9 bis 1.9, y von -1.6 bis 2.4.]",
+     "warum": "ich rate aus der gezeichneten Kurve schon Huegel/Tal-Form, bevor etwas gerechnet ist."
+    },
+    {
+     "art": "ruecksprung",
+     "zitat": "Und mit drei?",
+     "warum": "ich springe zurueck zu Z:1, wo nur 2 Kandidaten (x=-1,x=1) vorkamen, und frage mich was jetzt anders ist."
+    },
+    {
+     "art": "stocken",
+     "zitat": "4x(x^2-1)=0 ⟺ x_1=[0 orange] , x_2=[-1 blau] , x_3=[1 gruen]",
+     "warum": "ich erwartete wie vorher nur zwei Loesungen, hier kommt x=0 zusaetzlich dazu, weil ein x ausklammerbar war."
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "hinreichende Bedingung: k''(x)≠ 0",
+     "warum": "das Wort 'hinreichend' wird benutzt, aber nicht erklaert, warum genau diese Bedingung reicht."
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "k''([0 orange])=-4<0→Hochpunkt(fett: H)",
+     "warum": "ich kann mir nicht vorstellen, warum aus dem Vorzeichen von k'' eine Huegelform folgt - das Blatt zeigt nur das Ergebnis, keinen Zwischenschritt mit Steigungen."
+    },
+    {
+     "art": "glauben",
+     "zitat": "k''(± 1)=8>0→ Tiefpunkte(fett: T)",
+     "warum": "ich glaube dem Muster aus Z:3 (plus -> Tief), ohne dass hier erklaert wird warum."
+    },
+    {
+     "art": "skip",
+     "zitat": "Eine Kopie der blauen -1 ... kraeftig. / Eine Kopie der gruenen 1 ... kraeftig.",
+     "warum": "gleiches Muster wie bei orange, das schaue ich mir nicht einzeln nochmal an."
+    },
+    {
+     "art": "verwechslung",
+     "zitat": "[T_1(-1 | -1) blau] ,[T_2(1 | -1) gruen]",
+     "warum": "T1 und T2 haben denselben y-Wert -1, ohne auf Farbe/x-Wert zu achten vertausche ich sie leicht."
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "[Graph zeichnet sich: k(x) = x⁴ − 2x², x von -1.9 bis 1.9, y von -1.6 bis 2.4.]",
+     "urteil": "trug",
+     "warum": "zeigt mir sofort die Form der Kurve, ohne dass ich eine Wertetabelle rechnen muss"
+    },
+    {
+     "zitat": "[An der x-Achse bei 0 wartet eine orange Achsenmarke 0, noch blass.]",
+     "urteil": "dekoration",
+     "warum": "zeigt nur, dass dort spaeter etwas passiert, noch keine neue Information"
+    },
+    {
+     "zitat": "[Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 0 kraeftig.]",
+     "urteil": "trug",
+     "warum": "verbindet die algebraische Loesung x=0 sichtbar mit der Stelle auf der x-Achse, das haette ich sonst selbst zuordnen muessen"
+    },
+    {
+     "zitat": "[Ein oranger Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Ze",
+     "urteil": "trug",
+     "warum": "zeigt mir, dass genau dieser x-Wert in k'' eingesetzt wird, ich muss die Zeilen nicht selbst verknuepfen"
+    },
+    {
+     "zitat": "[Im Graphen leuchtet das Kurvenstueck um x = 0 dick orange auf.]",
+     "urteil": "trug",
+     "warum": "zeigt mir direkt, wie die Kurve dort aussieht, ohne dass ich es mir vorstellen muss"
+    },
+    {
+     "zitat": "[Von der Achsenmarke 0 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 0.]",
+     "urteil": "trug",
+     "warum": "zeigt mir, wie x=0 ueber die Kurve zum y-Wert 0 fuehrt, statt dass ich das selbst nachvollziehen muss"
+    },
+    {
+     "zitat": "[Ein oranger Punkt landet bei (0|0) in k(x) = x⁴ − 2x².]",
+     "urteil": "dekoration",
+     "warum": "der Punkt steht schon durch die Rechnung fest, das Landen zeigt nichts Neues"
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "hinreichende Bedingung",
+     "was": "die zusaetzliche Pruefung, die aus einem Kandidaten wirklich H oder T macht",
+     "wo": "kleine Marke ueber k''(x)=12x^2-4 in Wisch 3",
+     "quelle": "B:\"hinreichende Bedingung: k''(x)≠ 0\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "x_1, x_2, x_3",
+     "was": "einfach durchnummerierte Loesungen der Gleichung 4x(x^2-1)=0, keine neue Rechenbedeutung",
+     "wo": "in der Zeile 4x(x^2-1)=0 ⟺ x_1=0, x_2=-1, x_3=1",
+     "quelle": "B:\"4x(x^2-1)=0 ⟺ x_1=[0 orange] , x_2=[-1 blau] , x_3=[1 gruen]\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "±1",
+     "was": "Kurzschreibweise fuer 'sowohl x=1 als auch x=-1' zusammen",
+     "wo": "in k''(± 1)=8>0→ Tiefpunkte(fett: T)",
+     "quelle": "B:\"k''(± 1)=8>0→ Tiefpunkte(fett: T)\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Farben orange/blau/gruen",
+     "was": "Markierung, die denselben Kandidaten durch alle Wische hindurch verfolgt, keine eigene mathematische Bedeutung",
+     "wo": "an Zahlen, Pfeilen und Kurvenstuecken im ganzen Blatt",
+     "quelle": "B:\"x_1=[0 orange] , x_2=[-1 blau] , x_3=[1 gruen]\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "T_1, T_2",
+     "was": "zwei verschiedene Tiefpunkte, durchnummeriert weil es diesmal mehr als einen gibt",
+     "wo": "Beschriftung an den Punkten (-1|-1) und (1|-1)",
+     "quelle": "B:\"[T_1(-1 | -1) blau] ,[T_2(1 | -1) gruen]\"",
+     "gedeckt": true
+    }
+   ],
+   "flags": [
+    "Rechenlast: 18 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 1
+  },
+  {
+   "blatt": 7,
+   "schritte": [
+    {
+     "text": "Neues Thema: jetzt kommt eine Funktion, in der e^x drinsteckt, nicht nur x-Potenzen wie vorher.",
+     "quelle": "B:\"Und wenn eˣ drinsteckt?\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "m(x)=x·e^x ist einfach die Funktionsvorschrift, m(x) ist der y-Wert zu x.",
+     "quelle": "W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Der gezeichnete Graph zeigt: fuer negative x geht die Kurve erst runter, hat irgendwo ein Tief, ab 0 wieder hoch - passt zu meinem alten Muster von k.",
+     "quelle": "B:\"[Graph zeichnet sich: m(x) = x·eˣ, x von -4.6 bis 1.1, y von -0.8 bis 1.6.]\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Erster Schritt wie bei k: ich brauche m'(x)=0, das heisst hier \"notwendige Bedingung\" - genau das \"notwendig\" von meinem Zettel.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "m'(x)=1·e^x+x·e^x=(1+x)·e^x - ich weiss nicht, wieso man x·e^x so ableitet, das nehme ich einfach hin.",
+     "quelle": "keine",
+     "art": "keine",
+     "gedeckt": false
+    },
+    {
+     "text": "(1+x)·e^x=0 und eˣ ist nie 0, also muss 1+x=0 sein, also x=-1 - einfache Gleichungslogik.",
+     "quelle": "W2",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "x_1=-1 ist der einzige Kandidat auf diesem Blatt, anders als bei k, wo es drei waren.",
+     "quelle": "B:\"x_1=[-1 orange]\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Die orange -1 fliegt zur x-Achse - derselbe Wert wie in der Rechnung, jetzt im Bild markiert.",
+     "quelle": "B:\"[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Jetzt die \"hinreichende Bedingung\": m''(x)≠0 - das muss die zweite Ableitung sein, so wie k'' bei mir.",
+     "quelle": "W5",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "m''(x)=(2+x)·e^x - wieder eine Ableitung, die ich nicht nachvollziehen kann, ich glaube sie einfach.",
+     "quelle": "keine",
+     "art": "keine",
+     "gedeckt": false
+    },
+    {
+     "text": "Setze x=-1 ein: 2+(-1)=1, also m''(-1)=1·e^-1≈0,37 - das kann ich selbst nachrechnen, stimmt.",
+     "quelle": "W8",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "0,37>0, und nach meinem alten Muster (k''>0 -> Tief) ist das auch hier ein Tiefpunkt, T.",
+     "quelle": "Z:3",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Die Kurve leuchtet genau bei x=-1 orange auf - da liegt also der Tiefpunkt im Bild.",
+     "quelle": "B:\"[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.]\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Jetzt noch der y-Wert: y=m(x), also x=-1 in die urspruengliche Funktion einsetzen.",
+     "quelle": "W1",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "m(-1)=-1·e^-1≈-0,37 - stimmt mit meiner Rechnung von eben ueberein, nur mit anderem Vorzeichen.",
+     "quelle": "W8",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Die gestrichelte Linie und der Punkt zeigen mir das Ganze nochmal im Bild: bei x=-1 ist y=-0,37.",
+     "quelle": "B:\"[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −0,37.]\"",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Ergebnis T(-1|-0,37) - wie P(x|y) bei mir, nur mit T statt P, wie schon T1/T2 auf meinem Zettel.",
+     "quelle": "Z:2",
+     "art": "Z",
+     "gedeckt": true
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "glauben",
+     "zitat": "m'(x)=1·e^x+x·e^x=(1+x)·e^x - ich weiss nicht, wieso man x·e^x so ableitet, das nehme ich einfach hin.",
+     "warum": "Schritt ohne belegte Quelle (keine)",
+     "mechanisch": true
+    },
+    {
+     "art": "glauben",
+     "zitat": "m''(x)=(2+x)·e^x - wieder eine Ableitung, die ich nicht nachvollziehen kann, ich glaube sie einfach.",
+     "warum": "Schritt ohne belegte Quelle (keine)",
+     "mechanisch": true
+    },
+    {
+     "art": "stocken",
+     "zitat": "m'(x)=1· e^x+x· e^x=(1+x)· e^x",
+     "warum": "Keine Regel fuer Ableitung von e^x oder Produkten aus zwei Termen auf meiner Wissensliste (W3 nur reine Potenzen), ich weiss nicht woher die Umformung kommt."
+    },
+    {
+     "art": "glauben",
+     "zitat": "m''(x)=(2+x)· e^x",
+     "warum": "Gleiches Problem wie bei m'(x); ich uebernehme es diesmal einfach ohne zu pruefen, weil ich es eh nicht nachrechnen kann."
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "notwendige Bedingung: m'(x)=0",
+     "warum": "Fachwort \"notwendige Bedingung\" wird nicht erklaert, nur ueber Z:1 zu erahnen."
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "hinreichende Bedingung: m''(x)≠ 0",
+     "warum": "Fachwort \"hinreichende Bedingung\" bleibt unerklaert, laut Z:3 war schon vorher unklar warum das so ist."
+    },
+    {
+     "art": "verwechslung",
+     "zitat": "hinreichende Bedingung: m''(x)≠ 0 ... m''([-1 orange])=1· e^-1approx 0,37>0",
+     "warum": "Ueberschrift verlangt nur \"ungleich 0\", gerechnet wird aber mit \"groesser 0\" - unklar ob das dasselbe meint oder nur ein Sonderfall ist."
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.]",
+     "warum": "Kann mir eine \"blasse\", noch nicht \"kraeftige\" Achsenmarke nicht wirklich vorstellen, nur als Textbeschreibung."
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "[Ein oranger Punkt landet bei (-1|-0.3679) in m(x) = x·eˣ.]",
+     "warum": "Zwei verschiedene Schreibweisen fuer dieselbe Zahl (Punkt statt Komma, vier statt zwei Nachkommastellen) verwirren kurz."
+    },
+    {
+     "art": "skip",
+     "zitat": "[Kleine Marke, Kapitaelchen:]",
+     "warum": "Immer dieselbe Formatierungsmarke vor jedem Wisch, ab dem zweiten Mal ueberspringe ich sie."
+    },
+    {
+     "art": "skip",
+     "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.",
+     "warum": "Immer dieselbe Enthuellungs-Animation, wird nach dem ersten Mal langweilig, ich lese nur noch das Ergebnis."
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "[Graph zeichnet sich: m(x) = x·eˣ, x von -4.6 bis 1.1, y von -0.8 bis 1.6.]",
+     "urteil": "trug",
+     "warum": "zeigt mir die Form der Kurve, ohne dass ich selbst Werte einsetzen und einen Verlauf ausrechnen muss"
+    },
+    {
+     "zitat": "[An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.]",
+     "urteil": "dekoration",
+     "warum": "sagt mir nichts Neues, ich weiss aus der Rechnung schon, dass x=-1 der Kandidat ist"
+    },
+    {
+     "zitat": "[Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.]",
+     "urteil": "trug",
+     "warum": "verbindet sichtbar die ausgerechnete Zahl mit der Stelle im Graphen, das haette ich sonst selbst zuordnen muessen"
+    },
+    {
+     "zitat": "[Ein oranger Pfeil zieht sich langsam von der -1 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechsten ",
+     "urteil": "trug",
+     "warum": "zeigt mir, dass genau dieses x=-1 jetzt in m'' eingesetzt wird, ich muss den Wert nicht selbst mitziehen"
+    },
+    {
+     "zitat": "[Im Graphen leuchtet das Kurvenstueck um x = -1 dick orange auf.]",
+     "urteil": "trug",
+     "warum": "markiert die Stelle am echten Kurvenverlauf, wo der Tiefpunkt liegt"
+    },
+    {
+     "zitat": "[Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von -1 durch den Seitenrand nach unten und muendet von oben auf die -1 in der Klammer der naechst",
+     "urteil": "dekoration",
+     "warum": "macht nur nochmal denselben Trick wie eben, ich weiss schon, dass -1 eingesetzt wird"
+    },
+    {
+     "zitat": "[Von der Achsenmarke -1 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht −0,37.]",
+     "urteil": "trug",
+     "warum": "zeigt am Bild, wie man von x=-1 zum y-Wert -0,37 kommt, statt es sich nur aus der Formel vorzustellen"
+    },
+    {
+     "zitat": "[Ein oranger Punkt landet bei (-1|-0.3679) in m(x) = x·eˣ.]",
+     "urteil": "dekoration",
+     "warum": "der Punkt ist schon durch die gestrichelte Linie klar, das Landen zeigt nichts zusaetzlich Neues"
+    },
+    {
+     "zitat": "[Beschriftung T(−1|−0,37) erscheint am Punkt (-1|-0.3679), orange.]",
+     "urteil": "trug",
+     "warum": "gibt dem Punkt endlich seinen Namen mit Koordinaten direkt im Bild, das fasst das Ergebnis zusammen"
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "Serienfall",
+     "was": "kann ich nicht deuten",
+     "wo": "in der Ueberschriftzeile von Blatt 7",
+     "quelle": "kann ich nicht deuten",
+     "gedeckt": null
+    },
+    {
+     "symbol": "notwendige Bedingung",
+     "was": "eine Bedingung, die ein Kandidat erstmal erfuellen muss, bevor man weiss ob Hoch oder Tief - so wie k'=0 bei mir",
+     "wo": "kleine Kapitaelchen-Marke ueber Wisch 2",
+     "quelle": "Z:1",
+     "gedeckt": true
+    },
+    {
+     "symbol": "hinreichende Bedingung",
+     "was": "der Test mit der zweiten Ableitung, der am Ende Hoch oder Tief entscheidet - warum, weiss ich immer noch nicht",
+     "wo": "kleine Kapitaelchen-Marke ueber Wisch 3",
+     "quelle": "Z:3",
+     "gedeckt": true
+    },
+    {
+     "symbol": "x_1",
+     "was": "die erste (und hier einzige) Loesung von m'(x)=0",
+     "wo": "in der Chip-Zeile von Wisch 2 und als Marke auf der x-Achse",
+     "quelle": "B:\"x_1=[-1 orange]\"",
+     "gedeckt": true
+    },
+    {
+     "symbol": "T",
+     "was": "Abkuerzung fuer Tiefpunkt, so wie T1 und T2 auf meinem Zettel",
+     "wo": "in der Klammer bei Wisch 3 und in der Beschriftung am Punkt in Wisch 4",
+     "quelle": "Z:2",
+     "gedeckt": true
+    },
+    {
+     "symbol": "-0.3679 (Punkt-Schreibweise)",
+     "was": "kann ich nicht deuten, warum hier ploetzlich ein Punkt statt Komma steht",
+     "wo": "im Klammertext beim Punkt-landet-Satz in Wisch 4",
+     "quelle": "kann ich nicht deuten",
+     "gedeckt": null
+    }
+   ],
+   "flags": [
+    "Rechenlast: 17 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 2
+  },
+  {
+   "blatt": 8,
+   "schritte": [
+    {
+     "text": "Ueberschrift 'Schema' - das wirkt wie eine Zusammenfassung von dem, was ich vorher einzeln gemacht habe.",
+     "quelle": "B:Schema",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "f'(x_0)=0 heisst jetzt 'notwendige Bedingung' - genau das Muster wie mein m'=0 vorher.",
+     "quelle": "Z:1",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "Ich merke, dass 'notwendig' hier wieder nicht erklaert wird, das war schon auf dem letzten Blatt so.",
+     "quelle": "Z:4",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "'hinreichende Bedingung' klingt wie das Gegenstueck zu 'notwendig', aber wieder nur benannt, nicht erklaert.",
+     "quelle": "B:hinreichende Bedingung",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "f''(x_0)<0 -> orange -> H: wenn bei mir k''>0 ein Tief gab, muss <0 wohl das Gegenteil geben, also Hoch.",
+     "quelle": "Z:2",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "f''(x_0)>0 -> blau -> T: das ist genau mein alter Fall, T(-1|-0,37) mit m''(-1)>0.",
+     "quelle": "Z:2",
+     "art": "Z",
+     "gedeckt": true
+    },
+    {
+     "text": "f''(x_0)=0 ist ein Fall, den ich noch nirgends hatte: dann muss man Vorzeichen von f' pruefen.",
+     "quelle": "B:f''(x_0)=0→keine Entscheidung, Vorzeichen von f′ links und rechts prüfen",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Vorzeichen von f' pruefen kenne ich im Prinzip: positiv=steigend, negativ=fallend.",
+     "quelle": "W:W4",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "'Tangente waagerecht' passt zu f'=0, weil f' ja die Steigung der Tangente ist.",
+     "quelle": "W:W4",
+     "art": "W",
+     "gedeckt": true
+    },
+    {
+     "text": "Jetzt verstehe ich, warum vorhin H bei f''<0 auftauchte: negativ->Gipfel.",
+     "quelle": "B:negativ heißt Rechtskurve, also Gipfel",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Positiv->Tal bestaetigt endgueltig, dass T = Tiefpunkt aus meinem alten Beispiel ist.",
+     "quelle": "B:Positiv heißt Linkskurve, also Tal",
+     "art": "B",
+     "gedeckt": true
+    },
+    {
+     "text": "Ich glaube einfach, dass diese drei Wische wirklich alle Faelle abdecken, ich pruefe das nicht nach.",
+     "quelle": "keine",
+     "art": "keine",
+     "gedeckt": false
+    }
+   ],
+   "stockstellen": [
+    {
+     "art": "glauben",
+     "zitat": "Ich glaube einfach, dass diese drei Wische wirklich alle Faelle abdecken, ich pruefe das nicht nach.",
+     "warum": "Schritt ohne belegte Quelle (keine)",
+     "mechanisch": true
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "notwendige Bedingung",
+     "warum": "Fachwort ohne Erklaerung, nur Kapitaelchen-Marke, laut Z:4 bleibt das unerklaert."
+    },
+    {
+     "art": "lastmarke",
+     "zitat": "hinreichende Bedingung",
+     "warum": "gleiches unerklaertes Fachwort wie 'notwendig', nur mit anderem Adjektiv."
+    },
+    {
+     "art": "verwechslung",
+     "zitat": "notwendige Bedingung / hinreichende Bedingung",
+     "warum": "beide heissen nur 'Bedingung' mit aehnlichem Aufbau, ich kann mir nicht merken welche zuerst greift."
+    },
+    {
+     "art": "raten",
+     "zitat": "H(x_0 | f(x_0))",
+     "warum": "ich errate H als Abkuerzung fuer einen hohen Punkt, das Thema Extrempunkte kenne ich offiziell nicht."
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "[∩ orange] ... [∪ blau]",
+     "warum": "es gibt keine echte Kurve oder Skizze zu sehen, nur die Symbole, ich kann mir die Kurvenform nicht wirklich vorstellen."
+    },
+    {
+     "art": "vorstellung",
+     "zitat": "Vorzeichen von f′ links und rechts prüfen",
+     "warum": "es fehlt ein Bild oder Beispiel, wie dieses Pruefen konkret aussieht."
+    },
+    {
+     "art": "skip",
+     "zitat": "negativ heißt Rechtskurve, also Gipfel",
+     "warum": "die Begruendung mit der Kurvenrichtung ist mir zu viel Prosa, ich nehme nur 'Gipfel' als Ergebnis mit."
+    },
+    {
+     "art": "glauben",
+     "zitat": "f''(x_0)=0→keine Entscheidung, Vorzeichen von f′ links und rechts prüfen",
+     "warum": "ich rechne das nicht nach, ich glaube das einfach so, wie schon bei Z:3 die Ableitungsformeln."
+    }
+   ],
+   "bewegungen": [
+    {
+     "zitat": "[Kleine Marke, Kapitälchen:] notwendige Bedingung",
+     "urteil": "dekoration",
+     "warum": "nur Hervorhebung als Fachbegriff, erklaert den Inhalt nicht neu"
+    },
+    {
+     "zitat": "[gelb hinterlegt:] f'(x_0)=0",
+     "urteil": "dekoration",
+     "warum": "Farbe zeigt nur Wichtigkeit, keine zusaetzliche Information zur Formel"
+    },
+    {
+     "zitat": "[Kleine Marke, Kapitälchen:] hinreichende Bedingung",
+     "urteil": "dekoration",
+     "warum": "gleiche reine Hervorhebung wie bei 'notwendig'"
+    },
+    {
+     "zitat": "[f''(x_0)<0 orange][∩ orange]→[H(x_0 | f(x_0)) orange]",
+     "urteil": "trug",
+     "warum": "der Pfeil zeigt mir direkt, dass aus der Bedingung ein bestimmter Punkttyp folgt, ohne dass ich selbst herleiten muss"
+    },
+    {
+     "zitat": "[f''(x_0)>0 blau][∪ blau]→[T(x_0 | f(x_0)) blau]",
+     "urteil": "trug",
+     "warum": "bestaetigt sofort mein Muster aus Z:2, ohne dass ich neu rechnen muss"
+    },
+    {
+     "zitat": "[Merksatz, gelb hinterlegt:] \\(f'(x)=0\\) liefert die Kandidaten: dort ist die Tangente waagerecht.",
+     "urteil": "trug",
+     "warum": "fasst die Farben und Pfeile aus Wisch 2 erst in Worte, die sie verstaendlich machen"
+    }
+   ],
+   "deutungen": [
+    {
+     "symbol": "notwendige Bedingung",
+     "was": "Fachname fuer die Regel f'(x_0)=0, die ein Kandidat erfuellen muss, bevor man weiterschaut",
+     "wo": "Kapitaelchen-Marke ueber der gelben Formel in Wisch 1",
+     "quelle": "B:notwendige Bedingung",
+     "gedeckt": true
+    },
+    {
+     "symbol": "hinreichende Bedingung",
+     "was": "Fachname fuer die Regel, die per f'' entscheidet, ob ein Kandidat wirklich Hoch- oder Tiefpunkt ist",
+     "wo": "Kapitaelchen-Marke in Wisch 2",
+     "quelle": "B:hinreichende Bedingung",
+     "gedeckt": true
+    },
+    {
+     "symbol": "∩",
+     "was": "Symbol fuer eine Kurve, die wie ein Gipfel nach unten geoeffnet ist, gehoert zu f''<0",
+     "wo": "orange neben f''(x_0)<0 in Wisch 2",
+     "quelle": "B:negativ heißt Rechtskurve, also Gipfel",
+     "gedeckt": true
+    },
+    {
+     "symbol": "∪",
+     "was": "Symbol fuer eine Kurve, die wie ein Tal nach oben geoeffnet ist, gehoert zu f''>0",
+     "wo": "blau neben f''(x_0)>0 in Wisch 2",
+     "quelle": "B:Positiv heißt Linkskurve, also Tal",
+     "gedeckt": true
+    },
+    {
+     "symbol": "H(x_0 | f(x_0))",
+     "was": "Punkt im Format wie P(x|y), ein Gipfel-Punkt (H wohl fuer 'Hoch')",
+     "wo": "orange am Ende der Pfeilkette in Wisch 2",
+     "quelle": "W:W1",
+     "gedeckt": true
+    },
+    {
+     "symbol": "T(x_0 | f(x_0))",
+     "was": "Punkt im Format wie P(x|y), ein Tiefpunkt - genau wie mein T(-1|-0,37)",
+     "wo": "blau am Ende der Pfeilkette in Wisch 2",
+     "quelle": "Z:2",
+     "gedeckt": true
+    },
+    {
+     "symbol": "x_0",
+     "was": "ein allgemeiner Platzhalter fuer eine bestimmte Stelle/x-Wert, so wie x bei P(x|y)",
+     "wo": "in allen Formeln auf Blatt 8",
+     "quelle": "W:W1",
+     "gedeckt": true
+    },
+    {
+     "symbol": "Rechtskurve/Linkskurve",
+     "was": "Bezeichnung fuer die Kruemmungsrichtung der Kurve, verknuepft mit Gipfel bzw. Tal",
+     "wo": "im Merksatz in Wisch 3",
+     "quelle": "B:negativ heißt Rechtskurve, also Gipfel",
+     "gedeckt": true
+    }
+   ],
+   "flags": [
+    "Rechenlast: 12 Schritte auf einem Blatt"
+   ],
+   "ungedeckt": 1
+  }
+ ],
+ "flags": [],
+ "naechstes": 9,
+ "fertig": true,
+ "regel": {
+  "regeln": [
+   "Dort, wo die Tangente an den Graphen waagerecht ist (die Steigung also null wird), kann ein Hoch- oder Tiefpunkt liegen - das ist erstmal nur ein Kandidat.",
+   "Kommt an so einer Stelle beim zweiten Ableiten eine negative Zahl heraus, ist es ein Gipfel; kommt eine positive Zahl heraus, ist es ein Tal.",
+   "Kommt beim zweiten Ableiten an der Stelle null heraus, weiss ich noch nicht, was es ist, dann muss ich schauen, ob die Steigung davor und danach das Vorzeichen wechselt."
+  ],
+  "fehlregeln": [
+   {
+    "id": "F1",
+    "text": "Der y-Wert eines Extrempunkts ist f'(x0) oder f''(x0), also die Zahl, die man beim Pruefen ausgerechnet hat.",
+    "ergebnis": "widerlegt, Gegenbeispiel belegt",
+    "zitat": "H(x_0 | f(x_0))",
+    "ungebrochen": false
+   },
+   {
+    "id": "F2",
+    "text": "Wo f'(x)=0 ist, liegt immer ein Hoch- oder Tiefpunkt.",
+    "ergebnis": "passt zu allen gesehenen Beispielen",
+    "ungebrochen": true
+   },
+   {
+    "id": "F3",
+    "text": "f''(x0)>0 bedeutet Hochpunkt, weil positiv oben ist.",
+    "ergebnis": "widerlegt, Gegenbeispiel belegt",
+    "zitat": "[f''(x_0)>0 blau][∪ blau]→[T(x_0 | f(x_0)) blau]",
+    "ungebrochen": false
+   },
+   {
+    "id": "F4",
+    "text": "Ein Extrempunkt liegt immer bei x=0 oder bei x=1 und x=-1.",
+    "ergebnis": "passt zu allen gesehenen Beispielen",
+    "ungebrochen": true
+   },
+   {
+    "id": "F5",
+    "text": "Der Hochpunkt ist der hoechste Punkt des ganzen Graphen.",
+    "ergebnis": "passt zu allen gesehenen Beispielen",
+    "ungebrochen": true
+   },
+   {
+    "id": "F14",
+    "text": "Die Steigung der Tangente ist die Hoehe des Graphen an der Stelle (f'(a) und f(a) sind dasselbe).",
+    "ergebnis": "widerlegt, Gegenbeispiel belegt",
+    "zitat": "H(x_0 | f(x_0))",
+    "ungebrochen": false
+   }
+  ],
+  "transfer": [
+   {
+    "id": "T1",
+    "aufgabe": "Bestimme die Extrempunkte von p(x)=x^2+2x (Art und Koordinaten).",
+    "erwartet": [
+     "T(-1|-1)"
+    ],
+    "loesung": "Tiefpunkt T(-1 | -1)",
+    "quelle": "regel|Z:1|W:W3|W:W4|W:W5",
+    "richtig": true,
+    "teilweise": true
+   },
+   {
+    "id": "T2",
+    "aufgabe": "Bestimme die Extrempunkte von q(x)=x^3-12x (Art und Koordinaten).",
+    "erwartet": [
+     "H(-2|16)",
+     "T(2|-16)"
+    ],
+    "loesung": "Tiefpunkt T(2 | -16) und Hochpunkt H(-2 | 16)",
+    "quelle": "regel|Z:1|W:W2|W:W3|W:W4|W:W5",
+    "richtig": true,
+    "teilweise": true
+   }
+  ],
+  "deutungen": [
+   {
+    "symbol": "notwendige Bedingung",
+    "was": "kann ich nicht deuten - nur eine Bezeichnung ueber f'(x_0)=0, warum 'notwendig' nicht automatisch reicht, wurde nicht erklaert",
+    "quelle": "Z:3",
+    "kannNicht": true
+   },
+   {
+    "symbol": "hinreichende Bedingung",
+    "was": "kann ich nicht deuten",
+    "quelle": "Z:3",
+    "kannNicht": true
+   },
+   {
+    "symbol": "∩ (orange)",
+    "was": "gehoert zur Gipfel-Bedingung f''(x_0)<0 und wird 'Rechtskurve' genannt; was das Zeichen selbst genau zeigt, kann ich nicht sicher deuten",
+    "quelle": "Z:3|Z:4",
+    "kannNicht": true
+   },
+   {
+    "symbol": "∪ (blau)",
+    "was": "gehoert zur Tal-Bedingung f''(x_0)>0 und wird 'Linkskurve' genannt; was das Zeichen selbst genau zeigt, kann ich nicht sicher deuten",
+    "quelle": "Z:3|Z:4",
+    "kannNicht": true
+   },
+   {
+    "symbol": "H(x_0 | f(x_0))",
+    "was": "der Hochpunkt (Gipfel) als Punkt geschrieben, genau wie P(x|y): der x-Wert ist x_0, der y-Wert ist f(x_0)",
+    "quelle": "W:W1",
+    "kannNicht": false
+   },
+   {
+    "symbol": "T(x_0 | f(x_0))",
+    "was": "der Tiefpunkt (Tal) als Punkt geschrieben, genau wie P(x|y): der x-Wert ist x_0, der y-Wert ist f(x_0)",
+    "quelle": "W:W1",
+    "kannNicht": false
+   },
+   {
+    "symbol": "Rechtskurve / Linkskurve",
+    "was": "kann ich nicht deuten - Fachwoerter, der Grund, warum sie gelten, wurde nicht gezeigt",
+    "quelle": "Z:3|Z:4",
+    "kannNicht": true
+   },
+   {
+    "symbol": "gelb hinterlegt",
+    "was": "Farbmarkierung fuer eine wichtige Bedingung bzw. Regel, die ich mir merken soll",
+    "quelle": "Z:1",
+    "kannNicht": false
+   }
+  ],
+  "schluss": {
+   "kann": "Ich kann jetzt zu einer Funktion mit f'(x)=0 die Kandidaten finden und mit f'' entscheiden, ob dort ein Hochpunkt oder ein Tiefpunkt liegt, und den Punkt als H(x_0|f(x_0)) bzw. T(x_0|f(x_0)) aufschreiben.",
+   "morgen": "Morgen wuesste ich noch, was auf meinem Zettel steht: f'(x0)=0 ist der Kandidat, f''<0 gibt Gipfel/H und f''>0 gibt Tal/T, und dass ich bei f''(x0)=0 das Vorzeichen von f' pruefen muss, auch wenn ich darin noch ungeuebt bin."
+  },
+  "fremdvokabular": [
+   "erstmal",
+   "zweiten",
+   "ableiten",
+   "schauen",
+   "wechselt"
+  ]
+ }
+}

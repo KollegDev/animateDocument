@@ -16,4 +16,4 @@ Autorbefunde gesamt; davon vorab gefangen durch Lesart 1 bis 4 (Fangquote); Esca
 | 4 | 2026-09-06 | v2c | Testdokumentgroß.pdf (40 S.), Wendepunkte S. 30 bis 32 | Sonnet | 0/1/0 | Selbst-Inventar mit Seitenmarken | Selbst-Simulat ohne Befund; fremd offen | offen (nah: Übertragung der Gold-Choreographie) | offen | |
 | 5 | 2026-09-06 | v2c | Testdokumentgroß.pdf, Nullstellen S. 9 bis 12 | Sonnet | 0/1/0 | Selbst-Inventar | Selbst-Simulat fand Gussfehler (p-q), behoben; fremd offen | offen (fern: erstmals Geräte ohne Vorlage, Merksatz) | offen | |
 
-Ab Trial 6 gilt: nur installierter Skill mit Versionsnummer, kein lokaler Pfad im Auftrag, alle fünf Lesarten vor dem Autor, Kennzahlen ausgefüllt.
+Ab Trial 6 gilt: nur installierter Skill mit Versionsnummer, kein lokaler Pfad im Auftrag, Tor plus Senf-Runde vor dem Autor (Fassung vor und nach Senf), Kennzahlen ausgefüllt: Autorbefunde, Fangquote, Senf-Wirkung (besser / gleich / schlechter laut Autor).

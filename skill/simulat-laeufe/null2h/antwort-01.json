@@ -1,0 +1,94 @@
+{
+  "schritte": [
+    {
+      "text": "Ich sehe eine Ueberschrift zu Extrempunkten - das ist ein neues Thema, das kenne ich nicht.",
+      "quelle": "keine"
+    },
+    {
+      "text": "Der Graph zeigt f(x) = x³ - 3x; das ist eine Funktion, die ich nach den Ableitungsregeln bearbeiten kann.",
+      "quelle": "B:[Graph zeichnet sich: f(x) = x³ − 3x]"
+    },
+    {
+      "text": "Ein oranger Punkt bei (-1|2) wird als H(-1|2) beschriftet und ein blauer Punkt bei (1|-2) als T(1|-2).",
+      "quelle": "B:[Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x. Ein blauer Punkt landet bei (1|-2)]"
+    },
+    {
+      "text": "Eine Beruehrgerade faehrt ueber die Kurve und zeigt die Steigung an verschiedenen Stellen.",
+      "quelle": "B:[Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve]"
+    },
+    {
+      "text": "Bei x = -1 und x = 1 bleibt je ein blasser Abdruck stehen; das sind offenbar besondere Punkte.",
+      "quelle": "B:[bei x = -1, 1 bleibt je ein blasser Abdruck stehen]"
+    },
+    {
+      "text": "Die Aufloesung sagt: m = f'(x) = 0. Ah! An diesen besonderen Punkten ist die Ableitung Null.",
+      "quelle": "B:[gelb hinterlegt:] m=f'(x)=0"
+    }
+  ],
+  "stockstellen": [
+    {
+      "art": "glauben",
+      "zitat": "Extrempunkte (Hoch- und Tiefpunkte)",
+      "warum": "Das ganze Thema ist neu und steht nicht in meiner Whitelist; ich glaube einfach, dass es wichtig ist."
+    },
+    {
+      "art": "raten",
+      "zitat": "H(−1|2) und T(1|−2)",
+      "warum": "Warum heissen diese Punkte H und T? Das wird nicht erklaert; ich rate, dass H fuer Hochpunkt und T fuer Tiefpunkt steht."
+    },
+    {
+      "art": "vorstellung",
+      "zitat": "bei x = -1, 1 bleibt je ein blasser Abdruck stehen",
+      "warum": "Ich kann mir nicht richtig vorstellen, was dieser blasse Abdruck bedeutet oder warum er so wichtig ist."
+    }
+  ],
+  "bewegungen": [
+    {
+      "zitat": "[Graph zeichnet sich: f(x) = x³ − 3x]",
+      "urteil": "trug",
+      "warum": "zeigt mir die Form und den Verlauf der Funktion, den ich sonst nur ausrechnen koennte"
+    },
+    {
+      "zitat": "[Ein oranger Punkt landet bei (-1|2), Ein blauer Punkt bei (1|-2)]",
+      "urteil": "trug",
+      "warum": "hebt zwei spezielle Punkte auf der Kurve hervor, die offenbar Extrempunkte sind"
+    },
+    {
+      "zitat": "[Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve; oben im Bild laufen x und m mit]",
+      "urteil": "trug",
+      "warum": "zeigt mir, dass die Steigung m ueberall unterschiedlich ist und bei x = -1 und x = 1 offenbar etwas Besonderes passiert"
+    }
+  ],
+  "deutungen": [
+    {
+      "symbol": "H",
+      "was": "kann ich nicht deuten",
+      "wo": "neben dem Punkt (-1|2)",
+      "quelle": "kann ich nicht deuten"
+    },
+    {
+      "symbol": "T",
+      "was": "kann ich nicht deuten",
+      "wo": "neben dem Punkt (1|-2)",
+      "quelle": "kann ich nicht deuten"
+    },
+    {
+      "symbol": "Extrempunkte",
+      "was": "kann ich nicht deuten",
+      "wo": "in der Ueberschrift",
+      "quelle": "kann ich nicht deuten"
+    },
+    {
+      "symbol": "f'(x) = 0",
+      "was": "die Ableitung ist Null, also die Steigung der Tangente ist Null",
+      "wo": "am Ende des Blattes in gelb",
+      "quelle": "W4: f'(x) ist die Steigung der Tangente an der Stelle x"
+    }
+  ],
+  "zettel": [
+    "f(x)=x³-3x hat zwei spezielle Punkte: (-1|2) mit H und (1|-2) mit T",
+    "An diesen Punkten ist f'(x)=0, also die Steigung Null (waagerechte Tangente)",
+    "Das Thema heisst Extrempunkte, mit Hochpunkten und Tiefpunkten",
+    "Ich kenne noch nicht die Regeln zum Finden dieser Punkte"
+  ]
+}

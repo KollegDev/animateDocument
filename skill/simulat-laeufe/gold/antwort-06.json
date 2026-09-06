@@ -1,0 +1,48 @@
+{
+  "schritte": [
+    { "text": "Oben klein steht 'Und mit drei?' - klingt so, als kaemen diesmal drei Loesungen statt einer oder zwei.", "quelle": "B:Und mit drei?" },
+    { "text": "k(x)=x^4-2x^2 ist eine normale Funktion, ich lese sie als y-Wert-Vorschrift fuer jedes x.", "quelle": "W1" },
+    { "text": "Der Graph zeigt eine W-aehnliche Form: eine Beule in der Mitte, zwei Mulden aussen - passt zu drei markanten Stellen.", "quelle": "B:Graph zeichnet sich: k(x) = x⁴ − 2x², x von -1.9 bis 1.9, y von -1.6 bis 2.4." },
+    { "text": "'notwendige Bedingung' kenne ich schon: k'(x)=0 loesen, genau wie bei h vorher.", "quelle": "Z:1" },
+    { "text": "k'(x)=4x^3-4x rechne ich selbst nach: Ableitung von x^4 ist 4x^3, von -2x^2 ist -4x.", "quelle": "W3" },
+    { "text": "4x^3-4x=4x(x^2-1): Ausklammern von 4x, kann ich pruefen (ausmultiplizieren gibt wieder 4x^3-4x), stimmt.", "quelle": "W2" },
+    { "text": "4x(x^2-1)=0 gibt entweder x=0 oder x^2-1=0 also x=1 oder x=-1 - genau das Schema mit zwei Loesungen aus der Wurzel.", "quelle": "W2" },
+    { "text": "x_1=0, x_2=-1, x_3=1 - die Indizes sind nur Nummerierung der Reihenfolge, nicht der Groesse, wie schon notiert.", "quelle": "Z:1" },
+    { "text": "'hinreichende Bedingung: k''(x)≠0' - den Ausdruck kenne ich vom letzten Blatt, auch wenn mir das Warum fehlt.", "quelle": "Z:2" },
+    { "text": "k''(x)=12x^2-4 rechne ich nach, indem ich k'(x) nochmal ableite: 4x^3 wird 12x^2, -4x wird -4.", "quelle": "W3" },
+    { "text": "k''(0)=-4, das ist kleiner als 0, also nach meiner Regel ein Hochpunkt H.", "quelle": "Z:2" },
+    { "text": "k''(1)=12-4=8 und k''(-1)=12-4=8, beides groesser 0, also zwei Tiefpunkte T.", "quelle": "Z:2" },
+    { "text": "Die Kurve leuchtet genau an den Stellen auf, die ich aus der W-Form in Wisch 1 schon vermutet hatte - passt zusammen.", "quelle": "B:Im Graphen leuchtet das Kurvenstueck um x = 0 dick orange auf." },
+    { "text": "y=k(x): k(0)=0, k(-1)=1-2=-1, k(1)=1-2=-1 - einfaches Einsetzen, passt zu W1.", "quelle": "W1" },
+    { "text": "Die Punkte (0|0), (-1|-1), (1|-1) stehen in der Form P(x|y), die kenne ich schon.", "quelle": "W1" },
+    { "text": "Endbeschriftung H(0|0), T_1(-1|-1), T_2(1|-1): H braucht keinen Index (nur einer), T's schon (zwei Stueck).", "quelle": "Z:3" }
+  ],
+  "stockstellen": [
+    { "art": "ruecksprung", "zitat": "notwendige Bedingung: k'(x)=0", "warum": "der Begriff wird nicht neu erklaert, ich muss auf meinem Zettel bei Z:1 nachschauen was er bedeutet." },
+    { "art": "vorstellung", "zitat": "hinreichende Bedingung: k''(x)≠ 0", "warum": "es fehlt weiterhin ein Bild oder eine Kurvenform-Erklaerung, warum das Vorzeichen von k'' ueber Hoch- oder Tiefpunkt entscheidet." },
+    { "art": "stocken", "zitat": "k''([0 orange])=-4<0→ Hochpunkt(fett: H)", "warum": "erst wird nur 'k''(x)≠0' als Bedingung genannt, dann braucht es doch das genaue Vorzeichen (<0 bzw. >0) - kurz unklar was jetzt 'die' Bedingung ist." },
+    { "art": "lastmarke", "zitat": "[Serienfall]", "warum": "unerklaertes Fachwort in der Kopfzeile, kommt sonst nirgends auf dem Blatt vor." },
+    { "art": "skip", "zitat": "Ein gruener Punkt landet bei (1|-1) in k(x) = x⁴ − 2x².", "warum": "dritte, strukturell identische Wiederholung nach orange und blau, ich lese nur noch die Zahl, nicht mehr den ganzen Ablauf." }
+  ],
+  "bewegungen": [
+    { "zitat": "[Graph zeichnet sich: k(x) = x⁴ − 2x², x von -1.9 bis 1.9, y von -1.6 bis 2.4.]", "urteil": "trug", "warum": "zeigt mir sofort die W-Form der Kurve, ich muss sie mir nicht selbst aus der Gleichung vorstellen." },
+    { "zitat": "[Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 0 kraeftig.]", "urteil": "trug", "warum": "verbindet die Loesung x=0 direkt mit ihrer Stelle auf der x-Achse, ohne dass ich selbst umrechnen muss." },
+    { "zitat": "[Ein oranger Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]", "urteil": "trug", "warum": "zeigt genau, welcher x-Wert in k'' eingesetzt wird, ich muss die Zuordnung nicht selbst suchen." },
+    { "zitat": "[Im Graphen leuchtet das Kurvenstueck um x = 0 dick orange auf.]", "urteil": "trug", "warum": "zeigt direkt an der Kurve, dass dort der Hochpunkt liegt, passend zu meinem Eindruck aus Wisch 1." },
+    { "zitat": "[Von der Achsenmarke 0 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht 0.]", "urteil": "trug", "warum": "macht sichtbar, was y=k(x) geometrisch bedeutet, statt dass ich es mir nur denken muss." },
+    { "zitat": "[Beschriftung H(0|0) erscheint am Punkt (0|0), orange.]", "urteil": "dekoration", "warum": "wendet nur die schon bekannte Schreibweise aus Z:3 an, zeigt mir nichts, was ich nicht schon wusste." }
+  ],
+  "deutungen": [
+    { "symbol": "Serienfall", "was": "unklar, vermutlich eine Kategorie-Bezeichnung fuer diesen Blatttyp", "wo": "kleine Markierung in der Ueberschrift von Blatt 6", "quelle": "kann ich nicht deuten" },
+    { "symbol": "Hochpunkt", "was": "voll ausgeschriebener Name fuer H, der hoechste Punkt einer Kurven-Beule", "wo": "im Text bei k''(0)=-4<0→Hochpunkt(H), neben dem orangen Punkt bei x=0", "quelle": "Z:2" },
+    { "symbol": "Tiefpunkte", "was": "voll ausgeschriebener Name fuer T, tiefste Punkte von Kurven-Mulden (hier zwei Stueck)", "wo": "im Text bei k''(± 1)=8>0→Tiefpunkte(T), bei x=-1 und x=1", "quelle": "Z:2" },
+    { "symbol": "x_1, x_2, x_3", "was": "Index-Nummerierung der drei Loesungen von k'(x)=0, nach Reihenfolge im Term, nicht nach Groesse sortiert", "wo": "in der Zeile 4x(x^2-1)=0 ⟺ x_1=0, x_2=-1, x_3=1", "quelle": "Z:1" },
+    { "symbol": "T_1, T_2", "was": "Index fuer die beiden Tiefpunkte, damit man sie in der Beschriftung auseinanderhalten kann", "wo": "Beschriftung an den Punkten (-1|-1) und (1|-1)", "quelle": "Z:1" }
+  ],
+  "zettel": [
+    "notw.Bed.: h'(x)=0; x_1,x_2,x_3 moeglich (Index=welche); Verfahren bleibt bei 3 gleich.",
+    "hinr.Bed.: h''(x_i)≠0; >0->T(Tief), <0->H(Hoch). Ausgeschrieben: Hoch-/Tiefpunkt(e).",
+    "y=h(x_i); Punkt H(x|y) bzw. T_i(x|y), Index bei mehreren gleichnamigen Punkten.",
+    "Offen: warum h',h'' das entscheiden (Kurve?). 'Serienfall' unbekannt. Extrempunkte fehlt."
+  ]
+}

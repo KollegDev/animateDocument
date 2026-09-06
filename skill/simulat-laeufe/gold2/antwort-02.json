@@ -1,0 +1,46 @@
+{
+  "schritte": [
+    {"text": "Ich lese: 'Gesucht sind die Stellen, an denen die Tangente waagerecht ist.' - Tangente kenne ich als Beruehrgerade mit Steigung m=f'(x).", "quelle": "Z:2"},
+    {"text": "Waagerechte Tangente heisst Steigung 0, also f'(x)=0 - das passt zur notwendigen Bedingung oben.", "quelle": "W:W4"},
+    {"text": "'notwendige Bedingung' ist ein Wort, das ich nicht kenne, ich nehme es einfach hin.", "quelle": "keine"},
+    {"text": "Der Graph von f(x)=x^3-3x zeichnet sich, das ist dieselbe Funktion, die auf meinem Zettel steht mit Gipfel und Tal.", "quelle": "Z:1"},
+    {"text": "In Wisch 2 steht f(x)=x^3-3x - passt zu dem, was ich schon weiss.", "quelle": "Z:1"},
+    {"text": "f'(x)=3x^2-3 - genau das ist das Beispiel, das ich auswendig kenne.", "quelle": "W:W3"},
+    {"text": "3x^2-3=0 wird zu x^2=1 - das rechne ich kurz nach: 3x^2=3, also x^2=1, stimmt.", "quelle": "W:W2"},
+    {"text": "x^2=1 gibt x=1 oder x=-1, so wie ich es weiss.", "quelle": "W:W2"},
+    {"text": "x_1=-1 ist orange, x_2=1 ist blau - dieselben Farben wie H(-1|2) orange und T(1|-2) blau auf meinem Zettel.", "quelle": "Z:1"},
+    {"text": "Also vermute ich: -1 gehoert zum Gipfel (Hochpunkt), 1 zum Tal (Tiefpunkt), wegen der Farben.", "quelle": "Z:1"},
+    {"text": "Aber der Text sagt: 'Zwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht.' - meine Vermutung ist also noch nicht bestaetigt.", "quelle": "B:Zwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht."},
+    {"text": "Die Zahlen -1 und 1 fliegen zur x-Achse und werden dort stark - jetzt sehe ich die Stellen direkt im Graphen.", "quelle": "B:Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig."},
+    {"text": "Damit ist die Luecke von vorher geschlossen: jetzt weiss ich, WIE man x=-1 und x=1 aus f'(x)=0 rechnet.", "quelle": "Z:3"}
+  ],
+  "stockstellen": [
+    {"art": "lastmarke", "zitat": "notwendige Bedingung: f'(x)=0", "warum": "Fachwort ohne Erklaerung, das Thema Extrempunkte kenne ich laut meiner Liste nicht."},
+    {"art": "vorstellung", "zitat": "notwendige Bedingung: f'(x)=0", "warum": "Warum diese Bedingung nur 'notwendig' und nicht schon ausreichend ist, zeigt das Blatt nicht, das kann ich mir nicht vorstellen."},
+    {"art": "raten", "zitat": "3x^2-3=0⟺ x^2=1", "warum": "Das Zeichen ⟺ steht nicht in meiner Wissensliste, ich vermute nur, dass es 'ist gleichwertig mit' bedeutet."},
+    {"art": "verwechslung", "zitat": "x_1=[-1 orange] , x_2=[1 blau]", "warum": "Ich verlasse mich nur auf die Farben aus Z:1, um Gipfel/Tal zuzuordnen, das koennte auch vertauscht sein."},
+    {"art": "ruecksprung", "zitat": "x_1=[-1 orange] , x_2=[1 blau]", "warum": "Ich springe zurueck zu Z:1, um zu pruefen, ob orange=Gipfel und blau=Tal wirklich zusammenpassen."},
+    {"art": "glauben", "zitat": "Zwei Stellen. Ob Gipfel oder Tal, sagt das noch nicht.", "warum": "Das ist eine Behauptung ueber die Methode, die ich nicht nachrechnen kann, ich glaube sie einfach."}
+  ],
+  "bewegungen": [
+    {"zitat": "Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.", "urteil": "trug", "warum": "Ich sehe die S-Kurve direkt und muss sie mir nicht selbst vorstellen, das passt zu Gipfel/Tal aus Z:1."},
+    {"zitat": "Chip fuer Chip in Leserichtung: 3x^2-3=0⟺ x^2=1 ⟺ x_1=[-1 orange] , x_2=[1 blau]", "urteil": "trug", "warum": "Das zeigt genau die Rechnung, die auf Blatt 1 fehlte (Z:3), ich muss sie nicht selbst erfinden."},
+    {"zitat": "An der x-Achse bei -1 wartet eine orange Achsenmarke −1, noch blass.", "urteil": "trug", "warum": "Ich sehe schon vorher, wo -1 auf der Achse liegt, ohne selbst zu messen."},
+    {"zitat": "An der x-Achse bei 1 wartet eine blaue Achsenmarke 1, noch blass.", "urteil": "trug", "warum": "Genauso fuer die Stelle 1, ich muss die Position nicht selbst schaetzen."},
+    {"zitat": "Eine Kopie der orangen -1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke −1 kraeftig.", "urteil": "trug", "warum": "Das verbindet die ausgerechnete Zahl -1 direkt mit ihrer Stelle im Graphen, das haette ich sonst selbst zuordnen muessen."},
+    {"zitat": "Eine Kopie der blauen 1 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 1 kraeftig.", "urteil": "trug", "warum": "Genauso fuer die 1, die Verbindung Rechnung-zu-Graph wird mir gezeigt statt selbst gedacht."}
+  ],
+  "deutungen": [
+    {"symbol": "notwendige Bedingung", "was": "kann ich nicht deuten", "wo": "kleine Marke in Kapitaelchen ueber dem Graphen in Wisch 1", "quelle": "keine"},
+    {"symbol": "⟺", "was": "kann ich nicht deuten", "wo": "zwischen den Gleichungen in Wisch 3", "quelle": "keine"},
+    {"symbol": "orange (bei x_1=-1)", "was": "Farbmarkierung, die laut meinem Zettel zum Gipfel/Hochpunkt gehoert", "wo": "an x_1 in Wisch 3 und an der Achsenmarke -1 in Wisch 4", "quelle": "Z:1"},
+    {"symbol": "blau (bei x_2=1)", "was": "Farbmarkierung, die laut meinem Zettel zum Tal/Tiefpunkt gehoert", "wo": "an x_2 in Wisch 3 und an der Achsenmarke 1 in Wisch 4", "quelle": "Z:1"},
+    {"symbol": "x_1, x_2", "was": "Namen fuer die zwei Loesungen von x^2=1, damit man sie auseinanderhalten kann", "wo": "in Wisch 3 vor den Werten -1 und 1", "quelle": "W:W2"}
+  ],
+  "zettel": [
+    "f=x^3-3x,f'=3x^2-3=0: x1=-1(orange,H,y=2), x2=1(blau,T,y=-2).",
+    "notwendige Bedingung f'(x)=0 = Fachwort unklar, nur 'muss gelten' vermutet.",
+    "H/T = Gipfel/Tal: weiterhin nur Vermutung aus Farben, noch nicht entschieden.",
+    "Wie man x1,x2 rechnet, zeigt Blatt 2 jetzt (3x^2-3=0 -> x^2=1 -> x=±1)."
+  ]
+}

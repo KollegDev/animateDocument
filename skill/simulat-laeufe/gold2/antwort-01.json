@@ -1,0 +1,45 @@
+{
+  "schritte": [
+    {"text": "Klein oben steht eine Leitfrage, die ich im Kopf behalte: wie erkennt man einen Gipfel.", "quelle": "B:\"Woran erkennt man einen Gipfel?\""},
+    {"text": "Die Ueberschrift verraet sofort: Extrempunkte sind einfach Hoch- und Tiefpunkte, mehr nicht.", "quelle": "B:\"Extrempunkte (Hoch- und Tiefpunkte)\""},
+    {"text": "Hochpunkt = Gipfel, Tiefpunkt = Tal - zwei einfache Bilder, die ich sofort verstehe.", "quelle": "B:\"Ein Hochpunkt ist ein Gipfel des Graphen, ein Tiefpunkt ist ein Tal.\""},
+    {"text": "Den Term f(x)=x³-3x kenne ich, aber wie die Kurve aussieht, sehe ich erst durch das gezeichnete Bild.", "quelle": "W:W1"},
+    {"text": "Ich rechne nach: f(-1) = (-1)³-3·(-1) = -1+3 = 2, der orange Punkt (-1|2) stimmt.", "quelle": "W:W1"},
+    {"text": "H(-1|2) folgt der Schreibweise P(x|y), die ich kenne, nur mit einem neuen Buchstaben H davor.", "quelle": "W:W1"},
+    {"text": "Ich rechne nach: f(1) = 1³-3·1 = 1-3 = -2, der blaue Punkt (1|-2) stimmt.", "quelle": "W:W1"},
+    {"text": "m als Steigung der Tangente ist fuer mich dasselbe wie f'(x), das kenne ich schon.", "quelle": "W:W4"},
+    {"text": "Die wandernde Beruehrgerade mit Abdruck genau bei -1 und 1 zeigt mir: dort ist etwas anders als sonst.", "quelle": "B:\"bei x = -1, 1 bleibt je ein blasser Abdruck stehen\""},
+    {"text": "Waagerechte Tangente heisst fuer mich: Steigung Null, also f'(x)=0 genau an diesen Stellen.", "quelle": "B:\"An beiden ist die Tangente waagerecht.\""},
+    {"text": "Die gelb hinterlegte Formel m=f'(x)=0 ist die Antwort auf die Leitfrage oben: so erkennt man einen Gipfel.", "quelle": "B:\"m=f'(x)=0\""}
+  ],
+  "stockstellen": [
+    {"art": "glauben", "zitat": "An beiden ist die Tangente waagerecht.", "warum": "dass waagerecht genau Steigung Null bedeutet, steht nirgends in meinem Wissen (W4 kennt nur positiv/negativ), ich uebernehme es einfach als gegeben"},
+    {"art": "vorstellung", "zitat": "m=f'(x)=0", "warum": "das Blatt zeigt nie die Umformung, mit der man aus dieser Gleichung tatsaechlich x=-1 und x=1 ausrechnet; dieser Rechenweg fehlt komplett"},
+    {"art": "raten", "zitat": "Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.", "warum": "nirgends steht ausdruecklich, dass H fuer Hochpunkt und T fuer Tiefpunkt steht, ich schliesse das nur aus Naehe und Farbe"}
+  ],
+  "bewegungen": [
+    {"zitat": "[Graph zeichnet sich: f(x) = x³ − 3x, x von -2.4 bis 2.4, y von -4 bis 4.]", "urteil": "trug", "warum": "zeigt mir den Kurvenverlauf, den ich sonst muehsam durch viele Punkte haette ausrechnen muessen"},
+    {"zitat": "[Ein oranger Punkt landet bei (-1|2) in f(x) = x³ − 3x.]", "urteil": "trug", "warum": "zeigt mir direkt, wo der erste besondere Punkt liegt, ohne dass ich die Kurve absuchen muss"},
+    {"zitat": "[Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.]", "urteil": "trug", "warum": "gibt dem Punkt einen Namen und verknuepft die Farbe orange mit ihm"},
+    {"zitat": "[Ein blauer Punkt landet bei (1|-2) in f(x) = x³ − 3x.]", "urteil": "trug", "warum": "zeigt mir den zweiten besonderen Punkt und erspart mir das Suchen"},
+    {"zitat": "[Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.]", "urteil": "trug", "warum": "gibt dem zweiten Punkt einen Namen und verknuepft die Farbe blau mit ihm"},
+    {"zitat": "[Beim Wischen faehrt eine orange Beruehrgerade mit Punkt von x = -2.2 bis x = 2.2 ueber die Kurve; oben im Bild laufen x und m mit; bei x = -1, 1 bleibt je ein blasser Abdruck stehen.]", "urteil": "trug", "warum": "zeigt mir, dass sich die Steigung staendig aendert und genau bei -1 und 1 etwas Besonderes markiert wird, ohne dass ich das selbst haette vermuten muessen"}
+  ],
+  "deutungen": [
+    {"symbol": "Extrempunkte", "was": "Oberbegriff fuer Hoch- und Tiefpunkte", "wo": "in der Ueberschrift von Wisch 1", "quelle": "B:\"Extrempunkte (Hoch- und Tiefpunkte)\""},
+    {"symbol": "Hochpunkt", "was": "ein Gipfel des Graphen", "wo": "der orange Punkt bei (-1|2)", "quelle": "B:\"Ein Hochpunkt ist ein Gipfel des Graphen\""},
+    {"symbol": "Tiefpunkt", "was": "ein Tal des Graphen", "wo": "der blaue Punkt bei (1|-2)", "quelle": "B:\"ein Tiefpunkt ist ein Tal\""},
+    {"symbol": "H(-1|2)", "was": "Beschriftung des Hochpunkts in der Schreibweise P(x|y)", "wo": "orange am Punkt (-1|2)", "quelle": "B:\"Beschriftung H(−1|2) erscheint am Punkt (-1|2), orange.\""},
+    {"symbol": "T(1|-2)", "was": "Beschriftung des Tiefpunkts in der Schreibweise P(x|y)", "wo": "blau am Punkt (1|-2)", "quelle": "B:\"Beschriftung T(1|−2) erscheint am Punkt (1|-2), blau.\""},
+    {"symbol": "m", "was": "die Steigung der Tangente, dasselbe wie f'(x)", "wo": "oben im Bild, laeuft beim Wischen mit", "quelle": "W:W4"},
+    {"symbol": "Beruehrgerade", "was": "die Tangente, die die Kurve beruehrt", "wo": "die orange Linie, die beim Wischen ueber die Kurve faehrt", "quelle": "W:W4"},
+    {"symbol": "waagerecht", "was": "die Tangente hat Steigung 0, verlaeuft flach", "wo": "an den Punkten H und T, wo die Tangente eingezeichnet ist", "quelle": "B:\"An beiden ist die Tangente waagerecht.\""},
+    {"symbol": "gelb hinterlegt", "was": "kann ich nicht deuten", "wo": "der Kasten mit m=f'(x)=0", "quelle": "kann ich nicht deuten"}
+  ],
+  "zettel": [
+    "Extrempunkte=Hoch-/Tiefpunkte. H(-1|2)=Gipfel orange, T(1|-2)=Tal blau, beide auf x³-3x.",
+    "Tangente=Beruehrgerade, m=Steigung=f'(x). Bei H,T: Tangente waagerecht, also m=f'(x)=0.",
+    "Offen: WIE man x=-1,1 aus f'(x)=0 rechnerisch findet, zeigt das Blatt nicht (Luecke).",
+    "Unsicher: ob H/T wirklich fuer Hochpunkt/Tiefpunkt stehen - nur aus Kontext geraten."
+  ]
+}

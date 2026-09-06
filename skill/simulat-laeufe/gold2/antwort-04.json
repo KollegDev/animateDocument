@@ -1,0 +1,58 @@
+{
+  "schritte": [
+    {"text": "Oben steht 'Geht das bei g genauso?' - ich soll also dieselbe Rechnung wie bei f nochmal machen, nur mit g.", "quelle": "B:Geht das bei g genauso?"},
+    {"text": "g(x)=x^2-4x ist eine neue Funktion, aehnlich aufgebaut wie f vorher.", "quelle": "B:g(x)=x^2-4x"},
+    {"text": "Der Graph zeigt eine Parabel von x=-1.2 bis 5.2, y von -5 bis 3.", "quelle": "B:Graph zeichnet sich: g(x) = x^2 - 4x, x von -1.2 bis 5.2, y von -5 bis 3."},
+    {"text": "Jetzt sehe ich den Namen fuer die erste Formel: g'(x)=0 heisst 'notwendige Bedingung'.", "quelle": "B:notwendige Bedingung: g'(x)=0"},
+    {"text": "g'(x)=2x-4 rechne ich mit der Potenzregel nach: aus x^2 wird 2x, aus -4x wird -4.", "quelle": "W:3"},
+    {"text": "2x-4=0 loese ich selbst: 2x=4, x=2 - passt genau zu x_1=2 im Blatt.", "quelle": "B:2x-4=0 <=> x_1=2"},
+    {"text": "Die orange 2 fliegt zur x-Achse und wird dort fett - so sehe ich, wo x=2 im Graphen liegt.", "quelle": "B:Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig."},
+    {"text": "Jetzt kommt 'hinreichende Bedingung: g''(x)!=0' - das zweite unklare Wort von meinem Zettel Z:4.", "quelle": "B:hinreichende Bedingung: g''(x)!= 0"},
+    {"text": "g''(x)=2, weil bei der Ableitung von 2x-4 nur die 2 uebrigbleibt, die -4 faellt weg.", "quelle": "W:5"},
+    {"text": "Der Pfeil zieht die 2 von oben in die Klammer unten - es ist immer noch derselbe x-Wert.", "quelle": "B:Ein oranger Pfeil zieht sich langsam von der 2 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile."},
+    {"text": "Warum g''(2)>0 einen Tiefpunkt bedeutet, weiss ich nicht wirklich - ich glaube es nur, wie schon auf Z:2 notiert.", "quelle": "keine"},
+    {"text": "g''(2)=2>0 -> Tiefpunkt T, genau wie bei Z:1, wo positives f'' auch Tiefpunkt ergab.", "quelle": "Z:1"},
+    {"text": "Das Kurvenstueck bei x=2 leuchtet orange auf - das ist die Stelle, um die es geht.", "quelle": "B:Im Graphen leuchtet das Kurvenstueck um x = 2 dick orange auf."},
+    {"text": "Jetzt 'y-Werte: y=g(x)' - genau mein Merksatz Z:3, der y-Wert kommt aus g, nicht aus g'.", "quelle": "Z:3"},
+    {"text": "g(2)=2^2-4*2=4-8=-4, das rechne ich selbst nach und es stimmt mit dem Blatt ueberein.", "quelle": "B:g(2)=2^2-4*2=-4"},
+    {"text": "Die gestrichelte Linie von der 2 zur Kurve und zur y-Achse zeigt -4 - passt zu meiner Rechnung.", "quelle": "B:Von der Achsenmarke 2 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht -4."},
+    {"text": "Der Punkt (2|-4) landet auf der Kurve, das ist P(x|y) wie ich es kenne.", "quelle": "W:1"},
+    {"text": "Am Ende steht T(2|-4) am Punkt - Tiefpunkt bei x=2, y=-4, wie Z:1 es vormacht.", "quelle": "B:Beschriftung T(2|-4) erscheint am Punkt (2|-4), orange."}
+  ],
+  "stockstellen": [
+    {"art": "glauben", "zitat": "g''(2 orange)=2>0-> Tiefpunkt(fett: T)", "warum": "Ich glaube nur, dass positives g'' einen Tiefpunkt bedeutet, verstehen tue ich es nicht (Thema fehlt mir, wie schon Z:2)."},
+    {"art": "lastmarke", "zitat": "notwendige Bedingung: g'(x)=0", "warum": "Das Fachwort 'notwendig' wird nur als Label ueber die Formel gesetzt, nicht erklaert."},
+    {"art": "lastmarke", "zitat": "hinreichende Bedingung: g''(x)!= 0", "warum": "Das Fachwort 'hinreichend' bleibt unerklaert, genau wie schon in Z:4 notiert."},
+    {"art": "verwechslung", "zitat": "hinreichende Bedingung: g''(x)!= 0", "warum": "Das Label sagt nur 'ungleich 0', aber gleich danach entscheidet das Vorzeichen (>0) ueber H oder T - das Blatt trennt das nicht auseinander."},
+    {"art": "ruecksprung", "zitat": "Geht das bei g genauso?", "warum": "Diese Frage zwingt mich, extra auf Z:1 zurueckzuschauen, ob die alte Vorzeichen-Regel hier wirklich genauso gilt."},
+    {"art": "skip", "zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip.", "warum": "Beim dritten Mal ist mir das zu langsam, ich weiss schon, dass T(2|-4) rauskommt, und lese nur noch drueber."},
+    {"art": "vorstellung", "zitat": "notwendige Bedingung: g'(x)=0 ... hinreichende Bedingung: g''(x)!= 0", "warum": "Warum man beide Bedingungen zusammen braucht und nicht nur eine, zeigt das Blatt nirgends als Bild, das muesste ich mir selbst dazudenken."}
+  ],
+  "bewegungen": [
+    {"zitat": "Graph zeichnet sich: g(x) = x^2 - 4x, x von -1.2 bis 5.2, y von -5 bis 3.", "urteil": "dekoration", "warum": "zeigt nur die Ausgangsform, markiert noch nichts, das ich sonst haette suchen muessen"},
+    {"zitat": "Chip fuer Chip in Leserichtung: 2x-4=0 <=> x_1=2", "urteil": "trug", "warum": "zeigt die Reihenfolge Gleichung-vor-Loesung, statt dass ich sie selbst ordnen muss"},
+    {"zitat": "Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig.", "urteil": "trug", "warum": "zeigt mir direkt, wo x=2 im Graphen liegt, ohne dass ich es suchen muss"},
+    {"zitat": "Ein oranger Pfeil zieht sich langsam von der 2 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile. (Wisch 3)", "urteil": "trug", "warum": "zeigt, dass in g'' dieselbe 2 eingesetzt wird, ohne dass ich es mir merken muss"},
+    {"zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip. (Wisch 3)", "urteil": "dekoration", "warum": "nur Tempo, ich habe g''(2)=2 schon selbst berechnet"},
+    {"zitat": "Im Graphen leuchtet das Kurvenstueck um x = 2 dick orange auf.", "urteil": "trug", "warum": "zeigt mir die passende Stelle auf der Kurve, ohne dass ich sie selbst suchen muss"},
+    {"zitat": "Ein oranger Pfeil zieht sich langsam von dem Stamm des Pfeils von 2 durch den Seitenrand nach unten und muendet von oben auf die 2 in der Klammer der naechsten Zeile. (Wisch 4)", "urteil": "trug", "warum": "zeigt weiter, dass fuer g(x) wieder derselbe x=2-Wert verwendet wird"},
+    {"zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip. (Wisch 4, g(2)=...=-4)", "urteil": "dekoration", "warum": "nur Tempo, das Ergebnis -4 habe ich schon selbst nachgerechnet"},
+    {"zitat": "Von der Achsenmarke 2 laeuft eine gestrichelte orange Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht -4.", "urteil": "trug", "warum": "zeigt geometrisch, wie -4 am Graphen abzulesen ist, statt dass ich es mir nur rechnerisch vorstellen muss"},
+    {"zitat": "Ein oranger Punkt landet bei (2|-4) in g(x) = x^2 - 4x.", "urteil": "trug", "warum": "markiert den Punkt direkt im Bild, den ich sonst selbst haette einzeichnen muessen"},
+    {"zitat": "Die vorbereitete Zeile erscheint Chip fuer Chip. (Wisch 4, T(2|-4))", "urteil": "dekoration", "warum": "nur Tempo, das Ergebnis T(2|-4) ist schon klar"},
+    {"zitat": "Beschriftung T(2|-4) erscheint am Punkt (2|-4), orange.", "urteil": "trug", "warum": "verbindet die Formel-Notation T(2|-4) endlich mit dem echten Punkt im Bild, wie P(x|y) aus W1"}
+  ],
+  "deutungen": [
+    {"symbol": "notwendige Bedingung", "was": "eine Formel, die erfuellt sein muss, damit x ueberhaupt ein Kandidat fuer H/T ist (hier: g'(x)=0)", "wo": "kleine Kapitaelchen-Marke ueber der Zeile g'(x)=2x-4", "quelle": "B:notwendige Bedingung: g'(x)=0"},
+    {"symbol": "hinreichende Bedingung", "was": "eine zweite Formel, die zusaetzlich bestaetigt, dass wirklich ein Hoch- oder Tiefpunkt vorliegt (hier: g''(x)!=0)", "wo": "kleine Kapitaelchen-Marke ueber der Zeile g''(x)=2", "quelle": "B:hinreichende Bedingung: g''(x)!= 0"},
+    {"symbol": "x_1", "was": "kann ich nicht deuten, warum da eine 1 als Index steht - es gibt hier doch nur eine Loesung", "wo": "in der Zeile 2x-4=0 <=> x_1=2", "quelle": "kann ich nicht deuten"},
+    {"symbol": "orange Farbe", "was": "eine Markierung, die denselben Wert (x=2 bzw. den zugehoerigen Punkt) durch die ganze Rechnung und im Bild verfolgbar macht", "wo": "an der 2 im Term, an der Achsenmarke, am Pfeil, am Kurvenstueck, am Punkt und an T(2|-4)", "quelle": "B:Eine Kopie der orangen 2 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 2 kraeftig."},
+    {"symbol": "Aufloesung", "was": "die Ankuendigung, dass jetzt das Endergebnis (der Tiefpunkt) gezeigt wird", "wo": "Ueberschrift von Wisch 4", "quelle": "B:Wisch 4 (Aufloesung):"}
+  ],
+  "zettel": [
+    "g(x)=x^2-4x wie f: notwendig g'=0->x=2, hinreichend g''!=0.",
+    "g''(2)=2>0->Tiefpunkt T(2|-4), y-Wert kommt aus g(x) nicht g'(x).",
+    "notwendig=x-Kandidat(g'=0); hinreichend=bestaetigt H/T(g''!=0). Warum? unklar, Thema fehlt.",
+    "Unklar: Rechtskurve/Linkskurve. 'g''!=0' vs Vorzeichen(H/T) - Blatt trennt das nicht klar."
+  ]
+}

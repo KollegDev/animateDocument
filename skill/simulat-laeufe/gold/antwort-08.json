@@ -1,0 +1,49 @@
+{
+  "schritte": [
+    {"text": "Oben klein steht ein Titel für das ganze Blatt - das wird wohl eine Zusammenfassung von allem.", "quelle": "B:Was bleibt als Weg?"},
+    {"text": "'Schema' - jetzt kommt die allgemeine Form, mit f statt h wie auf meinem Zettel.", "quelle": "B:Schema"},
+    {"text": "'notwendige Bedingung' ist genau das, was auf meinem Zettel als notw.Bed. steht.", "quelle": "Z:1"},
+    {"text": "f'(x_0)=0 ist h'=0 von meinem Zettel, nur mit f und der Stelle x_0 benannt.", "quelle": "B:f'(x_0)=0"},
+    {"text": "x_0 muss die gesuchte Stelle sein, an der die Tangente waagerecht liegt.", "quelle": "W:4"},
+    {"text": "'hinreichende Bedingung' passt zu hinr.Bed. auf meinem Zettel.", "quelle": "Z:1"},
+    {"text": "f''(x_0)<0 orange und daraus wird H - das ist genau '<0->H' von meinem Zettel.", "quelle": "Z:1"},
+    {"text": "Das Zeichen ∩ zwischen Bedingung und H sieht aus wie ein Hügel, passt zu einem Hochpunkt.", "quelle": "B:∩ orange"},
+    {"text": "f''(x_0)>0 blau und daraus wird T - das ist '>0->T' von meinem Zettel.", "quelle": "Z:1"},
+    {"text": "∪ sieht aus wie ein Tal, passt zu einem Tiefpunkt.", "quelle": "B:∪ blau"},
+    {"text": "H(x_0 | f(x_0)) ist die Punktschreibweise von meinem Zettel, y ist hier f(x_0).", "quelle": "Z:2"},
+    {"text": "f(x_0) als y-Wert ist genau das, was f(x) überhaupt bedeutet.", "quelle": "W:1"},
+    {"text": "Wenn f''(x_0)=0 ist, weiß ich nichts, dann muss ich das Vorzeichen von f' links und rechts prüfen wie bei der Monotonie.", "quelle": "W:6"},
+    {"text": "Das beantwortet aber nicht, warum f'' überhaupt über H oder T entscheidet - das steht immer noch nicht da.", "quelle": "keine"},
+    {"text": "Im Merksatz kommen 'Rechtskurve' und 'Linkskurve' vor - diese Wörter kannte ich noch nicht.", "quelle": "B:negativ heißt Rechtskurve, also Gipfel"},
+    {"text": "'Gipfel' und 'Tal' verstehe ich als andere Wörter für Hochpunkt und Tiefpunkt.", "quelle": "B:also Gipfel"}
+  ],
+  "stockstellen": [
+    {"art": "vorstellung", "zitat": "∩ orange", "warum": "Ich sehe nur das Symbol, keine echte Kurve, die tatsächlich wie ein Hügel gebogen ist."},
+    {"art": "vorstellung", "zitat": "Rechtskurve", "warum": "Zu diesem Wort wird keine gebogene Linie gezeigt, ich kann es mir nicht als Bild vorstellen."},
+    {"art": "glauben", "zitat": "negativ heißt Rechtskurve, also Gipfel", "warum": "Warum negative Krümmung ein Gipfel ist, wird nicht hergeleitet, wie schon in Z:4 offen war."},
+    {"art": "lastmarke", "zitat": "liefert die Kandidaten: dort ist die Tangente waagerecht", "warum": "Mehrere kurze Sätze hintereinander mit den unerklärten Fachwörtern Kandidaten, Rechtskurve und Linkskurve."},
+    {"art": "ruecksprung", "zitat": "f''(x_0)<0 orange", "warum": "Ich musste kurz zu Z:1 zurück, um zu prüfen, ob <0 wirklich zu H gehört und nicht zu T."}
+  ],
+  "bewegungen": [
+    {"zitat": "[f''(x_0)<0 orange][∩ orange]→[H(x_0 | f(x_0)) orange]", "urteil": "trug", "warum": "zeigt die Kette Bedingung-Form-Punkt auf einen Blick, das hätte ich sonst selbst zusammensetzen müssen"},
+    {"zitat": "[f''(x_0)>0 blau][∪ blau]→[T(x_0 | f(x_0)) blau]", "urteil": "trug", "warum": "gleiche Kette in Blau, festigt das Muster ohne dass ich es neu denken muss"},
+    {"zitat": "[gelb hinterlegt:] f'(x_0)=0", "urteil": "dekoration", "warum": "die gelbe Markierung sagt inhaltlich nichts, das ich nicht schon aus Z:1 wusste"},
+    {"zitat": "[Merksatz, gelb hinterlegt:]", "urteil": "dekoration", "warum": "nur eine Hervorhebung des Textes, keine zusätzliche Information zur Formel selbst"}
+  ],
+  "deutungen": [
+    {"symbol": "x_0", "was": "eine bestimmte, feste Stelle, für die f'(x_0)=0 gilt", "wo": "im gelb hinterlegten Kasten von Wisch 1", "quelle": "B:f'(x_0)=0"},
+    {"symbol": "∩", "was": "Symbol für eine hügelförmige Form, gehört zum Hochpunkt", "wo": "zwischen f''(x_0)<0 und H(x_0|f(x_0)) in Wisch 2", "quelle": "B:∩ orange"},
+    {"symbol": "∪", "was": "Symbol für eine talförmige Form, gehört zum Tiefpunkt", "wo": "zwischen f''(x_0)>0 und T(x_0|f(x_0)) in Wisch 2", "quelle": "B:∪ blau"},
+    {"symbol": "Kandidaten", "was": "die Stellen, die f'(x)=0 erfüllen, aber noch nicht sicher H oder T sind", "wo": "im Merksatz von Wisch 3", "quelle": "B:liefert die Kandidaten"},
+    {"symbol": "Rechtskurve", "was": "kann ich nicht deuten", "wo": "im Merksatz von Wisch 3", "quelle": "kann ich nicht deuten"},
+    {"symbol": "Linkskurve", "was": "kann ich nicht deuten", "wo": "im Merksatz von Wisch 3", "quelle": "kann ich nicht deuten"},
+    {"symbol": "Gipfel", "was": "anderes Wort für Hochpunkt H", "wo": "im Merksatz von Wisch 3", "quelle": "B:also Gipfel"},
+    {"symbol": "Tal", "was": "anderes Wort für Tiefpunkt T", "wo": "im Merksatz von Wisch 3", "quelle": "B:also Tal"}
+  ],
+  "zettel": [
+    "notw.Bed.: f'(x0)=0 (Kandidaten); Punkt H/T(x0|f(x0)) wie Z2.",
+    "hinr.Bed.: f''(x0)<0(∩,orange)->H=Gipfel; >0(∪,blau)->T=Tal.",
+    "f''(x0)=0: keine Entscheidung, dann Vorzeichen von f' links/rechts (W6).",
+    "Offen: warum f'' entscheidet; Rechts-/Linkskurve unklar; eˣ-Fall bleibt offen (Z3/Z4)."
+  ]
+}
