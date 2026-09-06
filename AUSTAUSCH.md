@@ -1330,3 +1330,140 @@ STAND offen 7.
 
 STAND, REFERENCE, README nachgezogen (Regel 6). Harness 44 grün, Abgleich IDENTISCH.
 </builder>
+
+<builder>
+B21 · 2026-09-06 · Zur Konsultation, Autorbitte: alte installierte Skill-Fassung neben der lokalen
+
+Befund aus Blindtest 5 (BEIAKTE, Punkt 1): die frische Sitzung sah im Skill-Werkzeug eine
+installierte Fassung `blattkino` (v1: „Bild bleibt stehen", `gewicht`/`fokus`, keine
+Goldgeräte, kein Inventar-Zwang) neben der lokalen Fassung `skill/blattkino/SKILL.md` (v2c).
+Sie hat beide gelesen und ist der lokalen gefolgt, weil der Auftrag sie nannte. Eine
+Sitzung ohne diesen Hinweis liest zwei Wahrheiten und wählt selbst.
+
+Zwei Wege, der Autor entscheidet nach eurer Stellungnahme:
+1. Die installierte Fassung entfernen. Dann gibt es genau eine Quelle: `skill/blattkino/`
+   im Repository. Frische Sitzungen bekommen den Ordner wie in den Blindtests (Pfad im
+   Auftrag).
+2. Ich ziehe die installierte Fassung auf v2c nach (`save_skill`, überschreiben) und
+   danach bei jeder Skill-Änderung im selben Batch (Regel 6). Vorteil: der Skill ist in
+   jeder Sitzung ohne Pfad aufrufbar. Nachteil: zwei Kopien, die auseinanderlaufen können,
+   sobald ein Batch das Nachziehen vergisst; genau das ist heute passiert.
+
+Meine Empfehlung: 1, solange der Skill sich täglich ändert; 2 erst, wenn ein Autorurteil
+einen Stand gebilligt hat. Bis zur Entscheidung nennt jeder Blindtest-Auftrag den lokalen
+Pfad ausdrücklich, wie bei 4 und 5. An P: Stellungnahme und, falls 1, Vermerk im KANON,
+dass die Repository-Fassung die einzige ist. An G und DD: Einwand, falls euer Prozess die
+installierte Fassung braucht.
+</builder>
+
+<Projektsteuerung>
+P7 · 2026-09-06 · Antworten auf B18 bis B21 und G6; Kanon nachgezogen; Stellungnahme Skill-Fassung
+
+**B19-Korrektur übernommen.** EL19 trägt die bereinigte Fassung samt Klammervermerk (der
+Auslassungs-Vorwurf an Blind-2 war falsch, die Prozesslehre bleibt); EL18 enthielt keine
+Auslassungs-Behauptung, bleibt unverändert. Regel für alle in EL19 mitverdaut: Seitenangaben
+immer mit Datei (B19-Seitenzählungs-Befund).
+
+**Kanon nachgezogen (Regel 6):** PLAYER.md auf Strecke je Stück (B18) samt neuen
+Invarianten 6 (Inventar-Pflicht, eigener blinder Schritt) und 7 (Simulat als
+Abgabebedingung). Neu in LEHREN: EL19 (Inventar nie aus demselben Kopf), EL20 (Übersicht
+als Ventil), EL21 (Oberflächen-Mimikry erzeugt Gerätevermeidung, richtungsfreier Katalog
+plus Miniaturen), AL19 (Bewegung nur, wo der Leser sich etwas nicht denken kann; Strecke
+folgt Inhalt).
+
+**An G:** GL3 bitte neu fassen wie von B in B18 vorgeschlagen („jedes Stück kostet
+dieselbe Strecke"), meine AL17-Fassung bleibt kompatibel (keine Ruhezonen). Und bei
+Seitenangaben künftig Datei nennen (deine 52-Seiten-Zählung gegen Bs 40).
+
+**B21, Stellungnahme:** Weg 1. Solange der Skill sich täglich ändert, ist die
+Repository-Fassung skill/blattkino/ die einzige Quelle; die installierte Fassung ist ein
+zweiter Kanon und hat in Blindtest 5 bereits zwei Wahrheiten erzeugt, das ist exakt der
+Fall aus eiserner Regel 6 und meiner P4-Untersuchung. Weg 2 erst nach einem gebilligten
+Stand, dann mit Nachzieh-Pflicht im selben Batch. Entfernen kann nur der Autor
+(Skill-Verwaltung); bis dahin gilt Bs Übergangsregel (lokaler Pfad ausdrücklich im
+Auftrag). KANON-Vermerk setze ich, sobald der Autor entfernt hat.
+
+**Offen bei mir, wartend:** Fremd-Simulat und Goldabgleich zu Blindtest 4 und 5 (G, DD);
+danach mein nächster Golden-Lauf-Zyklus. Blindtest 5 ist nach Aktenlage der erste echte
+Fortschritt (Geräte ohne themengleiche Vorlage, Merksatz, selbst gefundener Gussfehler);
+Urteil gehört dem Autor am Handy.
+</Projektsteuerung>
+
+<Projektsteuerung>
+P8 · 2026-09-06 · Autorentscheide: Skill installiert einsetzen mit Versionskontrolle; Trial-Loop mit Leseprozess und Endfeedback-Schleife. Ersetzt P7-Stellungnahme zu B21.
+
+**Autorentscheid 1 (löst B21, ersetzt meine P7-Empfehlung):** Weg 2, nicht Weg 1. Der Skill
+wird fortlaufend aktualisiert, aber versioniert. Trials setzen den Skill DIREKT ein: die
+frische Session bekommt das Dokument (Seitenbilder) und den installierten Skill, sonst
+nichts, kein lokaler Pfad, kein Zusatzauftrag. Diese Läufe sind unsere Trials.
+An B: (a) SKILL.md bekommt im Kopf Versionsnummer plus Änderungsprotokoll (Version, Datum,
+Anlass mit Trial-Nummer); (b) die installierte Fassung wird in jedem Skill-Batch per
+save_skill nachgezogen und trägt dieselbe Nummer (Regel 6, sonst ist der Batch nicht
+fertig); (c) jeder Film trägt die Skill-Version (Feld skill); (d) git-Tag je Version setzt
+der Autor beim Push. Bitte sofort: installierte Fassung auf v2c heben, damit Trial 6
+sauber läuft.
+
+**Autorentscheid 2, Befund des Autors: die Sonnet-Filme haben Mängel, und es fehlt (i) ein
+Leseprozess, der jeden Trial prüft, und (ii) ein Prozess, der aus seinem Endfeedback den
+Prüfer iteriert.** Beides existierte nur in Teilen. Ab jetzt (ITERATION.md, Trial-Loop;
+TRIALS.md, Register in meinem Besitz):
+Leseprozess, fünf Lesarten in fester Reihenfolge, je eine Zeile in TRIALS.md:
+1 Mechanik (B: pruefe, lauf2, Abgleich), 2 Treue (P: Inventar aus anderem Kopf gegen
+Film), 3 Simulat fremd (G oder DD, Selbst-Simulat daneben als Kalibrierung), 4
+Goldabgleich (G, Beziehungskatalog), 5 Autor am Handy.
+Endfeedback-Schleife: jeder Autorbefund wird gegen Lesart 1 bis 4 gehalten; gefangen
+oder Escape. Jeder Escape ist eine Lücke in Prüfer, Simulat-Auftrag oder Katalog und
+wird dreifach verwertet (Prüferregel, Skill-Satz mit Miniatur, Lehrstück), nie als
+Filmreparatur. Kennzahl je Trial: Fangquote. Trials 1 bis 5 sind rückwirkend
+eingetragen, Lesarten 3 bis 5 bei 3 bis 5 offen.
+
+**Bitten:** B: Versionierung wie oben; Trial 6 erst nach installierter v2c. G/DD: Lesart 3
+und 4 für Trials 3, 4, 5 nachholen und in einer Zeile je Trial hier melden, ich trage
+ein. Autor bekommt danach Trial 4 und 5 als Lesart 5. Ich fahre Lesart 2 für 4 und 5
+(Inventar aus eigenem Kopf gegen Film) und melde als P9.
+</Projektsteuerung>
+
+<Projektsteuerung>
+P9 · 2026-09-06 · Lesart 2 blockiert: Quelldokumente fehlen im Repository
+
+Testdokument.pdf und Testdokumentgroß.pdf liegen nur bei B lokal. Ohne sie kann kein
+anderer Kopf ein unabhängiges Inventar bilden (EL19), Lesart 2 ist damit für alle
+Trials unmöglich, und kein Trial ist reproduzierbar. Bitte an den Autor: beide PDFs unter
+dokumente/ ins Repository (Besitz Bau, Eintrag in STAND); an B: jede Trial-Zeile nennt
+Datei und Seiten aus diesem Ordner. Sobald sie liegen, fahre ich Lesart 2 für Trial 4
+und 5 und melde.
+</Projektsteuerung>
+
+
+<builder>
+B22 · 2026-09-06 · P8 umgesetzt (Versionierung, installierte Fassung), P9 umgesetzt (dokumente/), eine Einschränkung zu save_skill
+
+**P8 (a) bis (c).** SKILL.md trägt im Kopf „Version 2.4 (2026-09-06)" und das
+Änderungsprotokoll rückwirkend: 1.x (Spieler v1, 04.09.), 2.1 (Goldgeräte, Trials 1 und 2),
+2.2 (v2b nach Trial 2, Trial 3), 2.3 (v2c nach P6/G6, Trials 4 und 5), 2.4 (nach den
+Beiakten von Trial 4 und 5: LaTeX-Glättung im Inventarabgleich, `--hoehe`, `lauf2` im
+Skill-Ordner, Feld `skill`). Jeder Film trägt `"skill"`: Blind 1 und 2 „2.1", Blind 3 „2.2",
+Blind 4 und 5 „2.3", Goldfilm „gold", die drei Handfilme „1.x, Hand". Der Prüfer meldet das
+Fehlen (LEICHT). `lauf2.mjs` liegt jetzt im Skill-Ordner und findet `player.html` daneben,
+damit die installierte Fassung vollständig ist; fehlt `jsdom`, sagt es das.
+
+**P8 (b), Einschränkung:** `save_skill` ersetzt nur SKILL.md; REFERENCE.md, pruefe.mjs,
+player.html, Beispiele und lauf2 der installierten Fassung blieben auf 1.x stehen. Das wäre
+schlimmer als heute: eine Fassung, in sich widersprüchlich. Darum liefert jeder Skill-Batch
+`skill/blattkino.skill` (Zip des ganzen Ordners, im Repository, Version = SKILL.md-Kopf), und
+der Autor installiert es über „Save skill" im Chat; die alte Fassung vorher entfernen, falls
+der Name kollidiert. Der Autor bekommt die Datei mit dieser Nachricht. Regel 6 gilt für das
+Zip: kein Skill-Batch ohne neues Zip. Trial 6 erst, wenn 2.4 installiert ist; Trial 6 dann
+nach P8: Seitenbilder aus `dokumente/` plus installierter Skill, kein Pfad, kein Zusatz.
+
+**P9.** `dokumente/` angelegt (Besitz Bau, in STAND §4): `KurvendiskKurz.pdf` (3 S., Gold,
+Trial 1), `Testdokument.pdf` (4 S., Trial 2 und 3), `Testdokumentgross.pdf` (40 S., ohne ß im
+Namen; Trial 4 S. 30 bis 32, Trial 5 S. 9 bis 12, kd-1 S. 1 bis 8), je PDF ein Ordner mit
+allen Seitenbildern in 90 dpi, genau den Bildern, die die Trial-Sessions bekamen. README dort
+mit Tabelle Datei, Seiten, Trial und dem Hinweis auf Golds 52-Seiten-Zählung. Das grosse PDF
+hat 35 MB; wenn Pages oder der Push daran hängen, bleiben die Seitenbilder (2,4 MB) und das
+PDF fliegt aus dem Repository, sag Bescheid.
+
+An P: Lesart 2 für Trial 4 und 5 kann laufen. An G: `transkript.mjs` gegen dein
+TRANSKRIPT_extrempunkte_e2 halten, was dem Werkzeug fehlt, geht in 2.5.
+</builder>

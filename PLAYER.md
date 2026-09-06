@@ -8,7 +8,7 @@ Der Player ist player.html, seit 2026-09-05 v2: Kern ist der Skriptteil des Gold
 |---|---|
 | Stehende Bühne, Wischen dreht nur den Fortschritt; stufenlos; Aufbau füllt die Beatstrecke lückenlos, keine Ruhezonen | eine Mechanik, berechenbare Geste (EL7); Kontinuität ist Autorbefund (AL17/GL3) |
 | Ein Bogen = ein Blatt = ein Bildschirm; Blöcke bleiben bis Bogenende; Kreuzblende | das Blatt ist der ausgelagerte Speicher des Lesers; Verallgemeinerung nur mit Beleg auf dem Blatt (EL12/EL15) |
-| Jeder Beat kostet dieselbe Radstrecke; gewicht wird ignoriert (LEICHT im Prüfer) | gleiche Schritte, Kontrolle beim Leser (GL3) |
+| Jedes STÜCK kostet dieselbe Radstrecke; die Beatlänge folgt seinem Inhalt (beatStrecke aus der Summe der dauer-Werte, B18); gewicht ist gestrichen | ein Wisch bringt immer etwa gleich viel Neues, dünne Beats laufen nicht leer; Autorbefund „sehr viel scrollen für mindere Wirkung" |
 | Vorkompiliert: kein Laufzeit-Aufruf, keine Anmeldung, keine Sprachausgabe; sub ist sichtbarer Lesertext | Autorentscheid 2026-09-04; minimale Reibung |
 | Mobile first: Handy-Rahmen ab 700 px, Vollbild-Tor, Fortschritt senkrecht rechts | Wischgeste gegen Adresszeile |
 | Geräte-Vokabular: v1-Ops als Items plus Goldlauf-Geräte (fahrt, pfeil, flug, kappe, aufstieg, gruppe, serie, marke, merk, zeile/chip, paar, wert, doppelgraph+binden, bildfolge, zoomfolge); jedes Gerät hat eine benannte Beziehung | AL1/AL2/AL8; Farbe nur auf der bewegten Zahl (AL15), Pfeil mündet in die Klammer (AL16), teure Bewegung einmal (AL18) |
@@ -23,6 +23,8 @@ Der Player ist player.html, seit 2026-09-05 v2: Kern ist der Skriptteil des Gold
 3. Prüfer: node skill/blattkino/pruefe.mjs FILM.json PLAYER.html, Fehlercode 1 bei schwerem Befund, eine Zeile je Befund; kennt alle v2-Ops und entfaltet Serien wie der Player.
 4. Blattgrenze: neues Höhenmodell (Blatt 755, Fuge 16, Zeile 26, Legende 24, graph-Höhe Parameter; schwer erst unter Skalierung 0,68).
 5. Kein Ausliefern ohne node --check, harness2 grün und Prüfer über jeden Film; Struktur- und Textabgleich (abgleich2.mjs) ist die mechanische Vorabnahme gegen den Goldstandard.
+6. inventar ist Pflichtfeld jedes Films mit Quelldokument (SCHWER ohne; frei:true nur für Filme ohne Quelle), seitenweise mit Seitenmarken; es entsteht als eigener Schritt VOR der Reise, nie aus dem Filmguss heraus (EL19).
+7. Abgabebedingung eines Films: Transkript erzeugen (transkript.mjs), Simulat darauf ausführen, Befunde zurück in den Guss, Simulat in die Beiakte (EL16); ohne Simulat ist ein Film nicht abgegeben.
 
 ## Bodenwahrheit
 

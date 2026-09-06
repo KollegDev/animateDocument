@@ -2,6 +2,10 @@
 
 ## Die Datei
 
+Jede Datei traegt `"skill": "2.4"`, die Version aus dem Kopf von SKILL.md, mit der sie
+entstanden ist. Der Pruefer meldet das Fehlen. So ist jeder Film seiner Skill-Fassung
+zuzuordnen, auch wenn der Skill weitergezogen ist.
+
 ```json
 {
   "titel": "Definitions- und Wertebereich",
@@ -343,8 +347,9 @@ schreibt den Film als Leseerlebnis auf: Blatt für Blatt, Wisch für Wisch, jede
 eckigen Klammern mit ihrer Farbe, Serien entfaltet. Es ist die Eingabe für das Simulat
 (`SIMULAT.md`); der Simulat-Leser bekommt nur dieses Transkript, nie die Datei.
 
-`lauf2.mjs` (eine Ebene höher, `skill/lauf2.mjs`) fährt den Film im Spieler über die ganze
-Radstrecke ab und meldet, was zur Laufzeit scheitert; `pruefe.mjs` sieht das nicht.
+`lauf2.mjs` (im selben Ordner) fährt den Film im Spieler über die ganze Radstrecke ab und
+meldet, was zur Laufzeit scheitert; `pruefe.mjs` sieht das nicht. Es braucht `jsdom`
+(`npm install jsdom`, einmal). Ohne Spieler-Argument nimmt es `player.html` daneben.
 
 `beispiel-parabel.json` ist ein frei komponierter Film (`"frei": true`) für die Altgeräte
 (`plot`, `bildfolge`, `zoomfolge`, `doppelgraph`, `binden`, `wert`); `beispiel-extrempunkte.json`

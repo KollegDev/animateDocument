@@ -56,6 +56,7 @@ rohBoegen.forEach((bo,i)=>{
   } else boegen.push(bo);
 });
 if(!D.titel) B('SCHWER','Kopf','Kein "titel". Jede Datei hiesse sonst gleich.');
+if(!D.skill) B('LEICHT','Kopf','Kein Feld "skill". Trage die Version aus dem Kopf von SKILL.md ein, damit der Film seiner Skill-Fassung zuzuordnen bleibt.');
 // Das Inventar ist der Treue-Vertrag. Ohne es kann niemand pruefen, was weggelassen wurde.
 // Ein frei komponierter Film ("frei": true) hat kein Quelldokument und damit kein Inventar.
 if(D.frei===true) B('LEICHT','Kopf','frei komponierter Film: keine Treuepruefung moeglich.');

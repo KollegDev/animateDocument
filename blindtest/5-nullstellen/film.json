@@ -1,6 +1,7 @@
 {
  "titel": "y-Achsenschnittpunkt und Nullstellen",
  "quelle": "Kurvendiskussion 1, Seiten 9 bis 12",
+ "skill": "2.3",
  "inventar": "S9: (Seitenende der Symmetrie-Beispiele zu Punktsymmetrie mit Potenzfunktionen, nicht Gegenstand dieses Films.) Überschrift: y-Achsenschnittpunkt und Nullstellen. f(x)=(x-3)^{2}-4. S10: Graph von f(x)=(x-3)^{2}-4, blaue Kurve, x-Achse von -1 bis 7, y-Achse von -4 bis 8, markiert rot: y-Achsenschnittpunkt S_y(0|5), Nullstelle N_1(1|0), Nullstelle N_2(5|0). Text: Die Nullstelle ist der Schnittpunkt einer Funktion mit der x-Achse. Der y-Achsenschnittpunkt ist der Schnittpunkt einer Funktion mit der y-Achse. Wir finden beide, indem wir das jeweils andere Null setzen. Aufgabe: Gegeben ist f(x)=(x-3)^{2}-4. a) Geben Sie die Nullstellen an. b) Geben Sie den y-Achsenschnittpunkt an. Lösung a): Nullstelle (x-Wert, an dem die x-Achse geschnitten wird) ist gesucht, also y=0 (an jeder Nullstelle beträgt der y-Wert immer Null). f(x)=y=0. 0=(x-3)^{2}-4 mit dem Schritt plus 4. 4=(x-3)^{2} mit dem Schritt Wurzel ziehen. \\pm 2=x-3 mit dem Schritt plus 3. x_1=3+2=5. x_2=3-2=1. also N_1(1|0) und N_2(5|0). Wichtig: Beim Wurzelziehen gibt es immer zwei Lösungen (+ und -), deswegen bekommen wir zwei Nullstellen. S11: Lösung b): y-Achsenschnittpunkt ist gesucht, also x=0 (auf der y-Achse ist x natürlich immer Null). y=f(0)=(0-3)^{2}-4. y=9-4. y=5. also S_y(0|5). Überschrift: Weitere Beispiele. g(x)=2x^{2}-8. Nullstellen: g(x)=0. 0=2x^{2}-8 mit dem Schritt plus 8. 8=2x^{2} mit dem Schritt geteilt durch 2. 4=x^{2} mit dem Schritt Wurzel ziehen. x_1=2. x_2=-2. N_1(-2|0), N_2(2|0). y-Achsenschnittpunkt: g(0)=2\\cdot 0^{2}-8=-8. S_y(0|-8). h(x)=x^{3}-4x. Nullstellen: h(x)=0. 0=x^{3}-4x. 0=x\\cdot(x^{2}-4). x_1=0. x^{2}-4=0 mit dem Schritt plus 4. x^{2}=4 mit dem Schritt Wurzel ziehen. x_2=2. x_3=-2. N_1(0|0), N_2(2|0), N_3(-2|0). y-Achsenschnittpunkt: h(0)=0^{3}-4\\cdot 0=0. S_y(0|0). S12: k(x)=x^{2}-6x+8. Nullstellen: k(x)=0. 0=x^{2}-6x+8, p=-6, q=8. p-q-Formel x_{1,2}=3\\pm 1 nach Einsetzen und Wurzelziehen. x_1=4. x_2=2. N_1(2|0), N_2(4|0). y-Achsenschnittpunkt: k(0)=0^{2}-6\\cdot 0+8=8. S_y(0|8). m(x)=e^{x}-1. Nullstellen: m(x)=0. 0=e^{x}-1 mit dem Schritt plus 1. 1=e^{x} mit dem Schritt Logarithmus. ln(1)=x. x=0. N(0|0). y-Achsenschnittpunkt: m(0)=e^{0}-1=1-1=0. S_y(0|0). (Danach folgt die Überschrift Grenzverhalten im Unendlichen mit einer Beispielfunktion dritten Grades, nicht Gegenstand dieses Films.)",
  "boegen": [
   {
@@ -8,41 +9,148 @@
    "beats": [
     {
      "ops": [
-      {"op":"h","t":"y-Achsenschnittpunkt und Nullstellen"},
-      {"op":"zeile","teile":["f(x)=(x-3)^{2}-4"]},
-      {"op":"graph","id":"G","expr":"(x-3)^2-4","xmin":-1,"xmax":7,"ymin":-5,"ymax":9,"legend":"f(x)=(x-3)²−4","h":120,"dauer":3}
+      {
+       "op": "h",
+       "t": "y-Achsenschnittpunkt und Nullstellen"
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "f(x)=(x-3)^{2}-4"
+       ]
+      },
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "(x-3)^2-4",
+       "xmin": -1,
+       "xmax": 7,
+       "ymin": -5,
+       "ymax": 9,
+       "legend": "f(x)=(x-3)²−4",
+       "h": 120,
+       "dauer": 3
+      }
      ]
     },
     {
      "ops": [
-      {"op":"marke","t":"Nullstelle: Schnittpunkt mit der x-Achse, also y=0"},
-      {"op":"umformung","zeilen":[
-        {"tex":"0=(x-3)^{2}-4"},
-        {"tex":"4=(x-3)^{2}","warum":"plus 4"},
-        {"tex":"\\pm 2=x-3","warum":"Wurzel gezogen, das ergibt immer zwei Lösungen"}
-      ]}
+      {
+       "op": "marke",
+       "t": "Nullstelle: Schnittpunkt mit der x-Achse, also y=0"
+      },
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "0=(x-3)^{2}-4"
+        },
+        {
+         "tex": "4=(x-3)^{2}",
+         "warum": "plus 4"
+        },
+        {
+         "tex": "\\pm 2=x-3",
+         "warum": "Wurzel gezogen, das ergibt immer zwei Lösungen"
+        }
+       ]
+      }
      ]
     },
     {
      "ops": [
-      {"op":"zeile","folge":true,"teile":[
-        ["x_1=3+2=",{"tex":"5","k":0,"id":"x1"}],
-        [",\\ x_2=3-2=",{"tex":"1","k":1,"id":"x2"}]
-      ]},
-      {"op":"kandidat","id":"m0","x":5,"k":0,"text":"5"},
-      {"op":"kandidat","id":"m1","x":1,"k":1,"text":"1"},
-      {"op":"flug","von":"x1","zu":{"kandidat":"m0"},"k":0,"dauer":1.0},
-      {"op":"flug","von":"x2","zu":{"kandidat":"m1"},"k":1,"dauer":1.0},
-      {"op":"punkt","x":5,"y":0,"k":0},
-      {"op":"punkt","x":1,"y":0,"k":1},
-      {"op":"beschriftung","x":5,"y":0,"text":"N₂(5|0)","k":0,"dauer":0.6},
-      {"op":"beschriftung","x":1,"y":0,"text":"N₁(1|0)","k":1,"dauer":0.6}
+      {
+       "op": "zeile",
+       "folge": true,
+       "teile": [
+        [
+         "x_1=3+2=",
+         {
+          "tex": "5",
+          "k": 0,
+          "id": "x1"
+         }
+        ],
+        [
+         ",\\ x_2=3-2=",
+         {
+          "tex": "1",
+          "k": 1,
+          "id": "x2"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "kandidat",
+       "id": "m0",
+       "x": 5,
+       "k": 0,
+       "text": "5"
+      },
+      {
+       "op": "kandidat",
+       "id": "m1",
+       "x": 1,
+       "k": 1,
+       "text": "1"
+      },
+      {
+       "op": "flug",
+       "von": "x1",
+       "zu": {
+        "kandidat": "m0"
+       },
+       "k": 0,
+       "dauer": 1.0
+      },
+      {
+       "op": "flug",
+       "von": "x2",
+       "zu": {
+        "kandidat": "m1"
+       },
+       "k": 1,
+       "dauer": 1.0
+      },
+      {
+       "op": "punkt",
+       "x": 5,
+       "y": 0,
+       "k": 0
+      },
+      {
+       "op": "punkt",
+       "x": 1,
+       "y": 0,
+       "k": 1
+      },
+      {
+       "op": "beschriftung",
+       "x": 5,
+       "y": 0,
+       "text": "N₂(5|0)",
+       "k": 0,
+       "dauer": 0.6
+      },
+      {
+       "op": "beschriftung",
+       "x": 1,
+       "y": 0,
+       "text": "N₁(1|0)",
+       "k": 1,
+       "dauer": 0.6
+      }
      ]
     },
     {
      "payoff": true,
      "ops": [
-      {"op":"math","tex":"N_1(1|0),\\ N_2(5|0)","hl":true}
+      {
+       "op": "math",
+       "tex": "N_1(1|0),\\ N_2(5|0)",
+       "hl": true
+      }
      ]
     }
    ]
@@ -52,32 +160,84 @@
    "beats": [
     {
      "ops": [
-      {"op":"satz","t":"y-Achsenschnittpunkt: Schnittpunkt mit der y-Achse."},
-      {"op":"zeile","teile":["f(x)=(x-3)^{2}-4"]},
-      {"op":"graph","id":"G","expr":"(x-3)^2-4","xmin":-1,"xmax":7,"ymin":-5,"ymax":9,"legend":"f(x)=(x-3)²−4","h":110,"dauer":2}
+      {
+       "op": "satz",
+       "t": "y-Achsenschnittpunkt: Schnittpunkt mit der y-Achse."
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "f(x)=(x-3)^{2}-4"
+       ]
+      },
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "(x-3)^2-4",
+       "xmin": -1,
+       "xmax": 7,
+       "ymin": -5,
+       "ymax": 9,
+       "legend": "f(x)=(x-3)²−4",
+       "h": 110,
+       "dauer": 2
+      }
      ]
     },
     {
      "ops": [
-      {"op":"satz","t":"Auf der y-Achse ist x immer Null."},
-      {"op":"kandidat","id":"y0","x":0,"text":"0","sofort":true}
+      {
+       "op": "satz",
+       "t": "Auf der y-Achse ist x immer Null."
+      },
+      {
+       "op": "kandidat",
+       "id": "y0",
+       "x": 0,
+       "text": "0",
+       "sofort": true
+      }
      ]
     },
     {
      "ops": [
-      {"op":"umformung","zeilen":[
-        {"tex":"y=f(0)=(0-3)^{2}-4"},
-        {"tex":"y=9-4","warum":"Klammer berechnet"},
-        {"tex":"y=5","warum":"zusammengefasst"}
-      ]}
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "y=f(0)=(0-3)^{2}-4"
+        },
+        {
+         "tex": "y=9-4",
+         "warum": "Klammer berechnet"
+        },
+        {
+         "tex": "y=5",
+         "warum": "zusammengefasst"
+        }
+       ]
+      }
      ]
     },
     {
      "payoff": true,
      "ops": [
-      {"op":"aufstieg","x":0,"y":5,"text":"5"},
-      {"op":"punkt","x":0,"y":5},
-      {"op":"math","tex":"S_y(0|5)","hl":true}
+      {
+       "op": "aufstieg",
+       "x": 0,
+       "y": 5,
+       "text": "5"
+      },
+      {
+       "op": "punkt",
+       "x": 0,
+       "y": 5
+      },
+      {
+       "op": "math",
+       "tex": "S_y(0|5)",
+       "hl": true
+      }
      ]
     }
    ]
@@ -87,32 +247,116 @@
     "vorlage": [
      {
       "ops": [
-       {"op":"zeile","teile":["{{f}}"]},
-       {"op":"graph","id":"G","expr":"{{expr}}","xmin":"{{xmin}}","xmax":"{{xmax}}","ymin":"{{ymin}}","ymax":"{{ymax}}","legend":"{{legend}}","h":"{{h}}","dauer":2}
+       {
+        "op": "zeile",
+        "teile": [
+         "{{f}}"
+        ]
+       },
+       {
+        "op": "graph",
+        "id": "G",
+        "expr": "{{expr}}",
+        "xmin": "{{xmin}}",
+        "xmax": "{{xmax}}",
+        "ymin": "{{ymin}}",
+        "ymax": "{{ymax}}",
+        "legend": "{{legend}}",
+        "h": "{{h}}",
+        "dauer": 2
+       }
       ]
      },
      {
       "ops": [
-       {"op":"marke","t":"Nullstellen: \\({{n}}(x)=0\\)"},
-       {"op":"umformung","zeilen":"{{schritte}}"},
-       {"op":"zeile","folge":true,"teile":"{{loes}}"},
-       {"je":"kand","dann":[
-         {"op":"kandidat","id":"m{{k}}","x":"{{x}}","k":"{{k}}","text":"{{xt}}"},
-         {"op":"flug","von":"x{{k}}","zu":{"kandidat":"m{{k}}"},"k":"{{k}}","dauer":0.9},
-         {"op":"punkt","x":"{{x}}","y":0,"k":"{{k}}"},
-         {"op":"beschriftung","x":"{{x}}","y":0,"text":"{{nt}}","k":"{{k}}","dauer":0.6}
-       ]}
+       {
+        "op": "marke",
+        "t": "Nullstellen: \\({{n}}(x)=0\\)"
+       },
+       {
+        "op": "umformung",
+        "zeilen": "{{schritte}}"
+       },
+       {
+        "op": "zeile",
+        "folge": true,
+        "teile": "{{loes}}"
+       },
+       {
+        "je": "kand",
+        "dann": [
+         {
+          "op": "kandidat",
+          "id": "m{{k}}",
+          "x": "{{x}}",
+          "k": "{{k}}",
+          "text": "{{xt}}"
+         },
+         {
+          "op": "flug",
+          "von": "x{{k}}",
+          "zu": {
+           "kandidat": "m{{k}}"
+          },
+          "k": "{{k}}",
+          "dauer": 0.9
+         },
+         {
+          "op": "punkt",
+          "x": "{{x}}",
+          "y": 0,
+          "k": "{{k}}"
+         },
+         {
+          "op": "beschriftung",
+          "x": "{{x}}",
+          "y": 0,
+          "text": "{{nt}}",
+          "k": "{{k}}",
+          "dauer": 0.6
+         }
+        ]
+       }
       ]
      },
      {
       "payoff": true,
       "ops": [
-       {"op":"marke","t":"y-Achsenschnittpunkt: \\({{n}}(0)\\)"},
-       {"op":"kandidat","id":"y0","x":0,"text":"0","sofort":true},
-       {"op":"umformung","zeilen":[{"tex":"{{f0eq}}"}]},
-       {"op":"aufstieg","x":0,"y":"{{y0}}","text":"{{y0t}}"},
-       {"op":"punkt","x":0,"y":"{{y0}}"},
-       {"op":"math","tex":"{{ergS}}","hl":true}
+       {
+        "op": "marke",
+        "t": "y-Achsenschnittpunkt: \\({{n}}(0)\\)"
+       },
+       {
+        "op": "kandidat",
+        "id": "y0",
+        "x": 0,
+        "text": "0",
+        "sofort": true
+       },
+       {
+        "op": "umformung",
+        "zeilen": [
+         {
+          "tex": "{{f0eq}}"
+         }
+        ]
+       },
+       {
+        "op": "aufstieg",
+        "x": 0,
+        "y": "{{y0}}",
+        "text": "{{y0t}}"
+       },
+       {
+        "op": "punkt",
+        "x": 0,
+        "y": "{{y0}}"
+       },
+       {
+        "op": "math",
+        "tex": "{{ergS}}",
+        "hl": true
+       }
       ]
      }
     ],
@@ -122,19 +366,65 @@
       "n": "g",
       "expr": "2*x^2-8",
       "legend": "g(x)=2x²−8",
-      "xmin": -3.5, "xmax": 3.5, "ymin": -9, "ymax": 4, "h": 110,
+      "xmin": -3.5,
+      "xmax": 3.5,
+      "ymin": -9,
+      "ymax": 4,
+      "h": 110,
       "f": "g(x)=2x^{2}-8",
       "schritte": [
-       {"tex":"0=2x^{2}-8"},
-       {"tex":"8=2x^{2}"},
-       {"tex":"4=x^{2}"},
-       {"tex":"x=\\pm 2","warum":"plus 8, geteilt durch 2, Wurzel gezogen"}
+       {
+        "tex": "0=2x^{2}-8"
+       },
+       {
+        "tex": "8=2x^{2}"
+       },
+       {
+        "tex": "4=x^{2}"
+       },
+       {
+        "tex": "x=\\pm 2",
+        "warum": "plus 8, geteilt durch 2, Wurzel gezogen"
+       }
       ],
-      "loes": [["x_1=",{"tex":"2","k":0,"id":"x0"}],[",\\ x_2=",{"tex":"-2","k":1,"id":"x1"}]],
-      "kand": [{"k":0,"x":2,"xt":"2","nt":"N₂(2|0)"},{"k":1,"x":-2,"xt":"-2","nt":"N₁(-2|0)"}],
-      "ergN": ["N_1(-2\\,|\\,0),\\ N_2(2\\,|\\,0)"],
+      "loes": [
+       [
+        "x_1=",
+        {
+         "tex": "2",
+         "k": 0,
+         "id": "x0"
+        }
+       ],
+       [
+        ",\\ x_2=",
+        {
+         "tex": "-2",
+         "k": 1,
+         "id": "x1"
+        }
+       ]
+      ],
+      "kand": [
+       {
+        "k": 0,
+        "x": 2,
+        "xt": "2",
+        "nt": "N₂(2|0)"
+       },
+       {
+        "k": 1,
+        "x": -2,
+        "xt": "-2",
+        "nt": "N₁(-2|0)"
+       }
+      ],
+      "ergN": [
+       "N_1(-2\\,|\\,0),\\ N_2(2\\,|\\,0)"
+      ],
       "f0eq": "g(0)=2\\cdot 0^{2}-8=-8",
-      "y0": -8, "y0t": "-8",
+      "y0": -8,
+      "y0t": "-8",
       "ergS": "S_y(0|-8)"
      },
      {
@@ -142,19 +432,80 @@
       "n": "h",
       "expr": "x^3-4*x",
       "legend": "h(x)=x³−4x",
-      "xmin": -3, "xmax": 3, "ymin": -5, "ymax": 5, "h": 105,
+      "xmin": -3,
+      "xmax": 3,
+      "ymin": -5,
+      "ymax": 5,
+      "h": 105,
       "f": "h(x)=x^{3}-4x",
       "schritte": [
-       {"tex":"0=x^{3}-4x"},
-       {"tex":"0=x\\cdot(x^{2}-4)","warum":"x ausgeklammert"},
-       {"tex":"x^{2}-4=0"},
-       {"tex":"x=\\pm 2","warum":"zweiter Faktor gleich Null, plus 4, Wurzel gezogen"}
+       {
+        "tex": "0=x^{3}-4x"
+       },
+       {
+        "tex": "0=x\\cdot(x^{2}-4)",
+        "warum": "x ausgeklammert"
+       },
+       {
+        "tex": "x^{2}-4=0"
+       },
+       {
+        "tex": "x=\\pm 2",
+        "warum": "zweiter Faktor gleich Null, plus 4, Wurzel gezogen"
+       }
       ],
-      "loes": [["x_1=",{"tex":"0","k":0,"id":"x0"}],[",\\ x_2=",{"tex":"2","k":1,"id":"x1"}],[",\\ x_3=",{"tex":"-2","k":2,"id":"x2"}]],
-      "kand": [{"k":0,"x":0,"xt":"0","nt":"N₁(0|0)"},{"k":1,"x":2,"xt":"2","nt":"N₂(2|0)"},{"k":2,"x":-2,"xt":"-2","nt":"N₃(-2|0)"}],
-      "ergN": ["N_1(0\\,|\\,0),\\ N_2(2\\,|\\,0),\\ N_3(-2\\,|\\,0)"],
+      "loes": [
+       [
+        "x_1=",
+        {
+         "tex": "0",
+         "k": 0,
+         "id": "x0"
+        }
+       ],
+       [
+        ",\\ x_2=",
+        {
+         "tex": "2",
+         "k": 1,
+         "id": "x1"
+        }
+       ],
+       [
+        ",\\ x_3=",
+        {
+         "tex": "-2",
+         "k": 2,
+         "id": "x2"
+        }
+       ]
+      ],
+      "kand": [
+       {
+        "k": 0,
+        "x": 0,
+        "xt": "0",
+        "nt": "N₁(0|0)"
+       },
+       {
+        "k": 1,
+        "x": 2,
+        "xt": "2",
+        "nt": "N₂(2|0)"
+       },
+       {
+        "k": 2,
+        "x": -2,
+        "xt": "-2",
+        "nt": "N₃(-2|0)"
+       }
+      ],
+      "ergN": [
+       "N_1(0\\,|\\,0),\\ N_2(2\\,|\\,0),\\ N_3(-2\\,|\\,0)"
+      ],
       "f0eq": "h(0)=0^{3}-4\\cdot 0=0",
-      "y0": 0, "y0t": "0",
+      "y0": 0,
+      "y0t": "0",
       "ergS": "S_y(0|0)"
      },
      {
@@ -162,19 +513,67 @@
       "n": "k",
       "expr": "x^2-6*x+8",
       "legend": "k(x)=x²−6x+8",
-      "xmin": -1, "xmax": 7, "ymin": -2, "ymax": 9, "h": 105,
+      "xmin": -1,
+      "xmax": 7,
+      "ymin": -2,
+      "ymax": 9,
+      "h": 105,
       "f": "k(x)=x^{2}-6x+8",
       "schritte": [
-       {"tex":"0=x^{2}-6x+8, \\ p=-6,\\ q=8"},
-       {"tex":"x_{1,2}=-\\frac{p}{2}\\pm \\sqrt{\\left(\\frac{p}{2}\\right)^{2}-q}","warum":"p-q-Formel"},
-       {"tex":"x_{1,2}=3\\pm \\sqrt{9-8}","warum":"eingesetzt"},
-       {"tex":"x_{1,2}=3\\pm 1","warum":"Wurzel gezogen"}
+       {
+        "tex": "0=x^{2}-6x+8, \\ p=-6,\\ q=8"
+       },
+       {
+        "tex": "x_{1,2}=-\\frac{p}{2}\\pm \\sqrt{\\left(\\frac{p}{2}\\right)^{2}-q}",
+        "warum": "p-q-Formel"
+       },
+       {
+        "tex": "x_{1,2}=3\\pm \\sqrt{9-8}",
+        "warum": "eingesetzt"
+       },
+       {
+        "tex": "x_{1,2}=3\\pm 1",
+        "warum": "Wurzel gezogen"
+       }
       ],
-      "loes": [["x_1=",{"tex":"4","k":0,"id":"x0"}],[",\\ x_2=",{"tex":"2","k":1,"id":"x1"}]],
-      "kand": [{"k":0,"x":4,"xt":"4","nt":"N₂(4|0)"},{"k":1,"x":2,"xt":"2","nt":"N₁(2|0)"}],
-      "ergN": ["N_1(2\\,|\\,0),\\ N_2(4\\,|\\,0)"],
+      "loes": [
+       [
+        "x_1=",
+        {
+         "tex": "4",
+         "k": 0,
+         "id": "x0"
+        }
+       ],
+       [
+        ",\\ x_2=",
+        {
+         "tex": "2",
+         "k": 1,
+         "id": "x1"
+        }
+       ]
+      ],
+      "kand": [
+       {
+        "k": 0,
+        "x": 4,
+        "xt": "4",
+        "nt": "N₂(4|0)"
+       },
+       {
+        "k": 1,
+        "x": 2,
+        "xt": "2",
+        "nt": "N₁(2|0)"
+       }
+      ],
+      "ergN": [
+       "N_1(2\\,|\\,0),\\ N_2(4\\,|\\,0)"
+      ],
       "f0eq": "k(0)=0^{2}-6\\cdot 0+8=8",
-      "y0": 8, "y0t": "8",
+      "y0": 8,
+      "y0t": "8",
       "ergS": "S_y(0|8)"
      },
      {
@@ -182,18 +581,49 @@
       "n": "m",
       "expr": "exp(x)-1",
       "legend": "m(x)=eˣ−1",
-      "xmin": -3, "xmax": 2, "ymin": -2, "ymax": 4, "h": 100,
+      "xmin": -3,
+      "xmax": 2,
+      "ymin": -2,
+      "ymax": 4,
+      "h": 100,
       "f": "m(x)=e^{x}-1",
       "schritte": [
-       {"tex":"0=e^{x}-1"},
-       {"tex":"1=e^{x}","warum":"plus 1"},
-       {"tex":"\\ln(1)=x","warum":"Logarithmus angewendet, x=0"}
+       {
+        "tex": "0=e^{x}-1"
+       },
+       {
+        "tex": "1=e^{x}",
+        "warum": "plus 1"
+       },
+       {
+        "tex": "\\ln(1)=x",
+        "warum": "Logarithmus angewendet, x=0"
+       }
       ],
-      "loes": [["x=",{"tex":"0","k":0,"id":"x0"}]],
-      "kand": [{"k":0,"x":0,"xt":"0","nt":"N(0|0)"}],
-      "ergN": ["N(0\\,|\\,0)"],
+      "loes": [
+       [
+        "x=",
+        {
+         "tex": "0",
+         "k": 0,
+         "id": "x0"
+        }
+       ]
+      ],
+      "kand": [
+       {
+        "k": 0,
+        "x": 0,
+        "xt": "0",
+        "nt": "N(0|0)"
+       }
+      ],
+      "ergN": [
+       "N(0\\,|\\,0)"
+      ],
       "f0eq": "m(0)=e^{0}-1=1-1=0",
-      "y0": 0, "y0t": "0",
+      "y0": 0,
+      "y0t": "0",
       "ergS": "S_y(0|0)"
      }
     ]
@@ -204,28 +634,81 @@
    "beats": [
     {
      "ops": [
-      {"op":"h","t":"Schema"},
-      {"op":"tabelle","art":"serie","kopf":["Funktion","Nullstellen","y-Achsenschnittpunkt"],"zeilen":[
-        ["f(x)=(x-3)^{2}-4","N_1(1\\,|\\,0),\\ N_2(5\\,|\\,0)","S_y(0|5)"],
-        ["g(x)=2x^{2}-8","N_1(-2\\,|\\,0),\\ N_2(2\\,|\\,0)","S_y(0|-8)"],
-        ["h(x)=x^{3}-4x","N_1(0\\,|\\,0),\\ N_2(2\\,|\\,0),\\ N_3(-2\\,|\\,0)","S_y(0|0)"],
-        ["k(x)=x^{2}-6x+8","N_1(2\\,|\\,0),\\ N_2(4\\,|\\,0)","S_y(0|8)"],
-        ["m(x)=e^{x}-1","N(0\\,|\\,0)","S_y(0|0)"]
-      ]}
+      {
+       "op": "h",
+       "t": "Schema"
+      },
+      {
+       "op": "tabelle",
+       "art": "serie",
+       "kopf": [
+        "Funktion",
+        "Nullstellen",
+        "y-Achsenschnittpunkt"
+       ],
+       "zeilen": [
+        [
+         "f(x)=(x-3)^{2}-4",
+         "N_1(1\\,|\\,0),\\ N_2(5\\,|\\,0)",
+         "S_y(0|5)"
+        ],
+        [
+         "g(x)=2x^{2}-8",
+         "N_1(-2\\,|\\,0),\\ N_2(2\\,|\\,0)",
+         "S_y(0|-8)"
+        ],
+        [
+         "h(x)=x^{3}-4x",
+         "N_1(0\\,|\\,0),\\ N_2(2\\,|\\,0),\\ N_3(-2\\,|\\,0)",
+         "S_y(0|0)"
+        ],
+        [
+         "k(x)=x^{2}-6x+8",
+         "N_1(2\\,|\\,0),\\ N_2(4\\,|\\,0)",
+         "S_y(0|8)"
+        ],
+        [
+         "m(x)=e^{x}-1",
+         "N(0\\,|\\,0)",
+         "S_y(0|0)"
+        ]
+       ]
+      }
      ]
     },
     {
      "ops": [
-      {"op":"marke","t":"Nullstelle"},
-      {"op":"zeile","teile":["y=0"],"hl":true},
-      {"op":"marke","t":"y-Achsenschnittpunkt"},
-      {"op":"zeile","teile":["x=0"],"hl":true}
+      {
+       "op": "marke",
+       "t": "Nullstelle"
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "y=0"
+       ],
+       "hl": true
+      },
+      {
+       "op": "marke",
+       "t": "y-Achsenschnittpunkt"
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "x=0"
+       ],
+       "hl": true
+      }
      ]
     },
     {
      "payoff": true,
      "ops": [
-      {"op":"merk","t":"Die Nullstelle verlangt y=0, aufgelöst nach x. Der y-Achsenschnittpunkt verlangt x=0, eingesetzt in die Funktion."}
+      {
+       "op": "merk",
+       "t": "Die Nullstelle verlangt y=0, aufgelöst nach x. Der y-Achsenschnittpunkt verlangt x=0, eingesetzt in die Funktion."
+      }
      ]
     }
    ]

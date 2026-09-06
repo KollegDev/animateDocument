@@ -114,14 +114,15 @@ Die vier Geräte, in denen Scrollen dem Papier überlegen ist, alle freiwillig:
 | `skill/blattkino/transkript.mjs` | schreibt den Film als Leseerlebnis (Blatt, Wisch, Bewegung, Farbe); Eingabe des Simulats |
 | `skill/blattkino/SIMULAT.md` | Simulat-Auftrag (Fassung Gold); im Skill Abgabebedingung |
 | `skill/harness2.mjs` | 43 mechanische Tests über jsdom |
-| `skill/lauf2.mjs` | fährt einen Film über die ganze Radstrecke, zählt Fehler, `--dump` zeigt die Struktur |
+| `skill/blattkino/lauf2.mjs` | fährt einen Film über die ganze Radstrecke, zählt Fehler, `--dump` zeigt die Struktur; liegt im Skill, damit die installierte Fassung vollständig ist |
 | `skill/abgleich2.mjs` | Vorabnahme: Filmdatei gegen gold/extrempunkte.html, Struktur, Fenster, Text |
 | `filme/*.json` | die ausgelieferten Filme, einzige Quelle; `bauen.sh` spiegelt den Goldfilm in den Skill |
 | `blindtest/<n>/` | je Blindlauf `film.json` plus Beiakte, vom Katalog direkt verlinkt |
+| `dokumente/` | die Quell-PDFs der Trials mit Seitenbildern (90 dpi); Seitenangaben im Projekt beziehen sich darauf (P9) |
 
 Ablauf einer Änderung am Player: `quelle/v2/` ändern, `bash quelle/bauen.sh`,
 `node skill/harness2.mjs`, `node skill/abgleich2.mjs` (muss IDENTISCH melden), `node
-skill/lauf2.mjs FILM` je Film. Ein Umbau ist erst fertig, wenn STAND und REFERENCE im
+skill/blattkino/lauf2.mjs FILM` je Film. Ein Umbau ist erst fertig, wenn STAND und REFERENCE im
 selben Batch nachgezogen sind (eiserne Regel 6).
 
 Der Prüfer misst unter anderem: passt ein Bogen auf ein Blatt (755 Pixel, ein Graph nach
@@ -175,10 +176,12 @@ Bögen).
    Inventarabgleich fängt den Fall bisher indirekt. Überflieg-Ersatz aus DD6 als Ausgabe
    fehlt.
 6. Haiku-Lauf des Skills steht aus.
-7. Im Skill-Werkzeug der Sitzungen liegt eine ältere installierte Fassung des Skills
-   (`anthropic-skills:blattkino`, v1 mit `gewicht`/`fokus`); Blindtest 5 hat beide gesehen und
-   ist der lokalen gefolgt. Die installierte Fassung muss der Autor nachziehen oder
-   entfernen, sonst lesen frische Sitzungen zwei Wahrheiten.
+7. Installierte Skill-Fassung (Autorentscheid P8, Weg 2): die im Skill-Werkzeug installierte
+   Fassung ist noch 1.x. `save_skill` ersetzt nur SKILL.md und liesse REFERENCE, Prüfer und
+   Spieler alt; darum liefert jeder Skill-Batch eine `blattkino.skill` (Zip des Ordners), die
+   der Autor über „Save skill" installiert. Bis 2.4 installiert ist, läuft kein Trial 6.
+   Versionierung: Kopf von SKILL.md, Feld `skill` in jedem Film, git-Tag je Version durch den
+   Autor beim Push.
 
 ## 6. Entschiedenes, mit Grund
 

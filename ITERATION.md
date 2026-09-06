@@ -18,3 +18,18 @@ Der Iterationsprozess dieses Projekts, dem Autorenprojekt nachgebaut. Bodenwahrh
 - Hohe Signale (Autorworte, Debugging-Bodenwahrheiten) leben ausschließlich in LEHREN_ANIMATION.md; wer eine Erkenntnis nur im Chat hat, hat sie nicht.
 - Das Autorenprojekt (C:\Users\Dell\Downloads\Projekte\animateDocuments\Autorenprojekt) ist die eingefrorene didaktische Quelle. Es wird gelesen, nie verändert; bei Widerspruch zwischen einer Animationsregel und einer Autorlehre dort gewinnt die Autorlehre, und der Widerspruch wird als Fallgeschichte notiert.
 - Berichte sind Zeilen; Lobprosa und Nacherzählung sind die Token-Form des Schauspielens.
+
+## Der Trial-Loop (Autorentscheid 2026-09-06)
+
+Ein Trial = frische Session bekommt NUR Dokument plus installierten Skill (versioniert), sonst nichts, und liefert Film, Inventar, Beiakte mit Storyboard, Transkript und Selbst-Simulat. Danach der **Leseprozess**, fünf Lesarten in fester Reihenfolge, jede eine Zeile in TRIALS.md:
+
+1. **Mechanik** (Bau): pruefe.mjs, lauf2, Abgleich wo einschlägig.
+2. **Treue** (Steuerung): Inventar der Seiten aus einem ANDEREN Kopf (EL19) gegen den Film; Auslassung, Erfindung, fremde Notation.
+3. **Simulat fremd** (G oder DD): SIMULAT_AUFTRAG auf dem Transkript; Selbst-Simulat der Session daneben, Differenz kalibriert das Simulat.
+4. **Goldabgleich** (G): entlang des Beziehungskatalogs; Gerätevermeidung, Gerätemissbrauch, Choreographie.
+5. **Autor-Endfeedback** am Handy: Bodenwahrheit.
+
+Dann die **Methodenschleife rückwärts**: Jeder Autorbefund wird gegen die Lesarten 1 bis 4 gehalten. Hat eine Lesart ihn vorab gefunden, ist er gefangen. Hat keine ihn gefunden, ist er ein Escape, und ein Escape ist immer eine Lücke im Prüfer, im Simulat-Auftrag oder im Katalog, nie nur ein Filmfehler; er wird dreifach verwertet: Prüferregel (mechanisch, wenn fassbar), Skill-Satz mit Miniatur (L26), Lehrstück in LEHREN_ANIMATION. Der Film selbst wird nie repariert (Iteration am Skill, nie am Film der blinden Session, G3). Ergebnis ist eine neue Skill-Version, und der nächste Trial läuft mit ihr.
+
+**Versionskontrolle des Skills:** SKILL.md trägt im Kopf eine Versionsnummer und ein Änderungsprotokoll (Version, Datum, Anlass mit Trial-Nummer); die installierte Fassung wird im selben Batch nachgezogen (Regel 6) und trägt dieselbe Nummer; git-Tag je Version beim Autor-Push. Jeder Film trägt die Skill-Version im Feld quelle oder skill.
+

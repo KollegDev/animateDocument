@@ -13,6 +13,7 @@ Jede Datei hat genau einen Status und einen Besitzer. Neue Dateien nur mit Eintr
 | PLAYER.md | didaktischer Grund der Bauform, Invarianten der Schnittstellen |
 | ITERATION.md | Verbesserungs-Loop, Golden-Lauf, Methodenschleife |
 | LAUFKARTE.md | eine Zeile pro Steuerungs-Iteration |
+| TRIALS.md | Register der Blindläufe: Skill-Version, Dokument, fünf Lesarten, Autorurteil, Escapes und Regeln; Kennzahl Fangquote |
 
 ## Kanonisch: Bau (Besitz Bau-Session; Steuerung fasst nie an, Bitten über AUSTAUSCH)
 

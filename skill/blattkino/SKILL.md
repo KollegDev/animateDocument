@@ -5,6 +5,20 @@ description: Verwandelt ein Dokument in eine scrollgesteuerte, didaktisch gefueh
 
 # Blattkino
 
+**Version 2.4 (2026-09-06).** Jeder Film traegt diese Nummer im Feld `"skill"`.
+
+Aenderungsprotokoll (Version, Datum, Anlass):
+- 2.4, 2026-09-06: nach den Beiakten von Trial 4 und 5: LaTeX-Glaettung im Inventarabgleich
+  (`\pm\sqrt{}`, verschachtelte Klammern), `pruefe --hoehe`, `lauf2` im Skill-Ordner, Feld
+  `skill`, Inventar-Feld gegen `INVENTAR.md` abgegrenzt, zwei Kappen am Wendepunkt.
+- 2.3, 2026-09-06: nach Trial 2 und 3 (P6, G6): Storyboard als Pflichtschritt, Katalog
+  richtungsfrei mit Miniaturen, Simulat als Abgabebedingung, `transkript.mjs`, Lexika fuer
+  Plan-Leak und Regieanweisung, Farbe ohne Beziehung. Trials 4 und 5.
+- 2.2, 2026-09-05: nach Trial 2 (Autorbefund): Inventar zuerst, jeder Beat zeigt etwas,
+  hoechstens eine Uebersicht, jedes Einsetzen ein Pfeil, Strecke je Stueck. Trial 3.
+- 2.1, 2026-09-05: Goldgeraete und Spieler v2. Trials 1 und 2.
+- 1.x, 2026-09-04: Spieler v1 (`gewicht`, `fokus`). Abgeloest.
+
 ## Was hier entsteht
 
 Eine einzelne HTML-Datei. Kein Konto, keine Anmeldung, kein Server. Man scrollt, und
@@ -342,9 +356,10 @@ node pruefe.mjs film.json player.html --hoehe    # dazu das Hoehenmodell je Boge
 node lauf2.mjs film.json player.html             # ganze Radstrecke, muss 0 Fehler melden
 ```
 
-`lauf2.mjs` liegt eine Ebene ueber diesem Ordner (`skill/lauf2.mjs`); es faehrt den Film
-im Spieler ab und meldet jede Operation, die zur Laufzeit scheitert (falsche Chip-Kennung,
-Pfeil ohne Ziel). `pruefe.mjs` sieht das nicht, weil es nur die Datei liest.
+`lauf2.mjs` liegt im selben Ordner; es faehrt den Film im Spieler ab und meldet jede
+Operation, die zur Laufzeit scheitert (falsche Chip-Kennung, Pfeil ohne Ziel). `pruefe.mjs`
+sieht das nicht, weil es nur die Datei liest. `lauf2` braucht `jsdom`; fehlt es, sagt es
+das und `npm install jsdom` behebt es.
 
 Der Pruefer meldet Befunde, kein Lob. Jeder schwere Befund wird behoben, bevor gebaut
 wird. Ein Qualitaetsmangel wird nie am Satz repariert: **giesse den Bogen neu**, mit
