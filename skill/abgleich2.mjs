@@ -35,7 +35,11 @@ function dump(w,SZENEN){
   });
 }
 // Gold
-const gold=welt(fs.readFileSync(path.join(wurzel,'gold','extrempunkte.html'),'utf8'));
+// Gold-Lesart: der Goldlauf ist eingefroren, aber der Autor hat am 2026-09-07 befunden, dass Zahlen
+// zu schnell fliegen; seither kostet ein Flug im Spieler mindestens 2. Der Vergleich liest den Goldlauf
+// mit derselben Untergrenze, damit nur echte Abweichungen gemeldet werden (gold/ bleibt unangetastet).
+const goldHtml=fs.readFileSync(path.join(wurzel,'gold','extrempunkte.html'),'utf8').replace('stueck(it,o.dauer||1.2)','stueck(it,Math.max(2,o.dauer||2.4))');
+const gold=welt(goldHtml);
 await warten(gold,()=>gold.__innen.bereit());
 const G=dump(gold,gold.__innen.SZENEN);
 // Meine Fassung

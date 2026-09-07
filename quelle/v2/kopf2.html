@@ -6,26 +6,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#191c20" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#f4f5f2; --ink:#1f2429; --muted:#66717c; --line:#d3d8d3; --grid:#e4e8e3; --axis:#8a939b;
-  --curve:#3a434e; --hl:#fff3c9; --hlb:#dcb53a; --frage:#4d6376;
+  --bg:#f4f5f2; --ink:#1b2024; --muted:#59646e; --line:#d3d8d3; --grid:#e4e8e3; --axis:#8a939b;
+  --curve:#3a434e; --hl:#fff3c9; --hlb:#dcb53a; --frage:#3f5668;
   --k0:#c8502a; --k1:#2361a6; --k2:#2b8a5c; --k3:#7c3aed;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#191c20; --ink:#e6e4de; --muted:#9aa3ad; --line:#353b42; --grid:#272c32; --axis:#7d858e;
-  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#9fb4c6;
+  --bg:#191c20; --ink:#ede9e1; --muted:#b0b8c1; --line:#353b42; --grid:#272c32; --axis:#7d858e;
+  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#b7c6d4;
   --k0:#ea734c; --k1:#6ea2e8; --k2:#5cbd8c; --k3:#b08cf5; } }
 :root[data-theme="dark"]{
-  --bg:#191c20; --ink:#e6e4de; --muted:#9aa3ad; --line:#353b42; --grid:#272c32; --axis:#7d858e;
-  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#9fb4c6;
+  --bg:#191c20; --ink:#ede9e1; --muted:#b0b8c1; --line:#353b42; --grid:#272c32; --axis:#7d858e;
+  --curve:#cdd1d6; --hl:#3a3418; --hlb:#c9a900; --frage:#b7c6d4;
   --k0:#ea734c; --k1:#6ea2e8; --k2:#5cbd8c; --k3:#b08cf5; }
 
 html{color-scheme:light dark; -webkit-text-size-adjust:100%;}
 html,body{height:100%; overflow:hidden; overscroll-behavior:none;}
 body{margin:0; background:var(--bg); color:var(--ink);
-  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif; font-size:17px; line-height:1.5;
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif; font-size:17.5px; line-height:1.5;
   font-variant-numeric:tabular-nums;}
 *{-webkit-tap-highlight-color:transparent; box-sizing:border-box;}
 
@@ -38,17 +38,18 @@ body{margin:0; background:var(--bg); color:var(--ink);
 .buehne{position:fixed; inset:0; height:100vh; height:100svh; z-index:5; overflow:hidden;
   pointer-events:none; background:var(--bg);}
 .szene{position:absolute; inset:0; display:flex; justify-content:center; align-items:flex-start;
-  padding:calc(env(safe-area-inset-top) + 14px) 14px calc(env(safe-area-inset-bottom) + 14px) 30px;
+  padding:calc(env(safe-area-inset-top) + 30px) 14px calc(env(safe-area-inset-bottom) + 14px) 30px;
   opacity:0; visibility:hidden;}
 .inhalt{position:relative; width:100%; max-width:34rem; display:flex; flex-direction:column; gap:14px;
   transform-origin:top left;}
 .inhalt > *{flex:0 0 auto;}
-.frage{margin:0; font-size:.88rem; font-weight:600; color:var(--frage); border-left:3px solid var(--frage);
-  padding-left:10px; line-height:1.3;}
-h2{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:1.32rem; line-height:1.2; margin:0; text-wrap:balance;}
-.satz{margin:0; font-size:1.02rem;}
-.marke{margin:0; font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); font-weight:600;}
-.marke mjx-container{text-transform:none; letter-spacing:0; font-size:1.05rem; vertical-align:-.2em;}
+.frage{margin:0; font-size:1.12rem; font-weight:600; color:var(--ink); border-left:3px solid var(--frage);
+  padding-left:10px; line-height:1.3; text-wrap:balance;}
+.frage mjx-container{font-size:1.02em;}
+h2{font-weight:600; font-size:1.32rem; line-height:1.2; margin:0; text-wrap:balance;}
+.satz{margin:0; font-size:1rem; line-height:1.45;}
+.marke{margin:0; font-size:.98rem; color:var(--ink); font-weight:600; font-style:italic;}
+.marke mjx-container{font-style:normal; font-size:1.04rem;}
 .zeile{display:flex; flex-wrap:wrap; align-items:baseline; gap:.25em .4em; font-size:1.06rem; line-height:1.35; margin:0;}
 .zeile.hl{background:var(--hl); border:1px solid var(--hlb); border-radius:6px; padding:5px 11px; align-self:flex-start;}
 .chip{display:inline-block; white-space:nowrap;}
@@ -58,7 +59,7 @@ h2{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:1.32re
 .chip.leer{opacity:0;}
 .bild{flex-direction:column; align-items:center;}
 .bild .legende{font-size:.86rem; font-weight:600; color:var(--curve); margin:2px 0 0; align-self:flex-end; padding-right:6px;}
-.txt{color:var(--muted); font-size:.98rem;} .txt b{font-weight:600; color:inherit;}
+.txt{color:var(--ink); font-size:.98rem;} .txt b{font-weight:600; color:inherit;}
 .k0{color:var(--k0);} .k1{color:var(--k1);} .k2{color:var(--k2);} .k3{color:var(--k3);}
 .bild{width:100%; display:flex; justify-content:center;}
 .bild svg{display:block; width:100%; max-width:420px; height:auto;}
@@ -71,6 +72,24 @@ h2{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:1.32re
 .token{position:absolute; left:0; top:0; opacity:0; white-space:nowrap; font-size:1.06rem; line-height:1.35; will-change:transform;}
 .token.txt{font-weight:600;}
 mjx-container{display:inline-block !important; margin:0 !important;}
+/* Bruch und Hochzahl aus Chips: Zaehler, Nenner und Exponent koennen wandern */
+.bruch{display:inline-flex; flex-direction:column; align-items:center; vertical-align:-.55em; margin:0 .15em; line-height:1.25;}
+.bruch .oben, .bruch .unten{display:inline-flex; align-items:baseline; gap:0; padding:0 .2em;}
+.bruch .oben{border-bottom:1.5px solid currentColor; padding-bottom:.08em;}
+.bruch .unten{padding-top:.08em;}
+.hoch{display:inline-flex; align-items:baseline; gap:0;}
+.hoch .basis{display:inline-flex; align-items:baseline;}
+.hoch .exp{display:inline-flex; align-items:baseline; font-size:.72em; vertical-align:super; position:relative; top:-.55em; margin-left:.04em;}
+/* Umbau-Zustaende eines Chips, nach Rang: wartet (unsichtbar), gelandet (da), verblasst (Quelle, ausgezogen) */
+.chip.wartet{opacity:0;} .chip.gelandet{opacity:1;} .chip.verblasst{opacity:.3;} .chip.gestrichen{opacity:.4;}
+.gestrichen{position:relative;}
+.gestrichen::after{content:""; position:absolute; left:-.1em; right:-.1em; top:50%; border-top:2px solid var(--k0); transform:rotate(-14deg);}
+.token .von, .token .nach{display:inline-block; white-space:nowrap;}
+.token .nach{position:absolute; left:0; top:0; opacity:0;}
+/* Der Satz des Lehrers: im Fluss des Blatts, dort wo das Auge ist; tritt zurueck, wenn der naechste spricht */
+.sag{margin:0; font-size:1rem; line-height:1.42; color:var(--ink);}
+.sag.vorbei{opacity:.55;}
+html.ruhig .sag.vorbei{opacity:1;}
 .bild svg text{font-family:"IBM Plex Sans",system-ui,sans-serif;}
 
 /* Fortschritt rechts */
@@ -82,7 +101,7 @@ mjx-container{display:inline-block !important; margin:0 !important;}
 .tor{position:fixed; inset:0; height:100vh; height:100svh; z-index:40; display:flex; align-items:center; justify-content:center;
   background:var(--bg); color:var(--ink); padding:24px;}
 .tor .innen{max-width:32rem; width:100%;}
-.tor h1{font-family:"IBM Plex Serif",Georgia,serif; font-weight:600; font-size:2rem; line-height:1.15; margin:0 0 8px; text-wrap:balance;}
+.tor h1{font-weight:600; font-size:2rem; line-height:1.15; margin:0 0 8px; text-wrap:balance;}
 .tor .quelle{margin:0 0 28px; color:var(--muted); font-size:.95rem;}
 .tor .start{font:600 1.05rem/1 "IBM Plex Sans",system-ui,sans-serif; color:var(--bg); background:var(--ink); border:0;
   border-radius:10px; padding:16px 28px; cursor:pointer; min-height:52px; -webkit-appearance:none;}
@@ -92,19 +111,25 @@ mjx-container{display:inline-block !important; margin:0 !important;}
 .tor .hinweis b{display:inline-block; color:var(--frage); animation:tippen 2.4s ease-in-out infinite;}
 @keyframes tippen{0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);}}
 html.laeuft .tor{display:none;}
-.raus{position:fixed; z-index:41; right:calc(env(safe-area-inset-right) + 12px); bottom:calc(env(safe-area-inset-bottom) + 12px);
-  width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
-  background:color-mix(in srgb, var(--bg) 82%, transparent); color:var(--muted);
-  font:400 19px/1 system-ui,sans-serif; cursor:pointer; display:none; align-items:center; justify-content:center; -webkit-appearance:none;}
-html.laeuft .raus{display:flex;}
+/* Die Leiste oben: Blattzaehler links, Dokument und Verlassen rechts. Unten gehoert der Stimme. */
+.oben{position:fixed; z-index:41; left:0; right:0; top:0; height:calc(env(safe-area-inset-top) + 26px); padding:calc(env(safe-area-inset-top) + 4px) 10px 0 30px;
+  display:none; align-items:center; justify-content:space-between; pointer-events:none;}
+html.laeuft .oben{display:flex;}
+.oben .blatt{font:500 11.5px/1 "IBM Plex Sans",system-ui,sans-serif; color:var(--muted); letter-spacing:.02em;}
+.oben .knoepfe{display:flex; gap:6px; pointer-events:auto;}
+.raus, .dokknopf{height:22px; border-radius:11px; border:1px solid var(--line); background:color-mix(in srgb, var(--bg) 82%, transparent);
+  color:var(--muted); font:500 11.5px/1 "IBM Plex Sans",system-ui,sans-serif; cursor:pointer; -webkit-appearance:none; padding:0 9px;
+  display:flex; align-items:center; justify-content:center;}
+.raus{width:22px; padding:0; font-size:12px;}
+.dokknopf{display:none;} .dokknopf.da{display:flex;}
+/* Am Handy oeffnet der Wisch nach links das Dokument; der Knopf ist fuer Maus und Tastatur */
+@media (hover:none) and (pointer:coarse){ .dokknopf.da{display:none;} }
 /* Das Dokument zum Vergleich: Wisch nach links oeffnet, Wisch nach rechts oder Kreuz schliesst */
 .dok{position:fixed; inset:0; z-index:60; background:var(--bg); overflow-y:auto; -webkit-overflow-scrolling:touch; display:none;}
 .dok.offen{display:block;}
 .dok img{display:block; width:100%; height:auto; margin:0 0 6px; background:#fff;}
 .dok .dokzu{position:fixed; z-index:61; right:calc(env(safe-area-inset-right) + 12px); top:calc(env(safe-area-inset-top) + 12px); width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--bg); color:var(--ink); font:400 19px/1 system-ui,sans-serif; cursor:pointer; -webkit-appearance:none;}
 .dok .dokhinweis{position:fixed; z-index:61; left:12px; bottom:calc(env(safe-area-inset-bottom) + 12px); font:500 12px/1.3 system-ui,sans-serif; color:var(--muted); background:var(--bg); padding:6px 9px; border-radius:8px; border:1px solid var(--line);}
-.dokknopf{position:fixed; z-index:41; left:calc(env(safe-area-inset-left) + 12px); bottom:calc(env(safe-area-inset-bottom) + 12px); height:44px; padding:0 14px; border-radius:22px; border:1px solid var(--line); background:var(--bg); color:var(--muted); font:500 13px/1 system-ui,sans-serif; cursor:pointer; display:none; -webkit-appearance:none;}
-html.laeuft .dokknopf.da{display:block;}
 .raus:focus-visible{outline:3px solid var(--frage); outline-offset:2px;}
 
 /* Wer keine Bewegung will, bekommt ein gewoehnliches Dokument. */
@@ -122,8 +147,7 @@ html.ruhig .inhalt{transform:none !important; width:100% !important;}
   .buehne{box-shadow:0 0 0 1px var(--line), 0 24px 60px rgba(0,0,0,.22);}
   .tor{box-shadow:0 0 0 1px var(--line);}
   .fortschritt{right:auto; left:calc(50% + 191px); top:50%; transform:translateY(-50%); height:min(812px, calc(100vh - 24px)); height:min(812px, calc(100svh - 24px)); border-radius:0 18px 18px 0;}
-  .raus{right:calc(50% - 195px + 10px); bottom:calc(50% - min(406px, (100svh - 24px) / 2) + 10px);}
-  .dokknopf{left:calc(50% - 195px + 10px); bottom:calc(50% - min(406px, (100svh - 24px) / 2) + 10px);}
+  .oben{left:calc(50% - 195px); right:auto; width:390px; top:calc(50% - min(406px, (100svh - 24px) / 2)); border-radius:18px 18px 0 0;}
   html.ruhig .buehne, html.ruhig .szene{transform:none; width:auto; height:auto; left:auto; top:auto; box-shadow:none;}
 }
 
@@ -134,7 +158,11 @@ html.ruhig .inhalt{transform:none !important; width:100% !important;}
 .fragezeile{margin:0; color:var(--k0); font-weight:600; font-size:1.04rem;}
 .mathline{font-size:1.04rem; margin:0; overflow-x:auto; overflow-y:hidden; padding:2px 0;}
 .kette{margin:0; border-left:2px solid var(--line); padding-left:14px; display:flex; flex-direction:column; gap:.3em;}
-.kette .warum{color:var(--muted); font-size:.86rem; margin:0;}
+.kette .warum{color:var(--muted); font-size:.9rem; margin:0; font-style:italic;}
+/* "| +8": die Operation rechts an der Zeile, wie der Schueler sie schreibt */
+.op{color:var(--muted); font-size:.94rem; margin-left:auto; padding-left:1.2em; white-space:nowrap; font-style:italic;}
+.mathline .op{float:right;}
+.kette .zeile{margin:0;}
 .kette .mathline.alt{opacity:.45;}
 .mtab{width:100%; border-collapse:collapse; margin:0; font-size:.98rem;}
 .mtab th{text-align:left; font-weight:600; color:var(--muted); font-size:.82rem; border-bottom:1px solid var(--line); padding:0 12px 5px 0;}
@@ -149,7 +177,7 @@ html.ruhig .inhalt{transform:none !important; width:100% !important;}
 .loesung b{color:var(--ink); font-weight:600; margin-right:.4em;} .loesung .dazu{margin-top:.25em;}
 .kette .mathline, .paar .mathline, .mtab td{ }
 </style>
-<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global'},startup:{typeset:false}};</script>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},svg:{fontCache:'global',scale:1.06},startup:{typeset:false}};</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
 </head>
 <body>
@@ -165,8 +193,7 @@ __BEATS_JSON__
   <button class="start" id="start" type="button">Starten</button>
   <p class="hinweis">Wischen dreht den Film weiter <b>↓</b></p>
 </div></div>
-<button class="raus" id="raus" type="button" aria-label="Verlassen">✕</button>
-<button class="dokknopf" id="dokknopf" type="button">Dokument</button>
+<div class="oben"><span class="blatt" id="blattzaehler"></span><span class="knoepfe"><button class="dokknopf" id="dokknopf" type="button">Dokument</button><button class="raus" id="raus" type="button" aria-label="Verlassen">✕</button></span></div>
 <div class="dok" id="dok" aria-label="Dokument"><button class="dokzu" id="dokzu" type="button" aria-label="Zurueck zum Film">✕</button><div class="dokhinweis">Wisch nach rechts: zurueck zum Film</div><div id="dokseiten"></div></div>
 <div id="fehler" style="display:none; position:fixed; left:8px; bottom:8px; z-index:60; max-width:70%; font:12px/1.3 monospace; color:#fff; background:#b3261e; padding:6px 8px; border-radius:6px;"></div>
 <div id="diag" style="display:none; position:fixed; left:8px; top:8px; z-index:60; font:11px/1.3 monospace; color:#fff; background:rgba(0,0,0,.6); padding:4px 6px; border-radius:4px;"></div>

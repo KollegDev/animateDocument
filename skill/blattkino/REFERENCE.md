@@ -2,7 +2,7 @@
 
 ## Die Datei
 
-Jede Datei traegt `"skill": "2.6.1"`, die Version aus dem Kopf von SKILL.md, mit der sie
+Jede Datei traegt `"skill": "2.8.1"`, die Version aus dem Kopf von SKILL.md, mit der sie
 entstanden ist. Der Pruefer meldet das Fehlen. So ist jeder Film seiner Skill-Fassung
 zuzuordnen, auch wenn der Skill weitergezogen ist.
 
@@ -23,19 +23,24 @@ zuzuordnen, auch wenn der Skill weitergezogen ist.
 
 ```json
 {
+  "titel": "Definitionsbereich von \\(f(x)=\\frac{1}{x-4}\\)",
   "frage": "Warum darf man hier ausgerechnet die Vier nicht einsetzen?",
+  "seite": 2,
   "beats": [ ... ]
 }
 ```
 
-`frage` erscheint nicht im Film. Sie ist die Frage, die im Leser lebt, und der Grund,
-warum es diesen Bogen gibt. Genau ein Beat trägt `"payoff": true` und steht am Ende.
+`titel` steht oben auf dem Blatt: der Gegenstand, TeX in `\( \)` erlaubt. `frage` ist die
+Frage, die im Leser lebt, und der Grund, warum es diesen Bogen gibt; sie erscheint nur, wenn
+kein `titel` da ist (alte Filme). In einer Serie duerfen beide `{{...}}` tragen. Genau ein
+Beat trägt `"payoff": true` und steht am Ende.
 
 ## Der Beat
 
 ```json
 {
-  "sub": "Der einführende Satz. Steht im Dokument, vor den Formeln des Beats.",
+  "sag": "Auf der y-Achse ist x immer 0. Wir setzen also 0 für x ein.",
+  "sub": "Ein Satz, der hell stehen bleibt (selten; meist ist es der Lehrersatz sag).",
   "payoff": false,
   "ops": [ ... ]
 }
@@ -43,7 +48,8 @@ warum es diesen Bogen gibt. Genau ein Beat trägt `"payoff": true` und steht am 
 
 | Feld | Werte | Wirkung |
 |---|---|---|
-| `sub` | Fliesstext | Ein lesbarer Satz, kein Untertitel. Führt ein, was danach kommt. |
+| `sag` | ein bis zwei kurze Sätze | Der Lehrersatz: erscheint **im Fluss des Blattes**, an erster Stelle des Beats, also vor dem, was der Beat zeigt; bleibt stehen und wird leise (`.vorbei`), sobald der nächste kommt. Kostet Blatthöhe wie jeder Block; TeX in `\( \)` erlaubt. Der Prüfer meldet mehr als zwei Sätze, mehr als 120 Zeichen, einen Satz, der dasselbe sagt wie eine `marke` desselben Beats, und mehr als drei Sätze je Bogen. |
+| `sub` | Fliesstext | Ein Satz vor den Ops des Beats, der hell stehen bleibt. |
 | `payoff` | `true` | Dieser Beat löst den Bogen auf: die Tilgung der lebenden Frage. |
 | `gewicht`, `fokus` | veraltet | Werden ignoriert; der Prüfer meldet `gewicht` als überflüssig. Die Strecke eines Beats hängt an seinem Inhalt (unten). |
 
@@ -204,9 +210,35 @@ daneben.
 ```
 
 Der `warum` einer Zeile erklärt, wie **diese** Zeile zustande kommt, und steht über ihr.
-Die vorigen Zeilen bleiben stehen und verblassen. Nutze `umformung` immer, wenn
-Gleichungen auseinander hervorgehen. Drei `math`-Ops hintereinander sind dafür die
-falsche Wahl, weil sie den Zusammenhang verschweigen.
+Beginnt `warum` mit `|`, steht es rechts an der **vorigen** Zeile, wie der Schüler die
+Operation schreibt: `| +8`, `| :2`, `| √`, `| ln`. Die vorigen Zeilen bleiben stehen. Nutze
+`umformung` immer, wenn Gleichungen auseinander hervorgehen. Drei `math`-Ops hintereinander
+sind dafür die falsche Wahl, weil sie den Zusammenhang verschweigen.
+
+**Zeile für Zeile als Umbau.** Eine Zeile darf statt `tex` ein `teile` tragen (Chips wie in
+`zeile`, mit Kennungen) und `wege` von der vorigen Zeile: dann liegt sie stumm bereit und
+wird aus den Teilen der vorigen gebaut, die Quelle verblasst, was keinen Weg hat, erscheint
+danach. Das ist die Form für alle Grundformen des Umbaus (SKILL.md):
+
+```json
+{"op":"umformung","zeilen":[
+  {"teile":[{"tex":"0="},{"tex":"2x^{2}","id":"a1"},{"tex":"-8","id":"a2"}]},
+  {"teile":[{"tex":"8","id":"b0"},{"tex":"="},{"tex":"2x^{2}","id":"b1"}],"warum":"| +8",
+   "wege":[{"von":"a2","zu":"b0","wird":true},{"von":"a1","zu":"b1"}]},
+  {"teile":[{"tex":"4","id":"c0"},{"tex":"="},{"tex":"x^{2}","id":"c1"}],"warum":"| :2",
+   "wege":[{"von":"b0","zu":"c0","wird":true},{"von":"b1","zu":"c1","wird":true}]},
+  {"teile":[{"tex":"x","id":"d0"},{"tex":"="},{"tex":"\\pm 2","id":"d1"}],"warum":"| √",
+   "wege":[{"von":"c1","zu":"d0","wird":true},{"von":"c0","zu":"d1","wird":true}]}
+]}
+```
+
+Ein Weg ist `[von, zu]`, `[von, zu, takt]` oder `{von, zu, takt, wird, weg}`: `wird` lässt
+die fliegende Kopie unterwegs zum Ziel werden (−8 wird 8, x² wird x); `weg` (ohne `zu`)
+streicht die Quelle durch, nichts landet (das e beim Logarithmieren, der gekürzte Faktor);
+gleicher `takt` fliegt zusammen, ohne `takt` nacheinander; `von` darf eine Liste sein.
+Exponent und Bruch als Chips: `{"hoch":{"basis":[{"tex":"e","id":"e"}],"exp":[{"tex":"x","id":"x","k":0}]}}`
+und `{"bruch":{"oben":[...],"unten":[...]}}` in `teile`; dann kann das x aus dem Exponenten
+fallen und der Zähler wandern. Ein Ziel darf später Quelle sein (Zeile 2 baut Zeile 3).
 
 ### `tabelle`
 
@@ -252,16 +284,19 @@ einem Satz, welche. Referenz für das Verhalten ist gold/UEBERGABE_BAU.md §3.
 
 **Zeit (GL3):** jedes Stück kostet dieselbe Radstrecke. Ein Beat ist `0,2 + 0,11 · Σ dauer`
 Bildschirme lang (mindestens 0,35, höchstens 1,6); seine Stücke kacheln diese Strecke
-lückenlos nach ihrem `dauer`-Anteil (Vorgabe 1, `graph` 3, `pfeil` 1,6, `fahrt` 9); vor einem
+lückenlos nach ihrem `dauer`-Anteil (Vorgabe 1, `graph` 3, `pfeil` 1,6, `flug` 2,4 und nie unter 2,
+`fahrt` 9); vor einem
 Blattwechsel bleibt die Blende (0,09) frei. `gewicht` wird ignoriert. Es gibt keine
 Ruhezonen: wer verweilen will, hält die Hand still.
 
 ### Zeilen aus Chips
 
-Jeder Chip ist ein eigenes MathJax-Fragment. Ein `\frac`, `\sqrt` oder eine Klammer darf nie
-über eine Chipgrenze laufen; was zusammengehört, steht in einem Chip. Ein Bruch mit einer
-eingesetzten Zahl im Zähler ist darum entweder ein ganzer Chip (Farbe auf dem Bruch) oder
-bleibt eine Zeile ohne Chips.
+Jeder Chip ist ein eigenes MathJax-Fragment. Ein `\frac`, `\sqrt`, `^{ }`, `_{ }` oder eine
+Klammer darf nie über eine Chipgrenze laufen; was zusammengehört, steht in einem Chip. Ein
+Bruch mit einer eingesetzten Zahl im Zähler ist darum entweder ein ganzer Chip (Farbe auf dem
+Bruch) oder bleibt eine Zeile ohne Chips; eine eingesetzte Zahl im Exponenten ebenso
+(`e^{0}` ist ein Chip, nicht `e^{` + `0` + `}`). Der Prüfer meldet jeden Chip, in dem eine
+geschweifte Klammer nicht aufgeht, als SCHWER; der Spieler zeigt sonst „Extra close brace".
 
 ```json
 {"op":"zeile","id":"z1","teile":["3x^{2}-3=0","\\iff x^{2}=1",["\\iff x_1=",{"tex":"-1","k":0,"id":"x1"}]],
@@ -294,8 +329,9 @@ Bild. Alles Weitere spricht das Bild über `id` an (fehlt sie, gilt das letzte B
 |---|---|---|
 | `punkt` | Punkt landet | `x, y, k` |
 | `beschriftung` | Name am Punkt, oben bei Gipfel, unten bei Tal | `x, y, text, k, dauer` |
-| `kandidat` | eine Stelle auf der x-Achse; unsichtbar, bis ein `flug` sie erreicht | `id, x, k, text, sofort?` |
-| `flug` | eine Zahl wandert an ihren Ort | `von` Chip-Id, `zu` Chip-Id oder `{"kandidat":id}`, `k, dauer` |
+| `kandidat` | eine Stelle auf der x-Achse; unsichtbar, bis ein `flug` sie erreicht. Mit `achse:"y"` und `y` eine Höhe an der y-Achse: der y-Wert fliegt aus der Zeile dorthin, so wie die Stelle zur x-Achse | `id, x` oder `achse:"y", y`; `k, text, sofort?` |
+| `flug` | eine Zahl wandert an ihren Ort. Kostet mindestens 2 (Vorgabe 2,4): Zahlen, die schneller fliegen, sieht der Leser nicht (Autorbefund 2026-09-07) | `von` Chip-Id, `zu` Chip-Id oder `{"kandidat":id}`, `k, dauer` |
+| `umbau` | die Teile einer Zeile wandern an ihre neuen Plätze, die Quelle verblasst; die neue Zeile schließt sich danach. Meist über `umformung` mit `wege` (oben); als eigene Op für Zeilen ausserhalb einer Umformung | `zu` Kennung einer stummen Zeile, `wege` wie in `umformung`, `bleibt?` (Quelle bleibt), `k?`, `dauer` (je Takt, mindestens 2) |
 | `pfeil` | Herkunft und Einsetzen: aus der Quelle in die Rinne links, von oben in die Klammer | `id, von` Chip-Id oder `{"pfeil":id}` (Ast aus dem Stamm), `zu` Chip-Id, `lane, k, versatz?, dauer` |
 | `kappe` | Krümmung am Kandidaten, ∩ oder ∪ | `x, r, k, text?` |
 | `aufstieg` | die Stelle wird zur Höhe: gestrichelt hinauf zur Kurve und zur y-Achse | `x, y, k, text` |
@@ -303,6 +339,18 @@ Bild. Alles Weitere spricht das Bild über `id` an (fehlt sie, gilt das letzte B
 
 Der Pfeil endet **immer** von oben auf der eingesetzten Zahl (GL2). Farbe sitzt nur auf der
 Zahl, die wandert oder eingesetzt wird (GL1): eine Farbe je Kandidat, nie auf Zeilen.
+
+Ein Umbau, das Ausklammern aus dem Blindtest 5: die Chips beider Zeilen tragen Kennungen,
+die Zielzeile liegt stumm, beide x treffen sich vor der Klammer, dann folgt der Rest.
+
+```json
+{"op":"zeile","teile":[["!eng",{"tex":"0="},{"tex":"x","k":0,"id":"b1"},{"tex":"\\cdot"},{"tex":"x^{2}","id":"b2"},{"tex":"-"},{"tex":"x","k":0,"id":"b3"},{"tex":"\\cdot"},{"tex":"4","id":"b4"}]]},
+{"op":"zeile","id":"C","stumm":true,"teile":[["!eng",{"tex":"0="},{"tex":"x","k":0,"id":"c1"},{"tex":"\\cdot("},{"tex":"x^{2}","id":"c2"},{"tex":"-"},{"tex":"4","id":"c4"},{"tex":")"}]]},
+{"op":"umbau","zu":"C","wege":[["b1","c1",0],["b3","c1",0],["b2","c2",1],["b4","c4",1]]}
+```
+
+Ein Teil, der in einem anderen steckt (das x in `x³`), kann nicht aus dem Chip fliegen;
+erst macht eine Zeile die verborgene Gestalt sichtbar (`x·x²`), dann wandern die Teile.
 
 ### Serie: eine Vorlage, viele Fälle
 
@@ -455,6 +503,9 @@ startet er ins Vollbild. `titel` und `quelle` erscheinen dort, nicht als eigene 
 | eine Op | ein Block im Blatt: erscheint an seinem endgültigen Platz, nichts rutscht nach |
 | `plot`, `doppelgraph`, `zoomfolge` | ein Bildblock, der ebenso stehen bleibt |
 | `dauer` einer Op | ihr Anteil an der Strecke des Beats; die Summe bestimmt, wie lang der Beat ist |
+| ein Wisch mit Schwung | das Rad springt, das Bild holt mit höchstens einem Bildschirm je Sekunde nach (Nachlauf höchstens 1,2 Bildschirme, dann Sprung); im Stillstand ist das Bild wieder genau die Funktion der Radstellung |
+| `sag` eines Beats | ein Block im Fluss, an der Stelle des Beats; der vorige Satz wird leise (Deckkraft 0,55), bleibt aber stehen |
+| oben links | „Blatt n von N", rechts Dokument (nur mit Maus) und Verlassen; Prosa in Source Serif 4, Formeln MathJax |
 
 **Ein Bogen muss auf einen Bildschirm passen.** Alles, was in ihm vorkommt, steht am Ende
 gleichzeitig da: das Blatt ist der ausgelagerte Speicher des Lesers. Was nicht passt, wird

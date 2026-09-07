@@ -19,11 +19,16 @@ function zeitVerteilen(){
     b.stuecke.forEach((st,i)=>{ const a=von+d*(lauf/summe); lauf+=gew[i]; const bb=von+d*(lauf/summe);
       for(const it of st.items){ it.a=a; it.b=Math.max(bb,a+0.001); } });
   });
+  // Der Satz eines Beats tritt zurueck, sobald der naechste Satz spricht (Fenster: der Augenblick des Wechsels)
+  for(const s of SZENEN){ let offen=null;
+    s.beats.forEach(b=>{ if(!b.sag)return; if(offen){ offen.a=b.von-0.001; offen.b=b.von; } b.sag.a=s.bis+BLENDE+1; b.sag.b=s.bis+BLENDE+2; offen=b.sag; }); }
   TOTAL=U; document.documentElement.style.setProperty('--kurbel',(Math.max(2,U)*100).toFixed(0)+'vh');
 }
 const BLENDE=0.09;
 function render(t){
   const letzte=SZENEN[SZENEN.length-1];
+  // Blattzaehler oben links: der Leser weiss, wo er ist (der Abspann zaehlt nicht)
+  { const z=$('blattzaehler'); if(z){ const n=SZENEN.length-1; let i=SZENEN.findIndex(s=>t<s.bis); if(i<0)i=n; const txt=(i<n&&n>0)?('Blatt '+(i+1)+' von '+n):''; if(z.textContent!==txt)z.textContent=txt; } }
   for(const s of SZENEN){
     let o; if(t<s.von-BLENDE||t>s.bis+BLENDE)o=0; else if(t<s.von)o=(t-(s.von-BLENDE))/BLENDE; else if(t>s.bis)o=1-(t-s.bis)/BLENDE; else o=1;
     if(s===SZENEN[0]&&t<s.von)o=1; if(s===letzte&&t>s.bis)o=1;
@@ -39,7 +44,7 @@ function einpassen(){
   for(const s of SZENEN){
     const inh=s.inhalt; inh.style.transform=''; inh.style.width=''; inh.style.gap='';
     const kinder=[...inh.children].filter(k=>!k.classList.contains('pfeile')&&!k.classList.contains('flug'));
-    const cs=getComputedStyle(s.kn); const avail=s.kn.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    const cs=getComputedStyle(s.kn); let avail=s.kn.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
     if(!avail||!kinder.length){ s.scale=1; continue; }
     const mess=()=>{ let hh=0; for(const k of kinder)hh+=k.getBoundingClientRect().height; return hh; };
     let f=1, hgt=mess(), n=kinder.length;
@@ -56,12 +61,27 @@ function einpassen(){
 const rad=$('rad'), fill=$('fill'), leiste=$('fortschritt');
 let angefordert=false, bereit=false;
 function fortschritt(){ const hh=rad.scrollHeight-rad.clientHeight; return hh>0?clamp(rad.scrollTop/hh,0,1):0; }
+// Das Bild folgt dem Rad mit begrenzter Geschwindigkeit (Autorbefund 2026-09-07: bewegte Zahlen zu
+// schnell). Ein Wisch mit Schwung laesst das Rad springen; das Bild holt mit hoechstens TEMPO
+// Bildschirmen je Sekunde nach und ist bei Stillstand wieder genau die Funktion der Radstellung.
+// Liegt das Rad weiter als NACHLAUF voraus, springt das Bild bis auf diesen Abstand nach.
+const TEMPO=1.0, NACHLAUF=1.2; let tIst=0, tZuletzt=0, chase=false;
 function anzeigen(){ angefordert=false; const p=fortschritt(); fill.style.transform='scaleY('+p.toFixed(4)+')';
-  leiste.setAttribute('aria-valuenow',String(Math.round(p*100))); if(bereit)render(p*TOTAL);
-  if(window.__diag){ const d=$('diag'); if(d){ d.style.display='block'; d.textContent='p='+p.toFixed(3)+' t='+(p*TOTAL).toFixed(2)+' top='+Math.round(rad.scrollTop)+'/'+rad.scrollHeight+' bereit='+bereit; } } }
+  leiste.setAttribute('aria-valuenow',String(Math.round(p*100))); if(bereit)zielen(p*TOTAL);
+  if(window.__diag){ const d=$('diag'); if(d){ d.style.display='block'; d.textContent='p='+p.toFixed(3)+' t='+(p*TOTAL).toFixed(2)+' ist='+tIst.toFixed(2)+' top='+Math.round(rad.scrollTop)+'/'+rad.scrollHeight+' bereit='+bereit; } } }
+function zielen(tSoll){ zielen.soll=tSoll; if(Math.abs(tSoll-tIst)>NACHLAUF)tIst=tSoll+(tIst<tSoll?-NACHLAUF:NACHLAUF);
+  if(!chase){ chase=true; tZuletzt=performance.now(); requestAnimationFrame(nachlaufen); } }
+function nachlaufen(now){ const lueck=(now-tZuletzt)/1000; tZuletzt=now; const soll=zielen.soll;
+  // Gedrosselte Frames (Hintergrund, Sparmodus): dann kein Nachlauf, sondern der Sprung
+  if(lueck>0.4){ tIst=soll; render(tIst); chase=false; return; }
+  const dt=Math.min(0.05,lueck), d=soll-tIst;
+  if(Math.abs(d)<=TEMPO*dt){ tIst=soll; render(tIst); chase=false; return; }
+  tIst+=Math.sign(d)*TEMPO*dt; render(tIst); requestAnimationFrame(nachlaufen); }
 rad.addEventListener('scroll',()=>{ if(!angefordert){ angefordert=true; requestAnimationFrame(anzeigen); } },{passive:true});
 function neuMessen(){ clearTimeout(neuMessen._t); neuMessen._t=setTimeout(()=>{ einpassen(); for(const s of SZENEN)for(const it of s.items)it.last=undefined; anzeigen(); },160); }
 addEventListener('resize',neuMessen,{passive:true});
+// Schriften kommen spaeter als das erste Einpassen: danach noch einmal messen
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{ if(bereit)neuMessen(); });
 
 // ---------------- Das Tor ----------------
 const klein=matchMedia('(pointer:coarse)').matches;

@@ -140,4 +140,28 @@ console.log('— Robustheit —');
   const U=await welt({titel:'U',boegen:[{frage:'F',beats:[{sub:'a',payoff:true,ops:[{op:'gibtsnicht',t:'x'},{op:'text',t:'danach'}]}]}]});
   ck('Unbekannte Op wird still uebergangen', U.alle('.satz').some(e=>e.textContent==='danach'));
 }
+console.log('— Titel, Lehrersatz im Fluss, Umbau Zeile fuer Zeile —');
+{ const T=await welt({titel:'T',boegen:[{titel:'Nullstellen von \\(g\\)',frage:'Alte Frage',beats:[
+    {sag:'Erster Lehrersatz.',ops:[{op:'zeile',teile:[{tex:'0='},{tex:'2x^{2}',id:'a1'},{tex:'-8',id:'a2'}]}]},
+    {ops:[{op:'umformung',zeilen:[
+      {teile:[{tex:'0='},{tex:'2x^{2}',id:'p1'},{tex:'-8',id:'p2'}]},
+      {teile:[{tex:'8',id:'q0'},{tex:'='},{tex:'2x^{2}',id:'q1'}],warum:'| +8',wege:[{von:'p2',zu:'q0',wird:true},{von:'p1',zu:'q1'}]},
+      {teile:[{tex:'\\ln('},{tex:'1',id:'r1'},{tex:')='},{hoch:{basis:[{tex:'e',id:'re'}],exp:[{tex:'x',id:'rx'}]}}],warum:'| ln',wege:[{von:'q0',zu:'r1'},{von:'q1',weg:true}]}
+    ]}]},
+    {sag:'Dritter Lehrersatz.',payoff:true,ops:[{op:'zeile',teile:[{bruch:{oben:[{tex:'p',id:'bp'}],unten:['2']}}]}]}
+  ]}]});
+  const s=T.bk.SZENEN[0];
+  ck('Titel steht oben, nicht die Frage', /Nullstellen von/.test(T.q('.frage').textContent) && !/Alte Frage/.test(T.q('.frage').textContent));
+  ck('Satz zum Beat steht im Fluss vor den Ops und tritt zurueck, wenn der naechste spricht', s.sagen.length===2 && T.alle('.sag').length===2 && s.inhalt.children[1].classList.contains('sag') && Math.abs(s.sagen[0].b-s.beats[2].von)<1e-6 && s.sagen[1].a>s.bis);
+  T.bk.render(s.beats[2].von+0.01); ck('Nach dem Wechsel ist der erste Satz vorbei, der zweite nicht', T.alle('.sag')[0].classList.contains('vorbei') && !T.alle('.sag')[1].classList.contains('vorbei'));
+  ck('Umformung: Zeilen aus Chips liegen in der Kette, Operation rechts', T.alle('.kette .zeile').length===3 && T.alle('.kette .op').map(e=>e.textContent).join(',')==='| +8,| ln');
+  const st=s.beats[1].stuecke.map(x=>x.items.map(it=>it.typ||'i').join('+'));
+  ck('Umbau: Wege werden Fluege und Streichen, der Rest steigt danach', st.some(x=>/flug/.test(x)) && st.some(x=>/streich/.test(x)));
+  ck('Hochzahl und Bruch sind aus Chips gebaut', T.q('.hoch .exp .chip')!==null && T.q('.bruch .oben .chip')!==null);
+  T.bk.render(s.beats[1].bis-0.001); const zl=T.alle('.kette .zeile'); const q0=zl[1].querySelector('.chip'), q1=zl[1].querySelectorAll('.chip')[2];
+  ck('Am Ende der Umformung: Ziel gelandet und als Quelle verblasst, das e gestrichen', q0.classList.contains('gelandet') && q0.classList.contains('verblasst') && q1.classList.contains('gestrichen'));
+  T.bk.render(s.beats[0].bis-0.001);
+  ck('Zurueckgewischt: nichts gelandet, nichts gestrichen', !q0.classList.contains('gelandet') && !q1.classList.contains('gestrichen'));
+  ck('Kein Fehler im Spieler', !T.fehler());
+}
 console.log(f?('\n'+f+' FEHLER'):'\nPlayer v2 grün');

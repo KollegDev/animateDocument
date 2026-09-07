@@ -1,7 +1,7 @@
 {
  "titel": "y-Achsenschnittpunkt und Nullstellen",
  "quelle": "Kurvendiskussion 1, Seiten 9 bis 12",
- "skill": "2.7, Hand nach Schnellrichter und Autorbefunden 2026-09-07",
+ "skill": "2.8.1, Hand nach Autorbefunden 2026-09-07 (Titel, Lehrersatz im Fluss, Umbau Zeile fuer Zeile)",
  "inventar": "S9: (Seitenende der Symmetrie-Beispiele zu Punktsymmetrie mit Potenzfunktionen, nicht Gegenstand dieses Films.) Überschrift: y-Achsenschnittpunkt und Nullstellen. f(x)=(x-3)^{2}-4. S10: Graph von f(x)=(x-3)^{2}-4, blaue Kurve, x-Achse von -1 bis 7, y-Achse von -4 bis 8, markiert rot: y-Achsenschnittpunkt S_y(0|5), Nullstelle N_1(1|0), Nullstelle N_2(5|0). Text: Die Nullstelle ist der Schnittpunkt einer Funktion mit der x-Achse. Der y-Achsenschnittpunkt ist der Schnittpunkt einer Funktion mit der y-Achse. Wir finden beide, indem wir das jeweils andere Null setzen. Aufgabe: Gegeben ist f(x)=(x-3)^{2}-4. a) Geben Sie die Nullstellen an. b) Geben Sie den y-Achsenschnittpunkt an. Lösung a): Nullstelle (x-Wert, an dem die x-Achse geschnitten wird) ist gesucht, also y=0 (an jeder Nullstelle beträgt der y-Wert immer Null). f(x)=y=0. 0=(x-3)^{2}-4 mit dem Schritt plus 4. 4=(x-3)^{2} mit dem Schritt Wurzel ziehen. \\pm 2=x-3 mit dem Schritt plus 3. x_1=3+2=5. x_2=3-2=1. also N_1(1|0) und N_2(5|0). Wichtig: Beim Wurzelziehen gibt es immer zwei Lösungen (+ und -), deswegen bekommen wir zwei Nullstellen. S11: Lösung b): y-Achsenschnittpunkt ist gesucht, also x=0 (auf der y-Achse ist x natürlich immer Null). y=f(0)=(0-3)^{2}-4. y=9-4. y=5. also S_y(0|5). Überschrift: Weitere Beispiele. g(x)=2x^{2}-8. Nullstellen: g(x)=0. 0=2x^{2}-8 mit dem Schritt plus 8. 8=2x^{2} mit dem Schritt geteilt durch 2. 4=x^{2} mit dem Schritt Wurzel ziehen. x_1=2. x_2=-2. N_1(-2|0), N_2(2|0). y-Achsenschnittpunkt: g(0)=2\\cdot 0^{2}-8=-8. S_y(0|-8). h(x)=x^{3}-4x. Nullstellen: h(x)=0. 0=x^{3}-4x. 0=x\\cdot(x^{2}-4). x_1=0. x^{2}-4=0 mit dem Schritt plus 4. x^{2}=4 mit dem Schritt Wurzel ziehen. x_2=2. x_3=-2. N_1(0|0), N_2(2|0), N_3(-2|0). y-Achsenschnittpunkt: h(0)=0^{3}-4\\cdot 0=0. S_y(0|0). S12: k(x)=x^{2}-6x+8. Nullstellen: k(x)=0. 0=x^{2}-6x+8, p=-6, q=8. p-q-Formel x_{1,2}=3\\pm 1 nach Einsetzen und Wurzelziehen. x_1=4. x_2=2. N_1(2|0), N_2(4|0). y-Achsenschnittpunkt: k(0)=0^{2}-6\\cdot 0+8=8. S_y(0|8). m(x)=e^{x}-1. Nullstellen: m(x)=0. 0=e^{x}-1 mit dem Schritt plus 1. 1=e^{x} mit dem Schritt Logarithmus. ln(1)=x. x=0. N(0|0). y-Achsenschnittpunkt: m(0)=e^{0}-1=1-1=0. S_y(0|0). (Danach folgt die Überschrift Grenzverhalten im Unendlichen mit einer Beispielfunktion dritten Grades, nicht Gegenstand dieses Films.)",
  "boegen": [
   {
@@ -9,10 +9,6 @@
    "beats": [
     {
      "ops": [
-      {
-       "op": "h",
-       "t": "y-Achsenschnittpunkt und Nullstellen"
-      },
       {
        "op": "zeile",
        "teile": [
@@ -28,34 +24,91 @@
        "ymin": -5,
        "ymax": 9,
        "legend": "f(x)=(x-3)²−4",
-       "h": 120,
+       "h": 100,
        "dauer": 3
       }
-     ]
+     ],
+     "sag": "Die Nullstelle ist der Schnittpunkt mit der x-Achse."
     },
     {
      "ops": [
       {
-       "op": "marke",
-       "t": "Nullstelle: Schnittpunkt mit der x-Achse, also y=0"
-      },
-      {
        "op": "umformung",
        "zeilen": [
         {
-         "tex": "0=(x-3)^{2}-4"
+         "teile": [
+          {
+           "tex": "0="
+          },
+          {
+           "tex": "(x-3)^{2}",
+           "id": "a1"
+          },
+          {
+           "tex": "-4",
+           "id": "a2"
+          }
+         ]
         },
         {
-         "tex": "4=(x-3)^{2}",
-         "warum": "plus 4"
+         "teile": [
+          {
+           "tex": "4",
+           "id": "b0"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "tex": "(x-3)^{2}",
+           "id": "b1"
+          }
+         ],
+         "warum": "| +4",
+         "wege": [
+          {
+           "von": "a2",
+           "zu": "b0",
+           "wird": true
+          },
+          {
+           "von": "a1",
+           "zu": "b1"
+          }
+         ]
         },
         {
-         "tex": "\\pm 2=x-3",
-         "warum": "Wurzel gezogen, das ergibt immer zwei Lösungen"
+         "teile": [
+          {
+           "tex": "\\pm 2",
+           "id": "c0"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "tex": "x-3",
+           "id": "c1"
+          }
+         ],
+         "warum": "| √",
+         "wege": [
+          {
+           "von": "b0",
+           "zu": "c0",
+           "wird": true
+          },
+          {
+           "von": "b1",
+           "zu": "c1",
+           "wird": true
+          }
+         ]
         }
        ]
       }
-     ]
+     ],
+     "sag": "Dort ist \\(y=0\\), also \\(f(x)=0\\)."
     },
     {
      "ops": [
@@ -139,7 +192,8 @@
        "k": 1,
        "dauer": 0.6
       }
-     ]
+     ],
+     "sag": "Die Wurzel gibt immer zwei Loesungen."
     },
     {
      "payoff": true,
@@ -152,17 +206,14 @@
      ]
     }
    ],
-   "seite": 2
+   "seite": 2,
+   "titel": "Nullstellen von \\(f(x)=(x-3)^2-4\\)"
   },
   {
    "frage": "Wo schneidet er die y-Achse?",
    "beats": [
     {
      "ops": [
-      {
-       "op": "satz",
-       "t": "y-Achsenschnittpunkt: Schnittpunkt mit der y-Achse."
-      },
       {
        "op": "zeile",
        "teile": [
@@ -178,17 +229,14 @@
        "ymin": -5,
        "ymax": 9,
        "legend": "f(x)=(x-3)²−4",
-       "h": 110,
+       "h": 96,
        "dauer": 2
       }
-     ]
+     ],
+     "sag": "Hier schneidet der Graph die y-Achse."
     },
     {
      "ops": [
-      {
-       "op": "satz",
-       "t": "Auf der y-Achse ist x immer Null."
-      },
       {
        "op": "zeile",
        "teile": [
@@ -210,7 +258,8 @@
        "text": "0",
        "sofort": true
       }
-     ]
+     ],
+     "sag": "Auf der y-Achse ist \\(x=0\\)."
     },
     {
      "ops": [
@@ -309,10 +358,12 @@
        "tex": "S_y(0|5)",
        "hl": true
       }
-     ]
+     ],
+     "sag": "Die 5 ist die Hoehe auf der y-Achse."
     }
    ],
-   "seite": 2
+   "seite": 2,
+   "titel": "y-Achsenschnittpunkt von \\(f(x)=(x-3)^2-4\\)"
   },
   {
    "frage": "Geht das bei g genauso?",
@@ -335,38 +386,119 @@
        "ymin": -9,
        "ymax": 4,
        "legend": "g(x)=2x²−8",
-       "h": 110,
+       "h": 100,
        "dauer": 2
       }
-     ]
+     ],
+     "sag": "Dieselbe Frage bei \\(g\\)."
     },
     {
      "ops": [
       {
-       "op": "marke",
-       "t": "Nullstellen: \\(g(x)=0\\)"
-      },
-      {
        "op": "umformung",
        "zeilen": [
         {
-         "tex": "0=2x^{2}-8"
+         "teile": [
+          {
+           "tex": "0="
+          },
+          {
+           "tex": "2x^{2}",
+           "id": "a1"
+          },
+          {
+           "tex": "-8",
+           "id": "a2"
+          }
+         ]
         },
         {
-         "tex": "8=2x^{2}",
-         "warum": "plus 8"
+         "teile": [
+          {
+           "tex": "8",
+           "id": "b0"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "tex": "2x^{2}",
+           "id": "b1"
+          }
+         ],
+         "warum": "| +8",
+         "wege": [
+          {
+           "von": "a2",
+           "zu": "b0",
+           "wird": true
+          },
+          {
+           "von": "a1",
+           "zu": "b1"
+          }
+         ]
         },
         {
-         "tex": "4=x^{2}",
-         "warum": "geteilt durch 2"
+         "teile": [
+          {
+           "tex": "4",
+           "id": "c0"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "tex": "x^{2}",
+           "id": "c1"
+          }
+         ],
+         "warum": "| :2",
+         "wege": [
+          {
+           "von": "b0",
+           "zu": "c0",
+           "wird": true
+          },
+          {
+           "von": "b1",
+           "zu": "c1",
+           "wird": true
+          }
+         ]
         },
         {
-         "tex": "x=\\pm 2",
-         "warum": "Wurzel gezogen"
+         "teile": [
+          {
+           "tex": "x",
+           "id": "d0"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "tex": "\\pm 2",
+           "id": "d1"
+          }
+         ],
+         "warum": "| √",
+         "wege": [
+          {
+           "von": "c1",
+           "zu": "d0",
+           "wird": true
+          },
+          {
+           "von": "c0",
+           "zu": "d1",
+           "wird": true
+          }
+         ]
         }
        ]
       }
-     ]
+     ],
+     "sag": "\\(g(x)=0\\) setzen, dann nach x aufloesen."
     },
     {
      "payoff": true,
@@ -458,7 +590,8 @@
       }
      ]
     }
-   ]
+   ],
+   "titel": "Nullstellen von \\(g(x)=2x^2-8\\)"
   },
   {
    "frage": "Und wo schneidet g die y-Achse?",
@@ -481,17 +614,13 @@
        "ymin": -9,
        "ymax": 4,
        "legend": "g(x)=2x²−8",
-       "h": 100,
+       "h": 96,
        "dauer": 2
       }
      ]
     },
     {
      "ops": [
-      {
-       "op": "marke",
-       "t": "y-Achsenschnittpunkt: \\(g(0)\\)"
-      },
       {
        "op": "zeile",
        "teile": [
@@ -565,7 +694,8 @@
        "zeile": "fz",
        "folge": true
       }
-     ]
+     ],
+     "sag": "Fuer \\(x\\) kommt die 0 in die Klammer."
     },
     {
      "payoff": true,
@@ -597,9 +727,11 @@
        "tex": "S_y(0|-8)",
        "hl": true
       }
-     ]
+     ],
+     "sag": "Die \\(-8\\) liegt unter dem Ursprung."
     }
-   ]
+   ],
+   "titel": "y-Achsenschnittpunkt von \\(g(x)=2x^2-8\\)"
   },
   {
    "frage": "Und wenn sich x ausklammern lässt?",
@@ -622,17 +754,14 @@
        "ymin": -5,
        "ymax": 5,
        "legend": "h(x)=x³−4x",
-       "h": 110,
+       "h": 100,
        "dauer": 2
       }
-     ]
+     ],
+     "sag": "Bei \\(h\\) steht \\(x\\) in beiden Summanden."
     },
     {
      "ops": [
-      {
-       "op": "marke",
-       "t": "Nullstellen: \\(h(x)=0\\)"
-      },
       {
        "op": "zeile",
        "teile": [
@@ -653,10 +782,6 @@
        ]
       },
       {
-       "op": "satz",
-       "t": "In x³ und in 4x steckt je ein x:"
-      },
-      {
        "op": "zeile",
        "teile": [
         [
@@ -666,8 +791,8 @@
          },
          {
           "tex": "x",
-          "k": 0,
-          "id": "b1"
+          "id": "b1",
+          "k": 0
          },
          {
           "tex": "\\cdot"
@@ -681,8 +806,8 @@
          },
          {
           "tex": "x",
-          "k": 0,
-          "id": "b3"
+          "id": "b3",
+          "k": 0
          },
          {
           "tex": "\\cdot"
@@ -706,8 +831,8 @@
          },
          {
           "tex": "x",
-          "k": 0,
-          "id": "c1"
+          "id": "c1",
+          "k": 0
          },
          {
           "tex": "\\cdot("
@@ -755,7 +880,8 @@
         ]
        ]
       }
-     ]
+     ],
+     "sag": "In beiden steckt ein \\(x\\): wir klammern es aus."
     },
     {
      "ops": [
@@ -763,16 +889,82 @@
        "op": "umformung",
        "zeilen": [
         {
-         "tex": "x_1=0",
-         "warum": "erster Faktor gleich Null"
+         "tex": "x_1=0"
         },
         {
-         "tex": "x^{2}-4=0\\ \\Rightarrow\\ x^{2}=4\\ \\Rightarrow\\ x=\\pm 2",
-         "warum": "zweiter Faktor gleich Null, plus 4, Wurzel gezogen"
+         "teile": [
+          {
+           "tex": "x^{2}",
+           "id": "e1"
+          },
+          {
+           "tex": "-4",
+           "id": "e2"
+          },
+          {
+           "tex": "=0"
+          }
+         ]
+        },
+        {
+         "teile": [
+          {
+           "tex": "x^{2}",
+           "id": "f1"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "tex": "4",
+           "id": "f2"
+          }
+         ],
+         "warum": "| +4",
+         "wege": [
+          {
+           "von": "e1",
+           "zu": "f1"
+          },
+          {
+           "von": "e2",
+           "zu": "f2",
+           "wird": true
+          }
+         ]
+        },
+        {
+         "teile": [
+          {
+           "tex": "x",
+           "id": "g1"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "tex": "\\pm 2",
+           "id": "g2"
+          }
+         ],
+         "warum": "| √",
+         "wege": [
+          {
+           "von": "f1",
+           "zu": "g1",
+           "wird": true
+          },
+          {
+           "von": "f2",
+           "zu": "g2",
+           "wird": true
+          }
+         ]
         }
        ]
       }
-     ]
+     ],
+     "sag": "Ein Produkt ist 0, wenn ein Faktor 0 ist."
     },
     {
      "payoff": true,
@@ -901,7 +1093,8 @@
       }
      ]
     }
-   ]
+   ],
+   "titel": "Nullstellen von \\(h(x)=x^3-4x\\)"
   },
   {
    "frage": "Und wo schneidet h die y-Achse?",
@@ -924,17 +1117,13 @@
        "ymin": -5,
        "ymax": 5,
        "legend": "h(x)=x³−4x",
-       "h": 100,
+       "h": 96,
        "dauer": 2
       }
      ]
     },
     {
      "ops": [
-      {
-       "op": "marke",
-       "t": "y-Achsenschnittpunkt: \\(h(0)\\)"
-      },
       {
        "op": "zeile",
        "teile": [
@@ -1009,7 +1198,8 @@
        "zeile": "fz",
        "folge": true
       }
-     ]
+     ],
+     "sag": "Wieder \\(x=0\\) einsetzen."
     },
     {
      "payoff": true,
@@ -1041,9 +1231,11 @@
        "tex": "S_y(0|0)",
        "hl": true
       }
-     ]
+     ],
+     "sag": "Der Graph geht durch den Ursprung."
     }
-   ]
+   ],
+   "titel": "y-Achsenschnittpunkt von \\(h(x)=x^3-4x\\)"
   },
   {
    "frage": "Und wenn keine binomische Formel hilft?",
@@ -1066,23 +1258,18 @@
        "ymin": -2,
        "ymax": 9,
        "legend": "k(x)=x²−6x+8",
-       "h": 110,
+       "h": 100,
        "dauer": 2
       }
-     ]
+     ],
+     "sag": "Hier laesst sich \\(x\\) nicht ausklammern."
     },
     {
      "ops": [
       {
-       "op": "marke",
-       "t": "Nullstellen: \\(k(x)=0\\)"
-      },
-      {
-       "op": "umformung",
-       "zeilen": [
-        {
-         "tex": "0=x^{2}-6x+8"
-        }
+       "op": "zeile",
+       "teile": [
+        "0=x^{2}-6x+8"
        ]
       },
       {
@@ -1092,16 +1279,16 @@
          "p=",
          {
           "tex": "-6",
-          "k": 2,
-          "id": "p"
+          "id": "p",
+          "k": 2
          }
         ],
         [
          "\\qquad q=",
          {
           "tex": "8",
-          "k": 2,
-          "id": "q"
+          "id": "q",
+          "k": 2
          }
         ]
        ]
@@ -1114,12 +1301,17 @@
          "warum": "p-q-Formel"
         },
         {
+         "tex": "x_{1,2}=3\\pm\\sqrt{9-8}",
+         "warum": "mit p = −6 und q = 8"
+        },
+        {
          "tex": "x_{1,2}=3\\pm 1",
-         "warum": "mit p = −6 und q = 8, Wurzel gezogen"
+         "warum": "Wurzel gezogen"
         }
        ]
       }
-     ]
+     ],
+     "sag": "\\(p\\) ist die Zahl vor \\(x\\), \\(q\\) die Zahl ohne \\(x\\)."
     },
     {
      "payoff": true,
@@ -1211,7 +1403,8 @@
       }
      ]
     }
-   ]
+   ],
+   "titel": "Nullstellen von \\(k(x)=x^2-6x+8\\)"
   },
   {
    "frage": "Und wo schneidet k die y-Achse?",
@@ -1234,17 +1427,13 @@
        "ymin": -2,
        "ymax": 9,
        "legend": "k(x)=x²−6x+8",
-       "h": 100,
+       "h": 96,
        "dauer": 2
       }
      ]
     },
     {
      "ops": [
-      {
-       "op": "marke",
-       "t": "y-Achsenschnittpunkt: \\(k(0)\\)"
-      },
       {
        "op": "zeile",
        "teile": [
@@ -1322,7 +1511,8 @@
        "zeile": "fz",
        "folge": true
       }
-     ]
+     ],
+     "sag": "Fuer \\(x\\) kommt ueberall die 0 hinein."
     },
     {
      "payoff": true,
@@ -1354,9 +1544,11 @@
        "tex": "S_y(0|8)",
        "hl": true
       }
-     ]
+     ],
+     "sag": "Nur die Zahl ohne \\(x\\) bleibt uebrig."
     }
-   ]
+   ],
+   "titel": "y-Achsenschnittpunkt von \\(k(x)=x^2-6x+8\\)"
   },
   {
    "frage": "Und wenn x im Exponenten steht?",
@@ -1379,30 +1571,125 @@
        "ymin": -2,
        "ymax": 4,
        "legend": "m(x)=eˣ−1",
-       "h": 110,
+       "h": 100,
        "dauer": 2
       }
-     ]
+     ],
+     "sag": "Bei \\(m\\) steht \\(x\\) im Exponenten."
     },
     {
      "ops": [
       {
-       "op": "marke",
-       "t": "Nullstellen: \\(m(x)=0\\)"
-      },
-      {
        "op": "umformung",
        "zeilen": [
         {
-         "tex": "0=e^{x}-1"
+         "teile": [
+          {
+           "tex": "0="
+          },
+          {
+           "hoch": {
+            "basis": [
+             {
+              "tex": "e",
+              "id": "ae"
+             }
+            ],
+            "exp": [
+             {
+              "tex": "x",
+              "id": "ax",
+              "k": 0
+             }
+            ]
+           }
+          },
+          {
+           "tex": "-1",
+           "id": "a1"
+          }
+         ]
         },
         {
-         "tex": "1=e^{x}",
-         "warum": "plus 1"
+         "teile": [
+          {
+           "tex": "1",
+           "id": "b1"
+          },
+          {
+           "tex": "="
+          },
+          {
+           "hoch": {
+            "basis": [
+             {
+              "tex": "e",
+              "id": "be"
+             }
+            ],
+            "exp": [
+             {
+              "tex": "x",
+              "id": "bx",
+              "k": 0
+             }
+            ]
+           }
+          }
+         ],
+         "warum": "| +1",
+         "wege": [
+          {
+           "von": "a1",
+           "zu": "b1",
+           "wird": true
+          },
+          {
+           "von": "ae",
+           "zu": "be"
+          },
+          {
+           "von": "ax",
+           "zu": "bx"
+          }
+         ]
         },
         {
-         "tex": "\\ln(1)=x",
-         "warum": "Logarithmus angewendet"
+         "teile": [
+          {
+           "tex": "\\ln("
+          },
+          {
+           "tex": "1",
+           "id": "c1"
+          },
+          {
+           "tex": ")="
+          },
+          {
+           "tex": "x",
+           "id": "cx",
+           "k": 0
+          }
+         ],
+         "warum": "| ln",
+         "wege": [
+          {
+           "von": "bx",
+           "zu": "cx",
+           "takt": 0
+          },
+          {
+           "von": "be",
+           "weg": true,
+           "takt": 0
+          },
+          {
+           "von": "b1",
+           "zu": "c1",
+           "takt": 1
+          }
+         ]
         },
         {
          "tex": "x=0",
@@ -1410,7 +1697,8 @@
         }
        ]
       }
-     ]
+     ],
+     "sag": "Der Logarithmus holt das \\(x\\) herunter."
     },
     {
      "payoff": true,
@@ -1465,7 +1753,8 @@
       }
      ]
     }
-   ]
+   ],
+   "titel": "Nullstellen von \\(m(x)=e^x-1\\)"
   },
   {
    "frage": "Und wo schneidet m die y-Achse?",
@@ -1488,17 +1777,13 @@
        "ymin": -2,
        "ymax": 4,
        "legend": "m(x)=eˣ−1",
-       "h": 100,
+       "h": 96,
        "dauer": 2
       }
      ]
     },
     {
      "ops": [
-      {
-       "op": "marke",
-       "t": "y-Achsenschnittpunkt: \\(m(0)\\)"
-      },
       {
        "op": "zeile",
        "teile": [
@@ -1562,7 +1847,8 @@
        "zeile": "fz",
        "folge": true
       }
-     ]
+     ],
+     "sag": "\\(e\\) hoch 0 ist 1."
     },
     {
      "payoff": true,
@@ -1594,9 +1880,11 @@
        "tex": "S_y(0|0)",
        "hl": true
       }
-     ]
+     ],
+     "sag": "Nullstelle und y-Achsenschnittpunkt fallen zusammen."
     }
-   ]
+   ],
+   "titel": "y-Achsenschnittpunkt von \\(m(x)=e^x-1\\)"
   },
   {
    "frage": "Wie findet man das immer?",
@@ -1643,33 +1931,27 @@
         ]
        ]
       }
-     ]
+     ],
+     "sag": "Fuenf Funktionen, immer dieselben zwei Fragen."
     },
     {
      "ops": [
       {
-       "op": "marke",
-       "t": "Nullstelle"
-      },
-      {
        "op": "zeile",
        "teile": [
-        "y=0"
+        "\\text{Nullstelle:}\\quad y=0"
        ],
        "hl": true
       },
       {
-       "op": "marke",
-       "t": "y-Achsenschnittpunkt"
-      },
-      {
        "op": "zeile",
        "teile": [
-        "x=0"
+        "\\text{y-Achsenschnittpunkt:}\\quad x=0"
        ],
        "hl": true
       }
-     ]
+     ],
+     "sag": "Das jeweils andere wird Null gesetzt."
     },
     {
      "payoff": true,
@@ -1681,7 +1963,8 @@
      ]
     }
    ],
-   "seite": 4
+   "seite": 4,
+   "titel": "Nullstellen und y-Achsenschnittpunkt: das Schema"
   }
  ],
  "schluss": "Ende.",

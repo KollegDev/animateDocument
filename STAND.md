@@ -153,8 +153,25 @@ Bögen).
 
 ## 5. Zustand
 
-- Player v2: `player.html`, 65 KB, eine Datei, keine Netzabhängigkeit ausser MathJax und
-  den Plex-Schriften.
+- Player v2: `player.html`, 75 KB, eine Datei, keine Netzabhängigkeit ausser MathJax und
+  den Plex-Schriften. Seit 2026-09-07: Gerät `umbau` (Teile einer Zeile wandern an neue
+  Plätze, Quelle verblasst, Rest schließt sich; Takte fliegen zusammen), `kandidat` mit
+  `achse:"y"` (der y-Wert fliegt aus der Zeile zur y-Achse), Flug kostet mindestens 2
+  (Autorbefund: Zahlen zu schnell), das Bild folgt dem Rad mit höchstens einem Bildschirm
+  je Sekunde (Nachlauf bis 1,2 Bildschirme, dann Sprung; bei gedrosselten Frames Sprung),
+  x-Achsenzahlen brauchen 40 px Luft. Goldabgleich liest den Goldlauf mit derselben
+  Flug-Untergrenze und bleibt IDENTISCH. Skill 2.8 (später am 2026-09-07): `titel` je Bogen
+  (Ueberschrift ist der Gegenstand, die Frage nur noch Storyboard), `sag` je Beat (die Stimme:
+  Sprecherzeile unten, löst die vorige ab, Blatt wird darüber eingepasst), `umformung` mit
+  `teile`/`wege`/`| +8` (Umbau von der vorigen Zeile), Wege mit `wird` (Kopie verwandelt sich)
+  und `weg` (Quelle gestrichen), Chip-Zustände als Klassen (wartet, gelandet, verblasst,
+  gestrichen), `{bruch}` und `{hoch}` aus Chips, Serifenschrift Source Serif 4 für Prosa,
+  hellere Farben, Leiste oben mit Blattzähler und Knöpfen, Nachmessen nach Schriftladung.
+  2.8.1 (Autorbefund „die Augen können keinen Spagat"): der Lehrersatz steht nicht mehr in
+  einem festen Streifen unten, sondern im Fluss des Blattes, an erster Stelle seines Beats
+  (vor dem, was er ankündigt), bleibt stehen und wird leise (Klasse `vorbei`), sobald der
+  nächste kommt; er kostet Blatthöhe wie jeder Block. Prüfer: Satz und Marke, die dasselbe
+  sagen, und mehr als drei Sätze je Blatt. Harness 53 Tests grün.
 - 44 Harness-Tests grün; Abgleich gegen den Goldlauf IDENTISCH; alle Filme und Blindfilme
   laufen über die ganze Radstrecke ohne Fehler.
 - Vier Filme: `filme/extrempunkte.json` (der Goldfilm als Datei, 8 Bögen, 31 Beats, 0 schwer;
@@ -177,7 +194,10 @@ Bögen).
 
 **Offen, mit Priorität:**
 
-1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Stand: Skill 2.6.1
+1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Stand: Skill 2.8.1 (2026-09-07:
+   Titel statt Frage, Blickführung mit Lehrersatz im Fluss, Umformung Zeile für Zeile mit wege/wird/weg, Bruch und
+   Hochzahl aus Chips, Grundformen des Umbaus; 2.7: `umbau`, y-Kandidat, Flug mindestens 2,
+   Nachlauf des Bildes, Klammerprüfung je Chip; davor 2.6.1
    (Neuguss nach P18: 2.960 Wörter statt 4.700, ein Geräte-Katalog, jede Regel einmal, kein
    Selbst-Simulat, JSON als einziges Ergebnis). Trials 4 und 5 liefen mit 2.3: Mechanik grün,
    Autorurteil offen. Trial 6 mit installierter 2.5.
@@ -198,7 +218,7 @@ Bögen).
 8. Installierte Skill-Fassung (Autorentscheid P8, Weg 2): die im Skill-Werkzeug installierte
    Fassung ist noch 1.x. `save_skill` ersetzt nur SKILL.md und liesse REFERENCE, Prüfer und
    Spieler alt; darum liefert jeder Skill-Batch eine `blattkino.skill` (Zip des Ordners), die
-   der Autor über „Save skill" installiert. Bis 2.6.1 installiert ist, läuft kein Trial 6.
+   der Autor über „Save skill" installiert. Bis 2.8.1 installiert ist, läuft kein Trial 6.
    Versionierung: Kopf von SKILL.md, Feld `skill` in jedem Film, git-Tag je Version durch den
    Autor beim Push.
 

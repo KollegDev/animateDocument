@@ -1300,3 +1300,196 @@ Chips vor der Formel und die Formel ganz. REFERENCE trägt den Satz.
 
 Zip 2.6.1 beim Autor; Trial 6 weiter erst nach Installation.
 </builder>
+
+<builder>
+**B31, 2026-09-07, an Autor, P, G, DD: drei Autorbefunde an Fassung 2, eine neue Darstellungsklasse.**
+
+Der Autor hat am Handy an Blindtest 5 Fassung 2 gefunden: (1) die −8 erschien im Graphen,
+statt aus der Zeile dorthin zu wandern wie die x-Werte; (2) bewegte Zahlen sind zu schnell;
+(3) ein MathJax-Fehler „Extra close brace"; (4) das Ausklammern von x ist eine Chance für
+eine Bewegung, in der das x herausgenommen wird, und das ist eine neue Darstellungsklasse,
+die auf viele Situationen passt. Alles vier eingebaut, Skill 2.7, Zip beim Autor.
+
+**y-Kandidat.** `kandidat` mit `achse:"y"` und `y` setzt die Marke an der y-Achse; `flug`
+dorthin bringt den y-Wert aus der Zeile an seinen Ort, dann landet der Punkt. Fassung 2
+macht das in allen fünf y-Achsenschnitt-Blättern (g(0) = −8, h(0) = 0, k(0) = 8, m(0) = 0,
+und im erklärten Beispiel). Am Handy geprüft: die −8 löst sich aus `g(0) = 2·0² − 8 = −8`,
+fliegt zur Achse, die Marke wird kräftig, der Punkt landet. Vorschlag an G und Autor: der
+Goldfilm hat dieselbe Stelle (y-Wert des Gipfels), dort dasselbe Gerät; das ist ein Eingriff
+in den Goldfilm, also Entscheidung des Autors.
+
+**Tempo.** Zwei Ursachen, zwei Mittel. Erstens kostete ein Flug nur 1,2 Stück, in einem
+Beat mit sechs Stücken also ein Zehntel Bildschirm; jetzt kostet ein Flug mindestens 2
+(Vorgabe 2,4), Filme dürfen nicht darunter. Zweitens lässt ein Wisch mit Schwung das Rad
+springen, und was eine Funktion der Radstellung ist, springt mit; jetzt folgt das Bild dem
+Rad mit höchstens einem Bildschirm je Sekunde, höchstens 1,2 Bildschirme hinterher (sonst
+Sprung), und ist bei Stillstand wieder genau die Funktion der Radstellung. Das ist eine
+bewusste Abweichung vom Kanon „alles Funktion des Rads": im Stand gilt er, in der Bewegung
+ist das Bild bis zu einer Sekunde hinter dem Finger. P möge sagen, ob KANON das nennen soll.
+Goldabgleich liest den Goldlauf mit derselben Untergrenze (gold/ unangetastet) und bleibt
+IDENTISCH.
+
+**Klammerfehler.** Ein Chip `e^{` + `0` + `}` zerbricht wie `\frac`; behoben (`e^{0}` ein
+Chip). Der Prüfer meldet jetzt jeden Chip, in dem eine geschweifte Klammer nicht aufgeht,
+als SCHWER; REFERENCE nennt `^{ }` und `_{ }` neben `\frac` und `\sqrt`.
+
+**Umbau, die neue Klasse.** Gerät `umbau`: die Chips der alten Zeile fliegen an ihre Plätze
+in einer stummen neuen Zeile, die Quelle verblasst (das Teil wird herausgenommen, nicht
+kopiert), Wege mit gleichem Takt fliegen zusammen, was keinen Weg hat, erscheint danach.
+Steckt ein Teil in einem anderen (das x in x³), macht erst eine Zeile die verborgene
+Gestalt sichtbar (`0 = x·x² − x·4`), dann wandern die Teile: beide x treffen sich vor der
+Klammer, x² und 4 ziehen hinein. Am Handy geprüft, Fassung 2 Blatt 5. Welche Situationen
+die Klasse trägt, steht als Miniaturen im Katalog: Ausklammern und Ausmultiplizieren,
+Zusammenfassen gleicher Terme, Seitenwechsel mit Vorzeichenkippen, Kürzen, Substitution und
+Rücksubstitution, Potenzregel (Exponent kommt nach vorn), Kettenregel (innere Funktion tritt
+als Faktor nach hinten), quadratische Ergänzung, binomische Formeln. Dazu, noch nicht
+eingepflegt, weil das Gerät sie nicht ganz trägt: Vorzeichenkippen beim Seitenwechsel
+braucht eine Verwandlung des Chips im Flug (+4 wird −4), Kürzen braucht ein Verschwinden
+statt einer Landung, die Potenzregel braucht „3 wird 2" am Exponenten. Das sind drei
+Zusätze am selben Gerät (`wird`: der Chip landet als anderer Text; `weg`: der Weg endet im
+Nichts). Vorschlag: erst der Autor sieht den Umbau am Handy, dann die Zusätze. DD: die
+Klasse gehört in die Lehren, als eigene Zeile neben Pfeil und Flug („ein Term wird
+umgebaut: seine Teile wandern, der Leser sieht, woraus die neue Gestalt entstand").
+
+**Sonst.** x-Achsenzahlen brauchen 40 px Luft (bei 0,5er-Schritten überlappten −2,50 und
+−2). Transkript kennt Umbau („beide x treffen sich als ein x"), Prüfer kennt Umbau (Zielzeile
+stumm, Wege auf bekannte Kennungen, Ziel liegt in der Zielzeile). Fassung 2: 11 Bögen, 36
+Beats, 0 schwer, 0 mittel, lauf2 0 Fehler, 27,4 Bildschirme. Harness grün.
+
+An den Autor: Zip 2.7 in den Ausgaben, installieren über „Save skill"; `git p`; Fassung 2
+am Handy: Blatt 2 und 4 (y-Flug), Blatt 5 (Umbau), und ob das Tempo jetzt stimmt. Die
+Nummern aus BEFUNDE-v2.md bleiben offen für dein stimmt / stimmt nicht.
+</builder>
+
+<builder>
+**B32, 2026-09-07, an Autor, P, G, DD: Ueberschriften, Text im Film, Schrift, die Grundformen des Umbaus. Skill 2.8, Fassung 3.**
+
+Der Autor hat an Fassung 2 befunden: die Ueberschriften sind gestellte Fragen und sagen nicht,
+was auf dem Blatt steht; es ist zu wenig Text, man ist ein bisschen lost, vielleicht liegt es
+am Dokument; die Schrift ist blockig, blass, schlecht lesbar; und der Umbau soll alle
+Grundformen tragen, die ein Term oder eine Gleichung durchlaeuft, Zeile fuer Zeile wie ein
+Schueler schreibt.
+
+**Liegt es am Dokument?** Nein, nicht nur. Ich habe die Seiten 9 bis 12 angesehen: das
+Dokument ist kompakt, aber es hat die Saetze („Die Nullstelle ist der Schnittpunkt einer
+Funktion mit der x-Achse", „Wir finden beide, indem wir das jeweils andere Null setzen",
+„Wichtig: Beim Wurzelziehen gibt es immer zwei Loesungen"). Fassung 2 hatte weniger Text als
+das Dokument: die Saetze waren zu `warum`-Fragmenten und einer Kapitaelchen-Marke
+eingedampft. Das kam aus dem Skill („Prosa ist Bindegewebe", „das Blatt muss allein tragen",
+„keine Begruendung, die nicht im Dokument steht") und aus der Frage als Ueberschrift. Beides
+ist geaendert.
+
+**Text im Film: Tafel und Stimme.** Ein Lehrer schreibt und spricht. Was er schreibt, bleibt
+(die Tafel: Titel, Formeln, Bild, Kasten, Merksatz, Definitionen); was er sagt, wird vom
+naechsten Satz abgeloest (die Stimme). Der Spieler hat jetzt beides: `sag` am Beat ist eine
+Sprecherzeile unten im Blatt, ein bis zwei kurze Saetze, erscheint mit dem Beat, bleibt bis
+die naechste kommt, ist kein Tafelinhalt und kostet keine Blatthoehe ausser ihrem eigenen
+Streifen. Sie sagt, was jetzt geschieht und warum, darf fragen, darf das Dokument erklaeren.
+Treue heisst jetzt „erklaeren ja, hinzufuegen nein": die Stimme erklaert die Schritte des
+Dokuments in Lehrerworten, bringt aber keine Regel, kein Beispiel, kein Ergebnis, das nicht
+drinsteht. Der Pruefer meldet eine Stimme mit mehr als zwei Saetzen oder 150 Zeichen. An P:
+das ist eine Aenderung am Kanon „was einmal dasteht, bleibt stehen"; die Stimme steht
+ausserhalb der Tafel, darum halte ich den Kanon fuer unverletzt, aber KANON sollte den Satz
+tragen.
+
+**Ueberschrift.** `titel` je Bogen, der Gegenstand als Nominalphrase mit Formel
+(„Nullstellen von g(x) = 2x² − 8"); die `frage` bleibt Werkzeug des Storyboards und wird nur
+noch gezeigt, wenn kein Titel da ist (alte Filme). Der Pruefer meldet eine Frage als
+Ueberschrift, die mit „Und", „Geht das", „Wie findet man" beginnt. Das trifft auch den
+Goldfilm (Blaetter 4 bis 7: „Geht das bei g genauso?", „Und mit drei?"); G und Autor
+entscheiden, ob er Titel bekommt. Dazu oben links „Blatt n von N", gegen das Lost-Gefuehl.
+
+**Schrift.** Prosa und Ueberschriften in Source Serif 4 (Google Fonts), 17,5 px, hellere
+Tinte und helleres Grau; Formeln bleiben MathJax (Computer Modern, Massstab 1,06). Vier
+Schriften nebeneinander am Handy-Rahmen geprueft: die Serife passt zur Formelschrift, Plex
+Sans nicht (das war das Blockige). Die Marke ist keine Kapitaelchen-Zeile mehr, sondern
+kursiv halbfett in Tintenfarbe. Titel, Saetze und Stimme duerfen `\( \)` tragen, dann setzt
+MathJax die Formel im Text.
+
+**Die Grundformen des Umbaus.** `umformung` schreibt jetzt Zeile fuer Zeile wie das Heft:
+jede Zeile aus Chips, `wege` von der vorigen Zeile, die Operation rechts als `| +8`,
+`| :2`, `| √`, `| ln`. Ein Weg bewegt, oder er verwandelt die Kopie unterwegs (`wird`: −8
+wird 8, x² wird x, 4 wird ±2), oder er streicht die Quelle (`weg`: das e beim
+Logarithmieren, der gekuerzte Faktor). Bruch und Hochzahl sind aus Chips gebaut, damit
+Zaehler, Nenner und Exponent wandern koennen: bei m(x) = eˣ − 1 faellt das x aus dem
+Exponenten herunter, das e wird durchgestrichen, „| ln" steht rechts. Ein Ziel darf
+Quelle der naechsten Zeile sein; die Zustaende eines Chips sind Klassen nach Rang (wartet,
+gelandet, verblasst, gestrichen), sonst ueberschreiben sich die Fluege. Der Katalog im Skill
+nennt die Grundformen mit ihrem Muster: Seitenwechsel, beide Seiten teilen, Wurzel,
+quadrieren, logarithmieren, Ausklammern und Ausmultiplizieren, Zusammenfassen, Kuerzen und
+Erweitern, Substitution, Potenzregel, Kettenregel, Potenzgesetze, binomische Formeln,
+quadratische Ergaenzung; Einsetzen aus einer entfernten Zeile bleibt der Pfeil. Und die
+Grenze: nur die Beziehung wandert, die der Leser sich sonst im Kopf herstellen muesste;
+9 − 4 = 5 steht einfach da.
+
+**Fassung 3** (`blindtest/5-nullstellen/film-v3.json`, im Katalog als erste Zeile): elf
+Titel, eine Stimme je Beat, f und g als Umformung mit Wegen (plus 4, Wurzel; plus 8, geteilt
+durch 2, Wurzel), h mit Ausklammern und zweitem Faktor als Wege, m mit fallendem Exponenten;
+k mit der Dokumentzeile 3 ± √(9 − 8), die Fassung 2 ausgelassen hatte. Am Handy-Rahmen
+geprueft: Blatt 1, 3 (h, Verkleinerung 0,83, dicht aber lesbar), 4 (m). Pruefer 0 schwer,
+3 mittel (drei Blaetter ueber den Rand), Harness 52 gruen, Goldabgleich IDENTISCH, alle
+Filme laufen. Skill 2.8, 4.100 Woerter (2.6: 3.100); die zwei neuen Abschnitte sind der
+Zuwachs, P moege sagen, ob gekuerzt werden soll.
+
+**Offen.** Vorzeichenkippen ist `wird`; was noch fehlt: ein Weg, der einen Chip in zwei
+teilt (x³ zu x·x² ohne Zwischenzeile), und eine Wurzel aus Chips wie der Bruch. Beides erst
+nach dem Urteil des Autors an Fassung 3.
+
+An den Autor: Zip 2.8 in den Ausgaben, installieren; `git p`; Fassung 3 am Handy, mit Wisch
+nach links zum Dokument. Sag zu Stimme, Titel und Schrift „stimmt / stimmt nicht", dann geht
+das in KANON und in den Goldfilm.
+</builder>
+
+<builder>
+**B33, 2026-09-07, an Autor, P, G, DD: der Einwand gegen die Sprecherzeile stimmt. Blickfuehrung als Prinzip. Skill 2.8.1.**
+
+Der Autor zu B32: skeptisch bei „Tafel und Stimme". Begruendung, mit der er recht hat: die
+Augen des Lesers sehen, was erscheint, und sie koennen keinen Spagat. Ein fester Streifen
+unten ist ein zweiter Ort; der Blick muesste zwischen ihm und der Stelle, an der etwas
+geschieht, hin und her springen. Und: weil eine Animation eine Zeitachse hat, die ein
+Dokument nicht hat, koennen wir Dinge nacheinander erscheinen lassen und damit den Weg der
+Aufmerksamkeit legen, der didaktisch der beste ist. Danach muss sich der Einsatz von Text
+richten. Umgebaut.
+
+**Was jetzt gilt (SKILL, Abschnitt „Der Blick: eine Sache nach der anderen").** Die
+Reihenfolge des Erscheinens ist der Weg der Aufmerksamkeit, und diesen Weg legt der Autor
+des Films. Daraus: in jedem Augenblick eine Sache, und die naechste dort, wo der Blick schon
+ist oder einen Schritt weiter unten. Der Lehrersatz (`sag`) steht im Fluss des Blattes, an
+erster Stelle seines Beats, also **vor** dem, was er ankuendigt („Dort ist y = 0, also
+f(x) = 0", dann die Rechnung; „Der Logarithmus holt das x herunter", dann die Zeile, in der
+es herunterfaellt). Er bleibt stehen, denn das Blatt ist der Speicher, tritt aber zurueck
+und wird leise, sobald der naechste kommt; nichts rueckt, nichts springt. Kein fester
+Streifen mehr, keine Untertitelzeile, kein Kasten am Rand.
+
+**Ein Gedanke, ein Ort.** Der Satz ersetzt die Marke, statt neben ihr zu stehen; „Nullstelle:
+an jeder Nullstelle ist y = 0" als Kapitaelchen und derselbe Satz als Lehrersatz waren zwei
+Texte an einer Stelle. Der Pruefer meldet das jetzt (Satz und `marke`/`satz` desselben Beats,
+die dasselbe sagen), ebenso mehr als drei Saetze je Blatt („der Blick soll wandern, nicht
+lesen"), und der Satz zaehlt in der Hoehenrechnung als Block, weil er einer ist.
+
+**Nicht jeder Beat spricht.** In B32 stand „jeder Beat bekommt eine Stimme"; das ist
+zurueckgenommen. Wo Bild oder Zeile fuer sich sprechen, schweigt der Lehrer. Treue bleibt:
+erklaeren ja, hinzufuegen nein.
+
+**Fassung 3 neu gegossen** (`film-v3.json`, Katalog erste Zeile): elf Titel, zwei bis drei
+Lehrersaetze je Blatt statt einer Zeile je Wisch, die Marken raus, wo der Satz sie traegt,
+Bilder etwas kleiner; die Saetze kurz genug fuer eine Zeile. Pruefer 0 schwer, 4 mittel
+(drei Blaetter ueber den Rand, das dichteste bei 0,87), lauf2 0 Fehler, Harness 53 gruen,
+Goldabgleich IDENTISCH.
+
+**Was ich nicht mehr am Handy sehen konnte:** die Einspielung ins Chrome-Fenster ist an der
+Groesse der Datei gescheitert (die base64-Uebergabe zerbricht ueber ~30 kB). Die Abfolge habe
+ich stattdessen mechanisch geprueft (jsdom, Blatt fuer Blatt, Wisch fuer Wisch): Satz zuerst,
+dann was er ankuendigt; der vorige leise, aber an seinem Platz; der letzte bleibt hell. Das
+Aussehen (Serifenschrift, Kette, Umbau) ist aus der Runde davor am Handy-Rahmen geprueft und
+unveraendert. Fuer den naechsten Bau brauche ich entweder einen Weg, eine Datei direkt in den
+Browser zu laden, oder du siehst es nach dem Push auf studienkolleg.me.
+
+An P: „was einmal dasteht, bleibt stehen" gilt weiter; neu ist „und tritt zurueck, wenn der
+naechste Satz kommt". KANON sollte den Satz tragen: die Reihenfolge des Erscheinens ist der
+Weg der Aufmerksamkeit; nichts erscheint an zwei Orten gleichzeitig. An G: der Goldfilm hat
+keine Lehrersaetze; wenn der Autor Fassung 3 billigt, ist das die naechste Frage an gold/.
+
+An den Autor: Zip 2.8.1 in den Ausgaben; `git p`; Fassung 3 am Handy. Die Frage an dich:
+steht der Satz an der richtigen Stelle, und ist es genug Text oder immer noch zu wenig.
+</builder>

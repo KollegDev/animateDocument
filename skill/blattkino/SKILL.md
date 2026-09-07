@@ -1,14 +1,28 @@
 ---
 name: blattkino
-description: Blattkino 2.6.1 (Buehne, Goldgeraete, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
+description: Blattkino 2.8.1 (Buehne, Blickfuehrung, Goldgeraete, Umbau Zeile fuer Zeile, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
 ---
 
 # Blattkino
 
-**Version 2.6.1 (2026-09-06).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
+**Version 2.8.1 (2026-09-07).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
 auch in der `description` oben.
 
 Aenderungsprotokoll (Version, Datum, Anlass):
+- 2.8.1, 2026-09-07: nach dem Autorbefund zum Spagat der Augen: der Lehrersatz steht im
+  Fluss des Blattes, vor dem, was er ankuendigt, und wird leise, wenn der naechste kommt;
+  keine feste Sprecherzeile mehr. Abschnitt „Der Blick: eine Sache nach der anderen";
+  Pruefer meldet Satz und Marke, die dasselbe sagen, und mehr als drei Saetze je Blatt.
+- 2.8, 2026-09-07: nach drei Autorbefunden an Blindtest 5, Fassung 2: Ueberschrift ist der
+  `titel` (Gegenstand), nicht mehr die Frage; Lehrersatz je Beat (`sag`);
+  Treue heisst „erklaeren ja, hinzufuegen nein";
+  `umformung` Zeile fuer Zeile mit `wege` (Umbau von der vorigen Zeile, `| +8` rechts wie der
+  Schueler schreibt), `wird` und `weg`, Bruch und Hochzahl aus Chips; Katalog der Grundformen
+  des Umbaus; Serifenschrift, Blattzaehler.
+- 2.7, 2026-09-07: nach drei Autorbefunden an Blindtest 5: neues Geraet `umbau` (die Teile
+  einer Zeile wandern an ihre neuen Plaetze; Ausklammern und Verwandte), `kandidat` an der
+  y-Achse (der y-Wert fliegt aus der Zeile zur Achse), Flug kostet mindestens 2, das Bild
+  folgt dem Rad mit begrenztem Tempo, Pruefer meldet Chips mit offener Klammer.
 - 2.6.1, 2026-09-06: Werkzeuge, Regeln unveraendert: Spieler mit Halo hinter jeder Bildschrift, Achsenzahlen
   nach Pixeldichte, Beschriftungen weichen Achse und einander aus, vierte Farbe k3, Dokument-
   Ansicht (Wisch nach links, Feld `seiten`, je Bogen `seite`); `simulat/lesung.mjs` (Schnellrichter).
@@ -78,13 +92,19 @@ Ein Bogen ist eine Spannung von ihrer Oeffnung bis zu ihrer Aufloesung, in einem
 der Absatz, nicht die Dokumentzeile.
 
 Jeder Bogen traegt eine `frage`: die Frage, die im Leser an dieser Stelle wirklich lebt.
-Sie steht klein oben auf dem Blatt. „Woran erkennt man einen Gipfel?" lebt; „Womit faengt
-eine Kurvendiskussion an?" spricht ueber das Dokument und lebt in niemandem. Findest du
-keine lebende Frage, gehoert der Bogen nicht in den Film. Die eine Ausnahme ist ein Katalog,
-den das Dokument selbst aufstellt und der Film danach abarbeitet: dann `"uebersicht": true`
-und `"frage": null`, hoechstens einmal je Film und nie als Eroeffnung. Der Goldfilm oeffnet
-mit dem Gipfel, nicht mit der Gliederung; der Blindfilm 2 oeffnete mit zwei
-Uebersichtsblaettern, ein Drittel des Films ohne Lerngegenstand.
+Sie ist dein Werkzeug im Storyboard, nicht die Ueberschrift. „Woran erkennt man einen
+Gipfel?" lebt; „Womit faengt eine Kurvendiskussion an?" spricht ueber das Dokument und lebt
+in niemandem. Findest du keine lebende Frage, gehoert der Bogen nicht in den Film. Die eine
+Ausnahme ist ein Katalog, den das Dokument selbst aufstellt und der Film danach abarbeitet:
+dann `"uebersicht": true`, hoechstens einmal je Film und nie als Eroeffnung.
+
+**Oben auf dem Blatt steht der `titel`: der Gegenstand**, als Nominalphrase mit Formel,
+„Nullstellen von \(g(x)=2x^2-8\)", „y-Achsenschnittpunkt von \(f\)". Der Autor hat an
+Blindtest 5 befunden, dass Fragen als Ueberschrift falsch wirken („Und wo schneidet g die
+y-Achse?", „Geht das bei g genauso?"): sie tun, als waere die Frage im Leser jetzt klar,
+und sagen nicht, was auf dem Blatt steht. Ein Dokument, das eine Sammlung von Uebersichten
+ist, hat keinen Spannungsbogen, den eine Frage vortaeuschen duerfte. Die Frage darf in die
+einen Lehrersatz im Fluss; die Ueberschrift nennt die Sache.
 
 Genau ein Beat traegt `"payoff": true`: **er tilgt die Schuld des Bogens**, mit dem Ergebnis,
 der Formel, der Stelle im Bild. Ein Satz allein tilgt nichts, eine Uebung prueft nur, was
@@ -105,6 +125,44 @@ der Regel. Und das fertige Blatt muss allein tragen: wer nur Ueberschrift, Forme
 Merksatz des Blattes liest, versteht den Bogen; Prosa ist kurzes Bindegewebe, ein Gedanke je
 Satz.
 
+## Der Blick: eine Sache nach der anderen
+
+Das Papier hat keine Zeitachse; der Film hat eine. Das ist sein einziger echter Vorteil, und
+er heisst nicht Bewegung, sondern **Reihenfolge**: die Ordnung, in der die Dinge erscheinen,
+ist der Weg der Aufmerksamkeit, und diesen Weg legst du. Alles Weitere folgt daraus.
+
+**Die Augen koennen keinen Spagat.** Was gleichzeitig an zwei Orten erscheint, verliert
+einen von beiden. Darum: in jedem Augenblick eine Sache, und die naechste dort, wo der Blick
+schon ist oder einen Schritt weiter unten. Kein fester Streifen, keine Untertitelzeile, kein
+Kasten am Rand, zu dem der Blick springen muesste; der Autor hat eine Sprecherzeile unten am
+Blatt genau daran gemessen und verworfen.
+
+**Der Lehrersatz steht im Fluss.** `sag` am Beat ist ein kurzer Satz, der an seiner Stelle im
+Blatt erscheint, **bevor** kommt, was er ankuendigt: „Dort ist y = 0, also f(x) = 0", dann
+die Rechnung; „Der Logarithmus holt das x herunter", dann die Zeile, in der es herunter
+faellt. Er bleibt stehen (das Blatt ist der Speicher des Lesers), tritt aber zurueck und wird
+leise, sobald der naechste kommt. Nichts rueckt dabei, nichts springt.
+
+**Ein Gedanke, ein Ort.** Der Satz ersetzt die Marke, statt neben ihr zu stehen: „Nullstelle:
+an jeder Nullstelle ist y = 0" als Kapitaelchen-Marke *und* derselbe Satz als Lehrersatz sind
+zwei Texte an einer Stelle, also ein Spagat. Der Pruefer meldet das.
+
+**Nicht jeder Beat braucht einen Satz.** Wo das Bild oder die Zeile fuer sich spricht,
+schweigt der Lehrer; hoechstens drei Saetze auf einem Blatt, sonst liest der Leser, statt zu
+sehen. Und jeder Satz kostet Blatthoehe: er ist ein Block wie jeder andere.
+
+Was gesagt werden darf, begrenzt die Treue: **erklaeren ja, hinzufuegen nein.** Der Satz
+erklaert den Schritt des Dokuments in den Worten eines Lehrers, im Praesens, wir-Form, nie
+voraus („gleich sehen wir") und nie hinterher; er bringt keine Regel, kein Beispiel, kein
+Ergebnis, das nicht im Dokument steht. „Nur die Zahl ohne x bleibt uebrig" beschreibt, was
+dasteht; „bei dieser Form ist der y-Achsenschnittpunkt immer die Zahl ohne x" ist eine Regel,
+die das Dokument nicht aufstellt.
+
+Der Autor hat an Blindtest 5 befunden, er sei „ein bisschen lost" gewesen: das Dokument hatte
+die Saetze („Die Nullstelle ist der Schnittpunkt einer Funktion mit der x-Achse", „Wichtig:
+Beim Wurzelziehen gibt es immer zwei Loesungen"), der Film hatte sie zu `warum`-Fragmenten
+eingedampft. Sie gehoeren in den Fluss, an die Stelle, an der der Blick sie braucht.
+
 ## Die Geraete: Beziehungen, die Papier nicht zeigen kann
 
 Papier zeigt Zustaende. Der Film zeigt **woher eine Zahl kommt und wohin sie geht**, und
@@ -122,7 +180,38 @@ erkennst und nicht die Oberflaeche des Beispiels suchst.
 |---|---|---|
 | eine Zahl wird in eine Klammer eingesetzt | `pfeil` von der Quelle, im Seitenrand entlang, **von oben in die Klammer** auf die eingesetzte Zahl | Definitionsbereich: die 4 aus `x = 4` fliesst in `f(4) = 1/(4 − 4)`, der Nenner wird null. Nullstellen: `x₁ = 2` aus der p-q-Formel fliesst in `f(2)` zur Probe |
 | dieselbe Zahl wird mehrfach eingesetzt | ein Stamm, mehrere Aeste: `pfeil` mit `von: {"pfeil": id}` | Extrempunkte: `x₁` in `f''(x₁)` und in `f(x₁)`. Integral: die Grenze 3 in `F(3)` und in die Flaechenformel |
-| eine Zahl bekommt einen Ort im Bild, oder ein Ort wird eine Zahl | `flug` vom Chip zur Achsenmarke (`kandidat`) oder in einen leeren Chip einer Zeile | Wertebereich: die −1 aus `T(−1\|−1)` fliegt in `y ≥ −1`. Nullstellen: `x₁` fliegt in `N₁(x₁\|0)` |
+| eine Zahl bekommt einen Ort im Bild, oder ein Ort wird eine Zahl | `flug` vom Chip zur Achsenmarke (`kandidat`, auf der x-Achse oder mit `achse:"y"` an der y-Achse) oder in einen leeren Chip einer Zeile | Wertebereich: die −1 aus `T(−1\|−1)` fliegt in `y ≥ −1`. y-Achsenschnitt: die −8 aus `g(0) = −8` fliegt zur y-Achse, dann landet der Punkt |
+| **ein Term wird umgebaut: seine Teile wandern an neue Plaetze** | `umformung` Zeile fuer Zeile, wie der Schueler schreibt, jede Zeile aus Chips, mit `wege` von der vorigen Zeile und `| +8` rechts; ein Weg bewegt (`[von, zu]`), verwandelt unterwegs (`wird`: −4 wird 4, x² wird x) oder streicht (`weg`: das e beim Logarithmieren). Bruch `{bruch}` und Hochzahl `{hoch}` sind aus Chips gebaut, damit Zaehler, Nenner und Exponent wandern koennen | siehe die Grundformen unten |
+
+**Die Grundformen des Umbaus.** Jede Umformung, die ein Schueler Zeile fuer Zeile schreibt,
+ist eine Bewegung ihrer Teile; der Film zeigt sie als Uebergang zwischen zwei Zeilen, die
+beide stehen bleiben. Welcher Teil sich bewegt, entscheidet der Kontext: die Beziehung, die
+der Leser sich sonst im Kopf herstellen muesste, und nur die.
+
+- Seitenwechsel: der Term wandert ueber das Gleichheitszeichen und kippt dabei (`wird`:
+  `−8` wird `8`, `·2` wird `:2`); rechts steht `| +8`, `| :2`.
+- Beide Seiten teilen, Wurzel ziehen, quadrieren, logarithmieren: jede Seite wandert an
+  ihren Platz und `wird` dabei (`2x²` wird `x²`, `4` wird `±2`; `e^x` verliert sein e, das
+  gestrichen wird, und das x faellt aus dem Exponenten herunter); rechts `| √`, `| ln`.
+- Ausklammern: erst macht eine Zeile die verborgene Gestalt sichtbar (`x³ − 4x` wird
+  `x·x² − x·4`), dann treffen sich beide x vor der Klammer (`takt` 0), der Rest zieht hinein
+  (`takt` 1). Ausmultiplizieren umgekehrt: der Faktor vor der Klammer fliegt zu jedem
+  Summanden, zwei Wege aus einer Quelle.
+- Zusammenfassen gleicher Terme: `3x` und `5x` treffen sich und werden `8x`.
+- Kuerzen: derselbe Faktor oben und unten wird gestrichen (`weg`), im Bruch aus Chips.
+  Erweitern: der Faktor erscheint oben und unten als Rest.
+- Substitution: jedes `x²` wird `u`; Ruecksubstitution umgekehrt.
+- Potenzregel beim Ableiten: der Exponent kommt als Faktor nach vorn (Kopie fliegt) und
+  wird im Exponenten um eins kleiner (`wird`). Kettenregel: die innere Ableitung tritt als
+  Faktor hinten an (Rest). Potenzgesetze: zwei Exponenten treffen sich zu ihrer Summe.
+- Binomische Formeln und quadratische Ergaenzung: a und b wandern in Quadrate und
+  Doppelprodukt; `(p/2)²` erscheint zweimal, plus und minus.
+- Einsetzen einer Zahl aus einer weiter oben stehenden Zeile bleibt der `pfeil` (durch den
+  Seitenrand, von oben in die Klammer); der Umbau ist der Uebergang zwischen Nachbarzeilen.
+
+Nicht alles wandert. Eine Zeile, deren Uebergang der Leser im Kopf hat (`9 − 4 = 5`), steht
+einfach da; ein Umbau, dessen Beziehung du nicht in einem Satz nennen kannst, ist
+Dekoration.
 | eine Stelle ist noch kein Punkt | `kandidat` auf der x-Achse, `aufstieg` hebt sie zur Hoehe, `punkt` landet | y-Achsenschnitt: die 0 steigt zu `f(0)`. Wendepunkt: `x_w` wartet an der Achse, bis `f(x_w)` ihn hebt |
 | wie das Bild an der Stelle aussieht | `kappe` auf dem Kurvenstueck, ∩ oder ∪, mit dem Wortlaut des Dokuments | Kruemmung: `f'' > 0` als ∪. Wendepunkt: zwei Kappen derselben Farbe, links ∩, rechts ∪, denn gezeigt wird der Wechsel |
 | ein Konzept ist selbst ein Lauf | `fahrt`: x laeuft mit dem Rad, die Tangente faehrt, m laeuft mit | Steigung: m wird 0 am Gipfel und im Tal. Grenzwert: x wandert nach rechts, `f(x)` naehert sich der Asymptote |
@@ -257,7 +346,9 @@ Geraet ist erlaubt, ein Bogen ohne diesen Durchgang nicht.
 
 Lies `REFERENCE.md` (Format, Operationen, `expr`). Schreibe aus dem Strang, nicht aus einer
 Liste: simuliere den Kopf des Lesers durch das Dokument, was er hier weiss, welche Frage in
-ihm lebt, was er sieht, wie schwer er traegt.
+ihm lebt, was er sieht, wie schwer er traegt. Je Bogen ein `titel`, Lehrersaetze (`sag`)
+nur dort, wo der Blick sie braucht; Rechnungen als `umformung` Zeile fuer Zeile mit `wege`,
+wo die Beziehung es verlangt.
 
 ### 6. Pruefen
 

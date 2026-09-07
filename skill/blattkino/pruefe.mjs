@@ -50,7 +50,7 @@ rohBoegen.forEach((bo,i)=>{
       const beats=ersetzen(bo.serie.vorlage,ctx);
       // Je Beat die Menge der Geraete, nicht ihre Zahl: drei Kandidaten sind dasselbe Muster wie einer
       gestalten.push(beats.map(b=>[...new Set((b.ops||[]).map(o=>o.op))].sort().join(',')).join(' | '));
-      boegen.push({frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx),beats:beats,serieFall:true,fortsetzung:bo.fortsetzung}); }
+      boegen.push({frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx),titel:ersetzen(fall.titel!==undefined?fall.titel:(bo.serie.titel||bo.titel||''),ctx),beats:beats,serieFall:true,fortsetzung:bo.fortsetzung}); }
     const arten=[...new Set(gestalten)];
     if(arten.length>1) B('MITTEL','Bogen '+(i+1),'serie: die Faelle erzeugen verschiedene Geraetefolgen. Eine Serie haelt das Muster konstant.');
   } else boegen.push(bo);
@@ -67,7 +67,7 @@ const OPS = ['clear','h','text','item','math','note','frage','umformung','tabell
              'jetztihr','plot','point','hline','vline','region','sweep',
              'wert','doppelgraph','binden','bildfolge','zoomfolge','paar',
              // v2 (Goldlauf)
-             'satz','marke','merk','zeile','zeig','graph','punkt','beschriftung','kandidat','flug','pfeil','kappe','aufstieg','fahrt'];
+             'satz','marke','merk','zeile','zeig','graph','punkt','beschriftung','kandidat','flug','pfeil','kappe','aufstieg','fahrt','umbau'];
 const UEBERFLIEG = ['h','tabelle','merksatz','merk','plot','graph','jetztihr','doppelgraph','zoomfolge','marke'];
 // Geraete, die ein eigenes Bild aufmachen. Nach ihnen ist ein neues Bild noetig, um sie anzusprechen.
 const BILDER = ['plot','graph','doppelgraph','zoomfolge'];
@@ -95,7 +95,7 @@ function hoehe(o){
     case 'math':      return (o.hl?46:28)+34;
     case 'note':      return 27*zeilen(o.t,52)+24;
     case 'frage':     return 27*zeilen(o.t,44)+30;
-    case 'umformung': return (Array.isArray(o.zeilen)?o.zeilen:[]).reduce((n,z)=>n+30+(z&&z.warum?24:0),0)+26;
+    case 'umformung': return (Array.isArray(o.zeilen)?o.zeilen:[]).reduce((n,z)=>n+30+(z&&z.warum&&!/^\s*\|/.test(String(z.warum))?24:0),0)+26;
     case 'tabelle':   return 34 + 34*((Array.isArray(o.zeilen)?o.zeilen:[]).length) + 26;
     case 'merksatz':  return 27*zeilen(o.t,44)+50;
     case 'jetztihr':  return 34 + 27*zeilen(o.t||o.aufgabe,44) + 44;
@@ -123,7 +123,7 @@ function hoehe(o){
   }
 }
 const beatHoehe = b => (Array.isArray(b.ops)?b.ops:[]).reduce((n,o)=>n+hoehe(o),0)
-                     + 27*zeilen(b.sub);
+                     + 27*zeilen(b.sub) + 27*zeilen(b.sag);
 // Ein Bogen ist ein Blatt und ein Blatt ist ein Bildschirm. Abzueglich Frage,
 // Sicherheitsraendern und dem kleinsten Abstand zwischen den Bloecken bleiben:
 const BLATT = 0.93*VH;
@@ -133,7 +133,7 @@ const ABSTAND = 16;
 const SICHTBAR = ['h','text','item','math','note','frage','umformung','tabelle','merksatz',
                   'jetztihr','plot','doppelgraph','zoomfolge','paar',
                   'satz','marke','merk','zeile','graph'];
-const beatBloecke = b => (b.sub&&String(b.sub).trim()?1:0)
+const beatBloecke = b => (b.sub&&String(b.sub).trim()?1:0) + (b.sag&&String(b.sag).trim()?1:0)
   + (Array.isArray(b.ops)?b.ops:[]).filter(o=>SICHTBAR.includes(o.op)).length
   + (Array.isArray(b.ops)?b.ops:[]).filter(o=>o.op==='jetztihr').length      // Loesung ist ein zweiter Block
   + (Array.isArray(b.ops)?b.ops:[]).filter(o=>o.op==='wert'&&o.tex).length;
@@ -154,7 +154,7 @@ const SPRACHE = [
   [/\d+\.\d+\s*(FE|cm|m|Einheiten)?\b/,'Dezimalpunkt statt Komma'],
 ];
 function textVon(b){
-  const t=[b.sub];
+  const t=[b.sub,b.sag];
   for(const o of (Array.isArray(b.ops)?b.ops:[])){
     t.push(o.t,o.label,o.legend,o.warum,o.loesungText);
     if(Array.isArray(o.zeilen)) for(const z of o.zeilen) t.push(z&&z.warum);
@@ -176,7 +176,7 @@ if(boegen.length&&boegen[0]&&boegen[0].uebersicht===true) B('MITTEL','Bogen 1','
 if(!boegen.some(b=>(b.beats||[]).some(bt=>(bt.ops||[]).some(o=>o&&(o.op==='merk'||o.op==='merksatz')))))
   B('MITTEL','Ganzes','kein einziger Merksatz im Film. Was der Leser morgen noch wissen soll, steht nirgends als Regel.');
 // P6: mehr als zwei gleichartige Faelle als Einzelboegen ohne Serie, Tabelle oder Merksatz
-{ const GER=['plot','graph','hline','vline','region','point','punkt','wert','umformung','zeile','pfeil','flug','kappe','aufstieg','kandidat','bildfolge','zoomfolge','doppelgraph','binden'];
+{ const GER=['plot','graph','hline','vline','region','point','punkt','wert','umformung','zeile','pfeil','flug','umbau','kappe','aufstieg','kandidat','bildfolge','zoomfolge','doppelgraph','binden'];
   const KONS=['merk','merksatz','tabelle'];
   const menge=b=>new Set((b.beats||[]).flatMap(bt=>(bt.ops||[])).map(o=>o&&o.op).filter(op=>GER.includes(op)));
   const kons=b=>!!b&&(b.beats||[]).some(bt=>(bt.ops||[]).some(o=>o&&KONS.includes(o.op)));
@@ -199,14 +199,52 @@ if(typeof D.inventar==='string'&&D.inventar.trim().length>=40){
 }
 boegen.forEach((bo,bi)=>{
   offenesBild=null;     // jede Szene faengt mit leerer Buehne an
-  const chips={};       // Kennungen der Chips dieses Bogens
+  const chips={}, zeilenReg={};       // Kennungen der Chips und der Zeilen dieses Bogens
+  // Chips einer Zeile (auch in Bruch {bruch:{oben,unten}} und Hochzahl {hoch:{basis,exp}}) registrieren und pruefen
+  function pruefeChips(teile,wob){
+    const lauf=(t)=>{ for(const p of t){
+      if(Array.isArray(p)){ lauf(p); continue; }
+      if(p&&typeof p==='object'&&p.bruch){ lauf([].concat(p.bruch.oben||[])); lauf([].concat(p.bruch.unten||[])); continue; }
+      if(p&&typeof p==='object'&&p.hoch){ lauf([].concat(p.hoch.basis||[])); lauf([].concat(p.hoch.exp||[])); continue; }
+      if(typeof p==='string'||(p&&typeof p==='object')){
+        // Jeder Chip ist ein eigenes MathJax-Stueck: Klammern muessen im Chip aufgehen (sonst "Extra close brace")
+        const tx=typeof p==='string'?p:p.tex; if(tx!==undefined&&tx!=='!eng'){ let d=0,minus=false; for(const c of String(tx)){ if(c==='{')d++; if(c==='}')d--; if(d<0)minus=true; }
+          if(d!==0||minus) B('SCHWER',wob,'Chip "'+String(tx).slice(0,24)+'": geschweifte Klammer geht im Chip nicht auf. \\frac, \\sqrt, ^{ } und _{ } muessen ganz in einem Chip liegen; der Spieler zeigt sonst einen MathJax-Fehler.'); }
+        if(typeof p==='string')continue; if(p.id!==undefined)chips[p.id]=p;
+        // GL1: Farbe nur auf einer Zahl. Indizes und Hochzahlen zaehlen nicht als Zahl.
+        if(p.k!==undefined&&p.tex!==undefined){
+          const punkt=/^[A-Z](_\{?\d\}?)?\(/.test(String(p.tex));
+          const rein=String(p.tex).replace(/[_^]\{?-?\d+\}?/g,'').replace(/\{,\}/g,',');
+          const zahlen=(rein.match(/-?\d+(?:[.,]\d+)?/g)||[]).length;
+          if(zahlen>1&&!punkt) B('SCHWER',wob,'Farbe auf "'+String(p.tex).slice(0,30)+'": mehr als eine Zahl. Farbe sitzt nur auf der Zahl, die wandert oder eingesetzt wird (GL1).'); } } } };
+    lauf(teile);
+  }
+  // Umbau: Zielzeile stumm und bekannt, Wege auf bekannte Chips, Ziel in der Zielzeile
+  function pruefeUmbau(o,wob){
+    const z=zeilenReg[o.zu];
+    if(!z) B('SCHWER',wob,'umbau zu einer Zeilen-Kennung, die es in diesem Bogen nicht gibt ("'+o.zu+'").');
+    else if(!z.stumm) B('SCHWER',wob,'umbau in die Zeile "'+o.zu+'", die nicht stumm ist. Die Zielzeile liegt stumm bereit; der Umbau baut sie auf.');
+    const wege=Array.isArray(o.wege)?o.wege:[];
+    if(!wege.length) B('SCHWER',wob,'umbau ohne wege. Ohne Wege wandert nichts, die Zeile erscheint nur.');
+    for(const w of wege){
+      const W=Array.isArray(w)?{von:w[0],zu:w[1]}:(w&&typeof w==='object'?w:null);
+      if(!W||W.von===undefined){ B('SCHWER',wob,'umbau: ein Weg ist weder Paar [von, zu] noch Objekt {von, zu}.'); continue; }
+      for(const v of [].concat(W.von)) if(chips[v]===undefined) B('SCHWER',wob,'umbau: Weg von "'+v+'", diese Chip-Kennung gibt es in diesem Bogen nicht.');
+      if(W.weg||W.zu===undefined){ if(!W.weg) B('SCHWER',wob,'umbau: Weg ohne zu und ohne weg: true. Entweder ein Ziel oder ein Streichen.'); continue; }
+      if(chips[W.zu]===undefined) B('SCHWER',wob,'umbau: Weg zu "'+W.zu+'", diese Chip-Kennung gibt es in diesem Bogen nicht.');
+      else if(z&&!JSON.stringify(z.teile||[]).includes('"id":"'+W.zu+'"')) B('SCHWER',wob,'umbau: Ziel "'+W.zu+'" liegt nicht in der Zeile "'+o.zu+'".'); }
+  }
   const wo = 'Bogen '+(bi+1);
   const bs = Array.isArray(bo.beats)?bo.beats:[];
   if(!bs.length){ B('SCHWER',wo,'ohne Beats.'); return; }
   // DD5: Uebersichtsboegen duerfen ohne Frage sein; erfundene Meta-Fragen nicht
-  if(bo.uebersicht!==true && !bo.frage) B('MITTEL',wo,'ohne "frage": die lebende Frage fehlt, die den Bogen zieht. Ist es eine Uebersicht des Dokuments, setze "uebersicht": true.');
-  if(bo.frage && /\b(Block|Kapitel|Abschnitt|Liste|Seite|Film|Dokument)\b/i.test(String(bo.frage)))
-    B('MITTEL',wo,'die "frage" spricht ueber das Dokument ("'+String(bo.frage).slice(0,50)+'"). Im Leser lebt sie nicht. Entweder eine echte Frage oder "uebersicht": true.');
+  // Oben steht der Titel (Gegenstand des Blatts); die Frage ist ein Werkzeug des Storyboards und nur dann
+  // Ueberschrift, wenn sie wirklich lebt (Autorbefund 2026-09-07: gestellte Fragen als Ueberschrift wirken falsch)
+  if(bo.uebersicht!==true && !bo.titel && !bo.frage) B('MITTEL',wo,'ohne "titel" und ohne "frage": der Leser weiss nicht, was auf dem Blatt steht. Setze "titel" (Gegenstand, etwa "Nullstellen von f").');
+  if(!bo.titel && bo.frage && /^(Und |Geht das|Wie findet man|Was ist mit)/i.test(String(bo.frage)))
+    B('MITTEL',wo,'die "frage" ("'+String(bo.frage).slice(0,50)+'") steht als Ueberschrift, wirkt aber gestellt. Setze "titel" mit dem Gegenstand; die Frage darf in die Stimme (sag).');
+  for(const f of [bo.titel,bo.frage]) if(f && /\b(Block|Kapitel|Abschnitt|Liste|Seite|Film|Dokument)\b/i.test(String(f)))
+    B('MITTEL',wo,'die Ueberschrift spricht ueber das Dokument ("'+String(f).slice(0,50)+'"). Im Leser lebt sie nicht. Entweder der Gegenstand oder "uebersicht": true.');
   // DD6: ein Blatt, das nach zwei Wischern abgeloest wird, ist kein Speicher
   if(bs.length<3 && bo.uebersicht!==true && bo.reprise!==true && !bo.serieFall)
     B('LEICHT',wo,'nur '+bs.length+' Beat(s). Das Blatt ist kaum aufgebaut, schon wird es abgeloest.');
@@ -219,7 +257,8 @@ boegen.forEach((bo,bi)=>{
   // Ein Bogen ist ein Blatt und das Blatt ist ein Bildschirm. Alles, was im Bogen
   // erscheint, steht am Ende gleichzeitig da: das ist der ausgelagerte Speicher.
   const bloecke = bs.reduce((n,b)=>n+beatBloecke(b),0);
-  const hoeheB  = bs.reduce((n,b)=>n+beatHoehe(b),0) + Math.max(0,bloecke-1)*ABSTAND;
+  // Die Leiste oben kostet 16 px; der Satz eines Beats (sag) zaehlt wie sub
+  const hoeheB  = bs.reduce((n,b)=>n+beatHoehe(b),0) + Math.max(0,bloecke-1)*ABSTAND + 16;
   if(process.argv.includes('--hoehe')) console.log(wo+': '+Math.round(hoeheB)+' px, '+bloecke+' Bloecke  |  '+bs.map((b,i)=>'B'+(i+1)+' '+Math.round(beatHoehe(b))+'px/'+beatBloecke(b)).join('  '));
   if(hoeheB > BLATT/0.68)
     B('SCHWER',wo,'passt nicht auf ein Blatt: '+Math.round(hoeheB)+' von '+Math.round(BLATT)
@@ -269,7 +308,7 @@ boegen.forEach((bo,bi)=>{
 
   // P6: Einsetzen als Wort in der Umformung, aber keine Zahl bewegt sich
   { const eigen=bs.flatMap(b=>(b.ops||[]));
-    const bewegt=eigen.some(o=>o&&(o.op==='pfeil'||o.op==='flug'));
+    const bewegt=eigen.some(o=>o&&(o.op==='pfeil'||o.op==='flug'||o.op==='umbau'));
     const setzt=eigen.filter(o=>o&&o.op==='umformung').flatMap(o=>(o.zeilen||[]).map(z=>z&&z.warum)).filter(w=>typeof w==='string'&&/einsetz|eingesetzt|setzen wir|setzt man/i.test(w));
     if(setzt.length&&!bewegt) B('MITTEL',wo,'Umformung sagt „'+String(setzt[0]).slice(0,40)+'", aber keine Zahl bewegt sich. Einsetzen ist der Paradefall des Pfeils: die Zahl fliesst von oben in die Klammer (GL2). Umformung zeigt nur das Ergebnis.');
     // G6: eine Farbe auf einer Zahl im Text braucht ein Geraet, das die Beziehung zeigt
@@ -310,7 +349,7 @@ boegen.forEach((bo,bi)=>{
   bs.forEach((b,i)=>{
     nBeats++;
     const wob = wo+', Beat '+(i+1);
-    const hatSichtbares=(b.ops||[]).some(o=>o&&(SICHTBAR.includes(o.op)||['point','punkt','kappe','aufstieg','fahrt','flug','pfeil','wert','binden','bildfolge','beschriftung','kandidat','hline','vline','region'].includes(o.op)));
+    const hatSichtbares=(b.ops||[]).some(o=>o&&(SICHTBAR.includes(o.op)||['point','punkt','kappe','aufstieg','fahrt','flug','pfeil','umbau','wert','binden','bildfolge','beschriftung','kandidat','hline','vline','region'].includes(o.op)));
     if((typeof b.sub!=='string'||!b.sub.trim())&&!hatSichtbares) B('SCHWER',wob,'ohne "sub" und ohne sichtbare Operation: ein leerer Beat.');
     // Ein Beat, der nur aus seinem Satz besteht, zeigt nichts. Ein Payoff aus einem Satz tilgt nichts.
     if(!hatSichtbares && typeof b.sub==='string' && b.sub.trim()){
@@ -362,22 +401,23 @@ boegen.forEach((bo,bi)=>{
       if(o.op==='binden'&&offenesBild!=='doppelgraph')
         B('SCHWER',wob,'"binden" ohne Doppelgraph. Der verbindende Strich braucht zwei Systeme.');
       // Chips dieses Bogens fuer GL1 und GL2 einsammeln
-      if(o.op==='zeile'&&Array.isArray(o.teile)){
-        const lauf=(t)=>{ for(const p of t){ if(Array.isArray(p))lauf(p); else if(p&&typeof p==='object'){ if(p.id!==undefined)chips[p.id]=p;
-          // GL1: Farbe nur auf einer Zahl. Indizes und Hochzahlen zaehlen nicht als Zahl.
-          if(p.k!==undefined&&p.tex!==undefined){
-            // Ein benannter Punkt H(x|y) ist ein Objekt des Kandidaten, keine gefaerbte Zeile
-            const punkt=/^[A-Z](_\{?\d\}?)?\(/.test(String(p.tex));
-            const rein=String(p.tex).replace(/[_^]\{?-?\d+\}?/g,'').replace(/\{,\}/g,',');
-            const zahlen=(rein.match(/-?\d+(?:[.,]\d+)?/g)||[]).length;
-            if(zahlen>1&&!punkt) B('SCHWER',wob,'Farbe auf "'+String(p.tex).slice(0,30)+'": mehr als eine Zahl. Farbe sitzt nur auf der Zahl, die wandert oder eingesetzt wird (GL1).'); } } } };
-        lauf(o.teile); }
+      if(o.op==='zeile'&&o.id!==undefined)zeilenReg[o.id]=o;
+      // umformung: Zeilen aus Chips (teile) mit wege sind Umbauten von der vorigen Zeile
+      if(o.op==='umformung'&&Array.isArray(o.zeilen)){ let vorige=null;
+        o.zeilen.forEach((z,zi)=>{ if(!z||!Array.isArray(z.teile))return;
+          const zid=z.id!==undefined?String(z.id):('_u'+zi); zeilenReg[zid]={teile:z.teile,stumm:true};
+          pruefeChips(z.teile,wob+', Umformungszeile '+(zi+1));
+          if(Array.isArray(z.wege)){ if(!vorige) B('SCHWER',wob,'Umformungszeile '+(zi+1)+' traegt wege, aber es gibt keine vorige Zeile aus Chips.');
+            pruefeUmbau({zu:zid,wege:z.wege},wob+', Umformungszeile '+(zi+1)); }
+          vorige=z; }); }
+      if(o.op==='zeile'&&Array.isArray(o.teile)) pruefeChips(o.teile,wob);
       if(o.op==='pfeil'){
         const z=chips[o.zu];
         if(z===undefined) B('SCHWER',wob,'pfeil auf eine Kennung, die es in diesem Bogen nicht gibt ("'+o.zu+'").');
         else if(z.tex===undefined || !/^-?(\d+(?:[.,{}\d]*)?|sqrt\(.*\)|\(\d+\)\/\(\d+\))$/.test(flach(z.tex).replace(/\s+/g,'').replace(/^pm/,'').replace(/^\((-?[\d.,]+)\)$/,'$1')))
           B('MITTEL',wob,'pfeil endet auf "'+String(z.tex!==undefined?z.tex:z.t).slice(0,20)+'", das ist keine eingesetzte Zahl in einer Klammer (GL2).');
       }
+      if(o.op==='umbau') pruefeUmbau(o,wob);
       if(o.op==='flug'&&typeof o.zu==='string'){ const z=chips[o.zu];
         if(z===undefined) B('SCHWER',wob,'flug in eine Kennung, die es in diesem Bogen nicht gibt ("'+o.zu+'").');
         else if(bo.serieFall&&z.leer) B('MITTEL',wob,'flug in die Ergebniszeile innerhalb der Serie. Das Zusammenfliegen gehoert ins erklaerte Beispiel; in der Serie erscheint die Ergebniszeile nur (GL4).'); }
@@ -399,13 +439,16 @@ boegen.forEach((bo,bi)=>{
       // Alles zaehlt, was der Leser als Formel zu sehen bekommt, nicht nur math und umformung
       if(o.op==='math'&&o.tex) alleTex.push(o.tex);
       // zeile: jeder TeX-Chip zaehlt, und die ganze Zeile zusammengezogen
-      if(o.op==='zeile'&&Array.isArray(o.teile)){ const tx=[]; const lauf=t=>{ for(const p of t){ if(Array.isArray(p))lauf(p); else if(typeof p==='string'&&p!=='!eng')tx.push(p); else if(p&&p.tex!==undefined)tx.push(String(p.tex)); } };
-        lauf(o.teile); for(const t of tx)alleTex.push(t); if(tx.length>1)alleTex.push(tx.join('')); }
+      const texAusTeilen=teile=>{ const tx=[]; const lauf=t=>{ for(const p of t){ if(Array.isArray(p))lauf(p);
+          else if(p&&typeof p==='object'&&p.bruch){ const o1=[],u1=[]; const l2=(q,acc)=>{ for(const e of [].concat(q)){ if(Array.isArray(e))l2(e,acc); else if(typeof e==='string'&&e!=='!eng')acc.push(e); else if(e&&e.tex!==undefined)acc.push(String(e.tex)); } }; l2(p.bruch.oben,o1); l2(p.bruch.unten,u1); tx.push('\\frac{'+o1.join('')+'}{'+u1.join('')+'}'); }
+          else if(p&&typeof p==='object'&&p.hoch){ const b1=[],e1=[]; const l2=(q,acc)=>{ for(const e of [].concat(q)){ if(Array.isArray(e))l2(e,acc); else if(typeof e==='string'&&e!=='!eng')acc.push(e); else if(e&&e.tex!==undefined)acc.push(String(e.tex)); } }; l2(p.hoch.basis,b1); l2(p.hoch.exp,e1); tx.push(b1.join('')+'^{'+e1.join('')+'}'); }
+          else if(typeof p==='string'&&p!=='!eng')tx.push(p); else if(p&&p.tex!==undefined)tx.push(String(p.tex)); } }; lauf(teile); return tx; };
+      if(o.op==='zeile'&&Array.isArray(o.teile)){ const tx=texAusTeilen(o.teile); for(const t of tx)alleTex.push(t); if(tx.length>1)alleTex.push(tx.join('')); }
       if(o.op==='marke'&&o.t) alleTex.push(String(o.t));
       if(o.op==='wert'&&o.tex) alleTex.push(o.tex);
       if(o.op==='jetztihr'){ for(const f of [o.aufgabe,o.aufgabeTex,o.loesung,o.loesungTex]) if(f) alleTex.push(f); }
       if(o.op==='umformung'){
-        const zs=(o.zeilen||[]).map(z=>z&&z.tex).filter(Boolean);
+        const zs=(o.zeilen||[]).map(z=>z&&(z.tex||(Array.isArray(z.teile)?texAusTeilen(z.teile).join(''):null))).filter(Boolean);
         for(const z of zs) alleTex.push(z);
         // Eine Rechnung ueber mehrere Zeilen deckt auch ihre zusammengezogene Gestalt ab
         if(zs.length>1) alleTex.push(zs.join(''));
@@ -426,9 +469,22 @@ boegen.forEach((bo,bi)=>{
     alleText.push(t);
     for(const [re,name] of GEBRABBEL) if(re.test(t)) B('MITTEL',wob,name+': "'+(t.match(re)||[''])[0]+'".');
     for(const [re,name] of SPRACHE)   if(re.test(t)) B('MITTEL',wob,name+': "'+(t.match(re)||[''])[0]+'".');
-    const lang = String(b.sub||'').split(/(?<=[.!?])\s+/).filter(x=>x.split(',').length>2);
+    const lang = String((b.sub||'')+' '+(b.sag||'')).split(/(?<=[.!?])\s+/).filter(x=>x.split(',').length>2);
     if(lang.length) B('LEICHT',wob,'Satz mit mehr als einem Nebensatz: "'+lang[0].slice(0,60)+'".');
+    // Die Stimme: hoechstens zwei kurze Saetze, sonst liest der Leser statt zu sehen
+    if(typeof b.sag==='string'&&b.sag.trim()){ const n=b.sag.trim().split(/(?<=[.!?])\s+/).length;
+      if(b.sag.length>120||n>2) B('MITTEL',wob,'"sag" mit '+n+' Saetzen, '+b.sag.length+' Zeichen. Der Satz zum Beat ist kurz: ein Satz, hoechstens zwei, dort wo das Auge ist.');
+      // Der Satz ersetzt die Marke, statt neben ihr zu stehen: zwei Texte an einem Ort sind ein Spagat
+      const nackt=x=>String(x||'').toLowerCase().replace(/\\\(|\\\)|[^a-z0-9äöüß]/g,'');
+      const sg=nackt(b.sag);
+      for(const o of (b.ops||[])) if((o.op==='marke'||o.op==='satz'||o.op==='text')&&o.t){ const m=nackt(o.t);
+        if(m.length>8&&(sg.includes(m)||m.includes(sg))) B('MITTEL',wob,'der Satz zum Beat und "'+o.op+'" sagen dasselbe ("'+String(o.t).slice(0,32)+'"). Einer von beiden traegt; zwei Texte an einer Stelle sind ein Spagat fuer den Blick.'); }
+      if(bo.titel&&nackt(bo.titel).length>8&&sg.includes(nackt(bo.titel))) B('LEICHT',wob,'der Satz zum Beat wiederholt den Titel des Blattes.');
+    }
   });
+  // Blickfuehrung: das Blatt ist eine Folge von Stationen, kein Lesetext
+  { const saetze=bs.filter(b=>typeof b.sag==='string'&&b.sag.trim()).length;
+    if(saetze>3) B('MITTEL',wo,saetze+' Lehrersaetze auf einem Blatt. Der Blick soll wandern, nicht lesen: hoechstens drei, und nur dort, wo das Bild allein nicht spricht.'); }
 });
 
 // ---------- Ueber das Ganze ----------

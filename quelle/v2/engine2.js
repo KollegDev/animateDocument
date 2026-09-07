@@ -16,13 +16,19 @@ const SZENEN=[]; let szene=null, beat=null; const mathKnoten=[]; let TOTAL=1;
 
 function szeneAuf(frage){
   const s=el('section','szene'); const inhalt=el('div','inhalt'); s.appendChild(inhalt);
-  if(frage){ inhalt.appendChild(el('p','frage',frage)); }
+  if(frage){ const f=el('p','frage',frage); inhalt.appendChild(f); if(/\\\(/.test(frage))mathKnoten.push(f); }
   const pf=svgEl('svg',{class:'pfeile'}); const fl=el('div','flug');
   inhalt.appendChild(pf); inhalt.appendChild(fl);
   $('buehne').appendChild(s);
-  szene={kn:s,inhalt,pf,fl,beats:[],items:[],scale:1};
+  szene={kn:s,inhalt,pf,fl,sagen:[],beats:[],items:[],scale:1};
   SZENEN.push(szene); return szene;
 }
+// Der Satz des Lehrers zu diesem Beat (Autorbefund 2026-09-07: das Auge folgt dem, was erscheint, und
+// macht keinen Spagat). Er steht im Fluss des Blatts, unmittelbar ueber dem, was der Beat zeigt, erscheint
+// als Erstes im Beat und tritt zurueck (vorbei), sobald der naechste Satz spricht. Fenster setzt zeitVerteilen.
+function sagen(t){ const e=el('p','sag'); e.textContent=t; if(/\\\(/.test(t))mathKnoten.push(e); setzen(e,1);
+  const it={typ:'sag',el:e,a:0,b:1,apply(u){ e.classList.toggle('vorbei',u>=1); }};
+  beat.sag=it; szene.sagen.push(it); szene.items.push(it); return it; }
 function beatAuf(g,payoff){ beat={gewicht:g||2,payoff:!!payoff,anteil:undefined,stuecke:[]}; szene.beats.push(beat); }
 // Ein Stueck: was gemeinsam erscheint. dauer ist sein Anteil an der Aufbaustrecke des Beats.
 function stueck(items,dauer){ const l=[].concat(items).filter(Boolean); if(!l.length||!beat)return; beat.stuecke.push({items:l,dauer:dauer||1}); for(const it of l)szene.items.push(it); }
@@ -31,8 +37,8 @@ function stueck(items,dauer){ const l=[].concat(items).filter(Boolean); if(!l.le
 function riseItem(e){ e.classList.add('el'); return {apply(u){ const v=eOut(u); e.style.opacity=v; e.style.transform='translate3d(0,'+((1-v)*10).toFixed(2)+'px,0)'; }}; }
 function einfuegen(e){ szene.inhalt.insertBefore(e,szene.pf); return e; }
 function setzen(e,dauer){ einfuegen(e); stueck(riseItem(e),dauer); return e; }
-function h(t){ return setzen(el('h2',null,t)); }
-function satz(t){ return setzen(el('p','satz',t)); }
+function h(t){ const e=el('h2',null,t); if(/\\\(/.test(t))mathKnoten.push(e); return setzen(e); }
+function satz(t){ const e=el('p','satz',t); if(/\\\(/.test(t))mathKnoten.push(e); return setzen(e); }
 function marke(t){ const e=el('p','marke'); e.textContent=t; if(/\\\(/.test(t))mathKnoten.push(e); return setzen(e); }
 function merk(t){ const e=el('p','merk'); e.textContent=t; if(/\\\(/.test(t))mathKnoten.push(e); return setzen(e); }
 // Aus v1 uebernommene Bloecke, alle als Text gesetzt
@@ -53,12 +59,21 @@ function chip(p,z){
     else c.textContent=t; }
   if(p&&p.id)z.chips[p.id]=c; return c;
 }
+// Ein Teil: Chip, Gruppe, Bruch {bruch:{oben,unten}} oder Hochzahl {hoch:{basis,exp}}. Bruch und Hochzahl
+// sind aus Chips gebaut, damit Zaehler, Nenner und Exponent eigene Kennungen tragen und wandern koennen.
+function teil(p,z){
+  if(Array.isArray(p)){ const eng=p[0]==='!eng'; const g=el('span','gruppe'+(eng?' eng':'')); for(const q of (eng?p.slice(1):p))g.appendChild(teil(q,z)); return g; }
+  if(p&&typeof p==='object'&&p.bruch){ const b=el('span','bruch'); const o=el('span','oben'), u=el('span','unten');
+    for(const q of [].concat(p.bruch.oben||[]))o.appendChild(teil(q,z)); for(const q of [].concat(p.bruch.unten||[]))u.appendChild(teil(q,z));
+    b.appendChild(o); b.appendChild(u); return b; }
+  if(p&&typeof p==='object'&&p.hoch){ const h=el('span','hoch'); const b=el('span','basis'), e=el('span','exp');
+    for(const q of [].concat(p.hoch.basis||[]))b.appendChild(teil(q,z)); for(const q of [].concat(p.hoch.exp||[]))e.appendChild(teil(q,z));
+    h.appendChild(b); h.appendChild(e); return h; }
+  return chip(p,z);
+}
 function zeile(parts,opt){
   opt=opt||{}; const z=el('div','zeile'+(opt.hl?' hl':'')); z.chips={};
-  for(const p of parts){
-    if(Array.isArray(p)){ const eng=p[0]==='!eng'; const g=el('span','gruppe'+(eng?' eng':'')); for(const q of (eng?p.slice(1):p))g.appendChild(chip(q,z)); z.appendChild(g); }
-    else z.appendChild(chip(p,z));
-  }
+  for(const p of parts)z.appendChild(teil(p,z));
   einfuegen(z);
   if(!opt.stumm)zeig(z,opt);
   return z;
@@ -78,9 +93,9 @@ function graph(cfg){
   const kx=(W-pl-pr)/(xmax-xmin), ky=(H-pt-pb)/(ymax-ymin);
   const svg=svgEl('svg',{viewBox:'0 0 '+W+' '+H});
   const L={grid:svgEl('g',{},svg),hinter:svgEl('g',{},svg),kurve:svgEl('g',{},svg),vorn:svgEl('g',{},svg)};
-  // Tickabstand nach Pixeldichte: Beschriftungen brauchen Luft (waagerecht 26 px, senkrecht 18 px)
+  // Tickabstand nach Pixeldichte: Beschriftungen brauchen Luft (waagerecht 40 px, senkrecht 18 px)
   const stepFuer=(r,px,min)=>{ for(const s of [0.5,1,2,5,10,20,50,100]){ if(px/r*s>=min)return s; } return 100; };
-  const xs=stepFuer(xmax-xmin,W-pl-pr,26), ys=stepFuer(ymax-ymin,H-pt-pb,18);
+  const xs=stepFuer(xmax-xmin,W-pl-pr,40), ys=stepFuer(ymax-ymin,H-pt-pb,18);
   const y0=(ymin<=0&&ymax>=0)?sy(0):sy(ymin), x0=(xmin<=0&&xmax>=0)?sx(0):sx(xmin);
   const lab=(x,y,t,anch,fill,size,parent)=>{ const e=svgEl('text',{x:x,y:y,fill:fill||'var(--muted)','font-size':size||12,'text-anchor':anch||'middle'},parent||L.vorn); e.textContent=t; return e; };
   const ticks={};
@@ -112,12 +127,17 @@ function graph(cfg){
   const abl2=x=>{ const hh=1e-3; return (fn(x+hh)-2*fn(x)+fn(x-hh))/(hh*hh); };
   const G={svg:svg,sx:sx,sy:sy,fn:fn,
     // Ein Punkt des Bildes in Blattkoordinaten, mit Versatz in Bildpixeln
-    anchor(x,y,dy){ const r=svg.getBoundingClientRect(), b=meineSzene.inhalt.getBoundingClientRect(), s=meineSzene.scale||1;
-      const f=(r.width/s)/W; return {x:(r.left-b.left)/s+sx(x)*f, y:(r.top-b.top)/s+(sy(y)+(dy||0))*f}; },
+    anchor(x,y,dy,dx){ const r=svg.getBoundingClientRect(), b=meineSzene.inhalt.getBoundingClientRect(), s=meineSzene.scale||1;
+      const f=(r.width/s)/W; return {x:(r.left-b.left)/s+(sx(x)+(dx||0))*f, y:(r.top-b.top)/s+(sy(y)+(dy||0))*f}; },
     // Kandidat: eine Stelle auf der x-Achse
     marke(x,k,text){ const tri=svgEl('path',{d:'M'+sx(x)+' '+y0+' l -5 8 h 10 z',fill:KF[k],opacity:0},L.vorn);
       const t=lab(sx(x),y0+21,text,'middle',KF[k],12.5); t.setAttribute('font-weight','600'); t.style.opacity=0;
       return {nodes:[tri,t],tick:ticks[x]||null}; },
+    // Kandidat auf der y-Achse: eine Hoehe, die noch kein Punkt ist. Der Wert fliegt aus der Zeile hierher.
+    markeY(y,k,text){ const tri=svgEl('path',{d:'M'+x0+' '+sy(y)+' l -8 -5 v 10 z',fill:KF[k],opacity:0},L.vorn);
+      const t=lab(x0-11,sy(y)+4,text,'end',KF[k],12.5); t.setAttribute('font-weight','600'); t.style.opacity=0;
+      const nah=Object.keys(yticks).filter(yy=>Math.abs(sy(+yy)-sy(y))<11).map(yy=>yticks[yy]);
+      return {nodes:[tri,t],tick:nah[0]||null}; },
     // Aufstieg: von der Stelle hinauf zur Kurve, dann zur y-Achse
     aufstieg(x,y,k,text){ let p='M'+sx(x)+' '+y0; if(Math.abs(y)>1e-9)p+=' V'+sy(y); if(Math.abs(x)>1e-9)p+=' H'+x0;
       const path=svgEl('path',{d:p,fill:'none',stroke:KF[k],'stroke-width':1.3,'stroke-dasharray':'4 3',opacity:0},L.hinter);
@@ -241,18 +261,31 @@ function pfeil(o){
   stueck(it,o.dauer||1.6); return it;
 }
 // ---------------- Flug: eine Zahl wandert an ihren Ort ----------------
-function flug(o){
+// Ein Flug ist ein Stueck fuer sich; im Umbau fliegen mehrere in einem Stueck (flugItem).
+// weg: die Quelle verblasst, wenn die Kopie sich loest (der Teil wird herausgenommen, nicht kopiert).
+const FLUG_DAUER=2.4;
+function flugItem(o){
   const t=el('span','token'+(o.k!==undefined?' k'+o.k:'')+(o.txt?' txt':'')); szene.fl.appendChild(t);
+  let vonL=null, nachL=null;
   const it={typ:'flug',u:0,von:{x:0,y:0},zu:{x:0,y:0},
-    rechnen(){ t.innerHTML=o.von.innerHTML; const vb=lokal(o.von); it.von={x:vb.x,y:vb.y};
+    rechnen(){ if(o.wird&&!o.zu.anker){ t.textContent=''; vonL=el('span','von'); vonL.innerHTML=o.von.innerHTML; nachL=el('span','nach'); nachL.innerHTML=o.zu.innerHTML; t.appendChild(vonL); t.appendChild(nachL); }
+      else t.innerHTML=o.von.innerHTML;
+      const vb=lokal(o.von); it.von={x:vb.x,y:vb.y};
       if(o.zu.anker){ const a=o.zu.anker(); const tb=t.getBoundingClientRect(); const s=szene.scale||1; it.zu={x:a.x-(tb.width/s)/2,y:a.y-(tb.height/s)/2}; }
       else { const zb=lokal(o.zu); it.zu={x:zb.x,y:zb.y}; }
       it.apply(it.u); },
     apply(u){ it.u=u; const v=eIO(clamp(u,0,1)); const x=it.von.x+(it.zu.x-it.von.x)*v, y=it.von.y+(it.zu.y-it.von.y)*v;
       t.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
       const da=u>=0.97; t.style.opacity=(u>0&&!da)?1:0;
+      if(vonL){ const w=clamp((u-0.35)/0.3,0,1); vonL.style.opacity=(1-w).toFixed(3); nachL.style.opacity=w.toFixed(3); }
+      // Im Umbau nur Klassen (wartet, gelandet, verblasst): ein Chip kann Ziel des einen und Quelle des naechsten
+      // Flugs sein; Inline-Werte wuerden einander ueberschreiben, Klassen setzen sich nach Rang durch.
+      if(o.klassen){ if(o.weg)o.von.classList.toggle('verblasst',u>0.02); o.zu.classList.toggle('gelandet',da); return; }
+      if(o.weg)o.von.style.opacity=u>0.02?0.3:'';
       if(o.zu.anker){ for(const n of (o.zu.zeig||[]))n.style.opacity=da?1:0; if(o.zu.tick)o.zu.tick.style.opacity=da?0:1; }
       else { o.zu.style.opacity=da?1:0; } }
   };
-  stueck(it,o.dauer||1.2); return it;
+  return it;
 }
+function flug(o){ const it=flugItem(o); stueck(it,Math.max(2,o.dauer||FLUG_DAUER)); return it; }
+function streichItem(e){ return {typ:'streich',apply(u){ e.classList.toggle('gestrichen',u>0.1); }}; }

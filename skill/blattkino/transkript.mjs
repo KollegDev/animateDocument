@@ -25,7 +25,7 @@ const boegen=[];
 for(const bo of (D.boegen||(D.beats?[{beats:D.beats}]:[]))){
   if(bo&&bo.serie&&Array.isArray(bo.serie.vorlage)&&Array.isArray(bo.serie.faelle)){
     for(const fall of bo.serie.faelle){ const ctx=Object.assign({},fall);
-      boegen.push({frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx),beats:ersetzen(bo.serie.vorlage,ctx),serieFall:true}); }
+      boegen.push({frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx),titel:ersetzen(fall.titel!==undefined?fall.titel:(bo.serie.titel||bo.titel||''),ctx),beats:ersetzen(bo.serie.vorlage,ctx),serieFall:true}); }
   } else boegen.push(bo);
 }
 
@@ -57,6 +57,8 @@ function teile(liste,chips){
     if(Array.isArray(p)){ if(s&&!/\s$/.test(s))s+=' '; lauf(p); continue; }
     if(typeof p==='string'){ if(p!=='!eng')s+=tex(p); continue; }
     if(!p||typeof p!=='object')continue;
+    if(p.bruch){ s+='('; lauf([].concat(p.bruch.oben||[])); s+=')/('; lauf([].concat(p.bruch.unten||[])); s+=')'; continue; }
+    if(p.hoch){ lauf([].concat(p.hoch.basis||[])); s+='^('; lauf([].concat(p.hoch.exp||[])); s+=')'; continue; }
     const inhalt=p.tex!==undefined?tex(p.tex):String(p.t==null?'':p.t);
     if(p.id!==undefined)chips[p.id]={text:inhalt,k:p.k,leer:!!p.leer};
     if(p.leer){ s+='[Luecke]'; continue; }
@@ -70,24 +72,37 @@ const aus=[];
 const P=s=>aus.push(s);
 P('# Transkript: '+(D.titel||datei));
 P('');
-P('Der Film ist eine Folge von Blaettern, jedes Blatt ein Bildschirm. Man wischt nach unten; mit jedem Wisch kommen Bloecke dazu, von oben nach unten, und bleiben stehen, bis das Blatt voll ist. Dann blendet das naechste Blatt ein. Zurueckblaettern geht nur durch Zurueckwischen. Oben klein steht die Frage des Blattes. Rechts ein Fortschrittsbalken. Was hier in eckigen Klammern steht, sieht der Leser als Bewegung oder Bild; Farben stehen bei der Zahl, die sie tragen.');
+P('Der Film ist eine Folge von Blaettern, jedes Blatt ein Bildschirm. Man wischt nach unten; mit jedem Wisch kommen Bloecke dazu, von oben nach unten, und bleiben stehen, bis das Blatt voll ist. Dann blendet das naechste Blatt ein. Zurueckblaettern geht nur durch Zurueckwischen. Oben steht der Titel des Blattes, links daneben klein „Blatt n von N". Der Satz zu einem Wisch steht im Fluss des Blatts, direkt ueber dem, was der Wisch zeigt; der vorige Satz tritt zurueck (blasser), wenn der naechste kommt. Rechts ein Fortschrittsbalken. Was hier in eckigen Klammern steht, sieht der Leser als Bewegung oder Bild; Farben stehen bei der Zahl, die sie tragen.');
 if(D.quelle){ P(''); P('Quelle laut Datei: '+D.quelle); }
+
+function umbauTextMit(chips){ return (wege,ziel)=>{ const takte=new Map();
+  (Array.isArray(wege)?wege:[]).forEach((w,i)=>{ const W=Array.isArray(w)?{von:w[0],zu:w[1],takt:w[2]}:(w&&typeof w==='object'?w:null); if(!W)return;
+    const t=W.takt!==undefined?+W.takt:i; if(!takte.has(t))takte.set(t,[]);
+    for(const v of [].concat(W.von)){ const von=chips[v]||{text:v}; const vt=(von.k!==undefined?ff(von.k)+' ':'')+von.text;
+      if(W.weg||W.zu===undefined){ takte.get(t).push({von:vt,weg:true}); continue; }
+      const zu=chips[W.zu]||{text:W.zu}; takte.get(t).push({von:vt,zu:zu.text,wird:!!W.wird}); } });
+  const schritte=[...takte.keys()].sort((a,b)=>a-b).map(t=>{ const je=new Map(); const weg=[];
+    for(const w of takte.get(t)){ if(w.weg){ weg.push(w.von); continue; } const key=w.zu+(w.wird?'!':''); if(!je.has(key))je.set(key,{zu:w.zu,wird:w.wird,q:[]}); je.get(key).q.push(w.von); }
+    const teile=[...je.values()].map(e=>e.q.length>1?e.q.join(' und ')+' treffen sich als ein '+e.zu:(e.wird?e.q[0]+' wandert und wird dabei zu '+e.zu:e.q[0]+' → '+e.zu));
+    if(weg.length)teile.push(weg.join(' und ')+' wird durchgestrichen und verblasst'); return teile.join(', '); });
+  return '[Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: '+(schritte.join('; dann ')||'nichts wandert')+'. Dann schliesst sich die neue Zeile: '+ziel+']'; }; }
 
 let nr=0;
 for(const bo of boegen){
   const bs=Array.isArray(bo.beats)?bo.beats:[]; if(!bs.length)continue;
   nr++;
-  const chips={}, graphen={}, pfeile={}, kand={}; let letzterGraph=null;
+  const chips={}, graphen={}, pfeile={}, kand={}, zeilen={}; let letzterGraph=null; const umbauText=umbauTextMit(chips);
   const gname=o=>{ const id=(o&&o.id!==undefined)?o.id:null; return (id!==null&&graphen[id])?graphen[id]:(letzterGraph||'dem Bild'); };
   P('');
   // Kein Regie-Vermerk (Serie, Uebersicht): der Leser sieht nur das Blatt
-  P('## Blatt '+nr+(bo.frage?' (oben klein: „'+bo.frage+'")':' (ohne Frage)'));
+  P('## Blatt '+nr+(bo.titel?' (Titel oben: „'+tex(String(bo.titel))+'")':(bo.frage?' (oben klein: „'+bo.frage+'")':' (ohne Titel)')));
   bs.forEach((b,bi)=>{
     P('');
     P('**Wisch '+(bi+1)+':**');
     const ops=Array.isArray(b.ops)?b.ops:[];
     // Ueberschrift vor dem Satz, wie im Spieler
     let i=0; while(i<ops.length&&ops[i]&&(ops[i].op==='clear'||ops[i].op==='h')){ if(ops[i].op==='h')P('Ueberschrift: '+ops[i].t); i++; }
+    if(typeof b.sag==='string'&&b.sag.trim())P('[Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] '+b.sag.trim());
     if(typeof b.sub==='string'&&b.sub.trim())P(b.sub.trim());
     for(;i<ops.length;i++){ const o=ops[i]; if(!o||!o.op)continue;
       switch(o.op){
@@ -100,7 +115,7 @@ for(const bo of boegen){
         case 'merk': case 'merksatz': P('[Merksatz, Kasten:] '+o.t); break;
         case 'frage': P('[Fragezeile:] '+o.t); break;
         case 'math': P((o.hl?'[hervorgehoben, Kasten:] ':'')+tex(o.tex)); break;
-        case 'zeile': { const s=teile(Array.isArray(o.teile)?o.teile:[o.tex],chips);
+        case 'zeile': { const s=teile(Array.isArray(o.teile)?o.teile:[o.tex],chips); if(o.id!==undefined)zeilen[o.id]=s;
           if(o.stumm)P('[Zeile liegt bereit, noch unsichtbar: '+s+']');
           else P((o.hl?'[hervorgehoben, Kasten:] ':'')+(o.folge?'[Chip fuer Chip in Leserichtung:] ':'')+s); break; }
         case 'zeig': P('[Die vorbereitete Zeile erscheint'+(o.folge?' Chip fuer Chip':'')+'.]'); break;
@@ -113,7 +128,9 @@ for(const bo of boegen){
         case 'hline': P('[Eine waagerechte Linie bei y = '+o.y+(o.label?' mit Beschriftung '+tex(o.label):'')+' erscheint.]'); break;
         case 'vline': P('[Eine senkrechte Linie bei x = '+o.x+(o.label?' mit Beschriftung '+tex(o.label):'')+' erscheint.]'); break;
         case 'region': P('[Der Bereich '+(o.dir==='below'?'unterhalb':'oberhalb')+' von y = '+o.y+' wird schraffiert'+(o.label?', Beschriftung '+tex(o.label):'')+'.]'); break;
-        case 'kandidat': { const t=o.text!==undefined?o.text:o.x; kand[o.id]={x:o.x,k:o.k,text:t};
+        case 'kandidat': { if(o.achse==='y'){ const t=o.text!==undefined?o.text:o.y; kand[o.id]={y:o.y,k:o.k,text:t,achse:'y'};
+            P(o.sofort?'[An der y-Achse steht die '+ff(o.k)+' Achsenmarke '+t+'.]':'[An der y-Achse bei '+o.y+' wartet eine '+ff(o.k)+' Achsenmarke '+t+', noch blass.]'); break; }
+          const t=o.text!==undefined?o.text:o.x; kand[o.id]={x:o.x,k:o.k,text:t};
           P(o.sofort?'[An der x-Achse steht die '+ff(o.k)+' Achsenmarke '+t+'.]':'[An der x-Achse bei '+o.x+' wartet eine '+ff(o.k)+' Achsenmarke '+t+', noch blass.]'); break; }
         case 'kappe': P('[Im Graphen leuchtet das Kurvenstueck um x = '+o.x+' dick '+farbe(o.k)+' auf'+(o.text?', dabei klein „'+o.text+'"':'')+'.]'); break;
         case 'aufstieg': P('[Von der Achsenmarke '+o.x+' laeuft eine gestrichelte '+ff(o.k)+' Linie senkrecht zur Kurve und waagerecht zur y-Achse, dort steht '+(o.text!==undefined?o.text:o.y)+'.]'); break;
@@ -123,9 +140,16 @@ for(const bo of boegen){
           const zu=chips[o.zu]?chips[o.zu].text:o.zu; if(o.id!==undefined)pfeile[o.id]='von '+zu;
           P('[Ein '+fm(o.k===undefined?0:o.k)+' Pfeil zieht sich langsam von '+von+' durch den Seitenrand nach unten und muendet von oben auf die '+zu+' in der Klammer der naechsten Zeile.]'); break; }
         case 'flug': { const von=chips[o.von]?chips[o.von].text:o.von;
-          const zu=(o.zu&&typeof o.zu==='object'&&o.zu.kandidat!==undefined)?('zur x-Achse des Graphen; dort wird die Achsenmarke '+(kand[o.zu.kandidat]?kand[o.zu.kandidat].text:'')+' kraeftig'):('in die Luecke der Zeile '+(chips[o.zu]?'(dort steht dann '+von+')':''));
+          const zu=(o.zu&&typeof o.zu==='object'&&o.zu.kandidat!==undefined)?('zur '+((kand[o.zu.kandidat]||{}).achse==='y'?'y':'x')+'-Achse des Graphen; dort wird die Achsenmarke '+(kand[o.zu.kandidat]?kand[o.zu.kandidat].text:'')+' kraeftig'):('in die Luecke der Zeile '+(chips[o.zu]?'(dort steht dann '+von+')':''));
           P('[Eine Kopie der '+fn(o.k)+' '+von+' loest sich aus der Zeile und fliegt '+zu+'.]'); break; }
-        case 'umformung': for(const z of (o.zeilen||[])){ if(z&&z.warum)P('   ↓ '+z.warum); if(z&&z.tex)P('   '+tex(z.tex)); } break;
+        case 'umbau': P(umbauText(o.wege,zeilen[o.zu]||o.zu)); break;
+        case 'umformung': for(const z of (o.zeilen||[])){ if(!z)continue;
+            const w=z.warum!==undefined&&z.warum!==null?String(z.warum):'';
+            if(w&&!/^\s*\|/.test(w))P('   ↓ '+w);
+            if(Array.isArray(z.teile)){ const s=teile(z.teile,chips); if(z.id!==undefined)zeilen[z.id]=s;
+              if(w&&/^\s*\|/.test(w))P('   [rechts an der vorigen Zeile erscheint „'+w.trim()+'"]');
+              if(Array.isArray(z.wege)&&z.wege.length)P('   '+umbauText(z.wege,s)); else P('   '+s); }
+            else if(z.tex){ if(w&&/^\s*\|/.test(w))P('   [rechts an der vorigen Zeile erscheint „'+w.trim()+'"]'); P('   '+tex(z.tex)); } } break;
         case 'tabelle': { if(Array.isArray(o.kopf))P('| '+o.kopf.map(k=>String(k).replace(/^!/,'')).join(' | ')+' |');
           for(const z of (o.zeilen||[])){ const zellen=Array.isArray(z)?z:[z]; P('| '+zellen.map(c=>{ const w=String(c==null?'':c); return w.startsWith('!')?w.slice(1):tex(w); }).join(' | ')+' |'); }
           P('[Tabelle erscheint als Ganzes.]'); break; }

@@ -56,7 +56,7 @@ function entfalten(bo){
   if(!bo||!bo.serie||!Array.isArray(bo.serie.vorlage)||!Array.isArray(bo.serie.faelle))return [bo];
   return bo.serie.faelle.map(fall=>{
     const ctx=Object.assign({},fall);
-    return {frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx),
+    return {frage:ersetzen(fall.frage!==undefined?fall.frage:(bo.serie.frage||bo.frage||''),ctx), titel:ersetzen(fall.titel!==undefined?fall.titel:(bo.serie.titel||bo.titel||''),ctx),
             beats:ersetzen(bo.serie.vorlage,ctx), serieFall:true, seite:fall.seite!==undefined?fall.seite:bo.seite};
   });
 }
@@ -74,7 +74,9 @@ function teileVon(liste,z){
     if(Array.isArray(p)){ aus.push(teileVon(p,z)); continue; }
     if(typeof p==='string'){ aus.push(p==='!eng'?p:sauberTex(p)); continue; }
     if(p&&typeof p==='object'){
-      if(p.tex!==undefined)aus.push({tex:sauberTex(p.tex),k:p.k,id:p.id,leer:!!p.leer});
+      if(p.bruch&&typeof p.bruch==='object')aus.push({bruch:{oben:teileVon([].concat(p.bruch.oben||[]),z),unten:teileVon([].concat(p.bruch.unten||[]),z)}});
+      else if(p.hoch&&typeof p.hoch==='object')aus.push({hoch:{basis:teileVon([].concat(p.hoch.basis||[]),z),exp:teileVon([].concat(p.hoch.exp||[]),z)}});
+      else if(p.tex!==undefined)aus.push({tex:sauberTex(p.tex),k:p.k,id:p.id,leer:!!p.leer});
       else aus.push({t:String(p.t==null?'':p.t),fett:p.fett,k:p.k,id:p.id,leer:!!p.leer});
     }
   }
@@ -92,6 +94,30 @@ function zeileAus(o){
 // Fluechtige Stufe: kommt, bleibt kurz, geht wieder (Bildfolge)
 function fluechtigItem(nodes){ const l=[].concat(nodes).filter(Boolean); for(const n of l)n.style.opacity=0;
   return {apply(u){ const v=u<=0?0:(u<0.22?u/0.22:(u>0.68?Math.max(0,(1-u)/0.32):1)); for(const n of l)n.style.opacity=(0.85*v).toFixed(3); }}; }
+
+// Umbau: die Teile einer Zeile wandern an ihre neuen Plaetze. Ein Weg ist [von, zu], [von, zu, takt] oder
+// {von, zu, takt, wird, weg}: wird = die Kopie verwandelt sich unterwegs in das Ziel (+4 wird -4, x^2 wird x);
+// weg = die Quelle wird gestrichen, nichts landet (Kuerzen). Wege mit gleichem takt fliegen zusammen,
+// ohne takt nacheinander. Die Quelle verblasst (bleibt: true laesst sie stehen). Was keinen Weg hat, erscheint danach.
+function umbau(o){ const z=R.zeilen[o.zu]; if(!z)return;
+  const takte=new Map(); const ziele=new Set();
+  (Array.isArray(o.wege)?o.wege:[]).forEach((w,i)=>{
+    const W=Array.isArray(w)?{von:w[0],zu:w[1],takt:w[2]}:(w&&typeof w==='object'?w:null); if(!W)return;
+    const t=W.takt!==undefined?num(W.takt,i):i; if(!takte.has(t))takte.set(t,[]);
+    for(const vid of [].concat(W.von)){ const von=chipVon(vid); if(!von)continue;
+      if(W.weg||W.zu===undefined){ takte.get(t).push({von:von,weg:true}); continue; }
+      const zu=chipVon(W.zu); if(!zu)continue; takte.get(t).push({von:von,zu:zu,wird:!!W.wird}); ziele.add(zu); } });
+  const alle=[...z.querySelectorAll('.chip')]; for(const c of alle){ if(ziele.has(c))c.classList.add('wartet'); else c.style.opacity=0; }
+  z.style.opacity=0; const rahmen={apply(u){ z.style.opacity=u>0?1:0; }};
+  let erster=true;
+  for(const t of [...takte.keys()].sort((a,b)=>a-b)){
+    const items=takte.get(t).map(w=>{ if(w.weg)return streichItem(w.von);
+      const kl=[...(w.von.classList||[])].find(c=>/^k[0-3]$/.test(c));
+      return flugItem({von:w.von,zu:w.zu,wird:w.wird,klassen:true,k:o.k!==undefined?o.k:(kl?+kl.slice(1):undefined),txt:w.von.classList.contains('txt'),weg:!o.bleibt}); });
+    if(erster){ items.unshift(rahmen); erster=false; }
+    stueck(items,Math.max(2,num(o.dauer,FLUG_DAUER))); }
+  const rest=alle.filter(c=>!ziele.has(c)); if(rest.length)stueck(rest.map(riseItem),1);
+}
 
 // ---------------- Die Operationen ----------------
 const OPS={
@@ -125,8 +151,11 @@ const OPS={
   vline(o){ const G=graphVon(o); if(!G)return; stueck(G.vline(num(o.x,0),o.label?String(o.label):''),num(o.dauer,1)); },
   region(o){ const G=graphVon(o); if(!G)return; stueck(G.region(num(o.y,0),o.dir==='below'?'below':'above',o.label?String(o.label):''),num(o.dauer,1)); },
   kandidat(o){ const G=graphVon(o); if(!G||o.id===undefined)return;
-    const m=G.marke(num(o.x,0),o.k===undefined?0:o.k,String(o.text==null?fmt0(num(o.x,0)):o.text));
-    R.kand[o.id]={m:m,x:num(o.x,0),G:G};
+    // achse "y": die Marke sitzt an der y-Achse, der Flug bringt die Hoehe dorthin
+    const anY=o.achse==='y';
+    const m=anY?G.markeY(num(o.y,0),o.k===undefined?0:o.k,String(o.text==null?fmt0(num(o.y,0)):o.text))
+              :G.marke(num(o.x,0),o.k===undefined?0:o.k,String(o.text==null?fmt0(num(o.x,0)):o.text));
+    R.kand[o.id]={m:m,x:anY?0:num(o.x,0),y:anY?num(o.y,0):0,achse:anY?'y':'x',G:G};
     if(o.sofort){ for(const n of m.nodes)n.style.opacity=1; if(m.tick)m.tick.style.opacity=0; } },
   kappe(o){ const G=graphVon(o); if(!G)return; stueck(G.kappe(num(o.x,0),num(o.r,0.4),o.k===undefined?0:o.k,o.text?String(o.text):undefined),num(o.dauer,1.4)); },
   aufstieg(o){ const G=graphVon(o); if(!G)return; stueck(G.aufstieg(num(o.x,0),num(o.y,0),o.k===undefined?0:o.k,o.text!==undefined?String(o.text):undefined),num(o.dauer,1.4)); },
@@ -153,11 +182,17 @@ const OPS={
     { const b=von.querySelector?von.querySelector('b.fett'):null; if(b)von=b; }
     let zu=null;
     if(o.zu&&typeof o.zu==='object'&&o.zu.kandidat!==undefined){ const K=R.kand[o.zu.kandidat]; if(!K)return;
-      zu={anker:()=>K.G.anchor(K.x,0,15),zeig:K.m.nodes,tick:K.m.tick}; }
+      zu={anker:()=>K.achse==='y'?K.G.anchor(0,K.y,0,-22):K.G.anchor(K.x,0,15),zeig:K.m.nodes,tick:K.m.tick}; }
     else zu=chipVon(o.zu);
     if(!zu)return;
     const txt=!!(o.txt)||!!(von.classList&&von.classList.contains('txt'))||von.tagName==='B';
-    flug({von:von,zu:zu,k:o.k,txt:txt,dauer:num(o.dauer,1.2)}); },
+    // Autorbefund 2026-09-07: Zahlen bewegen sich zu schnell. Ein Flug kostet mindestens 2 (Vorgabe 2,4).
+    flug({von:von,zu:zu,k:o.k,txt:txt,dauer:num(o.dauer,FLUG_DAUER)}); },
+
+  // ---- Umbau: die Teile einer Zeile wandern an ihre neuen Plaetze (Ausklammern, Zusammenfassen, Seitenwechsel, Kuerzen ...) ----
+  // zu: Kennung einer stummen Zeile. wege: [[von, zu], [von, zu, takt], ...]; Wege mit gleichem takt fliegen zusammen,
+  // ohne takt nacheinander. Die Quelle verblasst (bleibt: true laesst sie stehen). Was keinen Weg hat, erscheint danach.
+  umbau(o){ umbau(o); },
 
   // ---- Aus v1: Geraete, die hier als Items weiterleben ----
   zoomfolge(o){ const fn=compileExpr(o.expr); if(!fn){ notiz('Zoomfolge nicht darstellbar'); return; }
@@ -217,12 +252,26 @@ const OPS={
       tb.appendChild(tr); }
     t.appendChild(tb); setzen(t,num(o.dauer,1.4)); },
   umformung(o){ const zeilen=Array.isArray(o.zeilen)?o.zeilen:[]; if(!zeilen.length)return;
-    const k=el('div','kette'); einfuegen(k);
-    zeilen.forEach((z,i)=>{ const tex=sauberTex(z&&z.tex); if(!tex)return;
-      const w=(z&&z.warum)?String(z.warum):''; const items=[];
-      if(w){ const g=el('div','warum','↓ '+w); k.appendChild(g); items.push(riseItem(g)); }
+    const k=el('div','kette'); einfuegen(k); let vorige=null; let kOffen=false; const kAuf=()=>{ if(kOffen)return null; kOffen=true; return riseItem(k); };
+    zeilen.forEach((z,i)=>{ if(!z)return;
+      const w=(z.warum!==undefined&&z.warum!==null)?String(z.warum):'';
+      // "| +8" wie der Schueler es schreibt: die Operation steht rechts an der Zeile, auf die sie wirkt
+      const rechts=/^\s*\|/.test(w); const items=[];
+      if(rechts&&vorige){ const op=el('span','op',w.trim()); vorige.appendChild(op); items.push(riseItem(op)); }
+      else if(w){ const g=el('div','warum','↓ '+w); k.appendChild(g); items.push(riseItem(g)); }
+      if(Array.isArray(z.teile)){
+        // Zeile aus Chips; mit wege wird sie aus der vorigen Zeile umgebaut
+        const teile=teileVon(z.teile,null); const zl=zeile(teile,{stumm:true}); k.appendChild(zl);
+        for(const id in zl.chips)R.chips[id]=zl.chips[id]; const zid=z.id!==undefined?String(z.id):('_u'+i+'_'+Math.random().toString(36).slice(2,6)); R.zeilen[zid]=zl;
+        const ka=kAuf(); if(ka)items.unshift(ka);
+        if(items.length)stueck(items,0.6);
+        if(Array.isArray(z.wege)&&z.wege.length)umbau({zu:zid,wege:z.wege,bleibt:z.bleibt,dauer:z.dauer});
+        else stueck(riseItem(zl),num(z.dauer,1));
+        vorige=zl; return; }
+      const tex=sauberTex(z.tex); if(!tex)return;
       const m=el('div','mathline'+(i<zeilen.length-1?' alt':'')); m.textContent='\\('+tex+'\\)'; k.appendChild(m); mathKnoten.push(m); items.push(riseItem(m));
-      stueck(items,num(z&&z.dauer,1)); }); },
+      const ka=kAuf(); if(ka)items.unshift(ka);
+      stueck(items,num(z.dauer,1)); vorige=m; }); },
   paar(o){ const FARBEN=['var(--k0)','var(--k1)','var(--k2)','#8b5cf6'];
     let oben=sauberTex(o.oben), unten=sauberTex(o.unten); if(!oben||!unten)return;
     const faerben=(zeile,teil,farbe)=>{ if(!teil)return zeile; const g=zeile.indexOf('='); const ab=g>=0?g+1:0;
@@ -254,7 +303,8 @@ function bauen(){
   const boegen=[]; for(const bo of (DATEN.boegen||[]))for(const b of entfalten(bo))boegen.push(b);
   for(const bo of boegen){
     const bs=(bo&&Array.isArray(bo.beats))?bo.beats:[]; if(!bs.length)continue;
-    szeneAuf(bo.frage?String(bo.frage):null); neuesRegister();
+    // Oben steht der Titel des Blatts (Gegenstand); fehlt er, die Frage (Autorbefund 2026-09-07: die Fragen wirkten gestellt)
+    szeneAuf(bo.titel?String(bo.titel):(bo.frage?String(bo.frage):null)); neuesRegister();
     // Seite des Dokuments, die dieser Bogen zeigt (Nummer in der Liste "seiten", ab 1)
     if(bo.seite!==undefined&&szene)szene.seite=parseInt(bo.seite,10)||0;
     for(const b of bs){ if(!b||typeof b!=='object')continue;
@@ -263,6 +313,7 @@ function bauen(){
       let i=0;
       // Ueberschrift vor dem Satz
       while(i<ops.length&&ops[i]&&(ops[i].op==='clear'||ops[i].op==='h')){ try{ OPS[ops[i].op](ops[i]); }catch(e){ melden(ops[i].op+': '+e.message); } i++; }
+      if(typeof b.sag==='string'&&b.sag.trim())sagen(b.sag.trim());
       if(typeof b.sub==='string'&&b.sub.trim())satz(b.sub.trim());
       for(;i<ops.length;i++){ const o=ops[i]; if(!o||!OPS[o.op])continue;
         try{ OPS[o.op](o); }catch(e){ melden(o.op+': '+e.message); } }
