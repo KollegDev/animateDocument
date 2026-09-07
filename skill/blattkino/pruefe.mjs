@@ -67,7 +67,7 @@ const OPS = ['clear','h','text','item','math','note','frage','umformung','tabell
              'jetztihr','plot','point','hline','vline','region','sweep',
              'wert','doppelgraph','binden','bildfolge','zoomfolge','paar',
              // v2 (Goldlauf)
-             'satz','marke','merk','zeile','zeig','graph','punkt','beschriftung','kandidat','flug','pfeil','kappe','aufstieg','fahrt','umbau'];
+             'satz','marke','merk','zeile','zeig','graph','punkt','beschriftung','kandidat','flug','pfeil','kappe','aufstieg','fahrt','umbau','gabel'];
 const UEBERFLIEG = ['h','tabelle','merksatz','merk','plot','graph','jetztihr','doppelgraph','zoomfolge','marke'];
 // Geraete, die ein eigenes Bild aufmachen. Nach ihnen ist ein neues Bild noetig, um sie anzusprechen.
 const BILDER = ['plot','graph','doppelgraph','zoomfolge'];
@@ -96,6 +96,7 @@ function hoehe(o){
     case 'note':      return 27*zeilen(o.t,52)+24;
     case 'frage':     return 27*zeilen(o.t,44)+30;
     case 'umformung': return (Array.isArray(o.zeilen)?o.zeilen:[]).reduce((n,z)=>n+30+(z&&z.warum&&!/^\s*\|/.test(String(z.warum))?24:0),0)+26;
+    case 'gabel':     return 26+30*Math.max(...[0].concat((Array.isArray(o.aeste)?o.aeste:[]).map(a=>(Array.isArray(a&&a.zeilen)?a.zeilen:[]).length)));
     case 'tabelle':   return 34 + 34*((Array.isArray(o.zeilen)?o.zeilen:[]).length) + 26;
     case 'merksatz':  return 27*zeilen(o.t,44)+50;
     case 'jetztihr':  return 34 + 27*zeilen(o.t||o.aufgabe,44) + 44;
@@ -176,7 +177,7 @@ if(boegen.length&&boegen[0]&&boegen[0].uebersicht===true) B('MITTEL','Bogen 1','
 if(!boegen.some(b=>(b.beats||[]).some(bt=>(bt.ops||[]).some(o=>o&&(o.op==='merk'||o.op==='merksatz')))))
   B('MITTEL','Ganzes','kein einziger Merksatz im Film. Was der Leser morgen noch wissen soll, steht nirgends als Regel.');
 // P6: mehr als zwei gleichartige Faelle als Einzelboegen ohne Serie, Tabelle oder Merksatz
-{ const GER=['plot','graph','hline','vline','region','point','punkt','wert','umformung','zeile','pfeil','flug','umbau','kappe','aufstieg','kandidat','bildfolge','zoomfolge','doppelgraph','binden'];
+{ const GER=['plot','graph','hline','vline','region','point','punkt','wert','umformung','zeile','pfeil','flug','umbau','gabel','kappe','aufstieg','kandidat','bildfolge','zoomfolge','doppelgraph','binden'];
   const KONS=['merk','merksatz','tabelle'];
   const menge=b=>new Set((b.beats||[]).flatMap(bt=>(bt.ops||[])).map(o=>o&&o.op).filter(op=>GER.includes(op)));
   const kons=b=>!!b&&(b.beats||[]).some(bt=>(bt.ops||[]).some(o=>o&&KONS.includes(o.op)));
@@ -308,7 +309,7 @@ boegen.forEach((bo,bi)=>{
 
   // P6: Einsetzen als Wort in der Umformung, aber keine Zahl bewegt sich
   { const eigen=bs.flatMap(b=>(b.ops||[]));
-    const bewegt=eigen.some(o=>o&&(o.op==='pfeil'||o.op==='flug'||o.op==='umbau'));
+    const bewegt=eigen.some(o=>o&&(o.op==='pfeil'||o.op==='flug'||o.op==='umbau'||o.op==='gabel'));
     const setzt=eigen.filter(o=>o&&o.op==='umformung').flatMap(o=>(o.zeilen||[]).map(z=>z&&z.warum)).filter(w=>typeof w==='string'&&/einsetz|eingesetzt|setzen wir|setzt man/i.test(w));
     if(setzt.length&&!bewegt) B('MITTEL',wo,'Umformung sagt „'+String(setzt[0]).slice(0,40)+'", aber keine Zahl bewegt sich. Einsetzen ist der Paradefall des Pfeils: die Zahl fliesst von oben in die Klammer (GL2). Umformung zeigt nur das Ergebnis.');
     // G6: eine Farbe auf einer Zahl im Text braucht ein Geraet, das die Beziehung zeigt
@@ -349,7 +350,7 @@ boegen.forEach((bo,bi)=>{
   bs.forEach((b,i)=>{
     nBeats++;
     const wob = wo+', Beat '+(i+1);
-    const hatSichtbares=(b.ops||[]).some(o=>o&&(SICHTBAR.includes(o.op)||['point','punkt','kappe','aufstieg','fahrt','flug','pfeil','umbau','wert','binden','bildfolge','beschriftung','kandidat','hline','vline','region'].includes(o.op)));
+    const hatSichtbares=(b.ops||[]).some(o=>o&&(SICHTBAR.includes(o.op)||['point','punkt','kappe','aufstieg','fahrt','flug','pfeil','umbau','gabel','wert','binden','bildfolge','beschriftung','kandidat','hline','vline','region'].includes(o.op)));
     if((typeof b.sub!=='string'||!b.sub.trim())&&!hatSichtbares) B('SCHWER',wob,'ohne "sub" und ohne sichtbare Operation: ein leerer Beat.');
     // Ein Beat, der nur aus seinem Satz besteht, zeigt nichts. Ein Payoff aus einem Satz tilgt nichts.
     if(!hatSichtbares && typeof b.sub==='string' && b.sub.trim()){
@@ -410,6 +411,19 @@ boegen.forEach((bo,bi)=>{
           if(Array.isArray(z.wege)){ if(!vorige) B('SCHWER',wob,'Umformungszeile '+(zi+1)+' traegt wege, aber es gibt keine vorige Zeile aus Chips.');
             pruefeUmbau({zu:zid,wege:z.wege},wob+', Umformungszeile '+(zi+1)); }
           vorige=z; }); }
+      if(o.op==='gabel'){
+        if(!zeilenReg[o.von]&&chips[o.von]===undefined) B('SCHWER',wob,'gabel von "'+o.von+'": diese Zeilen- oder Chip-Kennung gibt es in diesem Bogen nicht.');
+        const ae=Array.isArray(o.aeste)?o.aeste:[];
+        if(ae.length!==2) B('SCHWER',wob,'gabel mit '+ae.length+' Aesten. Die Gabel zeigt genau zwei Wege.');
+        ae.forEach((a,ai)=>{ const zl=Array.isArray(a&&a.zeilen)?a.zeilen:[];
+          if(!zl.length) B('SCHWER',wob,'gabel: Ast '+(ai+1)+' ohne Zeilen.');
+          zl.forEach((z,zi)=>{ if(!z||!Array.isArray(z.teile))return;
+            const zid=z.id!==undefined?String(z.id):('_g'+ai+zi); zeilenReg[zid]={teile:z.teile,stumm:true};
+            pruefeChips(z.teile,wob+', Gabel Ast '+(ai+1)+' Zeile '+(zi+1));
+            if(Array.isArray(z.wege))pruefeUmbau({zu:zid,wege:z.wege},wob+', Gabel Ast '+(ai+1)+' Zeile '+(zi+1)); }); });
+        if(!ae.some(a=>(Array.isArray(a&&a.zeilen)?a.zeilen:[]).some(z=>z&&z.loesung)))
+          B('MITTEL',wob,'gabel ohne Endloesung: jeder Ast endet mit einer Zeile "loesung": true, doppelt unterstrichen.');
+      }
       if(o.op==='zeile'&&Array.isArray(o.teile)) pruefeChips(o.teile,wob);
       if(o.op==='pfeil'){
         const z=chips[o.zu];
@@ -482,6 +496,21 @@ boegen.forEach((bo,bi)=>{
       if(bo.titel&&nackt(bo.titel).length>8&&sg.includes(nackt(bo.titel))) B('LEICHT',wob,'der Satz zum Beat wiederholt den Titel des Blattes.');
     }
   });
+  // Die Endloesung wird doppelt unterstrichen, damit der Leser sieht, was fertig ist
+  { const alleO=bs.flatMap(b=>Array.isArray(b.ops)?b.ops:[]);
+    const rechnet=alleO.some(o=>o&&(o.op==='umformung'||o.op==='gabel'));
+    const zeilenAlle=alleO.flatMap(o=>{ if(!o)return [];
+      if(o.op==='umformung')return Array.isArray(o.zeilen)?o.zeilen:[];
+      if(o.op==='gabel')return (Array.isArray(o.aeste)?o.aeste:[]).flatMap(a=>Array.isArray(a&&a.zeilen)?a.zeilen:[]);
+      if(o.op==='zeile'||o.op==='math')return [o]; return []; });
+    const loes=zeilenAlle.filter(z=>z&&z.loesung);
+    if(rechnet&&!loes.length) B('MITTEL',wo,'die Rechnung endet ohne doppelt unterstrichene Endloesung ("loesung": true). Der Leser sieht sonst nicht, welche Zeile das Ergebnis ist.');
+    for(const z of loes){ let t=z.tex!==undefined?flach(String(z.tex)):(Array.isArray(z.teile)?flach(JSON.stringify(z.teile).replace(/"[a-z]+":/g,'').replace(/[\[\]{}",]/g,' ')):'');
+      t=t.replace(/pm|quad|cdot/g,' ').replace(/\s+/g,' ');
+      // Symbol und Wert stehen nebeneinander: kein Rechenschritt zwischen zwei Groessen
+      const m=t.match(/[0-9a-zA-Z)]\s*[+\-*:\/^]\s*[0-9a-zA-Z(]/);
+      if(m) B('MITTEL',wo,'in der Endloesung steht noch gerechnet ("'+m[0].trim()+'" in "'+t.slice(0,40).trim()+'"). Symbol und Wert stehen unmittelbar nebeneinander; der Rechenweg gehoert in die Zeile darueber.'); } }
+
   // Blickfuehrung: das Blatt ist eine Folge von Stationen, kein Lesetext
   { const saetze=bs.filter(b=>typeof b.sag==='string'&&b.sag.trim()).length;
     if(saetze>3) B('MITTEL',wo,saetze+' Lehrersaetze auf einem Blatt. Der Blick soll wandern, nicht lesen: hoechstens drei, und nur dort, wo das Bild allein nicht spricht.'); }

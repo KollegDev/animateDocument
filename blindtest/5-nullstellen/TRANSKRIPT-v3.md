@@ -18,6 +18,9 @@ f(x)=(x-3)^2-4
    [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: -4 wandert und wird dabei zu 4; dann (x-3)^2 → (x-3)^2. Dann schliesst sich die neue Zeile: 4=(x-3)^2]
    [rechts an der vorigen Zeile erscheint „| √"]
    [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: 4 wandert und wird dabei zu ± 2; dann (x-3)^2 wandert und wird dabei zu x-3. Dann schliesst sich die neue Zeile: ± 2=x-3]
+   [rechts an der vorigen Zeile erscheint „| +3"]
+   x_1=3+2 x_2=3-2
+   x_1=5 x_2=1   [doppelt unterstrichen: Endloesung]
 
 **Wisch 3:**
 [Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Die Wurzel gibt immer zwei Loesungen.
@@ -52,7 +55,7 @@ x=[0 violett]
 [Die vorbereitete Zeile erscheint Chip fuer Chip.]
    ↓ Klammer berechnet
    y=9-4
-y=[5 violett]
+y=[5 violett]   [doppelt unterstrichen: Endloesung]
 
 **Wisch 4:**
 [Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Die 5 ist die Hoehe auf der y-Achse.
@@ -76,7 +79,7 @@ g(x)=2x^2-8
    [rechts an der vorigen Zeile erscheint „| :2"]
    [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: 8 wandert und wird dabei zu 4; dann 2x^2 wandert und wird dabei zu x^2. Dann schliesst sich die neue Zeile: 4=x^2]
    [rechts an der vorigen Zeile erscheint „| √"]
-   [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: x^2 wandert und wird dabei zu x; dann 4 wandert und wird dabei zu ± 2. Dann schliesst sich die neue Zeile: x=± 2]
+   [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: x^2 wandert und wird dabei zu x; dann 4 wandert und wird dabei zu ± 2. Dann schliesst sich die neue Zeile: x=± 2]   [doppelt unterstrichen: Endloesung]
 
 **Wisch 3:**
 [Chip fuer Chip in Leserichtung:] x_1=[2 orange] , x_2=[-2 blau]
@@ -103,6 +106,7 @@ x=[0 violett]
 [Zeile liegt bereit, noch unsichtbar: g([0 violett])=2·[0 violett]^2-8=[-8 violett]]
 [Ein violetter Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]
 [Die vorbereitete Zeile erscheint Chip fuer Chip.]
+y=[-8 violett]   [doppelt unterstrichen: Endloesung]
 
 **Wisch 3:**
 [Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Die \(-8\) liegt unter dem Ursprung.
@@ -119,23 +123,25 @@ h(x)=x^3-4x
 [Graph zeichnet sich: h(x)=x³−4x, x von -3 bis 3, y von -5 bis 5, klein.]
 
 **Wisch 2:**
-[Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] In beiden steckt ein \(x\): wir klammern es aus.
+[Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Aus beiden loest sich ein \(x\) heraus.
 0=x^3-4x
-0=[x orange]·x^2-[x orange]·4
 [Zeile liegt bereit, noch unsichtbar: 0=[x orange]·(x^2-4)]
-[Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: orange x und orange x treffen sich als ein x; dann x^2 → x^2, 4 → 4. Dann schliesst sich die neue Zeile: 0=[x orange]·(x^2-4)]
+[Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: aus x^3 und -4x loest sich je ein x heraus; sie treffen sich als ein x; dann x^3 wandert und wird dabei zu x^2, -4x wandert und wird dabei zu -4. Dann schliesst sich die neue Zeile: 0=[x orange]·(x^2-4)]
 
 **Wisch 3:**
-[Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Ein Produkt ist 0, wenn ein Faktor 0 ist.
-   x_1=0
-   x^2-4=0
-   [rechts an der vorigen Zeile erscheint „| +4"]
-   [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: x^2 → x^2; dann -4 wandert und wird dabei zu 4. Dann schliesst sich die neue Zeile: x^2=4]
-   [rechts an der vorigen Zeile erscheint „| √"]
-   [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: x^2 wandert und wird dabei zu x; dann 4 wandert und wird dabei zu ± 2. Dann schliesst sich die neue Zeile: x=± 2]
+[Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Ein Produkt ist 0, wenn ein Faktor 0 ist: beide Wege gelten.
+[Von der Zeile darueber gehen zwei Pfeile schraeg nach links und rechts; darunter stehen zwei Spalten, die unabhaengig weiterrechnen:]
+   linker Weg:
+     x_1=0   [doppelt unterstrichen: Endloesung]
+   rechter Weg:
+     x^2-4=0
+     [rechts an der vorigen Zeile: „| +4"]
+     [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: x^2 → x^2; dann -4 wandert und wird dabei zu 4. Dann schliesst sich die neue Zeile: x^2=4]
+     [rechts an der vorigen Zeile: „| √"]
+     [Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: x^2 wandert und wird dabei zu x; dann 4 wandert und wird dabei zu ± 2. Dann schliesst sich die neue Zeile: x=± 2]
 
 **Wisch 4:**
-[Chip fuer Chip in Leserichtung:] x_1=[0 orange] , x_2=[2 blau] , x_3=[-2 gruen]
+x_1=[0 orange] , x_2=[2 blau] , x_3=[-2 gruen]   [doppelt unterstrichen: Endloesung]
 [An der x-Achse bei 0 wartet eine orange Achsenmarke 0, noch blass.]
 [Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 0 kraeftig.]
 [Ein oranger Punkt landet bei (0|0) in h(x)=x³−4x.]
@@ -163,6 +169,7 @@ x=[0 violett]
 [Zeile liegt bereit, noch unsichtbar: h([0 violett])=[0 violett]^3-4·[0 violett]=[0 violett]]
 [Ein violetter Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]
 [Die vorbereitete Zeile erscheint Chip fuer Chip.]
+y=[0 violett]   [doppelt unterstrichen: Endloesung]
 
 **Wisch 3:**
 [Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Der Graph geht durch den Ursprung.
@@ -190,7 +197,7 @@ p=[-6 gruen] q=[8 gruen]
    x_1,2=3± 1
 
 **Wisch 3:**
-[Chip fuer Chip in Leserichtung:] x_1=[4 orange] , x_2=[2 blau]
+x_1=[4 orange] , x_2=[2 blau]   [doppelt unterstrichen: Endloesung]
 [An der x-Achse bei 4 wartet eine orange Achsenmarke 4, noch blass.]
 [Eine Kopie der orangen 4 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 4 kraeftig.]
 [Ein oranger Punkt landet bei (4|0) in k(x)=x²−6x+8.]
@@ -214,6 +221,7 @@ x=[0 violett]
 [Zeile liegt bereit, noch unsichtbar: k([0 violett])=[0 violett]^2-6·[0 violett]+8=[8 violett]]
 [Ein violetter Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]
 [Die vorbereitete Zeile erscheint Chip fuer Chip.]
+y=[8 violett]   [doppelt unterstrichen: Endloesung]
 
 **Wisch 3:**
 [Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Nur die Zahl ohne \(x\) bleibt uebrig.
@@ -240,7 +248,7 @@ m(x)=e^x-1
    x=0
 
 **Wisch 3:**
-[Chip fuer Chip in Leserichtung:] x=[0 orange]
+x=[0 orange]   [doppelt unterstrichen: Endloesung]
 [An der x-Achse bei 0 wartet eine orange Achsenmarke 0, noch blass.]
 [Eine Kopie der orangen 0 loest sich aus der Zeile und fliegt zur x-Achse des Graphen; dort wird die Achsenmarke 0 kraeftig.]
 [Ein oranger Punkt landet bei (0|0) in m(x)=eˣ−1.]
@@ -260,6 +268,7 @@ x=[0 violett]
 [Zeile liegt bereit, noch unsichtbar: m([0 violett])=e^0-1=1-1=[0 violett]]
 [Ein violetter Pfeil zieht sich langsam von der 0 in der Zeile oben durch den Seitenrand nach unten und muendet von oben auf die 0 in der Klammer der naechsten Zeile.]
 [Die vorbereitete Zeile erscheint Chip fuer Chip.]
+y=[0 violett]   [doppelt unterstrichen: Endloesung]
 
 **Wisch 3:**
 [Der Lehrer sagt, an dieser Stelle im Blatt; der vorige Satz wird dabei leise:] Nullstelle und y-Achsenschnittpunkt fallen zusammen.

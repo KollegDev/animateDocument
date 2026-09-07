@@ -164,4 +164,24 @@ console.log('— Titel, Lehrersatz im Fluss, Umbau Zeile fuer Zeile —');
   ck('Zurueckgewischt: nichts gelandet, nichts gestrichen', !q0.classList.contains('gelandet') && !q1.classList.contains('gestrichen'));
   ck('Kein Fehler im Spieler', !T.fehler());
 }
+console.log('— Gabel, Herausloesen, Endloesung —');
+{ const G=await welt({titel:'G',boegen:[{titel:'T',beats:[
+    {ops:[{op:'zeile',id:'A',teile:[['!eng',{tex:'0='},{tex:'x^{3}',id:'a1'},{tex:'-4x',id:'a2'}]]},
+          {op:'zeile',id:'C',stumm:true,teile:[['!eng',{tex:'0='},{tex:'x',id:'c1',k:0},{tex:'\\cdot('},{tex:'x^{2}',id:'c2'},{tex:'-4',id:'c4'},{tex:')'}]]},
+          {op:'umbau',zu:'C',wege:[{von:['a1','a2'],zu:'c1',zieht:true,takt:0},{von:'a1',zu:'c2',wird:true,takt:1},{von:'a2',zu:'c4',wird:true,takt:1}]}]},
+    {payoff:true,ops:[{op:'gabel',von:'C',aeste:[
+      {zeilen:[{teile:[{tex:'x_1'},{tex:'='},{tex:'0'}],loesung:true}]},
+      {zeilen:[{teile:[{tex:'x^{2}',id:'e1'},{tex:'-4',id:'e2'},{tex:'=0'}]},
+               {teile:[{tex:'x',id:'g1'},{tex:'='},{tex:'\\pm 2',id:'g2'}],warum:'| √',wege:[{von:'e1',zu:'g1',wird:true},{von:'e2',zu:'g2',wird:true}],loesung:true}]}
+    ]}]}
+  ]}]});
+  ck('Gabel: zwei Zweige unter der Quellzeile', G.alle('.gabel .zweig').length===2);
+  ck('Gabel: beide Aeste enden doppelt unterstrichen', G.alle('.gabel .loes').length===2);
+  const s2=G.bk.SZENEN[0];
+  const typen=s2.beats[0].stuecke.map(x=>x.items.map(i=>i.typ||'i').join('+'));
+  ck('Herausloesen: erst die beiden x, dann die Reste', typen.filter(x=>/flug\+flug/.test(x)).length>=1);
+  ck('Die Quelle des Herausloesens bleibt (sie wird ihr Rest)', (()=>{ G.bk.render(s2.beats[0].bis-0.001);
+     const a1=G.q('.zeile .chip'); return a1!==null; })());
+  ck('Kein Fehler im Spieler (Gabel)', !G.fehler());
+}
 console.log(f?('\n'+f+' FEHLER'):'\nPlayer v2 grün');

@@ -81,6 +81,13 @@ mjx-container{display:inline-block !important; margin:0 !important;}
 .hoch .basis{display:inline-flex; align-items:baseline;}
 .hoch .exp{display:inline-flex; align-items:baseline; font-size:.72em; vertical-align:super; position:relative; top:-.55em; margin-left:.04em;}
 /* Umbau-Zustaende eines Chips, nach Rang: wartet (unsichtbar), gelandet (da), verblasst (Quelle, ausgezogen) */
+/* Endloesung: doppelt unterstrichen, damit man sieht, was fertig und brauchbar ist */
+.zeile.loes, .mathline.loes{border-bottom:3px double var(--ink); padding-bottom:2px; align-self:flex-start; opacity:1 !important;}
+/* Gabel: zwei Wege nebeneinander, jeder rechnet fuer sich weiter */
+.gabel{display:flex; gap:18px; align-items:flex-start; margin:0; padding-top:12px;}
+.gabel .zweig{display:flex; flex-direction:column; gap:.3em; flex:1 1 0; min-width:0;}
+.gabel .zweig .zeile{font-size:.98rem;}
+.gabel .op{margin-left:.5em; padding-left:0;}
 .chip.wartet{opacity:0;} .chip.gelandet{opacity:1;} .chip.verblasst{opacity:.3;} .chip.gestrichen{opacity:.4;}
 .gestrichen{position:relative;}
 .gestrichen::after{content:""; position:absolute; left:-.1em; right:-.1em; top:50%; border-top:2px solid var(--k0); transform:rotate(-14deg);}

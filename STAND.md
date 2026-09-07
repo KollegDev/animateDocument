@@ -171,7 +171,11 @@ Bögen).
   einem festen Streifen unten, sondern im Fluss des Blattes, an erster Stelle seines Beats
   (vor dem, was er ankündigt), bleibt stehen und wird leise (Klasse `vorbei`), sobald der
   nächste kommt; er kostet Blatthöhe wie jeder Block. Prüfer: Satz und Marke, die dasselbe
-  sagen, und mehr als drei Sätze je Blatt. Harness 53 Tests grün.
+  sagen, und mehr als drei Sätze je Blatt. 2.9: `zieht` (ein Teil löst sich aus seiner Quelle
+  heraus, statt eine Zwischenzeile zu brauchen), `gabel` (zwei Pfeile, zwei Spalten, die
+  unabhängig weiterrechnen), `loesung` (Endlösung doppelt unterstrichen, Symbol und Wert
+  nebeneinander); Prüfer meldet Rechnung ohne Endlösung und Rechnen in der Endlösung.
+  Harness 58 Tests grün.
 - 44 Harness-Tests grün; Abgleich gegen den Goldlauf IDENTISCH; alle Filme und Blindfilme
   laufen über die ganze Radstrecke ohne Fehler.
 - Vier Filme: `filme/extrempunkte.json` (der Goldfilm als Datei, 8 Bögen, 31 Beats, 0 schwer;
@@ -194,7 +198,7 @@ Bögen).
 
 **Offen, mit Priorität:**
 
-1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Stand: Skill 2.8.1 (2026-09-07:
+1. Der Skill erzeugt noch keinen Film, den der Autor gebilligt hat. Stand: Skill 2.9 (2026-09-07:
    Titel statt Frage, Blickführung mit Lehrersatz im Fluss, Umformung Zeile für Zeile mit wege/wird/weg, Bruch und
    Hochzahl aus Chips, Grundformen des Umbaus; 2.7: `umbau`, y-Kandidat, Flug mindestens 2,
    Nachlauf des Bildes, Klammerprüfung je Chip; davor 2.6.1
@@ -218,7 +222,7 @@ Bögen).
 8. Installierte Skill-Fassung (Autorentscheid P8, Weg 2): die im Skill-Werkzeug installierte
    Fassung ist noch 1.x. `save_skill` ersetzt nur SKILL.md und liesse REFERENCE, Prüfer und
    Spieler alt; darum liefert jeder Skill-Batch eine `blattkino.skill` (Zip des Ordners), die
-   der Autor über „Save skill" installiert. Bis 2.8.1 installiert ist, läuft kein Trial 6.
+   der Autor über „Save skill" installiert. Bis 2.9 installiert ist, läuft kein Trial 6.
    Versionierung: Kopf von SKILL.md, Feld `skill` in jedem Film, git-Tag je Version durch den
    Autor beim Push.
 

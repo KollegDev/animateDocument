@@ -80,10 +80,11 @@ function umbauTextMit(chips){ return (wege,ziel)=>{ const takte=new Map();
     const t=W.takt!==undefined?+W.takt:i; if(!takte.has(t))takte.set(t,[]);
     for(const v of [].concat(W.von)){ const von=chips[v]||{text:v}; const vt=(von.k!==undefined?ff(von.k)+' ':'')+von.text;
       if(W.weg||W.zu===undefined){ takte.get(t).push({von:vt,weg:true}); continue; }
-      const zu=chips[W.zu]||{text:W.zu}; takte.get(t).push({von:vt,zu:zu.text,wird:!!W.wird}); } });
+      const zu=chips[W.zu]||{text:W.zu}; takte.get(t).push({von:vt,zu:zu.text,wird:!!W.wird,zieht:!!W.zieht}); } });
   const schritte=[...takte.keys()].sort((a,b)=>a-b).map(t=>{ const je=new Map(); const weg=[];
-    for(const w of takte.get(t)){ if(w.weg){ weg.push(w.von); continue; } const key=w.zu+(w.wird?'!':''); if(!je.has(key))je.set(key,{zu:w.zu,wird:w.wird,q:[]}); je.get(key).q.push(w.von); }
-    const teile=[...je.values()].map(e=>e.q.length>1?e.q.join(' und ')+' treffen sich als ein '+e.zu:(e.wird?e.q[0]+' wandert und wird dabei zu '+e.zu:e.q[0]+' → '+e.zu));
+    for(const w of takte.get(t)){ if(w.weg){ weg.push(w.von); continue; } const key=w.zu+(w.wird?'!':'')+(w.zieht?'~':''); if(!je.has(key))je.set(key,{zu:w.zu,wird:w.wird,zieht:w.zieht,q:[]}); je.get(key).q.push(w.von); }
+    const teile=[...je.values()].map(e=>e.zieht?('aus '+e.q.join(' und ')+' loest sich je ein '+e.zu+' heraus; sie treffen sich als ein '+e.zu)
+      :(e.q.length>1?e.q.join(' und ')+' treffen sich als ein '+e.zu:(e.wird?e.q[0]+' wandert und wird dabei zu '+e.zu:e.q[0]+' → '+e.zu)));
     if(weg.length)teile.push(weg.join(' und ')+' wird durchgestrichen und verblasst'); return teile.join(', '); });
   return '[Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: '+(schritte.join('; dann ')||'nichts wandert')+'. Dann schliesst sich die neue Zeile: '+ziel+']'; }; }
 
@@ -115,7 +116,7 @@ for(const bo of boegen){
         case 'merk': case 'merksatz': P('[Merksatz, Kasten:] '+o.t); break;
         case 'frage': P('[Fragezeile:] '+o.t); break;
         case 'math': P((o.hl?'[hervorgehoben, Kasten:] ':'')+tex(o.tex)); break;
-        case 'zeile': { const s=teile(Array.isArray(o.teile)?o.teile:[o.tex],chips); if(o.id!==undefined)zeilen[o.id]=s;
+        case 'zeile': { const s=teile(Array.isArray(o.teile)?o.teile:[o.tex],chips); if(o.id!==undefined)zeilen[o.id]=s; if(o.loesung){ P((o.stumm?'[Zeile liegt bereit, noch unsichtbar: ':'')+s+'   [doppelt unterstrichen: Endloesung]'+(o.stumm?']':'')); break; }
           if(o.stumm)P('[Zeile liegt bereit, noch unsichtbar: '+s+']');
           else P((o.hl?'[hervorgehoben, Kasten:] ':'')+(o.folge?'[Chip fuer Chip in Leserichtung:] ':'')+s); break; }
         case 'zeig': P('[Die vorbereitete Zeile erscheint'+(o.folge?' Chip fuer Chip':'')+'.]'); break;
@@ -143,13 +144,23 @@ for(const bo of boegen){
           const zu=(o.zu&&typeof o.zu==='object'&&o.zu.kandidat!==undefined)?('zur '+((kand[o.zu.kandidat]||{}).achse==='y'?'y':'x')+'-Achse des Graphen; dort wird die Achsenmarke '+(kand[o.zu.kandidat]?kand[o.zu.kandidat].text:'')+' kraeftig'):('in die Luecke der Zeile '+(chips[o.zu]?'(dort steht dann '+von+')':''));
           P('[Eine Kopie der '+fn(o.k)+' '+von+' loest sich aus der Zeile und fliegt '+zu+'.]'); break; }
         case 'umbau': P(umbauText(o.wege,zeilen[o.zu]||o.zu)); break;
+        case 'gabel': { P('[Von der Zeile darueber gehen zwei Pfeile schraeg nach links und rechts; darunter stehen zwei Spalten, die unabhaengig weiterrechnen:]');
+          (Array.isArray(o.aeste)?o.aeste:[]).forEach((a,ai)=>{ P('   '+(ai?'rechter':'linker')+' Weg:');
+            for(const z of (Array.isArray(a&&a.zeilen)?a.zeilen:[])){ if(!z)continue;
+              const w=z.warum!==undefined&&z.warum!==null?String(z.warum):'';
+              if(w&&!/^\s*\|/.test(w))P('     ↓ '+w);
+              if(Array.isArray(z.teile)){ const t=teile(z.teile,chips); if(z.id!==undefined)zeilen[z.id]=t;
+                if(w&&/^\s*\|/.test(w))P('     [rechts an der vorigen Zeile: „'+w.trim()+'"]');
+                if(Array.isArray(z.wege)&&z.wege.length)P('     '+umbauText(z.wege,t));
+                else P('     '+t+(z.loesung?'   [doppelt unterstrichen: Endloesung]':'')); }
+              else if(z.tex)P('     '+tex(z.tex)+(z.loesung?'   [doppelt unterstrichen: Endloesung]':'')); } }); break; }
         case 'umformung': for(const z of (o.zeilen||[])){ if(!z)continue;
             const w=z.warum!==undefined&&z.warum!==null?String(z.warum):'';
             if(w&&!/^\s*\|/.test(w))P('   ↓ '+w);
             if(Array.isArray(z.teile)){ const s=teile(z.teile,chips); if(z.id!==undefined)zeilen[z.id]=s;
               if(w&&/^\s*\|/.test(w))P('   [rechts an der vorigen Zeile erscheint „'+w.trim()+'"]');
-              if(Array.isArray(z.wege)&&z.wege.length)P('   '+umbauText(z.wege,s)); else P('   '+s); }
-            else if(z.tex){ if(w&&/^\s*\|/.test(w))P('   [rechts an der vorigen Zeile erscheint „'+w.trim()+'"]'); P('   '+tex(z.tex)); } } break;
+              if(Array.isArray(z.wege)&&z.wege.length)P('   '+umbauText(z.wege,s)+(z.loesung?'   [doppelt unterstrichen: Endloesung]':'')); else P('   '+s+(z.loesung?'   [doppelt unterstrichen: Endloesung]':'')); }
+            else if(z.tex){ if(w&&/^\s*\|/.test(w))P('   [rechts an der vorigen Zeile erscheint „'+w.trim()+'"]'); P('   '+tex(z.tex)+(z.loesung?'   [doppelt unterstrichen: Endloesung]':'')); } } break;
         case 'tabelle': { if(Array.isArray(o.kopf))P('| '+o.kopf.map(k=>String(k).replace(/^!/,'')).join(' | ')+' |');
           for(const z of (o.zeilen||[])){ const zellen=Array.isArray(z)?z:[z]; P('| '+zellen.map(c=>{ const w=String(c==null?'':c); return w.startsWith('!')?w.slice(1):tex(w); }).join(' | ')+' |'); }
           P('[Tabelle erscheint als Ganzes.]'); break; }

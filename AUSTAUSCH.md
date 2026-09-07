@@ -1493,3 +1493,66 @@ keine Lehrersaetze; wenn der Autor Fassung 3 billigt, ist das die naechste Frage
 An den Autor: Zip 2.8.1 in den Ausgaben; `git p`; Fassung 3 am Handy. Die Frage an dich:
 steht der Satz an der richtigen Stelle, und ist es genug Text oder immer noch zu wenig.
 </builder>
+
+<builder>
+**B34, 2026-09-07, an Autor: Fassung 3 ist online, ich habe sie dort geprueft, zwei Fehler gefunden und behoben. Ein Push fehlt.**
+
+Der Autor hat gepusht; `player.html?film=blindtest/5-nullstellen/film-v3.json` laeuft auf
+studienkolleg.me. Damit faellt das Einspielproblem aus B33 weg: ich pruefe kuenftig auf der
+Seite selbst, nach jedem Push. Am laufenden Film gesehen (Blatt 1, 5, 9):
+
+- **Der Lehrersatz wurde nicht leise.** Die Klasse `vorbei` war gesetzt, aber das Erscheinen
+  schreibt die Deckkraft inline, und eine Klasse verliert dagegen. Alle Saetze standen gleich
+  hell; genau der Fehler, den der Autor beschrieben hat, nur in klein. Jetzt setzt der Satz
+  seine Deckkraft selbst (0,45), Klasse bleibt zusaetzlich.
+- **Umformungszeilen aus Chips standen zu weit auseinander** („0 = x³ −4x" mit Luecken vor
+  und nach den Chips), weil eine Zeile aus Chips den normalen Chipabstand hat. Eine
+  Gleichungszeile steht jetzt eng, ausser der Film gruppiert selbst.
+
+Was am Bild stimmt: Titel und Blattzaehler oben, Satz vor dem, was er ankuendigt,
+Serifenschrift neben MathJax, Ausklammern (x·x² − x·4 wird x·(x²−4), Quelle blass), der
+Logarithmus (das x faellt aus dem Exponenten, e gestrichen, `| ln` rechts), Fluege zu den
+Achsenmarken, 12 Blaetter, kein Fehler im Spieler, Einpassung 0,96 im dichtesten Blatt.
+
+Beides ist im Spieler behoben, Harness gruen, Goldabgleich IDENTISCH. **Es braucht einen
+zweiten `git p`**, dann ist die Fassung so zu sehen, wie sie gemeint ist. Zip 2.8.1 neu
+gebaut (Spielerkopie darin).
+</builder>
+
+<builder>
+**B35, 2026-09-07, an Autor, P, G, DD: Herausloesen, Gabel, Endloesung. Skill 2.9.**
+
+Drei Befunde des Autors am Ausklammer-Blatt, alle drei gebaut.
+
+**1. Das x kommt jetzt direkt heraus.** Die Zwischenzeile `0 = x·x² − x·4` ist weg; sie hat
+die Verbindung zur Ausgangszeile zerrissen. Neuer Weg-Typ `zieht`: aus `x³` und aus `4x`
+loest sich je ein x heraus und beide treffen sich vor der Klammer (Takt 0), im selben Zug
+wird `x³` zu `x²` und `4x` zu `4` und wandert in die Klammer (Takt 1). Zwei Zeilen statt
+drei, und der Blick bleibt an der Ausgangszeile.
+
+**2. Die Gabel.** Neues Geraet `gabel`: zwei Pfeile schraeg nach links und rechts, darunter
+zwei Spalten, die unabhaengig weiterrechnen. Links `x₁ = 0`, rechts `x² − 4 = 0`, `| +4`,
+`| √`, `x = ±2`. Beide Aeste erscheinen Reihe fuer Reihe gemeinsam, weil sie dasselbe tun;
+das ist eine Sache, kein Spagat. Der Autor hat recht, dass der Satz vom Nullprodukt im
+Dokument fehlt und wir hier nachhelfen: der Lehrersatz sagt ihn („Ein Produkt ist 0, wenn ein
+Faktor 0 ist: beide Wege gelten"), das Bild zeigt ihn. Das ist die Grenze dessen, was Treue
+erlaubt: erklaeren, was das Dokument tut, ohne eine Regel zu erfinden, die es nicht anwendet.
+DD moege sagen, ob der Satz so stehenbleiben darf.
+
+**3. Endloesungen doppelt unterstrichen.** `"loesung": true` an einer Zeile; im Blatt eine
+doppelte Linie darunter. Regel dazu, wie vom Autor formuliert: **Symbol und Wert stehen
+nebeneinander**, der Rechenweg steht in der Zeile darueber. `y = f(2) = 2² − 5 = −1` ist kein
+Ergebnis, sondern ein Weg; darunter gehoert `−1 = y`, doppelt unterstrichen. In Fassung 3
+jetzt ueberall: `x₁ = 5 \quad x₂ = 1` (Weg darueber `x₁ = 3+2 \quad x₂ = 3−2`), `x = ±2`,
+`y = −8` an den y-Blaettern (der Wert fliegt jetzt aus der unterstrichenen Zeile zur Achse).
+Der Pruefer meldet eine Rechnung ohne Endloesung und eine Endloesung, in der noch gerechnet
+wird.
+
+Fassung 3 neu: 11 Boegen, 36 Beats, 0 schwer, 5 mittel (fuenf Blaetter leicht ueber dem Rand,
+dichtestes 0,91), lauf2 0 Fehler, Harness 58 gruen, Goldabgleich IDENTISCH. Skill 2.9 mit den
+drei Geraeten im Katalog und dem Abschnitt „Zwei Wege und das Ende der Rechnung".
+
+**Es braucht wieder einen `git p`** (mit dem Fix aus B34 zusammen). Danach sehe ich mir die
+Gabel auf der Seite an: die beiden Spalten sind am Handy schmal, das ist die Stelle, an der
+es haken kann.
+</builder>

@@ -1,14 +1,19 @@
 ---
 name: blattkino
-description: Blattkino 2.8.1 (Buehne, Blickfuehrung, Goldgeraete, Umbau Zeile fuer Zeile, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
+description: Blattkino 2.9 (Buehne, Blickfuehrung, Goldgeraete, Umbau Zeile fuer Zeile, Gabel, Endloesung, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
 ---
 
 # Blattkino
 
-**Version 2.8.1 (2026-09-07).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
+**Version 2.9 (2026-09-07).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
 auch in der `description` oben.
 
 Aenderungsprotokoll (Version, Datum, Anlass):
+- 2.9, 2026-09-07: nach drei Autorbefunden am Ausklammer-Blatt: `zieht` (der Teil loest sich
+  aus seiner Quelle, statt eine Zwischenzeile zu brauchen), `gabel` (zwei Wege, zwei Pfeile,
+  zwei Spalten, die unabhaengig weiterrechnen), `loesung` (die Endloesung wird doppelt
+  unterstrichen, Symbol und Wert nebeneinander). Pruefer: Rechnung ohne Endloesung,
+  Rechenschritt in der Endloesung, Gabel ohne zwei Aeste oder ohne Endloesung.
 - 2.8.1, 2026-09-07: nach dem Autorbefund zum Spagat der Augen: der Lehrersatz steht im
   Fluss des Blattes, vor dem, was er ankuendigt, und wird leise, wenn der naechste kommt;
   keine feste Sprecherzeile mehr. Abschnitt „Der Blick: eine Sache nach der anderen";
@@ -193,10 +198,11 @@ der Leser sich sonst im Kopf herstellen muesste, und nur die.
 - Beide Seiten teilen, Wurzel ziehen, quadrieren, logarithmieren: jede Seite wandert an
   ihren Platz und `wird` dabei (`2x²` wird `x²`, `4` wird `±2`; `e^x` verliert sein e, das
   gestrichen wird, und das x faellt aus dem Exponenten herunter); rechts `| √`, `| ln`.
-- Ausklammern: erst macht eine Zeile die verborgene Gestalt sichtbar (`x³ − 4x` wird
-  `x·x² − x·4`), dann treffen sich beide x vor der Klammer (`takt` 0), der Rest zieht hinein
-  (`takt` 1). Ausmultiplizieren umgekehrt: der Faktor vor der Klammer fliegt zu jedem
-  Summanden, zwei Wege aus einer Quelle.
+- Ausklammern: aus `x³` und aus `4x` **loest sich je ein x heraus** (`zieht`) und beide
+  treffen sich vor der Klammer (`takt` 0); im selben Zug wird `x³` zu `x²` und `4x` zu `4`
+  und wandert in die Klammer (`takt` 1). Keine Zwischenzeile `x·x² − x·4`: sie zerreisst die
+  Verbindung zur Ausgangszeile, der Autor hat sie darum verworfen. Ausmultiplizieren
+  umgekehrt: der Faktor vor der Klammer fliegt zu jedem Summanden, zwei Wege aus einer Quelle.
 - Zusammenfassen gleicher Terme: `3x` und `5x` treffen sich und werden `8x`.
 - Kuerzen: derselbe Faktor oben und unten wird gestrichen (`weg`), im Bruch aus Chips.
   Erweitern: der Faktor erscheint oben und unten als Rest.
@@ -252,6 +258,24 @@ Schritte zerlegen. `beispiel-extrempunkte.json` ist das Mass: acht Blaetter des 
 Chips, Stamm und Aesten, Serie aus einer Vorlage. Lies es ganz, bevor du giesst; es ist kein
 Formular, ein anderes Dokument hat einen anderen Fluss. `beispiel-parabel.json` zeigt
 `bildfolge`, `zoomfolge`, `doppelgraph` und `binden` im Einsatz.
+
+## Zwei Wege und das Ende der Rechnung
+
+**Die Gabel.** Wo eine Gleichung in zwei Faelle zerfaellt, zeigt der Film das als Gabel:
+zwei Pfeile schraeg nach links und rechts, darunter zwei Spalten, die unabhaengig
+weiterrechnen. Satz vom Nullprodukt (`x·(x²−4) = 0` gibt `x₁ = 0` und `x²−4 = 0`),
+Fallunterscheidung beim Betrag, plus und minus nach der Wurzel, zwei Nenner beim
+Definitionsbereich. Der Leser sieht in einem Bild, dass es zwei Wege gibt und dass **beide
+gelten**; eine Liste untereinander sagt das nicht. Hier erscheinen die beiden Aeste Reihe fuer
+Reihe gemeinsam: sie tun dasselbe, das ist eine Sache, kein Spagat.
+
+**Die Endloesung wird doppelt unterstrichen** (`"loesung": true`). Der Leser muss sehen,
+welche Zeile fertig und brauchbar ist, und welche nur ein Zwischenschritt war. Dabei gilt:
+**Symbol und Wert stehen nebeneinander**, der Rechenweg steht in der Zeile darueber.
+`y = f(2) = 2² − 5 = −1` ist keine Endloesung, sondern ein Weg; er endet mit `= y`, und
+darunter steht `−1 = y`, doppelt unterstrichen. Ebenso `x₁ = 3+2 \quad x₂ = 3−2` als Weg und
+`x₁ = 5 \quad x₂ = 1` als Endloesung. Der Pruefer meldet eine Rechnung ohne Endloesung und
+eine Endloesung, in der noch gerechnet wird.
 
 ## Serie und Muster
 

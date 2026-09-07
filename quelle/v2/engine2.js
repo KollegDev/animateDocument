@@ -27,7 +27,10 @@ function szeneAuf(frage){
 // macht keinen Spagat). Er steht im Fluss des Blatts, unmittelbar ueber dem, was der Beat zeigt, erscheint
 // als Erstes im Beat und tritt zurueck (vorbei), sobald der naechste Satz spricht. Fenster setzt zeitVerteilen.
 function sagen(t){ const e=el('p','sag'); e.textContent=t; if(/\\\(/.test(t))mathKnoten.push(e); setzen(e,1);
-  const it={typ:'sag',el:e,a:0,b:1,apply(u){ e.classList.toggle('vorbei',u>=1); }};
+  // Inline setzen, nicht als Klasse: riseItem schreibt beim Erscheinen ebenfalls inline, und
+  // eine Klasse verliert dagegen. Der Satz bleibt stehen, er wird nur leise.
+  const it={typ:'sag',el:e,a:0,b:1,apply(u){ if(u<=0){ e.classList.remove('vorbei'); return; }  // vorher gehoert die Deckkraft dem Erscheinen
+    e.style.opacity=u>=1?0.45:1; e.classList.toggle('vorbei',u>=1); }};
   beat.sag=it; szene.sagen.push(it); szene.items.push(it); return it; }
 function beatAuf(g,payoff){ beat={gewicht:g||2,payoff:!!payoff,anteil:undefined,stuecke:[]}; szene.beats.push(beat); }
 // Ein Stueck: was gemeinsam erscheint. dauer ist sein Anteil an der Aufbaustrecke des Beats.
@@ -72,7 +75,7 @@ function teil(p,z){
   return chip(p,z);
 }
 function zeile(parts,opt){
-  opt=opt||{}; const z=el('div','zeile'+(opt.hl?' hl':'')); z.chips={};
+  opt=opt||{}; const z=el('div','zeile'+(opt.hl?' hl':'')+(opt.loesung?' loes':'')); z.chips={};
   for(const p of parts)z.appendChild(teil(p,z));
   einfuegen(z);
   if(!opt.stumm)zeig(z,opt);
@@ -260,6 +263,36 @@ function pfeil(o){
   };
   stueck(it,o.dauer||1.6); return it;
 }
+// ---------------- Gabel: eine Zeile teilt sich in zwei Wege ----------------
+// Zwei Pfeile von der Quellzeile schraeg nach links und rechts; darunter zwei Spalten, die
+// unabhaengig weiterrechnen. Der Leser sieht: hier gibt es zwei Faelle, und beide gelten.
+function gabel(quelle){
+  const g=el('div','gabel'); const links=el('div','zweig'), rechts=el('div','zweig');
+  g.appendChild(links); g.appendChild(rechts); einfuegen(g);
+  const p1=svgEl('path',{fill:'none',stroke:'var(--muted)','stroke-width':1.6,'stroke-linecap':'round',opacity:0},szene.pf);
+  const p2=svgEl('path',{fill:'none',stroke:'var(--muted)','stroke-width':1.6,'stroke-linecap':'round',opacity:0},szene.pf);
+  const k1=svgEl('path',{fill:'var(--muted)',d:'M1 0 L-6 -3.2 L-6 3.2 Z',opacity:0},szene.pf);
+  const k2=svgEl('path',{fill:'var(--muted)',d:'M1 0 L-6 -3.2 L-6 3.2 Z',opacity:0},szene.pf);
+  const it={typ:'gabel',u:0,L1:0,L2:0,
+    rechnen(){ const q=lokal(quelle), a=lokal(links), b=lokal(rechts);
+      const von={x:q.x+q.w/2,y:q.y+q.h+2};
+      const zu1={x:a.x+Math.min(a.w,60)/2,y:a.y-4}, zu2={x:b.x+Math.min(b.w,60)/2,y:b.y-4};
+      const d=(z)=>'M'+von.x.toFixed(1)+' '+von.y.toFixed(1)+' L'+z.x.toFixed(1)+' '+z.y.toFixed(1);
+      p1.setAttribute('d',d(zu1)); p2.setAttribute('d',d(zu2));
+      try{ it.L1=p1.getTotalLength(); it.L2=p2.getTotalLength(); }catch(e){ it.L1=it.L2=60; }
+      p1.style.strokeDasharray=it.L1; p2.style.strokeDasharray=it.L2;
+      const w1=Math.atan2(zu1.y-von.y,zu1.x-von.x)*180/Math.PI, w2=Math.atan2(zu2.y-von.y,zu2.x-von.x)*180/Math.PI;
+      k1.setAttribute('transform','translate('+zu1.x.toFixed(1)+' '+zu1.y.toFixed(1)+') rotate('+w1.toFixed(1)+')');
+      k2.setAttribute('transform','translate('+zu2.x.toFixed(1)+' '+zu2.y.toFixed(1)+') rotate('+w2.toFixed(1)+')');
+      it.apply(it.u); },
+    apply(u){ it.u=u; p1.style.strokeDashoffset=(it.L1*(1-u)).toFixed(2); p2.style.strokeDashoffset=(it.L2*(1-u)).toFixed(2);
+      p1.style.opacity=u>0?1:0; p2.style.opacity=u>0?1:0;
+      const kk=u>0.86?clamp((u-0.86)/0.1,0,1):0; k1.style.opacity=kk; k2.style.opacity=kk; }
+  };
+  stueck([riseItem(g),it],1.6);
+  return {kn:g,links:links,rechts:rechts};
+}
+
 // ---------------- Flug: eine Zahl wandert an ihren Ort ----------------
 // Ein Flug ist ein Stueck fuer sich; im Umbau fliegen mehrere in einem Stueck (flugItem).
 // weg: die Quelle verblasst, wenn die Kopie sich loest (der Teil wird herausgenommen, nicht kopiert).
@@ -268,7 +301,8 @@ function flugItem(o){
   const t=el('span','token'+(o.k!==undefined?' k'+o.k:'')+(o.txt?' txt':'')); szene.fl.appendChild(t);
   let vonL=null, nachL=null;
   const it={typ:'flug',u:0,von:{x:0,y:0},zu:{x:0,y:0},
-    rechnen(){ if(o.wird&&!o.zu.anker){ t.textContent=''; vonL=el('span','von'); vonL.innerHTML=o.von.innerHTML; nachL=el('span','nach'); nachL.innerHTML=o.zu.innerHTML; t.appendChild(vonL); t.appendChild(nachL); }
+    rechnen(){ if(o.zieht&&!o.zu.anker){ t.innerHTML=o.zu.innerHTML; }
+      else if(o.wird&&!o.zu.anker){ t.textContent=''; vonL=el('span','von'); vonL.innerHTML=o.von.innerHTML; nachL=el('span','nach'); nachL.innerHTML=o.zu.innerHTML; t.appendChild(vonL); t.appendChild(nachL); }
       else t.innerHTML=o.von.innerHTML;
       const vb=lokal(o.von); it.von={x:vb.x,y:vb.y};
       if(o.zu.anker){ const a=o.zu.anker(); const tb=t.getBoundingClientRect(); const s=szene.scale||1; it.zu={x:a.x-(tb.width/s)/2,y:a.y-(tb.height/s)/2}; }

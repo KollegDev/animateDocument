@@ -2,7 +2,7 @@
 
 ## Die Datei
 
-Jede Datei traegt `"skill": "2.8.1"`, die Version aus dem Kopf von SKILL.md, mit der sie
+Jede Datei traegt `"skill": "2.9"`, die Version aus dem Kopf von SKILL.md, mit der sie
 entstanden ist. Der Pruefer meldet das Fehlen. So ist jeder Film seiner Skill-Fassung
 zuzuordnen, auch wenn der Skill weitergezogen ist.
 
@@ -215,6 +215,9 @@ Operation schreibt: `| +8`, `| :2`, `| √`, `| ln`. Die vorigen Zeilen bleiben 
 `umformung` immer, wenn Gleichungen auseinander hervorgehen. Drei `math`-Ops hintereinander
 sind dafür die falsche Wahl, weil sie den Zusammenhang verschweigen.
 
+**Endlösung.** Eine Zeile mit `"loesung": true` wird doppelt unterstrichen (auch in `zeile`
+und `math`). Sie enthält nur Symbol und Wert, keinen Rechenschritt; der Weg steht darüber.
+
 **Zeile für Zeile als Umbau.** Eine Zeile darf statt `tex` ein `teile` tragen (Chips wie in
 `zeile`, mit Kennungen) und `wege` von der vorigen Zeile: dann liegt sie stumm bereit und
 wird aus den Teilen der vorigen gebaut, die Quelle verblasst, was keinen Weg hat, erscheint
@@ -232,7 +235,10 @@ danach. Das ist die Form für alle Grundformen des Umbaus (SKILL.md):
 ]}
 ```
 
-Ein Weg ist `[von, zu]`, `[von, zu, takt]` oder `{von, zu, takt, wird, weg}`: `wird` lässt
+Ein Weg ist `[von, zu]`, `[von, zu, takt]` oder `{von, zu, takt, wird, weg, zieht}`: `zieht`
+löst **einen Teil aus der Quelle heraus** und lässt ihn als das Ziel fliegen, während die
+Quelle stehen bleibt (ein zweiter Weg macht sie zu ihrem Rest) — so kommen beim Ausklammern
+die beiden x direkt aus `x³` und `4x`, ohne Zwischenzeile. `wird` lässt
 die fliegende Kopie unterwegs zum Ziel werden (−8 wird 8, x² wird x); `weg` (ohne `zu`)
 streicht die Quelle durch, nichts landet (das e beim Logarithmieren, der gekürzte Faktor);
 gleicher `takt` fliegt zusammen, ohne `takt` nacheinander; `von` darf eine Liste sein.
@@ -331,6 +337,7 @@ Bild. Alles Weitere spricht das Bild über `id` an (fehlt sie, gilt das letzte B
 | `beschriftung` | Name am Punkt, oben bei Gipfel, unten bei Tal | `x, y, text, k, dauer` |
 | `kandidat` | eine Stelle auf der x-Achse; unsichtbar, bis ein `flug` sie erreicht. Mit `achse:"y"` und `y` eine Höhe an der y-Achse: der y-Wert fliegt aus der Zeile dorthin, so wie die Stelle zur x-Achse | `id, x` oder `achse:"y", y`; `k, text, sofort?` |
 | `flug` | eine Zahl wandert an ihren Ort. Kostet mindestens 2 (Vorgabe 2,4): Zahlen, die schneller fliegen, sieht der Leser nicht (Autorbefund 2026-09-07) | `von` Chip-Id, `zu` Chip-Id oder `{"kandidat":id}`, `k, dauer` |
+| `gabel` | eine Zeile teilt sich in zwei Wege: zwei Pfeile schräg nach links und rechts, darunter zwei Spalten, die unabhängig weiterrechnen (Satz vom Nullprodukt, Fallunterscheidung). Reihe für Reihe erscheinen beide Äste gemeinsam | `von` (Kennung der Quellzeile oder eines Chips), `aeste: [{zeilen:[…]},{zeilen:[…]}]` — die Zeilen wie in `umformung`, mit `teile`, `warum`, `wege`, `loesung` |
 | `umbau` | die Teile einer Zeile wandern an ihre neuen Plätze, die Quelle verblasst; die neue Zeile schließt sich danach. Meist über `umformung` mit `wege` (oben); als eigene Op für Zeilen ausserhalb einer Umformung | `zu` Kennung einer stummen Zeile, `wege` wie in `umformung`, `bleibt?` (Quelle bleibt), `k?`, `dauer` (je Takt, mindestens 2) |
 | `pfeil` | Herkunft und Einsetzen: aus der Quelle in die Rinne links, von oben in die Klammer | `id, von` Chip-Id oder `{"pfeil":id}` (Ast aus dem Stamm), `zu` Chip-Id, `lane, k, versatz?, dauer` |
 | `kappe` | Krümmung am Kandidaten, ∩ oder ∪ | `x, r, k, text?` |

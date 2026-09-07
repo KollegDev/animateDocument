@@ -1,7 +1,7 @@
 {
  "titel": "y-Achsenschnittpunkt und Nullstellen",
  "quelle": "Kurvendiskussion 1, Seiten 9 bis 12",
- "skill": "2.8.1, Hand nach Autorbefunden 2026-09-07 (Titel, Lehrersatz im Fluss, Umbau Zeile fuer Zeile)",
+ "skill": "2.9, Hand nach Autorbefunden 2026-09-07 (Titel, Lehrersatz im Fluss, Herausloesen, Gabel, Endloesung)",
  "inventar": "S9: (Seitenende der Symmetrie-Beispiele zu Punktsymmetrie mit Potenzfunktionen, nicht Gegenstand dieses Films.) Überschrift: y-Achsenschnittpunkt und Nullstellen. f(x)=(x-3)^{2}-4. S10: Graph von f(x)=(x-3)^{2}-4, blaue Kurve, x-Achse von -1 bis 7, y-Achse von -4 bis 8, markiert rot: y-Achsenschnittpunkt S_y(0|5), Nullstelle N_1(1|0), Nullstelle N_2(5|0). Text: Die Nullstelle ist der Schnittpunkt einer Funktion mit der x-Achse. Der y-Achsenschnittpunkt ist der Schnittpunkt einer Funktion mit der y-Achse. Wir finden beide, indem wir das jeweils andere Null setzen. Aufgabe: Gegeben ist f(x)=(x-3)^{2}-4. a) Geben Sie die Nullstellen an. b) Geben Sie den y-Achsenschnittpunkt an. Lösung a): Nullstelle (x-Wert, an dem die x-Achse geschnitten wird) ist gesucht, also y=0 (an jeder Nullstelle beträgt der y-Wert immer Null). f(x)=y=0. 0=(x-3)^{2}-4 mit dem Schritt plus 4. 4=(x-3)^{2} mit dem Schritt Wurzel ziehen. \\pm 2=x-3 mit dem Schritt plus 3. x_1=3+2=5. x_2=3-2=1. also N_1(1|0) und N_2(5|0). Wichtig: Beim Wurzelziehen gibt es immer zwei Lösungen (+ und -), deswegen bekommen wir zwei Nullstellen. S11: Lösung b): y-Achsenschnittpunkt ist gesucht, also x=0 (auf der y-Achse ist x natürlich immer Null). y=f(0)=(0-3)^{2}-4. y=9-4. y=5. also S_y(0|5). Überschrift: Weitere Beispiele. g(x)=2x^{2}-8. Nullstellen: g(x)=0. 0=2x^{2}-8 mit dem Schritt plus 8. 8=2x^{2} mit dem Schritt geteilt durch 2. 4=x^{2} mit dem Schritt Wurzel ziehen. x_1=2. x_2=-2. N_1(-2|0), N_2(2|0). y-Achsenschnittpunkt: g(0)=2\\cdot 0^{2}-8=-8. S_y(0|-8). h(x)=x^{3}-4x. Nullstellen: h(x)=0. 0=x^{3}-4x. 0=x\\cdot(x^{2}-4). x_1=0. x^{2}-4=0 mit dem Schritt plus 4. x^{2}=4 mit dem Schritt Wurzel ziehen. x_2=2. x_3=-2. N_1(0|0), N_2(2|0), N_3(-2|0). y-Achsenschnittpunkt: h(0)=0^{3}-4\\cdot 0=0. S_y(0|0). S12: k(x)=x^{2}-6x+8. Nullstellen: k(x)=0. 0=x^{2}-6x+8, p=-6, q=8. p-q-Formel x_{1,2}=3\\pm 1 nach Einsetzen und Wurzelziehen. x_1=4. x_2=2. N_1(2|0), N_2(4|0). y-Achsenschnittpunkt: k(0)=0^{2}-6\\cdot 0+8=8. S_y(0|8). m(x)=e^{x}-1. Nullstellen: m(x)=0. 0=e^{x}-1 mit dem Schritt plus 1. 1=e^{x} mit dem Schritt Logarithmus. ln(1)=x. x=0. N(0|0). y-Achsenschnittpunkt: m(0)=e^{0}-1=1-1=0. S_y(0|0). (Danach folgt die Überschrift Grenzverhalten im Unendlichen mit einer Beispielfunktion dritten Grades, nicht Gegenstand dieses Films.)",
  "boegen": [
   {
@@ -104,6 +104,14 @@
            "wird": true
           }
          ]
+        },
+        {
+         "tex": "x_1=3+2\\quad x_2=3-2",
+         "warum": "| +3"
+        },
+        {
+         "tex": "x_1=5\\quad x_2=1",
+         "loesung": true
         }
        ]
       }
@@ -324,7 +332,8 @@
           "id": "r0"
          }
         ]
-       ]
+       ],
+       "loesung": true
       }
      ]
     },
@@ -493,7 +502,8 @@
            "zu": "d1",
            "wird": true
           }
-         ]
+         ],
+         "loesung": true
         }
        ]
       }
@@ -675,8 +685,7 @@
          },
          {
           "tex": "-8",
-          "k": 3,
-          "id": "r0"
+          "k": 3
          }
         ]
        ]
@@ -693,6 +702,23 @@
        "op": "zeig",
        "zeile": "fz",
        "folge": true
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "y="
+         },
+         {
+          "tex": "-8",
+          "k": 3,
+          "id": "r0"
+         }
+        ]
+       ],
+       "loesung": true
       }
      ],
      "sag": "Fuer \\(x\\) kommt die 0 in die Klammer."
@@ -764,6 +790,7 @@
      "ops": [
       {
        "op": "zeile",
+       "id": "A",
        "teile": [
         [
          "!eng",
@@ -777,44 +804,6 @@
          {
           "tex": "-4x",
           "id": "a2"
-         }
-        ]
-       ]
-      },
-      {
-       "op": "zeile",
-       "teile": [
-        [
-         "!eng",
-         {
-          "tex": "0="
-         },
-         {
-          "tex": "x",
-          "id": "b1",
-          "k": 0
-         },
-         {
-          "tex": "\\cdot"
-         },
-         {
-          "tex": "x^{2}",
-          "id": "b2"
-         },
-         {
-          "tex": "-"
-         },
-         {
-          "tex": "x",
-          "id": "b3",
-          "k": 0
-         },
-         {
-          "tex": "\\cdot"
-         },
-         {
-          "tex": "4",
-          "id": "b4"
          }
         ]
        ]
@@ -842,10 +831,7 @@
           "id": "c2"
          },
          {
-          "tex": "-"
-         },
-         {
-          "tex": "4",
+          "tex": "-4",
           "id": "c4"
          },
          {
@@ -858,113 +844,137 @@
        "op": "umbau",
        "zu": "C",
        "wege": [
-        [
-         "b1",
-         "c1",
-         0
-        ],
-        [
-         "b3",
-         "c1",
-         0
-        ],
-        [
-         "b2",
-         "c2",
-         1
-        ],
-        [
-         "b4",
-         "c4",
-         1
-        ]
+        {
+         "von": [
+          "a1",
+          "a2"
+         ],
+         "zu": "c1",
+         "zieht": true,
+         "takt": 0
+        },
+        {
+         "von": "a1",
+         "zu": "c2",
+         "wird": true,
+         "takt": 1
+        },
+        {
+         "von": "a2",
+         "zu": "c4",
+         "wird": true,
+         "takt": 1
+        }
        ]
       }
      ],
-     "sag": "In beiden steckt ein \\(x\\): wir klammern es aus."
+     "sag": "Aus beiden loest sich ein \\(x\\) heraus."
     },
     {
      "ops": [
       {
-       "op": "umformung",
-       "zeilen": [
+       "op": "gabel",
+       "von": "C",
+       "aeste": [
         {
-         "tex": "x_1=0"
-        },
-        {
-         "teile": [
+         "zeilen": [
           {
-           "tex": "x^{2}",
-           "id": "e1"
-          },
-          {
-           "tex": "-4",
-           "id": "e2"
-          },
-          {
-           "tex": "=0"
+           "teile": [
+            {
+             "tex": "x_1",
+             "id": "p1"
+            },
+            {
+             "tex": "="
+            },
+            {
+             "tex": "0",
+             "id": "p2"
+            }
+           ],
+           "loesung": true
           }
          ]
         },
         {
-         "teile": [
+         "zeilen": [
           {
-           "tex": "x^{2}",
-           "id": "f1"
+           "teile": [
+            {
+             "tex": "x^{2}",
+             "id": "e1"
+            },
+            {
+             "tex": "-4",
+             "id": "e2"
+            },
+            {
+             "tex": "=0"
+            }
+           ]
           },
           {
-           "tex": "="
+           "teile": [
+            {
+             "tex": "x^{2}",
+             "id": "f1"
+            },
+            {
+             "tex": "="
+            },
+            {
+             "tex": "4",
+             "id": "f2"
+            }
+           ],
+           "warum": "| +4",
+           "wege": [
+            {
+             "von": "e1",
+             "zu": "f1"
+            },
+            {
+             "von": "e2",
+             "zu": "f2",
+             "wird": true
+            }
+           ]
           },
           {
-           "tex": "4",
-           "id": "f2"
-          }
-         ],
-         "warum": "| +4",
-         "wege": [
-          {
-           "von": "e1",
-           "zu": "f1"
-          },
-          {
-           "von": "e2",
-           "zu": "f2",
-           "wird": true
-          }
-         ]
-        },
-        {
-         "teile": [
-          {
-           "tex": "x",
-           "id": "g1"
-          },
-          {
-           "tex": "="
-          },
-          {
-           "tex": "\\pm 2",
-           "id": "g2"
-          }
-         ],
-         "warum": "| √",
-         "wege": [
-          {
-           "von": "f1",
-           "zu": "g1",
-           "wird": true
-          },
-          {
-           "von": "f2",
-           "zu": "g2",
-           "wird": true
+           "teile": [
+            {
+             "tex": "x",
+             "id": "g1"
+            },
+            {
+             "tex": "="
+            },
+            {
+             "tex": "\\pm 2",
+             "id": "g2"
+            }
+           ],
+           "warum": "| √",
+           "wege": [
+            {
+             "von": "f1",
+             "zu": "g1",
+             "wird": true
+            },
+            {
+             "von": "f2",
+             "zu": "g2",
+             "wird": true
+            }
+           ],
+           "loesung": true
           }
          ]
         }
        ]
       }
      ],
-     "sag": "Ein Produkt ist 0, wenn ein Faktor 0 ist."
+     "sag": "Ein Produkt ist 0, wenn ein Faktor 0 ist: beide Wege gelten."
     },
     {
      "payoff": true,
@@ -997,7 +1007,8 @@
           "id": "x2"
          }
         ]
-       ]
+       ],
+       "loesung": true
       },
       {
        "op": "kandidat",
@@ -1179,8 +1190,7 @@
          },
          {
           "tex": "0",
-          "k": 3,
-          "id": "r0"
+          "k": 3
          }
         ]
        ]
@@ -1197,6 +1207,23 @@
        "op": "zeig",
        "zeile": "fz",
        "folge": true
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "y="
+         },
+         {
+          "tex": "0",
+          "k": 3,
+          "id": "r0"
+         }
+        ]
+       ],
+       "loesung": true
       }
      ],
      "sag": "Wieder \\(x=0\\) einsetzen."
@@ -1336,7 +1363,8 @@
           "id": "x1"
          }
         ]
-       ]
+       ],
+       "loesung": true
       },
       {
        "op": "kandidat",
@@ -1492,8 +1520,7 @@
          },
          {
           "tex": "8",
-          "k": 3,
-          "id": "r0"
+          "k": 3
          }
         ]
        ]
@@ -1510,6 +1537,23 @@
        "op": "zeig",
        "zeile": "fz",
        "folge": true
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "y="
+         },
+         {
+          "tex": "8",
+          "k": 3,
+          "id": "r0"
+         }
+        ]
+       ],
+       "loesung": true
       }
      ],
      "sag": "Fuer \\(x\\) kommt ueberall die 0 hinein."
@@ -1715,7 +1759,8 @@
           "id": "x0"
          }
         ]
-       ]
+       ],
+       "loesung": true
       },
       {
        "op": "kandidat",
@@ -1828,8 +1873,7 @@
          },
          {
           "tex": "0",
-          "k": 3,
-          "id": "r0"
+          "k": 3
          }
         ]
        ]
@@ -1846,6 +1890,23 @@
        "op": "zeig",
        "zeile": "fz",
        "folge": true
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "y="
+         },
+         {
+          "tex": "0",
+          "k": 3,
+          "id": "r0"
+         }
+        ]
+       ],
+       "loesung": true
       }
      ],
      "sag": "\\(e\\) hoch 0 ist 1."
