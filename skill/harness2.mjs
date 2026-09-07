@@ -157,7 +157,7 @@ console.log('— Titel, Lehrersatz im Fluss, Umbau Zeile fuer Zeile —');
   ck('Umformung: Zeilen aus Chips liegen in der Kette, Operation rechts', T.alle('.kette .zeile').length===3 && T.alle('.kette .op').map(e=>e.textContent).join(',')==='| +8,| ln');
   const st=s.beats[1].stuecke.map(x=>x.items.map(it=>it.typ||'i').join('+'));
   ck('Umbau: Wege werden Fluege und Streichen, der Rest steigt danach', st.some(x=>/flug/.test(x)) && st.some(x=>/streich/.test(x)));
-  ck('Hochzahl und Bruch sind aus Chips gebaut', T.q('.hoch .exp .chip')!==null && T.q('.bruch .oben .chip')!==null);
+  ck('Hochzahl und Bruch sind aus Chips gebaut', T.q('.hoch .exp .chip')!==null && T.q('.bruch .zaehler .chip')!==null);
   T.bk.render(s.beats[1].bis-0.001); const zl=T.alle('.kette .zeile'); const q0=zl[1].querySelector('.chip'), q1=zl[1].querySelectorAll('.chip')[2];
   ck('Am Ende der Umformung: Ziel gelandet und als Quelle verblasst, das e gestrichen', q0.classList.contains('gelandet') && q0.classList.contains('verblasst') && q1.classList.contains('gestrichen'));
   T.bk.render(s.beats[0].bis-0.001);
@@ -183,5 +183,19 @@ console.log('— Gabel, Herausloesen, Endloesung —');
   ck('Die Quelle des Herausloesens bleibt (sie wird ihr Rest)', (()=>{ G.bk.render(s2.beats[0].bis-0.001);
      const a1=G.q('.zeile .chip'); return a1!==null; })());
   ck('Kein Fehler im Spieler (Gabel)', !G.fehler());
+}
+console.log('— Keine Klasse einer Formel heisst wie eine Klasse des Rahmens —');
+{ // Der Fehler, den der Live-Lauf gefunden hat: der Radikand hiess "rad" wie das Rad
+  // (position:fixed) und der Zaehler "oben" wie die Leiste. Beide verschwanden aus der Zeile.
+  // Diese Namen gehoeren dem Rahmen; eine Formel darf keinen davon tragen.
+  const RAHMEN=['rad','weg','buehne','tor','oben','raus','dok','dokseiten','fortschritt','blatt','fehler','diag','start'];
+  const K=await welt({titel:'K',boegen:[{titel:'T',beats:[{payoff:true,ops:[{op:'zeile',teile:[['!eng',
+    {bruch:{oben:[{tex:'p'}],unten:[{tex:'2'}]}},{tex:'\\pm'},
+    {wurzel:[{hoch:{basis:[{tex:'a'}],exp:[{tex:'2'}]}},{tex:'-'},{tex:'q'}]}]]}]}]}]});
+  const drin=[]; for(const e of K.alle('.zeile *')) for(const c of e.classList) if(RAHMEN.includes(c)) drin.push(c);
+  ck('Formelteile tragen keine Rahmenklasse (rad, oben, buehne, ...)', drin.length===0, drin.join(','));
+  ck('Wurzel: Zeichen und Radikand stehen in der Zeile', K.q('.wurzel .zeichen')!==null && K.q('.wurzel .radikand .chip')!==null);
+  ck('Bruch: Zaehler und Nenner stehen in der Zeile', K.q('.bruch .zaehler .chip')!==null && K.q('.bruch .nenner .chip')!==null);
+  ck('Kein Fehler im Spieler (Wurzel im Bruch)', !K.fehler());
 }
 console.log(f?('\n'+f+' FEHLER'):'\nPlayer v2 grün');

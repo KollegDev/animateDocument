@@ -183,7 +183,14 @@ Bögen).
   eine Farbe auf einem Chip, der fliegt, ist keine Dekoration; die Endlösung wird je Aussage
   geprüft (Kette verboten, offene Rechnung im Wert verboten, Klammerinhalt und Hochzahl
   erlaubt) und aus den Teilen einer Zeile wird das TeX zurückgewonnen statt aus dem JSON.
-  Transkript: eine Quelle, die zweimal dasselbe hergibt, wird ein Satz. Harness 58 Tests grün.
+  Transkript: eine Quelle, die zweimal dasselbe hergibt, wird ein Satz.
+  2.9.2 (nach dem Live-Lauf der Werkbank auf dem Handy): Radikand und Zähler trugen die
+  Klassennamen des Rahmens (`rad`, `oben`) und wurden dadurch als bildschirmgroße Fläche über
+  das Blatt gelegt statt in die Zeile gesetzt — jetzt `radikand`, `zaehler`, `nenner`, und der
+  Harness prüft, dass kein Formelteil eine Rahmenklasse trägt. Das Wurzelzeichen ist ein SVG,
+  das mit dem Radikanden mitwächst. Der Scheitel der Gabel rutscht dicht über die Äste, wenn
+  zwischen Quellzeile und Ästen etwas steht, statt durch den Text zu schneiden. In der
+  `zoomfolge` bleiben Punktradius und Schriftgrad konstant. Harness 62 Tests grün.
 - 44 Harness-Tests grün; Abgleich gegen den Goldlauf IDENTISCH; alle Filme und Blindfilme
   laufen über die ganze Radstrecke ohne Fehler.
 - Fünf Filme: `filme/werkbank.json` (die Werkbank, 15 Bögen, 45 Beats, 0 schwer, 0 mittel,

@@ -2,7 +2,7 @@
 
 ## Die Datei
 
-Jede Datei traegt `"skill": "2.9.1"`, die Version aus dem Kopf von SKILL.md, mit der sie
+Jede Datei traegt `"skill": "2.9.2"`, die Version aus dem Kopf von SKILL.md, mit der sie
 entstanden ist. Der Pruefer meldet das Fehlen. So ist jeder Film seiner Skill-Fassung
 zuzuordnen, auch wenn der Skill weitergezogen ist.
 

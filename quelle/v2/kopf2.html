@@ -74,12 +74,13 @@ h2{font-weight:600; font-size:1.32rem; line-height:1.2; margin:0; text-wrap:bala
 mjx-container{display:inline-block !important; margin:0 !important;}
 /* Bruch und Hochzahl aus Chips: Zaehler, Nenner und Exponent koennen wandern */
 .bruch{display:inline-flex; flex-direction:column; align-items:center; vertical-align:-.55em; margin:0 .15em; line-height:1.25;}
-.bruch .oben, .bruch .unten{display:inline-flex; align-items:baseline; gap:0; padding:0 .2em;}
-.bruch .oben{border-bottom:1.5px solid currentColor; padding-bottom:.08em;}
-.bruch .unten{padding-top:.08em;}
-.wurzel{display:inline-flex; align-items:stretch; margin:0 .1em;}
-.wurzel .zeichen{align-self:flex-end; line-height:1; padding-bottom:.05em;}
-.wurzel .rad{border-top:1.4px solid currentColor; padding:.08em .18em 0 .1em; display:inline-flex; align-items:baseline;}
+.bruch .zaehler, .bruch .nenner{display:inline-flex; align-items:baseline; gap:.12em; padding:0 .2em;}
+.bruch .zaehler{border-bottom:1.5px solid currentColor; padding-bottom:.08em;}
+.bruch .nenner{padding-top:.08em;}
+.wurzel{display:inline-flex; align-items:stretch; margin:0 .12em; vertical-align:-.18em;}
+.wurzel .zeichen{width:.55em; flex:0 0 auto; align-self:stretch; overflow:visible;}
+.wurzel .zeichen path{fill:none; stroke:currentColor; stroke-width:1.4; vector-effect:non-scaling-stroke; stroke-linecap:round; stroke-linejoin:round;}
+.wurzel .radikand{border-top:1.4px solid currentColor; padding:.09em .16em .02em .05em; display:inline-flex; align-items:baseline; gap:.12em;}
 .hoch{display:inline-flex; align-items:baseline; gap:0;}
 .hoch .basis{display:inline-flex; align-items:baseline;}
 .hoch .exp{display:inline-flex; align-items:baseline; font-size:.72em; vertical-align:super; position:relative; top:-.55em; margin-left:.04em;}
@@ -87,7 +88,7 @@ mjx-container{display:inline-block !important; margin:0 !important;}
 /* Endloesung: doppelt unterstrichen, damit man sieht, was fertig und brauchbar ist */
 .zeile.loes, .mathline.loes{border-bottom:3px double var(--ink); padding-bottom:2px; align-self:flex-start; opacity:1 !important;}
 /* Gabel: zwei Wege nebeneinander, jeder rechnet fuer sich weiter */
-.gabel{display:flex; gap:18px; align-items:flex-start; margin:0; padding-top:12px;}
+.gabel{display:flex; gap:18px; align-items:flex-start; margin:0; padding-top:24px;}
 .gabel .zweig{display:flex; flex-direction:column; gap:.3em; flex:1 1 0; min-width:0;}
 .gabel .zweig .zeile{font-size:.98rem;}
 .gabel .op{margin-left:.5em; padding-left:0;}

@@ -1,14 +1,21 @@
 ---
 name: blattkino
-description: Blattkino 2.9.1 (Buehne, Blickfuehrung, Goldgeraete, Umbau Zeile fuer Zeile, Gabel, Endloesung, Werkbank, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
+description: Blattkino 2.9.2 (Buehne, Blickfuehrung, Goldgeraete, Umbau Zeile fuer Zeile, Gabel, Endloesung, Werkbank, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
 ---
 
 # Blattkino
 
-**Version 2.9.1 (2026-09-07).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
+**Version 2.9.2 (2026-09-07).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
 auch in der `description` oben.
 
 Aenderungsprotokoll (Version, Datum, Anlass):
+- 2.9.2, 2026-09-07: nach dem Live-Lauf der Werkbank auf dem Handy, drei Fehler im Spieler:
+  Radikand und Zaehler trugen die Klassennamen des Rahmens (`rad`, `oben`) und wurden dadurch
+  aus der Zeile heraus ueber den Bildschirm gelegt; das Wurzelzeichen ist jetzt ein SVG und
+  waechst mit dem Radikanden; die Pfeile der Gabel schnitten durch den Lehrersatz und setzen
+  ihren Scheitel jetzt dicht ueber die Aeste, wenn etwas dazwischensteht; in der `zoomfolge`
+  wuchsen Punkt und Schrift mit und verdeckten das Bild. Harness: keine Formelklasse darf wie
+  eine Rahmenklasse heissen.
 - 2.9.1, 2026-09-07: `beispiel-werkbank.json`, der Pruefstand mit fuenfzehn Blaettern, je
   eine Bewegung an richtiger Mathematik; darin die zwei neuen Faelle des Herausloesens
   (teilweise Wurzel, Ablesen von p, q und Scheitel) und die Wurzel aus Chips. Pruefer:

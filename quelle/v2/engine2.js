@@ -66,11 +66,21 @@ function chip(p,z){
 // Alle drei sind aus Chips gebaut, damit Zaehler, Nenner, Exponent und Radikand wandern koennen.
 function teil(p,z){
   if(Array.isArray(p)){ const eng=p[0]==='!eng'; const g=el('span','gruppe'+(eng?' eng':'')); for(const q of (eng?p.slice(1):p))g.appendChild(teil(q,z)); return g; }
-  if(p&&typeof p==='object'&&p.bruch){ const b=el('span','bruch'); const o=el('span','oben'), u=el('span','unten');
+  // Zaehler und Nenner heissen so, nicht "oben"/"unten": "oben" ist die Klasse der Leiste
+  // (position:fixed), ein Zaehler mit dieser Klasse springt an den oberen Bildschirmrand.
+  if(p&&typeof p==='object'&&p.bruch){ const b=el('span','bruch'); const o=el('span','zaehler'), u=el('span','nenner');
     for(const q of [].concat(p.bruch.oben||[]))o.appendChild(teil(q,z)); for(const q of [].concat(p.bruch.unten||[]))u.appendChild(teil(q,z));
     b.appendChild(o); b.appendChild(u); return b; }
   // Wurzel aus Chips: das Zeichen und darunter der Radikand, damit auch dort etwas wandern kann
-  if(p&&typeof p==='object'&&p.wurzel!==undefined){ const w=el('span','wurzel'); const zn=el('span','zeichen','\u221A'), r=el('span','rad');
+  // Der Radikand heisst "radikand", nicht "rad": "rad" ist die Klasse des Rades (position:fixed),
+  // ein Radikand mit dieser Klasse verschwindet aus der Zeile und legt sich ueber den Bildschirm.
+  if(p&&typeof p==='object'&&p.wurzel!==undefined){ const w=el('span','wurzel');
+    // Das Wurzelzeichen ist ein SVG und waechst mit dem Radikanden mit: steht darin ein Bruch
+    // oder eine Hochzahl, wird der Haken hoeher, statt danebenzustehen.
+    const zn=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    zn.setAttribute('class','zeichen'); zn.setAttribute('viewBox','0 0 12 40'); zn.setAttribute('preserveAspectRatio','none');
+    const pf=document.createElementNS('http://www.w3.org/2000/svg','path'); pf.setAttribute('d','M0.6 25 L4 25 L7.2 38 L11.4 1.2'); zn.appendChild(pf);
+    const r=el('span','radikand');
     for(const q of [].concat(p.wurzel))r.appendChild(teil(q,z));
     w.appendChild(zn); w.appendChild(r); return w; }
   if(p&&typeof p==='object'&&p.hoch){ const h=el('span','hoch'); const b=el('span','basis'), e=el('span','exp');
@@ -183,7 +193,14 @@ function graph(cfg){
       for(const key of ['grid','hinter','kurve','vorn'])g.appendChild(L[key]);
       for(const key of ['grid','hinter','kurve','vorn'])for(const p of g.querySelectorAll('[stroke]'))p.setAttribute('vector-effect','non-scaling-stroke');
       const cx=sx(x), cy=sy(y);
-      return {apply(u){ const f=1+(zf-1)*eIO(u); g.setAttribute('transform','translate('+cx+' '+cy+') scale('+f.toFixed(4)+') translate('+(-cx)+' '+(-cy)+')'); }}; },
+      // Punkte und Schrift wachsen nicht mit: sonst wird der Punkt beim Hineinfahren zur Scheibe,
+      // die das halbe Bild verdeckt. Radius und Schriftgrad werden gegengerechnet (nicht per
+      // transform: das schreibt die Landeanimation als Stil und gewaenne gegen das Attribut).
+      const kreise=[...g.querySelectorAll('circle')].map(n=>({n:n,r:+n.getAttribute('r')||3}));
+      const schrift=[...g.querySelectorAll('text')].map(n=>({n:n,s:+n.getAttribute('font-size')||11.5}));
+      return {apply(u){ const f=1+(zf-1)*eIO(u); g.setAttribute('transform','translate('+cx+' '+cy+') scale('+f.toFixed(4)+') translate('+(-cx)+' '+(-cy)+')');
+        for(const q of kreise)q.n.setAttribute('r',(q.r/f).toFixed(2));
+        for(const q of schrift)q.n.setAttribute('font-size',(q.s/f).toFixed(2)); }}; },
     gerade(x0v,m,k,dash){ const y0v=fn(x0v); const p1={x:xmin,y:y0v+m*(xmin-x0v)}, p2={x:xmax,y:y0v+m*(xmax-x0v)};
       const l=svgEl('line',{x1:sx(p1.x),y1:sy(p1.y),x2:sx(p2.x),y2:sy(p2.y),stroke:KF[k===undefined?0:k],'stroke-width':1.8,opacity:0},L.vorn);
       if(dash)l.setAttribute('stroke-dasharray','6 4'); return l; },
@@ -279,8 +296,11 @@ function gabel(quelle){
   const k2=svgEl('path',{fill:'var(--muted)',d:'M1 0 L-6 -3.2 L-6 3.2 Z',opacity:0},szene.pf);
   const it={typ:'gabel',u:0,L1:0,L2:0,
     rechnen(){ const q=lokal(quelle), a=lokal(links), b=lokal(rechts);
-      const von={x:q.x+q.w/2,y:q.y+q.h+2};
       const zu1={x:a.x+Math.min(a.w,60)/2,y:a.y-4}, zu2={x:b.x+Math.min(b.w,60)/2,y:b.y-4};
+      // Der Scheitel sitzt unter der Quellzeile. Steht etwas dazwischen (ein Lehrersatz),
+      // rutscht er dicht ueber die Aeste: Pfeile duerfen keinen Text durchschneiden.
+      const kopf=Math.min(zu1.y,zu2.y), unten=q.y+q.h+2, nah=kopf-unten<=34;
+      const von={x: nah? q.x+q.w/2 : (zu1.x+zu2.x)/2, y: nah? unten : kopf-20};
       const d=(z)=>'M'+von.x.toFixed(1)+' '+von.y.toFixed(1)+' L'+z.x.toFixed(1)+' '+z.y.toFixed(1);
       p1.setAttribute('d',d(zu1)); p2.setAttribute('d',d(zu2));
       try{ it.L1=p1.getTotalLength(); it.L2=p2.getTotalLength(); }catch(e){ it.L1=it.L2=60; }

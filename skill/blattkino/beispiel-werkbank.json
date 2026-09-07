@@ -2,7 +2,7 @@
  "titel": "Werkbank: alle Bewegungen",
  "quelle": "Pruefstand des Spielers, kein Dokument",
  "frei": true,
- "skill": "2.9, Werkbank",
+ "skill": "2.9.2, Werkbank",
  "boegen": [
   {
    "titel": "Herausloesen: Ausklammern",
@@ -215,7 +215,7 @@
    ]
   },
   {
-   "titel": "Herausloesen: Ablesen und Einsetzen",
+   "titel": "Herausloesen: p und q ablesen",
    "beats": [
     {
      "sag": "\\(p\\) steht vor dem \\(x\\), \\(q\\) steht ohne \\(x\\).",
@@ -290,110 +290,8 @@
      "sag": "Beide gehen an ihre Plaetze in der Formel.",
      "ops": [
       {
-       "op": "zeile",
-       "id": "F",
-       "stumm": true,
-       "teile": [
-        [
-         "!eng",
-         {
-          "tex": "x_{1,2}=-"
-         },
-         {
-          "bruch": {
-           "oben": [
-            {
-             "tex": "-6",
-             "id": "fp1",
-             "k": 2
-            }
-           ],
-           "unten": [
-            {
-             "tex": "2"
-            }
-           ]
-          }
-         },
-         {
-          "tex": "\\pm"
-         },
-         {
-          "wurzel": [
-           {
-            "hoch": {
-             "basis": [
-              {
-               "tex": "("
-              },
-              {
-               "bruch": {
-                "oben": [
-                 {
-                  "tex": "-6",
-                  "id": "fp2",
-                  "k": 2
-                 }
-                ],
-                "unten": [
-                 {
-                  "tex": "2"
-                 }
-                ]
-               }
-              },
-              {
-               "tex": ")"
-              }
-             ],
-             "exp": [
-              {
-               "tex": "2"
-              }
-             ]
-            }
-           },
-           {
-            "tex": "-"
-           },
-           {
-            "tex": "8",
-            "id": "fq",
-            "k": 2
-           }
-          ]
-         }
-        ]
-       ]
-      },
-      {
-       "op": "pfeil",
-       "id": "st",
-       "von": "pv",
-       "zu": "fp1",
-       "k": 2,
-       "lane": 0
-      },
-      {
-       "op": "pfeil",
-       "von": {
-        "pfeil": "st"
-       },
-       "zu": "fp2",
-       "k": 2,
-       "lane": 1
-      },
-      {
-       "op": "pfeil",
-       "von": "qv",
-       "zu": "fq",
-       "k": 2,
-       "lane": 2
-      },
-      {
-       "op": "zeig",
-       "zeile": "F",
-       "folge": true
+       "op": "math",
+       "tex": "x_{1,2}=-\\frac{p}{2}\\pm\\sqrt{\\left(\\frac{p}{2}\\right)^{2}-q}"
       }
      ]
     },
@@ -405,7 +303,8 @@
        "op": "umformung",
        "zeilen": [
         {
-         "tex": "x_{1,2}=3\\pm\\sqrt{9-8}"
+         "tex": "x_{1,2}=3\\pm\\sqrt{9-8}",
+         "warum": "p = −6 und q = 8 eingesetzt"
         },
         {
          "tex": "x_{1,2}=3\\pm 1"
@@ -1351,15 +1250,18 @@
        "folge": true,
        "teile": [
         [
-         "x_1=",
+         "!eng",
+         {
+          "tex": "x_1="
+         },
          {
           "tex": "1",
           "id": "x1",
           "k": 0
-         }
-        ],
-        [
-         ",\\ x_2=",
+         },
+         {
+          "tex": "\\quad x_2="
+         },
          {
           "tex": "3",
           "id": "x2",
@@ -1639,9 +1541,9 @@
      "ops": [
       {
        "op": "binden",
-       "x": 0,
+       "x": 1,
        "label": "f faellt",
-       "label2": "f'(0)=-4"
+       "label2": "f'(1)=-2"
       }
      ]
     }
