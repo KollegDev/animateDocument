@@ -1,14 +1,20 @@
 ---
 name: blattkino
-description: Blattkino 2.9 (Buehne, Blickfuehrung, Goldgeraete, Umbau Zeile fuer Zeile, Gabel, Endloesung, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
+description: Blattkino 2.9.1 (Buehne, Blickfuehrung, Goldgeraete, Umbau Zeile fuer Zeile, Gabel, Endloesung, Werkbank, Inventar, Simulat-Harness, Schnellrichter). Verwandelt ein Dokument in einen wischgesteuerten Lehrfilm fuer das Handy, in dem Formeln sich aufbauen, Zahlen von Zeile zu Zeile wandern und Graphen sich zeichnen. Nutze diesen Skill, wenn aus einem PDF, Arbeitsblatt, Skript oder Aufgabenblatt eine Animation, ein Lehrfilm, ein Video oder eine erklaerende Fassung werden soll, oder wenn "Blattkino" genannt wird. Funktioniert auch mit gescannten PDFs ohne Textebene, weil die Seiten angesehen werden.
 ---
 
 # Blattkino
 
-**Version 2.9 (2026-09-07).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
+**Version 2.9.1 (2026-09-07).** Jeder Film traegt diese Nummer im Feld `"skill"`; sie steht
 auch in der `description` oben.
 
 Aenderungsprotokoll (Version, Datum, Anlass):
+- 2.9.1, 2026-09-07: `beispiel-werkbank.json`, der Pruefstand mit fuenfzehn Blaettern, je
+  eine Bewegung an richtiger Mathematik; darin die zwei neuen Faelle des Herausloesens
+  (teilweise Wurzel, Ablesen von p, q und Scheitel) und die Wurzel aus Chips. Pruefer:
+  Umbau, Gabel und Pfeil zaehlen als das, was ein Blatt traegt; eine Farbe, die fliegt,
+  ist keine Dekoration; die Endloesung wird je Aussage geprueft (Kette verboten, Rechnung
+  im Wert verboten, Klammern und Hochzahlen erlaubt).
 - 2.9, 2026-09-07: nach drei Autorbefunden am Ausklammer-Blatt: `zieht` (der Teil loest sich
   aus seiner Quelle, statt eine Zwischenzeile zu brauchen), `gabel` (zwei Wege, zwei Pfeile,
   zwei Spalten, die unabhaengig weiterrechnen), `loesung` (die Endloesung wird doppelt
@@ -212,6 +218,15 @@ der Leser sich sonst im Kopf herstellen muesste, und nur die.
   Faktor hinten an (Rest). Potenzgesetze: zwei Exponenten treffen sich zu ihrer Summe.
 - Binomische Formeln und quadratische Ergaenzung: a und b wandern in Quadrate und
   Doppelprodukt; `(p/2)²` erscheint zweimal, plus und minus.
+- Teilweises Wurzelziehen: aus `50` loest sich die `25` als `5` heraus und tritt vor die
+  Wurzel (`zieht` mit `wird`), die `2` bleibt darunter stehen. Die Wurzel ist dafuer aus
+  Chips gebaut: `{wurzel:[...]}`.
+- **Ablesen** ist auch ein Herausloesen, nur ohne Rechnung: eine Zahl steckt schon in der
+  Form und geht an ihren neuen Platz. `p` und `q` loesen sich aus `x² − 6x + 8` und stehen
+  darunter als `p = −6`, `q = 8`; der Scheitel loest sich aus `(x − 3)² − 4` und wird
+  `S(3|−4)`, wobei das Vorzeichen beim Lesen kippt (`zieht` mit `wird`); ebenso Steigung und
+  Achsenabschnitt aus `y = mx + b`. Die Ausgangszeile bleibt dabei stehen, denn sie ist die
+  Form, in der man liest.
 - Einsetzen einer Zahl aus einer weiter oben stehenden Zeile bleibt der `pfeil` (durch den
   Seitenrand, von oben in die Klammer); der Umbau ist der Uebergang zwischen Nachbarzeilen.
 
@@ -258,6 +273,14 @@ Schritte zerlegen. `beispiel-extrempunkte.json` ist das Mass: acht Blaetter des 
 Chips, Stamm und Aesten, Serie aus einer Vorlage. Lies es ganz, bevor du giesst; es ist kein
 Formular, ein anderes Dokument hat einen anderen Fluss. `beispiel-parabel.json` zeigt
 `bildfolge`, `zoomfolge`, `doppelgraph` und `binden` im Einsatz.
+
+**Die Werkbank.** `beispiel-werkbank.json` ist kein Dokumentfilm, sondern der Pruefstand:
+fuenfzehn Blaetter, jedes eine Bewegung an richtiger Mathematik, von Ausklammern und Ablesen
+ueber teilweise Wurzel, Potenzregel, Kuerzen, dritte binomische Formel rueckwaerts,
+Substitution und Scheitel bis zu Flug, Aufstieg, Fahrt, Doppelgraph, Bildfolge und Tabelle.
+Schlag dort nach, wenn du wissen willst, wie ein Geraet aussieht, das dein Dokument
+verlangt. Sie traegt `"frei": true`, weil sie kein Quelldokument hat; jeder Film aus einem
+Dokument braucht sein Inventar.
 
 ## Zwei Wege und das Ende der Rechnung
 

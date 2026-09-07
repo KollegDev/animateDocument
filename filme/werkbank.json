@@ -1,0 +1,1788 @@
+{
+ "titel": "Werkbank: alle Bewegungen",
+ "quelle": "Pruefstand des Spielers, kein Dokument",
+ "frei": true,
+ "skill": "2.9, Werkbank",
+ "boegen": [
+  {
+   "titel": "Herausloesen: Ausklammern",
+   "beats": [
+    {
+     "sag": "Nullstellen von \\(h(x)=x^3-4x\\).",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "A",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "0="
+         },
+         {
+          "tex": "x^{3}",
+          "id": "a1"
+         },
+         {
+          "tex": "-4x",
+          "id": "a2"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "graph",
+       "expr": "x^3-4*x",
+       "xmin": -3,
+       "xmax": 3,
+       "ymin": -6,
+       "ymax": 6,
+       "legend": "h(x)=x³−4x",
+       "h": 96,
+       "dauer": 2
+      }
+     ]
+    },
+    {
+     "sag": "In beiden Summanden steckt ein \\(x\\).",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "C",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "0="
+         },
+         {
+          "tex": "x",
+          "id": "c1",
+          "k": 0
+         },
+         {
+          "tex": "\\cdot("
+         },
+         {
+          "tex": "x^{2}",
+          "id": "c2"
+         },
+         {
+          "tex": "-4",
+          "id": "c4"
+         },
+         {
+          "tex": ")"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "C",
+       "wege": [
+        {
+         "von": [
+          "a1",
+          "a2"
+         ],
+         "zu": "c1",
+         "zieht": true,
+         "takt": 0
+        },
+        {
+         "von": "a1",
+         "zu": "c2",
+         "wird": true,
+         "takt": 1
+        },
+        {
+         "von": "a2",
+         "zu": "c4",
+         "wird": true,
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Ein Produkt ist 0, wenn ein Faktor 0 ist.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "gabel",
+       "von": "C",
+       "aeste": [
+        {
+         "zeilen": [
+          {
+           "teile": [
+            {
+             "tex": "x_1"
+            },
+            {
+             "tex": "="
+            },
+            {
+             "tex": "0"
+            }
+           ],
+           "loesung": true
+          }
+         ]
+        },
+        {
+         "zeilen": [
+          {
+           "teile": [
+            {
+             "tex": "x^{2}",
+             "id": "e1"
+            },
+            {
+             "tex": "-4",
+             "id": "e2"
+            },
+            {
+             "tex": "=0"
+            }
+           ]
+          },
+          {
+           "teile": [
+            {
+             "tex": "x^{2}",
+             "id": "f1"
+            },
+            {
+             "tex": "="
+            },
+            {
+             "tex": "4",
+             "id": "f2"
+            }
+           ],
+           "warum": "| +4",
+           "wege": [
+            {
+             "von": "e1",
+             "zu": "f1"
+            },
+            {
+             "von": "e2",
+             "zu": "f2",
+             "wird": true
+            }
+           ]
+          },
+          {
+           "teile": [
+            {
+             "tex": "x",
+             "id": "g1"
+            },
+            {
+             "tex": "="
+            },
+            {
+             "tex": "\\pm 2",
+             "id": "g2"
+            }
+           ],
+           "warum": "| √",
+           "wege": [
+            {
+             "von": "f1",
+             "zu": "g1",
+             "wird": true
+            },
+            {
+             "von": "f2",
+             "zu": "g2",
+             "wird": true
+            }
+           ],
+           "loesung": true
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Herausloesen: Ablesen und Einsetzen",
+   "beats": [
+    {
+     "sag": "\\(p\\) steht vor dem \\(x\\), \\(q\\) steht ohne \\(x\\).",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "Q",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "0="
+         },
+         {
+          "tex": "x^{2}"
+         },
+         {
+          "tex": "-6x",
+          "id": "q1"
+         },
+         {
+          "tex": "+8",
+          "id": "q2"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "zeile",
+       "id": "P",
+       "stumm": true,
+       "teile": [
+        [
+         "p=",
+         {
+          "tex": "-6",
+          "id": "pv",
+          "k": 2
+         }
+        ],
+        [
+         "\\qquad q=",
+         {
+          "tex": "8",
+          "id": "qv",
+          "k": 2
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "P",
+       "wege": [
+        {
+         "von": "q1",
+         "zu": "pv",
+         "zieht": true,
+         "takt": 0
+        },
+        {
+         "von": "q2",
+         "zu": "qv",
+         "zieht": true,
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Beide gehen an ihre Plaetze in der Formel.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "F",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "x_{1,2}=-"
+         },
+         {
+          "bruch": {
+           "oben": [
+            {
+             "tex": "-6",
+             "id": "fp1",
+             "k": 2
+            }
+           ],
+           "unten": [
+            {
+             "tex": "2"
+            }
+           ]
+          }
+         },
+         {
+          "tex": "\\pm"
+         },
+         {
+          "wurzel": [
+           {
+            "hoch": {
+             "basis": [
+              {
+               "tex": "("
+              },
+              {
+               "bruch": {
+                "oben": [
+                 {
+                  "tex": "-6",
+                  "id": "fp2",
+                  "k": 2
+                 }
+                ],
+                "unten": [
+                 {
+                  "tex": "2"
+                 }
+                ]
+               }
+              },
+              {
+               "tex": ")"
+              }
+             ],
+             "exp": [
+              {
+               "tex": "2"
+              }
+             ]
+            }
+           },
+           {
+            "tex": "-"
+           },
+           {
+            "tex": "8",
+            "id": "fq",
+            "k": 2
+           }
+          ]
+         }
+        ]
+       ]
+      },
+      {
+       "op": "pfeil",
+       "id": "st",
+       "von": "pv",
+       "zu": "fp1",
+       "k": 2,
+       "lane": 0
+      },
+      {
+       "op": "pfeil",
+       "von": {
+        "pfeil": "st"
+       },
+       "zu": "fp2",
+       "k": 2,
+       "lane": 1
+      },
+      {
+       "op": "pfeil",
+       "von": "qv",
+       "zu": "fq",
+       "k": 2,
+       "lane": 2
+      },
+      {
+       "op": "zeig",
+       "zeile": "F",
+       "folge": true
+      }
+     ]
+    },
+    {
+     "sag": "Ausrechnen, dann die beiden Loesungen.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "x_{1,2}=3\\pm\\sqrt{9-8}"
+        },
+        {
+         "tex": "x_{1,2}=3\\pm 1"
+        },
+        {
+         "tex": "x_1=4\\quad x_2=2",
+         "loesung": true
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Herausloesen: aus der Wurzel",
+   "beats": [
+    {
+     "sag": "In 50 steckt eine Quadratzahl: \\(50=25\\cdot 2\\).",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "W1",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "\\sqrt{50}"
+         },
+         {
+          "tex": "="
+         },
+         {
+          "wurzel": [
+           {
+            "tex": "25",
+            "id": "w25"
+           },
+           {
+            "tex": "\\cdot"
+           },
+           {
+            "tex": "2",
+            "id": "w2"
+           }
+          ]
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Die Wurzel aus 25 ist 5 und tritt heraus.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "W2",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "\\sqrt{50}"
+         },
+         {
+          "tex": "="
+         },
+         {
+          "tex": "5",
+          "id": "f5"
+         },
+         {
+          "wurzel": [
+           {
+            "tex": "2",
+            "id": "r2"
+           }
+          ]
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "W2",
+       "wege": [
+        {
+         "von": "w25",
+         "zu": "f5",
+         "zieht": true,
+         "takt": 0
+        },
+        {
+         "von": "w2",
+         "zu": "r2",
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Die 2 bleibt unter der Wurzel stehen.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "\\sqrt{50}"
+         },
+         {
+          "tex": "="
+         },
+         {
+          "tex": "5\\sqrt{2}"
+         }
+        ]
+       ],
+       "loesung": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Herausloesen: die Hochzahl kommt nach vorn",
+   "beats": [
+    {
+     "sag": "Ableiten: die Hochzahl wird zum Faktor.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "D1",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "f(x)="
+         },
+         {
+          "hoch": {
+           "basis": [
+            {
+             "tex": "x",
+             "id": "db"
+            }
+           ],
+           "exp": [
+            {
+             "tex": "5",
+             "id": "de",
+             "k": 0
+            }
+           ]
+          }
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Vorne steht sie als Faktor, oben bleibt eine weniger.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "D2",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "f'(x)="
+         },
+         {
+          "tex": "5",
+          "id": "nf",
+          "k": 0
+         },
+         {
+          "hoch": {
+           "basis": [
+            {
+             "tex": "x",
+             "id": "nb"
+            }
+           ],
+           "exp": [
+            {
+             "tex": "4",
+             "id": "ne"
+            }
+           ]
+          }
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "D2",
+       "wege": [
+        {
+         "von": "de",
+         "zu": "nf",
+         "zieht": true,
+         "takt": 0
+        },
+        {
+         "von": "db",
+         "zu": "nb",
+         "takt": 1
+        },
+        {
+         "von": "de",
+         "zu": "ne",
+         "wird": true,
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Dieselbe Regel gilt fuer jede Hochzahl.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "f'(x)="
+         },
+         {
+          "tex": "5x^{4}"
+         }
+        ]
+       ],
+       "loesung": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Herausloesen: Kuerzen",
+   "beats": [
+    {
+     "sag": "Oben und unten steckt derselbe Faktor.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "K1",
+       "teile": [
+        [
+         "!eng",
+         {
+          "bruch": {
+           "oben": [
+            {
+             "tex": "6",
+             "id": "o6"
+            },
+            {
+             "tex": "x",
+             "id": "ox"
+            }
+           ],
+           "unten": [
+            {
+             "tex": "3",
+             "id": "u3"
+            },
+            {
+             "tex": "x",
+             "id": "ux"
+            }
+           ]
+          }
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Gleiche Faktoren heben sich auf.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "K2",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "bruch": {
+           "oben": [
+            {
+             "tex": "6",
+             "id": "n6"
+            }
+           ],
+           "unten": [
+            {
+             "tex": "3",
+             "id": "n3"
+            }
+           ]
+          }
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "K2",
+       "wege": [
+        {
+         "von": "ox",
+         "weg": true,
+         "takt": 0
+        },
+        {
+         "von": "ux",
+         "weg": true,
+         "takt": 0
+        },
+        {
+         "von": "o6",
+         "zu": "n6",
+         "takt": 1
+        },
+        {
+         "von": "u3",
+         "zu": "n3",
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Was uebrig bleibt, ist eine einfache Division.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "bruch": {
+           "oben": [
+            {
+             "tex": "6x"
+            }
+           ],
+           "unten": [
+            {
+             "tex": "3x"
+            }
+           ]
+          }
+         },
+         {
+          "tex": "="
+         },
+         {
+          "tex": "2"
+         }
+        ]
+       ],
+       "loesung": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Herausloesen: eine Quelle, zwei Ziele",
+   "beats": [
+    {
+     "sag": "Beide Teile sind Quadrate.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "B1",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "x^{2}",
+          "id": "b2x"
+         },
+         {
+          "tex": "-"
+         },
+         {
+          "tex": "9",
+          "id": "b9"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Aus jedem Quadrat tritt seine Wurzel in beide Klammern.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "B2",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "("
+         },
+         {
+          "tex": "x",
+          "id": "t1",
+          "k": 0
+         },
+         {
+          "tex": "+"
+         },
+         {
+          "tex": "3",
+          "id": "t2",
+          "k": 1
+         },
+         {
+          "tex": ")("
+         },
+         {
+          "tex": "x",
+          "id": "t3",
+          "k": 0
+         },
+         {
+          "tex": "-"
+         },
+         {
+          "tex": "3",
+          "id": "t4",
+          "k": 1
+         },
+         {
+          "tex": ")"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "B2",
+       "wege": [
+        {
+         "von": "b2x",
+         "zu": "t1",
+         "zieht": true,
+         "takt": 0
+        },
+        {
+         "von": "b2x",
+         "zu": "t3",
+         "zieht": true,
+         "takt": 0
+        },
+        {
+         "von": "b9",
+         "zu": "t2",
+         "zieht": true,
+         "takt": 1
+        },
+        {
+         "von": "b9",
+         "zu": "t4",
+         "zieht": true,
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Einmal plus, einmal minus: das ist der Unterschied.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "x^{2}-9"
+         },
+         {
+          "tex": "="
+         },
+         {
+          "tex": "(x+3)(x-3)"
+         }
+        ]
+       ],
+       "loesung": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Herausloesen: Substitution",
+   "beats": [
+    {
+     "sag": "Zweimal steht dasselbe: \\(x^2\\).",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "S1",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "0="
+         },
+         {
+          "hoch": {
+           "basis": [
+            {
+             "tex": "x",
+             "id": "s1b"
+            }
+           ],
+           "exp": [
+            {
+             "tex": "4"
+            }
+           ]
+          }
+         },
+         {
+          "tex": "-5"
+         },
+         {
+          "tex": "x^{2}",
+          "id": "s2"
+         },
+         {
+          "tex": "+4"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Wir geben ihm einen Namen: \\(u=x^2\\).",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "S2",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "0="
+         },
+         {
+          "hoch": {
+           "basis": [
+            {
+             "tex": "u",
+             "id": "n1",
+             "k": 1
+            }
+           ],
+           "exp": [
+            {
+             "tex": "2"
+            }
+           ]
+          }
+         },
+         {
+          "tex": "-5"
+         },
+         {
+          "tex": "u",
+          "id": "n2",
+          "k": 1
+         },
+         {
+          "tex": "+4"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "S2",
+       "wege": [
+        {
+         "von": "s1b",
+         "zu": "n1",
+         "wird": true,
+         "takt": 0
+        },
+        {
+         "von": "s2",
+         "zu": "n2",
+         "wird": true,
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Jetzt steht dort eine gewoehnliche quadratische Gleichung.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "u_1=4\\quad u_2=1",
+         "loesung": true
+        },
+        {
+         "tex": "x^{2}=4\\quad x^{2}=1",
+         "warum": "zurueck mit u = x²"
+        },
+        {
+         "tex": "x=\\pm 2\\quad x=\\pm 1",
+         "loesung": true
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Herausloesen: aus der Form den Punkt lesen",
+   "beats": [
+    {
+     "sag": "In dieser Form steht der Scheitel schon drin.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "V1",
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "f(x)=("
+         },
+         {
+          "tex": "x-3",
+          "id": "v1",
+          "k": 0
+         },
+         {
+          "tex": ")^{2}"
+         },
+         {
+          "tex": "-4",
+          "id": "v2",
+          "k": 1
+         }
+        ]
+       ]
+      },
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "(x-3)^2-4",
+       "xmin": -1,
+       "xmax": 7,
+       "ymin": -5,
+       "ymax": 5,
+       "legend": "f(x)=(x-3)²−4",
+       "h": 96,
+       "dauer": 2
+      }
+     ]
+    },
+    {
+     "sag": "Das Vorzeichen kippt beim Lesen: aus \\(x-3\\) wird 3.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "V2",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "S("
+         },
+         {
+          "tex": "3",
+          "id": "s3",
+          "k": 0
+         },
+         {
+          "tex": "\\,|\\,"
+         },
+         {
+          "tex": "-4",
+          "id": "s4",
+          "k": 1
+         },
+         {
+          "tex": ")"
+         }
+        ]
+       ]
+      },
+      {
+       "op": "umbau",
+       "zu": "V2",
+       "wege": [
+        {
+         "von": "v1",
+         "zu": "s3",
+         "zieht": true,
+         "wird": true,
+         "takt": 0
+        },
+        {
+         "von": "v2",
+         "zu": "s4",
+         "zieht": true,
+         "takt": 1
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Der Punkt liegt im Bild an dieser Stelle.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "kandidat",
+       "id": "m0",
+       "x": 3,
+       "k": 0,
+       "text": "3"
+      },
+      {
+       "op": "flug",
+       "von": "s3",
+       "zu": {
+        "kandidat": "m0"
+       },
+       "k": 0
+      },
+      {
+       "op": "aufstieg",
+       "x": 3,
+       "y": -4,
+       "k": 0,
+       "text": "-4"
+      },
+      {
+       "op": "punkt",
+       "x": 3,
+       "y": -4,
+       "k": 0
+      },
+      {
+       "op": "beschriftung",
+       "x": 3,
+       "y": -4,
+       "text": "S(3|-4)",
+       "k": 0,
+       "dauer": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Einsetzen: ein Stamm, zwei Aeste",
+   "beats": [
+    {
+     "sag": "Gesucht ist der Funktionswert an der Stelle 2.",
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        "f(x)=x^{2}-3x"
+       ]
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "x=",
+         {
+          "tex": "2",
+          "id": "n0",
+          "k": 3
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Dieselbe Zahl geht an jede Stelle, an der \\(x\\) steht.",
+     "ops": [
+      {
+       "op": "zeile",
+       "id": "E",
+       "stumm": true,
+       "teile": [
+        [
+         "!eng",
+         {
+          "tex": "f("
+         },
+         {
+          "tex": "2",
+          "id": "e1",
+          "k": 3
+         },
+         {
+          "tex": ")="
+         },
+         {
+          "tex": "2",
+          "id": "e2",
+          "k": 3
+         },
+         {
+          "tex": "^{2}-3\\cdot "
+         },
+         {
+          "tex": "2",
+          "id": "e3",
+          "k": 3
+         }
+        ]
+       ]
+      },
+      {
+       "op": "pfeil",
+       "id": "st",
+       "von": "n0",
+       "zu": "e1",
+       "k": 3,
+       "lane": 0
+      },
+      {
+       "op": "pfeil",
+       "von": {
+        "pfeil": "st"
+       },
+       "zu": "e2",
+       "k": 3,
+       "lane": 1
+      },
+      {
+       "op": "pfeil",
+       "von": {
+        "pfeil": "st"
+       },
+       "zu": "e3",
+       "k": 3,
+       "lane": 2
+      },
+      {
+       "op": "zeig",
+       "zeile": "E",
+       "folge": true
+      }
+     ]
+    },
+    {
+     "sag": "Ausrechnen.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "f(2)=4-6"
+        },
+        {
+         "tex": "f(2)=-2",
+         "loesung": true
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Fliegen: die Zahl bekommt ihren Ort",
+   "beats": [
+    {
+     "sag": "Der Graph von \\(f(x)=x^2-4x+3\\).",
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        "f(x)=x^{2}-4x+3"
+       ]
+      },
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "x^2-4*x+3",
+       "xmin": -1,
+       "xmax": 5,
+       "ymin": -2,
+       "ymax": 6,
+       "legend": "f(x)=x²−4x+3",
+       "h": 104,
+       "dauer": 2
+      }
+     ]
+    },
+    {
+     "sag": "Die Nullstellen wandern an die x-Achse.",
+     "ops": [
+      {
+       "op": "zeile",
+       "folge": true,
+       "teile": [
+        [
+         "x_1=",
+         {
+          "tex": "1",
+          "id": "x1",
+          "k": 0
+         }
+        ],
+        [
+         ",\\ x_2=",
+         {
+          "tex": "3",
+          "id": "x2",
+          "k": 1
+         }
+        ]
+       ],
+       "loesung": true
+      },
+      {
+       "op": "kandidat",
+       "id": "m0",
+       "x": 1,
+       "k": 0,
+       "text": "1"
+      },
+      {
+       "op": "flug",
+       "von": "x1",
+       "zu": {
+        "kandidat": "m0"
+       },
+       "k": 0
+      },
+      {
+       "op": "punkt",
+       "x": 1,
+       "y": 0,
+       "k": 0
+      },
+      {
+       "op": "kandidat",
+       "id": "m1",
+       "x": 3,
+       "k": 1,
+       "text": "3"
+      },
+      {
+       "op": "flug",
+       "von": "x2",
+       "zu": {
+        "kandidat": "m1"
+       },
+       "k": 1
+      },
+      {
+       "op": "punkt",
+       "x": 3,
+       "y": 0,
+       "k": 1
+      }
+     ]
+    },
+    {
+     "sag": "Der y-Achsenschnitt wandert an die y-Achse.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zeile",
+       "teile": [
+        [
+         "y=",
+         {
+          "tex": "3",
+          "id": "y0",
+          "k": 3
+         }
+        ]
+       ],
+       "loesung": true
+      },
+      {
+       "op": "kandidat",
+       "id": "yw",
+       "achse": "y",
+       "y": 3,
+       "k": 3,
+       "text": "3"
+      },
+      {
+       "op": "flug",
+       "von": "y0",
+       "zu": {
+        "kandidat": "yw"
+       },
+       "k": 3
+      },
+      {
+       "op": "punkt",
+       "x": 0,
+       "y": 3,
+       "k": 3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Die Stelle wird eine Hoehe",
+   "beats": [
+    {
+     "sag": "Am tiefsten Punkt ist die Kurve waagerecht.",
+     "ops": [
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "x^2-4*x+3",
+       "xmin": -1,
+       "xmax": 5,
+       "ymin": -2,
+       "ymax": 6,
+       "legend": "f(x)=x²−4x+3",
+       "h": 104,
+       "dauer": 2
+      },
+      {
+       "op": "zeile",
+       "teile": [
+        "f'(x)=2x-4"
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Also setzen wir die Ableitung null.",
+     "ops": [
+      {
+       "op": "umformung",
+       "zeilen": [
+        {
+         "tex": "0=2x-4"
+        },
+        {
+         "tex": "4=2x",
+         "warum": "| +4"
+        },
+        {
+         "tex": "x=2",
+         "warum": "| :2",
+         "loesung": true
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Von der Stelle steigen wir zur Kurve hinauf.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "kandidat",
+       "id": "m0",
+       "x": 2,
+       "k": 0,
+       "text": "2",
+       "sofort": true
+      },
+      {
+       "op": "kappe",
+       "x": 2,
+       "r": 0.9,
+       "k": 0,
+       "text": "nach oben gekruemmt"
+      },
+      {
+       "op": "aufstieg",
+       "x": 2,
+       "y": -1,
+       "k": 0,
+       "text": "-1"
+      },
+      {
+       "op": "punkt",
+       "x": 2,
+       "y": -1,
+       "k": 0
+      },
+      {
+       "op": "beschriftung",
+       "x": 2,
+       "y": -1,
+       "text": "T(2|-1)",
+       "k": 0,
+       "dauer": 0.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Der Lauf: die Steigung faehrt mit",
+   "beats": [
+    {
+     "sag": "An jeder Stelle hat die Kurve eine eigene Steigung.",
+     "ops": [
+      {
+       "op": "graph",
+       "id": "G",
+       "expr": "x^2-4*x+3",
+       "xmin": -1,
+       "xmax": 5,
+       "ymin": -2,
+       "ymax": 6,
+       "legend": "f(x)=x²−4x+3",
+       "h": 150,
+       "dauer": 2
+      }
+     ]
+    },
+    {
+     "sag": "Die Beruehrgerade faehrt darueber hinweg.",
+     "ops": [
+      {
+       "op": "fahrt",
+       "x0": -0.5,
+       "x1": 4.5,
+       "geister": [
+        2
+       ],
+       "k": 0,
+       "dauer": 9
+      }
+     ]
+    },
+    {
+     "sag": "An einer festen Stelle ist die Steigung eine Zahl.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "wert",
+       "x": 4,
+       "k": 1,
+       "tex": "f'(4)=4",
+       "label": "4"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Zwei Bilder, eine Stelle",
+   "beats": [
+    {
+     "sag": "Oben die Funktion, unten ihre Ableitung.",
+     "ops": [
+      {
+       "op": "doppelgraph",
+       "expr": "x^2-4*x+3",
+       "expr2": "2*x-4",
+       "xmin": -1,
+       "xmax": 5,
+       "ymin": -2,
+       "ymax": 6,
+       "ymin2": -6,
+       "ymax2": 6,
+       "legend": "f(x)=x²−4x+3",
+       "legend2": "f'(x)=2x−4",
+       "h": 170,
+       "dauer": 3
+      }
+     ]
+    },
+    {
+     "sag": "Wo unten die Null steht, ist oben der Tiefpunkt.",
+     "ops": [
+      {
+       "op": "binden",
+       "x": 2,
+       "label": "T(2|-1)",
+       "label2": "f'(2)=0"
+      }
+     ]
+    },
+    {
+     "sag": "Links davon faellt f, und unten steht eine negative Zahl.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "binden",
+       "x": 0,
+       "label": "f faellt",
+       "label2": "f'(0)=-4"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Annaeherung: eine Folge von Bildern",
+   "beats": [
+    {
+     "sag": "Zwei Punkte auf der Kurve geben eine Gerade.",
+     "ops": [
+      {
+       "op": "graph",
+       "id": "s",
+       "expr": "x^2-4*x+3",
+       "xmin": -1,
+       "xmax": 5,
+       "ymin": -2,
+       "ymax": 6,
+       "legend": "f(x)=x²−4x+3",
+       "h": 150,
+       "dauer": 2
+      },
+      {
+       "op": "punkt",
+       "x": 3,
+       "y": 0,
+       "k": 0
+      },
+      {
+       "op": "beschriftung",
+       "x": 3,
+       "y": 0,
+       "text": "P(3|0)",
+       "k": 0,
+       "dauer": 0.6
+      }
+     ]
+    },
+    {
+     "sag": "Der zweite Punkt rueckt heran, die Gerade kippt.",
+     "ops": [
+      {
+       "op": "bildfolge",
+       "id": "s",
+       "art": "sekante",
+       "x": 3,
+       "stufen": [
+        2,
+        1,
+        0.5,
+        0
+       ],
+       "ziel": "Tangente",
+       "dauer": 1.4
+      }
+     ]
+    },
+    {
+     "sag": "Unter der Lupe wird jede Kurve gerade.",
+     "payoff": true,
+     "ops": [
+      {
+       "op": "zoomfolge",
+       "expr": "x^2-4*x+3",
+       "x": 3,
+       "zoom": 8,
+       "label": "P(3|0)",
+       "xmin": -1,
+       "xmax": 5,
+       "ymin": -2,
+       "ymax": 6,
+       "h": 150,
+       "dauer": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Das Muster: Schritt fuer Schritt gleich",
+   "beats": [
+    {
+     "sag": "Dieselben drei Schritte bei jeder Funktion.",
+     "ops": [
+      {
+       "op": "tabelle",
+       "art": "serie",
+       "kopf": [
+        "Funktion",
+        "Schritt",
+        "Nullstellen"
+       ],
+       "zeilen": [
+        [
+         "f(x)=x^{2}-1",
+         "x^{2}=1",
+         "x=\\pm 1"
+        ],
+        [
+         "f(x)=x^{2}-4",
+         "x^{2}=4",
+         "x=\\pm 2"
+        ],
+        [
+         "f(x)=x^{2}-9",
+         "x^{2}=9",
+         "x=\\pm 3"
+        ],
+        [
+         "f(x)=x^{2}-16",
+         "x^{2}=16",
+         "x=\\pm 4"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "sag": "Jetzt du.",
+     "ops": [
+      {
+       "op": "jetztihr",
+       "t": "Nullstellen von",
+       "aufgabe": "f(x)=x^{2}-25",
+       "loesung": "x=\\pm 5",
+       "loesungText": "zwei Loesungen, plus und minus"
+      }
+     ]
+    },
+    {
+     "payoff": true,
+     "ops": [
+      {
+       "op": "merk",
+       "t": "Beim Wurzelziehen gibt es immer zwei Loesungen, plus und minus."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "schluss": "Ende der Werkbank."
+}

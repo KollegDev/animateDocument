@@ -1,6 +1,6 @@
 # STAND: Blattkino, ausgelieferte Linie
 
-Stand 2026-09-05. Diese Datei beschreibt den Zustand der Linie `player.html` plus
+Stand 2026-09-07 (Werkbank, Skill 2.9.1). Diese Datei beschreibt den Zustand der Linie `player.html` plus
 `skill/blattkino` plus `filme/`, also des Produkts, das derzeit auf studienkolleg.me läuft.
 
 Der Kanon (`ZIEL.md`, `PLAYER.md`, `KANON.md`) ist seit P1/P3/P4 auf diese Linie
@@ -130,7 +130,8 @@ Die vier Geräte, in denen Scrollen dem Papier überlegen ist, alle freiwillig:
 | `skill/harness2.mjs` | 43 mechanische Tests über jsdom |
 | `skill/blattkino/lauf2.mjs` | fährt einen Film über die ganze Radstrecke, zählt Fehler, `--dump` zeigt die Struktur; liegt im Skill, damit die installierte Fassung vollständig ist |
 | `skill/abgleich2.mjs` | Vorabnahme: Filmdatei gegen gold/extrempunkte.html, Struktur, Fenster, Text |
-| `filme/*.json` | die ausgelieferten Filme, einzige Quelle; `bauen.sh` spiegelt den Goldfilm in den Skill |
+| `filme/*.json` | die ausgelieferten Filme, einzige Quelle; `bauen.sh` spiegelt den Goldfilm und die Werkbank in den Skill |
+| `filme/werkbank.json` | die Werkbank: 15 Blätter, je eine Bewegung an richtiger Mathematik, `"frei": true`. Der Prüfstand, an dem eine Bewegung beurteilt wird, bevor sie in einen Dokumentfilm geht; im Skill als `beispiel-werkbank.json` |
 | `blindtest/<n>/` | je Blindlauf `film.json` plus Beiakte, vom Katalog direkt verlinkt |
 | `dokumente/` | die Quell-PDFs der Trials mit Seitenbildern (90 dpi); Seitenangaben im Projekt beziehen sich darauf (P9) |
 
@@ -175,10 +176,18 @@ Bögen).
   heraus, statt eine Zwischenzeile zu brauchen), `gabel` (zwei Pfeile, zwei Spalten, die
   unabhängig weiterrechnen), `loesung` (Endlösung doppelt unterstrichen, Symbol und Wert
   nebeneinander); Prüfer meldet Rechnung ohne Endlösung und Rechnen in der Endlösung.
-  Harness 58 Tests grün.
+  2.9.1: `{wurzel:[...]}` aus Chips (die Wurzel wird zum Ort, aus dem etwas heraustreten
+  kann), die Werkbank als Prüfstand und Beispieldatei des Skills, zwei neue Fälle des
+  Herauslösens im Katalog (teilweise Wurzel; Ablesen von p, q und Scheitel mit
+  Vorzeichenkipp). Prüfer: `umbau`, `gabel` und `pfeil` tragen ein Blatt wie eine Überschrift;
+  eine Farbe auf einem Chip, der fliegt, ist keine Dekoration; die Endlösung wird je Aussage
+  geprüft (Kette verboten, offene Rechnung im Wert verboten, Klammerinhalt und Hochzahl
+  erlaubt) und aus den Teilen einer Zeile wird das TeX zurückgewonnen statt aus dem JSON.
+  Transkript: eine Quelle, die zweimal dasselbe hergibt, wird ein Satz. Harness 58 Tests grün.
 - 44 Harness-Tests grün; Abgleich gegen den Goldlauf IDENTISCH; alle Filme und Blindfilme
   laufen über die ganze Radstrecke ohne Fehler.
-- Vier Filme: `filme/extrempunkte.json` (der Goldfilm als Datei, 8 Bögen, 31 Beats, 0 schwer;
+- Fünf Filme: `filme/werkbank.json` (die Werkbank, 15 Bögen, 45 Beats, 0 schwer, 0 mittel,
+  lauf2 0 Fehler), `filme/extrempunkte.json` (der Goldfilm als Datei, 8 Bögen, 31 Beats, 0 schwer;
   2 mittlere: zwei Blätter auf 0,95 eingepasst, wie im Goldlauf), `filme/parabel.json`
   (8 Bögen, 20 Beats, frei), `filme/ableitung.json` (14 Bögen, 30 Beats, frei),
   `filme/kurvendiskussion-1.json` (19 Bögen, 46 Beats, 4 offene SCHWER im Inventar,

@@ -2,7 +2,7 @@
 
 ## Die Datei
 
-Jede Datei traegt `"skill": "2.9"`, die Version aus dem Kopf von SKILL.md, mit der sie
+Jede Datei traegt `"skill": "2.9.1"`, die Version aus dem Kopf von SKILL.md, mit der sie
 entstanden ist. Der Pruefer meldet das Fehlen. So ist jeder Film seiner Skill-Fassung
 zuzuordnen, auch wenn der Skill weitergezogen ist.
 
@@ -420,7 +420,13 @@ meldet, was zur Laufzeit scheitert; `pruefe.mjs` sieht das nicht. Es braucht `js
 
 `beispiel-parabel.json` ist ein frei komponierter Film (`"frei": true`) für die Altgeräte
 (`plot`, `bildfolge`, `zoomfolge`, `doppelgraph`, `binden`, `wert`); `beispiel-extrempunkte.json`
-ist der Goldfilm mit den Goldgeräten.
+ist der Goldfilm mit den Goldgeräten. `beispiel-werkbank.json` ist der Prüfstand, ebenfalls
+`"frei": true`: fünfzehn Blätter, je eine Bewegung an richtiger Mathematik. Blatt 1 bis 8
+sind die Formen des Herauslösens (Ausklammern mit Gabel, p und q ablesen und in die Formel
+schicken, teilweise Wurzel, Potenzregel, Kürzen, dritte binomische Formel rückwärts,
+Substitution, Scheitel ablesen), Blatt 9 bis 15 die Bildgeräte (Stamm und Äste, Flug an
+beide Achsen, Aufstieg mit Kappe, Fahrt mit Wert, Doppelgraph mit Binden, Bildfolge und
+Zoomfolge, Tabelle mit Übung und Merksatz).
 
 `--hoehe` gibt je Bogen die gerechnete Hoehe und Blockzahl aus, je Beat Hoehe und Bloecke;
 damit laesst sich ein zu voller Bogen gezielt teilen.

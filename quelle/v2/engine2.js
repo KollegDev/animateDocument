@@ -62,13 +62,17 @@ function chip(p,z){
     else c.textContent=t; }
   if(p&&p.id)z.chips[p.id]=c; return c;
 }
-// Ein Teil: Chip, Gruppe, Bruch {bruch:{oben,unten}} oder Hochzahl {hoch:{basis,exp}}. Bruch und Hochzahl
-// sind aus Chips gebaut, damit Zaehler, Nenner und Exponent eigene Kennungen tragen und wandern koennen.
+// Ein Teil: Chip, Gruppe, Bruch {bruch:{oben,unten}}, Hochzahl {hoch:{basis,exp}} oder Wurzel {wurzel:[...]}.
+// Alle drei sind aus Chips gebaut, damit Zaehler, Nenner, Exponent und Radikand wandern koennen.
 function teil(p,z){
   if(Array.isArray(p)){ const eng=p[0]==='!eng'; const g=el('span','gruppe'+(eng?' eng':'')); for(const q of (eng?p.slice(1):p))g.appendChild(teil(q,z)); return g; }
   if(p&&typeof p==='object'&&p.bruch){ const b=el('span','bruch'); const o=el('span','oben'), u=el('span','unten');
     for(const q of [].concat(p.bruch.oben||[]))o.appendChild(teil(q,z)); for(const q of [].concat(p.bruch.unten||[]))u.appendChild(teil(q,z));
     b.appendChild(o); b.appendChild(u); return b; }
+  // Wurzel aus Chips: das Zeichen und darunter der Radikand, damit auch dort etwas wandern kann
+  if(p&&typeof p==='object'&&p.wurzel!==undefined){ const w=el('span','wurzel'); const zn=el('span','zeichen','\u221A'), r=el('span','rad');
+    for(const q of [].concat(p.wurzel))r.appendChild(teil(q,z));
+    w.appendChild(zn); w.appendChild(r); return w; }
   if(p&&typeof p==='object'&&p.hoch){ const h=el('span','hoch'); const b=el('span','basis'), e=el('span','exp');
     for(const q of [].concat(p.hoch.basis||[]))b.appendChild(teil(q,z)); for(const q of [].concat(p.hoch.exp||[]))e.appendChild(teil(q,z));
     h.appendChild(b); h.appendChild(e); return h; }

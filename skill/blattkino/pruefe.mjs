@@ -68,9 +68,24 @@ const OPS = ['clear','h','text','item','math','note','frage','umformung','tabell
              'wert','doppelgraph','binden','bildfolge','zoomfolge','paar',
              // v2 (Goldlauf)
              'satz','marke','merk','zeile','zeig','graph','punkt','beschriftung','kandidat','flug','pfeil','kappe','aufstieg','fahrt','umbau','gabel'];
-const UEBERFLIEG = ['h','tabelle','merksatz','merk','plot','graph','jetztihr','doppelgraph','zoomfolge','marke'];
+// Was ein Blatt traegt, wenn man es nur ueberfliegt. Seit 2.9 gehoeren die bewegten
+// Umformungen dazu: ein Umbau, eine Gabel, ein Pfeil sind das sichtbare Ereignis des Blattes,
+// nicht bloss Text, den man liest.
+const UEBERFLIEG = ['h','tabelle','merksatz','merk','plot','graph','jetztihr','doppelgraph','zoomfolge','marke','umbau','gabel','pfeil'];
 // Geraete, die ein eigenes Bild aufmachen. Nach ihnen ist ein neues Bild noetig, um sie anzusprechen.
 const BILDER = ['plot','graph','doppelgraph','zoomfolge'];
+
+// Aus den Teilen einer Zeile das TeX zurueckgewinnen, das der Leser sieht: Kennungen und
+// Farben bleiben draussen, Bruch, Hochzahl und Wurzel werden wieder zu \frac, ^{} und \sqrt.
+function texAusTeilen(teile){ const tx=[];
+  const flachTex=(q,acc)=>{ for(const e of [].concat(q||[])){ if(Array.isArray(e))flachTex(e,acc);
+    else if(e&&typeof e==='object'&&e.wurzel!==undefined){ const w=[]; flachTex(e.wurzel,w); acc.push('\\sqrt{'+w.join('')+'}'); }
+    else if(e&&typeof e==='object'&&e.bruch){ const o1=[],u1=[]; flachTex(e.bruch.oben,o1); flachTex(e.bruch.unten,u1); acc.push('\\frac{'+o1.join('')+'}{'+u1.join('')+'}'); }
+    else if(e&&typeof e==='object'&&e.hoch){ const b1=[],e1=[]; flachTex(e.hoch.basis,b1); flachTex(e.hoch.exp,e1); acc.push(b1.join('')+'^{'+e1.join('')+'}'); }
+    else if(typeof e==='string'&&e!=='!eng')acc.push(e);
+    else if(e&&e.tex!==undefined)acc.push(String(e.tex)); } };
+  const lauf=t=>{ for(const p of (t||[])){ if(Array.isArray(p)){ lauf(p); continue; } const acc=[]; flachTex(p,acc); if(acc.length)tx.push(acc.join('')); } };
+  lauf(teile); return tx; }
 
 // LaTeX glaetten: Befehle zu Woertern, \frac und \sqrt von innen nach aussen zu a/b und sqrt(a).
 // Dieselbe Gestalt fuer Inventar und Film, damit \pm\sqrt{\frac{1}{3}} und pm sqrt(1/3) zusammenfallen.
@@ -205,6 +220,7 @@ boegen.forEach((bo,bi)=>{
   function pruefeChips(teile,wob){
     const lauf=(t)=>{ for(const p of t){
       if(Array.isArray(p)){ lauf(p); continue; }
+      if(p&&typeof p==='object'&&p.wurzel!==undefined){ lauf([].concat(p.wurzel)); continue; }
       if(p&&typeof p==='object'&&p.bruch){ lauf([].concat(p.bruch.oben||[])); lauf([].concat(p.bruch.unten||[])); continue; }
       if(p&&typeof p==='object'&&p.hoch){ lauf([].concat(p.hoch.basis||[])); lauf([].concat(p.hoch.exp||[])); continue; }
       if(typeof p==='string'||(p&&typeof p==='object')){
@@ -314,10 +330,26 @@ boegen.forEach((bo,bi)=>{
     if(setzt.length&&!bewegt) B('MITTEL',wo,'Umformung sagt „'+String(setzt[0]).slice(0,40)+'", aber keine Zahl bewegt sich. Einsetzen ist der Paradefall des Pfeils: die Zahl fliesst von oben in die Klammer (GL2). Umformung zeigt nur das Ergebnis.');
     // G6: eine Farbe auf einer Zahl im Text braucht ein Geraet, das die Beziehung zeigt
     const geraetK=new Set(eigen.filter(o=>o&&['kandidat','pfeil','flug','punkt','point','kappe','aufstieg','wert','beschriftung','fahrt'].includes(o.op)).map(o=>o.k===undefined?(['pfeil','kandidat','kappe','aufstieg','fahrt'].includes(o.op)?0:undefined):+o.k).filter(k=>k!==undefined));
-    const chipK=new Set(); const lauf=t=>{ for(const p of (t||[])){ if(Array.isArray(p))lauf(p); else if(p&&typeof p==='object'&&p.k!==undefined)chipK.add(+p.k); } };
-    for(const o of eigen) if(o&&o.op==='zeile') lauf(o.teile);
+    // Kennungen, die sich bewegen: der Flug selbst ist die Beziehung, die die Farbe meint
+    const bewegteIds=new Set();
+    { const nimm=v=>{ for(const x of [].concat(v||[])) if(typeof x==='string')bewegteIds.add(x); };
+      const wege=w=>{ for(const q of (w||[])){ nimm(q&&q.von); nimm(q&&q.zu); } };
+      for(const o of eigen){ if(!o)continue;
+        if(o.op==='umbau')wege(o.wege);
+        if(o.op==='flug'||o.op==='pfeil'){ nimm(o.von); nimm(o.zu); }
+        if(o.op==='umformung')for(const z of (o.zeilen||[]))wege(z&&z.wege);
+        if(o.op==='gabel'){ nimm(o.von); for(const a of (o.aeste||[]))for(const z of (a&&a.zeilen||[]))wege(z&&z.wege); } } }
+    const chipK=new Set(), bewegtK=new Set();
+    const lauf=t=>{ for(const p of (t||[])){ if(Array.isArray(p))lauf(p);
+      else if(p&&typeof p==='object'&&p.bruch){ lauf(p.bruch.oben); lauf(p.bruch.unten); }
+      else if(p&&typeof p==='object'&&p.hoch){ lauf(p.hoch.basis); lauf(p.hoch.exp); }
+      else if(p&&typeof p==='object'&&p.wurzel!==undefined){ lauf([].concat(p.wurzel)); }
+      else if(p&&typeof p==='object'&&p.k!==undefined){ chipK.add(+p.k); if(p.id&&bewegteIds.has(p.id))bewegtK.add(+p.k); } } };
+    for(const o of eigen){ if(o&&o.op==='zeile') lauf(o.teile);
+      if(o&&o.op==='umformung')for(const z of (o.zeilen||[]))lauf(z&&z.teile);
+      if(o&&o.op==='gabel')for(const a of (o.aeste||[]))for(const z of (a&&a.zeilen||[]))lauf(z&&z.teile); }
     const gleichFall = bo.serieFall===true;
-    for(const k of chipK) if(!geraetK.has(k)&&!geraetKFilm.has(k)&&!gleichFall) B('MITTEL',wo,'Farbe k'+k+' auf Zahlen im Text, aber kein Geraet traegt sie (keine Achsenmarke, kein Pfeil, kein Punkt). Farbe ist ein Zeiger auf eine Beziehung; ohne Beziehung ist sie Dekoration (GL1).');
+    for(const k of chipK) if(!geraetK.has(k)&&!geraetKFilm.has(k)&&!bewegtK.has(k)&&!gleichFall) B('MITTEL',wo,'Farbe k'+k+' auf Zahlen im Text, aber kein Geraet traegt sie (keine Achsenmarke, kein Pfeil, kein Punkt, keine Bewegung). Farbe ist ein Zeiger auf eine Beziehung; ohne Beziehung ist sie Dekoration (GL1).');
     for(const k of geraetK) if(k>=2&&!chipK.has(k)) farbenOhneZahl.add(wo+': k'+k);
     for(const k of geraetK) geraetKFilm.add(k);
   }
@@ -453,10 +485,6 @@ boegen.forEach((bo,bi)=>{
       // Alles zaehlt, was der Leser als Formel zu sehen bekommt, nicht nur math und umformung
       if(o.op==='math'&&o.tex) alleTex.push(o.tex);
       // zeile: jeder TeX-Chip zaehlt, und die ganze Zeile zusammengezogen
-      const texAusTeilen=teile=>{ const tx=[]; const lauf=t=>{ for(const p of t){ if(Array.isArray(p))lauf(p);
-          else if(p&&typeof p==='object'&&p.bruch){ const o1=[],u1=[]; const l2=(q,acc)=>{ for(const e of [].concat(q)){ if(Array.isArray(e))l2(e,acc); else if(typeof e==='string'&&e!=='!eng')acc.push(e); else if(e&&e.tex!==undefined)acc.push(String(e.tex)); } }; l2(p.bruch.oben,o1); l2(p.bruch.unten,u1); tx.push('\\frac{'+o1.join('')+'}{'+u1.join('')+'}'); }
-          else if(p&&typeof p==='object'&&p.hoch){ const b1=[],e1=[]; const l2=(q,acc)=>{ for(const e of [].concat(q)){ if(Array.isArray(e))l2(e,acc); else if(typeof e==='string'&&e!=='!eng')acc.push(e); else if(e&&e.tex!==undefined)acc.push(String(e.tex)); } }; l2(p.hoch.basis,b1); l2(p.hoch.exp,e1); tx.push(b1.join('')+'^{'+e1.join('')+'}'); }
-          else if(typeof p==='string'&&p!=='!eng')tx.push(p); else if(p&&p.tex!==undefined)tx.push(String(p.tex)); } }; lauf(teile); return tx; };
       if(o.op==='zeile'&&Array.isArray(o.teile)){ const tx=texAusTeilen(o.teile); for(const t of tx)alleTex.push(t); if(tx.length>1)alleTex.push(tx.join('')); }
       if(o.op==='marke'&&o.t) alleTex.push(String(o.t));
       if(o.op==='wert'&&o.tex) alleTex.push(o.tex);
@@ -505,11 +533,18 @@ boegen.forEach((bo,bi)=>{
       if(o.op==='zeile'||o.op==='math')return [o]; return []; });
     const loes=zeilenAlle.filter(z=>z&&z.loesung);
     if(rechnet&&!loes.length) B('MITTEL',wo,'die Rechnung endet ohne doppelt unterstrichene Endloesung ("loesung": true). Der Leser sieht sonst nicht, welche Zeile das Ergebnis ist.');
-    for(const z of loes){ let t=z.tex!==undefined?flach(String(z.tex)):(Array.isArray(z.teile)?flach(JSON.stringify(z.teile).replace(/"[a-z]+":/g,'').replace(/[\[\]{}",]/g,' ')):'');
-      t=t.replace(/pm|quad|cdot/g,' ').replace(/\s+/g,' ');
-      // Symbol und Wert stehen nebeneinander: kein Rechenschritt zwischen zwei Groessen
-      const m=t.match(/[0-9a-zA-Z)]\s*[+\-*:\/^]\s*[0-9a-zA-Z(]/);
-      if(m) B('MITTEL',wo,'in der Endloesung steht noch gerechnet ("'+m[0].trim()+'" in "'+t.slice(0,40).trim()+'"). Symbol und Wert stehen unmittelbar nebeneinander; der Rechenweg gehoert in die Zeile darueber.'); } }
+    for(const z of loes){ let t=z.tex!==undefined?flach(String(z.tex)):(Array.isArray(z.teile)?flach(texAusTeilen(z.teile).join(' ')):'');
+      t=t.replace(/\bpm\b|\bcdot\b|!eng/g,' ').replace(/\s+/g,' ');
+      // Eine Zeile darf zwei Loesungen nebeneinander tragen; jede wird fuer sich geprueft.
+      for(const a of t.split(/\bquad\b|;|,(?!\s*\d\s*\})/)){ const teile=a.split('=').map(s=>s.trim()).filter(Boolean);
+        if(teile.length<2) continue;
+        // Symbol und Wert stehen nebeneinander, keine Kette
+        if(teile.length>2){ B('MITTEL',wo,'die Endloesung ist eine Kette ("'+a.slice(0,40).trim()+'"). Erst rechnen, dann in einer eigenen Zeile Symbol und Wert allein.'); continue; }
+        // Im Wert darf keine offene Rechnung stehen. In Klammern steht eine Form, kein Rechenschritt;
+        // eine Hochzahl gehoert zum Term, sie ist kein Schritt.
+        const wert=teile[teile.length-1].replace(/\([^()]*\)/g,'');
+        const m=wert.match(/[0-9a-zA-Z)]\s*[+\-*:\/]\s*[0-9a-zA-Z(]/);
+        if(m) B('MITTEL',wo,'in der Endloesung steht noch gerechnet ("'+m[0].trim()+'" in "'+a.slice(0,40).trim()+'"). Symbol und Wert stehen unmittelbar nebeneinander; der Rechenweg gehoert in die Zeile darueber.'); } } }
 
   // Blickfuehrung: das Blatt ist eine Folge von Stationen, kein Lesetext
   { const saetze=bs.filter(b=>typeof b.sag==='string'&&b.sag.trim()).length;

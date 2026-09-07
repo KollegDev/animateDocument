@@ -12,5 +12,6 @@ io.open(w+'/skill/blattkino/player.html','w',encoding='utf-8').write(tpl)
 io.open(w+'/player.html','w',encoding='utf-8').write(tpl.replace('__TITEL__','Blattkino').replace('__BEATS_JSON__','null'))
 # Eine Wahrheit: filme/ ist die Quelle der Filme, der Skill traegt den Goldfilm als Kopie
 io.open(w+'/skill/blattkino/beispiel-extrempunkte.json','w',encoding='utf-8').write(io.open(w+'/filme/extrempunkte.json',encoding='utf-8').read())
-print('player.html, skill/blattkino/player.html = v2; beispiel-extrempunkte.json = filme/extrempunkte.json')
+io.open(w+'/skill/blattkino/beispiel-werkbank.json','w',encoding='utf-8').write(io.open(w+'/filme/werkbank.json',encoding='utf-8').read())
+print('player.html, skill/blattkino/player.html = v2; beispiel-extrempunkte.json = filme/extrempunkte.json; beispiel-werkbank.json = filme/werkbank.json')
 PY

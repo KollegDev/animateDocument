@@ -77,6 +77,9 @@ mjx-container{display:inline-block !important; margin:0 !important;}
 .bruch .oben, .bruch .unten{display:inline-flex; align-items:baseline; gap:0; padding:0 .2em;}
 .bruch .oben{border-bottom:1.5px solid currentColor; padding-bottom:.08em;}
 .bruch .unten{padding-top:.08em;}
+.wurzel{display:inline-flex; align-items:stretch; margin:0 .1em;}
+.wurzel .zeichen{align-self:flex-end; line-height:1; padding-bottom:.05em;}
+.wurzel .rad{border-top:1.4px solid currentColor; padding:.08em .18em 0 .1em; display:inline-flex; align-items:baseline;}
 .hoch{display:inline-flex; align-items:baseline; gap:0;}
 .hoch .basis{display:inline-flex; align-items:baseline;}
 .hoch .exp{display:inline-flex; align-items:baseline; font-size:.72em; vertical-align:super; position:relative; top:-.55em; margin-left:.04em;}
@@ -420,13 +423,17 @@ function chip(p,z){
     else c.textContent=t; }
   if(p&&p.id)z.chips[p.id]=c; return c;
 }
-// Ein Teil: Chip, Gruppe, Bruch {bruch:{oben,unten}} oder Hochzahl {hoch:{basis,exp}}. Bruch und Hochzahl
-// sind aus Chips gebaut, damit Zaehler, Nenner und Exponent eigene Kennungen tragen und wandern koennen.
+// Ein Teil: Chip, Gruppe, Bruch {bruch:{oben,unten}}, Hochzahl {hoch:{basis,exp}} oder Wurzel {wurzel:[...]}.
+// Alle drei sind aus Chips gebaut, damit Zaehler, Nenner, Exponent und Radikand wandern koennen.
 function teil(p,z){
   if(Array.isArray(p)){ const eng=p[0]==='!eng'; const g=el('span','gruppe'+(eng?' eng':'')); for(const q of (eng?p.slice(1):p))g.appendChild(teil(q,z)); return g; }
   if(p&&typeof p==='object'&&p.bruch){ const b=el('span','bruch'); const o=el('span','oben'), u=el('span','unten');
     for(const q of [].concat(p.bruch.oben||[]))o.appendChild(teil(q,z)); for(const q of [].concat(p.bruch.unten||[]))u.appendChild(teil(q,z));
     b.appendChild(o); b.appendChild(u); return b; }
+  // Wurzel aus Chips: das Zeichen und darunter der Radikand, damit auch dort etwas wandern kann
+  if(p&&typeof p==='object'&&p.wurzel!==undefined){ const w=el('span','wurzel'); const zn=el('span','zeichen','\u221A'), r=el('span','rad');
+    for(const q of [].concat(p.wurzel))r.appendChild(teil(q,z));
+    w.appendChild(zn); w.appendChild(r); return w; }
   if(p&&typeof p==='object'&&p.hoch){ const h=el('span','hoch'); const b=el('span','basis'), e=el('span','exp');
     for(const q of [].concat(p.hoch.basis||[]))b.appendChild(teil(q,z)); for(const q of [].concat(p.hoch.exp||[]))e.appendChild(teil(q,z));
     h.appendChild(b); h.appendChild(e); return h; }
@@ -758,7 +765,8 @@ function teileVon(liste,z){
     if(Array.isArray(p)){ aus.push(teileVon(p,z)); continue; }
     if(typeof p==='string'){ aus.push(p==='!eng'?p:sauberTex(p)); continue; }
     if(p&&typeof p==='object'){
-      if(p.bruch&&typeof p.bruch==='object')aus.push({bruch:{oben:teileVon([].concat(p.bruch.oben||[]),z),unten:teileVon([].concat(p.bruch.unten||[]),z)}});
+      if(p.wurzel!==undefined)aus.push({wurzel:teileVon([].concat(p.wurzel),z)});
+      else if(p.bruch&&typeof p.bruch==='object')aus.push({bruch:{oben:teileVon([].concat(p.bruch.oben||[]),z),unten:teileVon([].concat(p.bruch.unten||[]),z)}});
       else if(p.hoch&&typeof p.hoch==='object')aus.push({hoch:{basis:teileVon([].concat(p.hoch.basis||[]),z),exp:teileVon([].concat(p.hoch.exp||[]),z)}});
       else if(p.tex!==undefined)aus.push({tex:sauberTex(p.tex),k:p.k,id:p.id,leer:!!p.leer});
       else aus.push({t:String(p.t==null?'':p.t),fett:p.fett,k:p.k,id:p.id,leer:!!p.leer});

@@ -74,7 +74,8 @@ function teileVon(liste,z){
     if(Array.isArray(p)){ aus.push(teileVon(p,z)); continue; }
     if(typeof p==='string'){ aus.push(p==='!eng'?p:sauberTex(p)); continue; }
     if(p&&typeof p==='object'){
-      if(p.bruch&&typeof p.bruch==='object')aus.push({bruch:{oben:teileVon([].concat(p.bruch.oben||[]),z),unten:teileVon([].concat(p.bruch.unten||[]),z)}});
+      if(p.wurzel!==undefined)aus.push({wurzel:teileVon([].concat(p.wurzel),z)});
+      else if(p.bruch&&typeof p.bruch==='object')aus.push({bruch:{oben:teileVon([].concat(p.bruch.oben||[]),z),unten:teileVon([].concat(p.bruch.unten||[]),z)}});
       else if(p.hoch&&typeof p.hoch==='object')aus.push({hoch:{basis:teileVon([].concat(p.hoch.basis||[]),z),exp:teileVon([].concat(p.hoch.exp||[]),z)}});
       else if(p.tex!==undefined)aus.push({tex:sauberTex(p.tex),k:p.k,id:p.id,leer:!!p.leer});
       else aus.push({t:String(p.t==null?'':p.t),fett:p.fett,k:p.k,id:p.id,leer:!!p.leer});

@@ -1556,3 +1556,72 @@ drei Geraeten im Katalog und dem Abschnitt „Zwei Wege und das Ende der Rechnun
 Gabel auf der Seite an: die beiden Spalten sind am Handy schmal, das ist die Stelle, an der
 es haken kann.
 </builder>
+
+<builder>
+B36 (2026-09-07, an P, G, DD und den Autor): Die Werkbank. Skill 2.9.1.
+
+Der Autor: „Baue es nicht nur im Dokument, sondern versuche alle Situationen zu generieren,
+in denen das hilfreich ist, in einem Benchmark-Dokument, das alle Faehigkeiten enthaelt, die
+der Player hat, sodass wir daran iterieren koennen." Das ist gebaut: `filme/werkbank.json`,
+im Katalog ganz oben, im Skill als `beispiel-werkbank.json`.
+
+**Was sie ist.** Fuenfzehn Blaetter, jedes eine Bewegung an richtiger Mathematik, kein
+Dokumentfilm (`"frei": true`). Nicht zum Lernen gedacht, sondern zum Urteilen: hier steht
+jede Bewegung einzeln und sauber, sodass der Autor am Handy sagen kann, welche traegt und
+welche nicht, ohne dass ein Dokument dazwischensteht.
+
+Blatt 1 bis 8, die Formen des Herausloesens:
+1. Ausklammern: aus `x³` und `−4x` loest sich je ein `x`, danach die Gabel, beide
+   Endloesungen doppelt unterstrichen.
+2. Ablesen und Einsetzen: `p` und `q` loesen sich aus `0 = x² − 6x + 8` und stehen darunter;
+   dann Stamm und Aeste in die p-q-Formel, die aus `{bruch}` und `{wurzel}` gebaut ist, also
+   Zaehler, Nenner und Radikand einzelne Plaetze sind.
+3. Teilweise Wurzel: aus `50` loest sich die `25` als `5` heraus und tritt vor die Wurzel.
+4. Potenzregel: die Hochzahl loest sich, geht nach vorn und wird oben um eins kleiner.
+5. Kuerzen: `x` und `x` werden gestrichen (`weg`), `6` und `3` wandern in den Restbruch.
+6. Dritte binomische Formel rueckwaerts: eine Quelle, zwei Ziele, `x²` gibt zweimal ein `x`
+   her, `9` zweimal eine `3`.
+7. Substitution: jedes `x²` wird `u`, dann zurueck.
+8. Scheitel ablesen: aus `(x − 3)² − 4` loest sich `S(3|−4)`, das Vorzeichen kippt beim
+   Lesen (`zieht` mit `wird`), der Punkt landet im Bild.
+
+Blatt 9 bis 15, die Bildgeraete: Einsetzen mit Stamm und drei Aesten; Fluege an x- und
+y-Achse; Aufstieg mit Kappe; Fahrt mit Wert; Doppelgraph mit zweimal Binden; Bildfolge und
+Zoomfolge; Tabelle, Uebung, Merksatz.
+
+**Neu im Katalog des Skills**, weil die Werkbank zwei Faelle sichtbar gemacht hat, die
+gefehlt haben: die teilweise Wurzel (dafuer die Wurzel aus Chips, `{wurzel:[...]}`) und
+**Ablesen als eigene Form des Herausloesens** — eine Zahl steckt schon in der Form und geht
+an ihren Platz, ohne dass gerechnet wird (p und q, Scheitel, Steigung und Achsenabschnitt).
+Die Ausgangszeile bleibt dabei stehen, denn sie ist die Form, in der man liest.
+
+**Drei Befunde am Pruefer**, alle beim Bauen der Werkbank aufgefallen, alle nachgezogen:
+1. Ein Blatt, dessen Ereignis ein `umbau`, eine `gabel` oder ein `pfeil` ist, galt als „nichts
+   zum Ueberfliegen". Falsch: eine bewegte Umformung ist genau das, was ein Blatt traegt.
+2. Eine Farbe auf einem Chip, der fliegt, galt als Dekoration (GL1), weil kein `kandidat`
+   sie trug. Der Flug ist die Beziehung, die die Farbe meint; er zaehlt jetzt.
+3. Die Endloesungsregel hielt `f'(x) = 5x⁴` und `x² − 9 = (x+3)(x−3)` fuer „noch gerechnet".
+   Sie prueft jetzt je Aussage: eine Kette (`y = f(2) = 2² − 5 = −1`) ist verboten, eine
+   offene Rechnung im Wert ist verboten, Klammerinhalt und Hochzahl sind erlaubt. Ausserdem
+   liest sie den Text der Zeile jetzt aus den Teilen (`texAusTeilen`) statt aus dem JSON, so
+   dass Kennungen und Farbnummern nicht mehr als Formelteile erscheinen.
+
+Kein Befund aendert sich an den bestehenden Filmen: `diff` gegen die vorige Fassung des
+Pruefers ist bei allen fuenf leer.
+
+Werkbank: 15 Boegen, 45 Beats, 0 schwer, 0 mittel, 1 leicht (das ist der Hinweis „frei
+komponiert"), lauf2 0 Fehler, Harness 58 gruen, Goldabgleich IDENTISCH.
+
+**Es braucht wieder einen `git p`.** Damit haengen jetzt drei Dinge daran: die Fixes aus B34,
+die Geraete aus B35 (Gabel, zieht, loesung) und die Werkbank. Danach sehe ich mir am Handy
+zuerst die Werkbank an, Blatt fuer Blatt, weil dort jede Bewegung einzeln steht; die riskanten
+Stellen sind die schmalen Spalten der Gabel (Blatt 1) und der Doppelgraph (Blatt 13, 740 von
+755 Pixeln).
+
+**Bitte an den Autor:** die Werkbank ist zum Urteilen gebaut. Sag zu jedem Blatt nur, ob die
+Bewegung traegt oder stoert; das ist die Liste, an der ich weiterarbeite.
+
+**Bitte an DD:** Blatt 6 (`x² − 9`) und Blatt 8 (Scheitel) sind die zwei Stellen, an denen
+der Film etwas zeigt, was ein Dokument nur behauptet. Sag, ob das Herausloesen dort erklaert
+oder nur huebsch ist.
+</builder>

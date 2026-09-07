@@ -57,6 +57,7 @@ function teile(liste,chips){
     if(Array.isArray(p)){ if(s&&!/\s$/.test(s))s+=' '; lauf(p); continue; }
     if(typeof p==='string'){ if(p!=='!eng')s+=tex(p); continue; }
     if(!p||typeof p!=='object')continue;
+    if(p.wurzel!==undefined){ s+='√('; lauf([].concat(p.wurzel)); s+=')'; continue; }
     if(p.bruch){ s+='('; lauf([].concat(p.bruch.oben||[])); s+=')/('; lauf([].concat(p.bruch.unten||[])); s+=')'; continue; }
     if(p.hoch){ lauf([].concat(p.hoch.basis||[])); s+='^('; lauf([].concat(p.hoch.exp||[])); s+=')'; continue; }
     const inhalt=p.tex!==undefined?tex(p.tex):String(p.t==null?'':p.t);
@@ -83,9 +84,21 @@ function umbauTextMit(chips){ return (wege,ziel)=>{ const takte=new Map();
       const zu=chips[W.zu]||{text:W.zu}; takte.get(t).push({von:vt,zu:zu.text,wird:!!W.wird,zieht:!!W.zieht}); } });
   const schritte=[...takte.keys()].sort((a,b)=>a-b).map(t=>{ const je=new Map(); const weg=[];
     for(const w of takte.get(t)){ if(w.weg){ weg.push(w.von); continue; } const key=w.zu+(w.wird?'!':'')+(w.zieht?'~':''); if(!je.has(key))je.set(key,{zu:w.zu,wird:w.wird,zieht:w.zieht,q:[]}); je.get(key).q.push(w.von); }
-    const teile=[...je.values()].map(e=>e.zieht?('aus '+e.q.join(' und ')+' loest sich je ein '+e.zu+' heraus; sie treffen sich als ein '+e.zu)
-      :(e.q.length>1?e.q.join(' und ')+' treffen sich als ein '+e.zu:(e.wird?e.q[0]+' wandert und wird dabei zu '+e.zu:e.q[0]+' → '+e.zu)));
-    if(weg.length)teile.push(weg.join(' und ')+' wird durchgestrichen und verblasst'); return teile.join(', '); });
+    // Dieselbe Quelle, die mehrfach dasselbe hergibt, wird zu einem Satz zusammengezogen
+    const eintraege=[]; const nachQuelle=new Map();
+    for(const e of je.values()){ if(!e.zieht){ eintraege.push(e); continue; }
+      const k=e.q.join('|')+'→'+e.zu; if(nachQuelle.has(k)){ nachQuelle.get(k).mal++; continue; }
+      const n=Object.assign({mal:1},e); nachQuelle.set(k,n); eintraege.push(n); }
+    const teile=eintraege.map(e=>{
+      if(e.zieht){ const q=[...new Set(e.q)]; const mal=e.mal*(e.q.length/q.length);
+        if(q.length===1&&mal>1) return 'aus '+q[0]+' loest sich '+(mal===2?'zweimal':mal+'-mal')+' ein '+e.zu+' heraus';
+        if(q.length>1) return 'aus '+q.join(' und ')+' loest sich je ein '+e.zu+' heraus; sie treffen sich als ein '+e.zu;
+        // Quelle und Ziel tragen dasselbe: es wird nichts umgeformt, nur herausgeloest
+        if(q[0].endsWith(e.zu)) return e.zu+' loest sich heraus und geht an seinen neuen Platz';
+        return 'aus '+q[0]+' loest sich '+e.zu+' heraus'; }
+      if(e.q.length>1) return e.q.join(' und ')+' treffen sich als ein '+e.zu;
+      return e.wird?e.q[0]+' wandert und wird dabei zu '+e.zu:e.q[0]+' → '+e.zu; });
+    if(weg.length)teile.push(weg.join(' und ')+(weg.length>1?' werden':' wird')+' durchgestrichen und verblasst'); return teile.join(', '); });
   return '[Umbau: die Teile der Zeile wandern an ihre neuen Plaetze, die Quelle verblasst: '+(schritte.join('; dann ')||'nichts wandert')+'. Dann schliesst sich die neue Zeile: '+ziel+']'; }; }
 
 let nr=0;
